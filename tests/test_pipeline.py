@@ -69,6 +69,47 @@ def test_revision_and_artifact_history(tmp_path: Path):
     assert metadata["metrics"]["stages"][-1]["duration_seconds"] is not None
 
 
+def test_fixed_five_keeps_all_rounds_after_early_pass(tmp_path: Path):
+    settings = Settings(tmp_path, "https://example.invalid/v1", "fake", "generator", "reviewer")
+    store = Store(settings)
+    task = store.create("题目.png", "image/png", ".png", b"fake",
+                        run_config={"run_mode": "fixed_five", "max_rounds": 5})
+    client = FakeClient()
+    asyncio.run(Pipeline(settings, store, client,
+                         lambda html: asyncio.sleep(0, result=b"PNG")).run(task["id"]))
+    saved = store.get(task["id"])
+    assert saved["status"] == "passed"
+    assert len(saved["rounds"]) == 5
+    assert saved["rounds"][1]["passed"] is True
+    assert "上一轮已通过" in client.calls[4][1]
+    assert saved["final_name"] and store.artifact(task["id"], saved["final_name"])
+
+
+def test_review_error_resume_reuses_generated_html(tmp_path: Path):
+    settings = Settings(tmp_path, "https://example.invalid/v1", "fake", "generator", "reviewer")
+    store = Store(settings)
+    task = store.create("题目.png", "image/png", ".png", b"fake",
+                        run_config={"run_mode": "single", "max_rounds": 1})
+
+    class ReviewFailsOnce(FakeClient):
+        async def complete(self, model, prompt, images, *, max_tokens, progress=None, usage=None):
+            if model == "reviewer" and not any(call[0] == "reviewer" for call in self.calls):
+                self.calls.append((model, prompt, len(images)))
+                raise ModelError("审核暂时失败")
+            return await super().complete(model, prompt, images, max_tokens=max_tokens,
+                                          progress=progress, usage=usage)
+
+    client = ReviewFailsOnce()
+    pipeline = Pipeline(settings, store, client, lambda html: asyncio.sleep(0, result=b"PNG"))
+    asyncio.run(pipeline.run(task["id"]))
+    assert store.get(task["id"])["status"] == "error"
+    assert (tmp_path / task["id"] / ".pending_round_01.html").is_file()
+    asyncio.run(pipeline.run(task["id"]))
+    assert sum(call[0] == "generator" for call in client.calls) == 1
+    assert store.get(task["id"])["rounds"]
+    assert not (tmp_path / task["id"] / ".pending_round_01.html").exists()
+
+
 def test_offline_validator_allows_inline_svg_and_blocks_external_resources():
     assert validate_html(GOOD_HTML) == []
     assert validate_html(GOOD_HTML.replace("</body>", '<script src="https://example.com/x.js"></script></body>'))

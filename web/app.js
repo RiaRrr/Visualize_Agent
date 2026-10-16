@@ -224,12 +224,17 @@ async function loadHistory() {
   for (const task of tasks) {
     const button = el('button', `history-item ${task.id === selectedTask ? 'active' : ''}`);
     button.type = 'button';
+    button.dataset.taskId = task.id;
     button.append(el('span', `badge ${task.status}`, labels[task.status] || task.status));
     button.append(el('strong', '', task.original_name));
     button.append(el('small', '', new Date(task.created_at).toLocaleString('zh-CN')));
     button.append(el('small', 'history-stage', `${task.current_round ? `第 ${task.current_round} 轮 · ` : ''}${stageLabels[task.stage] || labels[task.status] || task.status}`));
     button.append(el('small', 'history-config', task.profile_name ? `${task.profile_name} · ${task.generator_mode === 'ocr_text' ? 'OCR→' : '图片→'}${task.generator_provider}/${task.generator_model} · ${task.reviewer_mode === 'ocr_text' ? '文字→' : '图片→'}${task.reviewer_provider}/${task.reviewer_model}` : '配置未记录'));
-    button.addEventListener('click', () => { selectedTask = task.id; selectedRound = null; selectedRoundManually = false; lastTaskSignature = ''; lastLayoutKey = ''; loadTask(); loadHistory(); });
+    button.addEventListener('click', () => {
+      selectedTask = task.id; selectedRound = null; selectedRoundManually = false; lastTaskSignature = ''; lastLayoutKey = '';
+      const url = new URL(location.href); url.searchParams.set('task', task.id); window.history.replaceState(null, '', url);
+      loadTask(); loadHistory();
+    });
     historyList.append(button);
   }
 }
@@ -421,7 +426,7 @@ async function loadTask() {
     meta.append(el('span', '', `生成 ${task.generator_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${task.generator_provider}/${task.generator_model} · 审核 ${task.reviewer_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${task.reviewer_provider}/${task.reviewer_model}`));
     if (task.ocr_model) meta.append(el('span', '', `识图 ${task.ocr_provider}/${task.ocr_model}`));
     if (task.question_ocr_name) addLink(meta, '查看题目 OCR', fileUrl(task, task.question_ocr_name));
-    meta.append(el('span', '', `${task.run_mode === 'single' ? '单轮比较' : '完整迭代'} · 生成 ${Number(task.generation_seconds || 0).toFixed(1)}s · 审核 ${Number(task.review_seconds || 0).toFixed(1)}s`));
+    meta.append(el('span', '', `${task.run_mode === 'single' ? '单轮比较' : task.run_mode === 'fixed_five' ? '调研固定五轮' : '完整迭代'} · 生成 ${Number(task.generation_seconds || 0).toFixed(1)}s · 审核 ${Number(task.review_seconds || 0).toFixed(1)}s`));
     if (task.config_name) addLink(meta, '下载本次 Prompt 与配置', fileUrl(task, task.config_name, true));
   }
   title.append(meta);
@@ -615,7 +620,9 @@ async function init() {
     if (Object.keys(optionsData.errors).length) formMessage.textContent = `模型目录部分不可用：${Object.entries(optionsData.errors).map(([k,v]) => `${k}: ${v}`).join('；')}`;
     document.getElementById('model-info').textContent = `逐组选择生成与审核模型${config.key_configured ? '' : ' · 请检查接口密钥'}`;
     await loadHistory();
-    const first = historyList.querySelector('.history-item');
+    const requested = new URLSearchParams(location.search).get('task');
+    const first = [...historyList.querySelectorAll('.history-item')].find(item => item.dataset.taskId === requested)
+      || historyList.querySelector('.history-item');
     if (first) first.click();
   } catch (error) { formMessage.textContent = error.message; }
   setInterval(async () => { try { await loadHistory(); if (selectedTask) await loadTask(); } catch (_) {} }, 3000);

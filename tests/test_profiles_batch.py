@@ -30,8 +30,8 @@ class RecordingClient:
 
 def test_profiles_have_distinct_snapshotted_prompts():
     profiles = list_profiles()
-    assert len(profiles) == 7
-    assert len({p["version"] for p in profiles}) == 6  # 自动模板和通用方案的内容相同
+    assert len(profiles) == 8
+    assert len({p["version"] for p in profiles}) == 7  # 自动模板和通用方案的内容相同
     for profile in profiles:
         assert profile["generator_prompt"].startswith("你是一名擅长多学科教学设计")
         assert profile["generator_prompt"].endswith("{{QUESTION}}")
@@ -85,6 +85,9 @@ def test_batch_runs_without_automatic_model_probe(monkeypatch):
         def batch(self, batch_id):
             return [{"id": "first", "profile_id": "physics", "status": "queued", "current_round": 0},
                     {"id": "second", "profile_id": "chemistry", "status": "queued", "current_round": 0}]
+
+        def get(self, task_id):
+            return next(item for item in self.batch("batch") if item["id"] == task_id)
 
     async def run(task_id):
         calls.append(task_id)

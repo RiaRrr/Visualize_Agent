@@ -97,3 +97,35 @@ def test_explicit_provider_overrides_model_name(monkeypatch, tmp_path: Path):
     assert calls == [("https://openai.test/v1/responses", "Bearer openai-key"),
                      ("https://codex.test/v1/chat/completions", "Bearer codex-key"),
                      ("https://codex.test/v1/chat/completions", "Bearer alt-key")]
+
+
+def test_deepseek_thinking_off_and_gateway_500_retry(monkeypatch, tmp_path: Path):
+    settings = Settings(tmp_path, "https://unused.test/v1", None, "x", "y",
+                        edumind_alt_key="test-key", codex_base_url="https://gateway.test/v1",
+                        deepseek_thinking="disabled", model_timeout_seconds=900)
+    calls = []
+
+    class FakeClient:
+        def __init__(self, **kwargs):
+            assert kwargs["timeout"].read == 900
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_):
+            pass
+
+        async def post(self, url, **kwargs):
+            calls.append(kwargs["json"])
+            if len(calls) == 1:
+                return httpx.Response(500, request=httpx.Request("POST", url), text="upstream timeout")
+            return httpx.Response(200, request=httpx.Request("POST", url),
+                                  json={"choices": [{"message": {"content": "<html></html>"},
+                                                     "finish_reason": "stop"}]})
+
+    monkeypatch.setattr("app.model_api.httpx.AsyncClient", FakeClient)
+    result = asyncio.run(ModelClient(settings).complete("deepseek-v4-flash-0731", "test", [],
+                                                        max_tokens=32000, provider="edumind_alt"))
+    assert result == "<html></html>"
+    assert len(calls) == 2
+    assert all(call["thinking"] == {"type": "disabled"} for call in calls)

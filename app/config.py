@@ -62,6 +62,10 @@ class Settings:
     codex_base_url: str = "https://llm-gateway.edumind.ai/v1"
     codex_verify_tls: bool = True
     edumind_alt_key: str | None = None
+    model_timeout_seconds: float = 300.0
+    reviewer_max_tokens: int = 6000
+    deepseek_thinking: str = "default"
+    description_max_tokens: int = 3000
 
 
 def get_settings() -> Settings:
@@ -81,4 +85,8 @@ def get_settings() -> Settings:
         codex_base_url=(_setting("VISUALIZE_CODEX_BASE_URL", "https://llm-gateway.edumind.ai/v1") or "").rstrip("/"),
         codex_verify_tls=_setting("VISUALIZE_CODEX_VERIFY_TLS", "1") != "0",
         edumind_alt_key=_setting("VISUALIZE_EDUMIND_ALT_KEY"),
+        model_timeout_seconds=max(30.0, min(1800.0, float(_setting("VISUALIZE_MODEL_TIMEOUT_SECONDS", "300") or "300"))),
+        reviewer_max_tokens=max(1000, min(32000, int(_setting("VISUALIZE_REVIEWER_MAX_TOKENS", "6000") or "6000"))),
+        deepseek_thinking=_setting("VISUALIZE_DEEPSEEK_THINKING", "default") or "default",
+        description_max_tokens=max(1000, min(16000, int(_setting("VISUALIZE_DESCRIPTION_MAX_TOKENS", "3000") or "3000"))),
     )

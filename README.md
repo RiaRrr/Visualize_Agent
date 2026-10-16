@@ -6,6 +6,8 @@
 
 主页面可添加多行配置，用同一张题图比较不同 Prompt 方案、生成模型和审核模型。默认每组只运行一轮，也可选完整迭代。默认“自动识别学科”方案会对每张题图做一次数学、物理、化学或其他的短分类，并拼装相应 Prompt；另有三种数学指导、物理、化学与通用等显式方案用于对比，显式方案不调用分流模型。分类模型可在上传区选择。模型列表从各接口的目录读取；“短识图通过”只表示小图请求成功，不能保证长篇 HTML 请求成功。批量运行直接调用所选模型，不自动消耗额度做短识图测试；需要时可点击配置行中的按钮手动测试。历史页保存组合、Prompt 版本、模型接口、每轮文件和计时；同批次页面可并排预览结果。
 
+调研时还可选“固定五轮”：即使中途审核通过，也继续改进到第 5 轮并保存每轮文件；有通过轮时最终文件取模型综合评分最高的一轮。普通“完整迭代”仍在审核通过时停止。模型接口出错会保留任务日志，之后可在任务页恢复；接口未返回完整 HTML 时无法形成该轮页面文件。
+
 同一 Edumind 网关支持独立的 `edumind_alt` 密钥配置（`VISUALIZE_EDUMIND_ALT_KEY`），主页面会将它与原 `codex` 密钥分别列为模型接口。包含密钥、调用格式和实测模型状态的本地记录写在被 Git 忽略的 `api-capabilities.local.md`。
 
 ## 运行
@@ -35,6 +37,10 @@ python3 -m venv .venv
 | `VISUALIZE_ANTHROPIC_BASE_URL` | `https://sub2api.minutex.cn` | Claude Messages 兼容接口地址 |
 | `VISUALIZE_GENERATOR_MODEL` | `claude-sonnet-4-6` | 生成模型 ID |
 | `VISUALIZE_GENERATOR_MAX_TOKENS` | `16000` | 单次生成的输出上限，可试 `8192` 或 `4096`；修改后重启服务 |
+| `VISUALIZE_REVIEWER_MAX_TOKENS` | `6000` | 单次审核输出上限；推理模型输出截断时可提高 |
+| `VISUALIZE_DESCRIPTION_MAX_TOKENS` | `3000` | OCR 审核路径中截图描述的输出上限 |
+| `VISUALIZE_MODEL_TIMEOUT_SECONDS` | `300` | 单次模型请求的读写超时秒数，最多 `1800` |
+| `VISUALIZE_DEEPSEEK_THINKING` | `default` | 可设为 `disabled`，避免 DeepSeek 长任务将输出额度全部消耗于推理；网关需支持该参数 |
 | `VISUALIZE_REVIEWER_MODEL` | `claude-opus-4-6` | 审核模型 ID |
 | `VISUALIZE_DATA_DIR` | 项目内 `data/` | 历史数据目录 |
 | `VISUALIZE_USE_PROXY` | `0` | 设为 `1` 时使用系统代理访问模型网关 |

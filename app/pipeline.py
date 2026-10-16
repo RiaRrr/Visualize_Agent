@@ -12,7 +12,7 @@ from .config import Settings
 from .model_api import ModelClient
 from .profiles import PROMPTS, get_profile
 from .rubric import empty_scores, normalize_overall_score, normalize_scores
-from .storage import Store, timestamp
+from .storage import Store, best_round, timestamp
 
 def generator_prompt(feedback: str = "", previous_html: str = "") -> str:
     prompt = get_profile("auto").generator_prompt
@@ -103,6 +103,7 @@ class Pipeline:
         completed_rounds = task["rounds"]
         config = self.store.config(task_id) or {}
         max_rounds = config.get("max_rounds", self.settings.max_rounds)
+        fixed_five = config.get("run_mode") == "fixed_five"
         generator_model = config.get("generator_model", self.settings.generator_model)
         reviewer_model = config.get("reviewer_model", self.settings.reviewer_model)
         generator_provider = config.get("generator_provider")
@@ -115,9 +116,10 @@ class Pipeline:
         if completed_rounds:
             last_round = completed_rounds[-1]
             previous_html = (self.store.root / task_id / last_round["html_name"]).read_text(encoding="utf-8")
-            feedback = "\n".join(f"- {issue}" for issue in last_round["issues"])
+            feedback = ("上一轮已通过。请继续优化图示、教学顺序与手机可读性。"
+                        if fixed_five and last_round["passed"] else "\n".join(f"- {issue}" for issue in last_round["issues"]))
         try:
-            if completed_rounds and completed_rounds[-1]["passed"]:
+            if completed_rounds and completed_rounds[-1]["passed"] and not fixed_five:
                 final_name = self.store.save_final(task_id, previous_html)
                 self.store.set_state(task_id, "passed", round_number, f"审核通过，最终文件：{final_name}", final_name, stage="passed")
                 return
@@ -156,33 +158,40 @@ class Pipeline:
                         raise ValueError("识图模型未返回题目内容")
                     (self.store.root / task_id / f"{timestamp()}_question_ocr.md").write_text(question_ocr, encoding="utf-8")
             for round_number in range(len(completed_rounds) + 1, max_rounds + 1):
-                self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：正在调用生成模型", stage="generating")
-                question_input = question_ocr if generator_mode == "ocr_text" else "题目图片已随本次 API 消息提供；请直接读取这张图片，以图中题目为准。"
-                prompt = (config.get("generator_prompt") or generator_prompt()).replace("{{QUESTION}}", question_input)
-                if feedback:
-                    prompt += f"\n\n上一轮审核意见：\n{feedback}\n请根据意见改进，保留正确部分。上一轮 HTML：\n{previous_html}"
-                started = time.monotonic()
-                generation_usage = {}
-                generated = False
-                try:
-                    raw = await self.client.complete(
-                        generator_model, prompt, [] if generator_mode == "ocr_text" else original,
-                        max_tokens=self.settings.generator_max_tokens,
-                        progress=lambda message: self.store.log_event(task_id, "generating", round_number, message),
-                        usage=lambda value: generation_usage.update(value=value),
-                        **({"provider": generator_provider} if generator_provider else {}))
-                    generated = True
-                finally:
-                    elapsed = time.monotonic() - started
-                    self.store.add_timing(task_id, "generation_seconds", elapsed)
-                    self.store.record_api_call(task_id, round_number, "generator", generator_provider,
-                                               generator_model, elapsed, "completed" if generated else "error",
-                                               generation_usage.get("value"))
-                html = clean_html(raw)
-                html, removed_emoji = re.subn(r"[\U0001F000-\U0001FAFF]", "", html)
-                if removed_emoji:
-                    self.store.log_event(task_id, "validating", round_number,
-                                         f"已清除 {removed_emoji} 个不可靠的 emoji 字符")
+                pending_path = self.store.root / task_id / f".pending_round_{round_number:02d}.html"
+                if pending_path.is_file():
+                    html = pending_path.read_text(encoding="utf-8")
+                    self.store.log_event(task_id, "generating", round_number,
+                                         f"第 {round_number} 轮：复用已生成 HTML，继续审核")
+                else:
+                    self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：正在调用生成模型", stage="generating")
+                    question_input = question_ocr if generator_mode == "ocr_text" else "题目图片已随本次 API 消息提供；请直接读取这张图片，以图中题目为准。"
+                    prompt = (config.get("generator_prompt") or generator_prompt()).replace("{{QUESTION}}", question_input)
+                    if feedback:
+                        prompt += f"\n\n上一轮审核意见：\n{feedback}\n请根据意见改进，保留正确部分。上一轮 HTML：\n{previous_html}"
+                    started = time.monotonic()
+                    generation_usage = {}
+                    generated = False
+                    try:
+                        raw = await self.client.complete(
+                            generator_model, prompt, [] if generator_mode == "ocr_text" else original,
+                            max_tokens=self.settings.generator_max_tokens,
+                            progress=lambda message: self.store.log_event(task_id, "generating", round_number, message),
+                            usage=lambda value: generation_usage.update(value=value),
+                            **({"provider": generator_provider} if generator_provider else {}))
+                        generated = True
+                    finally:
+                        elapsed = time.monotonic() - started
+                        self.store.add_timing(task_id, "generation_seconds", elapsed)
+                        self.store.record_api_call(task_id, round_number, "generator", generator_provider,
+                                                   generator_model, elapsed, "completed" if generated else "error",
+                                                   generation_usage.get("value"))
+                    html = clean_html(raw)
+                    html, removed_emoji = re.subn(r"[\U0001F000-\U0001FAFF]", "", html)
+                    if removed_emoji:
+                        self.store.log_event(task_id, "validating", round_number,
+                                             f"已清除 {removed_emoji} 个不可靠的 emoji 字符")
+                    pending_path.write_text(html, encoding="utf-8")
                 previous_html = html
                 self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：检查 HTML 与离线资源", stage="validating")
                 errors = validate_html(html)
@@ -199,31 +208,35 @@ class Pipeline:
                 else:
                     page_description = ""
                     if reviewer_mode == "ocr_text":
-                        self.store.set_state(task_id, "running", round_number,
-                                             f"第 {round_number} 轮：描述页面截图", stage="page_description")
-                        temp_description_image = self.store.root / task_id / ".description_screenshot.png"
-                        try:
-                            temp_description_image.write_bytes(screenshot)
-                            started = time.monotonic()
-                            description_usage = {}
-                            succeeded = False
+                        description_name = self.store.page_description_name(task_id, round_number)
+                        if description_name:
+                            page_description = (self.store.root / task_id / description_name).read_text(encoding="utf-8")
+                        else:
+                            self.store.set_state(task_id, "running", round_number,
+                                                 f"第 {round_number} 轮：描述页面截图", stage="page_description")
+                            temp_description_image = self.store.root / task_id / ".description_screenshot.png"
                             try:
-                                page_description = await self.client.complete(
-                                    ocr_model, (PROMPTS / "page_description.md").read_text(encoding="utf-8"),
-                                    [(temp_description_image, "image/png")], max_tokens=3000, provider=ocr_provider,
-                                    progress=lambda message: self.store.log_event(task_id, "page_description", round_number, message),
-                                    usage=lambda value: description_usage.update(value=value))
-                                succeeded = True
+                                temp_description_image.write_bytes(screenshot)
+                                started = time.monotonic()
+                                description_usage = {}
+                                succeeded = False
+                                try:
+                                    page_description = await self.client.complete(
+                                        ocr_model, (PROMPTS / "page_description.md").read_text(encoding="utf-8"),
+                                        [(temp_description_image, "image/png")], max_tokens=self.settings.description_max_tokens, provider=ocr_provider,
+                                        progress=lambda message: self.store.log_event(task_id, "page_description", round_number, message),
+                                        usage=lambda value: description_usage.update(value=value))
+                                    succeeded = True
+                                finally:
+                                    self.store.record_api_call(task_id, round_number, "page_description", ocr_provider,
+                                                               ocr_model, time.monotonic() - started,
+                                                               "completed" if succeeded else "error", description_usage.get("value"))
+                                if not page_description.strip():
+                                    raise ValueError("识图模型未返回页面描述")
+                                name = f"{timestamp()}_round_{round_number:02d}.page_description.md"
+                                (self.store.root / task_id / name).write_text(page_description, encoding="utf-8")
                             finally:
-                                self.store.record_api_call(task_id, round_number, "page_description", ocr_provider,
-                                                           ocr_model, time.monotonic() - started,
-                                                           "completed" if succeeded else "error", description_usage.get("value"))
-                            if not page_description.strip():
-                                raise ValueError("识图模型未返回页面描述")
-                            name = f"{timestamp()}_round_{round_number:02d}.page_description.md"
-                            (self.store.root / task_id / name).write_text(page_description, encoding="utf-8")
-                        finally:
-                            temp_description_image.unlink(missing_ok=True)
+                                temp_description_image.unlink(missing_ok=True)
                     self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：审核题意、解答与图示", stage="reviewing")
                     # The screenshot is temporarily saved so the common image API can read it.
                     temp_path = self.store.root / task_id / ".review_screenshot.png"
@@ -240,7 +253,7 @@ class Pipeline:
                             raw_review = await self.client.complete(
                                 reviewer_model, review_prompt,
                                 [] if reviewer_mode == "ocr_text" else original + [(temp_path, "image/png")],
-                                max_tokens=6000,
+                                max_tokens=self.settings.reviewer_max_tokens,
                                 progress=lambda message: self.store.log_event(task_id, "reviewing", round_number, message),
                                 usage=lambda value: review_usage.update(value=value),
                                 **({"provider": reviewer_provider} if reviewer_provider else {}))
@@ -256,18 +269,32 @@ class Pipeline:
                     finally:
                         temp_path.unlink(missing_ok=True)
                 saved = self.store.save_round(task_id, round_number, html, screenshot, review)
+                pending_path.unlink(missing_ok=True)
                 self.store.log_event(task_id, "reviewing", round_number,
                                      f"第 {round_number} 轮文件已保存：{saved['html_name']}；{review['summary']}")
-                if review["passed"]:
+                if review["passed"] and not fixed_five:
                     final_name = self.store.save_final(task_id, html)
                     self.store.set_state(task_id, "passed", round_number, f"审核通过，最终文件：{final_name}", final_name, stage="passed")
                     self.store.refresh_round_metrics(task_id, round_number)
                     return
-                feedback = "\n".join(f"- {issue}" for issue in review["issues"])
+                feedback = ("上一轮已通过。请在保证题意、计算和交互正确的前提下，继续优化图示、教学顺序与手机可读性。"
+                            if review["passed"] and fixed_five else "\n".join(f"- {issue}" for issue in review["issues"]))
                 self.store.set_state(task_id, "running", round_number,
                                      f"第 {round_number} 轮未通过：{'; '.join(review['issues'])[:300]}；准备返修", stage="revising")
                 self.store.refresh_round_metrics(task_id, round_number)
-            self.store.set_state(task_id, "failed", round_number,
-                                 f"达到 {max_rounds} 轮上限；可查看评分最高的草稿和各轮审核意见", stage="failed")
+            if fixed_five:
+                all_rounds = self.store.get(task_id)["rounds"]
+                chosen = best_round(all_rounds)
+                if any(item["passed"] for item in all_rounds) and chosen:
+                    html = (self.store.root / task_id / chosen["html_name"]).read_text(encoding="utf-8")
+                    final_name = self.store.save_final(task_id, html)
+                    self.store.set_state(task_id, "passed", round_number,
+                                         f"固定 {max_rounds} 轮完成；最终文件取评分最高的第 {chosen['number']} 轮", final_name, stage="passed")
+                else:
+                    self.store.set_state(task_id, "failed", round_number,
+                                         f"固定 {max_rounds} 轮完成；可查看评分最高的草稿和各轮审核意见", stage="failed")
+            else:
+                self.store.set_state(task_id, "failed", round_number,
+                                     f"达到 {max_rounds} 轮上限；可查看评分最高的草稿和各轮审核意见", stage="failed")
         except Exception as exc:
             self.store.set_state(task_id, "error", round_number, str(exc)[:500], stage="error")

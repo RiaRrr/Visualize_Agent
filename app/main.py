@@ -55,6 +55,7 @@ def _track(coro) -> None:
 async def _run_batch(batch_id: str) -> None:
     await _prepare_routes(store.batch(batch_id))
     for item in store.batch(batch_id):
+        item = store.get(item["id"])
         if item["status"] in ("queued", "interrupted"):
             if item["status"] == "interrupted":
                 store.set_state(item["id"], "queued", item["current_round"], "批量任务恢复排队", stage="queued")
@@ -247,7 +248,7 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
     raw = await image.read(10_000_001)
     suffix, mime = _parse_image(raw)
     upload_seconds = time.monotonic() - upload_started
-    if run_mode not in ("single", "full"):
+    if run_mode not in ("single", "full", "fixed_five"):
         raise HTTPException(400, "无效运行模式")
     try:
         selected = json.loads(rows)
@@ -290,7 +291,7 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
                         "profile_id": profile.id, "profile_name": profile.name, "profile_version": profile.version,
                         "subject": profile.subject, "generator_prompt": profile.generator_prompt,
                         "reviewer_prompt": profile.reviewer_prompt, "run_mode": run_mode,
-                        "max_rounds": 1 if run_mode == "single" else settings.max_rounds})
+                        "max_rounds": 1 if run_mode == "single" else 5 if run_mode == "fixed_five" else settings.max_rounds})
     if any(config["profile_id"] == "auto" for config in configs):
         route = (router_provider, router_model) if router_provider and router_model else (
             configs[0]["reviewer_provider"], configs[0]["reviewer_model"]

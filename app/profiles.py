@@ -12,6 +12,7 @@ SUBJECTS = {"math": "数学", "physics": "物理", "chemistry": "化学", "gener
 PROFILE_SPECS = {
     "auto": ("自动识别学科", "auto", ()),
     "math-current": ("数学 · 综合经验", "math", ("math_current.md",)),
+    "math-compact": ("数学 · 精简交互实验", "math", ("math_current.md", "math_compact.md")),
     "math-interactive": ("数学 · 交互白板方案", "math", ("math_current.md", "math_interactive.md")),
     "math-workflow": ("数学 · 推导工作流方案", "math", ("math_current.md", "math_workflow.md")),
     "physics": ("物理 · 过程与受力", "physics", ("physics.md",)),

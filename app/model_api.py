@@ -182,6 +182,8 @@ class ModelClient:
             content += [chat_image_content(path, mime) for path, mime in images]
             payload = {"model": model, "messages": [{"role": "user", "content": content}],
                        "max_completion_tokens": max_tokens}
+            if model.lower().startswith(("deepseek-", "deepseek-ai/")) and self.settings.deepseek_thinking in ("enabled", "disabled"):
+                payload["thinking"] = {"type": self.settings.deepseek_thinking}
             headers = {"Authorization": f"Bearer {codex_key}", "Content-Type": "application/json"}
             url = f"{self.settings.codex_base_url}/chat/completions"
         else:
@@ -197,14 +199,14 @@ class ModelClient:
             base_url = (self.settings.openai_base_url or self.settings.base_url) if is_openai else self.settings.base_url
             url = f"{base_url}/responses"
         verify_tls = self.settings.codex_verify_tls if is_codex else True
-        async with httpx.AsyncClient(timeout=httpx.Timeout(300.0, connect=20.0),
+        async with httpx.AsyncClient(timeout=httpx.Timeout(self.settings.model_timeout_seconds, connect=20.0),
                                      trust_env=self.settings.use_proxy, verify=verify_tls) as client:
             for attempt in range(3):
                 try:
                     if progress:
                         progress(f"正在请求 {model}（第 {attempt + 1}/3 次）")
                     result = await client.post(url, headers=headers, json=payload)
-                    if result.status_code in (500, 502, 503, 504) and attempt < 2 and not is_codex:
+                    if result.status_code in (500, 502, 503, 504) and attempt < 2:
                         if progress:
                             progress(f"{model} 返回 HTTP {result.status_code}，准备重试")
                         await asyncio.sleep(2 ** attempt)
@@ -218,7 +220,7 @@ class ModelClient:
                     if progress:
                         progress(f"{model} 请求超时，本轮已停止")
                     raise ModelError(f"模型请求超时（{model}）；可在任务页继续处理") from exc
-                except httpx.ConnectError as exc:
+                except (httpx.ConnectError, httpx.RemoteProtocolError, httpx.ReadError) as exc:
                     if attempt < 2:
                         if progress:
                             progress(f"{model} 连接失败，准备重试")
