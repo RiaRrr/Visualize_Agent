@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>题目可视化工作台</title>
+  <link rel="stylesheet" href="/web/style.css">
+  <link rel="stylesheet" href="/web/activity.css">
+  <script src="/web/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div><span class="eyebrow">VISUALIZE AGENT</span><h1>题目可视化工作台</h1></div>
+    <div class="model-info" id="model-info">加载模型配置中…</div>
+  </header>
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="card upload-card">
+        <h2>上传一道题</h2>
+        <p>一张题目图片可按多组 Prompt 与模型组合生成，逐项审核并并排比较。</p>
+        <form id="upload-form">
+          <label class="dropzone" for="image-input"><span class="drop-icon">＋</span><strong id="file-label">选择 PNG、JPG 或 WebP</strong><small>单张，最多 10 MB</small></label>
+          <input id="image-input" name="image" type="file" accept="image/png,image/jpeg,image/webp" required hidden>
+          <div class="form-row"><label for="run-mode">运行模式</label><select id="run-mode"><option value="single">单轮比较（默认）</option><option value="full">完整迭代（最多 5 轮）</option></select></div>
+          <div class="config-heading"><strong>配置组合</strong><button id="add-row" type="button" class="text-button">＋ 添加组合</button></div>
+          <div id="config-rows"></div>
+          <button id="submit-button" type="submit">开始对比生成</button>
+        </form>
+        <div id="form-message" class="form-message" role="status"></div>
+      </section>
+      <section class="history-head"><h2>历史任务</h2><button id="refresh-button" class="text-button" type="button">刷新</button></section>
+      <div id="history-list" class="history-list"></div>
+    </aside>
+    <section class="workspace" id="workspace">
+      <div class="empty-state"><div class="empty-icon">◈</div><h2>从一张题目图片开始</h2><p>每轮页面、截图和审核意见都会按时间戳保存在本地。</p></div>
+    </section>
+  </main>
+</body>
+</html>

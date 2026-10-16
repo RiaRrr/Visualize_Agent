@@ -1,0 +1,8 @@
+apikeys.md
+api-capabilities.local.md
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+data/
+*.pyc
