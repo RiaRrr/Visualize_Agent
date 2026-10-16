@@ -22,6 +22,8 @@
           <label class="dropzone" for="image-input"><span class="drop-icon">＋</span><strong id="file-label">选择 PNG、JPG 或 WebP</strong><small>单张，最多 10 MB</small></label>
           <input id="image-input" name="image" type="file" accept="image/png,image/jpeg,image/webp" required hidden>
           <div class="form-row"><label for="run-mode">运行模式</label><select id="run-mode"><option value="single">单轮比较（默认）</option><option value="full">完整迭代（最多 5 轮）</option></select></div>
+          <div class="form-row"><label for="router-model">自动分流模型</label><select id="router-model"></select></div>
+          <p class="route-hint">选择“自动识别学科”时，每张上传图片只调用一次分流模型；手动指定方案时不调用。</p>
           <div class="config-heading"><strong>配置组合</strong><button id="add-row" type="button" class="text-button">＋ 添加组合</button></div>
           <div id="config-rows"></div>
           <button id="submit-button" type="submit">开始对比生成</button>

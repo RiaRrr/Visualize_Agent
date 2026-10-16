@@ -116,7 +116,7 @@ function addConfigRow(values = {}) {
   for (const item of optionsData.profiles) {
     const option = el('option', '', item.name); option.value = item.id; profile.append(option);
   }
-  profile.value = values.profile_id || 'math-current';
+  profile.value = values.profile_id || 'auto';
   const generator = el('select', 'model-select');
   const reviewer = el('select', 'model-select');
   populateModel(generator, values.generator || 'openai::gpt-6-sol');
@@ -128,7 +128,8 @@ function addConfigRow(values = {}) {
   const promptText = el('pre'); preview.append(promptText);
   function updatePrompt() {
     const item = optionsData.profiles.find(x => x.id === profile.value);
-    promptText.textContent = `生成 Prompt · 版本 ${item.version}\n\n${item.generator_prompt}\n\n审核 Prompt\n\n${item.reviewer_prompt}`;
+    const routing = item.id === 'auto' ? `分流 Prompt\n\n${optionsData.router_prompt}\n\n识别学科后，会在通用可视化要求与输入输出格式之间插入相应学科经验；其他题目不插入学科经验。下方是分流前的通用模板，任务配置文件会保存实际发送的完整 Prompt。\n\n` : '';
+    promptText.textContent = `${routing}生成 Prompt · 版本 ${item.version}\n\n${item.generator_prompt}\n\n审核 Prompt\n\n${item.reviewer_prompt}`;
   }
   profile.addEventListener('change', updatePrompt); updatePrompt();
   function field(label, input) { const wrap = el('label', 'config-field'); wrap.append(el('span', '', label), input); return wrap; }
@@ -164,9 +165,9 @@ function fileUrl(task, name, download = false) {
   return `/api/tasks/${encodeURIComponent(task.id)}/files/${encodeURIComponent(name)}${download ? '?download=true' : ''}`;
 }
 const labels = {queued:'排队中',running:'处理中',passed:'审核通过',failed:'审核未通过',error:'出错',interrupted:'已中断'};
-const stageLabels = {queued:'已上传',running:'处理中',generating:'生成页面',validating:'检查文件',rendering:'渲染页面',reviewing:'审核解答',revising:'准备返修',passed:'已完成',failed:'审核未通过',error:'运行出错',interrupted:'已中断'};
+const stageLabels = {queued:'已上传',running:'处理中',routing:'识别学科',generating:'生成页面',validating:'检查文件',rendering:'渲染页面',reviewing:'审核解答',revising:'准备返修',passed:'已完成',failed:'审核未通过',error:'运行出错',interrupted:'已中断'};
 const progressSteps = [
-  {key:'queued', label:'上传'}, {key:'generating', label:'生成'}, {key:'validating', label:'检查'},
+  {key:'queued', label:'上传'}, {key:'routing', label:'分流'}, {key:'generating', label:'生成'}, {key:'validating', label:'检查'},
   {key:'rendering', label:'渲染'}, {key:'reviewing', label:'审核'}, {key:'passed', label:'完成'}
 ];
 
@@ -222,13 +223,14 @@ function buildActivity(task) {
   description.append(el('span', 'stage-elapsed'));
   progress.append(description);
   const stepper = el('ol', 'stepper');
-  let activeIndex = progressSteps.findIndex(step => step.key === current);
+  const steps = task.profile_id === 'auto' ? progressSteps : progressSteps.filter(step => step.key !== 'routing');
+  let activeIndex = steps.findIndex(step => step.key === current);
   if (current === 'revising') activeIndex = 1;
   if (current === 'failed' || current === 'error' || current === 'interrupted') {
-    const lastWorking = [...(task.events || [])].reverse().find(event => progressSteps.some(step => step.key === event.stage));
-    activeIndex = Math.max(0, progressSteps.findIndex(step => step.key === lastWorking?.stage));
+    const lastWorking = [...(task.events || [])].reverse().find(event => steps.some(step => step.key === event.stage));
+    activeIndex = Math.max(0, steps.findIndex(step => step.key === lastWorking?.stage));
   }
-  for (const [index, step] of progressSteps.entries()) {
+  for (const [index, step] of steps.entries()) {
     const mode = task.status === 'passed' || index < activeIndex ? 'done' : index === activeIndex ? 'active' : 'pending';
     const item = el('li', `step ${mode}`);
     item.append(el('span', 'step-dot', mode === 'done' ? '✓' : String(index + 1)), el('span', 'step-label', step.label));
@@ -292,7 +294,8 @@ async function loadTask() {
   const signature = JSON.stringify([task, batchKey]);
   if (signature === lastTaskSignature) { refreshElapsed(task); return; }
   lastTaskSignature = signature;
-  const layoutKey = JSON.stringify([task.id, task.rounds.map(round => [round.html_name, round.human_review?.updated_at]), task.final_name, batchKey]);
+  const layoutKey = JSON.stringify([task.id, task.profile_name, task.profile_version, task.route_subject,
+    task.rounds.map(round => [round.html_name, round.human_review?.updated_at]), task.final_name, batchKey]);
   if (layoutKey === lastLayoutKey && workspace.querySelector('.activity-slot')) {
     updateActivity(task);
     return;
@@ -305,6 +308,7 @@ async function loadTask() {
   head.append(title, el('span', `badge ${task.status}`, labels[task.status] || task.status));
   const meta = el('div', 'task-meta');
   meta.append(el('span', '', task.profile_name ? `${task.profile_name} · v${task.profile_version}` : '配置未记录'));
+  if (task.route_subject) meta.append(el('span', '', `自动识别：${{math:'数学',physics:'物理',chemistry:'化学',general:'其他'}[task.route_subject] || task.route_subject} · ${task.router_provider || '默认接口'}/${task.router_model}`));
   if (task.profile_name) {
     meta.append(el('span', '', `生成 ${task.generator_provider}/${task.generator_model} · 审核 ${task.reviewer_provider}/${task.reviewer_model}`));
     meta.append(el('span', '', `${task.run_mode === 'single' ? '单轮比较' : '完整迭代'} · 生成 ${Number(task.generation_seconds || 0).toFixed(1)}s · 审核 ${Number(task.review_seconds || 0).toFixed(1)}s`));
@@ -383,6 +387,7 @@ async function showBatch(batchId, batch) {
   for (const item of batch.tasks) {
     const card = el('div', `batch-card ${item.id === selectedTask ? 'selected' : ''}`);
     card.append(el('strong', '', item.profile_name || '配置未记录'));
+    if (item.route_subject) card.append(el('small', '', `识别学科：${{math:'数学',physics:'物理',chemistry:'化学',general:'其他'}[item.route_subject] || item.route_subject}`));
     card.append(el('small', '', `${item.generator_provider}/${item.generator_model} → ${item.reviewer_provider}/${item.reviewer_model}`));
     card.append(el('small', '', `${labels[item.status] || item.status} · 第 ${item.current_round} 轮 · 生成 ${Number(item.generation_seconds || 0).toFixed(1)}s / 审核 ${Number(item.review_seconds || 0).toFixed(1)}s`));
     const open = el('button', 'text-button', '查看此配置日志'); open.type = 'button';
@@ -451,6 +456,8 @@ form.addEventListener('submit', async (event) => {
     });
     const body = new FormData(); body.append('image', imageInput.files[0]); body.append('rows', JSON.stringify(rows));
     body.append('run_mode', document.getElementById('run-mode').value);
+    const router = modelChoice(document.getElementById('router-model').value);
+    body.append('router_provider', router.provider); body.append('router_model', router.model);
     const batch = await fetchJson('/api/batches', {method:'POST', body});
     selectedTask = batch.tasks[0].id; selectedRound = null; lastTaskSignature = ''; lastLayoutKey = ''; await loadHistory(); await loadTask();
   } catch (error) { formMessage.textContent = error.message; }
@@ -465,6 +472,7 @@ async function init() {
     maxRounds = config.max_rounds || 5;
     document.getElementById('history-title').textContent = `历史任务 · ${config.data_directory || '本地数据'}`;
     optionsData = await fetchJson('/api/options');
+    populateModel(document.getElementById('router-model'), 'openai::gpt-5.6-sol');
     addConfigRow();
     document.getElementById('add-row').addEventListener('click', () => addConfigRow());
     if (Object.keys(optionsData.errors).length) formMessage.textContent = `模型目录部分不可用：${Object.entries(optionsData.errors).map(([k,v]) => `${k}: ${v}`).join('；')}`;

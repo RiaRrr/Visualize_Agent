@@ -77,6 +77,7 @@ class Store:
                 "reviewer_provider": "TEXT", "reviewer_model": "TEXT", "profile_id": "TEXT",
                 "profile_name": "TEXT", "profile_version": "TEXT", "subject": "TEXT",
                 "run_mode": "TEXT", "max_rounds": "INTEGER", "config_name": "TEXT",
+                "route_subject": "TEXT", "router_provider": "TEXT", "router_model": "TEXT",
                 "generation_seconds": "REAL NOT NULL DEFAULT 0", "review_seconds": "REAL NOT NULL DEFAULT 0",
             }
             for name, definition in extra.items():
@@ -130,6 +131,8 @@ class Store:
             "reviewer": {"provider": task["reviewer_provider"], "model": task["reviewer_model"]},
             "profile": {"id": task["profile_id"], "name": task["profile_name"],
                         "version": task["profile_version"], "subject": task["subject"]},
+            "routing": {"subject": task.get("route_subject"), "provider": task.get("router_provider"),
+                        "model": task.get("router_model")},
             "run_mode": task["run_mode"], "max_rounds": task["max_rounds"],
             "model_review": {"source": round_info.get("review_source"),
                              "passed": bool(round_info["passed"]), "summary": round_info["summary"],
@@ -185,13 +188,15 @@ class Store:
             config = run_config or {}
             db.execute("""INSERT INTO tasks (id, created_at, status, image_name, image_mime, original_name,
                        batch_id, generator_provider, generator_model, reviewer_provider, reviewer_model,
-                       profile_id, profile_name, profile_version, subject, run_mode, max_rounds, config_name)
-                       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                       profile_id, profile_name, profile_version, subject, run_mode, max_rounds, config_name,
+                       router_provider, router_model)
+                       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                        (task_id, datetime.now(TIMEZONE).isoformat(), "queued", image_name, mime, original_name,
                         batch_id, config.get("generator_provider"), config.get("generator_model"),
                         config.get("reviewer_provider"), config.get("reviewer_model"), config.get("profile_id"),
                         config.get("profile_name"), config.get("profile_version"), config.get("subject"),
-                        config.get("run_mode"), config.get("max_rounds"), config_name))
+                        config.get("run_mode"), config.get("max_rounds"), config_name,
+                        config.get("router_provider"), config.get("router_model")))
             db.execute("INSERT INTO events (task_id, created_at, stage, round_number, message) VALUES (?,?,?,?,?)",
                        (task_id, datetime.now(TIMEZONE).isoformat(), "queued", 0, "题目图片已保存，等待开始生成"))
         return self.get(task_id)
@@ -223,6 +228,7 @@ class Store:
             rows = db.execute("""SELECT id, created_at, status, stage, original_name, current_round, message,
                                batch_id, generator_provider, generator_model, reviewer_provider, reviewer_model,
                                profile_id, profile_name, profile_version, run_mode, max_rounds,
+                               route_subject, router_provider, router_model,
                                generation_seconds, review_seconds FROM tasks ORDER BY created_at DESC""").fetchall()
         return [dict(row) for row in rows]
 
@@ -234,6 +240,23 @@ class Store:
         if not task or not task["config_name"]:
             return None
         return json.loads((self.root / task_id / task["config_name"]).read_text(encoding="utf-8"))
+
+    def set_route(self, task_id: str, subject: str, profile) -> None:
+        task = self.get(task_id)
+        if not task or task["profile_id"] != "auto" or not task["config_name"]:
+            raise ValueError("任务不支持自动分流")
+        config_path = self.root / task_id / task["config_name"]
+        config = json.loads(config_path.read_text(encoding="utf-8"))
+        config.update({"route_subject": subject, "subject": subject, "profile_name": profile.name,
+                       "profile_version": profile.version, "generator_prompt": profile.generator_prompt,
+                       "reviewer_prompt": profile.reviewer_prompt})
+        write_json_atomic(config_path, config)
+        with self._db() as db:
+            db.execute("""UPDATE tasks SET route_subject=?, subject=?, profile_name=?, profile_version=?
+                          WHERE id=?""", (subject, subject, profile.name, profile.version, task_id))
+            db.execute("INSERT INTO events (task_id, created_at, stage, round_number, message) VALUES (?,?,?,?,?)",
+                       (task_id, datetime.now(TIMEZONE).isoformat(), "routing", 0,
+                        f"题目已识别为 {profile.name}；将使用对应学科经验与审核规则"))
 
     def add_timing(self, task_id: str, column: str, seconds: float) -> None:
         if column not in ("generation_seconds", "review_seconds"):

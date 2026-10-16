@@ -1,10 +1,16 @@
 import asyncio
 import importlib
+import io
 import json
+from pathlib import Path
+
+from fastapi.testclient import TestClient
+from PIL import Image
 
 from app.config import Settings
 from app.pipeline import Pipeline
-from app.profiles import get_profile, list_profiles
+from app.profiles import get_profile, get_routed_profile, list_profiles
+from app.router import parse_subject
 from app.storage import Store
 
 
@@ -24,21 +30,25 @@ class RecordingClient:
 
 def test_profiles_have_distinct_snapshotted_prompts():
     profiles = list_profiles()
-    assert len(profiles) == 6
-    assert len({p["version"] for p in profiles}) == 6
+    assert len(profiles) == 7
+    assert len({p["version"] for p in profiles}) == 6  # 自动模板和通用方案的内容相同
     for profile in profiles:
-        if profile["id"] == "math-current":
-            assert profile["generator_prompt"].startswith("你是一名擅长数学、物理、化学教学设计")
-            assert profile["generator_prompt"].endswith("{{QUESTION}}")
-            assert "方案指导：" not in profile["generator_prompt"]
-        else:
-            assert profile["generator_prompt"].startswith("你是一位严谨")
-            assert "尽可能让学生通过可交互的图理解解答" in profile["generator_prompt"]
+        assert profile["generator_prompt"].startswith("你是一名擅长多学科教学设计")
+        assert profile["generator_prompt"].endswith("{{QUESTION}}")
+        assert "可视化优先原则（最高优先级）" in profile["generator_prompt"]
         assert "JSON" in profile["reviewer_prompt"]
         assert "刚读完这道题" in profile["generator_prompt"]
         assert "长段文字" in profile["reviewer_prompt"]
         assert "teaching_effectiveness" in profile["reviewer_prompt"]
         assert get_profile(profile["id"]).version == profile["version"]
+    assert "数学学科经验" in get_routed_profile("math").generator_prompt
+    math_prompt = get_routed_profile("math").generator_prompt
+    assert math_prompt.index("可视化优先原则") < math_prompt.index("数学学科经验") < math_prompt.index("技术与输出要求")
+    assert "受力图" in get_routed_profile("physics").generator_prompt
+    assert "粒子模型" in get_routed_profile("chemistry").generator_prompt
+    assert get_routed_profile("general").generator_prompt == get_profile("general").generator_prompt
+    assert "数学学科经验" not in get_routed_profile("general").generator_prompt
+    assert parse_subject('{"subject":"general"}') == "general"
 
 
 def test_batch_task_uses_exact_profile_providers_and_single_round(tmp_path):
@@ -71,8 +81,8 @@ def test_batch_runs_without_automatic_model_probe(monkeypatch):
 
     class BatchStore:
         def batch(self, batch_id):
-            return [{"id": "first", "status": "queued", "current_round": 0},
-                    {"id": "second", "status": "queued", "current_round": 0}]
+            return [{"id": "first", "profile_id": "physics", "status": "queued", "current_round": 0},
+                    {"id": "second", "profile_id": "chemistry", "status": "queued", "current_round": 0}]
 
     async def run(task_id):
         calls.append(task_id)
@@ -85,3 +95,68 @@ def test_batch_runs_without_automatic_model_probe(monkeypatch):
     monkeypatch.setattr(main, "_probe_choice", reject_probe)
     asyncio.run(main._run_batch("batch"))
     assert calls == ["first", "second"]
+
+
+def test_auto_batch_classifies_once_and_snapshots_subject_prompts(tmp_path, monkeypatch):
+    main = importlib.import_module("app.main")
+    store = Store(Settings(tmp_path, "https://example.invalid/v1", "fake", "gen", "review"))
+    profile = get_profile("auto")
+    config = {"profile_id": "auto", "profile_name": profile.name, "profile_version": profile.version,
+              "subject": "auto", "generator_prompt": profile.generator_prompt,
+              "reviewer_prompt": profile.reviewer_prompt, "generator_provider": "openai",
+              "generator_model": "gen", "reviewer_provider": "openai", "reviewer_model": "review",
+              "router_provider": "openai", "router_model": "route", "run_mode": "single", "max_rounds": 1}
+    tasks = [store.create(f"题{i}.png", "image/png", ".png", b"image", config, "batch") for i in range(2)]
+    classified, generated = [], []
+
+    async def classify(client, provider, model, image, mime, prompt=None):
+        classified.append((provider, model, image.name, mime))
+        return "physics"
+
+    async def run(task_id):
+        generated.append(task_id)
+
+    monkeypatch.setattr(main, "store", store)
+    monkeypatch.setattr(main, "classify_image", classify)
+    monkeypatch.setattr(main.pipeline, "run", run)
+    asyncio.run(main._run_batch("batch"))
+    assert len(classified) == 1
+    assert generated == [task["id"] for task in tasks]
+    for task in tasks:
+        saved = store.get(task["id"])
+        assert saved["route_subject"] == "physics"
+        assert saved["router_model"] == "route"
+        assert "受力图" in store.config(task["id"])["generator_prompt"]
+        assert "矢量方向" in store.config(task["id"])["reviewer_prompt"]
+    round_file = store.save_round(tasks[0]["id"], 1, HTML, None,
+                                  {"passed": False, "summary": "测试", "issues": ["测试"]})
+    metadata = json.loads(Path(store.artifact(tasks[0]["id"], round_file["metadata_name"])).read_text())
+    assert metadata["routing"] == {"subject": "physics", "provider": "openai", "model": "route"}
+
+
+def test_upload_accepts_router_model_and_saves_auto_template(tmp_path, monkeypatch):
+    main = importlib.import_module("app.main")
+    store = Store(Settings(tmp_path, "https://example.invalid/v1", "fake", "gen", "review"))
+
+    async def models(refresh=False):
+        return {"models": [{"provider": "openai", "id": name, "candidate": True}
+                           for name in ("gen", "review", "route")], "errors": {}}
+
+    monkeypatch.setattr(main, "store", store)
+    monkeypatch.setattr(main.catalog, "list", models)
+    monkeypatch.setattr(main, "_track", lambda coro: coro.close())
+    image = io.BytesIO()
+    Image.new("RGB", (20, 20), "white").save(image, format="PNG")
+    row = {"profile_id": "auto", "generator_provider": "openai", "generator_model": "gen",
+           "reviewer_provider": "openai", "reviewer_model": "review"}
+    response = TestClient(main.app).post(
+        "/api/batches", files={"image": ("question.png", image.getvalue(), "image/png")},
+        data={"rows": json.dumps([row]), "run_mode": "single",
+              "router_provider": "openai", "router_model": "route"})
+    assert response.status_code == 201
+    task = response.json()["tasks"][0]
+    config = store.config(task["id"])
+    assert task["router_model"] == "route" and task["route_subject"] is None
+    assert config["router_model"] == "route"
+    assert "只返回一行 JSON" in config["router_prompt"]
+    assert "可视化优先原则（最高优先级）" in config["generator_prompt"]

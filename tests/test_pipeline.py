@@ -68,7 +68,7 @@ def test_offline_validator_allows_inline_svg_and_blocks_external_resources():
 
 def test_generator_prompt_uses_current_template():
     prompt = generator_prompt("曲线有折角", GOOD_HTML)
-    assert prompt.startswith("你是一名擅长数学、物理、化学教学设计")
+    assert prompt.startswith("你是一名擅长多学科教学设计")
     assert "{{QUESTION}}" in prompt
     assert "可视化优先原则（最高优先级）" in prompt
     assert "不需要访问工作区" in prompt

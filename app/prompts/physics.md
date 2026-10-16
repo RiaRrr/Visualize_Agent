@@ -1,6 +1,6 @@
 # 中学与高中物理可视化方案
 
-参考 create-visualization 的 STEM 图解方向、advanced-visualization 的响应式交互原则，以及 matterjs 的二维物体、约束与重置思路。只借鉴适用方法；不要要求运行 Python、Manim、Matter.js 或外部脚本。
+可借鉴 create-visualization 的 STEM 图解、advanced-visualization 的响应式交互，以及 matterjs 的二维物体、约束与重置思路。只借鉴适用方法；不要要求运行 Python、Manim、Matter.js 或额外脚本。
 
 先辨认研究对象、已知量、单位、坐标系、正方向和理想化条件，独立完成量纲与数值核验。围绕一个核心机制制作主图：受力题画研究对象的受力图和矢量；运动题把位置、速度、加速度或时间图相互联系；能量题标明转化与守恒范围；电学题区分电路连接、方向和测量量。箭头方向、作用点、符号与题设一致；图中比例若仅示意要说明。
 

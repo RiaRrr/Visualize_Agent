@@ -18,7 +18,8 @@ from .config import ROOT, get_settings
 from .model_api import ModelClient
 from .model_catalog import ModelCatalog
 from .pipeline import Pipeline
-from .profiles import get_profile, list_profiles
+from .profiles import get_profile, get_routed_profile, list_profiles, router_prompt
+from .router import classify_image
 from .storage import Store
 
 settings = get_settings()
@@ -39,7 +40,7 @@ model_check_cache: tuple[float, dict] | None = None
 
 
 def _start_task(task_id: str) -> None:
-    task = asyncio.create_task(pipeline.run(task_id))
+    task = asyncio.create_task(_run_single(task_id))
     running_tasks.add(task)
     task.add_done_callback(running_tasks.discard)
 
@@ -51,11 +52,47 @@ def _track(coro) -> None:
 
 
 async def _run_batch(batch_id: str) -> None:
+    await _prepare_routes(store.batch(batch_id))
     for item in store.batch(batch_id):
         if item["status"] in ("queued", "interrupted"):
             if item["status"] == "interrupted":
                 store.set_state(item["id"], "queued", item["current_round"], "批量任务恢复排队", stage="queued")
             await pipeline.run(item["id"])
+
+
+async def _run_single(task_id: str) -> None:
+    await _prepare_routes([store.get(task_id)])
+    task = store.get(task_id)
+    if task and task["status"] in ("queued", "interrupted"):
+        await pipeline.run(task_id)
+
+
+async def _prepare_routes(tasks: list[dict]) -> None:
+    pending = [task for task in tasks if task and task["profile_id"] == "auto"
+               and not task.get("route_subject") and task["status"] in ("queued", "interrupted")]
+    if not pending:
+        return
+    known = next((task["route_subject"] for task in tasks if task and task["profile_id"] == "auto"
+                  and task.get("route_subject")), None)
+    for task in pending:
+        store.set_state(task["id"], "running", task["current_round"], "正在识别题目学科", stage="routing")
+    try:
+        first = pending[0]
+        image_task = store.get(first["id"])
+        subject = known or await classify_image(
+            ModelClient(settings), first["router_provider"], first["router_model"],
+            store.root / first["id"] / image_task["image_name"], image_task["image_mime"],
+            prompt=(store.config(first["id"]) or {}).get("router_prompt")
+        )
+        profile = get_routed_profile(subject)
+        for task in pending:
+            store.set_route(task["id"], subject, profile)
+            store.set_state(task["id"], "queued", task["current_round"],
+                            f"已识别为{profile.name}，等待生成", stage="queued")
+    except Exception as exc:
+        for task in pending:
+            store.set_state(task["id"], "error", task["current_round"],
+                            f"学科分流失败：{str(exc)[:300]}", stage="error")
 
 
 class ProbeRequest(BaseModel):
@@ -138,7 +175,8 @@ async def check_models(refresh: bool = False):
 
 @app.get("/api/options")
 async def options(refresh: bool = False):
-    return {"profiles": list_profiles(), **(await catalog.list(refresh=refresh))}
+    return {"profiles": list_profiles(), "router_prompt": router_prompt(),
+            **(await catalog.list(refresh=refresh))}
 
 
 @app.post("/api/models/probe")
@@ -187,7 +225,8 @@ def _parse_image(raw: bytes) -> tuple[str, str]:
 
 
 @app.post("/api/batches", status_code=201)
-async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run_mode: str = Form("single")):
+async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run_mode: str = Form("single"),
+                       router_provider: str = Form(""), router_model: str = Form("")):
     raw = await image.read(10_000_001)
     suffix, mime = _parse_image(raw)
     if run_mode not in ("single", "full"):
@@ -218,6 +257,16 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
                         "subject": profile.subject, "generator_prompt": profile.generator_prompt,
                         "reviewer_prompt": profile.reviewer_prompt, "run_mode": run_mode,
                         "max_rounds": 1 if run_mode == "single" else settings.max_rounds})
+    if any(config["profile_id"] == "auto" for config in configs):
+        route = (router_provider, router_model) if router_provider and router_model else (
+            configs[0]["reviewer_provider"], configs[0]["reviewer_model"]
+        )
+        if route not in allowed:
+            raise HTTPException(400, "分流模型未列入当前可选目录")
+        for config in configs:
+            if config["profile_id"] == "auto":
+                config["router_provider"], config["router_model"] = route
+                config["router_prompt"] = router_prompt()
     batch_id = f"{time.strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}"
     tasks = [store.create(Path(image.filename or "image").name[:200], mime, suffix, raw,
                           run_config=config, batch_id=batch_id) for config in configs]
@@ -248,7 +297,14 @@ async def resume_batch(batch_id: str):
 async def create_task(image: UploadFile = File(...)):
     raw = await image.read(10_000_001)
     suffix, mime = _parse_image(raw)
-    task = store.create(Path(image.filename or "image").name[:200], mime, suffix, raw)
+    profile = get_profile("auto")
+    config = {"profile_id": profile.id, "profile_name": profile.name,
+              "profile_version": profile.version, "subject": profile.subject,
+              "generator_prompt": profile.generator_prompt, "reviewer_prompt": profile.reviewer_prompt,
+              "generator_model": settings.generator_model, "reviewer_model": settings.reviewer_model,
+              "router_model": settings.reviewer_model, "router_prompt": router_prompt(),
+              "run_mode": "full", "max_rounds": settings.max_rounds}
+    task = store.create(Path(image.filename or "image").name[:200], mime, suffix, raw, run_config=config)
     _start_task(task["id"])
     return task
 

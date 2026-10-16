@@ -11,15 +11,11 @@ from .browser import render_html
 from .config import Settings
 from .model_api import ModelClient
 from .profiles import get_profile
-from .rubric import REVIEW_SCORE_INSTRUCTIONS, empty_scores, normalize_overall_score, normalize_scores
+from .rubric import empty_scores, normalize_overall_score, normalize_scores
 from .storage import Store
 
-REVIEWER_INSTRUCTIONS = """你是一位严格、独立的理科教师兼页面质检员。请根据第一张原题图片核对 HTML 的题意、条件、推导、计算和结论，再根据第二张渲染截图检查视觉呈现、可读性与图解是否帮助理解。HTML 源码也会附在文字中。
-只有题意和解答正确、图示有教学价值、页面可读、无明显错误或遗漏时才通过。核对图中的点位、曲线、标注与公式和题目条件是否一致；抛物线等解析曲线若明显由少量直线段拼成、出现可见折角，不得通过。检查可图解的关键推导是否主要靠可操作的图、分步状态、高亮或前后对照来解释，文字是否只保留必要的依据、公式和提示；若重要转折只有长段文字，应指出具体步骤与可改进的图解方式，并反映在页面效果、交互效果和教学效果评分中。若页面提供滑块或其他交互，检查 HTML/JS 是否同步更新相关图形、点位、标签和结果，不能只有数字变化。截图中出现缺字、方框字形或图标无法显示时不得通过。题图模糊导致无法确认答案时不得通过。没有自然可变条件时，不因缺少滑块或动画而拒绝。
-""" + "\n" + REVIEW_SCORE_INSTRUCTIONS
-
 def generator_prompt(feedback: str = "", previous_html: str = "") -> str:
-    prompt = get_profile("math-current").generator_prompt
+    prompt = get_profile("auto").generator_prompt
     if feedback:
         prompt += f"\n\n上一轮审核意见：\n{feedback}\n请根据意见改进，保留正确部分。上一轮 HTML：\n{previous_html}"
     return prompt
@@ -154,7 +150,7 @@ class Pipeline:
                     temp_path = self.store.root / task_id / ".review_screenshot.png"
                     try:
                         temp_path.write_bytes(screenshot)
-                        review_prompt = (config.get("reviewer_prompt") or REVIEWER_INSTRUCTIONS) + "\n\nHTML 源码：\n" + html
+                        review_prompt = (config.get("reviewer_prompt") or get_profile("general").reviewer_prompt) + "\n\nHTML 源码：\n" + html
                         started = time.monotonic()
                         raw_review = await self.client.complete(
                             reviewer_model, review_prompt, original + [(temp_path, "image/png")],
