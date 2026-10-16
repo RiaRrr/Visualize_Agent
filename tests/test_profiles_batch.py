@@ -166,3 +166,34 @@ def test_upload_accepts_router_model_and_saves_auto_template(tmp_path, monkeypat
     assert config["router_model"] == "route"
     assert "只返回一行 JSON" in config["router_prompt"]
     assert "可视化优先原则（最高优先级）" in config["generator_prompt"]
+
+
+def test_upload_rejects_text_only_model_for_ocr(tmp_path, monkeypatch):
+    main = importlib.import_module("app.main")
+    store = Store(Settings(tmp_path, "https://example.invalid/v1", "fake", "gen", "review"))
+
+    async def models(refresh=False):
+        return {"models": [{"provider": "edumind_alt", "id": name, "candidate": True,
+                            "capability": {"image_input": name != "text-only"}}
+                           for name in ("image", "text-only")], "errors": {}}
+
+    monkeypatch.setattr(main, "store", store)
+    monkeypatch.setattr(main.catalog, "list", models)
+    monkeypatch.setattr(main, "_track", lambda coro: coro.close())
+    image = io.BytesIO()
+    Image.new("RGB", (20, 20), "white").save(image, format="PNG")
+    row = {"profile_id": "general", "generator_provider": "edumind_alt", "generator_model": "text-only",
+           "reviewer_provider": "edumind_alt", "reviewer_model": "text-only",
+           "generator_mode": "ocr_text", "reviewer_mode": "ocr_text",
+           "ocr_provider": "edumind_alt", "ocr_model": "text-only"}
+    response = TestClient(main.app).post(
+        "/api/batches", files={"image": ("question.png", image.getvalue(), "image/png")},
+        data={"rows": json.dumps([row]), "run_mode": "single"})
+    assert response.status_code == 400
+    assert "识图模型" in response.json()["detail"]
+    row["ocr_model"] = "image"
+    response = TestClient(main.app).post(
+        "/api/batches", files={"image": ("question.png", image.getvalue(), "image/png")},
+        data={"rows": json.dumps([row]), "run_mode": "single"})
+    assert response.status_code == 201
+    assert store.config(response.json()["tasks"][0]["id"])["generator_mode"] == "ocr_text"

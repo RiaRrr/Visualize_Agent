@@ -10,9 +10,9 @@ from pathlib import Path
 from .browser import render_html
 from .config import Settings
 from .model_api import ModelClient
-from .profiles import get_profile
+from .profiles import PROMPTS, get_profile
 from .rubric import empty_scores, normalize_overall_score, normalize_scores
-from .storage import Store
+from .storage import Store, timestamp
 
 def generator_prompt(feedback: str = "", previous_html: str = "") -> str:
     prompt = get_profile("auto").generator_prompt
@@ -107,6 +107,10 @@ class Pipeline:
         reviewer_model = config.get("reviewer_model", self.settings.reviewer_model)
         generator_provider = config.get("generator_provider")
         reviewer_provider = config.get("reviewer_provider")
+        generator_mode = config.get("generator_mode", "vision")
+        reviewer_mode = config.get("reviewer_mode", "vision")
+        ocr_provider = config.get("ocr_provider")
+        ocr_model = config.get("ocr_model")
         round_number = len(completed_rounds)
         if completed_rounds:
             last_round = completed_rounds[-1]
@@ -117,11 +121,44 @@ class Pipeline:
                 final_name = self.store.save_final(task_id, previous_html)
                 self.store.set_state(task_id, "passed", round_number, f"审核通过，最终文件：{final_name}", final_name, stage="passed")
                 return
+            question_ocr = ""
+            if "ocr_text" in (generator_mode, reviewer_mode):
+                existing_ocr = self.store.question_ocr_name(task_id)
+                if existing_ocr:
+                    question_ocr = (self.store.root / task_id / existing_ocr).read_text(encoding="utf-8")
+                else:
+                    if task.get("batch_id"):
+                        for sibling in self.store.batch(task["batch_id"]):
+                            if sibling["id"] == task_id or (sibling.get("ocr_provider"), sibling.get("ocr_model")) != (ocr_provider, ocr_model):
+                                continue
+                            sibling_ocr = self.store.question_ocr_name(sibling["id"])
+                            if sibling_ocr:
+                                question_ocr = (self.store.root / sibling["id"] / sibling_ocr).read_text(encoding="utf-8")
+                                self.store.log_event(task_id, "question_ocr", 0, f"复用同批次题目 OCR：{sibling['id']}")
+                                break
+                    if not question_ocr:
+                        self.store.set_state(task_id, "running", 0, "识别原题文字、条件与图形关系", stage="question_ocr")
+                        started = time.monotonic()
+                        ocr_usage = {}
+                        succeeded = False
+                        try:
+                            question_ocr = await self.client.complete(
+                                ocr_model, (PROMPTS / "question_ocr.md").read_text(encoding="utf-8"), original,
+                                max_tokens=4000, provider=ocr_provider,
+                                progress=lambda message: self.store.log_event(task_id, "question_ocr", 0, message),
+                                usage=lambda value: ocr_usage.update(value=value))
+                            succeeded = True
+                        finally:
+                            self.store.record_api_call(task_id, 0, "question_ocr", ocr_provider, ocr_model,
+                                                       time.monotonic() - started, "completed" if succeeded else "error",
+                                                       ocr_usage.get("value"))
+                    if not question_ocr.strip():
+                        raise ValueError("识图模型未返回题目内容")
+                    (self.store.root / task_id / f"{timestamp()}_question_ocr.md").write_text(question_ocr, encoding="utf-8")
             for round_number in range(len(completed_rounds) + 1, max_rounds + 1):
                 self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：正在调用生成模型", stage="generating")
-                prompt = (config.get("generator_prompt") or generator_prompt()).replace(
-                    "{{QUESTION}}", "题目图片已随本次 API 消息提供；请直接读取这张图片，以图中题目为准。"
-                )
+                question_input = question_ocr if generator_mode == "ocr_text" else "题目图片已随本次 API 消息提供；请直接读取这张图片，以图中题目为准。"
+                prompt = (config.get("generator_prompt") or generator_prompt()).replace("{{QUESTION}}", question_input)
                 if feedback:
                     prompt += f"\n\n上一轮审核意见：\n{feedback}\n请根据意见改进，保留正确部分。上一轮 HTML：\n{previous_html}"
                 started = time.monotonic()
@@ -129,7 +166,8 @@ class Pipeline:
                 generated = False
                 try:
                     raw = await self.client.complete(
-                        generator_model, prompt, original, max_tokens=self.settings.generator_max_tokens,
+                        generator_model, prompt, [] if generator_mode == "ocr_text" else original,
+                        max_tokens=self.settings.generator_max_tokens,
                         progress=lambda message: self.store.log_event(task_id, "generating", round_number, message),
                         usage=lambda value: generation_usage.update(value=value),
                         **({"provider": generator_provider} if generator_provider else {}))
@@ -141,6 +179,10 @@ class Pipeline:
                                                generator_model, elapsed, "completed" if generated else "error",
                                                generation_usage.get("value"))
                 html = clean_html(raw)
+                html, removed_emoji = re.subn(r"[\U0001F000-\U0001FAFF]", "", html)
+                if removed_emoji:
+                    self.store.log_event(task_id, "validating", round_number,
+                                         f"已清除 {removed_emoji} 个不可靠的 emoji 字符")
                 previous_html = html
                 self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：检查 HTML 与离线资源", stage="validating")
                 errors = validate_html(html)
@@ -155,19 +197,50 @@ class Pipeline:
                     review = {"passed": False, "summary": "页面基础检查未通过", "issues": errors,
                               "source": "local_validator", "scores": empty_scores()}
                 else:
+                    page_description = ""
+                    if reviewer_mode == "ocr_text":
+                        self.store.set_state(task_id, "running", round_number,
+                                             f"第 {round_number} 轮：描述页面截图", stage="page_description")
+                        temp_description_image = self.store.root / task_id / ".description_screenshot.png"
+                        try:
+                            temp_description_image.write_bytes(screenshot)
+                            started = time.monotonic()
+                            description_usage = {}
+                            succeeded = False
+                            try:
+                                page_description = await self.client.complete(
+                                    ocr_model, (PROMPTS / "page_description.md").read_text(encoding="utf-8"),
+                                    [(temp_description_image, "image/png")], max_tokens=3000, provider=ocr_provider,
+                                    progress=lambda message: self.store.log_event(task_id, "page_description", round_number, message),
+                                    usage=lambda value: description_usage.update(value=value))
+                                succeeded = True
+                            finally:
+                                self.store.record_api_call(task_id, round_number, "page_description", ocr_provider,
+                                                           ocr_model, time.monotonic() - started,
+                                                           "completed" if succeeded else "error", description_usage.get("value"))
+                            if not page_description.strip():
+                                raise ValueError("识图模型未返回页面描述")
+                            name = f"{timestamp()}_round_{round_number:02d}.page_description.md"
+                            (self.store.root / task_id / name).write_text(page_description, encoding="utf-8")
+                        finally:
+                            temp_description_image.unlink(missing_ok=True)
                     self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：审核题意、解答与图示", stage="reviewing")
                     # The screenshot is temporarily saved so the common image API can read it.
                     temp_path = self.store.root / task_id / ".review_screenshot.png"
                     try:
                         temp_path.write_bytes(screenshot)
-                        review_prompt = (config.get("reviewer_prompt") or get_profile("general").reviewer_prompt) + "\n\nHTML 源码：\n" + html
+                        review_prompt = config.get("reviewer_prompt") or get_profile("general", reviewer_mode=reviewer_mode).reviewer_prompt
+                        if reviewer_mode == "ocr_text":
+                            review_prompt += f"\n\n原题 OCR 与图形关系：\n{question_ocr}\n\n页面截图视觉描述：\n{page_description}"
+                        review_prompt += "\n\nHTML 源码：\n" + html
                         started = time.monotonic()
                         review_usage = {}
                         reviewed = False
                         try:
                             raw_review = await self.client.complete(
-                                reviewer_model, review_prompt, original + [(temp_path, "image/png")],
-                                max_tokens=2000,
+                                reviewer_model, review_prompt,
+                                [] if reviewer_mode == "ocr_text" else original + [(temp_path, "image/png")],
+                                max_tokens=6000,
                                 progress=lambda message: self.store.log_event(task_id, "reviewing", round_number, message),
                                 usage=lambda value: review_usage.update(value=value),
                                 **({"provider": reviewer_provider} if reviewer_provider else {}))

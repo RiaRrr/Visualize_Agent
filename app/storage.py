@@ -88,6 +88,8 @@ class Store:
                 "reviewer_provider": "TEXT", "reviewer_model": "TEXT", "profile_id": "TEXT",
                 "profile_name": "TEXT", "profile_version": "TEXT", "subject": "TEXT",
                 "run_mode": "TEXT", "max_rounds": "INTEGER", "config_name": "TEXT",
+                "generator_mode": "TEXT NOT NULL DEFAULT 'vision'", "reviewer_mode": "TEXT NOT NULL DEFAULT 'vision'",
+                "ocr_provider": "TEXT", "ocr_model": "TEXT",
                 "route_subject": "TEXT", "router_provider": "TEXT", "router_model": "TEXT",
                 "generation_seconds": "REAL NOT NULL DEFAULT 0", "review_seconds": "REAL NOT NULL DEFAULT 0",
             }
@@ -147,7 +149,7 @@ class Store:
             review_file = {}
         if not isinstance(review_file, dict):
             review_file = {}
-        return {
+        metadata = {
             "schema_version": 2, "rubric_version": "2.0",
             "record_id": f"{task['id']}:{round_info['number']}",
             "task_id": task["id"], "batch_id": task["batch_id"],
@@ -172,6 +174,13 @@ class Store:
             "metrics": {"stages": [item for item in task.get("stage_runs", []) if item["round_number"] == round_info["number"]],
                         "api_calls": [item for item in task.get("api_calls", []) if item["round_number"] == round_info["number"]]},
         }
+        if task.get("ocr_model"):
+            metadata["input_pipeline"] = {"generator_mode": task.get("generator_mode") or "vision",
+                                          "reviewer_mode": task.get("reviewer_mode") or "vision",
+                                          "ocr_provider": task.get("ocr_provider"), "ocr_model": task.get("ocr_model")}
+            metadata["files"].update({"question_ocr": self.question_ocr_name(task["id"]),
+                                      "page_description": self.page_description_name(task["id"], round_info["number"])})
+        return metadata
 
     def _backfill_metadata(self, db: sqlite3.Connection) -> None:
         rows = db.execute("""SELECT rounds.*, tasks.* FROM rounds JOIN tasks ON tasks.id=rounds.task_id
@@ -221,14 +230,16 @@ class Store:
             db.execute("""INSERT INTO tasks (id, created_at, status, image_name, image_mime, original_name,
                        batch_id, generator_provider, generator_model, reviewer_provider, reviewer_model,
                        profile_id, profile_name, profile_version, subject, run_mode, max_rounds, config_name,
-                       router_provider, router_model)
-                       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                       router_provider, router_model, generator_mode, reviewer_mode, ocr_provider, ocr_model)
+                       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                        (task_id, datetime.now(TIMEZONE).isoformat(), "queued", image_name, mime, original_name,
                         batch_id, config.get("generator_provider"), config.get("generator_model"),
                         config.get("reviewer_provider"), config.get("reviewer_model"), config.get("profile_id"),
                         config.get("profile_name"), config.get("profile_version"), config.get("subject"),
                         config.get("run_mode"), config.get("max_rounds"), config_name,
-                        config.get("router_provider"), config.get("router_model")))
+                        config.get("router_provider"), config.get("router_model"),
+                        config.get("generator_mode", "vision"), config.get("reviewer_mode", "vision"),
+                        config.get("ocr_provider"), config.get("ocr_model")))
             db.execute("INSERT INTO events (task_id, created_at, stage, round_number, message) VALUES (?,?,?,?,?)",
                        (task_id, datetime.now(TIMEZONE).isoformat(), "queued", 0, "题目图片已保存，等待开始生成"))
             db.execute("INSERT INTO stage_runs (task_id, round_number, stage, started_at) VALUES (?,?,?,?)",
@@ -245,8 +256,10 @@ class Store:
             stages = db.execute("SELECT * FROM stage_runs WHERE task_id=? ORDER BY started_at, id", (task_id,)).fetchall()
             calls = db.execute("SELECT * FROM api_calls WHERE task_id=? ORDER BY id", (task_id,)).fetchall()
         task = dict(row)
+        task["question_ocr_name"] = self.question_ocr_name(task_id)
         task["rounds"] = [{**dict(r), "issues": json.loads(r["issues_json"])} for r in rounds]
         for r in task["rounds"]:
+            r["page_description_name"] = self.page_description_name(task_id, r["number"])
             r.pop("issues_json")
             r["passed"] = bool(r["passed"])
             metadata_name = r.get("metadata_name")
@@ -272,6 +285,7 @@ class Store:
             rows = db.execute("""SELECT id, created_at, status, stage, original_name, current_round, message,
                                batch_id, generator_provider, generator_model, reviewer_provider, reviewer_model,
                                profile_id, profile_name, profile_version, run_mode, max_rounds,
+                               generator_mode, reviewer_mode, ocr_provider, ocr_model,
                                route_subject, router_provider, router_model,
                                generation_seconds, review_seconds FROM tasks ORDER BY created_at DESC""").fetchall()
         return [dict(row) for row in rows]
@@ -320,7 +334,7 @@ class Store:
                 close_status = "error" if current_stage == "error" else "interrupted" if current_stage == "interrupted" else "completed"
                 db.execute("UPDATE stage_runs SET ended_at=?, duration_seconds=?, status=? WHERE id=?",
                            (now.isoformat(), elapsed, close_status, active["id"]))
-            if current_stage in {"queued", "routing", "generating", "validating", "rendering", "reviewing"} and (
+            if current_stage in {"queued", "routing", "question_ocr", "generating", "validating", "rendering", "page_description", "reviewing"} and (
                 not active or active["stage"] != current_stage or active["round_number"] != round_number
             ):
                 db.execute("INSERT INTO stage_runs (task_id, round_number, stage, started_at) VALUES (?,?,?,?)",
@@ -413,14 +427,24 @@ class Store:
         (self.root / task_id / name).write_text(html, encoding="utf-8")
         return name
 
+    def question_ocr_name(self, task_id: str) -> str | None:
+        matches = sorted((self.root / task_id).glob("*_question_ocr.md"))
+        return matches[0].name if matches else None
+
+    def page_description_name(self, task_id: str, number: int) -> str | None:
+        matches = sorted((self.root / task_id).glob(f"*_round_{number:02d}.page_description.md"))
+        return matches[0].name if matches else None
+
     def artifact(self, task_id: str, filename: str) -> Path | None:
         task = self.get(task_id)
         if not task:
             return None
         allowed = {task["image_name"], task["final_name"], task["config_name"]}
+        allowed.update((self.question_ocr_name(task_id),))
         for round_info in task["rounds"]:
             allowed.update((round_info["html_name"], round_info["screenshot_name"],
-                            round_info["review_name"], round_info["metadata_name"]))
+                            round_info["review_name"], round_info["metadata_name"],
+                            self.page_description_name(task_id, round_info["number"])))
         if filename not in allowed:
             return None
         path = self.root / task_id / filename

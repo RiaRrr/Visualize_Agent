@@ -40,26 +40,32 @@ def _read(name: str) -> str:
     return (PROMPTS / name).read_text(encoding="utf-8").strip()
 
 
-def _assemble(profile_id: str, name: str, subject: str, files: tuple[str, ...]) -> PromptProfile:
-    generator = "\n\n".join([_read("common_visual.md"), *(_read(item) for item in files), _read("io_format.md")])
+def _assemble(profile_id: str, name: str, subject: str, files: tuple[str, ...],
+              generator_mode: str = "vision", reviewer_mode: str = "vision") -> PromptProfile:
+    generator_io = "io_format_text.md" if generator_mode == "ocr_text" else "io_format.md"
+    reviewer_common = "reviewer_common_text.md" if reviewer_mode == "ocr_text" else "reviewer_common.md"
+    generator = "\n\n".join([_read("common_visual.md"), *(_read(item) for item in files), _read(generator_io)])
     review_subject = subject if subject in SUBJECTS else "general"
-    reviewer = "\n\n".join([_read("reviewer_common.md"), _read(f"reviewer_{review_subject}.md"),
+    reviewer = "\n\n".join([_read(reviewer_common), _read(f"reviewer_{review_subject}.md"),
                              _read("reviewer_format.md")])
     version = hashlib.sha256((generator + "\n" + reviewer).encode("utf-8")).hexdigest()[:12]
     return PromptProfile(profile_id, name, subject, version, generator, reviewer)
 
 
-def get_profile(profile_id: str) -> PromptProfile:
+def get_profile(profile_id: str, generator_mode: str = "vision", reviewer_mode: str = "vision") -> PromptProfile:
     if profile_id not in PROFILE_SPECS:
         raise ValueError("未知 Prompt 方案")
+    if generator_mode not in {"vision", "ocr_text"} or reviewer_mode not in {"vision", "ocr_text"}:
+        raise ValueError("未知输入方式")
     name, subject, files = PROFILE_SPECS[profile_id]
-    return _assemble(profile_id, name, subject, files)
+    return _assemble(profile_id, name, subject, files, generator_mode, reviewer_mode)
 
 
-def get_routed_profile(subject: str) -> PromptProfile:
+def get_routed_profile(subject: str, generator_mode: str = "vision", reviewer_mode: str = "vision") -> PromptProfile:
     if subject not in SUBJECTS:
         raise ValueError("未知题目学科")
-    return _assemble("auto", f"自动分流 · {SUBJECTS[subject]}", subject, AUTO_SUBJECT_FILES[subject])
+    return _assemble("auto", f"自动分流 · {SUBJECTS[subject]}", subject, AUTO_SUBJECT_FILES[subject],
+                     generator_mode, reviewer_mode)
 
 
 def router_prompt() -> str:
@@ -68,5 +74,7 @@ def router_prompt() -> str:
 
 def list_profiles() -> list[dict]:
     return [{"id": p.id, "name": p.name, "subject": p.subject, "version": p.version,
-             "generator_prompt": p.generator_prompt, "reviewer_prompt": p.reviewer_prompt}
+             "generator_prompt": p.generator_prompt, "reviewer_prompt": p.reviewer_prompt,
+             "generator_text_prompt": get_profile(p.id, generator_mode="ocr_text").generator_prompt,
+             "reviewer_text_prompt": get_profile(p.id, reviewer_mode="ocr_text").reviewer_prompt}
             for p in (get_profile(profile_id) for profile_id in PROFILE_SPECS)]

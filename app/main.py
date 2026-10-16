@@ -97,8 +97,10 @@ async def _prepare_routes(tasks: list[dict]) -> None:
                 store.record_api_call(first["id"], 0, "router", first["router_provider"],
                                       first["router_model"], time.monotonic() - started,
                                       "completed" if classified else "error", route_usage.get("value"))
-        profile = get_routed_profile(subject)
         for task in pending:
+            config = store.config(task["id"]) or {}
+            profile = get_routed_profile(subject, config.get("generator_mode", "vision"),
+                                         config.get("reviewer_mode", "vision"))
             store.set_route(task["id"], subject, profile)
             store.set_state(task["id"], "queued", task["current_round"],
                             f"已识别为{profile.name}，等待生成", stage="queued")
@@ -255,20 +257,36 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
         raise HTTPException(400, "每批请选择 1 至 12 个配置")
     directory = await catalog.list()
     allowed = {(m["provider"], m["id"]) for m in directory["models"] if m["candidate"]}
+    image_allowed = {(m["provider"], m["id"]) for m in directory["models"]
+                     if m["candidate"] and m.get("capability", {}).get("image_input") is not False}
+    tested_image = {(m["provider"], m["id"]) for m in directory["models"]
+                    if m["candidate"] and m.get("capability", {}).get("image_input") is True}
     configs = []
     for index, row in enumerate(selected, 1):
         if not isinstance(row, dict):
             raise HTTPException(400, f"第 {index} 行配置无效")
         try:
-            profile = get_profile(row["profile_id"])
+            generator_mode = row.get("generator_mode", "vision")
+            reviewer_mode = row.get("reviewer_mode", "vision")
+            profile = get_profile(row["profile_id"], generator_mode, reviewer_mode)
             gen = (row["generator_provider"], row["generator_model"])
             rev = (row["reviewer_provider"], row["reviewer_model"])
         except (KeyError, ValueError):
             raise HTTPException(400, f"第 {index} 行配置无效")
         if gen not in allowed or rev not in allowed:
             raise HTTPException(400, f"第 {index} 行模型未列入当前可选目录")
+        if generator_mode == "vision" and gen not in image_allowed:
+            raise HTTPException(400, f"第 {index} 行生成模型尚未通过识图测试")
+        if reviewer_mode == "vision" and rev not in image_allowed:
+            raise HTTPException(400, f"第 {index} 行审核模型尚未通过识图测试")
+        ocr = (row.get("ocr_provider", ""), row.get("ocr_model", ""))
+        if "ocr_text" in (generator_mode, reviewer_mode) and ocr not in tested_image:
+            raise HTTPException(400, f"第 {index} 行识图模型尚未通过识图测试")
         configs.append({"generator_provider": gen[0], "generator_model": gen[1],
                         "reviewer_provider": rev[0], "reviewer_model": rev[1],
+                        "generator_mode": generator_mode, "reviewer_mode": reviewer_mode,
+                        "ocr_provider": ocr[0] if "ocr_text" in (generator_mode, reviewer_mode) else None,
+                        "ocr_model": ocr[1] if "ocr_text" in (generator_mode, reviewer_mode) else None,
                         "profile_id": profile.id, "profile_name": profile.name, "profile_version": profile.version,
                         "subject": profile.subject, "generator_prompt": profile.generator_prompt,
                         "reviewer_prompt": profile.reviewer_prompt, "run_mode": run_mode,
@@ -277,8 +295,8 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
         route = (router_provider, router_model) if router_provider and router_model else (
             configs[0]["reviewer_provider"], configs[0]["reviewer_model"]
         )
-        if route not in allowed:
-            raise HTTPException(400, "分流模型未列入当前可选目录")
+        if route not in image_allowed:
+            raise HTTPException(400, "分流模型尚未通过识图测试")
         for config in configs:
             if config["profile_id"] == "auto":
                 config["router_provider"], config["router_model"] = route

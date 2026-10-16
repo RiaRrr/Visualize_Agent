@@ -6,6 +6,7 @@ import time
 
 from .config import Settings
 from .model_api import ModelClient, ModelError
+from .model_capabilities import capability
 
 PROVIDERS = ("grok", "openai", "codex", "edumind_alt", "anthropic")
 NON_TEXT = ("embedding", "audio", "speech", "transcribe", "whisper", "tts", "dall-e", "image", "realtime", "moderation")
@@ -46,8 +47,10 @@ class ModelCatalog:
         return {"models": [self._with_status(x) for x in models], "errors": errors}
 
     def _with_status(self, model: dict) -> dict:
-        return {**model, "probe": self.status.get((model["provider"], model["id"]),
-                                               {"state": "untested", "message": "尚未短识图测试"})}
+        probe = self.status.get((model["provider"], model["id"]),
+                                {"state": "untested", "message": "尚未短识图测试"})
+        return {**model, "probe": probe,
+                "capability": capability(model["provider"], model["id"], probe)}
 
     def record(self, provider: str, model: str, ok: bool, message: str, seconds: float) -> dict:
         value = {"state": "passed" if ok else "failed", "message": message[:200],

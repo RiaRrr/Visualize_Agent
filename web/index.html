@@ -24,7 +24,8 @@
           <div class="form-row"><label for="run-mode">运行模式</label><select id="run-mode"><option value="single">单轮比较（默认）</option><option value="full">完整迭代（最多 5 轮）</option></select></div>
           <div class="form-row"><label for="router-model">自动分流模型</label><select id="router-model"></select></div>
           <p class="route-hint">选择“自动识别学科”时，每张上传图片只调用一次分流模型；手动指定方案时不调用。</p>
-          <div class="config-heading"><strong>配置组合</strong><button id="add-row" type="button" class="text-button">＋ 添加组合</button></div>
+          <details class="model-capability-panel"><summary>查看已测试模型与图片输入能力</summary><p id="model-capabilities">加载中…</p></details>
+          <div class="config-heading"><strong>配置组合</strong><span><button id="add-ocr-comparison" type="button" class="text-button">加入 OCR 对照</button><button id="add-row" type="button" class="text-button">＋ 添加组合</button></span></div>
           <div id="config-rows"></div>
           <button id="submit-button" type="submit">开始对比生成</button>
         </form>
