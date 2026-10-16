@@ -116,6 +116,7 @@ def activity_stylesheet():
 @app.get("/api/config")
 def config():
     return {"generator_model": settings.generator_model, "reviewer_model": settings.reviewer_model,
+            "data_directory": settings.data_dir.name,
             "generator_max_tokens": settings.generator_max_tokens,
             "max_rounds": settings.max_rounds,
             "key_configured": all(bool(settings.anthropic_key if model.startswith("claude-") else

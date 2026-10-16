@@ -457,6 +457,7 @@ async function init() {
   try {
     const config = await fetchJson('/api/config');
     maxRounds = config.max_rounds || 5;
+    document.getElementById('history-title').textContent = `历史任务 · ${config.data_directory || '本地数据'}`;
     optionsData = await fetchJson('/api/options');
     addConfigRow();
     document.getElementById('add-row').addEventListener('click', () => addConfigRow());
