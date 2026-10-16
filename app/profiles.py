@@ -32,7 +32,7 @@ SUBJECT_GENERATOR = {
 }
 
 PROFILE_FILES = {
-    "math-current": ("数学 · 当前综合指导", "math", ROOT / "app" / "visualization_guidance.md"),
+    "math-current": ("数学 · 当前综合指导", "math", ROOT / "app" / "prompts" / "math_current.md"),
     "math-interactive": ("数学 · 交互白板方案", "math", ROOT / "app" / "prompts" / "math_interactive.md"),
     "math-workflow": ("数学 · 推导工作流方案", "math", ROOT / "app" / "prompts" / "math_workflow.md"),
     "physics": ("物理 · 过程与受力", "physics", ROOT / "app" / "prompts" / "physics.md"),

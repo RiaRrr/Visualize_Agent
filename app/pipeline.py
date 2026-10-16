@@ -23,7 +23,7 @@ REVIEWER_INSTRUCTIONS = """你是一位严格、独立的理科教师兼页面�
 只有题意和解答正确、图示有教学价值、页面可读、无明显错误或遗漏时才通过。核对图中的点位、曲线、标注与公式和题目条件是否一致；抛物线等解析曲线若明显由少量直线段拼成、出现可见折角，不得通过。检查可图解的关键推导是否主要靠可操作的图、分步状态、高亮或前后对照来解释，文字是否只保留必要的依据、公式和提示；若重要转折只有长段文字，应指出具体步骤与可改进的图解方式，并反映在页面效果、交互效果和教学效果评分中。若页面提供滑块或其他交互，检查 HTML/JS 是否同步更新相关图形、点位、标签和结果，不能只有数字变化。截图中出现缺字、方框字形或图标无法显示时不得通过。题图模糊导致无法确认答案时不得通过。没有自然可变条件时，不因缺少滑块或动画而拒绝。
 """ + "\n" + REVIEW_SCORE_INSTRUCTIONS
 
-SKILL_GUIDANCE = (ROOT / "app" / "visualization_guidance.md").read_text(encoding="utf-8")
+SKILL_GUIDANCE = (ROOT / "app" / "prompts" / "math_current.md").read_text(encoding="utf-8")
 
 
 def generator_prompt(feedback: str = "", previous_html: str = "") -> str:
