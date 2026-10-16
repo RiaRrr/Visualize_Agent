@@ -406,21 +406,24 @@ async function showBatch(batchId, batch) {
           if (!round) return;
           batchSelectedRounds.set(item.id, round.number);
           roundSlot.replaceChildren();
-          roundSlot.append(el('small', 'batch-review-summary', `${round.review_source === 'local_validator' ? '基础检查' : '模型审核'}：${round.summary}`));
+          const evaluation = el('div', 'batch-evaluation');
+          evaluation.append(el('small', 'batch-review-summary', `${round.review_source === 'local_validator' ? '基础检查' : '模型审核'}：${round.summary}`));
           if (round.issues.length) {
             const issues = el('details', 'batch-issues'); issues.append(el('summary', '', `查看审核意见 · ${round.issues.length} 条`));
-            const list = el('ul'); for (const issue of round.issues) list.append(el('li', '', issue)); issues.append(list); roundSlot.append(issues);
+            const list = el('ul'); for (const issue of round.issues) list.append(el('li', '', issue)); issues.append(list); evaluation.append(issues);
           }
-          roundSlot.append(buildModelScores(round));
-          roundSlot.append(buildAnnotation(detail, round));
+          evaluation.append(buildModelScores(round), buildAnnotation(detail, round));
           const links = el('div', 'link-row');
           addLink(links, 'HTML', fileUrl(detail, round.html_name, true));
           if (round.screenshot_name) addLink(links, '截图', fileUrl(detail, round.screenshot_name, true));
           addLink(links, '审核记录', fileUrl(detail, round.review_name, true));
           if (round.metadata_name) addLink(links, '评测 JSON', fileUrl(detail, round.metadata_name, true));
-          roundSlot.append(links);
+          evaluation.append(links);
+          const preview = el('div', 'batch-preview-column');
+          preview.append(el('strong', 'batch-preview-title', 'HTML 预览'));
           const frame = el('iframe', 'batch-preview'); frame.title = `${item.profile_name} 第 ${round.number} 轮预览`;
-          frame.sandbox = 'allow-scripts'; frame.src = fileUrl(detail, round.html_name); roundSlot.append(frame);
+          frame.sandbox = 'allow-scripts'; frame.src = fileUrl(detail, round.html_name); preview.append(frame);
+          roundSlot.append(evaluation, preview);
         }
         chooser.addEventListener('change', showRound);
         showRound();
