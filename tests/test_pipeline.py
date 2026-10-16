@@ -5,11 +5,13 @@ from pathlib import Path
 
 from app.config import Settings
 from app.model_api import ModelError, message_text, response_text
-from app.pipeline import Pipeline, generator_prompt, validate_html
+from app.pipeline import Pipeline, generator_prompt, parse_review, validate_html
 from app.storage import Store
 
 
 GOOD_HTML = '<!doctype html><html><head><meta charset="utf-8"></head><body><h1>解答</h1><svg xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="4"/></svg></body></html>'
+MODEL_SCORES = {"problem_fidelity": 5, "solution_correctness": 4, "page_quality": 4,
+                "interaction_quality": 3, "teaching_effectiveness": 2}
 
 
 class FakeClient:
@@ -23,8 +25,8 @@ class FakeClient:
         if model == "generator":
             return GOOD_HTML
         if sum(call[0] == "reviewer" for call in self.calls) == 1:
-            return json.dumps({"passed": False, "summary": "结论缺失", "issues": ["补充最终结论"]})
-        return json.dumps({"passed": True, "summary": "通过", "issues": []})
+            return json.dumps({"passed": False, "summary": "结论缺失", "issues": ["补充最终结论"], "scores": MODEL_SCORES})
+        return json.dumps({"passed": True, "summary": "通过", "issues": [], "scores": MODEL_SCORES})
 
 
 def test_revision_and_artifact_history(tmp_path: Path):
@@ -42,6 +44,7 @@ def test_revision_and_artifact_history(tmp_path: Path):
     assert len(saved["rounds"]) == 2
     assert saved["rounds"][0]["html_name"].endswith("_round_01.html")
     assert saved["rounds"][1]["html_name"].endswith("_round_02.html")
+    assert saved["rounds"][0]["model_review"]["scores"] == MODEL_SCORES
     assert "补充最终结论" in client.calls[2][1]
     for call in (client.calls[0], client.calls[2]):
         assert all(skill in call[1] for skill in
@@ -69,6 +72,16 @@ def test_generator_prompt_keeps_project_rules_ahead_of_skill_guidance():
     assert "不得引用 CDN" in prompt
     assert "x0*x1/8" in prompt
     assert "曲线有折角" in prompt and GOOD_HTML in prompt
+
+
+def test_model_review_scores_are_bounded_and_keep_pass_independent():
+    review = parse_review(json.dumps({"passed": True, "summary": "通过", "issues": [],
+                                      "scores": {**MODEL_SCORES, "interaction_quality": True,
+                                                 "teaching_effectiveness": 6}}))
+    assert review["passed"] is True
+    assert review["scores"]["problem_fidelity"] == 5
+    assert review["scores"]["interaction_quality"] is None
+    assert review["scores"]["teaching_effectiveness"] is None
 
 
 def test_existing_history_gets_log_summary(tmp_path: Path):

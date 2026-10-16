@@ -32,6 +32,7 @@ def test_round_metadata_and_annotation_survive_store_reopen(tmp_path):
     assert metadata["generator"] == {"provider": "openai", "model": "gpt-6-sol"}
     assert metadata["model_review"]["issues"] == ["重画"]
     assert metadata["model_review"]["source"] == "model"
+    assert all(value is None for value in metadata["model_review"]["scores"].values())
     assert metadata["schema_version"] == 2 and metadata["rubric_version"] == "2.0"
     assert metadata["html_sha256"] == hashlib.sha256(html.encode()).hexdigest()
     assert metadata["human_review"]["passed"] is None

@@ -12,14 +12,11 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from .config import Settings
+from .rubric import empty_scores, normalize_scores
 
 TIMEZONE = ZoneInfo("Asia/Shanghai")
-SCORE_KEYS = ("problem_fidelity", "solution_correctness", "page_quality",
-              "interaction_quality", "teaching_effectiveness")
-
-
 def empty_human_review() -> dict:
-    return {"scores": {key: None for key in SCORE_KEYS}, "passed": None,
+    return {"scores": empty_scores(), "passed": None,
             "comment": "", "updated_at": None}
 
 
@@ -104,6 +101,13 @@ class Store:
     def _round_metadata(self, task: dict, round_info: dict) -> dict:
         html_path = self.root / task["id"] / round_info["html_name"]
         html_hash = hashlib.sha256(html_path.read_bytes()).hexdigest() if html_path.is_file() else None
+        review_path = self.root / task["id"] / round_info["review_name"]
+        try:
+            review_file = json.loads(review_path.read_text(encoding="utf-8")) if review_path.is_file() else {}
+        except (OSError, ValueError):
+            review_file = {}
+        if not isinstance(review_file, dict):
+            review_file = {}
         return {
             "schema_version": 2, "rubric_version": "2.0",
             "record_id": f"{task['id']}:{round_info['number']}",
@@ -120,7 +124,8 @@ class Store:
             "run_mode": task["run_mode"], "max_rounds": task["max_rounds"],
             "model_review": {"source": round_info.get("review_source"),
                              "passed": bool(round_info["passed"]), "summary": round_info["summary"],
-                             "issues": json.loads(round_info["issues_json"])},
+                             "issues": json.loads(round_info["issues_json"]),
+                             "scores": normalize_scores(review_file.get("scores"))},
             "human_review": empty_human_review(),
         }
 
@@ -188,7 +193,10 @@ class Store:
             r["passed"] = bool(r["passed"])
             metadata_name = r.get("metadata_name")
             metadata_path = self.root / task_id / metadata_name if metadata_name else None
-            r["human_review"] = json.loads(metadata_path.read_text(encoding="utf-8"))["human_review"] if metadata_path and metadata_path.is_file() else empty_human_review()
+            metadata = json.loads(metadata_path.read_text(encoding="utf-8")) if metadata_path and metadata_path.is_file() else {}
+            r["human_review"] = metadata.get("human_review", empty_human_review())
+            r["model_review"] = metadata.get("model_review", {})
+            r["model_review"]["scores"] = normalize_scores(r["model_review"].get("scores"))
         task["events"] = [dict(event) for event in events]
         return task
 

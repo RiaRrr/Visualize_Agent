@@ -45,9 +45,11 @@ python3 -m venv .venv
 
 每个新配置任务还保存 `<时间戳>_config.json`，包含运行时的完整生成与审核 Prompt 快照、模型接口、模型 ID 和轮次上限。旧任务显示“配置未记录”。网页中的预览在隔离 iframe 中运行。模型生成的 HTML 仍属于自动生成内容，展示前请核对答案。
 
-每轮 HTML 旁另存同前缀的 `.meta.json`，可从轮次卡片及同题对比卡片下载。它包含该轮的模型、Prompt 方案版本、自动审核结果、文件名和人工评分；`files` 内均为相对该 JSON 所在任务目录的文件名。旧轮次会自动补建，无法确认的旧模型配置保持 `null`。`html_sha256` 用于核对评分记录对应的 HTML。评分规则 v2 包含五项 1–5 整数分：`problem_fidelity`（一致性）、`solution_correctness`（正确性）、`page_quality`（页面效果）、`interaction_quality`（交互效果）、`teaching_effectiveness`（教学效果，学生能否从零清晰了解解法）。未评分填 `null`；`human_review.passed` 是独立填写的合格、不合格或未标注，不由分数计算。同题对比卡片可选择轮次、直接评分和填写评语。仅当 `model_review.source` 为 `model` 时，该轮的自动判定才来自审核模型；`local_validator` 表示基础检查直接拒绝，旧记录来源不明时为 `null`。
+每轮 HTML 旁另存同前缀的 `.meta.json`，可从轮次卡片及同题对比卡片下载。它包含该轮的模型、Prompt 方案版本、自动审核结果、文件名和人工评分；`files` 内均为相对该 JSON 所在任务目录的文件名。旧轮次会自动补建，无法确认的旧模型配置保持 `null`。`html_sha256` 用于核对评分记录对应的 HTML。评分规则 v2 包含五项 1–5 整数分：`problem_fidelity`（一致性）、`solution_correctness`（正确性）、`page_quality`（页面效果）、`interaction_quality`（交互效果）、`teaching_effectiveness`（教学效果，学生能否从零清晰了解解法）。新生成轮次要求审核模型分别给出这五项分数，写入 `.review.json` 与 `.meta.json` 的 `model_review.scores`；未评分或旧记录填 `null`。`human_review.passed` 是独立填写的合格、不合格或未标注，不由分数计算。同题对比卡片可选择轮次、查看模型分数并直接填写人工评分；页面下方只显示所选配置的运行进度与日志，避免重复预览。仅当 `model_review.source` 为 `model` 时，该轮的自动判定才来自审核模型；`local_validator` 表示基础检查直接拒绝，旧记录来源不明时为 `null`。
 
 当前本机 `.env` 将 `VISUALIZE_DATA_DIR` 指向新建的 `data_v2/`，用于重新测试；此前的 `data/` 保持原状。两个目录都被 Git 忽略。当前代码基线已保存为 Git 标签 `v1`。
+
+生成 Prompt 把页面读者设为刚读完题、尚不知道解法的学生。对斜率、参数、辅助量等非题设直接给出的表示，页面须先解释原题条件、转化依据和合法范围，再让学生操作；左右并排时，这段解释也要在控件旁边、按实际视觉阅读顺序先出现。初始值若只是示例，须明确标注。审核 Prompt 用同一学生视角评价教学效果及其余四项指标。
 
 ## 可视化指导与模型对比
 

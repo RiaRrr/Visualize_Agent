@@ -21,6 +21,24 @@ const scoreFields = [
   ['teaching_effectiveness', '教学效果']
 ];
 
+function buildModelScores(round) {
+  const panel = el('div', 'model-scores');
+  panel.append(el('strong', '', '模型评分'));
+  const scores = round.model_review?.scores || {};
+  if (!scoreFields.some(([name]) => scores[name] != null)) {
+    panel.append(el('small', '', round.review_source === 'local_validator' ? '基础检查未通过，模型未评分' : '本轮无模型分数'));
+    return panel;
+  }
+  const grid = el('div', 'model-score-grid');
+  for (const [name, label] of scoreFields) {
+    const item = el('span', 'model-score-item');
+    item.append(el('span', '', label), el('b', '', scores[name] == null ? '—' : `${scores[name]}/5`));
+    grid.append(item);
+  }
+  panel.append(grid);
+  return panel;
+}
+
 function buildAnnotation(task, round) {
   const key = `${task.id}:${round.number}`;
   const saved = round.human_review || {};
@@ -180,6 +198,15 @@ function addLink(parent, label, url) {
   const link = el('a', '', label); link.href = url; link.download = ''; parent.append(link);
 }
 
+function buildProblemPanel(task, compact = false) {
+  const panel = el('section', `panel ${compact ? 'batch-problem' : ''}`);
+  panel.append(el('h3', '', '原题图片'));
+  const image = el('img', 'problem-image'); image.src = fileUrl(task, task.image_name); image.alt = '上传的题目图片';
+  panel.append(image);
+  const links = el('div', 'link-row'); addLink(links, '下载原图', fileUrl(task, task.image_name, true)); panel.append(links);
+  return panel;
+}
+
 function buildActivity(task) {
   const activity = el('section', 'activity');
   const progress = el('div', 'panel progress-panel');
@@ -294,15 +321,15 @@ async function loadTask() {
     head.append(resume);
   }
   workspace.append(head);
+  if (task.batch_id) workspace.append(buildProblemPanel(task, true));
   if (task.batch_id) await showBatch(task.batch_id, batchState);
   const activitySlot = el('div', 'activity-slot');
   workspace.append(activitySlot);
   updateActivity(task);
+  if (task.batch_id) return;
   const grid = el('div', 'task-grid');
   const left = el('div');
-  const imagePanel = el('section', 'panel'); imagePanel.append(el('h3', '', '原题图片'));
-  const image = el('img', 'problem-image'); image.src = fileUrl(task, task.image_name); image.alt = '上传的题目图片'; imagePanel.append(image);
-  const originalLinks = el('div', 'link-row'); addLink(originalLinks, '下载原图', fileUrl(task, task.image_name, true)); imagePanel.append(originalLinks); left.append(imagePanel);
+  left.append(buildProblemPanel(task));
   const list = el('div', 'round-list');
   for (const round of task.rounds) {
     const card = el('div', 'round-card');
@@ -314,7 +341,7 @@ async function loadTask() {
     if (round.screenshot_name) addLink(links, '截图', fileUrl(task, round.screenshot_name, true));
     addLink(links, '审核记录', fileUrl(task, round.review_name, true));
     if (round.metadata_name) addLink(links, '评测 JSON', fileUrl(task, round.metadata_name, true));
-    card.append(links, buildAnnotation(task, round)); list.append(card);
+    card.append(links, buildModelScores(round), buildAnnotation(task, round)); list.append(card);
   }
   if (!task.rounds.length) list.append(el('p', 'notice', '尚未生成第一轮页面。'));
   left.append(list);
@@ -355,11 +382,14 @@ async function showBatch(batchId, batch) {
     card.append(el('strong', '', item.profile_name || '配置未记录'));
     card.append(el('small', '', `${item.generator_provider}/${item.generator_model} → ${item.reviewer_provider}/${item.reviewer_model}`));
     card.append(el('small', '', `${labels[item.status] || item.status} · 第 ${item.current_round} 轮 · 生成 ${Number(item.generation_seconds || 0).toFixed(1)}s / 审核 ${Number(item.review_seconds || 0).toFixed(1)}s`));
-    const open = el('button', 'text-button', '查看轮次与日志'); open.type = 'button';
+    const open = el('button', 'text-button', '查看此配置日志'); open.type = 'button';
     open.addEventListener('click', () => { selectedTask = item.id; selectedRound = null; lastTaskSignature = ''; lastLayoutKey = ''; loadTask(); loadHistory(); });
     card.append(open);
     if (item.current_round) {
       const detail = await fetchJson(`/api/tasks/${encodeURIComponent(item.id)}`);
+      if (detail.config_name) {
+        const configLink = el('div', 'link-row'); addLink(configLink, '下载此配置的 Prompt', fileUrl(detail, detail.config_name, true)); card.append(configLink);
+      }
       if (detail.rounds.length) {
         const chooserLabel = el('label', 'batch-round-chooser'); chooserLabel.append(el('span', '', '选择轮次'));
         const chooser = el('select');
@@ -376,10 +406,17 @@ async function showBatch(batchId, batch) {
           if (!round) return;
           batchSelectedRounds.set(item.id, round.number);
           roundSlot.replaceChildren();
-          roundSlot.append(el('small', 'batch-review-summary', `模型审核：${round.summary}`));
+          roundSlot.append(el('small', 'batch-review-summary', `${round.review_source === 'local_validator' ? '基础检查' : '模型审核'}：${round.summary}`));
+          if (round.issues.length) {
+            const issues = el('details', 'batch-issues'); issues.append(el('summary', '', `查看审核意见 · ${round.issues.length} 条`));
+            const list = el('ul'); for (const issue of round.issues) list.append(el('li', '', issue)); issues.append(list); roundSlot.append(issues);
+          }
+          roundSlot.append(buildModelScores(round));
           roundSlot.append(buildAnnotation(detail, round));
           const links = el('div', 'link-row');
           addLink(links, 'HTML', fileUrl(detail, round.html_name, true));
+          if (round.screenshot_name) addLink(links, '截图', fileUrl(detail, round.screenshot_name, true));
+          addLink(links, '审核记录', fileUrl(detail, round.review_name, true));
           if (round.metadata_name) addLink(links, '评测 JSON', fileUrl(detail, round.metadata_name, true));
           roundSlot.append(links);
           const frame = el('iframe', 'batch-preview'); frame.title = `${item.profile_name} 第 ${round.number} 轮预览`;

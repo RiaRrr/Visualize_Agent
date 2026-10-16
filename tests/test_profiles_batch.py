@@ -28,6 +28,8 @@ def test_profiles_have_distinct_snapshotted_prompts():
     for profile in profiles:
         assert profile["generator_prompt"].startswith("你是一位严谨")
         assert "JSON" in profile["reviewer_prompt"]
+        assert "刚读完这道题" in profile["generator_prompt"]
+        assert "teaching_effectiveness" in profile["reviewer_prompt"]
         assert get_profile(profile["id"]).version == profile["version"]
 
 
