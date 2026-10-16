@@ -8,26 +8,18 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 from .browser import render_html
-from .config import ROOT, Settings
+from .config import Settings
 from .model_api import ModelClient
+from .profiles import get_profile
 from .rubric import REVIEW_SCORE_INSTRUCTIONS, empty_scores, normalize_overall_score, normalize_scores
 from .storage import Store
-
-GENERATOR_INSTRUCTIONS = """你是一位理科教师和网页可视化设计师。请阅读题目图片，输出一个完整、可离线打开的 HTML5 文件，用中文展示正确的题意、关键条件、分步解答和结论。
-目标是让用户在页面中直观感受到答案是怎么来的，并能在适合的题目中通过操作探索关键关系。请遵循随后提供的五项 skill 汇集指导。
-目标读者是刚读完题、还不知道解法的学生。页面开头先建立原题给了什么、要求什么，再解释非显然的条件转化：原题条件如何推到新的表示、这个表示代表什么及合法范围，然后才让学生操作对应控件、看到最终结论。斜率、参数、辅助量或初始数值若非题设直接给出，不要在开头当作已知；示例值要说明只是一组合法状态。关键转化尽量有图示或状态变化支撑，简单显然的步骤可简短处理。
-尽可能让学生通过可交互的图理解解答。凡能用图形变化、状态切换或对照解释的关键步骤，优先用视觉证据呈现，可在推导各处加入多个有用图解或让主图分步变化，不要只放一张开头图再写大段说明。文字仅保留必要的题设、操作提示、核心解释、公式与结论；非显然条件转化仍须说明依据。视题目选择滑块、拖拽、步骤切换、播放/暂停或适量动画，操作应改变合法状态并同步更新图形、标注、数值和结论；没有自然可变条件时使用分步高亮或静态图解，不制造装饰控件。数学公式可用 HTML/SVG/CSS/MathML，禁止依赖 CDN、外部字体、网络资源或额外文件。不要使用 emoji 作为图示或图标，它们在离线环境可能显示为方框；请用 SVG 或 CSS 绘制。页面应适合桌面和手机，文字与图形清晰，不遮挡。若图片信息不足，请在页面中说明不确定点，不要编造条件。
-只返回 <!doctype html> 开始的 HTML 源码，不要 Markdown 代码围栏。HTML 不超过 120KB。"""
 
 REVIEWER_INSTRUCTIONS = """你是一位严格、独立的理科教师兼页面质检员。请根据第一张原题图片核对 HTML 的题意、条件、推导、计算和结论，再根据第二张渲染截图检查视觉呈现、可读性与图解是否帮助理解。HTML 源码也会附在文字中。
 只有题意和解答正确、图示有教学价值、页面可读、无明显错误或遗漏时才通过。核对图中的点位、曲线、标注与公式和题目条件是否一致；抛物线等解析曲线若明显由少量直线段拼成、出现可见折角，不得通过。检查可图解的关键推导是否主要靠可操作的图、分步状态、高亮或前后对照来解释，文字是否只保留必要的依据、公式和提示；若重要转折只有长段文字，应指出具体步骤与可改进的图解方式，并反映在页面效果、交互效果和教学效果评分中。若页面提供滑块或其他交互，检查 HTML/JS 是否同步更新相关图形、点位、标签和结果，不能只有数字变化。截图中出现缺字、方框字形或图标无法显示时不得通过。题图模糊导致无法确认答案时不得通过。没有自然可变条件时，不因缺少滑块或动画而拒绝。
 """ + "\n" + REVIEW_SCORE_INSTRUCTIONS
 
-SKILL_GUIDANCE = (ROOT / "app" / "prompts" / "math_current.md").read_text(encoding="utf-8")
-
-
 def generator_prompt(feedback: str = "", previous_html: str = "") -> str:
-    prompt = GENERATOR_INSTRUCTIONS + "\n\n" + SKILL_GUIDANCE
+    prompt = get_profile("math-current").generator_prompt
     if feedback:
         prompt += f"\n\n上一轮审核意见：\n{feedback}\n请根据意见改进，保留正确部分。上一轮 HTML：\n{previous_html}"
     return prompt
@@ -131,7 +123,9 @@ class Pipeline:
                 return
             for round_number in range(len(completed_rounds) + 1, max_rounds + 1):
                 self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：正在调用生成模型", stage="generating")
-                prompt = config.get("generator_prompt") or generator_prompt()
+                prompt = (config.get("generator_prompt") or generator_prompt()).replace(
+                    "{{QUESTION}}", "题目见本次消息附带的图片；请以图片内容为准。"
+                )
                 if feedback:
                     prompt += f"\n\n上一轮审核意见：\n{feedback}\n请根据意见改进，保留正确部分。上一轮 HTML：\n{previous_html}"
                 started = time.monotonic()

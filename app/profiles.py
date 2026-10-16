@@ -56,7 +56,9 @@ def get_profile(profile_id: str) -> PromptProfile:
         raise ValueError("未知 Prompt 方案")
     name, subject, path = PROFILE_FILES[profile_id]
     guidance = path.read_text(encoding="utf-8").strip()
-    generator = COMMON_GENERATOR + "\n\n" + SUBJECT_GENERATOR[subject] + "\n\n方案指导：\n" + guidance
+    generator = guidance if profile_id == "math-current" else (
+        COMMON_GENERATOR + "\n\n" + SUBJECT_GENERATOR[subject] + "\n\n方案指导：\n" + guidance
+    )
     reviewer = COMMON_REVIEW + "\n" + SUBJECT_REVIEW[subject] + "\n\n" + REVIEW_SCORE_INSTRUCTIONS
     version = hashlib.sha256((generator + "\n" + reviewer).encode("utf-8")).hexdigest()[:12]
     return PromptProfile(profile_id, name, subject, version, generator, reviewer)

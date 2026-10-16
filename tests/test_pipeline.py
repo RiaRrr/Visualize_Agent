@@ -47,9 +47,9 @@ def test_revision_and_artifact_history(tmp_path: Path):
     assert saved["rounds"][0]["model_review"]["scores"] == MODEL_SCORES
     assert "补充最终结论" in client.calls[2][1]
     for call in (client.calls[0], client.calls[2]):
-        assert all(skill in call[1] for skill in
-                   ("interactive-whiteboard", "math-teacher", "html-report", "visualize-data", "math-skills"))
-        assert "不要用少量 `L` 直线" in call[1]
+        assert "可视化优先原则（最高优先级）" in call[1]
+        assert "{{QUESTION}}" not in call[1]
+        assert "题目见本次消息附带的图片" in call[1]
     assert saved["final_name"] and store.artifact(task["id"], saved["final_name"])
     assert store.artifact(task["id"], "../../apikeys.md") is None
     assert saved["stage"] == "passed"
@@ -66,11 +66,11 @@ def test_offline_validator_allows_inline_svg_and_blocks_external_resources():
     assert validate_html(GOOD_HTML.replace("解答", "🍎"))
 
 
-def test_generator_prompt_keeps_project_rules_ahead_of_skill_guidance():
+def test_generator_prompt_uses_current_template():
     prompt = generator_prompt("曲线有折角", GOOD_HTML)
-    assert prompt.index("可离线打开") < prompt.index("interactive-whiteboard")
-    assert "不得引用 CDN" in prompt
-    assert "x0*x1/8" in prompt
+    assert prompt.startswith("你是一名擅长数学、物理、化学教学设计")
+    assert "{{QUESTION}}" in prompt
+    assert "可视化优先原则（最高优先级）" in prompt
     assert "曲线有折角" in prompt and GOOD_HTML in prompt
 
 

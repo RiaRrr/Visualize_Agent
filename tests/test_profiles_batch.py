@@ -26,10 +26,15 @@ def test_profiles_have_distinct_snapshotted_prompts():
     assert len(profiles) == 6
     assert len({p["version"] for p in profiles}) == 6
     for profile in profiles:
-        assert profile["generator_prompt"].startswith("你是一位严谨")
+        if profile["id"] == "math-current":
+            assert profile["generator_prompt"].startswith("你是一名擅长数学、物理、化学教学设计")
+            assert profile["generator_prompt"].endswith("{{QUESTION}}")
+            assert "方案指导：" not in profile["generator_prompt"]
+        else:
+            assert profile["generator_prompt"].startswith("你是一位严谨")
+            assert "尽可能让学生通过可交互的图理解解答" in profile["generator_prompt"]
         assert "JSON" in profile["reviewer_prompt"]
         assert "刚读完这道题" in profile["generator_prompt"]
-        assert "尽可能让学生通过可交互的图理解解答" in profile["generator_prompt"]
         assert "长段文字" in profile["reviewer_prompt"]
         assert "teaching_effectiveness" in profile["reviewer_prompt"]
         assert get_profile(profile["id"]).version == profile["version"]
