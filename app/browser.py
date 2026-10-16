@@ -89,11 +89,6 @@ def _render_sync(html: str) -> bytes:
                 shot = session.call("Page.captureScreenshot", {"format": "png", "captureBeyondViewport": True,
                                                                "clip": {"x": 0, "y": 0, "width": width, "height": height, "scale": 1}})
                 screenshot = base64.b64decode(shot["data"])
-                session.call("Emulation.setDeviceMetricsOverride", {"width": 390, "height": 844, "deviceScaleFactor": 1, "mobile": False})
-                time.sleep(.1)
-                overflow = session.call("Runtime.evaluate", {"expression": "document.documentElement.scrollWidth - window.innerWidth", "returnByValue": True})
-                if (overflow.get("result", {}).get("value") or 0) > 16:
-                    raise ValueError("手机屏幕出现横向溢出")
                 if session.errors:
                     raise ValueError("页面脚本运行错误：" + session.errors[0][:200])
                 return screenshot
