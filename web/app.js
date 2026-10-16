@@ -7,6 +7,7 @@ const formMessage = document.getElementById('form-message');
 const submitButton = document.getElementById('submit-button');
 let selectedTask = null;
 let selectedRound = null;
+let selectedRoundManually = false;
 let lastTaskSignature = '';
 let lastLayoutKey = '';
 let maxRounds = 5;
@@ -165,7 +166,7 @@ function fileUrl(task, name, download = false) {
   return `/api/tasks/${encodeURIComponent(task.id)}/files/${encodeURIComponent(name)}${download ? '?download=true' : ''}`;
 }
 const labels = {queued:'排队中',running:'处理中',passed:'审核通过',failed:'审核未通过',error:'出错',interrupted:'已中断'};
-const stageLabels = {queued:'已上传',running:'处理中',routing:'识别学科',generating:'生成页面',validating:'检查文件',rendering:'渲染页面',reviewing:'审核解答',revising:'准备返修',passed:'已完成',failed:'审核未通过',error:'运行出错',interrupted:'已中断'};
+const stageLabels = {upload:'上传处理',queued:'排队等待',running:'处理中',routing:'识别学科',generating:'生成页面',validating:'检查文件',rendering:'渲染页面',reviewing:'审核解答',revising:'准备返修',passed:'已完成',failed:'审核未通过',error:'运行出错',interrupted:'已中断'};
 const progressSteps = [
   {key:'queued', label:'上传'}, {key:'routing', label:'分流'}, {key:'generating', label:'生成'}, {key:'validating', label:'检查'},
   {key:'rendering', label:'渲染'}, {key:'reviewing', label:'审核'}, {key:'passed', label:'完成'}
@@ -193,7 +194,7 @@ async function loadHistory() {
     button.append(el('small', '', new Date(task.created_at).toLocaleString('zh-CN')));
     button.append(el('small', 'history-stage', `${task.current_round ? `第 ${task.current_round} 轮 · ` : ''}${stageLabels[task.stage] || labels[task.status] || task.status}`));
     button.append(el('small', 'history-config', task.profile_name ? `${task.profile_name} · ${task.generator_provider}/${task.generator_model} → ${task.reviewer_provider}/${task.reviewer_model}` : '配置未记录'));
-    button.addEventListener('click', () => { selectedTask = task.id; selectedRound = null; lastTaskSignature = ''; lastLayoutKey = ''; loadTask(); loadHistory(); });
+    button.addEventListener('click', () => { selectedTask = task.id; selectedRound = null; selectedRoundManually = false; lastTaskSignature = ''; lastLayoutKey = ''; loadTask(); loadHistory(); });
     historyList.append(button);
   }
 }
@@ -209,6 +210,65 @@ function buildProblemPanel(task, compact = false) {
   panel.append(image);
   const links = el('div', 'link-row'); addLink(links, '下载原图', fileUrl(task, task.image_name, true)); panel.append(links);
   return panel;
+}
+
+function durationText(seconds) {
+  if (seconds == null) return '未记录';
+  return seconds < 60 ? `${seconds.toFixed(1)}秒` : `${Math.floor(seconds / 60)}分${Math.floor(seconds % 60)}秒`;
+}
+
+function buildTimeline(task) {
+  const wrap = el('div', 'timeline');
+  const heading = el('div', 'timeline-heading');
+  heading.append(el('strong', '', '环节时间轴'));
+  const stages = task.stage_runs || [];
+  if (stages.length) {
+    const recorded = stages.reduce((sum, row) => sum + (row.duration_seconds || 0), 0);
+    const total = el('small', 'timeline-total'); total.dataset.recorded = String(recorded);
+    heading.append(total);
+  }
+  const calls = task.api_calls || [];
+  if (calls.length) {
+    const known = calls.filter(call => call.input_tokens != null || call.output_tokens != null);
+    const inputs = known.reduce((sum, call) => sum + (call.input_tokens || 0), 0);
+    const outputs = known.reduce((sum, call) => sum + (call.output_tokens || 0), 0);
+    heading.append(el('small', '', known.length ? `Token：输入 ${inputs} · 输出 ${outputs}${known.length < calls.length ? '（部分接口未提供）' : ''}` : 'Token：接口未提供'));
+  }
+  wrap.append(heading);
+  if (!stages.length) {
+    wrap.append(el('small', 'timeline-empty', '旧任务未记录分段用时；可在上方查看已有的生成与审核累计耗时。'));
+    return wrap;
+  }
+  const groups = new Map();
+  for (const stage of stages) {
+    if (!groups.has(stage.round_number)) groups.set(stage.round_number, []);
+    groups.get(stage.round_number).push(stage);
+  }
+  for (const [round, rows] of groups) {
+    const group = el('div', 'timeline-group');
+    group.append(el('span', 'timeline-round', round ? `第 ${round} 轮` : '开始'));
+    const track = el('div', 'timeline-track');
+    for (const row of rows) {
+      const item = el('span', `timeline-item ${row.stage}`);
+      item.append(el('b', '', stageLabels[row.stage] || row.stage));
+      const elapsed = el('span', row.status === 'running' && !row.ended_at ? 'timeline-live' : '',
+        row.duration_seconds != null ? durationText(row.duration_seconds) : row.status === 'interrupted' ? '已中断' : '进行中');
+      if (row.status === 'running' && !row.ended_at) elapsed.dataset.start = row.started_at;
+      item.append(elapsed);
+      const role = {routing:'router', generating:'generator', reviewing:'reviewer'}[row.stage];
+      const call = role && calls.find(entry => entry.round_number === round && entry.role === role);
+      if (call) item.append(el('small', '', call.input_tokens == null && call.output_tokens == null
+        ? 'Token 未提供' : `入 ${call.input_tokens ?? '—'} / 出 ${call.output_tokens ?? '—'}`));
+      track.append(item);
+    }
+    group.append(track); wrap.append(group);
+  }
+  return wrap;
+}
+
+function defaultRoundNumber(task) {
+  if (task.status === 'failed' && task.best_round_number != null) return task.best_round_number;
+  return task.rounds.at(-1)?.number ?? null;
 }
 
 function buildActivity(task) {
@@ -237,7 +297,7 @@ function buildActivity(task) {
     if (mode === 'active') item.setAttribute('aria-current', 'step');
     stepper.append(item);
   }
-  progress.append(stepper);
+  progress.append(stepper, buildTimeline(task));
   const logPanel = el('div', 'panel log-panel');
   const logHeading = el('div', 'activity-heading');
   logHeading.append(el('h3', '', '运行日志'), el('span', 'log-count', `${(task.events || []).length} 条`));
@@ -275,6 +335,14 @@ function updateActivity(task) {
 }
 
 function refreshElapsed(task) {
+  let runningSeconds = 0;
+  for (const item of workspace.querySelectorAll('.timeline-live')) {
+    const seconds = Math.max(0, (Date.now() - new Date(item.dataset.start).getTime()) / 1000);
+    runningSeconds += seconds;
+    item.textContent = durationText(seconds);
+  }
+  const total = workspace.querySelector('.timeline-total');
+  if (total) total.textContent = `环节合计 ${durationText(Number(total.dataset.recorded) + runningSeconds)}`;
   const element = workspace.querySelector('.stage-elapsed');
   if (!element) return;
   if (!['running', 'queued'].includes(task.status)) { element.textContent = ''; return; }
@@ -294,7 +362,7 @@ async function loadTask() {
   const signature = JSON.stringify([task, batchKey]);
   if (signature === lastTaskSignature) { refreshElapsed(task); return; }
   lastTaskSignature = signature;
-  const layoutKey = JSON.stringify([task.id, task.profile_name, task.profile_version, task.route_subject,
+  const layoutKey = JSON.stringify([task.id, task.status, task.best_round_number, task.profile_name, task.profile_version, task.route_subject,
     task.rounds.map(round => [round.html_name, round.human_review?.updated_at]), task.final_name, batchKey]);
   if (layoutKey === lastLayoutKey && workspace.querySelector('.activity-slot')) {
     updateActivity(task);
@@ -340,7 +408,7 @@ async function loadTask() {
   const list = el('div', 'round-list');
   for (const round of task.rounds) {
     const card = el('div', 'round-card');
-    card.append(el('h4', '', `第 ${round.number} 轮 · ${round.passed ? '通过' : '未通过'}`));
+    card.append(el('h4', '', `第 ${round.number} 轮 · ${round.passed ? '通过' : '未通过'}${task.status === 'failed' && round.number === task.best_round_number ? ' · 最佳草稿' : ''}`));
     card.append(el('p', '', round.summary || '无审核摘要'));
     if (round.issues.length) { const ul = el('ul'); for (const issue of round.issues) ul.append(el('li', '', issue)); card.append(ul); }
     const links = el('div', 'link-row');
@@ -356,7 +424,7 @@ async function loadTask() {
   const previewHead = el('div', 'preview-head'); previewHead.append(el('h3', '', '页面预览'));
   const chooser = el('select');
   for (const round of task.rounds) {
-    const option = el('option', '', `第 ${round.number} 轮${round.passed ? ' · 通过' : ''}`); option.value = String(round.number); chooser.append(option);
+    const option = el('option', '', `第 ${round.number} 轮${round.passed ? ' · 通过' : ''}${task.status === 'failed' && round.number === task.best_round_number ? ' · 最佳草稿' : ''}`); option.value = String(round.number); chooser.append(option);
   }
   previewHead.append(chooser); right.append(previewHead);
   const frame = el('iframe', 'preview-frame'); frame.title = '生成页面预览'; frame.sandbox = 'allow-scripts';
@@ -364,12 +432,19 @@ async function loadTask() {
     const round = task.rounds.find(item => item.number === Number(chooser.value));
     if (round) { selectedRound = round.number; frame.src = fileUrl(task, round.html_name); }
   }
-  chooser.addEventListener('change', showRound);
+  chooser.addEventListener('change', () => { selectedRoundManually = true; showRound(); });
   if (task.rounds.length) {
-    chooser.value = String(task.rounds.some(item => item.number === selectedRound) ? selectedRound : task.rounds.at(-1).number);
+    chooser.value = String(selectedRoundManually && task.rounds.some(item => item.number === selectedRound) ? selectedRound : defaultRoundNumber(task));
     showRound(); right.append(frame);
   } else right.append(el('div', 'no-preview', '等待生成页面…'));
   if (task.final_name) { const links = el('div', 'link-row'); addLink(links, '下载审核通过的最终 HTML', fileUrl(task, task.final_name, true)); right.append(links); }
+  if (task.status === 'failed' && task.best_round_number != null) {
+    const best = task.rounds.find(item => item.number === task.best_round_number);
+    const links = el('div', 'link-row');
+    addLink(links, `下载最佳草稿 · 第 ${best.number} 轮${task.best_round_score == null ? '' : ` · ${task.best_round_score}/5`}`,
+      fileUrl(task, best.html_name, true));
+    right.append(links);
+  }
   right.append(el('p', 'notice', '预览在隔离区域中运行；下载后可断网打开。'));
   grid.append(left, right); workspace.append(grid);
 }
@@ -391,7 +466,7 @@ async function showBatch(batchId, batch) {
     card.append(el('small', '', `${item.generator_provider}/${item.generator_model} → ${item.reviewer_provider}/${item.reviewer_model}`));
     card.append(el('small', '', `${labels[item.status] || item.status} · 第 ${item.current_round} 轮 · 生成 ${Number(item.generation_seconds || 0).toFixed(1)}s / 审核 ${Number(item.review_seconds || 0).toFixed(1)}s`));
     const open = el('button', 'text-button', '查看此配置日志'); open.type = 'button';
-    open.addEventListener('click', () => { selectedTask = item.id; selectedRound = null; lastTaskSignature = ''; lastLayoutKey = ''; loadTask(); loadHistory(); });
+    open.addEventListener('click', () => { selectedTask = item.id; selectedRound = null; selectedRoundManually = false; lastTaskSignature = ''; lastLayoutKey = ''; loadTask(); loadHistory(); });
     card.append(open);
     if (item.current_round) {
       const detail = await fetchJson(`/api/tasks/${encodeURIComponent(item.id)}`);
@@ -402,17 +477,16 @@ async function showBatch(batchId, batch) {
         const chooserLabel = el('label', 'batch-round-chooser'); chooserLabel.append(el('span', '', '选择轮次'));
         const chooser = el('select');
         for (const round of detail.rounds) {
-          const option = el('option', '', `第 ${round.number} 轮 · ${round.passed ? '自动审核通过' : '自动审核未通过'}`);
+          const option = el('option', '', `第 ${round.number} 轮 · ${round.passed ? '自动审核通过' : '自动审核未通过'}${detail.status === 'failed' && round.number === detail.best_round_number ? ' · 最佳草稿' : ''}`);
           option.value = String(round.number); chooser.append(option);
         }
         const preferred = batchSelectedRounds.get(item.id);
-        chooser.value = String(detail.rounds.some(x => x.number === preferred) ? preferred : detail.rounds.at(-1).number);
+        chooser.value = String(detail.rounds.some(x => x.number === preferred) ? preferred : defaultRoundNumber(detail));
         chooserLabel.append(chooser); card.append(chooserLabel);
         const roundSlot = el('div', 'batch-round-slot'); card.append(roundSlot);
         function showRound() {
           const round = detail.rounds.find(x => x.number === Number(chooser.value));
           if (!round) return;
-          batchSelectedRounds.set(item.id, round.number);
           roundSlot.replaceChildren();
           const evaluation = el('div', 'batch-evaluation');
           evaluation.append(el('small', 'batch-review-summary', `${round.review_source === 'local_validator' ? '基础检查' : '模型审核'}：${round.summary}`));
@@ -423,6 +497,8 @@ async function showBatch(batchId, batch) {
           evaluation.append(buildModelScores(round), buildAnnotation(detail, round));
           const links = el('div', 'link-row');
           addLink(links, 'HTML', fileUrl(detail, round.html_name, true));
+          if (detail.status === 'failed' && round.number === detail.best_round_number)
+            addLink(links, '下载最佳草稿', fileUrl(detail, round.html_name, true));
           if (round.screenshot_name) addLink(links, '截图', fileUrl(detail, round.screenshot_name, true));
           addLink(links, '审核记录', fileUrl(detail, round.review_name, true));
           if (round.metadata_name) addLink(links, '评测 JSON', fileUrl(detail, round.metadata_name, true));
@@ -433,7 +509,7 @@ async function showBatch(batchId, batch) {
           frame.sandbox = 'allow-scripts'; frame.src = fileUrl(detail, round.html_name); preview.append(frame);
           roundSlot.append(evaluation, preview);
         }
-        chooser.addEventListener('change', showRound);
+        chooser.addEventListener('change', () => { batchSelectedRounds.set(item.id, Number(chooser.value)); showRound(); });
         showRound();
       }
     }
@@ -459,7 +535,7 @@ form.addEventListener('submit', async (event) => {
     const router = modelChoice(document.getElementById('router-model').value);
     body.append('router_provider', router.provider); body.append('router_model', router.model);
     const batch = await fetchJson('/api/batches', {method:'POST', body});
-    selectedTask = batch.tasks[0].id; selectedRound = null; lastTaskSignature = ''; lastLayoutKey = ''; await loadHistory(); await loadTask();
+    selectedTask = batch.tasks[0].id; selectedRound = null; selectedRoundManually = false; lastTaskSignature = ''; lastLayoutKey = ''; await loadHistory(); await loadTask();
   } catch (error) { formMessage.textContent = error.message; }
   finally { submitButton.disabled = false; }
 });

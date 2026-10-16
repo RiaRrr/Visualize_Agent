@@ -6,7 +6,7 @@ from pathlib import Path
 from app.config import Settings
 from app.model_api import ModelError, message_text, response_text
 from app.pipeline import Pipeline, generator_prompt, parse_review, validate_html
-from app.storage import Store
+from app.storage import Store, best_round
 
 
 GOOD_HTML = '<!doctype html><html><head><meta charset="utf-8"></head><body><h1>解答</h1><svg xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="4"/></svg></body></html>'
@@ -18,10 +18,12 @@ class FakeClient:
     def __init__(self):
         self.calls = []
 
-    async def complete(self, model, prompt, images, *, max_tokens, progress=None):
+    async def complete(self, model, prompt, images, *, max_tokens, progress=None, usage=None):
         self.calls.append((model, prompt, len(images)))
         if progress:
             progress("测试模型请求")
+        if usage:
+            usage({"input_tokens": 100, "output_tokens": 50, "total_tokens": 150})
         if model == "generator":
             return GOOD_HTML
         if sum(call[0] == "reviewer" for call in self.calls) == 1:
@@ -58,6 +60,13 @@ def test_revision_and_artifact_history(tmp_path: Path):
     assert stages.count("generating") >= 2 and stages.count("reviewing") >= 2
     assert "revising" in stages
     assert any("补充最终结论" in event["message"] for event in saved["events"])
+    assert saved["best_round_number"] == 2
+    assert len(saved["api_calls"]) == 4
+    assert saved["rounds"][0]["metrics"]["api_calls"][0]["input_tokens"] == 100
+    assert {stage["stage"] for stage in saved["rounds"][1]["metrics"]["stages"]} == {
+        "generating", "validating", "rendering", "reviewing"}
+    metadata = json.loads(store.artifact(task["id"], saved["rounds"][1]["metadata_name"]).read_text())
+    assert metadata["metrics"]["stages"][-1]["duration_seconds"] is not None
 
 
 def test_offline_validator_allows_inline_svg_and_blocks_external_resources():
@@ -106,6 +115,7 @@ def test_existing_history_gets_log_summary(tmp_path: Path):
     assert task["stage"] == "passed"
     assert len(task["events"]) == 3
     assert "答案正确" in task["events"][1]["message"]
+    assert task["stage_runs"] == [] and task["api_calls"] == []
 
 
 def test_interrupted_task_continues_from_next_round(tmp_path: Path):
@@ -146,3 +156,30 @@ def test_output_limit_is_reported_as_truncation():
         message_text({"stop_reason": "max_tokens", "content": [{"type": "text", "text": "<html>"}]})
     with pytest.raises(ModelError, match="输出达到 max_output_tokens"):
         response_text({"status": "incomplete", "incomplete_details": {"reason": "max_output_tokens"}})
+
+
+def test_best_round_prefers_model_score_then_later_round():
+    rounds = [{"number": 1, "model_review": {"overall_score": 4}},
+              {"number": 2, "model_review": {"overall_score": None}},
+              {"number": 3, "model_review": {"overall_score": 4}}]
+    assert best_round(rounds)["number"] == 3
+    assert best_round(rounds[:2])["number"] == 1
+    assert best_round(rounds[1:])["number"] == 3
+    assert best_round([]) is None
+
+
+def test_failed_task_exposes_best_scored_round_and_preserves_all_drafts(tmp_path):
+    settings = Settings(tmp_path, "https://example.invalid/v1", "fake", "generator", "reviewer")
+    store = Store(settings)
+    task = store.create("题目.png", "image/png", ".png", b"fake")
+    for number, score in enumerate((2, 4, None, 4, None), 1):
+        store.save_round(task["id"], number, GOOD_HTML, None,
+                         {"passed": False, "summary": "未通过", "issues": ["改进"], "source": "model",
+                          "overall_score": score})
+    store.set_state(task["id"], "failed", 5, "达到上限", stage="failed")
+    saved = store.get(task["id"])
+    assert saved["best_round_number"] == 4
+    assert saved["best_round_score"] == 4
+    assert saved["final_name"] is None
+    assert len(saved["rounds"]) == 5
+    assert all(store.artifact(task["id"], item["html_name"]).is_file() for item in saved["rounds"])

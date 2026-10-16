@@ -4,7 +4,7 @@ from pathlib import Path
 import httpx
 
 from app.config import Settings
-from app.model_api import ModelClient, ModelError, chat_text
+from app.model_api import ModelClient, ModelError, chat_text, token_usage
 
 
 def test_codex_gateway_chat_request(monkeypatch, tmp_path: Path):
@@ -28,11 +28,15 @@ def test_codex_gateway_chat_request(monkeypatch, tmp_path: Path):
             calls["url"] = url
             calls["request"] = kwargs
             return httpx.Response(200, request=httpx.Request("POST", url),
-                                  json={"choices": [{"message": {"content": "收到"}, "finish_reason": "stop"}]})
+                                  json={"choices": [{"message": {"content": "收到"}, "finish_reason": "stop"}],
+                                        "usage": {"prompt_tokens": 21, "completion_tokens": 8}})
 
     monkeypatch.setattr("app.model_api.httpx.AsyncClient", FakeClient)
-    result = asyncio.run(ModelClient(settings).complete("gpt-5-codex", "读图", [(image, "image/png")], max_tokens=4096))
+    usage = []
+    result = asyncio.run(ModelClient(settings).complete("gpt-5-codex", "读图", [(image, "image/png")],
+                                                        max_tokens=4096, usage=usage.append))
     assert result == "收到"
+    assert usage[0]["total_tokens"] == 29
     assert calls["url"] == "https://gateway.test/v1/chat/completions"
     assert calls["client_options"]["verify"] is False
     assert calls["request"]["json"]["max_completion_tokens"] == 4096
@@ -44,6 +48,21 @@ def test_chat_completion_reports_truncated_output():
 
     with pytest.raises(ModelError, match="输出达到"):
         chat_text({"choices": [{"message": {"content": "<html>"}, "finish_reason": "length"}]})
+
+
+def test_token_usage_normalizes_three_protocols_and_missing_values():
+    assert token_usage({"usage": {"input_tokens": 10, "output_tokens": 4,
+                                   "input_tokens_details": {"cached_tokens": 2}}}, "responses") == {
+        "input_tokens": 10, "output_tokens": 4, "cached_input_tokens": 2,
+        "cache_write_input_tokens": None, "reasoning_output_tokens": None, "total_tokens": 14}
+    assert token_usage({"usage": {"prompt_tokens": 8, "completion_tokens": 5,
+                                   "completion_tokens_details": {"reasoning_tokens": 3}}}, "chat")["reasoning_output_tokens"] == 3
+    anthropic = token_usage({"usage": {"input_tokens": 7, "output_tokens": 2,
+                                        "cache_read_input_tokens": 3,
+                                        "cache_creation_input_tokens": 4}}, "anthropic")
+    assert anthropic["input_tokens"] == 14 and anthropic["total_tokens"] == 16
+    assert anthropic["cached_input_tokens"] == 3 and anthropic["cache_write_input_tokens"] == 4
+    assert token_usage({}, "chat") is None
 
 
 def test_explicit_provider_overrides_model_name(monkeypatch, tmp_path: Path):

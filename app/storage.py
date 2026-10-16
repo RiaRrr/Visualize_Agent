@@ -7,7 +7,7 @@ import os
 import sqlite3
 import threading
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -40,6 +40,17 @@ def write_json_atomic(path: Path, data: dict) -> None:
 
 def timestamp() -> str:
     return datetime.now(TIMEZONE).strftime("%Y%m%d_%H%M%S_%f")[:-3]
+
+
+def best_round(rounds: list[dict]) -> dict | None:
+    """Prefer scored rounds; resolve ties in favor of the later revision."""
+    if not rounds:
+        return None
+    return max(rounds, key=lambda item: (
+        item.get("model_review", {}).get("overall_score") is not None,
+        item.get("model_review", {}).get("overall_score") or 0,
+        item["number"],
+    ))
 
 
 class Store:
@@ -94,6 +105,24 @@ class Store:
                 created_at TEXT NOT NULL, stage TEXT NOT NULL,
                 round_number INTEGER NOT NULL, message TEXT NOT NULL)""")
             db.execute("CREATE INDEX IF NOT EXISTS events_task_id ON events(task_id, id)")
+            db.execute("""CREATE TABLE IF NOT EXISTS stage_runs (
+                id INTEGER PRIMARY KEY AUTOINCREMENT, task_id TEXT NOT NULL,
+                round_number INTEGER NOT NULL, stage TEXT NOT NULL,
+                started_at TEXT NOT NULL, ended_at TEXT, duration_seconds REAL,
+                status TEXT NOT NULL DEFAULT 'running')""")
+            db.execute("CREATE INDEX IF NOT EXISTS stage_runs_task_id ON stage_runs(task_id, id)")
+            db.execute("""CREATE TABLE IF NOT EXISTS api_calls (
+                id INTEGER PRIMARY KEY AUTOINCREMENT, task_id TEXT NOT NULL,
+                batch_id TEXT, round_number INTEGER NOT NULL, role TEXT NOT NULL,
+                provider TEXT, model TEXT NOT NULL, created_at TEXT NOT NULL,
+                duration_seconds REAL NOT NULL, status TEXT NOT NULL,
+                input_tokens INTEGER, output_tokens INTEGER, cached_input_tokens INTEGER,
+                cache_write_input_tokens INTEGER,
+                reasoning_output_tokens INTEGER, total_tokens INTEGER)""")
+            db.execute("CREATE INDEX IF NOT EXISTS api_calls_task_id ON api_calls(task_id, id)")
+            api_columns = {row[1] for row in db.execute("PRAGMA table_info(api_calls)")}
+            if "cache_write_input_tokens" not in api_columns:
+                db.execute("ALTER TABLE api_calls ADD COLUMN cache_write_input_tokens INTEGER")
             # Existing history predates the event log. Preserve a useful summary.
             old_tasks = db.execute("""SELECT id, created_at, status, current_round, message FROM tasks
                                       WHERE NOT EXISTS (SELECT 1 FROM events WHERE events.task_id = tasks.id)""").fetchall()
@@ -140,6 +169,8 @@ class Store:
                              "scores": normalize_scores(review_file.get("scores")),
                              "overall_score": normalize_overall_score(review_file.get("overall_score"))},
             "human_review": empty_human_review(),
+            "metrics": {"stages": [item for item in task.get("stage_runs", []) if item["round_number"] == round_info["number"]],
+                        "api_calls": [item for item in task.get("api_calls", []) if item["round_number"] == round_info["number"]]},
         }
 
     def _backfill_metadata(self, db: sqlite3.Connection) -> None:
@@ -172,6 +203,7 @@ class Store:
                 db.execute("INSERT INTO events (task_id, created_at, stage, round_number, message) VALUES (?,?,?,?,?)",
                            (task["id"], datetime.now(TIMEZONE).isoformat(), "interrupted", task["current_round"], "服务重启中断了任务"))
             db.execute("UPDATE tasks SET status='interrupted', stage='interrupted', message='服务重启中断了任务' WHERE status IN ('queued','running')")
+            db.execute("UPDATE stage_runs SET status='interrupted' WHERE ended_at IS NULL")
 
     def create(self, original_name: str, mime: str, suffix: str, content: bytes,
                run_config: dict | None = None, batch_id: str | None = None) -> dict:
@@ -199,6 +231,8 @@ class Store:
                         config.get("router_provider"), config.get("router_model")))
             db.execute("INSERT INTO events (task_id, created_at, stage, round_number, message) VALUES (?,?,?,?,?)",
                        (task_id, datetime.now(TIMEZONE).isoformat(), "queued", 0, "题目图片已保存，等待开始生成"))
+            db.execute("INSERT INTO stage_runs (task_id, round_number, stage, started_at) VALUES (?,?,?,?)",
+                       (task_id, 0, "queued", datetime.now(TIMEZONE).isoformat()))
         return self.get(task_id)
 
     def get(self, task_id: str) -> dict | None:
@@ -208,6 +242,8 @@ class Store:
                 return None
             rounds = db.execute("SELECT * FROM rounds WHERE task_id=? ORDER BY number", (task_id,)).fetchall()
             events = db.execute("SELECT id, created_at, stage, round_number, message FROM events WHERE task_id=? ORDER BY id", (task_id,)).fetchall()
+            stages = db.execute("SELECT * FROM stage_runs WHERE task_id=? ORDER BY started_at, id", (task_id,)).fetchall()
+            calls = db.execute("SELECT * FROM api_calls WHERE task_id=? ORDER BY id", (task_id,)).fetchall()
         task = dict(row)
         task["rounds"] = [{**dict(r), "issues": json.loads(r["issues_json"])} for r in rounds]
         for r in task["rounds"]:
@@ -221,6 +257,14 @@ class Store:
             r["model_review"]["scores"] = normalize_scores(r["model_review"].get("scores"))
             r["model_review"]["overall_score"] = normalize_overall_score(r["model_review"].get("overall_score"))
         task["events"] = [dict(event) for event in events]
+        task["stage_runs"] = [dict(stage) for stage in stages]
+        task["api_calls"] = [dict(call) for call in calls]
+        for item in task["rounds"]:
+            item["metrics"] = {"stages": [stage for stage in task["stage_runs"] if stage["round_number"] == item["number"]],
+                               "api_calls": [call for call in task["api_calls"] if call["round_number"] == item["number"]]}
+        chosen = best_round(task["rounds"])
+        task["best_round_number"] = chosen["number"] if chosen else None
+        task["best_round_score"] = chosen["model_review"]["overall_score"] if chosen else None
         return task
 
     def list(self) -> list[dict]:
@@ -267,11 +311,56 @@ class Store:
     def set_state(self, task_id: str, status: str, round_number: int, message: str,
                   final_name: str | None = None, stage: str | None = None) -> None:
         current_stage = stage or status
+        now = datetime.now(TIMEZONE)
         with self._db() as db:
+            active = db.execute("SELECT * FROM stage_runs WHERE task_id=? AND ended_at IS NULL AND status='running' ORDER BY id DESC LIMIT 1",
+                                (task_id,)).fetchone()
+            if active and (active["stage"] != current_stage or active["round_number"] != round_number):
+                elapsed = max(0.0, (now - datetime.fromisoformat(active["started_at"])).total_seconds())
+                close_status = "error" if current_stage == "error" else "interrupted" if current_stage == "interrupted" else "completed"
+                db.execute("UPDATE stage_runs SET ended_at=?, duration_seconds=?, status=? WHERE id=?",
+                           (now.isoformat(), elapsed, close_status, active["id"]))
+            if current_stage in {"queued", "routing", "generating", "validating", "rendering", "reviewing"} and (
+                not active or active["stage"] != current_stage or active["round_number"] != round_number
+            ):
+                db.execute("INSERT INTO stage_runs (task_id, round_number, stage, started_at) VALUES (?,?,?,?)",
+                           (task_id, round_number, current_stage, now.isoformat()))
             db.execute("UPDATE tasks SET status=?, stage=?, current_round=?, message=?, final_name=COALESCE(?,final_name) WHERE id=?",
                        (status, current_stage, round_number, message, final_name, task_id))
             db.execute("INSERT INTO events (task_id, created_at, stage, round_number, message) VALUES (?,?,?,?,?)",
-                       (task_id, datetime.now(TIMEZONE).isoformat(), current_stage, round_number, message))
+                       (task_id, now.isoformat(), current_stage, round_number, message))
+
+    def record_api_call(self, task_id: str, round_number: int, role: str, provider: str | None,
+                        model: str, duration_seconds: float, status: str, usage: dict | None) -> None:
+        usage = usage or {}
+        with self._db() as db:
+            batch = db.execute("SELECT batch_id FROM tasks WHERE id=?", (task_id,)).fetchone()
+            db.execute("""INSERT INTO api_calls (task_id, batch_id, round_number, role, provider, model,
+                       created_at, duration_seconds, status, input_tokens, output_tokens,
+                       cached_input_tokens, cache_write_input_tokens, reasoning_output_tokens, total_tokens)
+                       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                       (task_id, batch["batch_id"] if batch else None, round_number, role, provider, model,
+                        datetime.now(TIMEZONE).isoformat(), duration_seconds, status,
+                        usage.get("input_tokens"), usage.get("output_tokens"), usage.get("cached_input_tokens"),
+                        usage.get("cache_write_input_tokens"), usage.get("reasoning_output_tokens"), usage.get("total_tokens")))
+
+    def record_upload(self, task_id: str, started: datetime, duration_seconds: float) -> None:
+        ended = started + timedelta(seconds=duration_seconds)
+        with self._db() as db:
+            db.execute("""INSERT INTO stage_runs (task_id, round_number, stage, started_at,
+                       ended_at, duration_seconds, status) VALUES (?,?,?,?,?,?,?)""",
+                       (task_id, 0, "upload", started.isoformat(), ended.isoformat(), duration_seconds, "completed"))
+
+    def refresh_round_metrics(self, task_id: str, number: int) -> None:
+        task = self.get(task_id)
+        item = next((row for row in task["rounds"] if row["number"] == number), None) if task else None
+        if not item or not item.get("metadata_name"):
+            return
+        path = self.root / task_id / item["metadata_name"]
+        with self._annotation_lock:
+            metadata = json.loads(path.read_text(encoding="utf-8"))
+            metadata["metrics"] = item["metrics"]
+            write_json_atomic(path, metadata)
 
     def log_event(self, task_id: str, stage: str, round_number: int, message: str) -> None:
         with self._db() as db:

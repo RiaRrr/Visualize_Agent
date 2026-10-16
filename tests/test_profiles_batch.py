@@ -21,7 +21,7 @@ class RecordingClient:
     def __init__(self):
         self.calls = []
 
-    async def complete(self, model, prompt, images, *, max_tokens, progress=None, provider=None):
+    async def complete(self, model, prompt, images, *, max_tokens, progress=None, provider=None, usage=None):
         self.calls.append((provider, model, prompt, len(images)))
         if len(images) == 1:
             return HTML
@@ -43,6 +43,8 @@ def test_profiles_have_distinct_snapshotted_prompts():
         assert get_profile(profile["id"]).version == profile["version"]
     assert "数学学科经验" in get_routed_profile("math").generator_prompt
     math_prompt = get_routed_profile("math").generator_prompt
+    assert "组合箭头" in math_prompt and "<sub>" in math_prompt
+    assert "缺字方框" in get_routed_profile("math").reviewer_prompt
     assert math_prompt.index("可视化优先原则") < math_prompt.index("数学学科经验") < math_prompt.index("技术与输出要求")
     assert "受力图" in get_routed_profile("physics").generator_prompt
     assert "粒子模型" in get_routed_profile("chemistry").generator_prompt
@@ -109,8 +111,10 @@ def test_auto_batch_classifies_once_and_snapshots_subject_prompts(tmp_path, monk
     tasks = [store.create(f"题{i}.png", "image/png", ".png", b"image", config, "batch") for i in range(2)]
     classified, generated = [], []
 
-    async def classify(client, provider, model, image, mime, prompt=None):
+    async def classify(client, provider, model, image, mime, prompt=None, usage=None):
         classified.append((provider, model, image.name, mime))
+        if usage:
+            usage({"input_tokens": 12, "output_tokens": 2, "total_tokens": 14})
         return "physics"
 
     async def run(task_id):
@@ -121,6 +125,8 @@ def test_auto_batch_classifies_once_and_snapshots_subject_prompts(tmp_path, monk
     monkeypatch.setattr(main.pipeline, "run", run)
     asyncio.run(main._run_batch("batch"))
     assert len(classified) == 1
+    assert len(store.get(tasks[0]["id"])["api_calls"]) == 1
+    assert len(store.get(tasks[1]["id"])["api_calls"]) == 0
     assert generated == [task["id"] for task in tasks]
     for task in tasks:
         saved = store.get(task["id"])

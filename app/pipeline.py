@@ -125,11 +125,21 @@ class Pipeline:
                 if feedback:
                     prompt += f"\n\n上一轮审核意见：\n{feedback}\n请根据意见改进，保留正确部分。上一轮 HTML：\n{previous_html}"
                 started = time.monotonic()
-                raw = await self.client.complete(
-                    generator_model, prompt, original, max_tokens=self.settings.generator_max_tokens,
-                    progress=lambda message: self.store.log_event(task_id, "generating", round_number, message),
-                    **({"provider": generator_provider} if generator_provider else {}))
-                self.store.add_timing(task_id, "generation_seconds", time.monotonic() - started)
+                generation_usage = {}
+                generated = False
+                try:
+                    raw = await self.client.complete(
+                        generator_model, prompt, original, max_tokens=self.settings.generator_max_tokens,
+                        progress=lambda message: self.store.log_event(task_id, "generating", round_number, message),
+                        usage=lambda value: generation_usage.update(value=value),
+                        **({"provider": generator_provider} if generator_provider else {}))
+                    generated = True
+                finally:
+                    elapsed = time.monotonic() - started
+                    self.store.add_timing(task_id, "generation_seconds", elapsed)
+                    self.store.record_api_call(task_id, round_number, "generator", generator_provider,
+                                               generator_model, elapsed, "completed" if generated else "error",
+                                               generation_usage.get("value"))
                 html = clean_html(raw)
                 previous_html = html
                 self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：检查 HTML 与离线资源", stage="validating")
@@ -152,12 +162,22 @@ class Pipeline:
                         temp_path.write_bytes(screenshot)
                         review_prompt = (config.get("reviewer_prompt") or get_profile("general").reviewer_prompt) + "\n\nHTML 源码：\n" + html
                         started = time.monotonic()
-                        raw_review = await self.client.complete(
-                            reviewer_model, review_prompt, original + [(temp_path, "image/png")],
-                            max_tokens=2000,
-                            progress=lambda message: self.store.log_event(task_id, "reviewing", round_number, message),
-                            **({"provider": reviewer_provider} if reviewer_provider else {}))
-                        self.store.add_timing(task_id, "review_seconds", time.monotonic() - started)
+                        review_usage = {}
+                        reviewed = False
+                        try:
+                            raw_review = await self.client.complete(
+                                reviewer_model, review_prompt, original + [(temp_path, "image/png")],
+                                max_tokens=2000,
+                                progress=lambda message: self.store.log_event(task_id, "reviewing", round_number, message),
+                                usage=lambda value: review_usage.update(value=value),
+                                **({"provider": reviewer_provider} if reviewer_provider else {}))
+                            reviewed = True
+                        finally:
+                            elapsed = time.monotonic() - started
+                            self.store.add_timing(task_id, "review_seconds", elapsed)
+                            self.store.record_api_call(task_id, round_number, "reviewer", reviewer_provider,
+                                                       reviewer_model, elapsed, "completed" if reviewed else "error",
+                                                       review_usage.get("value"))
                         review = parse_review(raw_review)
                         review["source"] = "model"
                     finally:
@@ -168,11 +188,13 @@ class Pipeline:
                 if review["passed"]:
                     final_name = self.store.save_final(task_id, html)
                     self.store.set_state(task_id, "passed", round_number, f"审核通过，最终文件：{final_name}", final_name, stage="passed")
+                    self.store.refresh_round_metrics(task_id, round_number)
                     return
                 feedback = "\n".join(f"- {issue}" for issue in review["issues"])
                 self.store.set_state(task_id, "running", round_number,
                                      f"第 {round_number} 轮未通过：{'; '.join(review['issues'])[:300]}；准备返修", stage="revising")
+                self.store.refresh_round_metrics(task_id, round_number)
             self.store.set_state(task_id, "failed", round_number,
-                                 f"达到 {max_rounds} 轮上限；可查看最后草稿和审核意见", stage="failed")
+                                 f"达到 {max_rounds} 轮上限；可查看评分最高的草稿和各轮审核意见", stage="failed")
         except Exception as exc:
             self.store.set_state(task_id, "error", round_number, str(exc)[:500], stage="error")

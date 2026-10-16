@@ -20,6 +20,39 @@ class ModelError(Exception):
     pass
 
 
+def token_usage(data: dict, protocol: str) -> dict | None:
+    """Normalize counters reported by the gateway; never estimate missing counts."""
+    usage = data.get("usage")
+    if not isinstance(usage, dict):
+        return None
+    def count(value):
+        return value if type(value) is int and value >= 0 else None
+    def detail(name):
+        value = usage.get(name)
+        return value if isinstance(value, dict) else {}
+    if protocol == "chat":
+        inputs, outputs = usage.get("prompt_tokens"), usage.get("completion_tokens")
+        cached = detail("prompt_tokens_details").get("cached_tokens")
+        cache_write = None
+        reasoning = detail("completion_tokens_details").get("reasoning_tokens")
+    else:
+        inputs, outputs = usage.get("input_tokens"), usage.get("output_tokens")
+        cached = (detail("input_tokens_details").get("cached_tokens") if protocol == "responses"
+                  else usage.get("cache_read_input_tokens"))
+        cache_write = usage.get("cache_creation_input_tokens") if protocol == "anthropic" else None
+        reasoning = (detail("output_tokens_details").get("reasoning_tokens")
+                     if protocol == "responses" else None)
+    if protocol == "anthropic" and count(inputs) is not None:
+        inputs = inputs + (count(cached) or 0) + (count(cache_write) or 0)
+    result = {"input_tokens": count(inputs), "output_tokens": count(outputs),
+              "cached_input_tokens": count(cached), "cache_write_input_tokens": count(cache_write),
+              "reasoning_output_tokens": count(reasoning),
+              "total_tokens": count(usage.get("total_tokens"))}
+    if result["total_tokens"] is None and result["input_tokens"] is not None and result["output_tokens"] is not None:
+        result["total_tokens"] = result["input_tokens"] + result["output_tokens"]
+    return result if any(value is not None for value in result.values()) else None
+
+
 def http_error_detail(response: httpx.Response, model: str, secrets: tuple[str | None, ...] = ()) -> str:
     """Expose useful gateway diagnostics without echoing request data or credentials."""
     parts = [f"模型接口返回 HTTP {response.status_code}（{model}）"]
@@ -126,7 +159,8 @@ class ModelClient:
         return data.get("data", []) if isinstance(data, dict) else []
 
     async def complete(self, model: str, prompt: str, images: list[tuple[Path, str]], *, max_tokens: int,
-                       progress: Callable[[str], None] | None = None, provider: str | None = None) -> str:
+                       progress: Callable[[str], None] | None = None, provider: str | None = None,
+                       usage: Callable[[dict | None], None] | None = None) -> str:
         if provider not in (None, "anthropic", "codex", "edumind_alt", "openai", "grok"):
             raise ModelError("未知模型接口")
         is_claude = provider == "anthropic" if provider else model.startswith("claude-")
@@ -177,6 +211,8 @@ class ModelClient:
                         continue
                     result.raise_for_status()
                     data = result.json()
+                    if usage:
+                        usage(token_usage(data, "anthropic" if is_claude else "chat" if is_codex else "responses"))
                     return message_text(data) if is_claude else chat_text(data) if is_codex else response_text(data)
                 except httpx.TimeoutException as exc:
                     if progress:

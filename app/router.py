@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from typing import Callable
 
 from .model_api import ModelClient
 from .profiles import SUBJECTS, router_prompt
@@ -25,6 +26,8 @@ def parse_subject(raw: str) -> str:
 
 
 async def classify_image(client: ModelClient, provider: str | None, model: str, image: Path, mime: str,
-                         prompt: str | None = None) -> str:
-    raw = await client.complete(model, prompt or router_prompt(), [(image, mime)], max_tokens=512, provider=provider)
+                         prompt: str | None = None,
+                         usage: Callable[[dict | None], None] | None = None) -> str:
+    raw = await client.complete(model, prompt or router_prompt(), [(image, mime)],
+                                max_tokens=512, provider=provider, usage=usage)
     return parse_subject(raw)

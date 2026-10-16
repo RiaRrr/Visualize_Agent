@@ -7,6 +7,7 @@ import json
 import time
 import uuid
 from contextlib import asynccontextmanager
+from datetime import datetime
 from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
@@ -20,7 +21,7 @@ from .model_catalog import ModelCatalog
 from .pipeline import Pipeline
 from .profiles import get_profile, get_routed_profile, list_profiles, router_prompt
 from .router import classify_image
-from .storage import Store
+from .storage import Store, TIMEZONE
 
 settings = get_settings()
 store = Store(settings)
@@ -79,11 +80,23 @@ async def _prepare_routes(tasks: list[dict]) -> None:
     try:
         first = pending[0]
         image_task = store.get(first["id"])
-        subject = known or await classify_image(
-            ModelClient(settings), first["router_provider"], first["router_model"],
-            store.root / first["id"] / image_task["image_name"], image_task["image_mime"],
-            prompt=(store.config(first["id"]) or {}).get("router_prompt")
-        )
+        if known:
+            subject = known
+        else:
+            started = time.monotonic()
+            route_usage = {}
+            classified = False
+            try:
+                subject = await classify_image(
+                    ModelClient(settings), first["router_provider"], first["router_model"],
+                    store.root / first["id"] / image_task["image_name"], image_task["image_mime"],
+                    prompt=(store.config(first["id"]) or {}).get("router_prompt"),
+                    usage=lambda value: route_usage.update(value=value))
+                classified = True
+            finally:
+                store.record_api_call(first["id"], 0, "router", first["router_provider"],
+                                      first["router_model"], time.monotonic() - started,
+                                      "completed" if classified else "error", route_usage.get("value"))
         profile = get_routed_profile(subject)
         for task in pending:
             store.set_route(task["id"], subject, profile)
@@ -227,8 +240,11 @@ def _parse_image(raw: bytes) -> tuple[str, str]:
 @app.post("/api/batches", status_code=201)
 async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run_mode: str = Form("single"),
                        router_provider: str = Form(""), router_model: str = Form("")):
+    upload_time = datetime.now(TIMEZONE)
+    upload_started = time.monotonic()
     raw = await image.read(10_000_001)
     suffix, mime = _parse_image(raw)
+    upload_seconds = time.monotonic() - upload_started
     if run_mode not in ("single", "full"):
         raise HTTPException(400, "无效运行模式")
     try:
@@ -270,6 +286,8 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
     batch_id = f"{time.strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}"
     tasks = [store.create(Path(image.filename or "image").name[:200], mime, suffix, raw,
                           run_config=config, batch_id=batch_id) for config in configs]
+    for task in tasks:
+        store.record_upload(task["id"], upload_time, upload_seconds)
     _track(_run_batch(batch_id))
     return {"id": batch_id, "tasks": tasks}
 
@@ -295,8 +313,11 @@ async def resume_batch(batch_id: str):
 
 @app.post("/api/tasks", status_code=201)
 async def create_task(image: UploadFile = File(...)):
+    upload_time = datetime.now(TIMEZONE)
+    upload_started = time.monotonic()
     raw = await image.read(10_000_001)
     suffix, mime = _parse_image(raw)
+    upload_seconds = time.monotonic() - upload_started
     profile = get_profile("auto")
     config = {"profile_id": profile.id, "profile_name": profile.name,
               "profile_version": profile.version, "subject": profile.subject,
@@ -305,6 +326,7 @@ async def create_task(image: UploadFile = File(...)):
               "router_model": settings.reviewer_model, "router_prompt": router_prompt(),
               "run_mode": "full", "max_rounds": settings.max_rounds}
     task = store.create(Path(image.filename or "image").name[:200], mime, suffix, raw, run_config=config)
+    store.record_upload(task["id"], upload_time, upload_seconds)
     _start_task(task["id"])
     return task
 
