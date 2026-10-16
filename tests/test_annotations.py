@@ -32,13 +32,15 @@ def test_round_metadata_and_annotation_survive_store_reopen(tmp_path):
     assert metadata["generator"] == {"provider": "openai", "model": "gpt-6-sol"}
     assert metadata["model_review"]["issues"] == ["重画"]
     assert metadata["model_review"]["source"] == "model"
+    assert metadata["schema_version"] == 2 and metadata["rubric_version"] == "2.0"
     assert metadata["html_sha256"] == hashlib.sha256(html.encode()).hexdigest()
     assert metadata["human_review"]["passed"] is None
     annotation = {"scores": {"problem_fidelity": 5, "solution_correctness": 4,
-                             "visualization_pedagogy": None, "page_interaction": 2},
+                             "page_quality": None, "interaction_quality": 2,
+                             "teaching_effectiveness": 5},
                   "passed": False, "comment": "点位错误"}
     updated = store.update_annotation(task["id"], 1, annotation)
-    assert updated["human_review"]["scores"]["visualization_pedagogy"] is None
+    assert updated["human_review"]["scores"]["page_quality"] is None
     assert updated["human_review"]["passed"] is False
     assert updated["human_review"]["updated_at"]
     reopened = Store(settings)
@@ -81,12 +83,13 @@ def test_annotation_api_validates_and_can_clear_label(tmp_path, monkeypatch):
     client = TestClient(main.app)
     url = f"/api/tasks/{task['id']}/rounds/1/annotation"
     scores = {"problem_fidelity": 5, "solution_correctness": None,
-              "visualization_pedagogy": 3, "page_interaction": 4}
+              "page_quality": 3, "interaction_quality": 4, "teaching_effectiveness": 5}
     response = client.put(url, json={"scores": scores, "passed": True, "comment": "可用"})
     assert response.status_code == 200
     assert response.json()["human_review"]["passed"] is True
     assert client.get(f"/api/tasks/{task['id']}").json()["rounds"][0]["human_review"]["comment"] == "可用"
     assert client.put(url, json={"scores": {**scores, "problem_fidelity": 6}, "passed": True}).status_code == 422
+    assert client.put(url, json={"scores": {**scores, "page_interaction": 4}, "passed": True}).status_code == 422
     assert client.put(url, json={"scores": scores, "passed": "yes"}).status_code == 422
     assert client.put(url.replace("/1/", "/9/"), json={"scores": scores}).status_code == 404
     cleared = client.put(url, json={"scores": {name: None for name in scores}, "passed": None, "comment": ""})

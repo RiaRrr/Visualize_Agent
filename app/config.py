@@ -21,6 +21,11 @@ def _setting(name: str, default: str | None = None) -> str | None:
     return os.getenv(name) or _env_file_value(name) or default
 
 
+def _data_dir() -> Path:
+    configured = Path(_setting("VISUALIZE_DATA_DIR", "data") or "data").expanduser()
+    return (configured if configured.is_absolute() else ROOT / configured).resolve()
+
+
 def _key_from_notes(name: str) -> str | None:
     notes = ROOT / "apikeys.md"
     if not notes.is_file():
@@ -61,7 +66,7 @@ class Settings:
 
 def get_settings() -> Settings:
     return Settings(
-        data_dir=Path(os.getenv("VISUALIZE_DATA_DIR", str(ROOT / "data"))).resolve(),
+        data_dir=_data_dir(),
         base_url=os.getenv("VISUALIZE_BASE_URL", "https://sub2api.minutex.cn/v1").rstrip("/"),
         api_key=os.getenv("VISUALIZE_API_KEY") or os.getenv("XAI_API_KEY") or _key_from_notes("XAI_API_KEY"),
         generator_model=_setting("VISUALIZE_GENERATOR_MODEL", "claude-sonnet-4-6") or "claude-sonnet-4-6",

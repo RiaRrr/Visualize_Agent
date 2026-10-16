@@ -14,7 +14,8 @@ from zoneinfo import ZoneInfo
 from .config import Settings
 
 TIMEZONE = ZoneInfo("Asia/Shanghai")
-SCORE_KEYS = ("problem_fidelity", "solution_correctness", "visualization_pedagogy", "page_interaction")
+SCORE_KEYS = ("problem_fidelity", "solution_correctness", "page_quality",
+              "interaction_quality", "teaching_effectiveness")
 
 
 def empty_human_review() -> dict:
@@ -104,7 +105,7 @@ class Store:
         html_path = self.root / task["id"] / round_info["html_name"]
         html_hash = hashlib.sha256(html_path.read_bytes()).hexdigest() if html_path.is_file() else None
         return {
-            "schema_version": 1, "rubric_version": "1.0",
+            "schema_version": 2, "rubric_version": "2.0",
             "record_id": f"{task['id']}:{round_info['number']}",
             "task_id": task["id"], "batch_id": task["batch_id"],
             "round": round_info["number"], "created_at": round_info["created_at"],

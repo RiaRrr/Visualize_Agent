@@ -12,11 +12,13 @@ let lastLayoutKey = '';
 let maxRounds = 5;
 let optionsData = null;
 const annotationDrafts = new Map();
+const batchSelectedRounds = new Map();
 const scoreFields = [
-  ['problem_fidelity', '题目一致性'],
-  ['solution_correctness', '解答正确性'],
-  ['visualization_pedagogy', '可视化教学效果'],
-  ['page_interaction', '页面与交互质量']
+  ['problem_fidelity', '一致性'],
+  ['solution_correctness', '正确性'],
+  ['page_quality', '页面效果'],
+  ['interaction_quality', '交互效果'],
+  ['teaching_effectiveness', '教学效果']
 ];
 
 function buildAnnotation(task, round) {
@@ -25,7 +27,7 @@ function buildAnnotation(task, round) {
   const current = annotationDrafts.get(key) || saved;
   const panel = el('div', 'annotation-panel');
   panel.append(el('h5', '', '我的评分'));
-  panel.append(el('p', 'annotation-hint', '1 分＝严重问题，3 分＝部分达标，5 分＝优秀；可留空。合格判定独立填写。'));
+  panel.append(el('p', 'annotation-hint', '1 分＝严重问题，3 分＝部分达标，5 分＝优秀；可留空。教学效果看学生能否从零清晰了解解法。合格判定独立填写。'));
   const controls = {};
   function readForm() {
     return {
@@ -358,11 +360,33 @@ async function showBatch(batchId, batch) {
     card.append(open);
     if (item.current_round) {
       const detail = await fetchJson(`/api/tasks/${encodeURIComponent(item.id)}`);
-      const round = detail.rounds.at(-1);
-      if (round) {
-        card.append(el('small', '', `审核：${round.summary}`));
-        const frame = el('iframe', 'batch-preview'); frame.title = `${item.profile_name} 预览`;
-        frame.sandbox = 'allow-scripts'; frame.src = fileUrl(detail, round.html_name); card.append(frame);
+      if (detail.rounds.length) {
+        const chooserLabel = el('label', 'batch-round-chooser'); chooserLabel.append(el('span', '', '选择轮次'));
+        const chooser = el('select');
+        for (const round of detail.rounds) {
+          const option = el('option', '', `第 ${round.number} 轮 · ${round.passed ? '自动审核通过' : '自动审核未通过'}`);
+          option.value = String(round.number); chooser.append(option);
+        }
+        const preferred = batchSelectedRounds.get(item.id);
+        chooser.value = String(detail.rounds.some(x => x.number === preferred) ? preferred : detail.rounds.at(-1).number);
+        chooserLabel.append(chooser); card.append(chooserLabel);
+        const roundSlot = el('div', 'batch-round-slot'); card.append(roundSlot);
+        function showRound() {
+          const round = detail.rounds.find(x => x.number === Number(chooser.value));
+          if (!round) return;
+          batchSelectedRounds.set(item.id, round.number);
+          roundSlot.replaceChildren();
+          roundSlot.append(el('small', 'batch-review-summary', `模型审核：${round.summary}`));
+          roundSlot.append(buildAnnotation(detail, round));
+          const links = el('div', 'link-row');
+          addLink(links, 'HTML', fileUrl(detail, round.html_name, true));
+          if (round.metadata_name) addLink(links, '评测 JSON', fileUrl(detail, round.metadata_name, true));
+          roundSlot.append(links);
+          const frame = el('iframe', 'batch-preview'); frame.title = `${item.profile_name} 第 ${round.number} 轮预览`;
+          frame.sandbox = 'allow-scripts'; frame.src = fileUrl(detail, round.html_name); roundSlot.append(frame);
+        }
+        chooser.addEventListener('change', showRound);
+        showRound();
       }
     }
     cards.append(card);

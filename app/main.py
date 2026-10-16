@@ -10,7 +10,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from fastapi.responses import FileResponse, HTMLResponse, Response
 from PIL import Image, ImageDraw, UnidentifiedImageError
 
@@ -78,13 +78,16 @@ class ProbeRequest(BaseModel):
 
 
 class HumanScores(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     problem_fidelity: int | None = Field(default=None, ge=1, le=5, strict=True)
     solution_correctness: int | None = Field(default=None, ge=1, le=5, strict=True)
-    visualization_pedagogy: int | None = Field(default=None, ge=1, le=5, strict=True)
-    page_interaction: int | None = Field(default=None, ge=1, le=5, strict=True)
+    page_quality: int | None = Field(default=None, ge=1, le=5, strict=True)
+    interaction_quality: int | None = Field(default=None, ge=1, le=5, strict=True)
+    teaching_effectiveness: int | None = Field(default=None, ge=1, le=5, strict=True)
 
 
 class HumanAnnotation(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     scores: HumanScores
     passed: bool | None = Field(default=None, strict=True)
     comment: str = Field(default="", max_length=2000)
