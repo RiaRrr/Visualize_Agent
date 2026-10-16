@@ -55,20 +55,6 @@ async def _run_batch(batch_id: str) -> None:
         if item["status"] in ("queued", "interrupted"):
             if item["status"] == "interrupted":
                 store.set_state(item["id"], "queued", item["current_round"], "批量任务恢复排队", stage="queued")
-            if not item["current_round"]:
-                failed = None
-                for provider, model in ((item["generator_provider"], item["generator_model"]),
-                                        (item["reviewer_provider"], item["reviewer_model"])):
-                    status = catalog.status.get((provider, model))
-                    if not status or time.time() - status.get("checked_at", 0) > 300:
-                        status = await _probe_choice(provider, model)
-                    store.log_event(item["id"], "queued", 0, f"短识图测试 {provider}/{model}：{status['message']}")
-                    if status["state"] != "passed":
-                        failed = f"模型短识图测试失败（{provider}/{model}）：{status['message']}"
-                        break
-                if failed:
-                    store.set_state(item["id"], "error", 0, failed, stage="error")
-                    continue
             await pipeline.run(item["id"])
 
 

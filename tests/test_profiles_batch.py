@@ -1,4 +1,5 @@
 import asyncio
+import importlib
 import json
 
 from app.config import Settings
@@ -62,3 +63,25 @@ def test_batch_task_uses_exact_profile_providers_and_single_round(tmp_path):
     assert store.config(task["id"]) == config
     assert store.artifact(task["id"], result["config_name"]).is_file()
     assert result["generation_seconds"] >= 0 and result["review_seconds"] >= 0
+
+
+def test_batch_runs_without_automatic_model_probe(monkeypatch):
+    main = importlib.import_module("app.main")
+    calls = []
+
+    class BatchStore:
+        def batch(self, batch_id):
+            return [{"id": "first", "status": "queued", "current_round": 0},
+                    {"id": "second", "status": "queued", "current_round": 0}]
+
+    async def run(task_id):
+        calls.append(task_id)
+
+    async def reject_probe(*args):
+        raise AssertionError("批量生成不应自动调用短识图测试")
+
+    monkeypatch.setattr(main, "store", BatchStore())
+    monkeypatch.setattr(main.pipeline, "run", run)
+    monkeypatch.setattr(main, "_probe_choice", reject_probe)
+    asyncio.run(main._run_batch("batch"))
+    assert calls == ["first", "second"]

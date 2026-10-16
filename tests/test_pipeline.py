@@ -49,7 +49,7 @@ def test_revision_and_artifact_history(tmp_path: Path):
     for call in (client.calls[0], client.calls[2]):
         assert "可视化优先原则（最高优先级）" in call[1]
         assert "{{QUESTION}}" not in call[1]
-        assert "题目见本次消息附带的图片" in call[1]
+        assert "题目图片已随本次 API 消息提供" in call[1]
     assert saved["final_name"] and store.artifact(task["id"], saved["final_name"])
     assert store.artifact(task["id"], "../../apikeys.md") is None
     assert saved["stage"] == "passed"
@@ -71,6 +71,8 @@ def test_generator_prompt_uses_current_template():
     assert prompt.startswith("你是一名擅长数学、物理、化学教学设计")
     assert "{{QUESTION}}" in prompt
     assert "可视化优先原则（最高优先级）" in prompt
+    assert "不需要访问工作区" in prompt
+    assert "响应必须直接以 `<!doctype html>` 开始" in prompt
     assert "曲线有折角" in prompt and GOOD_HTML in prompt
 
 

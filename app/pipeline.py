@@ -124,7 +124,7 @@ class Pipeline:
             for round_number in range(len(completed_rounds) + 1, max_rounds + 1):
                 self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：正在调用生成模型", stage="generating")
                 prompt = (config.get("generator_prompt") or generator_prompt()).replace(
-                    "{{QUESTION}}", "题目见本次消息附带的图片；请以图片内容为准。"
+                    "{{QUESTION}}", "题目图片已随本次 API 消息提供；请直接读取这张图片，以图中题目为准。"
                 )
                 if feedback:
                     prompt += f"\n\n上一轮审核意见：\n{feedback}\n请根据意见改进，保留正确部分。上一轮 HTML：\n{previous_html}"
