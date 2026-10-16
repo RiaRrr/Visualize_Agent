@@ -75,13 +75,15 @@ def test_generator_prompt_keeps_project_rules_ahead_of_skill_guidance():
 
 
 def test_model_review_scores_are_bounded_and_keep_pass_independent():
-    review = parse_review(json.dumps({"passed": True, "summary": "通过", "issues": [],
+    review = parse_review(json.dumps({"passed": True, "overall_score": 3, "summary": "通过", "issues": [],
                                       "scores": {**MODEL_SCORES, "interaction_quality": True,
                                                  "teaching_effectiveness": 6}}))
     assert review["passed"] is True
+    assert review["overall_score"] == 3
     assert review["scores"]["problem_fidelity"] == 5
     assert review["scores"]["interaction_quality"] is None
     assert review["scores"]["teaching_effectiveness"] is None
+    assert parse_review(json.dumps({"passed": False, "overall_score": 6, "issues": ["错误"]}))["overall_score"] is None
 
 
 def test_existing_history_gets_log_summary(tmp_path: Path):

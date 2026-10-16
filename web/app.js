@@ -23,9 +23,10 @@ const scoreFields = [
 
 function buildModelScores(round) {
   const panel = el('div', 'model-scores');
-  panel.append(el('strong', '', '模型评分'));
+  const overall = round.model_review?.overall_score;
+  panel.append(el('strong', '', `模型评分${overall == null ? '' : ` · 综合 ${overall}/5`}`));
   const scores = round.model_review?.scores || {};
-  if (!scoreFields.some(([name]) => scores[name] != null)) {
+  if (overall == null && !scoreFields.some(([name]) => scores[name] != null)) {
     panel.append(el('small', '', round.review_source === 'local_validator' ? '基础检查未通过，模型未评分' : '本轮无模型分数'));
     return panel;
   }
@@ -45,12 +46,12 @@ function buildAnnotation(task, round) {
   const current = annotationDrafts.get(key) || saved;
   const panel = el('div', 'annotation-panel');
   panel.append(el('h5', '', '我的评分'));
-  panel.append(el('p', 'annotation-hint', '1 分＝严重问题，3 分＝部分达标，5 分＝优秀；可留空。教学效果看学生能否从零清晰了解解法。合格判定独立填写。'));
+  panel.append(el('p', 'annotation-hint', '五个维度各评 1–5 分；综合评分评 0–5 分，0＝不合格、3＝基本合格、5＝优秀，可留空。教学效果看学生能否从零清晰了解解法。'));
   const controls = {};
   function readForm() {
     return {
       scores: Object.fromEntries(scoreFields.map(([name]) => [name, controls[name].value ? Number(controls[name].value) : null])),
-      passed: controls.passed.value === '' ? null : controls.passed.value === 'true',
+      overall_score: controls.overall_score.value === '' ? null : Number(controls.overall_score.value),
       comment: controls.comment.value
     };
   }
@@ -65,13 +66,15 @@ function buildAnnotation(task, round) {
     select.value = current.scores?.[name] == null ? '' : String(current.scores[name]);
     select.addEventListener('change', remember); controls[name] = select; wrap.append(select); panel.append(wrap);
   }
-  const passField = el('label', 'score-field'); passField.append(el('span', '', '是否合格'));
-  const passSelect = el('select');
-  for (const [value, label] of [['', '未标注'], ['true', '合格'], ['false', '不合格']]) {
-    const option = el('option', '', label); option.value = value; passSelect.append(option);
+  const overallField = el('label', 'score-field'); overallField.append(el('span', '', '综合评分'));
+  const overallSelect = el('select');
+  const blankOverall = el('option', '', '未评分'); blankOverall.value = ''; overallSelect.append(blankOverall);
+  for (let score = 0; score <= 5; score++) {
+    const option = el('option', '', `${score} 分`); option.value = String(score); overallSelect.append(option);
   }
-  passSelect.value = current.passed == null ? '' : String(current.passed);
-  passSelect.addEventListener('change', remember); controls.passed = passSelect; passField.append(passSelect); panel.append(passField);
+  const overallScore = current.overall_score ?? (current.passed === true ? 3 : current.passed === false ? 0 : null);
+  overallSelect.value = overallScore == null ? '' : String(overallScore);
+  overallSelect.addEventListener('change', remember); controls.overall_score = overallSelect; overallField.append(overallSelect); panel.append(overallField);
   const commentField = el('label', 'score-field annotation-comment'); commentField.append(el('span', '', '评语（可选）'));
   const comment = el('textarea'); comment.maxLength = 2000; comment.rows = 3; comment.value = current.comment || '';
   comment.addEventListener('input', remember); controls.comment = comment; commentField.append(comment); panel.append(commentField);

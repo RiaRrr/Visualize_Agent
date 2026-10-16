@@ -89,7 +89,7 @@ class HumanScores(BaseModel):
 class HumanAnnotation(BaseModel):
     model_config = ConfigDict(extra="forbid")
     scores: HumanScores
-    passed: bool | None = Field(default=None, strict=True)
+    overall_score: int | None = Field(default=None, ge=0, le=5, strict=True)
     comment: str = Field(default="", max_length=2000)
 
 

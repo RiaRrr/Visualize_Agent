@@ -35,14 +35,14 @@ def test_round_metadata_and_annotation_survive_store_reopen(tmp_path):
     assert all(value is None for value in metadata["model_review"]["scores"].values())
     assert metadata["schema_version"] == 2 and metadata["rubric_version"] == "2.0"
     assert metadata["html_sha256"] == hashlib.sha256(html.encode()).hexdigest()
-    assert metadata["human_review"]["passed"] is None
+    assert metadata["human_review"]["overall_score"] is None
     annotation = {"scores": {"problem_fidelity": 5, "solution_correctness": 4,
                              "page_quality": None, "interaction_quality": 2,
                              "teaching_effectiveness": 5},
-                  "passed": False, "comment": "点位错误"}
+                  "overall_score": 0, "comment": "点位错误"}
     updated = store.update_annotation(task["id"], 1, annotation)
     assert updated["human_review"]["scores"]["page_quality"] is None
-    assert updated["human_review"]["passed"] is False
+    assert updated["human_review"]["overall_score"] == 0
     assert updated["human_review"]["updated_at"]
     reopened = Store(settings)
     assert reopened.get(task["id"])["rounds"][0]["human_review"] == updated["human_review"]
@@ -74,7 +74,7 @@ def test_legacy_round_gets_metadata_without_guessing_model(tmp_path):
     assert metadata["files"]["html"] == "round.html"
 
 
-def test_annotation_api_validates_and_can_clear_label(tmp_path, monkeypatch):
+def test_annotation_api_validates_and_can_clear_overall_score(tmp_path, monkeypatch):
     main = importlib.import_module("app.main")
     store = Store(_settings(tmp_path))
     task = store.create("题.png", "image/png", ".png", b"image")
@@ -85,14 +85,32 @@ def test_annotation_api_validates_and_can_clear_label(tmp_path, monkeypatch):
     url = f"/api/tasks/{task['id']}/rounds/1/annotation"
     scores = {"problem_fidelity": 5, "solution_correctness": None,
               "page_quality": 3, "interaction_quality": 4, "teaching_effectiveness": 5}
-    response = client.put(url, json={"scores": scores, "passed": True, "comment": "可用"})
+    response = client.put(url, json={"scores": scores, "overall_score": 3, "comment": "可用"})
     assert response.status_code == 200
-    assert response.json()["human_review"]["passed"] is True
+    assert response.json()["human_review"]["overall_score"] == 3
     assert client.get(f"/api/tasks/{task['id']}").json()["rounds"][0]["human_review"]["comment"] == "可用"
-    assert client.put(url, json={"scores": {**scores, "problem_fidelity": 6}, "passed": True}).status_code == 422
-    assert client.put(url, json={"scores": {**scores, "page_interaction": 4}, "passed": True}).status_code == 422
-    assert client.put(url, json={"scores": scores, "passed": "yes"}).status_code == 422
+    assert client.put(url, json={"scores": {**scores, "problem_fidelity": 6}, "overall_score": 3}).status_code == 422
+    assert client.put(url, json={"scores": {**scores, "page_interaction": 4}, "overall_score": 3}).status_code == 422
+    assert client.put(url, json={"scores": scores, "overall_score": 6}).status_code == 422
+    assert client.put(url, json={"scores": scores, "passed": True}).status_code == 422
     assert client.put(url.replace("/1/", "/9/"), json={"scores": scores}).status_code == 404
-    cleared = client.put(url, json={"scores": {name: None for name in scores}, "passed": None, "comment": ""})
+    cleared = client.put(url, json={"scores": {name: None for name in scores}, "overall_score": None, "comment": ""})
     assert cleared.status_code == 200
-    assert cleared.json()["human_review"]["passed"] is None
+    assert cleared.json()["human_review"]["overall_score"] is None
+
+
+def test_existing_binary_annotation_maps_to_overall_score(tmp_path):
+    store = Store(_settings(tmp_path))
+    task = store.create("题.png", "image/png", ".png", b"image")
+    saved = store.save_round(task["id"], 1, "<!doctype html><html></html>", None,
+                             {"passed": True, "summary": "通过", "issues": []})
+    path = store.artifact(task["id"], saved["metadata_name"])
+    for passed, expected in ((False, 0), (True, 3)):
+        metadata = json.loads(path.read_text(encoding="utf-8"))
+        metadata["human_review"] = {"scores": {}, "passed": passed, "comment": "旧标注", "updated_at": "2026-10-16"}
+        path.write_text(json.dumps(metadata), encoding="utf-8")
+        assert store.get(task["id"])["rounds"][0]["human_review"]["overall_score"] == expected
+        Store(_settings(tmp_path))
+        migrated = json.loads(path.read_text(encoding="utf-8"))["human_review"]
+        assert migrated["overall_score"] == expected
+        assert migrated["passed"] is passed

@@ -12,12 +12,21 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from .config import Settings
-from .rubric import empty_scores, normalize_scores
+from .rubric import empty_scores, normalize_overall_score, normalize_scores
 
 TIMEZONE = ZoneInfo("Asia/Shanghai")
 def empty_human_review() -> dict:
-    return {"scores": empty_scores(), "passed": None,
+    return {"scores": empty_scores(), "overall_score": None,
             "comment": "", "updated_at": None}
+
+
+def normalize_human_review(value: object) -> dict:
+    review = value if isinstance(value, dict) else {}
+    score = review.get("overall_score")
+    if type(score) is not int or not 0 <= score <= 5:
+        legacy = review.get("passed")
+        score = 3 if legacy is True else 0 if legacy is False else None
+    return {**empty_human_review(), **review, "overall_score": score}
 
 
 def write_json_atomic(path: Path, data: dict) -> None:
@@ -125,7 +134,8 @@ class Store:
             "model_review": {"source": round_info.get("review_source"),
                              "passed": bool(round_info["passed"]), "summary": round_info["summary"],
                              "issues": json.loads(round_info["issues_json"]),
-                             "scores": normalize_scores(review_file.get("scores"))},
+                             "scores": normalize_scores(review_file.get("scores")),
+                             "overall_score": normalize_overall_score(review_file.get("overall_score"))},
             "human_review": empty_human_review(),
         }
 
@@ -140,6 +150,13 @@ class Store:
             if not path.is_file():
                 path.parent.mkdir(parents=True, exist_ok=True)
                 write_json_atomic(path, self._round_metadata(record, record))
+            else:
+                metadata = json.loads(path.read_text(encoding="utf-8"))
+                review = metadata.get("human_review")
+                normalized = normalize_human_review(review)
+                if review != normalized:
+                    metadata["human_review"] = normalized
+                    write_json_atomic(path, metadata)
             if record["metadata_name"] != metadata_name:
                 db.execute("UPDATE rounds SET metadata_name=? WHERE task_id=? AND number=?",
                            (metadata_name, task_id, record["number"]))
@@ -194,9 +211,10 @@ class Store:
             metadata_name = r.get("metadata_name")
             metadata_path = self.root / task_id / metadata_name if metadata_name else None
             metadata = json.loads(metadata_path.read_text(encoding="utf-8")) if metadata_path and metadata_path.is_file() else {}
-            r["human_review"] = metadata.get("human_review", empty_human_review())
+            r["human_review"] = normalize_human_review(metadata.get("human_review"))
             r["model_review"] = metadata.get("model_review", {})
             r["model_review"]["scores"] = normalize_scores(r["model_review"].get("scores"))
+            r["model_review"]["overall_score"] = normalize_overall_score(r["model_review"].get("overall_score"))
         task["events"] = [dict(event) for event in events]
         return task
 
@@ -272,7 +290,7 @@ class Store:
                 raise LookupError("轮次不存在")
             path = self.root / task_id / round_info["metadata_name"]
             metadata = json.loads(path.read_text(encoding="utf-8"))
-            metadata["human_review"] = {"scores": annotation["scores"], "passed": annotation["passed"],
+            metadata["human_review"] = {"scores": annotation["scores"], "overall_score": annotation["overall_score"],
                                         "comment": annotation["comment"],
                                         "updated_at": datetime.now(TIMEZONE).isoformat()}
             write_json_atomic(path, metadata)

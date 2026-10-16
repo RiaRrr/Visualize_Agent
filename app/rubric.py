@@ -25,14 +25,19 @@ def normalize_scores(value: object) -> dict[str, int | None]:
     return scores
 
 
+def normalize_overall_score(value: object) -> int | None:
+    return value if type(value) is int and 0 <= value <= 5 else None
+
+
 REVIEW_SCORE_INSTRUCTIONS = (
     "按以下五项分别给 1–5 整数分（1=严重问题，3=部分达标，5=优秀）：\n"
     + "\n".join(f"- {key}（{label}）：{description}" for key, label, description in SCORE_FIELDS)
+    + "\n另给整体教学网页一个 0–5 整数综合评分 overall_score：0=不合格，3=基本合格，5=优秀；综合评分独立判断，不机械平均五项分数。"
     + "\n以刚读完题、尚不知道解法的学生视角评价教学效果。按截图实际视觉阅读顺序检查：首屏是否先建立原题关系，而非抢先给出结论或不明来历的控件；左右并排时，控件旁是否先说明从题设如何得到参数与范围，不能用右侧靠后的说明代替。检查首次引入的参数、斜率、控制量、示例值是否从原题条件交代来源、变换依据和合法范围；"
     "如果关键非显然转化被跳过，学生必须先会解题才能理解页面，教学效果不能给高分，并在 issues 中写明缺口。"
     "合格判定独立于分数；题意或解答有实质错误、关键转化缺失、图形明显误导、严重不可读时不得通过。"
     "仅因简单题不需要交互，不应降低交互效果分或判不合格。"
-    "只返回 JSON 对象：{\"passed\":布尔值,\"scores\":{\"problem_fidelity\":1到5整数,\"solution_correctness\":1到5整数,"
+    "只返回 JSON 对象：{\"passed\":布尔值,\"overall_score\":0到5整数,\"scores\":{\"problem_fidelity\":1到5整数,\"solution_correctness\":1到5整数,"
     "\"page_quality\":1到5整数,\"interaction_quality\":1到5整数,\"teaching_effectiveness\":1到5整数},"
     "\"summary\":\"简短结论\",\"issues\":[\"可执行的具体修改意见\"]}。不通过时 issues 至少一项。"
 )
