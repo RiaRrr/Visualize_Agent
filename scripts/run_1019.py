@@ -66,7 +66,7 @@ class RecordedClient:
         (self.folder / f"{stem}.prompt.txt").write_text(prompt, encoding="utf-8")
         (self.folder / f"{stem}.input.json").write_text(json.dumps({
             "model": model, "thinking": "enabled" if role == "reviewer" else self.thinking,
-            "reasoning_effort": self.effort if role == "generator" else None,
+            "reasoning_effort": (self.effort or kwargs.get('reasoning_effort')) if role == "generator" else kwargs.get('reasoning_effort'),
             "images": [p.name for p, _ in images], "max_tokens": kwargs["max_tokens"],
         }, ensure_ascii=False, indent=2), encoding="utf-8")
         client = ModelClient(replace(self.settings, deepseek_thinking="enabled" if role == "reviewer" else self.thinking))

@@ -93,7 +93,7 @@ def chat_image_content(path: Path, mime: str) -> dict:
 
 def response_text(data: dict) -> str:
     if data.get("status") == "incomplete" and (data.get("incomplete_details") or {}).get("reason") == "max_output_tokens":
-        raise ModelError("模型输出达到 max_output_tokens 上限，页面可能不完整；请调高生成上限或要求更精简的页面")
+        raise ModelError("模型输出达到 max_output_tokens 上限，响应可能不完整；请调整本环节输出预算或要求更精简的输出")
     if isinstance(data.get("output_text"), str) and data["output_text"]:
         return data["output_text"]
     parts = []
@@ -108,7 +108,7 @@ def response_text(data: dict) -> str:
 
 def message_text(data: dict) -> str:
     if data.get("stop_reason") == "max_tokens":
-        raise ModelError("模型输出达到 max_tokens 上限，页面可能不完整；请调高生成上限或要求更精简的页面")
+        raise ModelError("模型输出达到 max_tokens 上限，响应可能不完整；请调整本环节输出预算或要求更精简的输出")
     parts = [item.get("text", "") for item in data.get("content", []) if item.get("type") == "text"]
     if not parts:
         raise ModelError("模型没有返回文字内容")
@@ -121,7 +121,7 @@ def chat_text(data: dict) -> str:
         raise ModelError("Chat Completions 接口没有返回 choices")
     choice = choices[0]
     if choice.get("finish_reason") == "length":
-        raise ModelError("模型输出达到 max_completion_tokens 上限，页面可能不完整")
+        raise ModelError("模型输出达到 max_completion_tokens 上限，响应可能不完整（预算也可能被推理消耗）")
     content = (choice.get("message") or {}).get("content")
     if isinstance(content, str) and content:
         return content
