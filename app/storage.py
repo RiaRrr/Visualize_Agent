@@ -90,6 +90,7 @@ class Store:
                 "run_mode": "TEXT", "max_rounds": "INTEGER", "config_name": "TEXT",
                 "generator_mode": "TEXT NOT NULL DEFAULT 'vision'", "reviewer_mode": "TEXT NOT NULL DEFAULT 'vision'",
                 "ocr_provider": "TEXT", "ocr_model": "TEXT",
+                "generation_strategy": "TEXT NOT NULL DEFAULT 'direct'",
                 "route_subject": "TEXT", "router_provider": "TEXT", "router_model": "TEXT",
                 "generation_seconds": "REAL NOT NULL DEFAULT 0", "review_seconds": "REAL NOT NULL DEFAULT 0",
             }
@@ -165,6 +166,7 @@ class Store:
             "routing": {"subject": task.get("route_subject"), "provider": task.get("router_provider"),
                         "model": task.get("router_model")},
             "run_mode": task["run_mode"], "max_rounds": task["max_rounds"],
+            "generation_strategy": task.get("generation_strategy") or "direct",
             "model_review": {"source": round_info.get("review_source"),
                              "passed": bool(round_info["passed"]), "summary": round_info["summary"],
                              "issues": json.loads(round_info["issues_json"]),
@@ -174,12 +176,23 @@ class Store:
             "metrics": {"stages": [item for item in task.get("stage_runs", []) if item["round_number"] == round_info["number"]],
                         "api_calls": [item for item in task.get("api_calls", []) if item["round_number"] == round_info["number"]]},
         }
+        raw_review_name = f"round_{round_info['number']:02d}.model_review_raw.txt"
+        if (self.root / task["id"] / raw_review_name).is_file():
+            metadata["files"]["model_review_raw"] = raw_review_name
         if task.get("ocr_model"):
             metadata["input_pipeline"] = {"generator_mode": task.get("generator_mode") or "vision",
                                           "reviewer_mode": task.get("reviewer_mode") or "vision",
                                           "ocr_provider": task.get("ocr_provider"), "ocr_model": task.get("ocr_model")}
             metadata["files"].update({"question_ocr": self.question_ocr_name(task["id"]),
                                       "page_description": self.page_description_name(task["id"], round_info["number"])})
+        if task.get("generation_strategy") == "guided_math":
+            plan_path = self.root / task["id"] / "math_plan.accepted.json"
+            metadata["files"]["math_plan"] = plan_path.name if plan_path.is_file() else None
+            if round_info["number"] == 1:
+                metadata["metrics"]["planning_api_calls"] = [item for item in task.get("api_calls", [])
+                                                              if item["role"] in ("math_plan", "math_plan_review")]
+                metadata["metrics"]["planning_stages"] = [item for item in task.get("stage_runs", [])
+                                                           if item["stage"] in ("math_planning", "math_plan_review")]
         return metadata
 
     def _backfill_metadata(self, db: sqlite3.Connection) -> None:
@@ -230,8 +243,9 @@ class Store:
             db.execute("""INSERT INTO tasks (id, created_at, status, image_name, image_mime, original_name,
                        batch_id, generator_provider, generator_model, reviewer_provider, reviewer_model,
                        profile_id, profile_name, profile_version, subject, run_mode, max_rounds, config_name,
-                       router_provider, router_model, generator_mode, reviewer_mode, ocr_provider, ocr_model)
-                       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                       router_provider, router_model, generator_mode, reviewer_mode, ocr_provider, ocr_model,
+                       generation_strategy)
+                       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                        (task_id, datetime.now(TIMEZONE).isoformat(), "queued", image_name, mime, original_name,
                         batch_id, config.get("generator_provider"), config.get("generator_model"),
                         config.get("reviewer_provider"), config.get("reviewer_model"), config.get("profile_id"),
@@ -239,7 +253,7 @@ class Store:
                         config.get("run_mode"), config.get("max_rounds"), config_name,
                         config.get("router_provider"), config.get("router_model"),
                         config.get("generator_mode", "vision"), config.get("reviewer_mode", "vision"),
-                        config.get("ocr_provider"), config.get("ocr_model")))
+                        config.get("ocr_provider"), config.get("ocr_model"), config.get("generation_strategy", "direct")))
             db.execute("INSERT INTO events (task_id, created_at, stage, round_number, message) VALUES (?,?,?,?,?)",
                        (task_id, datetime.now(TIMEZONE).isoformat(), "queued", 0, "题目图片已保存，等待开始生成"))
             db.execute("INSERT INTO stage_runs (task_id, round_number, stage, started_at) VALUES (?,?,?,?)",
@@ -257,6 +271,7 @@ class Store:
             calls = db.execute("SELECT * FROM api_calls WHERE task_id=? ORDER BY id", (task_id,)).fetchall()
         task = dict(row)
         task["question_ocr_name"] = self.question_ocr_name(task_id)
+        task["math_plan_name"] = "math_plan.accepted.json" if (self.root / task_id / "math_plan.accepted.json").is_file() else None
         task["rounds"] = [{**dict(r), "issues": json.loads(r["issues_json"])} for r in rounds]
         for r in task["rounds"]:
             r["page_description_name"] = self.page_description_name(task_id, r["number"])
@@ -275,6 +290,11 @@ class Store:
         for item in task["rounds"]:
             item["metrics"] = {"stages": [stage for stage in task["stage_runs"] if stage["round_number"] == item["number"]],
                                "api_calls": [call for call in task["api_calls"] if call["round_number"] == item["number"]]}
+            if task.get("generation_strategy") == "guided_math" and item["number"] == 1:
+                item["metrics"]["planning_stages"] = [stage for stage in task["stage_runs"]
+                                                      if stage["stage"] in ("math_planning", "math_plan_review")]
+                item["metrics"]["planning_api_calls"] = [call for call in task["api_calls"]
+                                                         if call["role"] in ("math_plan", "math_plan_review")]
         chosen = best_round(task["rounds"])
         task["best_round_number"] = chosen["number"] if chosen else None
         task["best_round_score"] = chosen["model_review"]["overall_score"] if chosen else None
@@ -285,7 +305,7 @@ class Store:
             rows = db.execute("""SELECT id, created_at, status, stage, original_name, current_round, message,
                                batch_id, generator_provider, generator_model, reviewer_provider, reviewer_model,
                                profile_id, profile_name, profile_version, run_mode, max_rounds,
-                               generator_mode, reviewer_mode, ocr_provider, ocr_model,
+                               generator_mode, reviewer_mode, ocr_provider, ocr_model, generation_strategy,
                                route_subject, router_provider, router_model,
                                generation_seconds, review_seconds FROM tasks ORDER BY created_at DESC""").fetchall()
         return [dict(row) for row in rows]
@@ -373,7 +393,7 @@ class Store:
         path = self.root / task_id / item["metadata_name"]
         with self._annotation_lock:
             metadata = json.loads(path.read_text(encoding="utf-8"))
-            metadata["metrics"] = item["metrics"]
+            metadata["metrics"] = {**metadata.get("metrics", {}), **item["metrics"]}
             write_json_atomic(path, metadata)
 
     def log_event(self, task_id: str, stage: str, round_number: int, message: str) -> None:
@@ -441,9 +461,13 @@ class Store:
             return None
         allowed = {task["image_name"], task["final_name"], task["config_name"]}
         allowed.update((self.question_ocr_name(task_id),))
+        if task.get("generation_strategy") == "guided_math":
+            allowed.update(path.name for path in (self.root / task_id).glob("math_plan*.json"))
+            allowed.update(path.name for path in (self.root / task_id).glob("math_plan*.raw.txt"))
         for round_info in task["rounds"]:
             allowed.update((round_info["html_name"], round_info["screenshot_name"],
                             round_info["review_name"], round_info["metadata_name"],
+                            f"round_{round_info['number']:02d}.model_review_raw.txt",
                             self.page_description_name(task_id, round_info["number"])))
         if filename not in allowed:
             return None

@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>题目可视化实验汇报</title>
+<style>
+:root{color-scheme:light;--ink:#142c39;--muted:#55707e;--line:#d8e5e8;--teal:#087d78;--bg:#f2f7f8}
+*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1440px;margin:auto;padding:28px}header{background:linear-gradient(135deg,#073d4d,#0b7872);color:white;border-radius:24px;padding:32px 38px}
+header h1{font-size:clamp(28px,4vw,48px);line-height:1.15;margin:8px 0}header p{max-width:850px;color:#ddf3ef}
+.kicker{letter-spacing:.12em;text-transform:uppercase;font-size:12px;font-weight:800;color:#a9eee1}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.stats span{background:#ffffff20;border:1px solid #ffffff35;border-radius:12px;padding:8px 14px}
+h2{font-size:25px;margin:34px 0 14px}h3{margin:2px 0;font-size:20px}.flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.flow section,.note,.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px}
+.stack{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0}.stack span{background:#dcefee;border:1px solid #bddbd9;color:#075f5a;border-radius:9px;padding:7px 10px;font-size:14px;font-weight:700}.stack b{color:#6b8b95}
+.flow ol{padding-left:23px;margin:9px 0}.flow li{padding:4px 0}.note{margin-top:16px;background:#fffaf0;border-color:#e8dcb6}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 20px}select{background:white;border:1px solid #bdd3d8;border-radius:9px;padding:10px 12px;color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}.card{min-width:0;display:flex;flex-direction:column}
+.card-head{display:flex;justify-content:space-between;gap:12px}.card-head p{margin:0 0 10px;color:var(--muted)}.eyebrow{font-size:12px;color:var(--teal);font-weight:800}
+.score{background:#ddf3ef;color:#086c65;border-radius:10px;padding:5px 8px;align-self:start;white-space:nowrap}
+.preview{display:block;height:240px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#eef4f5}
+.preview img{width:100%;height:100%;object-fit:contain;object-position:top}.empty{height:240px;display:grid;place-items:center;color:var(--muted);background:#eef4f5;border-radius:12px}
+.effect{min-height:72px}.metrics{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.metrics span{font-size:12px;background:#eaf1f3;border-radius:7px;padding:4px 6px}
+.links{display:flex;flex-wrap:wrap;gap:8px}.links a,.history{color:var(--teal);font-weight:700}.history{margin-top:14px}.id{display:block;color:#7b939d;margin-top:8px;overflow-wrap:anywhere}
+.stages{font-size:13px;color:var(--muted);margin-bottom:11px}.stages summary{cursor:pointer;color:#087d78;font-weight:700}.stages p{margin:5px 0}
+footer{color:var(--muted);padding:30px 0}a:hover{text-decoration-thickness:2px}
+@media(max-width:740px){.wrap{padding:12px}header{padding:24px}.flow{grid-template-columns:1fr}.cards{grid-template-columns:1fr}}
+</style></head><body><div class="wrap"><header><div class="kicker">Visualize Agent · 实验汇报</div>
+<h1>从题图到可交互解题页面</h1><p>同题比较直接生成与先规划后生成。每个案例保存逐轮 HTML、截图、模型审核、token 与用时，方便人工复核。</p>
+<div class="stats"><span>25 个任务</span><span>66 轮 HTML</span><span>3 道题</span><span>更新：2026-10-19 12:20</span></div></header>
+<h2>架构与实验路径</h2><div class="stack"><span>浏览器上传 / 历史 / 人工评分</span><b>→</b><span>FastAPI 任务接口</span><b>→</b><span>Pipeline 编排</span><b>→</b><span>统一 ModelClient</span><b>→</b><span>Chrome 渲染与交互检查</span><b>→</b><span>SQLite 索引 + data_v2 文件</span></div><div class="flow">
+<section><h3>共用前处理</h3><ol><li>上传题图并保存带时间戳的原图。</li><li>多模态模型分流学科；本次数学实验共用同一份题目 OCR 与图形描述。</li><li>加载固定的通用可视化要求、数学经验和输出格式要求。</li></ol></section>
+<section><h3>直接生成</h3><ol><li>OCR 题意送给文本生成模型，生成完整 HTML。</li><li>本地检查源码，浏览器渲染并试用可见交互。</li><li>题意、截图描述和源码送审核模型评分并提修改意见；固定三轮。</li></ol></section>
+<section><h3>规划后生成</h3><ol><li>同一生成模型先输出公开的解题与可视化规划 JSON。</li><li>独立文本模型核对规划，最多三次尝试；未通过则停止。</li><li>原版生成 Prompt 加核对过的规划，再进入相同三轮 HTML 流程。</li></ol></section>
+<section><h3>存档与查看</h3><ol><li>每轮 HTML、截图、模型审核、人工评分和 API 阶段记录存入 data_v2。</li><li>历史页显示模型、配置、轮次及最佳轮；本页链接到所有轮次。</li><li>OCR 共用，不重复计入各任务的 token 与 API 用时。</li></ol></section></div>
+<div class="note"><strong>评价口径：</strong>自动审核分可能误判数学结论或忽略页面问题；10.17 双曲线规划版虽被自动判为通过，最终值域仍漏掉内部不可取的 2 与 30/19。下面“效果观察”结合了人工核对。V2、V4.1 与 10.17 的规划提示比 V1 更具体，不能把跨批次差异只归因于模型。10.17 型号使用项目中的另一把网关密钥；两把密钥的可见模型目录不同。</div>
+<h2>案例与逐轮文件</h2><div class="filters">
+<select id="case"><option value="">全部题目</option><option value="triangle">直角三角形</option><option value="parabola">抛物线与面积</option><option value="conic">双曲线与椭圆</option></select>
+<select id="model"><option value="">全部模型</option><option value="deepseek-v4-1-flash-260910">deepseek-v4-1-flash-260910</option><option value="deepseek-v4-1-flash-261017">deepseek-v4-1-flash-261017</option><option value="deepseek-v4-flash">deepseek-v4-flash</option><option value="qwen3.6-flash">qwen3.6-flash</option></select>
+<select id="strategy"><option value="">两种路径</option><option value="direct">直接生成</option><option value="guided_math">规划后生成</option></select></div>
+<div class="cards" id="cards">
+    <article class="card" data-case="conic" data-model="deepseek-v4-1-flash-261017" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek 10.17 跟进 · 双曲线与椭圆</span>
+        <h3>deepseek-v4-1-flash-261017</h3><p>直接生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">4/5</strong></div>
+      <a class="preview" href="data_v2/20261019_115943_378_4cda288d/20261019_120350_162_round_02.html" target="_blank"><img loading="lazy" src="data_v2/20261019_115943_378_4cda288d/20261019_120350_162_round_02.png" alt="最佳轮次截图"></a>
+      <p class="effect">三轮最高 4 分；仍有定点推导或最终范围缺失等问题。</p>
+      <div class="metrics"><span>输入 75908 token</span><span>输出 55314 token</span>
+      <span>API 360.2 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 121.9 秒 · 截图描述 37.4 秒 · 页面审核 200.9 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_115943_378_4cda288d/20261019_120158_649_round_01.html" target="_blank">第 1 轮 · 2/5</a> <a href="data_v2/20261019_115943_378_4cda288d/20261019_120350_162_round_02.html" target="_blank">第 2 轮 · 4/5</a> <a href="data_v2/20261019_115943_378_4cda288d/20261019_120551_123_round_03.html" target="_blank">第 3 轮 · 2/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_115943_378_4cda288d" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_115943_378_4cda288d</small>
+    </article>
+
+    <article class="card" data-case="conic" data-model="deepseek-v4-1-flash-261017" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek 10.17 跟进 · 双曲线与椭圆</span>
+        <h3>deepseek-v4-1-flash-261017</h3><p>规划后生成 · passed · 3 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_120551_902_2883fff4/20261019_121815_446_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_120551_902_2883fff4/20261019_121815_446_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">规划审核通过，但漏掉区间内部不可取值 2 与 30/19；生成页面沿用错误区间，自动审核首轮未发现。</p>
+      <div class="metrics"><span>输入 142449 token</span><span>输出 113528 token</span>
+      <span>API 680.5 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 92.4 秒 · 规划核对 173.1 秒 · HTML 生成 115.0 秒 · 截图描述 87.1 秒 · 页面审核 212.9 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_120551_902_2883fff4/20261019_121415_161_round_01.html" target="_blank">第 1 轮 · 3/5</a> <a href="data_v2/20261019_120551_902_2883fff4/20261019_121605_534_round_02.html" target="_blank">第 2 轮 · 5/5 ✓</a> <a href="data_v2/20261019_120551_902_2883fff4/20261019_121815_446_round_03.html" target="_blank">第 3 轮 · 5/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_120551_902_2883fff4" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_120551_902_2883fff4</small>
+    </article>
+
+    <article class="card" data-case="parabola" data-model="deepseek-v4-1-flash-261017" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek 10.17 跟进 · 抛物线与面积</span>
+        <h3>deepseek-v4-1-flash-261017</h3><p>直接生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">2/5</strong></div>
+      <a class="preview" href="data_v2/20261019_115944_086_38068f71/20261019_120449_227_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_115944_086_38068f71/20261019_120449_227_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">三轮最高 2 分；末轮静态区间与交互计算互相矛盾。</p>
+      <div class="metrics"><span>输入 40817 token</span><span>输出 44578 token</span>
+      <span>API 297.5 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 87.5 秒 · 截图描述 19.1 秒 · 页面审核 190.9 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_115944_086_38068f71/20261019_120020_914_round_01.html" target="_blank">第 1 轮 · 未评分</a> <a href="data_v2/20261019_115944_086_38068f71/20261019_120238_800_round_02.html" target="_blank">第 2 轮 · 2/5</a> <a href="data_v2/20261019_115944_086_38068f71/20261019_120449_227_round_03.html" target="_blank">第 3 轮 · 2/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_115944_086_38068f71" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_115944_086_38068f71</small>
+    </article>
+
+    <article class="card" data-case="parabola" data-model="deepseek-v4-1-flash-261017" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek 10.17 跟进 · 抛物线与面积</span>
+        <h3>deepseek-v4-1-flash-261017</h3><p>规划后生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_120449_895_e33a04fe/20261019_121207_950_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_120449_895_e33a04fe/20261019_121207_950_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">三轮最高 5 分但均未获通过；第 2 轮的主图、局部示意和范围图联动，人工查看有明显教学价值。</p>
+      <div class="metrics"><span>输入 102968 token</span><span>输出 71634 token</span>
+      <span>API 430.0 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 23.6 秒 · 规划核对 60.4 秒 · HTML 生成 117.9 秒 · 截图描述 41.8 秒 · 页面审核 186.3 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_120449_895_e33a04fe/20261019_120815_354_round_01.html" target="_blank">第 1 轮 · 4/5</a> <a href="data_v2/20261019_120449_895_e33a04fe/20261019_121016_671_round_02.html" target="_blank">第 2 轮 · 5/5</a> <a href="data_v2/20261019_120449_895_e33a04fe/20261019_121207_950_round_03.html" target="_blank">第 3 轮 · 5/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_120449_895_e33a04fe" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_120449_895_e33a04fe</small>
+    </article>
+
+    <article class="card" data-case="triangle" data-model="deepseek-v4-1-flash-261017" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek 10.17 跟进 · 直角三角形</span>
+        <h3>deepseek-v4-1-flash-261017</h3><p>直接生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">4/5</strong></div>
+      <a class="preview" href="data_v2/20261019_115943_372_11133138/20261019_120248_131_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_115943_372_11133138/20261019_120248_131_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">前两轮按钮交互触发脚本错误；第 3 轮可用但双控制入口同步仍有疑点，最高 4 分。</p>
+      <div class="metrics"><span>输入 39925 token</span><span>输出 36176 token</span>
+      <span>API 178.0 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 116.8 秒 · 截图描述 12.6 秒 · 页面审核 48.6 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_115943_372_11133138/20261019_120032_590_round_01.html" target="_blank">第 1 轮 · 未评分</a> <a href="data_v2/20261019_115943_372_11133138/20261019_120109_772_round_02.html" target="_blank">第 2 轮 · 未评分</a> <a href="data_v2/20261019_115943_372_11133138/20261019_120248_131_round_03.html" target="_blank">第 3 轮 · 4/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_115943_372_11133138" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_115943_372_11133138</small>
+    </article>
+
+    <article class="card" data-case="triangle" data-model="deepseek-v4-1-flash-261017" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek 10.17 跟进 · 直角三角形</span>
+        <h3>deepseek-v4-1-flash-261017</h3><p>规划后生成 · passed · 3 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_120248_763_dc69c966/20261019_120706_258_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_120248_763_dc69c966/20261019_120706_258_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">第 2、3 轮自动通过；中文分步主图清晰，原题边长默认锁定，拓展滑块需主动开启。</p>
+      <div class="metrics"><span>输入 63793 token</span><span>输出 39230 token</span>
+      <span>API 248.5 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 6.6 秒 · 规划核对 21.1 秒 · HTML 生成 104.9 秒 · 截图描述 22.7 秒 · 页面审核 93.1 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_120248_763_dc69c966/20261019_120458_394_round_01.html" target="_blank">第 1 轮 · 4/5</a> <a href="data_v2/20261019_120248_763_dc69c966/20261019_120600_484_round_02.html" target="_blank">第 2 轮 · 5/5 ✓</a> <a href="data_v2/20261019_120248_763_dc69c966/20261019_120706_258_round_03.html" target="_blank">第 3 轮 · 5/5 ✓</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_120248_763_dc69c966" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_120248_763_dc69c966</small>
+    </article>
+
+    <article class="card" data-case="conic" data-model="deepseek-v4-1-flash-260910" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek V4.1 跟进 · 双曲线与椭圆</span>
+        <h3>deepseek-v4-1-flash-260910</h3><p>直接生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">4/5</strong></div>
+      <a class="preview" href="data_v2/20261019_111718_294_ee7122c1/20261019_115502_323_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_111718_294_ee7122c1/20261019_115502_323_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">需人工复核数学结论与交互效果。</p>
+      <div class="metrics"><span>输入 63716 token</span><span>输出 47526 token</span>
+      <span>API 1299.1 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 160.3 秒 · 截图描述 44.4 秒 · 页面审核 1094.4 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_111718_294_ee7122c1/20261019_111943_760_round_01.html" target="_blank">第 1 轮 · 2/5</a> <a href="data_v2/20261019_111718_294_ee7122c1/20261019_112212_095_round_02.html" target="_blank">第 2 轮 · 3/5</a> <a href="data_v2/20261019_111718_294_ee7122c1/20261019_115502_323_round_03.html" target="_blank">第 3 轮 · 4/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_111718_294_ee7122c1" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_111718_294_ee7122c1</small>
+    </article>
+
+    <article class="card" data-case="conic" data-model="deepseek-v4-1-flash-260910" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek V4.1 跟进 · 双曲线与椭圆</span>
+        <h3>deepseek-v4-1-flash-260910</h3><p>规划后生成 · error · 0 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">—</strong></div>
+      <div class="empty">尚无 HTML 截图</div>
+      <p class="effect">独立规划核对三次未通过，未生成 HTML；最后一次指出定点求解错误。</p>
+      <div class="metrics"><span>输入 47976 token</span><span>输出 52563 token</span>
+      <span>API 382.0 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 145.9 秒 · 规划核对 236.1 秒</p></details>
+      <div class="links">规划阶段未生成 HTML</div>
+      <a class="history" href="http://localhost:8001/?task=20261019_114306_562_14a35149" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_114306_562_14a35149</small>
+    </article>
+
+    <article class="card" data-case="parabola" data-model="deepseek-v4-1-flash-260910" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek V4.1 跟进 · 抛物线与面积</span>
+        <h3>deepseek-v4-1-flash-260910</h3><p>直接生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_111650_220_65901d53/20261019_115506_792_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_111650_220_65901d53/20261019_115506_792_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">第 1 轮区间错误；第 2、3 轮写出正确区间 (1/6, 13/60)，自动审核仍未判通过。</p>
+      <div class="metrics"><span>输入 92305 token</span><span>输出 70694 token</span>
+      <span>API 1421.5 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 1152.2 秒 · 截图描述 65.6 秒 · 页面审核 203.8 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_111650_220_65901d53/20261019_112038_914_round_01.html" target="_blank">第 1 轮 · 1/5</a> <a href="data_v2/20261019_111650_220_65901d53/20261019_112332_096_round_02.html" target="_blank">第 2 轮 · 5/5</a> <a href="data_v2/20261019_111650_220_65901d53/20261019_115506_792_round_03.html" target="_blank">第 3 轮 · 5/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_111650_220_65901d53" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_111650_220_65901d53</small>
+    </article>
+
+    <article class="card" data-case="parabola" data-model="deepseek-v4-1-flash-260910" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek V4.1 跟进 · 抛物线与面积</span>
+        <h3>deepseek-v4-1-flash-260910</h3><p>规划后生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_114309_508_b242138c/20261019_115743_346_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_114309_508_b242138c/20261019_115743_346_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">三轮均未判通过；第 2 轮审核 JSON 原始文本已修复归档，第 3 轮自动分 5。规划增加了 token 成本。</p>
+      <div class="metrics"><span>输入 132942 token</span><span>输出 115798 token</span>
+      <span>API 820.1 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 89.7 秒 · 规划核对 181.7 秒 · HTML 生成 181.9 秒 · 截图描述 33.7 秒 · 页面审核 333.2 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_114309_508_b242138c/20261019_115016_902_round_01.html" target="_blank">第 1 轮 · 4/5</a> <a href="data_v2/20261019_114309_508_b242138c/20261019_115526_972_round_02.html" target="_blank">第 2 轮 · 4/5</a> <a href="data_v2/20261019_114309_508_b242138c/20261019_115743_346_round_03.html" target="_blank">第 3 轮 · 5/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_114309_508_b242138c" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_114309_508_b242138c</small>
+    </article>
+
+    <article class="card" data-case="triangle" data-model="deepseek-v4-1-flash-260910" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek V4.1 跟进 · 直角三角形</span>
+        <h3>deepseek-v4-1-flash-260910</h3><p>直接生成 · passed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_111650_241_b2105b99/20261019_112036_921_round_02.html" target="_blank"><img loading="lazy" src="data_v2/20261019_111650_241_b2105b99/20261019_112036_921_round_02.png" alt="最佳轮次截图"></a>
+      <p class="effect">第 2 轮自动通过；图形和面积关系清楚，但部分标签重叠，滑块改变原题固定边长。</p>
+      <div class="metrics"><span>输入 49977 token</span><span>输出 35598 token</span>
+      <span>API 298.3 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 130.0 秒 · 截图描述 32.1 秒 · 页面审核 136.2 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_111650_241_b2105b99/20261019_111859_368_round_01.html" target="_blank">第 1 轮 · 5/5</a> <a href="data_v2/20261019_111650_241_b2105b99/20261019_112036_921_round_02.html" target="_blank">第 2 轮 · 5/5 ✓</a> <a href="data_v2/20261019_111650_241_b2105b99/20261019_112216_218_round_03.html" target="_blank">第 3 轮 · 4/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_111650_241_b2105b99" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_111650_241_b2105b99</small>
+    </article>
+
+    <article class="card" data-case="triangle" data-model="deepseek-v4-1-flash-260910" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">DeepSeek V4.1 跟进 · 直角三角形</span>
+        <h3>deepseek-v4-1-flash-260910</h3><p>规划后生成 · passed · 3 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_112224_596_3c089fe9/20261019_113546_907_round_02.html" target="_blank"><img loading="lazy" src="data_v2/20261019_112224_596_3c089fe9/20261019_113546_907_round_02.png" alt="最佳轮次截图"></a>
+      <p class="effect">第 2 轮自动通过；首屏主图更集中、3:4 比例准确；仍为英文且有改变固定边长的滑块。</p>
+      <div class="metrics"><span>输入 66933 token</span><span>输出 46757 token</span>
+      <span>API 371.9 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 23.1 秒 · 规划核对 54.2 秒 · HTML 生成 137.1 秒 · 截图描述 16.8 秒 · 页面审核 140.6 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_112224_596_3c089fe9/20261019_113425_836_round_01.html" target="_blank">第 1 轮 · 5/5</a> <a href="data_v2/20261019_112224_596_3c089fe9/20261019_113546_907_round_02.html" target="_blank">第 2 轮 · 5/5 ✓</a> <a href="data_v2/20261019_112224_596_3c089fe9/20261019_113734_077_round_03.html" target="_blank">第 3 轮 · 4/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_112224_596_3c089fe9" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_112224_596_3c089fe9</small>
+    </article>
+
+    <article class="card" data-case="conic" data-model="deepseek-v4-flash" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 双曲线与椭圆</span>
+        <h3>deepseek-v4-flash</h3><p>直接生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_105151_372_77466b49/20261019_110440_206_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_105151_372_77466b49/20261019_110440_206_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">末轮把向量积范围写为负到正的区间，审核误给 5 分。</p>
+      <div class="metrics"><span>输入 58604 token</span><span>输出 55663 token</span>
+      <span>API 723.3 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 400.6 秒 · 截图描述 55.5 秒 · 页面审核 267.1 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_105151_372_77466b49/20261019_105620_122_round_01.html" target="_blank">第 1 轮 · 1/5</a> <a href="data_v2/20261019_105151_372_77466b49/20261019_110026_182_round_02.html" target="_blank">第 2 轮 · 1/5</a> <a href="data_v2/20261019_105151_372_77466b49/20261019_110440_206_round_03.html" target="_blank">第 3 轮 · 5/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_105151_372_77466b49" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_105151_372_77466b49</small>
+    </article>
+
+    <article class="card" data-case="conic" data-model="deepseek-v4-flash" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 双曲线与椭圆</span>
+        <h3>deepseek-v4-flash</h3><p>规划后生成 · error · 0 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">—</strong></div>
+      <div class="empty">尚无 HTML 截图</div>
+      <p class="effect">三次规划核对未通过，未生成 HTML。</p>
+      <div class="metrics"><span>输入 22924 token</span><span>输出 37528 token</span>
+      <span>API 334.7 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 85.7 秒 · 规划核对 249.1 秒</p></details>
+      <div class="links">规划阶段未生成 HTML</div>
+      <a class="history" href="http://localhost:8001/?task=20261019_110504_741_8f3d96a9" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_110504_741_8f3d96a9</small>
+    </article>
+
+    <article class="card" data-case="conic" data-model="qwen3.6-flash" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 双曲线与椭圆</span>
+        <h3>qwen3.6-flash</h3><p>直接生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">4/5</strong></div>
+      <a class="preview" href="data_v2/20261019_103443_265_7e44065d/20261019_104458_945_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_103443_265_7e44065d/20261019_104458_945_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">页面给出错误下界 3/2，审核误称正确。</p>
+      <div class="metrics"><span>输入 59334 token</span><span>输出 68705 token</span>
+      <span>API 607.6 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 429.3 秒 · 截图描述 20.3 秒 · 页面审核 158.1 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_103443_265_7e44065d/20261019_104021_713_round_01.html" target="_blank">第 1 轮 · 3/5</a> <a href="data_v2/20261019_103443_265_7e44065d/20261019_104159_621_round_02.html" target="_blank">第 2 轮 · 未评分</a> <a href="data_v2/20261019_103443_265_7e44065d/20261019_104458_945_round_03.html" target="_blank">第 3 轮 · 4/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_103443_265_7e44065d" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_103443_265_7e44065d</small>
+    </article>
+
+    <article class="card" data-case="conic" data-model="qwen3.6-flash" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 双曲线与椭圆</span>
+        <h3>qwen3.6-flash</h3><p>规划后生成 · error · 0 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">—</strong></div>
+      <div class="empty">尚无 HTML 截图</div>
+      <p class="effect">三次规划核对未通过，未生成 HTML。</p>
+      <div class="metrics"><span>输入 21830 token</span><span>输出 82652 token</span>
+      <span>API 657.0 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 295.8 秒 · 规划核对 361.1 秒</p></details>
+      <div class="links">规划阶段未生成 HTML</div>
+      <a class="history" href="http://localhost:8001/?task=20261019_104459_576_cef06f2e" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_104459_576_cef06f2e</small>
+    </article>
+
+    <article class="card" data-case="parabola" data-model="deepseek-v4-flash" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 抛物线与面积</span>
+        <h3>deepseek-v4-flash</h3><p>直接生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">2/5</strong></div>
+      <a class="preview" href="data_v2/20261019_105145_532_ae3b3945/20261019_110257_396_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_105145_532_ae3b3945/20261019_110257_396_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">多轮把曲线方程或区间写错，未通过。</p>
+      <div class="metrics"><span>输入 46996 token</span><span>输出 42709 token</span>
+      <span>API 648.6 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 453.3 秒 · 截图描述 33.7 秒 · 页面审核 161.6 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_105145_532_ae3b3945/20261019_105404_155_round_01.html" target="_blank">第 1 轮 · 未评分</a> <a href="data_v2/20261019_105145_532_ae3b3945/20261019_105748_678_round_02.html" target="_blank">第 2 轮 · 2/5</a> <a href="data_v2/20261019_105145_532_ae3b3945/20261019_110257_396_round_03.html" target="_blank">第 3 轮 · 2/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_105145_532_ae3b3945" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_105145_532_ae3b3945</small>
+    </article>
+
+    <article class="card" data-case="parabola" data-model="deepseek-v4-flash" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 抛物线与面积</span>
+        <h3>deepseek-v4-flash</h3><p>规划后生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">4/5</strong></div>
+      <a class="preview" href="data_v2/20261019_110300_786_562642df/20261019_112026_115_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_110300_786_562642df/20261019_112026_115_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">规划后生成三轮，最高审核分 4；仍需人工核对动态约束。</p>
+      <div class="metrics"><span>输入 75754 token</span><span>输出 65040 token</span>
+      <span>API 992.3 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 259.7 秒 · 规划核对 134.7 秒 · HTML 生成 434.3 秒 · 截图描述 30.0 秒 · 页面审核 133.6 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_110300_786_562642df/20261019_111224_904_round_01.html" target="_blank">第 1 轮 · 未评分</a> <a href="data_v2/20261019_110300_786_562642df/20261019_111556_595_round_02.html" target="_blank">第 2 轮 · 未评分</a> <a href="data_v2/20261019_110300_786_562642df/20261019_112026_115_round_03.html" target="_blank">第 3 轮 · 4/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_110300_786_562642df" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_110300_786_562642df</small>
+    </article>
+
+    <article class="card" data-case="parabola" data-model="qwen3.6-flash" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 抛物线与面积</span>
+        <h3>qwen3.6-flash</h3><p>直接生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">3/5</strong></div>
+      <a class="preview" href="data_v2/20261019_103232_986_eab35a73/20261019_103657_806_round_02.html" target="_blank"><img loading="lazy" src="data_v2/20261019_103232_986_eab35a73/20261019_103657_806_round_02.png" alt="最佳轮次截图"></a>
+      <p class="effect">首轮语法错误；后续漏最终范围或交互报错。</p>
+      <div class="metrics"><span>输入 37477 token</span><span>输出 40675 token</span>
+      <span>API 337.9 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 248.1 秒 · 截图描述 18.0 秒 · 页面审核 71.7 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_103232_986_eab35a73/20261019_103421_070_round_01.html" target="_blank">第 1 轮 · 未评分</a> <a href="data_v2/20261019_103232_986_eab35a73/20261019_103657_806_round_02.html" target="_blank">第 2 轮 · 3/5</a> <a href="data_v2/20261019_103232_986_eab35a73/20261019_103818_389_round_03.html" target="_blank">第 3 轮 · 未评分</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_103232_986_eab35a73" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_103232_986_eab35a73</small>
+    </article>
+
+    <article class="card" data-case="parabola" data-model="qwen3.6-flash" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 抛物线与面积</span>
+        <h3>qwen3.6-flash</h3><p>规划后生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">—</strong></div>
+      <div class="empty">尚无 HTML 截图</div>
+      <p class="effect">规划把上界修正为 13/60；HTML 多轮仍有语法、审核格式或运行错误。</p>
+      <div class="metrics"><span>输入 59525 token</span><span>输出 95803 token</span>
+      <span>API 795.0 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 214.4 秒 · 规划核对 125.1 秒 · HTML 生成 359.9 秒 · 截图描述 10.3 秒 · 页面审核 85.4 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_103819_183_3b1a2ea9/20261019_104601_716_round_01.html" target="_blank">第 1 轮 · 未评分</a> <a href="data_v2/20261019_103819_183_3b1a2ea9/20261019_104916_300_round_02.html" target="_blank">第 2 轮 · 未评分</a> <a href="data_v2/20261019_103819_183_3b1a2ea9/20261019_105144_399_round_03.html" target="_blank">第 3 轮 · 未评分</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_103819_183_3b1a2ea9" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_103819_183_3b1a2ea9</small>
+    </article>
+
+    <article class="card" data-case="triangle" data-model="deepseek-v4-flash" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 直角三角形</span>
+        <h3>deepseek-v4-flash</h3><p>直接生成 · passed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_104243_552_c12ddb7a/20261019_105235_885_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_104243_552_c12ddb7a/20261019_105235_885_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">答案正确且自动通过；装饰图占位过大，固定 3/4 的滑块易混淆原题条件。</p>
+      <div class="metrics"><span>输入 53321 token</span><span>输出 35080 token</span>
+      <span>API 583.5 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 427.6 秒 · 截图描述 30.6 秒 · 页面审核 125.3 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_104243_552_c12ddb7a/20261019_104614_428_round_01.html" target="_blank">第 1 轮 · 3/5</a> <a href="data_v2/20261019_104243_552_c12ddb7a/20261019_104940_014_round_02.html" target="_blank">第 2 轮 · 4/5</a> <a href="data_v2/20261019_104243_552_c12ddb7a/20261019_105235_885_round_03.html" target="_blank">第 3 轮 · 5/5 ✓</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_104243_552_c12ddb7a" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_104243_552_c12ddb7a</small>
+    </article>
+
+    <article class="card" data-case="triangle" data-model="deepseek-v4-flash" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 直角三角形</span>
+        <h3>deepseek-v4-flash</h3><p>规划后生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">2/5</strong></div>
+      <a class="preview" href="data_v2/20261019_105237_153_2fec1746/20261019_110120_428_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_105237_153_2fec1746/20261019_110120_428_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">几何比例和正方形绘制出错，最高自动分 2。</p>
+      <div class="metrics"><span>输入 47654 token</span><span>输出 33825 token</span>
+      <span>API 499.6 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 18.1 秒 · 规划核对 17.1 秒 · HTML 生成 293.9 秒 · 截图描述 32.7 秒 · 页面审核 138.1 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_105237_153_2fec1746/20261019_105605_977_round_01.html" target="_blank">第 1 轮 · 2/5</a> <a href="data_v2/20261019_105237_153_2fec1746/20261019_105817_775_round_02.html" target="_blank">第 2 轮 · 2/5</a> <a href="data_v2/20261019_105237_153_2fec1746/20261019_110120_428_round_03.html" target="_blank">第 3 轮 · 2/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_105237_153_2fec1746" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_105237_153_2fec1746</small>
+    </article>
+
+    <article class="card" data-case="triangle" data-model="qwen3.6-flash" data-strategy="direct">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 直角三角形</span>
+        <h3>qwen3.6-flash</h3><p>直接生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_102918_880_9fa3af48/20261019_103602_601_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_102918_880_9fa3af48/20261019_103602_601_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">答案 5 cm 正确；有图文联动，但三轮均未获审核通过。</p>
+      <div class="metrics"><span>输入 63271 token</span><span>输出 44562 token</span>
+      <span>API 393.8 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>HTML 生成 276.4 秒 · 截图描述 11.7 秒 · 页面审核 105.7 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_102918_880_9fa3af48/20261019_103124_946_round_01.html" target="_blank">第 1 轮 · 4/5</a> <a href="data_v2/20261019_102918_880_9fa3af48/20261019_103351_435_round_02.html" target="_blank">第 2 轮 · 3/5</a> <a href="data_v2/20261019_102918_880_9fa3af48/20261019_103602_601_round_03.html" target="_blank">第 3 轮 · 5/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_102918_880_9fa3af48" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_102918_880_9fa3af48</small>
+    </article>
+
+    <article class="card" data-case="triangle" data-model="qwen3.6-flash" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">受控对照 V1 · 直角三角形</span>
+        <h3>qwen3.6-flash</h3><p>规划后生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_103603_667_74b4e44f/20261019_104242_332_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_103603_667_74b4e44f/20261019_104242_332_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">答案正确；初轮缺少文档声明，版面留白明显，规划未稳定改善页面。</p>
+      <div class="metrics"><span>输入 46496 token</span><span>输出 44188 token</span>
+      <span>API 392.4 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 104.2 秒 · 规划核对 48.5 秒 · HTML 生成 158.6 秒 · 截图描述 21.4 秒 · 页面审核 59.7 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_103603_667_74b4e44f/20261019_103942_753_round_01.html" target="_blank">第 1 轮 · 未评分</a> <a href="data_v2/20261019_103603_667_74b4e44f/20261019_104119_835_round_02.html" target="_blank">第 2 轮 · 5/5</a> <a href="data_v2/20261019_103603_667_74b4e44f/20261019_104242_332_round_03.html" target="_blank">第 3 轮 · 5/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_103603_667_74b4e44f" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_103603_667_74b4e44f</small>
+    </article>
+
+    <article class="card" data-case="triangle" data-model="deepseek-v4-flash" data-strategy="guided_math">
+      <div class="card-head"><div><span class="eyebrow">执行提示跟进 V2 · 直角三角形</span>
+        <h3>deepseek-v4-flash</h3><p>规划后生成 · failed · 3 轮<br>
+        HTML 审核：qwen3.6-flash · 规划核对：qwen3.6-35b-a3b</p></div>
+        <strong class="score">5/5</strong></div>
+      <a class="preview" href="data_v2/20261019_110340_976_e5184354/20261019_111538_162_round_03.html" target="_blank"><img loading="lazy" src="data_v2/20261019_110340_976_e5184354/20261019_111538_162_round_03.png" alt="最佳轮次截图"></a>
+      <p class="effect">几何比例和正方形绘制出错，最高自动分 2。</p>
+      <div class="metrics"><span>输入 48702 token</span><span>输出 30621 token</span>
+      <span>API 520.6 秒</span></div>
+      <details class="stages"><summary>各环节 API 用时</summary><p>解题规划 61.5 秒 · 规划核对 17.1 秒 · HTML 生成 292.1 秒 · 截图描述 31.7 秒 · 页面审核 118.1 秒</p></details>
+      <div class="links"><a href="data_v2/20261019_110340_976_e5184354/20261019_110941_090_round_01.html" target="_blank">第 1 轮 · 未评分</a> <a href="data_v2/20261019_110340_976_e5184354/20261019_111214_770_round_02.html" target="_blank">第 2 轮 · 4/5</a> <a href="data_v2/20261019_110340_976_e5184354/20261019_111538_162_round_03.html" target="_blank">第 3 轮 · 5/5</a></div>
+      <a class="history" href="http://localhost:8001/?task=20261019_110340_976_e5184354" target="_blank">在 8001 历史中查看任务 →</a>
+      <small class="id">20261019_110340_976_e5184354</small>
+    </article></div>
+<footer>用 <code>PYTHONPATH=. .venv/bin/python scripts/build_experiment_report.py</code> 重新生成本页。相对链接指向同仓库 data_v2；任务历史链接使用本机 8001 服务。</footer>
+</div><script>
+const filters=[...document.querySelectorAll(".filters select")];
+function apply(){for(const card of document.querySelectorAll(".card")) card.hidden=filters.some(f=>f.value&&card.dataset[f.id]!==f.value)}
+filters.forEach(f=>f.addEventListener("change",apply));apply();
+</script></body></html>

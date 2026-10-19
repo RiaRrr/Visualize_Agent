@@ -20,6 +20,7 @@ from .model_api import ModelClient
 from .model_catalog import ModelCatalog
 from .pipeline import Pipeline
 from .profiles import get_profile, get_routed_profile, list_profiles, router_prompt
+from .profiles import PROMPTS
 from .router import classify_image
 from .storage import Store, TIMEZONE
 
@@ -192,6 +193,9 @@ async def check_models(refresh: bool = False):
 @app.get("/api/options")
 async def options(refresh: bool = False):
     return {"profiles": list_profiles(), "router_prompt": router_prompt(),
+            "guided_math_prompts": {key: (PROMPTS / filename).read_text(encoding="utf-8") for key, filename in {
+                "plan": "math_guided_plan.md", "plan_review": "math_guided_plan_review.md",
+                "html_addendum": "math_guided_html.md"}.items()},
             **(await catalog.list(refresh=refresh))}
 
 
@@ -269,11 +273,18 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
         try:
             generator_mode = row.get("generator_mode", "vision")
             reviewer_mode = row.get("reviewer_mode", "vision")
+            strategy = row.get("generation_strategy", "direct")
+            if strategy not in ("direct", "guided_math"):
+                raise ValueError("未知生成策略")
             profile = get_profile(row["profile_id"], generator_mode, reviewer_mode)
             gen = (row["generator_provider"], row["generator_model"])
             rev = (row["reviewer_provider"], row["reviewer_model"])
         except (KeyError, ValueError):
             raise HTTPException(400, f"第 {index} 行配置无效")
+        if strategy == "guided_math" and (generator_mode != "ocr_text" or profile.subject != "math"):
+            raise HTTPException(400, f"第 {index} 行数学规划模式需选择数学方案和 OCR＋文字生成")
+        if strategy == "guided_math" and ("edumind_alt", "qwen3.6-35b-a3b") not in allowed:
+            raise HTTPException(400, "数学规划核对模型暂不可用")
         if gen not in allowed or rev not in allowed:
             raise HTTPException(400, f"第 {index} 行模型未列入当前可选目录")
         if generator_mode == "vision" and gen not in image_allowed:
@@ -284,6 +295,8 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
         if "ocr_text" in (generator_mode, reviewer_mode) and ocr not in tested_image:
             raise HTTPException(400, f"第 {index} 行识图模型尚未通过识图测试")
         configs.append({"generator_provider": gen[0], "generator_model": gen[1],
+                        "generation_strategy": strategy,
+                        "plan_reviewer_provider": "edumind_alt", "plan_reviewer_model": "qwen3.6-35b-a3b",
                         "reviewer_provider": rev[0], "reviewer_model": rev[1],
                         "generator_mode": generator_mode, "reviewer_mode": reviewer_mode,
                         "ocr_provider": ocr[0] if "ocr_text" in (generator_mode, reviewer_mode) else None,
@@ -292,6 +305,10 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
                         "subject": profile.subject, "generator_prompt": profile.generator_prompt,
                         "reviewer_prompt": profile.reviewer_prompt, "run_mode": run_mode,
                         "max_rounds": 1 if run_mode == "single" else 5 if run_mode == "fixed_five" else settings.max_rounds})
+        if strategy == "guided_math":
+            configs[-1].update({key: (PROMPTS / filename).read_text(encoding="utf-8") for key, filename in {
+                "math_plan_prompt": "math_guided_plan.md", "math_plan_review_prompt": "math_guided_plan_review.md",
+                "math_guided_html_prompt": "math_guided_html.md"}.items()})
     if any(config["profile_id"] == "auto" for config in configs):
         route = (router_provider, router_model) if router_provider and router_model else (
             configs[0]["reviewer_provider"], configs[0]["reviewer_model"]

@@ -89,6 +89,30 @@ def _render_sync(html: str) -> bytes:
                 shot = session.call("Page.captureScreenshot", {"format": "png", "captureBeyondViewport": True,
                                                                "clip": {"x": 0, "y": 0, "width": width, "height": height, "scale": 1}})
                 screenshot = base64.b64decode(shot["data"])
+                # Exercise a small set of visible controls after preserving the initial screenshot.
+                # This catches state updates that only fail when a student uses the page.
+                probe = session.call("Runtime.evaluate", {"expression": """(() => {
+                  const visible = e => !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);
+                  const controls = [...document.querySelectorAll('input[type=range], button')].filter(visible).slice(0, 10);
+                  let exercised = 0;
+                  for (const e of controls) {
+                    if (e.matches('input[type=range]')) {
+                      const lo = Number(e.min || 0), hi = Number(e.max || 100);
+                      for (const f of [0.25, 0.75]) {
+                        e.value = String(lo + (hi - lo) * f);
+                        e.dispatchEvent(new Event('input', {bubbles:true}));
+                        e.dispatchEvent(new Event('change', {bubbles:true}));
+                        exercised++;
+                      }
+                    } else { e.click(); exercised++; }
+                  }
+                  const invalidOutput = [...document.querySelectorAll('output')].some(o => /^(NaN|Infinity|-Infinity)$/.test(o.textContent.trim()));
+                  return {exercised, invalidOutput};
+                })()""", "returnByValue": True})
+                if probe.get("exceptionDetails"):
+                    raise ValueError("页面交互脚本运行错误：" + str(probe["exceptionDetails"].get("text", "未知错误")))
+                if probe.get("result", {}).get("value", {}).get("invalidOutput"):
+                    raise ValueError("页面交互后出现无效数值")
                 if session.errors:
                     raise ValueError("页面脚本运行错误：" + session.errors[0][:200])
                 return screenshot

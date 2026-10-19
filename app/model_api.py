@@ -206,10 +206,12 @@ class ModelClient:
                     if progress:
                         progress(f"正在请求 {model}（第 {attempt + 1}/3 次）")
                     result = await client.post(url, headers=headers, json=payload)
-                    if result.status_code in (500, 502, 503, 504) and attempt < 2:
+                    if result.status_code in (429, 500, 502, 503, 504) and attempt < 2:
                         if progress:
                             progress(f"{model} 返回 HTTP {result.status_code}，准备重试")
-                        await asyncio.sleep(2 ** attempt)
+                        retry_after = result.headers.get("retry-after", "")
+                        delay = float(retry_after) if retry_after.replace(".", "", 1).isdigit() else 2 ** attempt
+                        await asyncio.sleep(min(30.0, max(1.0, delay)))
                         continue
                     result.raise_for_status()
                     data = result.json()

@@ -132,6 +132,11 @@ function addConfigRow(values = {}) {
   const ocr = el('select', 'ocr-model-select');
   const generatorMode = el('select', 'generator-mode-select');
   const reviewerMode = el('select', 'reviewer-mode-select');
+  const strategy = el('select', 'generation-strategy-select');
+  for (const [value, label] of [['direct','直接生成（原版）'], ['guided_math','实验：数学规划＋核对＋生成']]) {
+    const option = el('option', '', label); option.value = value; strategy.append(option);
+  }
+  strategy.value = values.generation_strategy || 'direct';
   for (const select of [generatorMode, reviewerMode]) {
     for (const [value, label] of [['vision','直接输入图片'], ['ocr_text','OCR 描述＋文本模型']]) {
       const option = el('option', '', label); option.value = value; select.append(option);
@@ -152,9 +157,11 @@ function addConfigRow(values = {}) {
     const routing = item.id === 'auto' ? `分流 Prompt\n\n${optionsData.router_prompt}\n\n识别学科后，会在通用可视化要求与输入输出格式之间插入相应学科经验；其他题目不插入学科经验。下方是分流前的通用模板，任务配置文件会保存实际发送的完整 Prompt。\n\n` : '';
     const generatorPrompt = generatorMode.value === 'ocr_text' ? item.generator_text_prompt : item.generator_prompt;
     const reviewerPrompt = reviewerMode.value === 'ocr_text' ? item.reviewer_text_prompt : item.reviewer_prompt;
-    promptText.textContent = `${routing}生成 Prompt\n\n${generatorPrompt}\n\n审核 Prompt\n\n${reviewerPrompt}`;
+    const guided = optionsData.guided_math_prompts || {};
+    const stages = strategy.value === 'guided_math' ? `数学规划 Prompt\n\n${guided.plan || ''}\n\n数学规划核对 Prompt\n\n${guided.plan_review || ''}\n\nHTML 生成附加要求\n\n${guided.html_addendum || ''}\n\n` : '';
+    promptText.textContent = `${routing}${stages}生成 Prompt\n\n${generatorPrompt}\n\n审核 Prompt\n\n${reviewerPrompt}`;
   }
-  for (const select of [profile, generatorMode, reviewerMode]) select.addEventListener('change', updatePrompt);
+  for (const select of [profile, generatorMode, reviewerMode, strategy]) select.addEventListener('change', updatePrompt);
   updatePrompt();
   function field(label, input) { const wrap = el('label', 'config-field'); wrap.append(el('span', '', label), input); return wrap; }
   const ocrField = field('识图模型（题目 OCR；文字审核还描述每轮截图）', ocr);
@@ -164,7 +171,7 @@ function addConfigRow(values = {}) {
     populateModel(reviewer, reviewer.value, reviewerMode.value === 'vision');
   }
   for (const select of [generatorMode, reviewerMode]) select.addEventListener('change', updateMode);
-  card.append(field('Prompt 方案', profile), field('生成方式', generatorMode), field('生成模型', generator),
+  card.append(field('Prompt 方案', profile), field('生成方式', generatorMode), field('生成策略', strategy), field('生成模型', generator),
     field('审核方式', reviewerMode), field('审核模型', reviewer), ocrField);
   updateMode();
   const probe = el('button', 'probe-button', '按需短识图测试'); probe.type = 'button';
@@ -201,7 +208,7 @@ function fileUrl(task, name, download = false) {
   return `/api/tasks/${encodeURIComponent(task.id)}/files/${encodeURIComponent(name)}${download ? '?download=true' : ''}`;
 }
 const labels = {queued:'排队中',running:'处理中',passed:'审核通过',failed:'审核未通过',error:'出错',interrupted:'已中断'};
-const stageLabels = {upload:'上传处理',queued:'排队等待',running:'处理中',routing:'识别学科',question_ocr:'识别原题',generating:'生成页面',validating:'检查文件',rendering:'渲染页面',page_description:'描述截图',reviewing:'审核解答',revising:'准备返修',passed:'已完成',failed:'审核未通过',error:'运行出错',interrupted:'已中断'};
+const stageLabels = {upload:'上传处理',queued:'排队等待',running:'处理中',routing:'识别学科',question_ocr:'识别原题',math_planning:'数学规划',math_plan_review:'核对规划',generating:'生成页面',validating:'检查文件',rendering:'渲染页面',page_description:'描述截图',reviewing:'审核解答',revising:'准备返修',passed:'已完成',failed:'审核未通过',error:'运行出错',interrupted:'已中断'};
 const progressSteps = [
   {key:'queued', label:'上传'}, {key:'routing', label:'分流'}, {key:'generating', label:'生成'}, {key:'validating', label:'检查'},
   {key:'rendering', label:'渲染'}, {key:'reviewing', label:'审核'}, {key:'passed', label:'完成'}
@@ -280,6 +287,12 @@ function buildTimeline(task) {
     return wrap;
   }
   const groups = new Map();
+  const remainingCalls = new Map();
+  for (const call of calls) {
+    const key = `${call.round_number}:${call.role}`;
+    if (!remainingCalls.has(key)) remainingCalls.set(key, []);
+    remainingCalls.get(key).push(call);
+  }
   for (const stage of stages) {
     if (!groups.has(stage.round_number)) groups.set(stage.round_number, []);
     groups.get(stage.round_number).push(stage);
@@ -295,9 +308,9 @@ function buildTimeline(task) {
         row.duration_seconds != null ? durationText(row.duration_seconds) : row.status === 'interrupted' ? '已中断' : '进行中');
       if (row.status === 'running' && !row.ended_at) elapsed.dataset.start = row.started_at;
       item.append(elapsed);
-      const role = {routing:'router', question_ocr:'question_ocr', generating:'generator',
+      const role = {routing:'router', question_ocr:'question_ocr', math_planning:'math_plan', math_plan_review:'math_plan_review', generating:'generator',
         page_description:'page_description', reviewing:'reviewer'}[row.stage];
-      const call = role && calls.find(entry => entry.round_number === round && entry.role === role);
+      const call = role && remainingCalls.get(`${round}:${role}`)?.shift();
       if (call) item.append(el('small', '', call.input_tokens == null && call.output_tokens == null
         ? 'Token 未提供' : `入 ${call.input_tokens ?? '—'} / 出 ${call.output_tokens ?? '—'}`));
       track.append(item);
@@ -327,6 +340,8 @@ function buildActivity(task) {
   const steps = progressSteps.filter(step => step.key !== 'routing' || task.profile_id === 'auto');
   if (task.generator_mode === 'ocr_text' || task.reviewer_mode === 'ocr_text')
     steps.splice(steps.findIndex(step => step.key === 'generating'), 0, {key:'question_ocr', label:'识题'});
+  if (task.generation_strategy === 'guided_math')
+    steps.splice(steps.findIndex(step => step.key === 'generating'), 0, {key:'math_planning', label:'规划'}, {key:'math_plan_review', label:'核对'});
   if (task.reviewer_mode === 'ocr_text')
     steps.splice(steps.findIndex(step => step.key === 'reviewing'), 0, {key:'page_description', label:'识图'});
   let activeIndex = steps.findIndex(step => step.key === current);
@@ -423,10 +438,11 @@ async function loadTask() {
   meta.append(el('span', '', task.profile_name ? `${task.profile_name} · v${task.profile_version}` : '配置未记录'));
   if (task.route_subject) meta.append(el('span', '', `自动识别：${{math:'数学',physics:'物理',chemistry:'化学',general:'其他'}[task.route_subject] || task.route_subject} · ${task.router_provider || '默认接口'}/${task.router_model}`));
   if (task.profile_name) {
-    meta.append(el('span', '', `生成 ${task.generator_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${task.generator_provider}/${task.generator_model} · 审核 ${task.reviewer_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${task.reviewer_provider}/${task.reviewer_model}`));
+    meta.append(el('span', '', `生成 ${task.generation_strategy === 'guided_math' ? '数学规划＋核对 → ' : ''}${task.generator_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${task.generator_provider}/${task.generator_model} · 审核 ${task.reviewer_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${task.reviewer_provider}/${task.reviewer_model}`));
+    if (task.math_plan_name) addLink(meta, '查看数学规划', fileUrl(task, task.math_plan_name, true));
     if (task.ocr_model) meta.append(el('span', '', `识图 ${task.ocr_provider}/${task.ocr_model}`));
     if (task.question_ocr_name) addLink(meta, '查看题目 OCR', fileUrl(task, task.question_ocr_name));
-    meta.append(el('span', '', `${task.run_mode === 'single' ? '单轮比较' : task.run_mode === 'fixed_five' ? '调研固定五轮' : '完整迭代'} · 生成 ${Number(task.generation_seconds || 0).toFixed(1)}s · 审核 ${Number(task.review_seconds || 0).toFixed(1)}s`));
+    meta.append(el('span', '', `${task.run_mode === 'single' ? '单轮比较' : task.run_mode === 'fixed_five' ? `调研固定${task.max_rounds || 5}轮` : '完整迭代'} · 生成 ${Number(task.generation_seconds || 0).toFixed(1)}s · 审核 ${Number(task.review_seconds || 0).toFixed(1)}s`));
     if (task.config_name) addLink(meta, '下载本次 Prompt 与配置', fileUrl(task, task.config_name, true));
   }
   title.append(meta);
@@ -511,7 +527,7 @@ async function showBatch(batchId, batch) {
     const card = el('div', `batch-card ${item.id === selectedTask ? 'selected' : ''}`);
     card.append(el('strong', '', item.profile_name || '配置未记录'));
     if (item.route_subject) card.append(el('small', '', `识别学科：${{math:'数学',physics:'物理',chemistry:'化学',general:'其他'}[item.route_subject] || item.route_subject}`));
-    card.append(el('small', '', `${item.generator_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${item.generator_provider}/${item.generator_model} → ${item.reviewer_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${item.reviewer_provider}/${item.reviewer_model}`));
+    card.append(el('small', '', `${item.generation_strategy === 'guided_math' ? '数学规划＋核对 · ' : ''}${item.generator_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${item.generator_provider}/${item.generator_model} → ${item.reviewer_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${item.reviewer_provider}/${item.reviewer_model}`));
     card.append(el('small', '', `${labels[item.status] || item.status} · 第 ${item.current_round} 轮 · 生成 ${Number(item.generation_seconds || 0).toFixed(1)}s / 审核 ${Number(item.review_seconds || 0).toFixed(1)}s`));
     const open = el('button', 'text-button', '查看此配置日志'); open.type = 'button';
     open.addEventListener('click', () => { selectedTask = item.id; selectedRound = null; selectedRoundManually = false; lastTaskSignature = ''; lastLayoutKey = ''; loadTask(); loadHistory(); });
@@ -577,6 +593,7 @@ form.addEventListener('submit', async (event) => {
       const reviewer = modelChoice(card.querySelector('.reviewer-model-select').value);
       const ocr = modelChoice(card.querySelector('.ocr-model-select').value);
       return {profile_id:card.querySelector('.profile-select').value,
+        generation_strategy:card.querySelector('.generation-strategy-select').value,
         generator_provider:generator.provider, generator_model:generator.model,
         reviewer_provider:reviewer.provider, reviewer_model:reviewer.model,
         generator_mode:card.querySelector('.generator-mode-select').value,

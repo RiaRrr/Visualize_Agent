@@ -6,6 +6,7 @@ from pathlib import Path
 from app.config import Settings
 from app.model_api import ModelError, message_text, response_text
 from app.pipeline import Pipeline, generator_prompt, parse_review, validate_html
+from app.guided_math import parse_json_object, validate_plan
 from app.storage import Store, best_round
 
 
@@ -126,6 +127,52 @@ def test_generator_prompt_uses_current_template():
     assert "曲线有折角" in prompt and GOOD_HTML in prompt
 
 
+def test_guided_math_keeps_base_prompt_and_reuses_verified_plan(tmp_path: Path):
+    from app.profiles import get_profile
+    settings = Settings(tmp_path, "https://example.invalid/v1", "fake", "generator", "reviewer")
+    store = Store(settings)
+    config = {"profile_id": "math-current", "subject": "math", "generator_mode": "ocr_text",
+              "reviewer_mode": "ocr_text", "generation_strategy": "guided_math", "run_mode": "single", "max_rounds": 1,
+              "generator_provider": "edumind_alt", "generator_model": "generator",
+              "reviewer_provider": "edumind_alt", "reviewer_model": "reviewer",
+              "ocr_provider": "edumind_alt", "ocr_model": "ocr",
+              "plan_reviewer_provider": "edumind_alt", "plan_reviewer_model": "plan_reviewer",
+              "generator_prompt": get_profile("math-current", "ocr_text", "ocr_text").generator_prompt,
+              "reviewer_prompt": get_profile("math-current", "ocr_text", "ocr_text").reviewer_prompt}
+    task = store.create("题.png", "image/png", ".png", b"fake", run_config=config)
+    folder = tmp_path / task["id"]
+    (folder / "question_question_ocr.md").write_text("求 y=x 的图像。", encoding="utf-8")
+    plan = {"given": ["y=x"], "goal": ["图像"], "derivation": [{"from": "y=x", "reason": "定义", "to": "直线"}],
+            "answer": "直线", "storyboard": [{"show": "坐标系", "action": "移动点", "insight": "斜率固定"}],
+            "state": {"independent": ["x"], "derived": ["y=x"]}, "checks": ["y-x=0"]}
+    class GuidedClient:
+        def __init__(self): self.calls = []
+        async def complete(self, model, prompt, images, *, max_tokens, provider=None, progress=None, usage=None):
+            self.calls.append((model, prompt))
+            if usage: usage({"input_tokens": 3, "output_tokens": 4, "total_tokens": 7})
+            if model == "plan_reviewer": return json.dumps({"passed": True, "issues": []})
+            if model == "generator" and "施工图" in prompt: return json.dumps(plan, ensure_ascii=False)
+            if model == "generator": return GOOD_HTML
+            if model == "ocr": return "截图含直线"
+            return json.dumps({"passed": True, "issues": [], "summary": "通过", "scores": MODEL_SCORES})
+    client = GuidedClient()
+    pipeline = Pipeline(settings, store, client, lambda html: asyncio.sleep(0, result=b"PNG"))
+    asyncio.run(pipeline.run(task["id"]))
+    saved = store.get(task["id"])
+    assert saved["status"] == "passed", saved["message"]
+    assert (folder / "math_plan.accepted.json").is_file()
+    html_prompt = next(prompt for model, prompt in client.calls if model == "generator" and "规划 JSON" in prompt)
+    assert html_prompt.startswith(config["generator_prompt"].split("{{QUESTION}}")[0])
+    assert "求 y=x 的图像" in html_prompt
+    assert [call["role"] for call in saved["api_calls"]][:2] == ["math_plan", "math_plan_review"]
+    assert saved["rounds"][0]["metrics"]["api_calls"]
+    assert parse_json_object('```json\n{"a":1}\n```') == {"a": 1}
+    assert parse_json_object(r'{"issues":["修正为 \frac{1}{6}"]}')["issues"] == [r"修正为 \frac{1}{6}"]
+    assert parse_json_object(r'{"issues":["定义域 \(x>0\)"]}')["issues"] == [r"定义域 \(x>0\)"]
+    assert parse_json_object('{"issues":["标注 "(demo)" 并继续"]}')["issues"] == ['标注 "(demo)" 并继续']
+    assert validate_plan(plan) == []
+
+
 def test_model_review_scores_are_bounded_and_keep_pass_independent():
     review = parse_review(json.dumps({"passed": True, "overall_score": 3, "summary": "通过", "issues": [],
                                       "scores": {**MODEL_SCORES, "interaction_quality": True,
@@ -136,6 +183,7 @@ def test_model_review_scores_are_bounded_and_keep_pass_independent():
     assert review["scores"]["interaction_quality"] is None
     assert review["scores"]["teaching_effectiveness"] is None
     assert parse_review(json.dumps({"passed": False, "overall_score": 6, "issues": ["错误"]}))["overall_score"] is None
+    assert parse_review(r'{"passed":false,"issues":["请修正 \frac{1}{6}"],"summary":"错误"}')["issues"] == [r"请修正 \frac{1}{6}"]
 
 
 def test_existing_history_gets_log_summary(tmp_path: Path):

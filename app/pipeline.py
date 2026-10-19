@@ -9,6 +9,7 @@ from pathlib import Path
 
 from .browser import render_html
 from .config import Settings
+from .guided_math import guided_html_addendum, parse_json_object, plan_prompt, plan_review_prompt, validate_plan
 from .model_api import ModelClient
 from .profiles import PROMPTS, get_profile
 from .rubric import empty_scores, normalize_overall_score, normalize_scores
@@ -66,8 +67,8 @@ def parse_review(raw: str) -> dict:
     if fenced:
         value = fenced.group(1)
     try:
-        data = json.loads(value)
-    except json.JSONDecodeError:
+        data = parse_json_object(value)
+    except (json.JSONDecodeError, ValueError):
         return {"passed": False, "summary": "审核模型没有返回有效 JSON", "issues": ["请重新核对题意、解答和页面呈现"],
                 "scores": empty_scores(), "overall_score": None}
     if not isinstance(data, dict) or not isinstance(data.get("passed"), bool):
@@ -146,7 +147,7 @@ class Pipeline:
                         try:
                             question_ocr = await self.client.complete(
                                 ocr_model, (PROMPTS / "question_ocr.md").read_text(encoding="utf-8"), original,
-                                max_tokens=4000, provider=ocr_provider,
+                                max_tokens=12000, provider=ocr_provider,
                                 progress=lambda message: self.store.log_event(task_id, "question_ocr", 0, message),
                                 usage=lambda value: ocr_usage.update(value=value))
                             succeeded = True
@@ -157,6 +158,89 @@ class Pipeline:
                     if not question_ocr.strip():
                         raise ValueError("识图模型未返回题目内容")
                     (self.store.root / task_id / f"{timestamp()}_question_ocr.md").write_text(question_ocr, encoding="utf-8")
+            math_plan = None
+            if config.get("generation_strategy", "direct") == "guided_math":
+                if generator_mode != "ocr_text" or config.get("subject") != "math":
+                    raise ValueError("数学规划模式只支持明确选择数学方案与 OCR＋文字生成")
+                folder = self.store.root / task_id
+                accepted = folder / "math_plan.accepted.json"
+                if accepted.is_file():
+                    math_plan = json.loads(accepted.read_text(encoding="utf-8"))
+                    self.store.log_event(task_id, "math_planning", 0, "复用已核对的数学规划")
+                else:
+                    feedback_plan = ""
+                    prior_plan = None
+                    for attempt in range(1, 4):
+                        self.store.set_state(task_id, "running", 0, f"数学规划第 {attempt}/3 次：建立题设、推导和交互状态", stage="math_planning")
+                        raw_path = folder / f"math_plan_attempt_{attempt:02d}.raw.txt"
+                        if raw_path.is_file():
+                            raw_plan = raw_path.read_text(encoding="utf-8")
+                            self.store.log_event(task_id, "math_planning", 0, f"复用第 {attempt} 次规划输出")
+                        else:
+                            started = time.monotonic()
+                            usage = {}
+                            succeeded = False
+                            try:
+                                raw_plan = await self.client.complete(
+                                    generator_model, plan_prompt(question_ocr, feedback_plan, prior_plan,
+                                                                 config.get("math_plan_prompt")), [],
+                                    max_tokens=self.settings.generator_max_tokens, provider=generator_provider,
+                                    progress=lambda message: self.store.log_event(task_id, "math_planning", 0, message),
+                                    usage=lambda value: usage.update(value=value))
+                                succeeded = True
+                            finally:
+                                self.store.record_api_call(task_id, 0, "math_plan", generator_provider, generator_model,
+                                                           time.monotonic() - started, "completed" if succeeded else "error", usage.get("value"))
+                            raw_path.write_text(raw_plan, encoding="utf-8")
+                        try:
+                            prior_plan = parse_json_object(raw_plan)
+                            local_issues = validate_plan(prior_plan)
+                        except (ValueError, json.JSONDecodeError) as exc:
+                            prior_plan, local_issues = None, [f"规划 JSON 无法解析：{exc}"]
+                        if local_issues:
+                            feedback_plan = "；".join(local_issues)
+                            (folder / f"math_plan_review_{attempt:02d}.json").write_text(
+                                json.dumps({"passed": False, "source": "local", "issues": local_issues}, ensure_ascii=False, indent=2), encoding="utf-8")
+                            continue
+                        (folder / f"math_plan_attempt_{attempt:02d}.json").write_text(
+                            json.dumps(prior_plan, ensure_ascii=False, indent=2), encoding="utf-8")
+                        review_path = folder / f"math_plan_review_{attempt:02d}.json"
+                        plan_reviewer_provider = config.get("plan_reviewer_provider", "edumind_alt")
+                        plan_reviewer_model = config.get("plan_reviewer_model", "qwen3.6-35b-a3b")
+                        if review_path.is_file() and json.loads(review_path.read_text(encoding="utf-8")).get("source") != "local":
+                            plan_review = json.loads(review_path.read_text(encoding="utf-8"))
+                            self.store.log_event(task_id, "math_plan_review", 0, f"复用第 {attempt} 次规划核对")
+                        else:
+                            self.store.set_state(task_id, "running", 0, f"数学规划第 {attempt}/3 次：独立核对", stage="math_plan_review")
+                            started = time.monotonic()
+                            usage = {}
+                            succeeded = False
+                            try:
+                                raw_review = await self.client.complete(
+                                    plan_reviewer_model, plan_review_prompt(question_ocr, prior_plan,
+                                                                            config.get("math_plan_review_prompt")), [],
+                                    max_tokens=max(self.settings.reviewer_max_tokens, 32000), provider=plan_reviewer_provider,
+                                    progress=lambda message: self.store.log_event(task_id, "math_plan_review", 0, message),
+                                    usage=lambda value: usage.update(value=value))
+                                succeeded = True
+                            finally:
+                                self.store.record_api_call(task_id, 0, "math_plan_review", plan_reviewer_provider,
+                                                           plan_reviewer_model, time.monotonic() - started,
+                                                           "completed" if succeeded else "error", usage.get("value"))
+                            try:
+                                plan_review = parse_json_object(raw_review)
+                                if not isinstance(plan_review.get("passed"), bool) or not isinstance(plan_review.get("issues"), list):
+                                    raise ValueError("核对结果缺少 passed 或 issues")
+                            except (ValueError, json.JSONDecodeError) as exc:
+                                plan_review = {"passed": False, "issues": [f"核对结果无法解析：{exc}"], "raw": raw_review}
+                            review_path.write_text(json.dumps(plan_review, ensure_ascii=False, indent=2), encoding="utf-8")
+                        if plan_review["passed"] and not plan_review["issues"]:
+                            math_plan = prior_plan
+                            accepted.write_text(json.dumps(math_plan, ensure_ascii=False, indent=2), encoding="utf-8")
+                            break
+                        feedback_plan = "；".join(str(issue) for issue in plan_review.get("issues", [])) or "数学规划未通过核对"
+                    if math_plan is None:
+                        raise ValueError("数学规划三次尝试后仍未通过：" + feedback_plan[:300])
             for round_number in range(len(completed_rounds) + 1, max_rounds + 1):
                 pending_path = self.store.root / task_id / f".pending_round_{round_number:02d}.html"
                 if pending_path.is_file():
@@ -167,6 +251,8 @@ class Pipeline:
                     self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：正在调用生成模型", stage="generating")
                     question_input = question_ocr if generator_mode == "ocr_text" else "题目图片已随本次 API 消息提供；请直接读取这张图片，以图中题目为准。"
                     prompt = (config.get("generator_prompt") or generator_prompt()).replace("{{QUESTION}}", question_input)
+                    if math_plan is not None:
+                        prompt += "\n\n" + guided_html_addendum(math_plan, config.get("math_guided_html_prompt"))
                     if feedback:
                         prompt += f"\n\n上一轮审核意见：\n{feedback}\n请根据意见改进，保留正确部分。上一轮 HTML：\n{previous_html}"
                     started = time.monotonic()
@@ -264,6 +350,8 @@ class Pipeline:
                             self.store.record_api_call(task_id, round_number, "reviewer", reviewer_provider,
                                                        reviewer_model, elapsed, "completed" if reviewed else "error",
                                                        review_usage.get("value"))
+                        (self.store.root / task_id / f"round_{round_number:02d}.model_review_raw.txt").write_text(
+                            raw_review, encoding="utf-8")
                         review = parse_review(raw_review)
                         review["source"] = "model"
                     finally:
