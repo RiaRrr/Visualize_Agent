@@ -166,8 +166,12 @@ class Pipeline:
                     (self.store.root / task_id / f"{timestamp()}_question_ocr.md").write_text(question_ocr, encoding="utf-8")
             math_plan = None
             if config.get("generation_strategy", "direct") == "guided_math":
-                if generator_mode != "ocr_text" or config.get("subject") != "math":
-                    raise ValueError("数学规划模式只支持明确选择数学方案与 OCR＋文字生成")
+                if config.get("subject") != "math":
+                    raise ValueError("数学规划模式需明确选择数学方案")
+                plan_question = question_ocr if generator_mode == "ocr_text" else "原题图片已附在本次消息中，请直接依据图片中的题干、公式与图形关系制定规划；无需先调用 OCR。"
+                # Old task snapshots used a separate text-only plan reviewer.
+                plan_reviewer_mode = config.get("plan_reviewer_mode", "ocr_text" if generator_mode == "ocr_text" else reviewer_mode)
+                plan_review_question = question_ocr if plan_reviewer_mode == "ocr_text" else "原题图片已附在本次消息中，请对照原图独立核对候选规划。"
                 folder = self.store.root / task_id
                 accepted = folder / "math_plan.accepted.json"
                 if accepted.is_file():
@@ -188,9 +192,11 @@ class Pipeline:
                             succeeded = False
                             try:
                                 raw_plan = await self.client.complete(
-                                    generator_model, plan_prompt(question_ocr, feedback_plan, prior_plan,
-                                                                 config.get("math_plan_prompt")), [],
-                                    max_tokens=self.settings.generator_max_tokens, provider=generator_provider,
+                                    generator_model, plan_prompt(plan_question, feedback_plan, prior_plan,
+                                                                 config.get("math_plan_prompt")),
+                                    original if generator_mode == "vision" else [],
+                                    max_tokens=config.get("generator_max_tokens", self.settings.generator_max_tokens), provider=generator_provider,
+                                    **model_options("generator", generator_model),
                                     progress=lambda message: self.store.log_event(task_id, "math_planning", 0, message),
                                     usage=lambda value: usage.update(value=value))
                                 succeeded = True
@@ -211,8 +217,8 @@ class Pipeline:
                         (folder / f"math_plan_attempt_{attempt:02d}.json").write_text(
                             json.dumps(prior_plan, ensure_ascii=False, indent=2), encoding="utf-8")
                         review_path = folder / f"math_plan_review_{attempt:02d}.json"
-                        plan_reviewer_provider = config.get("plan_reviewer_provider", "edumind_alt")
-                        plan_reviewer_model = config.get("plan_reviewer_model", "qwen3.6-35b-a3b")
+                        plan_reviewer_provider = config.get("plan_reviewer_provider", reviewer_provider)
+                        plan_reviewer_model = config.get("plan_reviewer_model", reviewer_model)
                         if review_path.is_file() and json.loads(review_path.read_text(encoding="utf-8")).get("source") != "local":
                             plan_review = json.loads(review_path.read_text(encoding="utf-8"))
                             self.store.log_event(task_id, "math_plan_review", 0, f"复用第 {attempt} 次规划核对")
@@ -223,9 +229,11 @@ class Pipeline:
                             succeeded = False
                             try:
                                 raw_review = await self.client.complete(
-                                    plan_reviewer_model, plan_review_prompt(question_ocr, prior_plan,
-                                                                            config.get("math_plan_review_prompt")), [],
-                                    max_tokens=max(self.settings.reviewer_max_tokens, 32000), provider=plan_reviewer_provider,
+                                    plan_reviewer_model, plan_review_prompt(plan_review_question, prior_plan,
+                                                                            config.get("math_plan_review_prompt")),
+                                    original if plan_reviewer_mode == "vision" else [],
+                                    max_tokens=config.get("reviewer_max_tokens", max(self.settings.reviewer_max_tokens, 32000)), provider=plan_reviewer_provider,
+                                    **model_options("reviewer", plan_reviewer_model),
                                     progress=lambda message: self.store.log_event(task_id, "math_plan_review", 0, message),
                                     usage=lambda value: usage.update(value=value))
                                 succeeded = True

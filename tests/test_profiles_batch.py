@@ -170,8 +170,8 @@ def test_auto_batch_classifies_once_and_snapshots_subject_prompts(tmp_path, monk
     assert metadata["routing"] == {"subject": "physics", "provider": "openai", "model": "route"}
 
 
-@pytest.mark.parametrize('profile_id', ['auto', 'math-deepseek-patch'])
-def test_upload_accepts_router_model_and_saves_auto_template(tmp_path, monkeypatch, profile_id):
+@pytest.mark.parametrize('profile_id,strategy', [('auto', 'direct'), ('math-deepseek-patch', 'direct'), ('math-deepseek-patch', 'guided_math')])
+def test_upload_accepts_router_model_and_saves_auto_template(tmp_path, monkeypatch, profile_id, strategy):
     main = importlib.import_module("app.main")
     store = Store(Settings(tmp_path, "https://example.invalid/v1", "fake", "gen", "review"))
 
@@ -185,7 +185,7 @@ def test_upload_accepts_router_model_and_saves_auto_template(tmp_path, monkeypat
     image = io.BytesIO()
     Image.new("RGB", (20, 20), "white").save(image, format="PNG")
     row = {"profile_id": profile_id, "generator_provider": "openai", "generator_model": "gen",
-           "reviewer_provider": "openai", "reviewer_model": "review"}
+           "reviewer_provider": "openai", "reviewer_model": "review", "generation_strategy": strategy}
     response = TestClient(main.app).post(
         "/api/batches", files={"image": ("question.png", image.getvalue(), "image/png")},
         data={"rows": json.dumps([row]), "run_mode": "single",
@@ -203,6 +203,11 @@ def test_upload_accepts_router_model_and_saves_auto_template(tmp_path, monkeypat
         assert config['generator_mode'] == config['reviewer_mode'] == 'vision'
         assert config['profile_version'] == get_profile(profile_id).version
         assert 'router_model' not in config
+        if strategy == 'guided_math':
+            assert config['plan_reviewer_provider'] == 'openai'
+            assert config['plan_reviewer_model'] == 'review'
+            assert config['plan_reviewer_mode'] == 'vision'
+            assert '原图' in config['math_plan_prompt']
     assert "可视化优先原则（最高优先级）" in config["generator_prompt"]
 
 

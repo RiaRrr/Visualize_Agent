@@ -158,7 +158,7 @@ function addConfigRow(values = {}) {
     const generatorPrompt = generatorMode.value === 'ocr_text' ? item.generator_text_prompt : item.generator_prompt;
     const reviewerPrompt = reviewerMode.value === 'ocr_text' ? item.reviewer_text_prompt : item.reviewer_prompt;
     const guided = optionsData.guided_math_prompts || {};
-    const stages = strategy.value === 'guided_math' ? `数学规划 Prompt\n\n${guided.plan || ''}\n\n数学规划核对 Prompt\n\n${guided.plan_review || ''}\n\nHTML 生成附加要求\n\n${guided.html_addendum || ''}\n\n` : '';
+    const stages = strategy.value === 'guided_math' ? `规划由所选生成模型输出，核对由所选审核模型执行；分别沿用对应输入方式，支持直接看原图。规划内容会独立保存并显示在任务中。\n\n数学规划 Prompt\n\n${guided.plan || ''}\n\n数学规划核对 Prompt\n\n${guided.plan_review || ''}\n\nHTML 生成附加要求\n\n${guided.html_addendum || ''}\n\n` : '';
     const runtimeNote = item.runtime_note ? `调用设置\n${item.runtime_note}\n\n` : '';
     const revisionPrompt = item.revision_prompt ? `\n\n第二轮起的局部修订协议\n\n${item.revision_prompt}` : '';
     promptText.textContent = `${runtimeNote}${routing}${stages}生成 Prompt\n\n${generatorPrompt}${revisionPrompt}\n\n审核 Prompt\n\n${reviewerPrompt}`;
@@ -250,6 +250,49 @@ async function loadHistory() {
 
 function addLink(parent, label, url) {
   const link = el('a', '', label); link.href = url; link.download = ''; parent.append(link);
+}
+
+function buildPlanPanel(task) {
+  const panel = el('details', 'plan-panel');
+  panel.append(el('summary', '', '查看解题与可视化规划'));
+  const files = task.math_plan_files || [];
+  if (!files.length) { panel.append(el('p', '', '规划尚未输出，生成后可在这里查看。')); return panel; }
+  const chooser = el('select'); chooser.setAttribute('aria-label', '选择规划或核对记录');
+  for (const name of files) {
+    const label = name === task.math_plan_name ? '已核对的最终规划' : name;
+    const option = el('option', '', label); option.value = name; chooser.append(option);
+  }
+  chooser.value = task.math_plan_name || files.filter(name => name.startsWith('math_plan_attempt_')).at(-1) || files[0];
+  const content = el('div', 'plan-content');
+  const download = el('a', '', '下载当前记录'); download.download = '';
+  panel.append(chooser, download, content);
+  let loaded = '', request = 0;
+  async function showPlan() {
+    const name = chooser.value;
+    if (loaded === name) return;
+    const token = ++request;
+    download.href = fileUrl(task, name, true);
+    content.textContent = '正在读取规划…';
+    try {
+      const response = await fetch(fileUrl(task, name));
+      if (!response.ok) throw new Error(`读取失败：HTTP ${response.status}`);
+      const raw = await response.text();
+      if (token !== request) return;
+      content.replaceChildren();
+      let data;
+      try { data = JSON.parse(raw); } catch (_) {}
+      if (data && typeof data === 'object' && !Array.isArray(data)) {
+        const names = {given:'题设条件', goal:'所求问题', derivation:'关键推导', answer:'答案与范围', storyboard:'可视化步骤', state:'控制量与联动关系', checks:'验证与边界检查', passed:'核对是否通过', issues:'核对意见', summary:'核对结论'};
+        for (const [key, value] of Object.entries(data)) {
+          content.append(el('h4', '', names[key] || key), el('pre', '', typeof value === 'string' ? value : JSON.stringify(value, null, 2)));
+        }
+      } else content.append(el('pre', '', raw));
+      loaded = name;
+    } catch (error) { if (token === request) content.textContent = error.message; }
+  }
+  panel.addEventListener('toggle', () => { if (panel.open) showPlan(); });
+  chooser.addEventListener('change', showPlan);
+  return panel;
 }
 
 function buildProblemPanel(task, compact = false) {
@@ -420,11 +463,11 @@ async function loadTask() {
   if (!selectedTask) return;
   const task = await fetchJson(`/api/tasks/${encodeURIComponent(selectedTask)}`);
   const batchState = task.batch_id ? await fetchJson(`/api/batches/${encodeURIComponent(task.batch_id)}`) : null;
-  const batchKey = batchState ? batchState.tasks.map(x => [x.id, x.status, x.current_round, x.generation_seconds, x.review_seconds]) : null;
+  const batchKey = batchState ? batchState.tasks.map(x => [x.id, x.status, x.stage, x.current_round, x.generation_seconds, x.review_seconds]) : null;
   const signature = JSON.stringify([task, batchKey]);
   if (signature === lastTaskSignature) { refreshElapsed(task); return; }
   lastTaskSignature = signature;
-  const layoutKey = JSON.stringify([task.id, task.status, task.best_round_number, task.profile_name, task.profile_version, task.route_subject,
+  const layoutKey = JSON.stringify([task.id, task.status, task.math_plan_files, task.best_round_number, task.profile_name, task.profile_version, task.route_subject,
     task.rounds.map(round => [round.html_name, round.human_review?.updated_at]), task.final_name, batchKey]);
   if (layoutKey === lastLayoutKey && workspace.querySelector('.activity-slot')) {
     updateActivity(task);
@@ -461,6 +504,7 @@ async function loadTask() {
     head.append(resume);
   }
   workspace.append(head);
+  if (task.generation_strategy === 'guided_math') workspace.append(buildPlanPanel(task));
   if (task.batch_id) workspace.append(buildProblemPanel(task, true));
   if (task.batch_id) await showBatch(task.batch_id, batchState);
   const activitySlot = el('div', 'activity-slot');
@@ -534,8 +578,9 @@ async function showBatch(batchId, batch) {
     const open = el('button', 'text-button', '查看此配置日志'); open.type = 'button';
     open.addEventListener('click', () => { selectedTask = item.id; selectedRound = null; selectedRoundManually = false; lastTaskSignature = ''; lastLayoutKey = ''; loadTask(); loadHistory(); });
     card.append(open);
-    if (item.current_round) {
+    if (item.current_round || item.generation_strategy === 'guided_math') {
       const detail = await fetchJson(`/api/tasks/${encodeURIComponent(item.id)}`);
+      if (item.generation_strategy === 'guided_math' && item.id !== selectedTask) card.append(buildPlanPanel(detail));
       if (detail.config_name) {
         const configLink = el('div', 'link-row'); addLink(configLink, '下载此配置的 Prompt', fileUrl(detail, detail.config_name, true)); card.append(configLink);
       }

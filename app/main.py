@@ -281,10 +281,8 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
             rev = (row["reviewer_provider"], row["reviewer_model"])
         except (KeyError, ValueError):
             raise HTTPException(400, f"第 {index} 行配置无效")
-        if strategy == "guided_math" and (generator_mode != "ocr_text" or profile.subject != "math"):
-            raise HTTPException(400, f"第 {index} 行数学规划模式需选择数学方案和 OCR＋文字生成")
-        if strategy == "guided_math" and ("edumind_alt", "qwen3.6-35b-a3b") not in allowed:
-            raise HTTPException(400, "数学规划核对模型暂不可用")
+        if strategy == "guided_math" and profile.subject != "math":
+            raise HTTPException(400, f"第 {index} 行数学规划模式需选择明确的数学方案，支持原图或 OCR 输入")
         if gen not in allowed or rev not in allowed:
             raise HTTPException(400, f"第 {index} 行模型未列入当前可选目录")
         if generator_mode == "vision" and gen not in image_allowed:
@@ -296,7 +294,6 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
             raise HTTPException(400, f"第 {index} 行识图模型尚未通过识图测试")
         configs.append({"generator_provider": gen[0], "generator_model": gen[1],
                         "generation_strategy": strategy,
-                        "plan_reviewer_provider": "edumind_alt", "plan_reviewer_model": "qwen3.6-35b-a3b",
                         "reviewer_provider": rev[0], "reviewer_model": rev[1],
                         "generator_mode": generator_mode, "reviewer_mode": reviewer_mode,
                         "ocr_provider": ocr[0] if "ocr_text" in (generator_mode, reviewer_mode) else None,
@@ -307,6 +304,8 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
                         "max_rounds": 1 if run_mode == "single" else 5 if run_mode == "fixed_five" else settings.max_rounds})
         configs[-1].update(runtime_defaults(profile.id, gen[1], rev[1]))
         if strategy == "guided_math":
+            configs[-1].update(plan_reviewer_provider=rev[0], plan_reviewer_model=rev[1],
+                               plan_reviewer_mode=reviewer_mode)
             configs[-1].update({key: (PROMPTS / filename).read_text(encoding="utf-8") for key, filename in {
                 "math_plan_prompt": "math_guided_plan.md", "math_plan_review_prompt": "math_guided_plan_review.md",
                 "math_guided_html_prompt": "math_guided_html.md"}.items()})

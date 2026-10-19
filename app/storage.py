@@ -272,6 +272,8 @@ class Store:
         task = dict(row)
         task["question_ocr_name"] = self.question_ocr_name(task_id)
         task["math_plan_name"] = "math_plan.accepted.json" if (self.root / task_id / "math_plan.accepted.json").is_file() else None
+        task["math_plan_files"] = sorted(path.name for path in (self.root / task_id).glob("math_plan*")
+                                         if path.is_file() and (path.name.endswith(".json") or path.name.endswith(".raw.txt"))) if task.get("generation_strategy") == "guided_math" else []
         task["rounds"] = [{**dict(r), "issues": json.loads(r["issues_json"])} for r in rounds]
         for r in task["rounds"]:
             r["page_description_name"] = self.page_description_name(task_id, r["number"])

@@ -7,3 +7,4 @@
 .route-hint{font-size:11px;line-height:1.5;color:#6a8188;margin:4px 0 12px}
 .config-field[hidden]{display:none}
 .model-capability-panel{font-size:11px;color:#56717a;margin:9px 0;line-height:1.55}.model-capability-panel summary{cursor:pointer;color:#167f71}.model-capability-panel p{overflow-wrap:anywhere}
+.plan-panel{margin:12px 0;padding:12px;border:1px solid #cbdcde;border-radius:9px;background:#fff;min-width:0}.plan-panel summary{cursor:pointer;color:#176b63;font-weight:600}.plan-panel select{max-width:100%;margin:12px 12px 12px 0;padding:7px}.plan-panel a{font-size:12px}.plan-content{max-height:600px;overflow:auto}.plan-content h4{margin:16px 0 6px}.plan-content pre{white-space:pre-wrap;overflow-wrap:anywhere;font-family:inherit;font-size:13px;line-height:1.6;margin:0}
