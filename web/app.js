@@ -1,3 +1,26 @@
+// User-specified CNY rates; these cover cache components only, not a full bill.
+function cacheCost(calls = []) {
+  let read = 0, write = 0, known = 0, missing = 0, unpriced = 0;
+  for (const call of calls) {
+    if (call.provider !== 'codex' || call.model !== 'deepseek-v4-1-flash-261017') { unpriced++; continue; }
+    for (const [key, rate] of [['cached_input_tokens', 1.44], ['cache_write_input_tokens', 5.76]]) {
+      const count = call[key];
+      if (!Number.isSafeInteger(count) || count < 0) { missing++; continue; }
+      known++;
+      if (key === 'cached_input_tokens') read += count * rate / 1000000;
+      else write += count * rate / 1000000;
+    }
+  }
+  return {amount: known ? read + write : null, read, write, known, missing, unpriced, calls: calls.length};
+}
+
+function cacheCostText(calls = []) {
+  const cost = cacheCost(calls);
+  if (!cost.calls) return '费用待记录';
+  if (cost.amount == null) return '费用未知（缺用量或单价）';
+  return `已知缓存费约 ¥${cost.amount.toFixed(4)}（非总费用）`;
+}
+
 const historyList = document.getElementById('history-list');
 const workspace = document.getElementById('workspace');
 const form = document.getElementById('upload-form');
@@ -309,6 +332,21 @@ function durationText(seconds) {
   return seconds < 60 ? `${seconds.toFixed(1)}秒` : `${Math.floor(seconds / 60)}分${Math.floor(seconds % 60)}秒`;
 }
 
+function costBadge(calls) {
+  const badge = el('small', 'cost-estimate', cacheCostText(calls));
+  const cost = cacheCost(calls);
+  badge.title = `按用户指定人民币单价估算：读取 ¥1.44、写入 ¥5.76 / 百万 token；仅适用于 codex 网关的 deepseek-v4-1-flash-261017。已知读取费 ¥${cost.read.toFixed(4)}，已知写入费 ¥${cost.write.toFixed(4)}；缺失缓存字段 ${cost.missing} 项，未配置价格的调用 ${cost.unpriced} 次。普通输入与输出单价未知，未计入。包含有用量记录的失败调用；未知费用不按零计算。`;
+  return badge;
+}
+
+function roundUsage(task, round) {
+  const calls = (task.api_calls || []).filter(call => call.round_number === round.number);
+  const row = el('div', 'round-usage');
+  const seconds = calls.reduce((sum, call) => sum + (call.duration_seconds || 0), 0);
+  row.append(el('small', '', `本轮 API 累计耗时 ${calls.length ? durationText(seconds) : '未记录'}`), costBadge(calls));
+  return row;
+}
+
 function buildTimeline(task) {
   const wrap = el('div', 'timeline');
   const heading = el('div', 'timeline-heading');
@@ -320,6 +358,7 @@ function buildTimeline(task) {
     heading.append(total);
   }
   const calls = task.api_calls || [];
+  heading.append(costBadge(calls));
   if (calls.length) {
     const known = calls.filter(call => call.input_tokens != null || call.output_tokens != null);
     const inputs = known.reduce((sum, call) => sum + (call.input_tokens || 0), 0);
@@ -327,6 +366,7 @@ function buildTimeline(task) {
     heading.append(el('small', '', known.length ? `Token：输入 ${inputs} · 输出 ${outputs}${known.length < calls.length ? '（部分接口未提供）' : ''}` : 'Token：接口未提供'));
   }
   wrap.append(heading);
+  wrap.append(el('small', 'cost-note', '人民币估算：缓存读 ¥1.44、写 ¥5.76 / 百万 token。仅计已返回用量的缓存项；输入、输出单价及缺失用量尚未计入。'));
   if (!stages.length) {
     wrap.append(el('small', 'timeline-empty', '旧任务未记录分段用时；可在上方查看已有的生成与审核累计耗时。'));
     return wrap;
@@ -346,6 +386,10 @@ function buildTimeline(task) {
     const group = el('div', 'timeline-group');
     group.append(el('span', 'timeline-round', round ? `第 ${round} 轮` : '开始'));
     const track = el('div', 'timeline-track');
+    const roundCalls = calls.filter(call => call.round_number === round);
+    const summary = el('span', 'timeline-round-summary');
+    summary.append(el('small', '', `API 累计 ${roundCalls.length ? durationText(roundCalls.reduce((sum, call) => sum + (call.duration_seconds || 0), 0)) : '未记录'}`), costBadge(roundCalls));
+    track.append(summary);
     for (const row of rows) {
       const item = el('span', `timeline-item ${row.stage}`);
       item.append(el('b', '', stageLabels[row.stage] || row.stage));
@@ -356,8 +400,11 @@ function buildTimeline(task) {
       const role = {routing:'router', question_ocr:'question_ocr', math_planning:'math_plan', math_plan_review:'math_plan_review', generating:'generator',
         page_description:'page_description', reviewing:'reviewer'}[row.stage];
       const call = role && remainingCalls.get(`${round}:${role}`)?.shift();
-      if (call) item.append(el('small', '', call.input_tokens == null && call.output_tokens == null
-        ? 'Token 未提供' : `入 ${call.input_tokens ?? '—'} / 出 ${call.output_tokens ?? '—'}`));
+      if (call) {
+        item.append(costBadge([call]));
+        item.append(el('small', '', call.input_tokens == null && call.output_tokens == null
+          ? 'Token 未提供' : `入 ${call.input_tokens ?? '—'} / 出 ${call.output_tokens ?? '—'}`));
+      }
       track.append(item);
     }
     group.append(track); wrap.append(group);
@@ -518,6 +565,7 @@ async function loadTask() {
   for (const round of task.rounds) {
     const card = el('div', 'round-card');
     card.append(el('h4', '', `第 ${round.number} 轮 · ${round.passed ? '通过' : '未通过'}${task.status === 'failed' && round.number === task.best_round_number ? ' · 最佳草稿' : ''}`));
+    card.append(roundUsage(task, round));
     card.append(el('p', '', round.summary || '无审核摘要'));
     if (round.issues.length) { const ul = el('ul'); for (const issue of round.issues) ul.append(el('li', '', issue)); card.append(ul); }
     const links = el('div', 'link-row');
@@ -574,12 +622,15 @@ async function showBatch(batchId, batch) {
     card.append(el('strong', '', item.profile_name || '配置未记录'));
     if (item.route_subject) card.append(el('small', '', `识别学科：${{math:'数学',physics:'物理',chemistry:'化学',general:'其他'}[item.route_subject] || item.route_subject}`));
     card.append(el('small', '', `${item.generation_strategy === 'guided_math' ? '数学规划＋核对 · ' : ''}${item.generator_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${item.generator_provider}/${item.generator_model} → ${item.reviewer_mode === 'ocr_text' ? 'OCR＋文字' : '图片直传'} ${item.reviewer_provider}/${item.reviewer_model}`));
-    card.append(el('small', '', `${labels[item.status] || item.status} · 第 ${item.current_round} 轮 · 生成 ${Number(item.generation_seconds || 0).toFixed(1)}s / 审核 ${Number(item.review_seconds || 0).toFixed(1)}s`));
+    const taskUsage = el('div', 'round-usage');
+    taskUsage.append(el('small', '', `${labels[item.status] || item.status} · 第 ${item.current_round} 轮 · 生成 ${Number(item.generation_seconds || 0).toFixed(1)}s / 审核 ${Number(item.review_seconds || 0).toFixed(1)}s`));
+    card.append(taskUsage);
     const open = el('button', 'text-button', '查看此配置日志'); open.type = 'button';
     open.addEventListener('click', () => { selectedTask = item.id; selectedRound = null; selectedRoundManually = false; lastTaskSignature = ''; lastLayoutKey = ''; loadTask(); loadHistory(); });
     card.append(open);
     if (item.current_round || item.generation_strategy === 'guided_math') {
       const detail = await fetchJson(`/api/tasks/${encodeURIComponent(item.id)}`);
+      taskUsage.append(costBadge(detail.api_calls || []));
       if (item.generation_strategy === 'guided_math' && item.id !== selectedTask) card.append(buildPlanPanel(detail));
       if (detail.config_name) {
         const configLink = el('div', 'link-row'); addLink(configLink, '下载此配置的 Prompt', fileUrl(detail, detail.config_name, true)); card.append(configLink);
@@ -600,6 +651,7 @@ async function showBatch(batchId, batch) {
           if (!round) return;
           roundSlot.replaceChildren();
           const evaluation = el('div', 'batch-evaluation');
+          evaluation.append(roundUsage(detail, round));
           evaluation.append(el('small', 'batch-review-summary', `${round.review_source === 'local_validator' ? '基础检查' : '模型审核'}：${round.summary}`));
           if (round.issues.length) {
             const issues = el('details', 'batch-issues'); issues.append(el('summary', '', `查看审核意见 · ${round.issues.length} 条`));

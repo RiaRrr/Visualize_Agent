@@ -34,5 +34,6 @@
 .timeline-track{display:flex;flex-wrap:wrap;gap:5px;min-width:0}
 .timeline-item{display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap;border:1px solid #d7e9e7;background:#f4faf8;color:#315d59;border-radius:8px;padding:5px 7px;font-size:11px}
 .timeline-item b{font-size:11px}.timeline-item small{color:#60837e}.timeline-item:has(.timeline-live){border-color:#56b7a1;background:#e6f7f0}
+.cost-estimate{color:#7b570e!important;font-size:11px;overflow-wrap:anywhere}.cost-note{display:block;color:#68858b;font-size:11px;line-height:1.5;margin:4px 0 10px}.round-usage,.timeline-round-summary{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;font-size:11px;color:#517079}.timeline-round-summary{flex-basis:100%;margin-bottom:3px}
 @media(max-width:1150px){.activity{grid-template-columns:1fr}.log-window{height:132px}}
 @media(max-width:540px){.activity{gap:12px}.stepper{gap:0}.step{font-size:10px}.step:not(:last-child)::after{left:calc(50% + 14px);width:calc(100% - 28px)}.step-dot{width:25px;height:25px}.log-line{grid-template-columns:58px minmax(0,1fr);gap:5px}.log-stage{display:none}}
