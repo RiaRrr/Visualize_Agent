@@ -12,6 +12,7 @@ SUBJECTS = {"math": "数学", "physics": "物理", "chemistry": "化学", "gener
 PROFILE_SPECS = {
     "auto": ("自动识别学科", "auto", ()),
     "math-current": ("数学 · 综合经验", "math", ("math_current.md",)),
+    "math-deepseek": ("数学 · 分步 SVG 与教学示例（1019）", "math", ("math_current.md", "math_deepseek.md")),
     "math-compact": ("数学 · 精简交互实验", "math", ("math_current.md", "math_compact.md")),
     "math-interactive": ("数学 · 交互白板方案", "math", ("math_current.md", "math_interactive.md")),
     "math-workflow": ("数学 · 推导工作流方案", "math", ("math_current.md", "math_workflow.md")),
@@ -73,8 +74,21 @@ def router_prompt() -> str:
     return _read("router.md")
 
 
+def runtime_defaults(profile_id: str, generator_model: str, reviewer_model: str) -> dict:
+    """Explicit per-task settings; never alter the service's global defaults."""
+    if profile_id != "math-deepseek":
+        return {}
+    result = {}
+    for role, model in (("generator", generator_model), ("reviewer", reviewer_model)):
+        if model.lower().startswith(("deepseek-", "deepseek-ai/")):
+            result.update({f"{role}_thinking": "enabled", f"{role}_reasoning_effort": "high",
+                           f"{role}_max_tokens": 64000})
+    return result
+
+
 def list_profiles() -> list[dict]:
     return [{"id": p.id, "name": p.name, "subject": p.subject, "version": p.version,
+             "runtime_note": ("选择 DeepSeek 时，本方案为生成与审核开启 high 推理，输出上限各 64,000（包含推理 token）；按实际用量计数。原图直传模式无需 OCR。" if p.id == "math-deepseek" else ""),
              "generator_prompt": p.generator_prompt, "reviewer_prompt": p.reviewer_prompt,
              "generator_text_prompt": get_profile(p.id, generator_mode="ocr_text").generator_prompt,
              "reviewer_text_prompt": get_profile(p.id, reviewer_mode="ocr_text").reviewer_prompt}

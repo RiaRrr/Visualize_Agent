@@ -15,7 +15,9 @@ TEXT_ONLY = {
 
 def capability(provider: str, model: str, probe: dict | None = None) -> dict:
     """A successful live image probe upgrades a model; failure downgrades it."""
-    if provider == "edumind_alt" and model in IMAGE_OK:
+    if provider == "codex" and model == "deepseek-v4-1-flash-261017":
+        result = {"text_input": True, "image_input": True, "tested_at": "2026-10-19"}
+    elif provider == "edumind_alt" and model in IMAGE_OK:
         result = {"text_input": True, "image_input": True, "tested_at": TESTED_AT}
     elif provider == "edumind_alt" and model in TEXT_ONLY:
         result = {"text_input": True, "image_input": False, "tested_at": TESTED_AT}

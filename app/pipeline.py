@@ -111,13 +111,18 @@ class Pipeline:
         reviewer_provider = config.get("reviewer_provider")
         generator_mode = config.get("generator_mode", "vision")
         reviewer_mode = config.get("reviewer_mode", "vision")
+        def model_options(role, model):
+            if not model.lower().startswith(("deepseek-", "deepseek-ai/")):
+                return {}
+            return {key: config[f"{role}_{key}"] for key in ("thinking", "reasoning_effort")
+                    if config.get(f"{role}_{key}") is not None}
         ocr_provider = config.get("ocr_provider")
         ocr_model = config.get("ocr_model")
         round_number = len(completed_rounds)
         if completed_rounds:
             last_round = completed_rounds[-1]
             previous_html = (self.store.root / task_id / last_round["html_name"]).read_text(encoding="utf-8")
-            feedback = ("上一轮已通过。请继续优化图示、教学顺序与手机可读性。"
+            feedback = ("上一轮已通过。请继续优化图示、教学顺序与交互可读性。"
                         if fixed_five and last_round["passed"] else "\n".join(f"- {issue}" for issue in last_round["issues"]))
         try:
             if completed_rounds and completed_rounds[-1]["passed"] and not fixed_five:
@@ -261,9 +266,10 @@ class Pipeline:
                     try:
                         raw = await self.client.complete(
                             generator_model, prompt, [] if generator_mode == "ocr_text" else original,
-                            max_tokens=self.settings.generator_max_tokens,
+                            max_tokens=config.get("generator_max_tokens", self.settings.generator_max_tokens),
                             progress=lambda message: self.store.log_event(task_id, "generating", round_number, message),
                             usage=lambda value: generation_usage.update(value=value),
+                            **model_options("generator", generator_model),
                             **({"provider": generator_provider} if generator_provider else {}))
                         generated = True
                     finally:
@@ -283,7 +289,7 @@ class Pipeline:
                 errors = validate_html(html)
                 screenshot = None
                 if not errors:
-                    self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：浏览器渲染与手机布局检查", stage="rendering")
+                    self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：浏览器渲染与交互检查", stage="rendering")
                     try:
                         screenshot = await self.renderer(html)
                     except Exception as exc:
@@ -339,9 +345,10 @@ class Pipeline:
                             raw_review = await self.client.complete(
                                 reviewer_model, review_prompt,
                                 [] if reviewer_mode == "ocr_text" else original + [(temp_path, "image/png")],
-                                max_tokens=self.settings.reviewer_max_tokens,
+                                max_tokens=config.get("reviewer_max_tokens", self.settings.reviewer_max_tokens),
                                 progress=lambda message: self.store.log_event(task_id, "reviewing", round_number, message),
                                 usage=lambda value: review_usage.update(value=value),
+                                **model_options("reviewer", reviewer_model),
                                 **({"provider": reviewer_provider} if reviewer_provider else {}))
                             reviewed = True
                         finally:
@@ -365,7 +372,7 @@ class Pipeline:
                     self.store.set_state(task_id, "passed", round_number, f"审核通过，最终文件：{final_name}", final_name, stage="passed")
                     self.store.refresh_round_metrics(task_id, round_number)
                     return
-                feedback = ("上一轮已通过。请在保证题意、计算和交互正确的前提下，继续优化图示、教学顺序与手机可读性。"
+                feedback = ("上一轮已通过。请在保证题意、计算和交互正确的前提下，继续优化图示、教学顺序与交互可读性。"
                             if review["passed"] and fixed_five else "\n".join(f"- {issue}" for issue in review["issues"]))
                 self.store.set_state(task_id, "running", round_number,
                                      f"第 {round_number} 轮未通过：{'; '.join(review['issues'])[:300]}；准备返修", stage="revising")

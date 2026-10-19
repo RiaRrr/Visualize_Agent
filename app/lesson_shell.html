@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>交互数学实验</title><style>
+:root{--ink:#203638;--muted:#667c7b;--teal:#0f766e;--line:#dbe6e2;--paper:#f4f6f1}*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,"Microsoft YaHei",sans-serif}button,input{font:inherit}button{cursor:pointer}
+main{max-width:1440px;margin:auto;padding:24px}h1{font-size:28px;margin:0 0 8px;letter-spacing:-.03em}.intro{color:var(--muted);max-width:1080px;font-size:14px;margin:0 0 18px}
+nav{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 18px}nav button{background:transparent;border:1px solid var(--line);border-radius:7px;padding:8px 13px;color:var(--muted);font-size:14px}nav button.active{background:var(--teal);color:white;border-color:var(--teal)}
+.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(340px,1fr);gap:20px;align-items:start}.board,.lesson{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden}.board{padding:16px}.board-head{font-size:14px;color:var(--teal);min-height:23px}.lesson{padding:22px}.lesson h2{font-size:22px;line-height:1.35;margin:6px 0 16px}.kicker{font-size:12px;color:var(--teal);font-weight:700;letter-spacing:.1em}#drawing{width:100%;display:block;aspect-ratio:760/530}svg text{font:15px system-ui,"Microsoft YaHei",sans-serif;paint-order:stroke;stroke:white;stroke-width:4;stroke-linejoin:round}
+#explanation{font-size:15px}#explanation p{margin:10px 0}.formula{background:#eff7f4;border-left:3px solid var(--teal);padding:11px 13px;margin:12px 0;overflow-wrap:anywhere;font-family:Georgia,"Microsoft YaHei",serif;font-size:17px}.controls{border-top:1px solid var(--line);margin-top:8px;padding-top:8px}.control{margin:8px 0}.control label{display:flex;justify-content:space-between;gap:14px;font-size:14px;font-weight:600}.control output{color:var(--teal)}input[type=range]{width:100%;accent-color:var(--teal);margin:7px 0}.note{font-size:12px;color:var(--muted)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.actions button,.pager button{border:1px solid var(--line);background:white;border-radius:6px;padding:8px 13px;color:var(--ink)}.actions .special,.pager button:last-child{background:var(--teal);color:white;border-color:var(--teal)}.pager{display:flex;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}button:disabled{opacity:.4;cursor:default}#insetWrap{border-top:1px solid var(--line);padding-top:12px;margin-top:18px}#insetTitle{font-size:13px;font-weight:600;color:var(--teal)}#inset{width:100%;aspect-ratio:360/240;display:block}#error{color:#b91c1c;white-space:pre-wrap}button:focus-visible,input:focus-visible{outline:3px solid #d97706;outline-offset:3px}[hidden]{display:none!important}@media(max-width:850px){main{padding:14px}.layout{grid-template-columns:1fr}.lesson{padding:18px}h1{font-size:24px}}
+</style></head><body><main><h1 id="title"></h1><p id="intro" class="intro"></p><nav id="steps" aria-label="学习步骤"></nav>
+<div class="layout"><section class="board"><div id="focus" class="board-head"></div><svg id="drawing" viewBox="0 0 760 530" role="img" aria-label="数学图形"></svg><div id="controls" class="controls"></div><div id="actions" class="actions"></div></section>
+<section class="lesson"><div id="stepCount" class="kicker"></div><h2 id="stepTitle"></h2><div id="explanation"></div><div id="insetWrap" hidden><div id="insetTitle"></div><svg id="inset" viewBox="0 0 360 240" role="img" aria-label="局部关系"></svg></div><div class="pager"><button id="previous">上一步</button><button id="next">下一步</button></div></section></div><div id="error" hidden></div></main>
+<script>
+const MathKit=Object.freeze({
+ slope:(a,b)=>(b[1]-a[1])/(b[0]-a[0]),
+ area:(a,b,c)=>Math.abs((b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]))/2,
+ midpoint:(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2],
+ centroid:ps=>[ps.reduce((s,p)=>s+p[0],0)/ps.length,ps.reduce((s,p)=>s+p[1],0)/ps.length],
+ axisY:(a,b)=>[0,a[1]-(b[1]-a[1])*a[0]/(b[0]-a[0])],
+ ellipseOther:(p,d,a,b)=>{const t=-2*(p[0]*d[0]/(a*a)+p[1]*d[1]/(b*b))/(d[0]*d[0]/(a*a)+d[1]*d[1]/(b*b));return[p[0]+t*d[0],p[1]+t*d[1]]},
+ fmt:(v,d=3)=>Number.isFinite(v)?v.toFixed(d):'不可定义'
+});
+/*__LESSON_MODULE__*/
+</script><script>
+(()=>{'use strict';
+const L=window.LESSON, $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+if(!L||!Array.isArray(L.steps)||L.steps.length<2)throw new Error('教学模块缺少步骤');
+const params=L.params||[],p=Object.fromEntries(params.map(x=>[x.key,x.value]));let step=0;
+function painter(svg,view,equalScale=true){
+ svg.replaceChildren();const W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,pad=W>400?50:28;
+ const [xmin,xmax,ymin,ymax]=view;if(!(xmax>xmin&&ymax>ymin))throw new Error('绘图坐标范围无效');
+ const scale=Math.min((W-pad*2)/(xmax-xmin),(H-pad*2)/(ymax-ymin));
+ const scaleX=equalScale?scale:(W-pad*2)/(xmax-xmin),scaleY=equalScale?scale:(H-pad*2)/(ymax-ymin);
+ const X=x=>W/2+(x-(xmin+xmax)/2)*scaleX,Y=y=>H/2-(y-(ymin+ymax)/2)*scaleY;
+ const node=(tag,attrs,text)=>{const n=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(attrs))n.setAttribute(k,v);if(text!==undefined)n.textContent=text;svg.append(n);return n};
+ const valid=a=>Array.isArray(a)&&a.length===2&&a.every(Number.isFinite);
+ const line=(a,b,c='#64748b',w=2,dash='')=>{if(!valid(a)||!valid(b))throw new Error('图中线段坐标非有限值');return node('line',{x1:X(a[0]),y1:Y(a[1]),x2:X(b[0]),y2:Y(b[1]),stroke:c,'stroke-width':w,'stroke-dasharray':dash})};
+ const text=(a,t,c='#334155',dx=0,dy=0)=>{if(!valid(a))throw new Error('标签坐标无效');return node('text',{x:Math.max(16,Math.min(W-36,X(a[0])+dx)),y:Math.max(20,Math.min(H-10,Y(a[1])+dy)),fill:c},t)};
+ return {line,text,
+  axes(){line([xmin,0],[xmax,0],'#cbd5d1',1);line([0,ymin],[0,ymax],'#cbd5d1',1);text([xmax,0],'x','#94a3a0',-12,-8);text([0,ymax],'y','#94a3a0',8,8)},
+  ellipse(a,rx,ry,c='#0f766e'){return node('ellipse',{cx:X(a[0]),cy:Y(a[1]),rx:rx*scaleX,ry:ry*scaleY,fill:'none',stroke:c,'stroke-width':2.5})},
+  circle(a,r,c='#0f766e'){return this.ellipse(a,r,r,c)},
+  path(ps,c='#0f766e',w=2,dash=''){let d='',pen=false;for(const a of ps){if(!valid(a)){pen=false;continue}d+=(pen?'L':'M')+X(a[0])+','+Y(a[1]);pen=true}return node('path',{d,fill:'none',stroke:c,'stroke-width':w,'stroke-dasharray':dash,'stroke-linejoin':'round'})},
+  polygon(ps,fill='#dbeafe',stroke='#60a5fa'){if(ps.some(a=>!valid(a)))throw new Error('区域坐标无效');return node('polygon',{points:ps.map(a=>X(a[0])+','+Y(a[1])).join(' '),fill,stroke,'stroke-width':1.5})},
+  point(a,t,c='#0f766e',dx=10,dy=-12){if(!valid(a))throw new Error('点坐标无效');node('circle',{cx:X(a[0]),cy:Y(a[1]),r:5.5,fill:c,stroke:'white','stroke-width':2});if(t)text(a,t,c,dx,dy)},
+  segmentLabel(a,b,t,c='#334155',offset=14){const dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy)||1;return text(MathKit.midpoint(a,b),t,c,offset*dy/len,offset*dx/len)}
+ };
+}
+$('title').textContent=L.title;document.title=L.title;$('intro').textContent=L.intro;
+const tabs=L.steps.map((s,i)=>{const b=document.createElement('button');b.textContent=(i+1)+'. '+s.title;b.onclick=()=>{step=i;render()};$('steps').append(b);return b});
+const controls=params.map(desc=>{const wrap=document.createElement('div');wrap.className='control';const label=document.createElement('label'),name=document.createElement('span'),out=document.createElement('output');name.textContent=desc.label;label.append(name,out);const input=document.createElement('input');input.type='range';input.id='param-'+desc.key;input.min=desc.min;input.max=desc.max;input.step=desc.step||'any';input.value=desc.value;input.setAttribute('aria-label',desc.label);input.oninput=()=>{p[desc.key]=Number(input.value);render()};const note=document.createElement('div');note.className='note';note.textContent=desc.note||'';wrap.append(label,input,note);$('controls').append(wrap);return{desc,wrap,input,out}});
+const reset=document.createElement('button');reset.textContent='复位';reset.id='reset';reset.onclick=()=>{for(const d of params)p[d.key]=d.value;render()};$('actions').append(reset);
+const specials=(L.presets||[]).map((x,i)=>{const b=document.createElement('button');b.textContent=x.label;b.className='special';b.id='preset-'+i;b.onclick=()=>{for(const [k,v]of Object.entries(x.values)){const d=params.find(x=>x.key===k);if(!d||!Number.isFinite(v)||v<d.min||v>d.max)throw new Error('预设值不在演示区间');p[k]=v}render()};$('actions').append(b);return{x,b}});
+$('previous').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(L.steps.length-1,step+1);render()};
+function render(){
+ const d=L.compute({...p}),s=L.steps[step];$('focus').textContent=s.focus;$('stepCount').textContent='第 '+(step+1)+' / '+L.steps.length+' 步';$('stepTitle').textContent=s.title;
+ tabs.forEach((b,i)=>b.classList.toggle('active',i===step));$('previous').disabled=step===0;$('next').disabled=step===L.steps.length-1;
+ for(const c of controls){c.wrap.hidden=step<(c.desc.introducedAt||0);c.input.value=p[c.desc.key];c.out.value=MathKit.fmt(p[c.desc.key])}
+ const visible=controls.some(c=>!c.wrap.hidden);$('controls').hidden=!visible;reset.hidden=!visible;
+ specials.forEach(({x,b})=>b.hidden=step<(x.fromStep||0));$('actions').hidden=reset.hidden&&specials.every(x=>x.b.hidden);
+ $('explanation').innerHTML=L.explain(d,step);L.draw(painter($('drawing'),typeof L.view==='function'?L.view(d,step):L.view),d,step);
+ const inset=L.inset;const show=inset&&step>=(inset.fromStep||0);$('insetWrap').hidden=!show;
+ if(show){$('insetTitle').textContent=inset.title;inset.draw(painter($('inset'),typeof inset.view==='function'?inset.view(d,step):inset.view,inset.kind==='geometry'),d,step)}
+ window.__lessonDebug={params:{...p},step,data:d};
+}
+window.addEventListener('error',e=>{$('error').hidden=false;$('error').textContent='页面错误：'+e.message});render();
+})();
+</script></body></html>

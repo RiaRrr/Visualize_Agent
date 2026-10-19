@@ -9,7 +9,7 @@ from PIL import Image
 
 from app.config import Settings
 from app.pipeline import Pipeline
-from app.profiles import get_profile, get_routed_profile, list_profiles
+from app.profiles import get_profile, get_routed_profile, list_profiles, runtime_defaults
 from app.router import parse_subject
 from app.storage import Store
 
@@ -30,8 +30,8 @@ class RecordingClient:
 
 def test_profiles_have_distinct_snapshotted_prompts():
     profiles = list_profiles()
-    assert len(profiles) == 8
-    assert len({p["version"] for p in profiles}) == 7  # 自动模板和通用方案的内容相同
+    assert len(profiles) == 9
+    assert len({p["version"] for p in profiles}) == 8  # 自动模板和通用方案的内容相同
     for profile in profiles:
         assert profile["generator_prompt"].startswith("你是一名擅长多学科教学设计")
         assert profile["generator_prompt"].endswith("{{QUESTION}}")
@@ -51,6 +51,10 @@ def test_profiles_have_distinct_snapshotted_prompts():
     assert get_routed_profile("general").generator_prompt == get_profile("general").generator_prompt
     assert "数学学科经验" not in get_routed_profile("general").generator_prompt
     assert parse_subject('{"subject":"general"}') == "general"
+    defaults = runtime_defaults("math-deepseek", "deepseek-v4-1-flash-261017", "other-model")
+    assert defaults["generator_thinking"] == "enabled" and defaults["generator_max_tokens"] == 64000
+    assert "reviewer_thinking" not in defaults
+    assert runtime_defaults("math-current", "deepseek-v4-1-flash-261017", "other-model") == {}
 
 
 def test_batch_task_uses_exact_profile_providers_and_single_round(tmp_path):
@@ -75,6 +79,28 @@ def test_batch_task_uses_exact_profile_providers_and_single_round(tmp_path):
     assert store.config(task["id"]) == config
     assert store.artifact(task["id"], result["config_name"]).is_file()
     assert result["generation_seconds"] >= 0 and result["review_seconds"] >= 0
+
+
+def test_deepseek_preset_passes_image_and_snapshotted_runtime_settings(tmp_path):
+    settings=Settings(tmp_path,"https://example.invalid/v1",None,"legacy","legacy",deepseek_thinking="disabled")
+    profile=get_profile("math-deepseek")
+    model="deepseek-v4-1-flash-261017"
+    config={"profile_id":profile.id,"generator_model":model,"reviewer_model":model,
+            "generator_provider":"codex","reviewer_provider":"codex",
+            "generator_prompt":profile.generator_prompt,"reviewer_prompt":profile.reviewer_prompt,
+            "generator_mode":"vision","reviewer_mode":"vision","max_rounds":1,
+            **runtime_defaults(profile.id,model,model)}
+    calls=[]
+    class Client:
+        async def complete(self, model, prompt, images, **kwargs):
+            calls.append((len(images),kwargs))
+            return HTML if len(images)==1 else json.dumps({"passed":True,"issues":[],"summary":"完成"})
+    store=Store(settings);task=store.create("test.png","image/png",".png",b"image",run_config=config)
+    asyncio.run(Pipeline(settings,store,Client(),lambda html:asyncio.sleep(0,result=b"PNG")).run(task['id']))
+    assert [c[0] for c in calls]==[1,2]
+    assert all(c[1]['thinking']=='enabled' and c[1]['reasoning_effort']=='high' and c[1]['max_tokens']==64000 for c in calls)
+    assert settings.deepseek_thinking=='disabled'
+    assert store.get(task['id'])['question_ocr_name'] is None
 
 
 def test_batch_runs_without_automatic_model_probe(monkeypatch):

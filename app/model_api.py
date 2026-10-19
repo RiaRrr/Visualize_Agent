@@ -160,7 +160,12 @@ class ModelClient:
 
     async def complete(self, model: str, prompt: str, images: list[tuple[Path, str]], *, max_tokens: int,
                        progress: Callable[[str], None] | None = None, provider: str | None = None,
-                       usage: Callable[[dict | None], None] | None = None) -> str:
+                       usage: Callable[[dict | None], None] | None = None,
+                       reasoning_effort: str | None = None, thinking: str | None = None) -> str:
+        if reasoning_effort not in (None, "low", "high", "max"):
+            raise ModelError("未知推理强度")
+        if thinking not in (None, "enabled", "disabled"):
+            raise ModelError("未知推理开关")
         if provider not in (None, "anthropic", "codex", "edumind_alt", "openai", "grok"):
             raise ModelError("未知模型接口")
         is_claude = provider == "anthropic" if provider else model.startswith("claude-")
@@ -182,8 +187,11 @@ class ModelClient:
             content += [chat_image_content(path, mime) for path, mime in images]
             payload = {"model": model, "messages": [{"role": "user", "content": content}],
                        "max_completion_tokens": max_tokens}
-            if model.lower().startswith(("deepseek-", "deepseek-ai/")) and self.settings.deepseek_thinking in ("enabled", "disabled"):
-                payload["thinking"] = {"type": self.settings.deepseek_thinking}
+            deepseek_thinking = thinking or self.settings.deepseek_thinking
+            if model.lower().startswith(("deepseek-", "deepseek-ai/")) and deepseek_thinking in ("enabled", "disabled"):
+                payload["thinking"] = {"type": deepseek_thinking}
+            if model.lower().startswith(("deepseek-", "deepseek-ai/")) and reasoning_effort:
+                payload["reasoning_effort"] = reasoning_effort
             headers = {"Authorization": f"Bearer {codex_key}", "Content-Type": "application/json"}
             url = f"{self.settings.codex_base_url}/chat/completions"
         else:

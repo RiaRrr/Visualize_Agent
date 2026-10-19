@@ -21,10 +21,38 @@ def parse_json_object(raw: str) -> dict:
     try:
         result = json.loads(repaired)
     except json.JSONDecodeError:
-        result = json.loads(_escape_inner_quotes(repaired))
+        result = json.loads(_close_omitted_array(_escape_inner_quotes(repaired)))
     if not isinstance(result, dict):
         raise ValueError("规划必须是 JSON 对象")
     return result
+
+
+def _close_omitted_array(value: str) -> str:
+    """Repair a missing ] before }, without inventing strings or missing values."""
+    output, stack = [], []
+    in_string = escaped = False
+    for char in value:
+        if in_string:
+            output.append(char)
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+            continue
+        if char == '"':
+            in_string = True
+        elif char in "{[":
+            stack.append(char)
+        elif char in "}]":
+            if char == "}" and stack and stack[-1] == "[":
+                output.append("]")
+                stack.pop()
+            if stack and stack[-1] == ("{" if char == "}" else "["):
+                stack.pop()
+        output.append(char)
+    return "".join(output)
 
 
 def _escape_inner_quotes(value: str) -> str:

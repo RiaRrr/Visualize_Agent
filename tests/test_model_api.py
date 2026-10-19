@@ -129,3 +129,8 @@ def test_deepseek_thinking_off_and_gateway_500_retry(monkeypatch, tmp_path: Path
     assert result == "<html></html>"
     assert len(calls) == 2
     assert all(call["thinking"] == {"type": "disabled"} for call in calls)
+    asyncio.run(ModelClient(settings).complete(
+        "deepseek-v4-1-flash-261017", "test", [], max_tokens=32000,
+        provider="edumind_alt", reasoning_effort="low", thinking="enabled"))
+    assert calls[-1]["thinking"] == {"type": "enabled"}
+    assert calls[-1]["reasoning_effort"] == "low"

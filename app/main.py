@@ -19,7 +19,7 @@ from .config import ROOT, get_settings
 from .model_api import ModelClient
 from .model_catalog import ModelCatalog
 from .pipeline import Pipeline
-from .profiles import get_profile, get_routed_profile, list_profiles, router_prompt
+from .profiles import get_profile, get_routed_profile, list_profiles, router_prompt, runtime_defaults
 from .profiles import PROMPTS
 from .router import classify_image
 from .storage import Store, TIMEZONE
@@ -305,6 +305,7 @@ async def create_batch(image: UploadFile = File(...), rows: str = Form(...), run
                         "subject": profile.subject, "generator_prompt": profile.generator_prompt,
                         "reviewer_prompt": profile.reviewer_prompt, "run_mode": run_mode,
                         "max_rounds": 1 if run_mode == "single" else 5 if run_mode == "fixed_five" else settings.max_rounds})
+        configs[-1].update(runtime_defaults(profile.id, gen[1], rev[1]))
         if strategy == "guided_math":
             configs[-1].update({key: (PROMPTS / filename).read_text(encoding="utf-8") for key, filename in {
                 "math_plan_prompt": "math_guided_plan.md", "math_plan_review_prompt": "math_guided_plan_review.md",

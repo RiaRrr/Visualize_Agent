@@ -6,6 +6,13 @@ from pathlib import Path
 from app.config import Settings
 from app.model_api import ModelError, message_text, response_text
 from app.pipeline import Pipeline, generator_prompt, parse_review, validate_html
+
+
+def test_review_repairs_missing_array_closer_without_losing_feedback():
+    review = parse_review('{"passed":true,"overall_score":4,"summary":"仍有问题","issues":["补充图示"}')
+    assert review["issues"] == ["补充图示"]
+    assert review["overall_score"] == 4
+    assert review["passed"] is False
 from app.guided_math import parse_json_object, validate_plan
 from app.storage import Store, best_round
 

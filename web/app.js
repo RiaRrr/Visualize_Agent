@@ -159,7 +159,8 @@ function addConfigRow(values = {}) {
     const reviewerPrompt = reviewerMode.value === 'ocr_text' ? item.reviewer_text_prompt : item.reviewer_prompt;
     const guided = optionsData.guided_math_prompts || {};
     const stages = strategy.value === 'guided_math' ? `数学规划 Prompt\n\n${guided.plan || ''}\n\n数学规划核对 Prompt\n\n${guided.plan_review || ''}\n\nHTML 生成附加要求\n\n${guided.html_addendum || ''}\n\n` : '';
-    promptText.textContent = `${routing}${stages}生成 Prompt\n\n${generatorPrompt}\n\n审核 Prompt\n\n${reviewerPrompt}`;
+    const runtimeNote = item.runtime_note ? `调用设置\n${item.runtime_note}\n\n` : '';
+    promptText.textContent = `${runtimeNote}${routing}${stages}生成 Prompt\n\n${generatorPrompt}\n\n审核 Prompt\n\n${reviewerPrompt}`;
   }
   for (const select of [profile, generatorMode, reviewerMode, strategy]) select.addEventListener('change', updatePrompt);
   updatePrompt();
