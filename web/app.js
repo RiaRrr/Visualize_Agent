@@ -160,7 +160,8 @@ function addConfigRow(values = {}) {
     const guided = optionsData.guided_math_prompts || {};
     const stages = strategy.value === 'guided_math' ? `数学规划 Prompt\n\n${guided.plan || ''}\n\n数学规划核对 Prompt\n\n${guided.plan_review || ''}\n\nHTML 生成附加要求\n\n${guided.html_addendum || ''}\n\n` : '';
     const runtimeNote = item.runtime_note ? `调用设置\n${item.runtime_note}\n\n` : '';
-    promptText.textContent = `${runtimeNote}${routing}${stages}生成 Prompt\n\n${generatorPrompt}\n\n审核 Prompt\n\n${reviewerPrompt}`;
+    const revisionPrompt = item.revision_prompt ? `\n\n第二轮起的局部修订协议\n\n${item.revision_prompt}` : '';
+    promptText.textContent = `${runtimeNote}${routing}${stages}生成 Prompt\n\n${generatorPrompt}${revisionPrompt}\n\n审核 Prompt\n\n${reviewerPrompt}`;
   }
   for (const select of [profile, generatorMode, reviewerMode, strategy]) select.addEventListener('change', updatePrompt);
   updatePrompt();

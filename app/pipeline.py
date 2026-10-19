@@ -12,6 +12,7 @@ from .config import Settings
 from .guided_math import guided_html_addendum, parse_json_object, plan_prompt, plan_review_prompt, validate_plan
 from .model_api import ModelClient
 from .profiles import PROMPTS, get_profile
+from .revision import apply_html_patch
 from .rubric import empty_scores, normalize_overall_score, normalize_scores
 from .storage import Store, best_round, timestamp
 
@@ -247,6 +248,7 @@ class Pipeline:
                     if math_plan is None:
                         raise ValueError("数学规划三次尝试后仍未通过：" + feedback_plan[:300])
             for round_number in range(len(completed_rounds) + 1, max_rounds + 1):
+                patch_error = None
                 pending_path = self.store.root / task_id / f".pending_round_{round_number:02d}.html"
                 if pending_path.is_file():
                     html = pending_path.read_text(encoding="utf-8")
@@ -260,6 +262,13 @@ class Pipeline:
                         prompt += "\n\n" + guided_html_addendum(math_plan, config.get("math_guided_html_prompt"))
                     if feedback:
                         prompt += f"\n\n上一轮审核意见：\n{feedback}\n请根据意见改进，保留正确部分。上一轮 HTML：\n{previous_html}"
+                    patch_mode = config.get("revision_strategy") == "patch" and bool(previous_html)
+                    options = model_options("generator", generator_model)
+                    if patch_mode:
+                        prompt += "\n\n" + config["revision_prompt"]
+                        if "reasoning_effort" in options and config.get("revision_reasoning_effort"):
+                            options["reasoning_effort"] = config["revision_reasoning_effort"]
+                        self.store.log_event(task_id, "generating", round_number, "按上一轮审核意见执行局部代码修订")
                     started = time.monotonic()
                     generation_usage = {}
                     generated = False
@@ -269,7 +278,7 @@ class Pipeline:
                             max_tokens=config.get("generator_max_tokens", self.settings.generator_max_tokens),
                             progress=lambda message: self.store.log_event(task_id, "generating", round_number, message),
                             usage=lambda value: generation_usage.update(value=value),
-                            **model_options("generator", generator_model),
+                            **options,
                             **({"provider": generator_provider} if generator_provider else {}))
                         generated = True
                     finally:
@@ -278,7 +287,15 @@ class Pipeline:
                         self.store.record_api_call(task_id, round_number, "generator", generator_provider,
                                                    generator_model, elapsed, "completed" if generated else "error",
                                                    generation_usage.get("value"))
-                    html = clean_html(raw)
+                    if patch_mode:
+                        (self.store.root / task_id / f"round_{round_number:02d}.patch_raw.txt").write_text(raw, encoding="utf-8")
+                        try:
+                            html = apply_html_patch(previous_html, raw)
+                        except ValueError as exc:
+                            patch_error = f"局部修订未应用：{exc}。请针对保存的上一轮 HTML 重新给出精确替换。此前审核意见：{feedback}"
+                            html = previous_html
+                    else:
+                        html = clean_html(raw)
                     html, removed_emoji = re.subn(r"[\U0001F000-\U0001FAFF]", "", html)
                     if removed_emoji:
                         self.store.log_event(task_id, "validating", round_number,
@@ -287,6 +304,8 @@ class Pipeline:
                 previous_html = html
                 self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：检查 HTML 与离线资源", stage="validating")
                 errors = validate_html(html)
+                if patch_error:
+                    errors.append(patch_error)
                 screenshot = None
                 if not errors:
                     self.store.set_state(task_id, "running", round_number, f"第 {round_number} 轮：浏览器渲染与交互检查", stage="rendering")

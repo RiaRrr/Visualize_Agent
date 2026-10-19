@@ -13,6 +13,7 @@ PROFILE_SPECS = {
     "auto": ("自动识别学科", "auto", ()),
     "math-current": ("数学 · 综合经验", "math", ("math_current.md",)),
     "math-deepseek": ("数学 · 分步 SVG 与教学示例（1019）", "math", ("math_current.md", "math_deepseek.md")),
+    "math-deepseek-patch": ("数学 · 分步 SVG＋局部修订（1019）", "math", ("math_current.md", "math_deepseek.md")),
     "math-compact": ("数学 · 精简交互实验", "math", ("math_current.md", "math_compact.md")),
     "math-interactive": ("数学 · 交互白板方案", "math", ("math_current.md", "math_interactive.md")),
     "math-workflow": ("数学 · 推导工作流方案", "math", ("math_current.md", "math_workflow.md")),
@@ -50,7 +51,8 @@ def _assemble(profile_id: str, name: str, subject: str, files: tuple[str, ...],
     review_subject = subject if subject in SUBJECTS else "general"
     reviewer = "\n\n".join([_read(reviewer_common), _read(f"reviewer_{review_subject}.md"),
                              _read("reviewer_format.md")])
-    version = hashlib.sha256((generator + "\n" + reviewer).encode("utf-8")).hexdigest()[:12]
+    revision = _read("html_revision_patch.md") if profile_id == "math-deepseek-patch" else ""
+    version = hashlib.sha256((generator + "\n" + reviewer + revision).encode("utf-8")).hexdigest()[:12]
     return PromptProfile(profile_id, name, subject, version, generator, reviewer)
 
 
@@ -76,9 +78,13 @@ def router_prompt() -> str:
 
 def runtime_defaults(profile_id: str, generator_model: str, reviewer_model: str) -> dict:
     """Explicit per-task settings; never alter the service's global defaults."""
-    if profile_id != "math-deepseek":
+    if profile_id not in {"math-deepseek", "math-deepseek-patch"}:
         return {}
     result = {}
+    if profile_id == "math-deepseek-patch":
+        result.update(revision_strategy="patch", revision_prompt=_read("html_revision_patch.md"))
+        if generator_model.lower().startswith(("deepseek-", "deepseek-ai/")):
+            result["revision_reasoning_effort"] = "low"
     for role, model in (("generator", generator_model), ("reviewer", reviewer_model)):
         if model.lower().startswith(("deepseek-", "deepseek-ai/")):
             result.update({f"{role}_thinking": "enabled", f"{role}_reasoning_effort": "high",
@@ -88,7 +94,8 @@ def runtime_defaults(profile_id: str, generator_model: str, reviewer_model: str)
 
 def list_profiles() -> list[dict]:
     return [{"id": p.id, "name": p.name, "subject": p.subject, "version": p.version,
-             "runtime_note": ("选择 DeepSeek 时，本方案为生成与审核开启 high 推理，输出上限各 64,000（包含推理 token）；按实际用量计数。原图直传模式无需 OCR。" if p.id == "math-deepseek" else ""),
+             "revision_prompt": _read("html_revision_patch.md") if p.id == "math-deepseek-patch" else "",
+             "runtime_note": ("首轮生成完整 HTML，后续局部修订；DeepSeek 首轮与审核使用 high 推理，修订使用 low，上限各 64,000 token。每轮保存完整页面；可选择原图直传，无需 OCR。" if p.id == "math-deepseek-patch" else "选择 DeepSeek 时，本方案为生成与审核开启 high 推理，输出上限各 64,000（包含推理 token）；按实际用量计数。原图直传模式无需 OCR。" if p.id == "math-deepseek" else ""),
              "generator_prompt": p.generator_prompt, "reviewer_prompt": p.reviewer_prompt,
              "generator_text_prompt": get_profile(p.id, generator_mode="ocr_text").generator_prompt,
              "reviewer_text_prompt": get_profile(p.id, reviewer_mode="ocr_text").reviewer_prompt}

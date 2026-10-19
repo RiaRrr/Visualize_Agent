@@ -2,6 +2,7 @@ import asyncio
 import importlib
 import io
 import json
+import pytest
 from pathlib import Path
 
 from fastapi.testclient import TestClient
@@ -30,8 +31,8 @@ class RecordingClient:
 
 def test_profiles_have_distinct_snapshotted_prompts():
     profiles = list_profiles()
-    assert len(profiles) == 9
-    assert len({p["version"] for p in profiles}) == 8  # 自动模板和通用方案的内容相同
+    assert len(profiles) == 10
+    assert len({p["version"] for p in profiles}) == 9  # 自动模板和通用方案的内容相同
     for profile in profiles:
         assert profile["generator_prompt"].startswith("你是一名擅长多学科教学设计")
         assert profile["generator_prompt"].endswith("{{QUESTION}}")
@@ -169,7 +170,8 @@ def test_auto_batch_classifies_once_and_snapshots_subject_prompts(tmp_path, monk
     assert metadata["routing"] == {"subject": "physics", "provider": "openai", "model": "route"}
 
 
-def test_upload_accepts_router_model_and_saves_auto_template(tmp_path, monkeypatch):
+@pytest.mark.parametrize('profile_id', ['auto', 'math-deepseek-patch'])
+def test_upload_accepts_router_model_and_saves_auto_template(tmp_path, monkeypatch, profile_id):
     main = importlib.import_module("app.main")
     store = Store(Settings(tmp_path, "https://example.invalid/v1", "fake", "gen", "review"))
 
@@ -182,7 +184,7 @@ def test_upload_accepts_router_model_and_saves_auto_template(tmp_path, monkeypat
     monkeypatch.setattr(main, "_track", lambda coro: coro.close())
     image = io.BytesIO()
     Image.new("RGB", (20, 20), "white").save(image, format="PNG")
-    row = {"profile_id": "auto", "generator_provider": "openai", "generator_model": "gen",
+    row = {"profile_id": profile_id, "generator_provider": "openai", "generator_model": "gen",
            "reviewer_provider": "openai", "reviewer_model": "review"}
     response = TestClient(main.app).post(
         "/api/batches", files={"image": ("question.png", image.getvalue(), "image/png")},
@@ -191,9 +193,16 @@ def test_upload_accepts_router_model_and_saves_auto_template(tmp_path, monkeypat
     assert response.status_code == 201
     task = response.json()["tasks"][0]
     config = store.config(task["id"])
-    assert task["router_model"] == "route" and task["route_subject"] is None
-    assert config["router_model"] == "route"
-    assert "只返回一行 JSON" in config["router_prompt"]
+    if profile_id == 'auto':
+        assert task["router_model"] == "route" and task["route_subject"] is None
+        assert config["router_model"] == "route"
+        assert "只返回一行 JSON" in config["router_prompt"]
+    else:
+        assert config['revision_strategy'] == 'patch'
+        assert '局部代码修订' in config['revision_prompt']
+        assert config['generator_mode'] == config['reviewer_mode'] == 'vision'
+        assert config['profile_version'] == get_profile(profile_id).version
+        assert 'router_model' not in config
     assert "可视化优先原则（最高优先级）" in config["generator_prompt"]
 
 

@@ -16,6 +16,7 @@ import time
 from app.config import ROOT, get_settings
 from app.model_api import ModelClient
 from app.pipeline import Pipeline
+from app.revision import apply_html_patch
 from app.profiles import get_profile
 from app.storage import Store, timestamp
 
@@ -75,18 +76,7 @@ class RecordedClient:
         raw = await client.complete(model, prompt, images, **kwargs)
         (self.folder / f"{stem}.response.txt").write_text(raw, encoding="utf-8")
         if role == "generator" and self.patch:
-            patch_text = re.sub(r'^```(?:json)?\s*|\s*```$', '', raw.strip())
-            edits = json.loads(patch_text).get('edits')
-            if not isinstance(edits, list) or not 1 <= len(edits) <= 12:
-                raise ValueError('局部修订应为 1–12 个 edits')
-            for edit in edits:
-                old, new = edit.get('old'), edit.get('new')
-                if not isinstance(old,str) or not old or not isinstance(new,str) or previous_html.count(old)!=1:
-                    raise ValueError('局部修订的原文必须精确且仅匹配一次')
-                if len(old) > len(previous_html)*.75:
-                    raise ValueError('局部修订不得整体重写页面')
-                previous_html = previous_html.replace(old,new,1)
-            return previous_html
+            return apply_html_patch(previous_html, raw)
         if role == "generator" and self.module:
             code=raw.strip()
             fenced=re.search(r"```(?:javascript|js)?\s*([\s\S]*?)```",code,re.I)
