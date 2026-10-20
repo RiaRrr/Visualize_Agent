@@ -12,8 +12,9 @@
 | physics_001_W0 | failed | 1 | 1 | B0D1C5D32 | 75,991 | 379.9 | 2 |
 | physics_001_W1 | passed | 3 | 3 | B83284572 | 271,773 | 1107.0 | 2 |
 | physics_001_W2 | failed | 3 | 3 | B5D896375 | 207,660 | 857.7 | 2 |
-| chemistry_001_W0 | running | 0 | — | — | 45,713 | 218.0 | 0 |
-| chemistry_001_W1 | running | 0 | — | — | 0 | 0.0 | 0 |
+| chemistry_001_W0 | failed | 1 | 1 | B6CA12DEB | 77,713 | 351.3 | 0 |
+| chemistry_001_W1 | failed | 3 | 3 | B50DFB016 | 237,650 | 1000.5 | 0 |
+| chemistry_001_W2 | failed | 3 | 3 | B46BA67A9 | 254,904 | 1031.3 | 0 |
 
 ## 运行中发现的问题
 - WSL 对内部网关域名存在间歇性 DNS 解析失败。首次连接失败保留在日志；后续 runner 使用实际解析得到的内部地址作进程内覆盖，原 hostname/SNI 保留，没有修改系统 DNS，也没有改动 8001。

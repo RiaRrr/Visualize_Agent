@@ -76,6 +76,7 @@ def write_gpt_scores():
             'selected_round':s.get('round_number'),'completed_rounds':s.get('completed_rounds'),
             'model':rec['model'],'version':rec['judge_version'],'judgment':rec['judgment'],
             'seconds':rec['duration_seconds'],'usage':rec.get('usage'),'created_at':rec['created_at']})
+    rows.sort(key=lambda r:({'math':0,'physics':1,'chemistry':2}.get(r['question_id'].split('_')[0],3),r['question_id'],r.get('workflow_id')or'',r['version']))
     write(BENCH/'reports/gpt_scores.json',{'rows':rows,'note':'GPT 独立评价最终选中 HTML；不反馈给 DeepSeek 流程。小样本评分供排查与比较，不当作人工真值。'})
 
 async def main():
