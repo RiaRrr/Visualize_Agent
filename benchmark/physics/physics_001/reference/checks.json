@@ -1,0 +1,16 @@
+{
+  "status": "agent_checked_pending_human",
+  "checked_by": "coding_agent",
+  "not_human_ground_truth": true,
+  "answer": "(1)108 m；(2)48 m",
+  "derivation": [
+    "a=-6 m/s²，v0=36 m/s，停车时间6 s",
+    "总位移=36×6-3×6²=108 m",
+    "最后4 s对应t=2至6；v(2)=24 m/s，位移=(24+0)×4/2=48 m"
+  ],
+  "checks": [
+    "停车后不能继续按负速度倒车",
+    "最后4秒不是从开始起前4秒",
+    "v-t面积、运动位置与显示单位同步"
+  ]
+}

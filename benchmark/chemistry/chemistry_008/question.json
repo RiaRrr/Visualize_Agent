@@ -1,0 +1,42 @@
+{
+  "id": "chemistry_008",
+  "source_id": "4104616417869824",
+  "subject": "chemistry",
+  "topic": "平衡与电化学",
+  "split": "test",
+  "family_id": "chemistry_008",
+  "difficulty_level": 19,
+  "difficulty": 0.57,
+  "type": {
+    "id": "300902",
+    "name": "原理综合"
+  },
+  "knowledge_points": [
+    {
+      "id": 6497,
+      "name": "化学平衡常数的计算"
+    },
+    {
+      "id": 6455,
+      "name": "盖斯定律的应用"
+    },
+    {
+      "id": 6487,
+      "name": "温度对化学平衡移动的影响"
+    },
+    {
+      "id": 6645,
+      "name": "电解池电极反应式及化学方程式的书写"
+    }
+  ],
+  "selection_reason": "反应能量、平衡与电解",
+  "source_paper_ids": [
+    "4104604293947392"
+  ],
+  "path": "chemistry/chemistry_008",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "cd771240f929ff320962f847b13c56e1543a8a244754d4ee9762b5ef5a17eef9",
+  "input_sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+}

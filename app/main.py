@@ -37,6 +37,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="题目可视化", lifespan=lifespan)
+from .benchmark import router as benchmark_router
+app.include_router(benchmark_router)
 running_tasks: set[asyncio.Task] = set()
 model_check_cache: tuple[float, dict] | None = None
 

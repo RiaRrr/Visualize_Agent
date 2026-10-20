@@ -1,0 +1,44 @@
+{
+  "id": "chemistry_010",
+  "source_id": "4075130608156672",
+  "subject": "chemistry",
+  "topic": "实验与制备",
+  "split": "test",
+  "family_id": "chemistry_010",
+  "difficulty_level": 19,
+  "difficulty": 0.64,
+  "type": {
+    "id": "300904",
+    "name": "实验探究"
+  },
+  "knowledge_points": [
+    {
+      "id": 6062,
+      "name": "物质的量浓度的基础计算"
+    },
+    {
+      "id": 7302,
+      "name": "配制实验的步骤及操作"
+    },
+    {
+      "id": 7303,
+      "name": "配制实验的误差分析"
+    },
+    {
+      "id": 7304,
+      "name": "配制实验的仪器"
+    },
+    {
+      "id": 6115,
+      "name": "氯气的实验室制法"
+    }
+  ],
+  "selection_reason": "制备流程、溶液配制与误差",
+  "source_paper_ids": [],
+  "path": "chemistry/chemistry_010",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "4c21ab5fa3afdfbcca3fe75c921ea7101bed3464d96efc565618ff1a390dd89c",
+  "input_sha256": "366617cddca964a15523ce654d4cf8bb99851f1396d5727758fcb99c0946f1b2"
+}

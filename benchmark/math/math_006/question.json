@@ -1,0 +1,30 @@
+{
+  "id": "math_006",
+  "source_id": "3736075637735424",
+  "subject": "math",
+  "topic": "解析几何",
+  "split": "test",
+  "family_id": "math_006",
+  "difficulty_level": 19,
+  "difficulty": 0.65,
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "knowledge_points": [
+    {
+      "id": 11984,
+      "name": "根据a、b、c求椭圆标准方程"
+    }
+  ],
+  "selection_reason": "椭圆参数与形状",
+  "source_paper_ids": [
+    "3785268787003392"
+  ],
+  "path": "math/math_006",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "3e61f2de82217a1c908a7543af74bfce30b01ef5b3aad0933f630950a668f8ab",
+  "input_sha256": "ba0a5c07fe19b8acea477bb54b9175759bcef4b7c10ceb8108e03dc28dfe4e51"
+}

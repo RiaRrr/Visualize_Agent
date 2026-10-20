@@ -1,0 +1,44 @@
+{
+  "id": "chemistry_003",
+  "source_id": "4076407763566592",
+  "subject": "chemistry",
+  "topic": "氧化还原",
+  "split": "dev",
+  "family_id": "chemistry_003",
+  "difficulty_level": 19,
+  "difficulty": 0.72,
+  "type": {
+    "id": "301101",
+    "name": "单题"
+  },
+  "knowledge_points": [
+    {
+      "id": 6100,
+      "name": "氧化性、还原性强弱的比较"
+    },
+    {
+      "id": 102348,
+      "name": "氧化剂、还原剂的判断"
+    },
+    {
+      "id": 102349,
+      "name": "氧化产物、还原产物的判断"
+    },
+    {
+      "id": 72228,
+      "name": "电子转移计算"
+    },
+    {
+      "id": 6105,
+      "name": "与氧化剂、还原剂有关的计算"
+    }
+  ],
+  "selection_reason": "电子转移与计量关系",
+  "source_paper_ids": [],
+  "path": "chemistry/chemistry_003",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "0d199b4b20f621ee51469b692958350a29cdbf681be17c13c331c8015a2baa1a",
+  "input_sha256": "df0965bff42ac0818244bd3fe009175caaff9f711e3fd757dfede187089aa609"
+}

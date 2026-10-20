@@ -1,0 +1,9 @@
+{
+  "status": "pending_human_verification",
+  "items": [
+    "核对所有小问及选择题选项",
+    "检查公式、图形、单位与原题是否完整",
+    "核对参考答案、边界与推导；发现疑问先记录，不强行评分"
+  ],
+  "visualization_focus": "电路切换后的瞬态变化"
+}

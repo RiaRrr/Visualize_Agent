@@ -1,0 +1,1394 @@
+{
+  "version": "v1-candidate",
+  "status": "candidate_pending_reference_and_family_review",
+  "bank_sha256": "92d7e16f37d779f422b9ffc7ac12c93ebc26dbe5a3c0fe9cc651a2a08662da1c",
+  "selection_method": "explicit coverage quotas with local frequency and visualization diversity; no model calls",
+  "questions": [
+    {
+      "id": "math_001",
+      "source_id": "3882491008098304",
+      "subject": "math",
+      "topic": "函数与图像",
+      "split": "dev",
+      "family_id": "math_001",
+      "difficulty_level": 18,
+      "difficulty": 0.8500000000000001,
+      "type": {
+        "id": "270201",
+        "name": "单空题"
+      },
+      "knowledge_points": [
+        {
+          "id": 10664,
+          "name": "求二次函数的值域或最值"
+        }
+      ],
+      "selection_reason": "区间、顶点与最值联动",
+      "source_paper_ids": [
+        "4118112778231808"
+      ],
+      "path": "math/math_001",
+      "pilot": true,
+      "reference_status": "agent_checked_pending_human",
+      "input_status": "ready",
+      "source_sha256": "c48f1a8bc83864aa93aa523aebdd84a630f20149012031f78180724582935d39",
+      "input_sha256": "b3e38e164e8716d4a6b7d8f4d289bd020ac06d0bf6cbe3689ba18422f278f43c"
+    },
+    {
+      "id": "math_002",
+      "source_id": "3884019136626688",
+      "subject": "math",
+      "topic": "集合与不等式",
+      "split": "test",
+      "family_id": "math_002",
+      "difficulty_level": 19,
+      "difficulty": 0.65,
+      "type": {
+        "id": "2701",
+        "name": "单选题"
+      },
+      "knowledge_points": [
+        {
+          "id": 10455,
+          "name": "交集的概念及运算"
+        },
+        {
+          "id": 11484,
+          "name": "解不含参数的一元二次不等式"
+        }
+      ],
+      "selection_reason": "数轴上的解集与交集",
+      "source_paper_ids": [
+        "4118112778231808"
+      ],
+      "path": "math/math_002",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "e292d4d6e8fd1e5081ffedec6f58b8fe724dd43e3928d08346bdc7efdd556833",
+      "input_sha256": "b80a56bc0cbf52e7dce02ac81f756879e6fd740d1af410d17732f014d960d942"
+    },
+    {
+      "id": "math_003",
+      "source_id": "3742836393762816",
+      "subject": "math",
+      "topic": "三角与向量",
+      "split": "dev",
+      "family_id": "math_003",
+      "difficulty_level": 18,
+      "difficulty": 0.8500000000000001,
+      "type": {
+        "id": "270201",
+        "name": "单空题"
+      },
+      "knowledge_points": [
+        {
+          "id": 11335,
+          "name": "数量积的运算律"
+        },
+        {
+          "id": 11332,
+          "name": "平面向量数量积的几何意义"
+        }
+      ],
+      "selection_reason": "数量积与几何投影",
+      "source_paper_ids": [
+        "3785272045076480"
+      ],
+      "path": "math/math_003",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "c616d300f1635c0635368c794280da25dc79918bc1192a54a0e6e9de9ebf3acb",
+      "input_sha256": "53a8ea4976e91e8234177581cfe4ce496bdd8d3d040ef3a68a847d5c6ebf2698"
+    },
+    {
+      "id": "math_004",
+      "source_id": "3750522406903808",
+      "subject": "math",
+      "topic": "三角与向量",
+      "split": "test",
+      "family_id": "math_004",
+      "difficulty_level": 18,
+      "difficulty": 0.8500000000000001,
+      "type": {
+        "id": "270201",
+        "name": "单空题"
+      },
+      "knowledge_points": [
+        {
+          "id": 11214,
+          "name": "辅助角公式"
+        },
+        {
+          "id": 11055,
+          "name": "正弦函数图象的应用"
+        },
+        {
+          "id": 71123,
+          "name": "由奇偶性求参数"
+        }
+      ],
+      "selection_reason": "三角函数图像与参数",
+      "source_paper_ids": [
+        "3761360507355136"
+      ],
+      "path": "math/math_004",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "067840bcc9ce2f6e7cb6fffeac45b23ef7f6a72011f8f0c20b235d26e83911c4",
+      "input_sha256": "864900af2169677dd802361276e21cc8419bd477e70e45cbdaacc6097e421023"
+    },
+    {
+      "id": "math_005",
+      "source_id": "3738104561139712",
+      "subject": "math",
+      "topic": "立体几何",
+      "split": "dev",
+      "family_id": "math_005",
+      "difficulty_level": 18,
+      "difficulty": 0.8500000000000001,
+      "type": {
+        "id": "270201",
+        "name": "单空题"
+      },
+      "knowledge_points": [
+        {
+          "id": 11634,
+          "name": "多面体与球体内切外接问题"
+        },
+        {
+          "id": 11623,
+          "name": "柱体体积的有关计算"
+        }
+      ],
+      "selection_reason": "空间形体、内切外接与体积",
+      "source_paper_ids": [
+        "3779764269735936"
+      ],
+      "path": "math/math_005",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "cc7d032a6e555de5ea2f941f3225e6d931c90a597d503d3d28e3181c9d8995c9",
+      "input_sha256": "43d715b3e5c5e56634c9b9fda2b01bc8f6dc88701c0af43a30715fde4765f726"
+    },
+    {
+      "id": "math_006",
+      "source_id": "3736075637735424",
+      "subject": "math",
+      "topic": "解析几何",
+      "split": "test",
+      "family_id": "math_006",
+      "difficulty_level": 19,
+      "difficulty": 0.65,
+      "type": {
+        "id": "270201",
+        "name": "单空题"
+      },
+      "knowledge_points": [
+        {
+          "id": 11984,
+          "name": "根据a、b、c求椭圆标准方程"
+        }
+      ],
+      "selection_reason": "椭圆参数与形状",
+      "source_paper_ids": [
+        "3785268787003392"
+      ],
+      "path": "math/math_006",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "3e61f2de82217a1c908a7543af74bfce30b01ef5b3aad0933f630950a668f8ab",
+      "input_sha256": "ba0a5c07fe19b8acea477bb54b9175759bcef4b7c10ceb8108e03dc28dfe4e51"
+    },
+    {
+      "id": "math_007",
+      "source_id": "4031018274463744",
+      "subject": "math",
+      "topic": "概率统计",
+      "split": "dev",
+      "family_id": "math_007",
+      "difficulty_level": 19,
+      "difficulty": 0.75,
+      "type": {
+        "id": "270202",
+        "name": "双空题"
+      },
+      "knowledge_points": [
+        {
+          "id": 12396,
+          "name": "计算古典概型问题的概率"
+        },
+        {
+          "id": 12441,
+          "name": "计算条件概率"
+        }
+      ],
+      "selection_reason": "样本空间与条件概率",
+      "source_paper_ids": [
+        "4030852324745216"
+      ],
+      "path": "math/math_007",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "d6517fe2b8208e0fc7904e7c74b223c2d278874e851f7d729b95cf6a965085a6",
+      "input_sha256": "71895e08d6c9c660cea24739969eb626fbbce9bf94d61ec1311b0ba91c25dab1"
+    },
+    {
+      "id": "math_008",
+      "source_id": "3730337597849600",
+      "subject": "math",
+      "topic": "概率统计",
+      "split": "test",
+      "family_id": "math_008",
+      "difficulty_level": 19,
+      "difficulty": 0.65,
+      "type": {
+        "id": "2701",
+        "name": "单选题"
+      },
+      "knowledge_points": [
+        {
+          "id": 12241,
+          "name": "由茎叶图计算平均数"
+        },
+        {
+          "id": 72081,
+          "name": "总体百分位数的估计"
+        },
+        {
+          "id": 12245,
+          "name": "计算几个数据的极差、方差、标准差"
+        },
+        {
+          "id": 12249,
+          "name": "用方差、标准差说明数据的波动程度"
+        }
+      ],
+      "selection_reason": "数据分布、位置与离散程度",
+      "source_paper_ids": [
+        "3750706576285696"
+      ],
+      "path": "math/math_008",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "8c2d5ed767ff3774545621063346557ff70470c9345ca29a832f4c77fe8db4fb",
+      "input_sha256": "ec744df6c4138e1f6f0016249cfdccea59d6ce1e60126dd386b5f53a402ba6af"
+    },
+    {
+      "id": "math_009",
+      "source_id": "3772640427663360",
+      "subject": "math",
+      "topic": "数列",
+      "split": "dev",
+      "family_id": "math_009",
+      "difficulty_level": 18,
+      "difficulty": 0.8500000000000001,
+      "type": {
+        "id": "270201",
+        "name": "单空题"
+      },
+      "knowledge_points": [
+        {
+          "id": 11434,
+          "name": "等比数列前n项和的基本量计算"
+        },
+        {
+          "id": 11420,
+          "name": "等比数列通项公式的基本量计算"
+        }
+      ],
+      "selection_reason": "等比数列的项与部分和",
+      "source_paper_ids": [
+        "3772089624264704"
+      ],
+      "path": "math/math_009",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "2a1d974ceba1cc1701bd2f3fc09cb3aac8cfa4b43ba5222407a3a124ec570f3f",
+      "input_sha256": "12192abb92e87a74623ae489998630f886aabbffcaef7ab8b8b58d5863f2aa9d"
+    },
+    {
+      "id": "math_010",
+      "source_id": "4030835597312000",
+      "subject": "math",
+      "topic": "数列",
+      "split": "test",
+      "family_id": "math_010",
+      "difficulty_level": 19,
+      "difficulty": 0.75,
+      "type": {
+        "id": "270201",
+        "name": "单空题"
+      },
+      "knowledge_points": [
+        {
+          "id": 11380,
+          "name": "等差数列通项公式的基本量计算"
+        },
+        {
+          "id": 11394,
+          "name": "等差数列前n项和的基本量计算"
+        }
+      ],
+      "selection_reason": "等差数列的项与部分和",
+      "source_paper_ids": [
+        "4030435058696192"
+      ],
+      "path": "math/math_010",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "0443b92d054e166e9702d40d8b1c1638cb14076901b97bb328d5d9822d93b006",
+      "input_sha256": "1a5a4fcd1d8102c2bbb6b41840031c1fea1d79a019fefcde883729250e59264e"
+    },
+    {
+      "id": "math_011",
+      "source_id": "4009616516055040",
+      "subject": "math",
+      "topic": "集合与不等式",
+      "split": "dev",
+      "family_id": "math_011",
+      "difficulty_level": 19,
+      "difficulty": 0.79,
+      "type": {
+        "id": "270201",
+        "name": "单空题"
+      },
+      "knowledge_points": [
+        {
+          "id": 11533,
+          "name": "基本不等式求和的最小值"
+        },
+        {
+          "id": 11535,
+          "name": "条件等式求最值"
+        }
+      ],
+      "selection_reason": "不等式与最值取得条件",
+      "source_paper_ids": [
+        "4118795128283136"
+      ],
+      "path": "math/math_011",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "69e997fd5bb60205abe0951a80ad02c67b11d4056e418c5c227438d891c00eb1",
+      "input_sha256": "976945f9c92e7d4b294ba6f0b70f31b12c3794d563d3ec848d0beeea64502be4"
+    },
+    {
+      "id": "math_012",
+      "source_id": "3772640427565056",
+      "subject": "math",
+      "topic": "函数与导数",
+      "split": "test",
+      "family_id": "math_012",
+      "difficulty_level": 18,
+      "difficulty": 0.8500000000000001,
+      "type": {
+        "id": "270201",
+        "name": "单空题"
+      },
+      "knowledge_points": [
+        {
+          "id": 10879,
+          "name": "已知切线（斜率）求参数"
+        },
+        {
+          "id": 53699,
+          "name": "导数的加减法"
+        }
+      ],
+      "selection_reason": "切线、斜率和导数",
+      "source_paper_ids": [
+        "3772089624264704"
+      ],
+      "path": "math/math_012",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "0e99b7e1faf9960ce1ba7d816d6820009c80206b1022c0e9e107f068ff7f0162",
+      "input_sha256": "6ac3dc9fdcbf4858cdd1d57195d0f154c8cfb883314af68ae0f46c8a6ad82a6e"
+    },
+    {
+      "id": "physics_001",
+      "source_id": "3861377907318784",
+      "subject": "physics",
+      "topic": "运动与图像",
+      "split": "dev",
+      "family_id": "physics_001",
+      "difficulty_level": 18,
+      "difficulty": 0.8500000000000001,
+      "type": {
+        "id": "2904",
+        "name": "解答题"
+      },
+      "knowledge_points": [
+        {
+          "id": 15848,
+          "name": "匀变速直线运动位移与时间的关系"
+        },
+        {
+          "id": 15855,
+          "name": "匀变速直线运动速度与位移的关系"
+        }
+      ],
+      "selection_reason": "减速运动、末段位移与停车边界",
+      "source_paper_ids": [
+        "4103763715465216"
+      ],
+      "path": "physics/physics_001",
+      "pilot": true,
+      "reference_status": "agent_checked_pending_human",
+      "input_status": "ready",
+      "source_sha256": "56231731a7ba3d89baf30be58e60e5f1e38a2a88bceaee5e35efc99ba0c201b1",
+      "input_sha256": "24bb9007886b83bd6cd49e1d8ef259841dd0dc4f428c8593a0494115e91d899f"
+    },
+    {
+      "id": "physics_002",
+      "source_id": "3769195139145728",
+      "subject": "physics",
+      "topic": "运动与图像",
+      "split": "test",
+      "family_id": "physics_002",
+      "difficulty_level": 19,
+      "difficulty": 0.65,
+      "type": {
+        "id": "2904",
+        "name": "解答题"
+      },
+      "knowledge_points": [
+        {
+          "id": 15845,
+          "name": "利用v-t图像求加速度"
+        },
+        {
+          "id": 15846,
+          "name": "利用v-t图像求位移"
+        },
+        {
+          "id": 15899,
+          "name": "变速物体追匀速物体"
+        }
+      ],
+      "selection_reason": "速度图像面积与追及",
+      "source_paper_ids": [],
+      "path": "physics/physics_002",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "781ea3c24f4cf93484e2aac26db1d3824aedf2358188315bb163d1f17260a13f",
+      "input_sha256": "8664ff83bcb8375f97d19f92a448d20c097c3ec8c2f2d0c47047d5476b073463"
+    },
+    {
+      "id": "physics_003",
+      "source_id": "3998381450412032",
+      "subject": "physics",
+      "topic": "受力与动力学",
+      "split": "dev",
+      "family_id": "physics_003",
+      "difficulty_level": 19,
+      "difficulty": 0.7,
+      "type": {
+        "id": "2904",
+        "name": "解答题"
+      },
+      "knowledge_points": [
+        {
+          "id": 15848,
+          "name": "匀变速直线运动位移与时间的关系"
+        },
+        {
+          "id": 16021,
+          "name": "牛顿第二定律的初步应用"
+        }
+      ],
+      "selection_reason": "斜面受力分解、摩擦与加速度",
+      "source_paper_ids": [],
+      "path": "physics/physics_003",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "5938b714c45ad0788e4006622c0851bca262da8672a3113df3d19bfaace168a7",
+      "input_sha256": "25ac3089a331eb8f6b2eb9a0bac715521e30efa4724fa0d05de2d377f9261db2"
+    },
+    {
+      "id": "physics_004",
+      "source_id": "4111203502186496",
+      "subject": "physics",
+      "topic": "受力与功",
+      "split": "test",
+      "family_id": "physics_004",
+      "difficulty_level": 20,
+      "difficulty": 0.5,
+      "type": {
+        "id": "2904",
+        "name": "解答题"
+      },
+      "knowledge_points": [
+        {
+          "id": 108275,
+          "name": "接触面间接连接"
+        },
+        {
+          "id": 16245,
+          "name": "功的定义（式）"
+        }
+      ],
+      "selection_reason": "接触力、临界静止与做功",
+      "source_paper_ids": [
+        "4111183017492480"
+      ],
+      "path": "physics/physics_004",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "1b87b0f2800a0e3ea2c9e8688a20f87e17091d60220cc2e34cffaa69cefa12f0",
+      "input_sha256": "b6b51e01cb05fde6b83250e4e0355b17948d915dd0a2514261467a6073e96363"
+    },
+    {
+      "id": "physics_005",
+      "source_id": "3997173487788032",
+      "subject": "physics",
+      "topic": "动量与冲量",
+      "split": "dev",
+      "family_id": "physics_005",
+      "difficulty_level": 19,
+      "difficulty": 0.69,
+      "type": {
+        "id": "2904",
+        "name": "解答题"
+      },
+      "knowledge_points": [
+        {
+          "id": 15877,
+          "name": "自由落体运动的规律及应用"
+        },
+        {
+          "id": 16348,
+          "name": "动量定理的内容"
+        },
+        {
+          "id": 16345,
+          "name": "计算物体的动量及动量的变化"
+        },
+        {
+          "id": 16339,
+          "name": "求恒力的冲量"
+        }
+      ],
+      "selection_reason": "反弹前后速度方向与平均作用力",
+      "source_paper_ids": [],
+      "path": "physics/physics_005",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "2fb76e2b1f7b9abf722eea1c0bb6768774bacee98e1897ab64684c60790a8f02",
+      "input_sha256": "0e8f0280fa3725f81f45214ebca7269965af8a821c2e7fa3bd0057d99a152a50"
+    },
+    {
+      "id": "physics_006",
+      "source_id": "4073368526315520",
+      "subject": "physics",
+      "topic": "电场与动力学",
+      "split": "test",
+      "family_id": "physics_006",
+      "difficulty_level": 19,
+      "difficulty": 0.71,
+      "type": {
+        "id": "2904",
+        "name": "解答题"
+      },
+      "knowledge_points": [
+        {
+          "id": 15848,
+          "name": "匀变速直线运动位移与时间的关系"
+        },
+        {
+          "id": 16021,
+          "name": "牛顿第二定律的初步应用"
+        },
+        {
+          "id": 15840,
+          "name": "匀变速直线运动速度与时间的关系"
+        },
+        {
+          "id": 16033,
+          "name": "已知受力求运动"
+        },
+        {
+          "id": 65958,
+          "name": "带电物体（计重力）在电场中的平衡问题"
+        },
+        {
+          "id": 16653,
+          "name": "带电物体（计重力）在匀强电场中的直线运动"
+        }
+      ],
+      "selection_reason": "电场力、平衡与斜面运动",
+      "source_paper_ids": [],
+      "path": "physics/physics_006",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "593d6a364061641379fb1c42abf42fd7b68a3cf3e886fb9f8014cee5dcc987af",
+      "input_sha256": "9466c84a605c2e793396d5a2673a476d8f24d486a707c3499586ed242f94a94f"
+    },
+    {
+      "id": "physics_007",
+      "source_id": "4111203501596672",
+      "subject": "physics",
+      "topic": "电路与自感",
+      "split": "dev",
+      "family_id": "physics_007",
+      "difficulty_level": 19,
+      "difficulty": 0.65,
+      "type": {
+        "id": "290801",
+        "name": "1个小题"
+      },
+      "knowledge_points": [
+        {
+          "id": 16958,
+          "name": "含自感线圈的电路闭合及断开后电流的变化及其图像"
+        }
+      ],
+      "selection_reason": "电路切换后的瞬态变化",
+      "source_paper_ids": [
+        "4111183017492480"
+      ],
+      "path": "physics/physics_007",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "83b2c2bca03a020a285a904ef9dbd0a90950946921a30177725aff7faee0dee0",
+      "input_sha256": "a00bbc279030e0a3d3da0157530d4c4adf3a13c68852c5507fe71ad2a08d2a61"
+    },
+    {
+      "id": "physics_008",
+      "source_id": "4111203501809664",
+      "subject": "physics",
+      "topic": "电学实验",
+      "split": "test",
+      "family_id": "physics_008",
+      "difficulty_level": 19,
+      "difficulty": 0.62,
+      "type": {
+        "id": "2903",
+        "name": "实验题"
+      },
+      "knowledge_points": [
+        {
+          "id": 16695,
+          "name": "灵敏电流计改装成电压表"
+        },
+        {
+          "id": 16696,
+          "name": "电表的校准原理及其电路"
+        }
+      ],
+      "selection_reason": "电表改装与校准",
+      "source_paper_ids": [
+        "4111183017492480"
+      ],
+      "path": "physics/physics_008",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "64a4fe453732e3c0418467de39ebc4ae14c5fd13f64ac48e1b7cd487d15be854",
+      "input_sha256": "2f3a19b1d95467c1e69e4eb2cc5e1b6cbef1a9c54c3e4ccc6344e95eafe7d74e"
+    },
+    {
+      "id": "physics_009",
+      "source_id": "4111203501703168",
+      "subject": "physics",
+      "topic": "电磁感应",
+      "split": "dev",
+      "family_id": "physics_009",
+      "difficulty_level": 20,
+      "difficulty": 0.35,
+      "type": {
+        "id": "290801",
+        "name": "1个小题"
+      },
+      "knowledge_points": [
+        {
+          "id": 16937,
+          "name": "线框进出磁场产生的等效电路相关计算"
+        },
+        {
+          "id": 16940,
+          "name": "判断线框进出磁场区域的a-t图像"
+        },
+        {
+          "id": 17002,
+          "name": "计算交变流电路中的电功、电功率和焦耳热"
+        }
+      ],
+      "selection_reason": "运动磁场、等效电路与图像",
+      "source_paper_ids": [
+        "4111183017492480"
+      ],
+      "path": "physics/physics_009",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "8f66ed41c3bdceb3b03bc1f568a821152890502add15746cabd1ed311524e134",
+      "input_sha256": "c5f9143cefb1b9d0681057aa2ee43223d746b37ed5c3d8ebf99cb1fd6a063d11"
+    },
+    {
+      "id": "physics_010",
+      "source_id": "4111203502522368",
+      "subject": "physics",
+      "topic": "带电粒子运动",
+      "split": "test",
+      "family_id": "physics_010",
+      "difficulty_level": 20,
+      "difficulty": 0.38,
+      "type": {
+        "id": "2904",
+        "name": "解答题"
+      },
+      "knowledge_points": [
+        {
+          "id": 16345,
+          "name": "计算物体的动量及动量的变化"
+        },
+        {
+          "id": 16348,
+          "name": "动量定理的内容"
+        },
+        {
+          "id": 16646,
+          "name": "带电粒子在匀强电场中做直线运动"
+        },
+        {
+          "id": 16859,
+          "name": "带电粒子在磁场中做圆周运动的相关计算"
+        },
+        {
+          "id": 16895,
+          "name": "带电粒子在叠加场中的一般曲线运动"
+        }
+      ],
+      "selection_reason": "电磁场中的空间轨迹",
+      "source_paper_ids": [
+        "4111183017492480"
+      ],
+      "path": "physics/physics_010",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "c43cda364861f67111de13d4bbbb12a98e07168478b560adfcf2e3333f2d3f41",
+      "input_sha256": "8531eda3bff134b0ce5445a79b4f9046b1e23e89babd4416219f7bb07cd1da4c"
+    },
+    {
+      "id": "physics_011",
+      "source_id": "4111203502030848",
+      "subject": "physics",
+      "topic": "热学",
+      "split": "dev",
+      "family_id": "physics_011",
+      "difficulty_level": 18,
+      "difficulty": 0.87,
+      "type": {
+        "id": "2904",
+        "name": "解答题"
+      },
+      "knowledge_points": [
+        {
+          "id": 17166,
+          "name": "盖-吕萨克定律的理解及初步应用"
+        },
+        {
+          "id": 17202,
+          "name": "热力学第一定律的应用"
+        }
+      ],
+      "selection_reason": "气体状态变化与热力学第一定律",
+      "source_paper_ids": [
+        "4111183017492480"
+      ],
+      "path": "physics/physics_011",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "1c254fd26a973be5fcac12085bc45463b2871fd3eeb6384d76d2aa8ad43baad0",
+      "input_sha256": "88ee765683c35261fc40ee905204d8021d14dba3f2229e4ca4901175f83be0d1"
+    },
+    {
+      "id": "physics_012",
+      "source_id": "4111203501916160",
+      "subject": "physics",
+      "topic": "光学实验",
+      "split": "test",
+      "family_id": "physics_012",
+      "difficulty_level": 19,
+      "difficulty": 0.62,
+      "type": {
+        "id": "2903",
+        "name": "实验题"
+      },
+      "knowledge_points": [
+        {
+          "id": 16070,
+          "name": "游标卡尺的使用与读数"
+        },
+        {
+          "id": 108551,
+          "name": "测透明液体的折射率"
+        },
+        {
+          "id": 80687,
+          "name": "光学创新实验"
+        }
+      ],
+      "selection_reason": "折射几何与实验测量",
+      "source_paper_ids": [
+        "4111183017492480"
+      ],
+      "path": "physics/physics_012",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "5dac31df39a7122dc82909bb9f320bb840c5adab9a2dc2a4e3b941a49df5873a",
+      "input_sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+    },
+    {
+      "id": "chemistry_001",
+      "source_id": "4086097452187648",
+      "subject": "chemistry",
+      "topic": "溶液与离子反应",
+      "split": "dev",
+      "family_id": "chemistry_001",
+      "difficulty_level": 19,
+      "difficulty": 0.65,
+      "type": {
+        "id": "301101",
+        "name": "单题"
+      },
+      "knowledge_points": [
+        {
+          "id": 6071,
+          "name": "非电解质、电解质物质类别判断"
+        },
+        {
+          "id": 6074,
+          "name": "物质水溶液的导电性"
+        },
+        {
+          "id": 6080,
+          "name": "离子反应的发生条件"
+        },
+        {
+          "id": 6079,
+          "name": "离子反应的发生及书写"
+        },
+        {
+          "id": 102415,
+          "name": "电导率变化曲线的应用"
+        }
+      ],
+      "selection_reason": "粒子浓度变化与电导曲线",
+      "source_paper_ids": [
+        "4103181409910784"
+      ],
+      "path": "chemistry/chemistry_001",
+      "pilot": true,
+      "reference_status": "agent_checked_pending_human",
+      "input_status": "ready",
+      "source_sha256": "c85096845fde58a200659d2c61ff8a60461c2e03afcce674c9f1b3db4db7bd88",
+      "input_sha256": "1fee6ecf02f31231ef279a5621473ce277320ec9fee0275f89a518d6f1ff7716"
+    },
+    {
+      "id": "chemistry_002",
+      "source_id": "4078298205691904",
+      "subject": "chemistry",
+      "topic": "溶液与酸碱",
+      "split": "test",
+      "family_id": "chemistry_002",
+      "difficulty_level": 19,
+      "difficulty": 0.72,
+      "type": {
+        "id": "300904",
+        "name": "实验探究"
+      },
+      "knowledge_points": [
+        {
+          "id": 6525,
+          "name": "溶液的酸碱性与pH的关系"
+        },
+        {
+          "id": 47817,
+          "name": "实验方案设计"
+        },
+        {
+          "id": 7349,
+          "name": "实验方案评价"
+        }
+      ],
+      "selection_reason": "中和过程、pH曲线与操作",
+      "source_paper_ids": [
+        "4103181409910784"
+      ],
+      "path": "chemistry/chemistry_002",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "b0b272231b2b84ae9e00e29f2979f362b0e477ecfce789b5a8f7d91f35a4c465",
+      "input_sha256": "1c378dd15811ce7b5bafad7c47a803a1ba87275081d33d40f197456e9d17875b"
+    },
+    {
+      "id": "chemistry_003",
+      "source_id": "4076407763566592",
+      "subject": "chemistry",
+      "topic": "氧化还原",
+      "split": "dev",
+      "family_id": "chemistry_003",
+      "difficulty_level": 19,
+      "difficulty": 0.72,
+      "type": {
+        "id": "301101",
+        "name": "单题"
+      },
+      "knowledge_points": [
+        {
+          "id": 6100,
+          "name": "氧化性、还原性强弱的比较"
+        },
+        {
+          "id": 102348,
+          "name": "氧化剂、还原剂的判断"
+        },
+        {
+          "id": 102349,
+          "name": "氧化产物、还原产物的判断"
+        },
+        {
+          "id": 72228,
+          "name": "电子转移计算"
+        },
+        {
+          "id": 6105,
+          "name": "与氧化剂、还原剂有关的计算"
+        }
+      ],
+      "selection_reason": "电子转移与计量关系",
+      "source_paper_ids": [],
+      "path": "chemistry/chemistry_003",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "0d199b4b20f621ee51469b692958350a29cdbf681be17c13c331c8015a2baa1a",
+      "input_sha256": "df0965bff42ac0818244bd3fe009175caaff9f711e3fd757dfede187089aa609"
+    },
+    {
+      "id": "chemistry_004",
+      "source_id": "4103222117957632",
+      "subject": "chemistry",
+      "topic": "氧化还原",
+      "split": "test",
+      "family_id": "chemistry_004",
+      "difficulty_level": 19,
+      "difficulty": 0.7,
+      "type": {
+        "id": "301101",
+        "name": "单题"
+      },
+      "knowledge_points": [
+        {
+          "id": 6094,
+          "name": "氧化还原反应定义、本质及特征"
+        },
+        {
+          "id": 6096,
+          "name": "单线桥、双线桥分析氧化还原反应"
+        },
+        {
+          "id": 102351,
+          "name": "歧化反应与归中反应"
+        },
+        {
+          "id": 72228,
+          "name": "电子转移计算"
+        }
+      ],
+      "selection_reason": "电子转移的图示表达",
+      "source_paper_ids": [
+        "4103181409910784"
+      ],
+      "path": "chemistry/chemistry_004",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "41e590cd1fb588b5ab67e98127f0db86f30657b999d69ffba484520df0a6c6f1",
+      "input_sha256": "56069ab222ba67ddaf6aa31732298d6455da4c937bef9f6aa0c55aa00969ff95"
+    },
+    {
+      "id": "chemistry_005",
+      "source_id": "4104616416862208",
+      "subject": "chemistry",
+      "topic": "反应速率与能量",
+      "split": "dev",
+      "family_id": "chemistry_005",
+      "difficulty_level": 19,
+      "difficulty": 0.65,
+      "type": {
+        "id": "301101",
+        "name": "单题"
+      },
+      "knowledge_points": [
+        {
+          "id": 47771,
+          "name": "活化能对反应速率的影响"
+        },
+        {
+          "id": 6436,
+          "name": "吸热反应和放热反应"
+        },
+        {
+          "id": 6432,
+          "name": "化学键与化学反应中的能量关系"
+        },
+        {
+          "id": 102411,
+          "name": "基元反应与反应历程"
+        },
+        {
+          "id": 6474,
+          "name": "催化剂对化学反应速率的影响"
+        }
+      ],
+      "selection_reason": "反应历程、能垒与催化",
+      "source_paper_ids": [
+        "4104604293947392"
+      ],
+      "path": "chemistry/chemistry_005",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "c223911dbd711d237d9028252a518122ebb6c7d12efce191e4d58f17c2c943f7",
+      "input_sha256": "a549352147c0d6bef78bac4e88fda25d14ef0fc5c3d49401dce83b24a9f913ed"
+    },
+    {
+      "id": "chemistry_006",
+      "source_id": "4104616417320960",
+      "subject": "chemistry",
+      "topic": "速率与平衡",
+      "split": "test",
+      "family_id": "chemistry_006",
+      "difficulty_level": 20,
+      "difficulty": 0.45,
+      "type": {
+        "id": "301101",
+        "name": "单题"
+      },
+      "knowledge_points": [
+        {
+          "id": 6466,
+          "name": "化学反应速率计算"
+        },
+        {
+          "id": 6465,
+          "name": "化学反应速率的表示方法"
+        },
+        {
+          "id": 6483,
+          "name": "化学平衡状态的判断方法"
+        },
+        {
+          "id": 6506,
+          "name": "化学反应速率与化学平衡的综合应用"
+        }
+      ],
+      "selection_reason": "浓度时间曲线与反应历程",
+      "source_paper_ids": [
+        "4104604293947392"
+      ],
+      "path": "chemistry/chemistry_006",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "1a62aad85b1c4e9812c1a2a6a81cd8a3394fb72d5f3e4980300e2f8be426fc8e",
+      "input_sha256": "9d4b15527be1bb92f4c0093ef40d860fe338c5c5a0db66d956b14a0ec18c5ba3"
+    },
+    {
+      "id": "chemistry_007",
+      "source_id": "4104616417198080",
+      "subject": "chemistry",
+      "topic": "电化学与结构",
+      "split": "dev",
+      "family_id": "chemistry_007",
+      "difficulty_level": 19,
+      "difficulty": 0.62,
+      "type": {
+        "id": "301102",
+        "name": "题组"
+      },
+      "knowledge_points": [
+        {
+          "id": 7264,
+          "name": "晶胞的有关计算"
+        },
+        {
+          "id": 6601,
+          "name": "原电池电极反应式书写"
+        },
+        {
+          "id": 6633,
+          "name": "新型电池"
+        },
+        {
+          "id": 6600,
+          "name": "原电池正负极判断"
+        },
+        {
+          "id": 6660,
+          "name": "原电池有关计算"
+        }
+      ],
+      "selection_reason": "电池电极反应、离子迁移与晶胞",
+      "source_paper_ids": [
+        "4104604293947392"
+      ],
+      "path": "chemistry/chemistry_007",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "a62c3c362db9b7f75419b17abebf751e64c822b493d442a48ac042dfff79a258",
+      "input_sha256": "e432b3de0fe462e9c4e9b2a335683f9b81a7f1d07f69f4b5b6fd493620409823"
+    },
+    {
+      "id": "chemistry_008",
+      "source_id": "4104616417869824",
+      "subject": "chemistry",
+      "topic": "平衡与电化学",
+      "split": "test",
+      "family_id": "chemistry_008",
+      "difficulty_level": 19,
+      "difficulty": 0.57,
+      "type": {
+        "id": "300902",
+        "name": "原理综合"
+      },
+      "knowledge_points": [
+        {
+          "id": 6497,
+          "name": "化学平衡常数的计算"
+        },
+        {
+          "id": 6455,
+          "name": "盖斯定律的应用"
+        },
+        {
+          "id": 6487,
+          "name": "温度对化学平衡移动的影响"
+        },
+        {
+          "id": 6645,
+          "name": "电解池电极反应式及化学方程式的书写"
+        }
+      ],
+      "selection_reason": "反应能量、平衡与电解",
+      "source_paper_ids": [
+        "4104604293947392"
+      ],
+      "path": "chemistry/chemistry_008",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "cd771240f929ff320962f847b13c56e1543a8a244754d4ee9762b5ef5a17eef9",
+      "input_sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+    },
+    {
+      "id": "chemistry_009",
+      "source_id": "4086373918359552",
+      "subject": "chemistry",
+      "topic": "实验与分散系",
+      "split": "dev",
+      "family_id": "chemistry_009",
+      "difficulty_level": 18,
+      "difficulty": 0.85,
+      "type": {
+        "id": "301101",
+        "name": "单题"
+      },
+      "knowledge_points": [
+        {
+          "id": 6004,
+          "name": "分散系概念及组成"
+        },
+        {
+          "id": 6007,
+          "name": "胶体的定义及分类"
+        },
+        {
+          "id": 6008,
+          "name": "胶体的性质和应用"
+        },
+        {
+          "id": 7309,
+          "name": "蒸发与结晶"
+        },
+        {
+          "id": 7312,
+          "name": "过滤"
+        }
+      ],
+      "selection_reason": "粒子尺度与分离及观察方法",
+      "source_paper_ids": [
+        "4103181409910784"
+      ],
+      "path": "chemistry/chemistry_009",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "2f21af6b4221fbace76759dc95f9ff5abf7389525949d4ccca3291fd4a2a5ee5",
+      "input_sha256": "9f7f2990681107ad0c8520bfbc6bc06341285b5a437651698858053f43693073"
+    },
+    {
+      "id": "chemistry_010",
+      "source_id": "4075130608156672",
+      "subject": "chemistry",
+      "topic": "实验与制备",
+      "split": "test",
+      "family_id": "chemistry_010",
+      "difficulty_level": 19,
+      "difficulty": 0.64,
+      "type": {
+        "id": "300904",
+        "name": "实验探究"
+      },
+      "knowledge_points": [
+        {
+          "id": 6062,
+          "name": "物质的量浓度的基础计算"
+        },
+        {
+          "id": 7302,
+          "name": "配制实验的步骤及操作"
+        },
+        {
+          "id": 7303,
+          "name": "配制实验的误差分析"
+        },
+        {
+          "id": 7304,
+          "name": "配制实验的仪器"
+        },
+        {
+          "id": 6115,
+          "name": "氯气的实验室制法"
+        }
+      ],
+      "selection_reason": "制备流程、溶液配制与误差",
+      "source_paper_ids": [],
+      "path": "chemistry/chemistry_010",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "4c21ab5fa3afdfbcca3fe75c921ea7101bed3464d96efc565618ff1a390dd89c",
+      "input_sha256": "366617cddca964a15523ce654d4cf8bb99851f1396d5727758fcb99c0946f1b2"
+    },
+    {
+      "id": "chemistry_011",
+      "source_id": "4104616416747520",
+      "subject": "chemistry",
+      "topic": "结构与性质",
+      "split": "dev",
+      "family_id": "chemistry_011",
+      "difficulty_level": 19,
+      "difficulty": 0.59,
+      "type": {
+        "id": "301101",
+        "name": "单题"
+      },
+      "knowledge_points": [
+        {
+          "id": 7258,
+          "name": "配位键"
+        },
+        {
+          "id": 7256,
+          "name": "配合物的结构与性质"
+        },
+        {
+          "id": 7255,
+          "name": "配合物的概念、组成及形成条件"
+        },
+        {
+          "id": 47804,
+          "name": "极性分子和非极性分子"
+        },
+        {
+          "id": 47809,
+          "name": "氢键对物质性质的影响"
+        }
+      ],
+      "selection_reason": "配位结构与物质性质",
+      "source_paper_ids": [
+        "4104604293947392"
+      ],
+      "path": "chemistry/chemistry_011",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "6094ac761d13590b1b6f59acaefc621e5dbeb6f6802b739ee46142e7c97c7da7",
+      "input_sha256": "527a55969df776341eb6a6c4611cbb9a2b385a3da423bc3b219274fee95caef4"
+    },
+    {
+      "id": "chemistry_012",
+      "source_id": "4104616416649216",
+      "subject": "chemistry",
+      "topic": "有机结构",
+      "split": "test",
+      "family_id": "chemistry_012",
+      "difficulty_level": 19,
+      "difficulty": 0.58,
+      "type": {
+        "id": "301101",
+        "name": "单题"
+      },
+      "knowledge_points": [
+        {
+          "id": 6708,
+          "name": "常见官能团名称、组成及结构"
+        },
+        {
+          "id": 6733,
+          "name": "分子的手性"
+        },
+        {
+          "id": 7117,
+          "name": "多官能团有机物的结构与性质"
+        },
+        {
+          "id": 7101,
+          "name": "加聚物的单体、链节及聚合度的确定"
+        },
+        {
+          "id": 7104,
+          "name": "缩聚物的单体、链节及聚合度的确定"
+        }
+      ],
+      "selection_reason": "官能团、聚合物与性质",
+      "source_paper_ids": [
+        "4104604293947392"
+      ],
+      "path": "chemistry/chemistry_012",
+      "pilot": false,
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "source_sha256": "74cb0d25290d5c72ba1440ecbafe7f18e07ddab8ede96cb8c31998f27d5cc6d4",
+      "input_sha256": "3a402e3c9f4bfbe0ae83b5dae7ddff1a8253fab603b3f5803eeb76a4c0986391"
+    }
+  ],
+  "generation_reference_access": false,
+  "test_policy": "holdout must be explicitly unlocked after workflow and judge freeze"
+}

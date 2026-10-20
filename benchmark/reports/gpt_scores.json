@@ -1,0 +1,244 @@
+{
+  "rows": [
+    {
+      "sample_id": "B0D1C5D32",
+      "question_id": "physics_001",
+      "workflow_id": "W0",
+      "selected_round": 1,
+      "completed_rounds": 1,
+      "model": "gpt-5.6-sol",
+      "version": "c3fcf583bc0c",
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 5,
+          "solution_correctness": 5,
+          "page_quality": 4,
+          "interaction_quality": 4,
+          "teaching_effectiveness": 5
+        },
+        "overall_score": 4,
+        "issues": [
+          "速度—时间图左上方的纵轴刻度“36”与“② 速度—时间图像：斜率是加速度，面积是位移”标题发生重叠，初始、t=3 s和t=6 s截图中均可见，影响局部辨读。",
+          "实际操作记录只验证了时间滑块在t=3 s和t=6 s时的联动；“播放”“重置”及五个分步按钮未被实际点击，因此这些控件的运行时效果不能视为已完整验证。源码显示其事件处理与状态切换逻辑完整，但这仅是静态证据。"
+        ],
+        "evidence": {
+          "problem_fidelity": "页面完整保留初速度36 m/s、加速度大小6 m/s²、匀减速直至静止及两个小问，第二问明确为“最后4 s”，未遗漏条件或改变求解范围。",
+          "solution_correctness": "独立核算得停车时间t=36/6=6 s，总位移为36×6-0.5×6×6²=108 m；最后4 s对应t=2至6 s，t=2 s时速度24 m/s，位移为(24+0)×4/2=48 m。页面公式、v-t直线、面积分割及结论均一致。操作截图中t=3 s显示v=18.0 m/s、x=81.0 m，t=6 s显示v=0、x=108.0 m，也与运动方程一致。",
+          "page_quality": "1280 px桌面截图中整体层次清楚，跑道、v-t图、读数、滑块和讲解区均能辨认，未见主要内容裁切；但v-t图左上角的“36”刻度与分区标题明显重叠，属于稳定出现的局部排版问题。",
+          "interaction_quality": "实际记录验证滑块从t=0移动到t=3和t=6时，时间、速度、位移、飞机位置、路程条和v-t图指针同步更新，边界处速度正确停在0且未出现负速度或倒车，运行时无报错。源码还显示滑块范围限定为0至6 s，并实现播放、暂停、重置和分步展示；但这些按钮没有实际操作截图或记录，不能断言其运行时表现已全部验证。",
+          "teaching_effectiveness": "内容按读题转化、求停止时刻、用v-t面积求总位移、识别最后4 s为t=2至6 s、总结的顺序展开；同时提供图像面积、运动公式、倒看匀加速及总量减前2 s等相互核验的方法，关键量的来源明确，适合尚不知道解法的学生。"
+        },
+        "reference_concern": "",
+        "summary": "题设、计算和参考答案一致，滑块联动数据正确，教学链条完整。主要缺陷是v-t图标题与36刻度重叠；此外操作记录没有实际覆盖播放、重置和分步按钮，因此交互完整性只能由源码部分佐证。"
+      },
+      "seconds": 33.67684308200114,
+      "usage": {
+        "input_tokens": 23825,
+        "output_tokens": 1256,
+        "cached_input_tokens": 4224,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 516,
+        "total_tokens": 25081
+      },
+      "created_at": "2026-10-20T15:59:40.332515+00:00"
+    },
+    {
+      "sample_id": "B1F186EBB",
+      "question_id": "math_001",
+      "workflow_id": "W0",
+      "selected_round": 1,
+      "completed_rounds": 1,
+      "model": "gpt-5.6-sol",
+      "version": "c3fcf583bc0c",
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 5,
+          "solution_correctness": 5,
+          "page_quality": 5,
+          "interaction_quality": 5,
+          "teaching_effectiveness": 5
+        },
+        "overall_score": 5,
+        "issues": [],
+        "evidence": {
+          "problem_fidelity": "原题为求函数 y=−x²+2x−14 的值域，候选页完整保留函数式、定义域为全体实数以及值域填空任务，没有改动系数或遗漏条件；滑块明确标为有限“演示范围”，页脚也说明实际定义域为全体实数。",
+          "solution_correctness": "独立配方得 y=−(x−1)²−13。因平方项非负，y≤−13，且 x=1 时取等；当 |x| 趋于无穷时 y 趋于负无穷，因此值域为 (−∞,−13]。候选页的公式、顶点 V(1,−13)、数值联动和最终答案均与此一致。截图中 x=3 时 y=−17，x=1 时 y=−13，x=5.2 时 y=−30.64，计算均正确。",
+          "page_quality": "1280×900 的操作前后截图中，题目、图像、步骤面板、公式、数值和控制区层次清楚，没有发现文字或图形重叠、裁切及不可读内容；高端滑块状态下点 P、辅助线和标签仍可辨认。",
+          "interaction_quality": "实际记录验证了“下一步”和滑块中值、上界操作，页面无运行时错误；截图显示滑块从 x=1 到 x=5.2 时，点位置、坐标、|x−1|、平方项及 y 值同步更新。源码还为播放、暂停、到顶点、复位、上一步和四步导航设置了对应状态更新，但这些操作以及第3、4步的最终显示未在实际操作记录中逐项执行，因此相关判断主要来自源码检查。",
+          "teaching_effectiveness": "页面从动点纵坐标表示函数值开始，再依次安排配方、平方项非负和取等，能够由题设自然推出上界及值域；图中用顶点、对称轴、水平距离 |x−1| 和纵向下降量 (x−1)² 配合实时数值，有限观察区间与全体实数定义域的区别也有明确说明。"
+        },
+        "reference_concern": "",
+        "summary": "参考答案经独立核算正确。候选页完整保留题意，数学推导和动态图示均正确，桌面呈现清晰，步骤设计能连贯解释值域的产生；已记录操作覆盖下一步及滑块联动，其余按钮主要由源码确认。"
+      },
+      "seconds": 33.80902790699474,
+      "usage": {
+        "input_tokens": 24798,
+        "output_tokens": 1130,
+        "cached_input_tokens": 4224,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 509,
+        "total_tokens": 25928
+      },
+      "created_at": "2026-10-20T15:58:56.928479+00:00"
+    },
+    {
+      "sample_id": "B5D896375",
+      "question_id": "physics_001",
+      "workflow_id": "W2",
+      "selected_round": 3,
+      "completed_rounds": 3,
+      "model": "gpt-5.6-sol",
+      "version": "c3fcf583bc0c",
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 5,
+          "solution_correctness": 5,
+          "page_quality": 5,
+          "interaction_quality": 4,
+          "teaching_effectiveness": 5
+        },
+        "overall_score": 5,
+        "issues": [
+          "实际操作只验证了时间滑块在 t=0、3、6 s 的状态；步骤按钮、播放、暂停、重置及“倒放视图”未被操作记录实际触发，其行为只能依据源码判断，不能视为截图验证。"
+        ],
+        "evidence": {
+          "problem_fidelity": "页面完整保留初速度36 m/s、减速度大小6 m/s²、运动至静止以及总滑行距离和最后4 s位移两问，并明确约定向右为正、a=-6 m/s²。",
+          "solution_correctness": "独立核算得停车时间6 s，总位移36×6-0.5×6×6²=108 m；最后4 s为t=2至6 s，v(2)=24 m/s，位移(24+0)×4/2=48 m。页面步骤、公式、v-t面积及源码常量均与此一致。操作截图在t=3 s显示v=18 m/s、s=81 m，在t=6 s显示v=0、s=108 m，也与计算一致；速度在停车后被限制为0，没有延伸为负速度。",
+          "page_quality": "1280×900截图中题目、双画布、读数、控制条和步骤区均完整可见，文字和公式清楚，未见重叠或裁切；飞机位置、速度图线和数值读数具有明确层次。",
+          "interaction_quality": "操作记录验证滑块从0移动到3 s和6 s时，飞机位置、速度箭头、v-t图、速度及累计位移同步更新，且无运行时错误。源码还实现了播放/暂停、重播、重置和五个步骤状态，但这些控制未在实际操作记录中触发，故保守评为4分。",
+          "teaching_effectiveness": "内容从正方向和加速度符号出发，依次说明停车时间、总位移的v-t面积、最后4 s对应2至6 s以及倒放等效方法；动态位置、速度、累计位移和面积表示相互对应，能够解释108 m与48 m如何产生，而非只展示答案。"
+        },
+        "reference_concern": "",
+        "summary": "题设还原完整，计算、边界处理和图文联动均正确，步骤设计清楚，桌面呈现质量高。主要证据限制是操作记录没有实际覆盖步骤按钮、播放和重置，但核心滑块联动已经验证。"
+      },
+      "seconds": 57.04694425200432,
+      "usage": {
+        "input_tokens": 25143,
+        "output_tokens": 1596,
+        "cached_input_tokens": 4224,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 1012,
+        "total_tokens": 26739
+      },
+      "created_at": "2026-10-20T16:05:18.194850+00:00"
+    },
+    {
+      "sample_id": "B7309A232",
+      "question_id": "math_001",
+      "workflow_id": "W2",
+      "selected_round": 3,
+      "completed_rounds": 3,
+      "model": "gpt-5.6-sol",
+      "version": "c3fcf583bc0c",
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 5,
+          "solution_correctness": 5,
+          "page_quality": 5,
+          "interaction_quality": 5,
+          "teaching_effectiveness": 5
+        },
+        "overall_score": 5,
+        "issues": [],
+        "evidence": {
+          "problem_fidelity": "原题为求函数 y=−x²+2x−14 的值域，候选页面完整保留函数、定义域为全体实数的语境及唯一作答目标，没有改动系数或遗漏条件。",
+          "solution_correctness": "独立配方得 y=−(x−1)²−13，因此 y≤−13，且 x=1 时取到−13；当 |x−1| 趋于无穷时 y 趋于负无穷，值域确为 (−∞,−13]。页面中的顶点 (1,−13)、对称轴 x=1、示例 x=2 时 y=−14、x=4.5 时 y=−25.25 均计算正确；末步还用任意 t≤−13 构造 x=1±√(−13−t)，完整说明了区间内各值均可取得。",
+          "page_quality": "1280×900 桌面截图中标题、坐标图、滑块、读数、步骤按钮和讲解区均清楚可见，未见文字或公式重叠、裁切。坐标轴比例不同及图象继续延伸均有明确标注，避免局部窗口造成误读。",
+          "interaction_quality": "实际操作记录验证了滑块从 x=2 移至 x=1 和上界 x=4.5 时，点 P、辅助竖线以及 x、y 数值同步更新，且无运行时错误。源码显示步骤页签、回到顶点、自动扫描和复位均绑定了相应状态更新，但操作记录没有实际点击这些按钮，因此这些功能的运行效果仅有源码证据、未由截图实测覆盖。滑块只展示有限区间，但页面明确说明 x 取全体实数，并由代数推导覆盖完整定义域。",
+          "teaching_effectiveness": "内容按“观察点的纵坐标—配方确定顶点—利用平方非负—证明并表示值域”递进，从题设出发解释最高值及端点为何能取到；图象、动态数值、顶点式、距离 d 与数轴表示相互对应，没有把未经说明的参数交给学生操作。"
+        },
+        "reference_concern": "",
+        "summary": "题设、参考答案与候选页面结论一致。页面数学推导完整正确，桌面呈现清晰，已记录的滑块联动准确，教学路径能同时说明上界、端点可取性和向下无界性；其余按钮未在操作记录中实测，但源码逻辑完整。"
+      },
+      "seconds": 45.85265312199772,
+      "usage": {
+        "input_tokens": 23400,
+        "output_tokens": 1594,
+        "cached_input_tokens": 4224,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 969,
+        "total_tokens": 24994
+      },
+      "created_at": "2026-10-20T15:59:31.538253+00:00"
+    },
+    {
+      "sample_id": "B83284572",
+      "question_id": "physics_001",
+      "workflow_id": "W1",
+      "selected_round": 3,
+      "completed_rounds": 3,
+      "model": "gpt-5.6-sol",
+      "version": "c3fcf583bc0c",
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 5,
+          "solution_correctness": 5,
+          "page_quality": 5,
+          "interaction_quality": 5,
+          "teaching_effectiveness": 5
+        },
+        "overall_score": 5,
+        "issues": [],
+        "evidence": {
+          "problem_fidelity": "页面完整保留飞机着陆速度36 m/s、匀减速大小6 m/s²、直至静止及两个待求量，并明确区分减速度大小与取正方向后的a=-6 m/s²；未遗漏小问或改变条件。",
+          "solution_correctness": "独立核算得停车时间t=(0-36)/(-6)=6 s，总位移36×6-3×6²=108 m；最后4 s为t=2至6 s，v(2)=24 m/s，位移为(24+0)×4/2=48 m。页面公式、v-t图、60 m分界和108 m终点均与此一致。实际记录及截图还验证了t=3 s时v=18 m/s、x=81 m，t=6 s时v=0、x=108 m。",
+          "page_quality": "桌面截图中题干、步骤导航、跑道示意、v-t图、读数和公式区层次清楚，未见文字、公式或图形重叠、裁切；坐标轴、单位、速度与加速度方向标注可辨认。",
+          "interaction_quality": "实际操作记录验证滑块可从0调到3 s及6 s，截图显示飞机位置、速度箭头、v-t图当前点和t/v/x读数同步变化，且无运行时错误。源码还为步骤按钮、时间轴拖动、播放、暂停、重置及分段回放设置了联动逻辑；但实际操作记录未点击步骤按钮、播放或重置，因此这些按钮的动态表现主要由源码支持，未由操作截图直接验证。",
+          "teaching_effectiveness": "内容按定正方向与符号、求停稳时刻、求全程面积、确定最后4 s起点、求最后4 s位移的顺序展开；跑道位置、速度箭头、v-t图面积与数值读数相互对应，并用60+48=108进行核对，能从题设逐步说明答案来源。"
+        },
+        "reference_concern": "",
+        "summary": "参考答案与独立计算一致。候选页面完整、正确地呈现了两问，并通过位置、速度和v-t图面积的同步可视化形成清晰的分步教学；已记录的滑块操作表现正常，未发现实质缺陷。"
+      },
+      "seconds": 43.50016009899991,
+      "usage": {
+        "input_tokens": 28823,
+        "output_tokens": 1312,
+        "cached_input_tokens": 4224,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 742,
+        "total_tokens": 30135
+      },
+      "created_at": "2026-10-20T16:07:01.781985+00:00"
+    },
+    {
+      "sample_id": "BBE082C36",
+      "question_id": "math_001",
+      "workflow_id": "W1",
+      "selected_round": 2,
+      "completed_rounds": 3,
+      "model": "gpt-5.6-sol",
+      "version": "c3fcf583bc0c",
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 5,
+          "solution_correctness": 5,
+          "page_quality": 5,
+          "interaction_quality": 5,
+          "teaching_effectiveness": 5
+        },
+        "overall_score": 5,
+        "issues": [],
+        "evidence": {
+          "problem_fidelity": "原题为求函数 y=-x²+2x-14 的值域，页面完整保留了函数、求值域任务及实数定义域语境，没有增删条件或把原题系数改成自由变量。",
+          "solution_correctness": "独立核算得 y=-(x-1)²-13，因此 y≤-13，x=1 时取等；任意 y≤-13 均可由 x=1±√(-13-y) 取得，值域为 (-∞,-13]。页面的配方、顶点 (1,-13)、不等式、交点公式及最终区间均正确；截图中 x=3 时 y=-17、x=5.2 时 y=-30.64 也与函数一致。",
+          "page_quality": "1280×900 截图中题目、曲线、坐标刻度、顶点、投影线、步骤导航、推导区和控制区均清楚可读，未见文字或公式重叠、明显裁切。横纵轴比例不同及有限显示范围也有明确说明。",
+          "interaction_quality": "实际记录验证了“下一步”和横坐标滑块的中点、上边界操作：状态从观察切换到配方步骤，滑块到 x=1 和 x=5.2 时，点、投影线及读数同步更新，且无运行错误。源码还设置了步骤直达、上一步、播放/暂停、到顶点、红点拖动和第四步高度扫描的联动；但操作记录未实际覆盖回退、播放、红点拖动及第三、四步高度扫描，因此这些交互的视觉结果主要依据源码，不能视为截图实测。",
+          "teaching_effectiveness": "内容按“观察开口与高度变化—配方找顶点—由平方项得到上限—扫描并证明所有 y≤-13 均可取得”的顺序展开，既解释最大值为何是 -13，也说明向下无界及区间端点为何闭合，适合尚不知道解法的学生逐步理解。"
+        },
+        "reference_concern": "",
+        "summary": "题设、推导和答案一致且数学上正确。桌面布局清晰，已执行的滑块与步骤切换联动正常；其余交互从源码看设计完整，但部分未被实际操作记录覆盖。"
+      },
+      "seconds": 36.70973308599787,
+      "usage": {
+        "input_tokens": 26490,
+        "output_tokens": 1125,
+        "cached_input_tokens": 4224,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 554,
+        "total_tokens": 27615
+      },
+      "created_at": "2026-10-20T15:59:02.986721+00:00"
+    }
+  ],
+  "note": "GPT 独立评价最终选中 HTML；不反馈给 DeepSeek 流程。小样本评分供排查与比较，不当作人工真值。"
+}

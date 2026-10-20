@@ -1,0 +1,38 @@
+{
+  "id": "math_004",
+  "source_id": "3750522406903808",
+  "subject": "math",
+  "topic": "三角与向量",
+  "split": "test",
+  "family_id": "math_004",
+  "difficulty_level": 18,
+  "difficulty": 0.8500000000000001,
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "knowledge_points": [
+    {
+      "id": 11214,
+      "name": "辅助角公式"
+    },
+    {
+      "id": 11055,
+      "name": "正弦函数图象的应用"
+    },
+    {
+      "id": 71123,
+      "name": "由奇偶性求参数"
+    }
+  ],
+  "selection_reason": "三角函数图像与参数",
+  "source_paper_ids": [
+    "3761360507355136"
+  ],
+  "path": "math/math_004",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "067840bcc9ce2f6e7cb6fffeac45b23ef7f6a72011f8f0c20b235d26e83911c4",
+  "input_sha256": "864900af2169677dd802361276e21cc8419bd477e70e45cbdaacc6097e421023"
+}

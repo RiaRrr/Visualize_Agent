@@ -1,0 +1,68 @@
+[
+  {
+    "id": "W0",
+    "name": "原图单次生成",
+    "max_rounds": 1,
+    "revision_strategy": "full",
+    "version": "pilot-v1",
+    "generator_model": "deepseek-v4-1-flash-261017",
+    "reviewer_model": "deepseek-v4-1-flash-261017",
+    "input_mode": "vision",
+    "thinking": "enabled",
+    "reasoning_effort": "high",
+    "status": "implemented",
+    "reference_access": false
+  },
+  {
+    "id": "W1",
+    "name": "原图＋审核＋整页返修",
+    "max_rounds": 3,
+    "revision_strategy": "full",
+    "version": "pilot-v1",
+    "generator_model": "deepseek-v4-1-flash-261017",
+    "reviewer_model": "deepseek-v4-1-flash-261017",
+    "input_mode": "vision",
+    "thinking": "enabled",
+    "reasoning_effort": "high",
+    "status": "implemented",
+    "reference_access": false
+  },
+  {
+    "id": "W2",
+    "name": "原图＋审核＋局部修订",
+    "max_rounds": 3,
+    "revision_strategy": "patch",
+    "version": "pilot-v1",
+    "generator_model": "deepseek-v4-1-flash-261017",
+    "reviewer_model": "deepseek-v4-1-flash-261017",
+    "input_mode": "vision",
+    "thinking": "enabled",
+    "reasoning_effort": "high",
+    "status": "implemented",
+    "reference_access": false
+  },
+  {
+    "id": "W3",
+    "name": "原图＋规划＋核对＋生成＋修订",
+    "status": "planned_not_in_pilot",
+    "reason": "先用三种基础流程建立人工校准样本；目前工作台规划仅数学，跨学科版本另行冻结"
+  },
+  {
+    "id": "H_OCR",
+    "name": "OCR＋文字路径",
+    "status": "historical_not_comparable",
+    "source_report": "OCR对照实验.md"
+  },
+  {
+    "id": "H_TEMPLATE",
+    "name": "固定教学模块模板",
+    "status": "historical_not_comparable",
+    "source_report": "1019.md"
+  },
+  {
+    "id": "H_REASONING",
+    "name": "不同推理强度",
+    "status": "historical_not_comparable",
+    "source_report": "1019.md"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "id": "math_010",
+  "source_id": "4030835597312000",
+  "subject": "math",
+  "topic": "数列",
+  "split": "test",
+  "family_id": "math_010",
+  "difficulty_level": 19,
+  "difficulty": 0.75,
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "knowledge_points": [
+    {
+      "id": 11380,
+      "name": "等差数列通项公式的基本量计算"
+    },
+    {
+      "id": 11394,
+      "name": "等差数列前n项和的基本量计算"
+    }
+  ],
+  "selection_reason": "等差数列的项与部分和",
+  "source_paper_ids": [
+    "4030435058696192"
+  ],
+  "path": "math/math_010",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "0443b92d054e166e9702d40d8b1c1638cb14076901b97bb328d5d9822d93b006",
+  "input_sha256": "1a5a4fcd1d8102c2bbb6b41840031c1fea1d79a019fefcde883729250e59264e"
+}

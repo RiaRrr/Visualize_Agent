@@ -1,0 +1,30 @@
+{
+  "id": "math_001",
+  "source_id": "3882491008098304",
+  "subject": "math",
+  "topic": "函数与图像",
+  "split": "dev",
+  "family_id": "math_001",
+  "difficulty_level": 18,
+  "difficulty": 0.8500000000000001,
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "knowledge_points": [
+    {
+      "id": 10664,
+      "name": "求二次函数的值域或最值"
+    }
+  ],
+  "selection_reason": "区间、顶点与最值联动",
+  "source_paper_ids": [
+    "4118112778231808"
+  ],
+  "path": "math/math_001",
+  "pilot": true,
+  "reference_status": "agent_checked_pending_human",
+  "input_status": "ready",
+  "source_sha256": "c48f1a8bc83864aa93aa523aebdd84a630f20149012031f78180724582935d39",
+  "input_sha256": "b3e38e164e8716d4a6b7d8f4d289bd020ac06d0bf6cbe3689ba18422f278f43c"
+}

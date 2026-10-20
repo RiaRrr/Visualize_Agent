@@ -1,0 +1,42 @@
+{
+  "id": "chemistry_006",
+  "source_id": "4104616417320960",
+  "subject": "chemistry",
+  "topic": "速率与平衡",
+  "split": "test",
+  "family_id": "chemistry_006",
+  "difficulty_level": 20,
+  "difficulty": 0.45,
+  "type": {
+    "id": "301101",
+    "name": "单题"
+  },
+  "knowledge_points": [
+    {
+      "id": 6466,
+      "name": "化学反应速率计算"
+    },
+    {
+      "id": 6465,
+      "name": "化学反应速率的表示方法"
+    },
+    {
+      "id": 6483,
+      "name": "化学平衡状态的判断方法"
+    },
+    {
+      "id": 6506,
+      "name": "化学反应速率与化学平衡的综合应用"
+    }
+  ],
+  "selection_reason": "浓度时间曲线与反应历程",
+  "source_paper_ids": [
+    "4104604293947392"
+  ],
+  "path": "chemistry/chemistry_006",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "1a62aad85b1c4e9812c1a2a6a81cd8a3394fb72d5f3e4980300e2f8be426fc8e",
+  "input_sha256": "9d4b15527be1bb92f4c0093ef40d860fe338c5c5a0db66d956b14a0ec18c5ba3"
+}

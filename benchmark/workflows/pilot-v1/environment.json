@@ -1,0 +1,20 @@
+{
+  "python": "3.10.12",
+  "packages": {
+    "fastapi": "0.143.0",
+    "httpx": "0.28.1",
+    "websocket-client": "1.8.0",
+    "bleach": "6.4.0",
+    "tinycss2": "1.5.1",
+    "lxml": "6.0.2"
+  },
+  "chrome": "Google Chrome 148.0.7778.96",
+  "generation_model": "deepseek-v4-1-flash-261017",
+  "independent_judge": "gpt-5.6-sol",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "output_policy": "network disabled for generated HTML inspection",
+  "active_workflow_settings": "pilot-v1; immutable per-subject prompt snapshots"
+}

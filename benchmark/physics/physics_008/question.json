@@ -1,0 +1,34 @@
+{
+  "id": "physics_008",
+  "source_id": "4111203501809664",
+  "subject": "physics",
+  "topic": "电学实验",
+  "split": "test",
+  "family_id": "physics_008",
+  "difficulty_level": 19,
+  "difficulty": 0.62,
+  "type": {
+    "id": "2903",
+    "name": "实验题"
+  },
+  "knowledge_points": [
+    {
+      "id": 16695,
+      "name": "灵敏电流计改装成电压表"
+    },
+    {
+      "id": 16696,
+      "name": "电表的校准原理及其电路"
+    }
+  ],
+  "selection_reason": "电表改装与校准",
+  "source_paper_ids": [
+    "4111183017492480"
+  ],
+  "path": "physics/physics_008",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "64a4fe453732e3c0418467de39ebc4ae14c5fd13f64ac48e1b7cd487d15be854",
+  "input_sha256": "2f3a19b1d95467c1e69e4eb2cc5e1b6cbef1a9c54c3e4ccc6344e95eafe7d74e"
+}

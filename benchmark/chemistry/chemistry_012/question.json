@@ -1,0 +1,46 @@
+{
+  "id": "chemistry_012",
+  "source_id": "4104616416649216",
+  "subject": "chemistry",
+  "topic": "有机结构",
+  "split": "test",
+  "family_id": "chemistry_012",
+  "difficulty_level": 19,
+  "difficulty": 0.58,
+  "type": {
+    "id": "301101",
+    "name": "单题"
+  },
+  "knowledge_points": [
+    {
+      "id": 6708,
+      "name": "常见官能团名称、组成及结构"
+    },
+    {
+      "id": 6733,
+      "name": "分子的手性"
+    },
+    {
+      "id": 7117,
+      "name": "多官能团有机物的结构与性质"
+    },
+    {
+      "id": 7101,
+      "name": "加聚物的单体、链节及聚合度的确定"
+    },
+    {
+      "id": 7104,
+      "name": "缩聚物的单体、链节及聚合度的确定"
+    }
+  ],
+  "selection_reason": "官能团、聚合物与性质",
+  "source_paper_ids": [
+    "4104604293947392"
+  ],
+  "path": "chemistry/chemistry_012",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "74cb0d25290d5c72ba1440ecbafe7f18e07ddab8ede96cb8c31998f27d5cc6d4",
+  "input_sha256": "3a402e3c9f4bfbe0ae83b5dae7ddff1a8253fab603b3f5803eeb76a4c0986391"
+}

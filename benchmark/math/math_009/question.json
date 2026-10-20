@@ -1,0 +1,34 @@
+{
+  "id": "math_009",
+  "source_id": "3772640427663360",
+  "subject": "math",
+  "topic": "数列",
+  "split": "dev",
+  "family_id": "math_009",
+  "difficulty_level": 18,
+  "difficulty": 0.8500000000000001,
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "knowledge_points": [
+    {
+      "id": 11434,
+      "name": "等比数列前n项和的基本量计算"
+    },
+    {
+      "id": 11420,
+      "name": "等比数列通项公式的基本量计算"
+    }
+  ],
+  "selection_reason": "等比数列的项与部分和",
+  "source_paper_ids": [
+    "3772089624264704"
+  ],
+  "path": "math/math_009",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "2a1d974ceba1cc1701bd2f3fc09cb3aac8cfa4b43ba5222407a3a124ec570f3f",
+  "input_sha256": "12192abb92e87a74623ae489998630f886aabbffcaef7ab8b8b58d5863f2aa9d"
+}

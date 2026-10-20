@@ -1,0 +1,48 @@
+{
+  "id": "physics_006",
+  "source_id": "4073368526315520",
+  "subject": "physics",
+  "topic": "电场与动力学",
+  "split": "test",
+  "family_id": "physics_006",
+  "difficulty_level": 19,
+  "difficulty": 0.71,
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "knowledge_points": [
+    {
+      "id": 15848,
+      "name": "匀变速直线运动位移与时间的关系"
+    },
+    {
+      "id": 16021,
+      "name": "牛顿第二定律的初步应用"
+    },
+    {
+      "id": 15840,
+      "name": "匀变速直线运动速度与时间的关系"
+    },
+    {
+      "id": 16033,
+      "name": "已知受力求运动"
+    },
+    {
+      "id": 65958,
+      "name": "带电物体（计重力）在电场中的平衡问题"
+    },
+    {
+      "id": 16653,
+      "name": "带电物体（计重力）在匀强电场中的直线运动"
+    }
+  ],
+  "selection_reason": "电场力、平衡与斜面运动",
+  "source_paper_ids": [],
+  "path": "physics/physics_006",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "593d6a364061641379fb1c42abf42fd7b68a3cf3e886fb9f8014cee5dcc987af",
+  "input_sha256": "9466c84a605c2e793396d5a2673a476d8f24d486a707c3499586ed242f94a94f"
+}

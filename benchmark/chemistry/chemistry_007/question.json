@@ -1,0 +1,46 @@
+{
+  "id": "chemistry_007",
+  "source_id": "4104616417198080",
+  "subject": "chemistry",
+  "topic": "电化学与结构",
+  "split": "dev",
+  "family_id": "chemistry_007",
+  "difficulty_level": 19,
+  "difficulty": 0.62,
+  "type": {
+    "id": "301102",
+    "name": "题组"
+  },
+  "knowledge_points": [
+    {
+      "id": 7264,
+      "name": "晶胞的有关计算"
+    },
+    {
+      "id": 6601,
+      "name": "原电池电极反应式书写"
+    },
+    {
+      "id": 6633,
+      "name": "新型电池"
+    },
+    {
+      "id": 6600,
+      "name": "原电池正负极判断"
+    },
+    {
+      "id": 6660,
+      "name": "原电池有关计算"
+    }
+  ],
+  "selection_reason": "电池电极反应、离子迁移与晶胞",
+  "source_paper_ids": [
+    "4104604293947392"
+  ],
+  "path": "chemistry/chemistry_007",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "a62c3c362db9b7f75419b17abebf751e64c822b493d442a48ac042dfff79a258",
+  "input_sha256": "e432b3de0fe462e9c4e9b2a335683f9b81a7f1d07f69f4b5b6fd493620409823"
+}

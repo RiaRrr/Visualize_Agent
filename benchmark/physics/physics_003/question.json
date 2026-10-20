@@ -1,0 +1,32 @@
+{
+  "id": "physics_003",
+  "source_id": "3998381450412032",
+  "subject": "physics",
+  "topic": "受力与动力学",
+  "split": "dev",
+  "family_id": "physics_003",
+  "difficulty_level": 19,
+  "difficulty": 0.7,
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "knowledge_points": [
+    {
+      "id": 15848,
+      "name": "匀变速直线运动位移与时间的关系"
+    },
+    {
+      "id": 16021,
+      "name": "牛顿第二定律的初步应用"
+    }
+  ],
+  "selection_reason": "斜面受力分解、摩擦与加速度",
+  "source_paper_ids": [],
+  "path": "physics/physics_003",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "5938b714c45ad0788e4006622c0851bca262da8672a3113df3d19bfaace168a7",
+  "input_sha256": "25ac3089a331eb8f6b2eb9a0bac715521e30efa4724fa0d05de2d377f9261db2"
+}

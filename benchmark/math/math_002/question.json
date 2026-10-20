@@ -1,0 +1,34 @@
+{
+  "id": "math_002",
+  "source_id": "3884019136626688",
+  "subject": "math",
+  "topic": "集合与不等式",
+  "split": "test",
+  "family_id": "math_002",
+  "difficulty_level": 19,
+  "difficulty": 0.65,
+  "type": {
+    "id": "2701",
+    "name": "单选题"
+  },
+  "knowledge_points": [
+    {
+      "id": 10455,
+      "name": "交集的概念及运算"
+    },
+    {
+      "id": 11484,
+      "name": "解不含参数的一元二次不等式"
+    }
+  ],
+  "selection_reason": "数轴上的解集与交集",
+  "source_paper_ids": [
+    "4118112778231808"
+  ],
+  "path": "math/math_002",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "e292d4d6e8fd1e5081ffedec6f58b8fe724dd43e3928d08346bdc7efdd556833",
+  "input_sha256": "b80a56bc0cbf52e7dce02ac81f756879e6fd740d1af410d17732f014d960d942"
+}

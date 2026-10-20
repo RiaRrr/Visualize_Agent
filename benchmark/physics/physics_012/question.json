@@ -1,0 +1,38 @@
+{
+  "id": "physics_012",
+  "source_id": "4111203501916160",
+  "subject": "physics",
+  "topic": "光学实验",
+  "split": "test",
+  "family_id": "physics_012",
+  "difficulty_level": 19,
+  "difficulty": 0.62,
+  "type": {
+    "id": "2903",
+    "name": "实验题"
+  },
+  "knowledge_points": [
+    {
+      "id": 16070,
+      "name": "游标卡尺的使用与读数"
+    },
+    {
+      "id": 108551,
+      "name": "测透明液体的折射率"
+    },
+    {
+      "id": 80687,
+      "name": "光学创新实验"
+    }
+  ],
+  "selection_reason": "折射几何与实验测量",
+  "source_paper_ids": [
+    "4111183017492480"
+  ],
+  "path": "physics/physics_012",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "5dac31df39a7122dc82909bb9f320bb840c5adab9a2dc2a4e3b941a49df5873a",
+  "input_sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+}

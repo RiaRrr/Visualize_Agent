@@ -1,0 +1,34 @@
+{
+  "id": "math_012",
+  "source_id": "3772640427565056",
+  "subject": "math",
+  "topic": "函数与导数",
+  "split": "test",
+  "family_id": "math_012",
+  "difficulty_level": 18,
+  "difficulty": 0.8500000000000001,
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "knowledge_points": [
+    {
+      "id": 10879,
+      "name": "已知切线（斜率）求参数"
+    },
+    {
+      "id": 53699,
+      "name": "导数的加减法"
+    }
+  ],
+  "selection_reason": "切线、斜率和导数",
+  "source_paper_ids": [
+    "3772089624264704"
+  ],
+  "path": "math/math_012",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "0e99b7e1faf9960ce1ba7d816d6820009c80206b1022c0e9e107f068ff7f0162",
+  "input_sha256": "6ac3dc9fdcbf4858cdd1d57195d0f154c8cfb883314af68ae0f46c8a6ad82a6e"
+}

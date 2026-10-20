@@ -1,0 +1,38 @@
+{
+  "id": "physics_009",
+  "source_id": "4111203501703168",
+  "subject": "physics",
+  "topic": "电磁感应",
+  "split": "dev",
+  "family_id": "physics_009",
+  "difficulty_level": 20,
+  "difficulty": 0.35,
+  "type": {
+    "id": "290801",
+    "name": "1个小题"
+  },
+  "knowledge_points": [
+    {
+      "id": 16937,
+      "name": "线框进出磁场产生的等效电路相关计算"
+    },
+    {
+      "id": 16940,
+      "name": "判断线框进出磁场区域的a-t图像"
+    },
+    {
+      "id": 17002,
+      "name": "计算交变流电路中的电功、电功率和焦耳热"
+    }
+  ],
+  "selection_reason": "运动磁场、等效电路与图像",
+  "source_paper_ids": [
+    "4111183017492480"
+  ],
+  "path": "physics/physics_009",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "8f66ed41c3bdceb3b03bc1f568a821152890502add15746cabd1ed311524e134",
+  "input_sha256": "c5f9143cefb1b9d0681057aa2ee43223d746b37ed5c3d8ebf99cb1fd6a063d11"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "math_011",
+  "source_id": "4009616516055040",
+  "subject": "math",
+  "topic": "集合与不等式",
+  "split": "dev",
+  "family_id": "math_011",
+  "difficulty_level": 19,
+  "difficulty": 0.79,
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "knowledge_points": [
+    {
+      "id": 11533,
+      "name": "基本不等式求和的最小值"
+    },
+    {
+      "id": 11535,
+      "name": "条件等式求最值"
+    }
+  ],
+  "selection_reason": "不等式与最值取得条件",
+  "source_paper_ids": [
+    "4118795128283136"
+  ],
+  "path": "math/math_011",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "69e997fd5bb60205abe0951a80ad02c67b11d4056e418c5c227438d891c00eb1",
+  "input_sha256": "976945f9c92e7d4b294ba6f0b70f31b12c3794d563d3ec848d0beeea64502be4"
+}

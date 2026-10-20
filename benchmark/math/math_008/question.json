@@ -1,0 +1,42 @@
+{
+  "id": "math_008",
+  "source_id": "3730337597849600",
+  "subject": "math",
+  "topic": "概率统计",
+  "split": "test",
+  "family_id": "math_008",
+  "difficulty_level": 19,
+  "difficulty": 0.65,
+  "type": {
+    "id": "2701",
+    "name": "单选题"
+  },
+  "knowledge_points": [
+    {
+      "id": 12241,
+      "name": "由茎叶图计算平均数"
+    },
+    {
+      "id": 72081,
+      "name": "总体百分位数的估计"
+    },
+    {
+      "id": 12245,
+      "name": "计算几个数据的极差、方差、标准差"
+    },
+    {
+      "id": 12249,
+      "name": "用方差、标准差说明数据的波动程度"
+    }
+  ],
+  "selection_reason": "数据分布、位置与离散程度",
+  "source_paper_ids": [
+    "3750706576285696"
+  ],
+  "path": "math/math_008",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "8c2d5ed767ff3774545621063346557ff70470c9345ca29a832f4c77fe8db4fb",
+  "input_sha256": "ec744df6c4138e1f6f0016249cfdccea59d6ce1e60126dd386b5f53a402ba6af"
+}

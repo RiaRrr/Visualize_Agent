@@ -1,0 +1,15 @@
+{
+  "status": "agent_checked_pending_human",
+  "checked_by": "coding_agent",
+  "not_human_ground_truth": true,
+  "answer": "(-∞,-13]",
+  "derivation": [
+    "y=-x²+2x-14=-(x-1)²-13",
+    "平方项非负，y≤-13；x=1时取等",
+    "x趋向正负无穷时y趋向负无穷"
+  ],
+  "checks": [
+    "抛物线开口向下，顶点(1,-13)",
+    "滑块不能把原题系数变成未经说明的自由变量"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "physics_002",
+  "source_id": "3769195139145728",
+  "subject": "physics",
+  "topic": "运动与图像",
+  "split": "test",
+  "family_id": "physics_002",
+  "difficulty_level": 19,
+  "difficulty": 0.65,
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "knowledge_points": [
+    {
+      "id": 15845,
+      "name": "利用v-t图像求加速度"
+    },
+    {
+      "id": 15846,
+      "name": "利用v-t图像求位移"
+    },
+    {
+      "id": 15899,
+      "name": "变速物体追匀速物体"
+    }
+  ],
+  "selection_reason": "速度图像面积与追及",
+  "source_paper_ids": [],
+  "path": "physics/physics_002",
+  "pilot": false,
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "source_sha256": "781ea3c24f4cf93484e2aac26db1d3824aedf2358188315bb163d1f17260a13f",
+  "input_sha256": "8664ff83bcb8375f97d19f92a448d20c097c3ec8c2f2d0c47047d5476b073463"
+}

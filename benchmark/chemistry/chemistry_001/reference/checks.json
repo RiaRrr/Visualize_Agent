@@ -1,0 +1,18 @@
+{
+  "status": "agent_checked_pending_human",
+  "checked_by": "coding_agent",
+  "not_human_ground_truth": true,
+  "answer": "D",
+  "derivation": [
+    "Ba(OH)2+H2SO4→BaSO4↓+2H2O，恰好反应时可移动离子大幅减少",
+    "BaSO4难溶但仍是电解质，A错误",
+    "用NaOH替代后仍有Na+和SO4²-，B错误",
+    "KHSO4引入K+，恰好反应时仍有可移动离子，C错误",
+    "MgSO4与Ba(OH)2生成BaSO4和Mg(OH)2两种沉淀，过量加入后导电增强，D符合"
+  ],
+  "checks": [
+    "图中的近零是理想化，不应声称现实溶液严格无离子",
+    "粒子数、电荷守恒与反应进度一致",
+    "不把模型示意的电导率曲线当作精确实验定量数据"
+  ]
+}
