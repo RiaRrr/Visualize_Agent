@@ -77,6 +77,9 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8001
 | `docs/reports/` | 阶段工作汇报；根目录日期/实验文档保留探索过程 |
 | `.env.example` | 可复制的无密钥配置模板 |
 `requirements-lock.txt` 固定了本次干净环境验收使用的依赖版本；`requirements.txt` 保留开发时允许的版本范围。验收步骤与边界见 [验收清单](docs/验收清单.md)。
+## 文档导航与时效
+当前使用说明：本README、[项目架构说明](项目说明.md)、[benchmark说明](benchmark/README.md)、[费用口径](费用估算.md) 和 [验收清单](docs/验收清单.md)，统一更新至2026-10-21。
+历史探索：`1019.md`、`OCR对照实验.md`、`数学可视化迁移实验.md`、`方案比较.md`、`汇报.md` 和 `docs/reports/1020_题目可视化工作汇报.md`。这些文件已在开头标明历史范围，正文保留当时的数据、进度和判断；其中未分发的本机产物路径只供追溯。
 ## 7. 测试与下一步
 ```bash
 python -m pytest -q

@@ -1,5 +1,8 @@
 # OCR＋文字与图片直传对照（2026-10-16）
 
+> 历史实验记录：本文保留早期OCR与原图对照的配置和结论。当前benchmark采用DeepSeek原图直传；启动方法和可直接浏览的数据见 [README](README.md) 与 [benchmark说明](benchmark/README.md)。文内data_compare路径属于历史本机数据。
+
+
 实验分支：`experiment/ocr-multimodal`。题目使用仓库已有的 3 cm、4 cm 直角三角形题图；两组均选“数学·综合经验”、单轮、`edumind_alt/qwen3.6-35b-a3b` 生成、`edumind_alt/qwen3.6-flash` 审核。OCR 组另用 `qwen3.6-flash` 识别原题与页面截图。没有使用 GPT 模型。完整记录保存在被 Git 忽略的 `data_compare/`，可用 `VISUALIZE_DATA_DIR=data_compare` 启动独立服务查看。
 
 | 路径 | 单轮结果 | 生成耗时 | 自动审核 |
