@@ -50,7 +50,7 @@ def _assemble(profile_id: str, name: str, subject: str, files: tuple[str, ...],
     generator = "\n\n".join([_read("common_visual.md"), *(_read(item) for item in files), _read(generator_io)])
     review_subject = subject if subject in SUBJECTS else "general"
     reviewer = "\n\n".join([_read(reviewer_common), _read(f"reviewer_{review_subject}.md"),
-                             _read("reviewer_format.md")])
+                             _read("reviewer_teaching.md"), _read("reviewer_format.md")])
     revision = _read("html_revision_patch.md") if profile_id == "math-deepseek-patch" else ""
     version = hashlib.sha256((generator + "\n" + reviewer + revision).encode("utf-8")).hexdigest()[:12]
     return PromptProfile(profile_id, name, subject, version, generator, reviewer)

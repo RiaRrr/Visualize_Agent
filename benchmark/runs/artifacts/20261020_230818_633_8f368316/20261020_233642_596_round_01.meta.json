@@ -1,0 +1,257 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261020_230818_633_8f368316:1",
+  "task_id": "20261020_230818_633_8f368316",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 1,
+  "created_at": "2026-10-20T23:36:42.632621+08:00",
+  "files": {
+    "image": "20261020_230818_633_input.png",
+    "html": "20261020_233642_596_round_01.html",
+    "screenshot": "20261020_233642_596_round_01.png",
+    "model_review": "20261020_233642_596_round_01.review.json",
+    "config": "20261020_230818_633_config.json",
+    "model_review_raw": "round_01.model_review_raw.txt"
+  },
+  "html_sha256": "08e2a365b832573363e00de9e6e9f6e06cab73ea131bffbadf565838676920a4",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "math-deepseek",
+    "name": "数学 · 分步 SVG 与教学示例（1019）",
+    "version": "7fa646244866",
+    "subject": "math"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "single",
+  "max_rounds": 1,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "数学结论与最终值域正确，首屏和主交互关系清楚；但配方推导被直接给出，y=−13 水平参考线因 opacity 未显示，点击“到顶点”会造成三角形退化且提示仍引用不存在的线段，顶点附近标签也会重叠，需修正后才能获得更高教学效果分。",
+    "issues": [
+      "左侧图中 `baseline`/`maxLine`：HTML 初值 `opacity=0`，`updatePlot` 只切换 `display` 而没有把 opacity 设为 1，进入第2–4步时 y=−13 参考横线仍不可见，与提示“曲线全部位于水平线 y=−13 的下方或线上”不一致。修复：显示时同步设置 `style.opacity=1` 或删除内联 opacity，并避免 `baseline` 与 `maxLine` 同 y 叠画。",
+      "“到顶点”按钮（第0步）与第4步：源码会把 x 设为1，且从第0步还会切换到第1步；此时 `bigEnough` 为 false，三角线段和标签隐藏，但第1步提示仍说橙色段、红色段存在。修复：到顶点时不要切换步骤，或在 |x−1| 很小时显示退化说明/保留非零示例点，返回步骤时恢复代表性 x。",
+      "第1/2步 P 接近顶点（如 x=1.05）：`pLabel` 与 `V(1,−13)` 几乎同高同起点，标签重叠；P 圆点覆盖顶点圆点。修复：在 |x−1| 较小时隐藏或偏移 P 标签，或把 V 标签移到另一侧。",
+      "配方步骤：侧栏和公式卡直接给出 `y=−(x−1)^2−13`，没有展示从 `−x^2+2x−14` 到顶点式的中间变形（提取负号、配方、合并常数），刚读题的学生只能被告知结果。修复：增加一行可核对的中间式，或分步高亮系数与常数来源。",
+      "x 轴原点：`0` 刻度以 x=0 居中写在 y 轴上，纵轴线会穿过数字。建议把原点标签右/下偏移或省略，避免不可读。",
+      "三角形比例：因纵向压缩，x=3 时红色竖段标注 `(x−1)^2=4`，视觉上短于橙色横段 `|x−1|=2`，第1步提示未就近说明压缩比例。修复：在三角区域注明“纵向压缩，长度不作同尺度比较”，或使用局部等比小图。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 4,
+      "interaction_quality": 3,
+      "teaching_effectiveness": 3
+    },
+    "overall_score": 3
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 2,
+        "task_id": "20261020_230818_633_8f368316",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:08:19.016730+08:00",
+        "ended_at": "2026-10-20T23:08:29.546860+08:00",
+        "duration_seconds": 10.53013,
+        "status": "error"
+      },
+      {
+        "id": 5,
+        "task_id": "20261020_230818_633_8f368316",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:08:32.909709+08:00",
+        "ended_at": "2026-10-20T23:08:36.727592+08:00",
+        "duration_seconds": 3.817883,
+        "status": "error"
+      },
+      {
+        "id": 19,
+        "task_id": "20261020_230818_633_8f368316",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:18:03.382375+08:00",
+        "ended_at": "2026-10-20T23:22:14.664598+08:00",
+        "duration_seconds": 251.282223,
+        "status": "error"
+      },
+      {
+        "id": 21,
+        "task_id": "20261020_230818_633_8f368316",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:22:32.257519+08:00",
+        "ended_at": "2026-10-20T23:32:22.251095+08:00",
+        "duration_seconds": 589.993576,
+        "status": "completed"
+      },
+      {
+        "id": 26,
+        "task_id": "20261020_230818_633_8f368316",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-20T23:32:22.251095+08:00",
+        "ended_at": "2026-10-20T23:32:22.462044+08:00",
+        "duration_seconds": 0.210949,
+        "status": "completed"
+      },
+      {
+        "id": 27,
+        "task_id": "20261020_230818_633_8f368316",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-20T23:32:22.462044+08:00",
+        "ended_at": "2026-10-20T23:32:24.756486+08:00",
+        "duration_seconds": 2.294442,
+        "status": "completed"
+      },
+      {
+        "id": 28,
+        "task_id": "20261020_230818_633_8f368316",
+        "round_number": 1,
+        "stage": "reviewing",
+        "started_at": "2026-10-20T23:32:24.756486+08:00",
+        "ended_at": "2026-10-20T23:36:42.837877+08:00",
+        "duration_seconds": 258.081391,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 1,
+        "task_id": "20261020_230818_633_8f368316",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:08:29.520705+08:00",
+        "duration_seconds": 10.30304589899606,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 3,
+        "task_id": "20261020_230818_633_8f368316",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:08:36.693673+08:00",
+        "duration_seconds": 3.5964644880004926,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 13,
+        "task_id": "20261020_230818_633_8f368316",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:22:13.713196+08:00",
+        "duration_seconds": 246.98142349099362,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 15,
+        "task_id": "20261020_230818_633_8f368316",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:24:22.359805+08:00",
+        "duration_seconds": 109.1700727790012,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 18,
+        "task_id": "20261020_230818_633_8f368316",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:32:22.067715+08:00",
+        "duration_seconds": 432.6530043800012,
+        "status": "completed",
+        "input_tokens": 3307,
+        "output_tokens": 45137,
+        "cached_input_tokens": 3200,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 35278,
+        "total_tokens": 48444
+      },
+      {
+        "id": 22,
+        "task_id": "20261020_230818_633_8f368316",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:36:42.552387+08:00",
+        "duration_seconds": 257.08637364300375,
+        "status": "completed",
+        "input_tokens": 12871,
+        "output_tokens": 39760,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 39138,
+        "total_tokens": 52631
+      }
+    ]
+  }
+}

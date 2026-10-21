@@ -1,0 +1,89 @@
+{
+  "id": "3998381450412032",
+  "course_id": 29,
+  "type_id": "2904",
+  "kpoint_ids": [
+    15848,
+    16021
+  ],
+  "catalog_ids": [
+    194413,
+    187747,
+    194631,
+    195960,
+    225736
+  ],
+  "years": [
+    2025
+  ],
+  "difficulty": 0.7,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdGp3Zn5LzxXs3lkAkUJkx0\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">一质量为</span><img  src=\"https://img.xkw.com/dksih/formula/5dee915e2fb7b8a1f4328473f9c18ba7.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的滑块在倾角</span><img  src=\"https://img.xkw.com/dksih/formula/9d7b9d9bf0d5fc25c99170ab27fa4045.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的足够长的固定斜面上、在无外力</span><img  src=\"https://img.xkw.com/dksih/formula/a0ed1ec316bc54c37c4286c208f55667.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的情况下以加速度</span><img  src=\"https://img.xkw.com/dksih/formula/0f9094b8f3c3e90ef4d5841789a55250.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">匀加速下滑。若用一水平向右的恒力</span><img  src=\"https://img.xkw.com/dksih/formula/a0ed1ec316bc54c37c4286c208f55667.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">作用于滑块，如图所示，使滑块由静止开始沿斜面向上做匀加速运动，在</span><img  src=\"https://img.xkw.com/dksih/formula/84dff10a91efa37897499da381b859ff.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时间内沿斜面运动的位移</span><img  src=\"https://img.xkw.com/dksih/formula/0357a5542cf2c606fbbb3eb801066a1f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">（</span><img  src=\"https://img.xkw.com/dksih/formula/276509f01529d982ab21e479a4619268.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">取</span><img  src=\"https://img.xkw.com/dksih/formula/b1eebd522c4de12f8255e649d3145d51.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">）。求：</span></p><p style=\"text-align: left;\"><img  height=\"78\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/8/5/36e10d85-f4c1-43fe-aaca-cc7c2afcfe61.png\" width=\"136\" /></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdGp3Zn5LzxXs3lkAkUJkx0\"><p style=\"\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 宋体;\">滑块和斜面之间的动摩擦因数</span><img  src=\"https://img.xkw.com/dksih/formula/1100379a4385b9ce064847bc21760adc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdGp3Zn5LzxXs3lkAkUJkx0\"><p style=\"\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 宋体;\">滑块沿斜面向上做匀加速运动的加速度大小是多少；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdGp3Zn5LzxXs3lkAkUJkx0\"><p style=\"\"><span class=\"ques-no\">（3）</span><span style=\"font-family: 宋体;\">恒力</span><img  src=\"https://img.xkw.com/dksih/formula/a0ed1ec316bc54c37c4286c208f55667.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的大小。</span></p></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdGp3Zn5LzxXs3lkAkUJkx0\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/aa7dc93acbf02b68a6dccb3060756f8d.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/d3b701e408af7b847fa80717da957eb4.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/3589fdc98cf44bc05ab2c07896a93703.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdGp3Zn5LzxXs3lkAkUJkx0\"><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align: left;\"><span style=\"\">无外力下滑时，对滑块沿斜面方向用牛顿第二定律</span><img  src=\"https://img.xkw.com/dksih/formula/886930f79d46e4af838d9838cbc97d87.svg\" class=\"xkw-math-img\" /></p><p style=\"\"><span style=\"\">解得</span><img  src=\"https://img.xkw.com/dksih/formula/aa7dc93acbf02b68a6dccb3060756f8d.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"text-align: left;\"><span style=\"\">滑块由静止开始做匀加速直线运动，由匀变速位移公式</span><img  src=\"https://img.xkw.com/dksih/formula/ede62651442d3851233e712f80f4fdb9.svg\" class=\"xkw-math-img\" /></p><p style=\"\"><span style=\"\">代入</span><img  src=\"https://img.xkw.com/dksih/formula/a12544d87b4a1a8f1c8336e3050ffd24.svg\" class=\"xkw-math-img\" /><span>，</span><img  src=\"https://img.xkw.com/dksih/formula/aa2416982c0e82923512f87703b7d10b.svg\" class=\"xkw-math-img\" /><span>，</span><span style=\"\">解得</span><img  src=\"https://img.xkw.com/dksih/formula/c1356db3babe4b7faee09ed63138da6f.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(3)小问详解： <p style=\"text-align: left;\"><span style=\"\">对受水平推力</span><img  src=\"https://img.xkw.com/dksih/formula/655b6a742dbacdab5aaa298007663dd4.svg\" class=\"xkw-math-img\" /><span style=\"\">的滑块受力分解，垂直斜面方向合力为0：</span><img  src=\"https://img.xkw.com/dksih/formula/a2475770e50141f27e51ef0908b4c780.svg\" class=\"xkw-math-img\" /><span style=\"\"> </span></p><p style=\"text-align: left;\"><span style=\"\">沿斜面方向，摩擦力向下，由牛顿第二定律</span><img  src=\"https://img.xkw.com/dksih/formula/1ad599813ffc56037cf4aaa95e5408e6.svg\" class=\"xkw-math-img\" /></p><p style=\"\"><span>解得</span><img  src=\"https://img.xkw.com/dksih/formula/41e00be6911df797c26f0e156a143cb3.svg\" class=\"xkw-math-img\" /></p></div></div>",
+  "create_date": "2026-04-23 12:30:47",
+  "paper_type_ids": [
+    3
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 194413,
+      "name": "第3节 牛顿第二运动定律"
+    },
+    {
+      "id": 187747,
+      "name": "3. 牛顿第二定律"
+    },
+    {
+      "id": 194631,
+      "name": "第三节 牛顿第二定律"
+    },
+    {
+      "id": 195960,
+      "name": "3. 牛顿第二定律"
+    },
+    {
+      "id": 225736,
+      "name": "第二节 牛顿第二定律"
+    }
+  ],
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "kpoints": [
+    {
+      "id": 15848,
+      "name": "匀变速直线运动位移与时间的关系"
+    },
+    {
+      "id": 16021,
+      "name": "牛顿第二定律的初步应用"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "source_papers": [
+    {
+      "title": "黑龙江大庆市第二十三中学2025-2026学年高一上学期第二次阳光分班第三次考试物理试卷",
+      "area": {
+        "id": "230000",
+        "name": "黑龙江省"
+      },
+      "type_id": 3,
+      "grade_id": 10,
+      "term": "LAST",
+      "year": 2025
+    }
+  ],
+  "_paper_ids": []
+}

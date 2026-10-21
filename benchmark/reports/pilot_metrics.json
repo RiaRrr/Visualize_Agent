@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-20T16:31:00.915034+00:00",
-  "note": "运行记录含内部评分；不展示在盲评页面。已知缓存费不是总费用，缺失用量不是零。",
+  "updated_at": "2026-10-21T04:00:02.919457+00:00",
+  "note": "人民币输入/输出估算：DeepSeek 261017 输入1.20、输出4.80元/百万token。缓存与推理子项不另加，缺失用量不是零。",
   "runs": [
     {
       "job": "math_001_W0",
@@ -23,7 +23,11 @@
       "known_total_tokens": 101075,
       "calls_missing_usage": 4,
       "failed_api_calls": 4,
-      "known_cache_cost_cny": 0.004608,
+      "known_cost_cny": 0.4269192,
+      "missing_token_fields": 8,
+      "unpriced_calls": 0,
+      "currency": "CNY",
+      "basis": "input/output; no separate cache or reasoning charge",
       "api_calls": [
         {
           "id": 1,
@@ -168,7 +172,11 @@
       "known_total_tokens": 237446,
       "calls_missing_usage": 4,
       "failed_api_calls": 4,
-      "known_cache_cost_cny": 0.017142,
+      "known_cost_cny": 0.864078,
+      "missing_token_fields": 8,
+      "unpriced_calls": 0,
+      "currency": "CNY",
+      "basis": "input/output; no separate cache or reasoning charge",
       "api_calls": [
         {
           "id": 2,
@@ -385,7 +393,11 @@
       "known_total_tokens": 156249,
       "calls_missing_usage": 2,
       "failed_api_calls": 2,
-      "known_cache_cost_cny": 0.019354,
+      "known_cost_cny": 0.5328107999999999,
+      "missing_token_fields": 4,
+      "unpriced_calls": 0,
+      "currency": "CNY",
+      "basis": "input/output; no separate cache or reasoning charge",
       "api_calls": [
         {
           "id": 5,
@@ -554,7 +566,11 @@
       "known_total_tokens": 75991,
       "calls_missing_usage": 2,
       "failed_api_calls": 2,
-      "known_cache_cost_cny": 0.0,
+      "known_cost_cny": 0.3228888,
+      "missing_token_fields": 4,
+      "unpriced_calls": 0,
+      "currency": "CNY",
+      "basis": "input/output; no separate cache or reasoning charge",
       "api_calls": [
         {
           "id": 6,
@@ -663,7 +679,11 @@
       "known_total_tokens": 271773,
       "calls_missing_usage": 2,
       "failed_api_calls": 2,
-      "known_cache_cost_cny": 0.008847,
+      "known_cost_cny": 1.0176552,
+      "missing_token_fields": 4,
+      "unpriced_calls": 0,
+      "currency": "CNY",
+      "basis": "input/output; no separate cache or reasoning charge",
       "api_calls": [
         {
           "id": 9,
@@ -844,7 +864,11 @@
       "known_total_tokens": 207660,
       "calls_missing_usage": 2,
       "failed_api_calls": 2,
-      "known_cache_cost_cny": 0.008847,
+      "known_cost_cny": 0.7718436,
+      "missing_token_fields": 4,
+      "unpriced_calls": 0,
+      "currency": "CNY",
+      "basis": "input/output; no separate cache or reasoning charge",
       "api_calls": [
         {
           "id": 10,
@@ -1013,7 +1037,11 @@
       "known_total_tokens": 77713,
       "calls_missing_usage": 0,
       "failed_api_calls": 0,
-      "known_cache_cost_cny": 0.0,
+      "known_cost_cny": 0.31884239999999997,
+      "missing_token_fields": 0,
+      "unpriced_calls": 0,
+      "currency": "CNY",
+      "basis": "input/output; no separate cache or reasoning charge",
       "api_calls": [
         {
           "id": 45,
@@ -1086,7 +1114,11 @@
       "known_total_tokens": 237650,
       "calls_missing_usage": 0,
       "failed_api_calls": 0,
-      "known_cache_cost_cny": 0.003318,
+      "known_cost_cny": 0.8885040000000001,
+      "missing_token_fields": 0,
+      "unpriced_calls": 0,
+      "currency": "CNY",
+      "basis": "input/output; no separate cache or reasoning charge",
       "api_calls": [
         {
           "id": 46,
@@ -1231,7 +1263,11 @@
       "known_total_tokens": 254904,
       "calls_missing_usage": 0,
       "failed_api_calls": 0,
-      "known_cache_cost_cny": 0.012165,
+      "known_cost_cny": 0.9421200000000001,
+      "missing_token_fields": 0,
+      "unpriced_calls": 0,
+      "currency": "CNY",
+      "basis": "input/output; no separate cache or reasoning charge",
       "api_calls": [
         {
           "id": 49,

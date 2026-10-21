@@ -37,7 +37,19 @@
         "reasoning_output_tokens": 509,
         "total_tokens": 25928
       },
-      "created_at": "2026-10-20T15:58:56.928479+00:00"
+      "created_at": "2026-10-20T15:58:56.928479+00:00",
+      "evaluation_mode": "joint",
+      "cost_estimate": {
+        "known_cost_cny": 0.15789,
+        "missing_token_fields": 0,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "api_call_count": 1,
+      "known_total_tokens": null,
+      "missing_usage_count": null,
+      "calls": {}
     },
     {
       "sample_id": "BBE082C36",
@@ -76,7 +88,19 @@
         "reasoning_output_tokens": 554,
         "total_tokens": 27615
       },
-      "created_at": "2026-10-20T15:59:02.986721+00:00"
+      "created_at": "2026-10-20T15:59:02.986721+00:00",
+      "evaluation_mode": "joint",
+      "cost_estimate": {
+        "known_cost_cny": 0.16620000000000001,
+        "missing_token_fields": 0,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "api_call_count": 1,
+      "known_total_tokens": null,
+      "missing_usage_count": null,
+      "calls": {}
     },
     {
       "sample_id": "B7309A232",
@@ -115,7 +139,19 @@
         "reasoning_output_tokens": 969,
         "total_tokens": 24994
       },
-      "created_at": "2026-10-20T15:59:31.538253+00:00"
+      "created_at": "2026-10-20T15:59:31.538253+00:00",
+      "evaluation_mode": "joint",
+      "cost_estimate": {
+        "known_cost_cny": 0.16482000000000002,
+        "missing_token_fields": 0,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "api_call_count": 1,
+      "known_total_tokens": null,
+      "missing_usage_count": null,
+      "calls": {}
     },
     {
       "sample_id": "B0D1C5D32",
@@ -157,7 +193,19 @@
         "reasoning_output_tokens": 516,
         "total_tokens": 25081
       },
-      "created_at": "2026-10-20T15:59:40.332515+00:00"
+      "created_at": "2026-10-20T15:59:40.332515+00:00",
+      "evaluation_mode": "joint",
+      "cost_estimate": {
+        "known_cost_cny": 0.156805,
+        "missing_token_fields": 0,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "api_call_count": 1,
+      "known_total_tokens": null,
+      "missing_usage_count": null,
+      "calls": {}
     },
     {
       "sample_id": "B83284572",
@@ -196,7 +244,19 @@
         "reasoning_output_tokens": 742,
         "total_tokens": 30135
       },
-      "created_at": "2026-10-20T16:07:01.781985+00:00"
+      "created_at": "2026-10-20T16:07:01.781985+00:00",
+      "evaluation_mode": "joint",
+      "cost_estimate": {
+        "known_cost_cny": 0.183475,
+        "missing_token_fields": 0,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "api_call_count": 1,
+      "known_total_tokens": null,
+      "missing_usage_count": null,
+      "calls": {}
     },
     {
       "sample_id": "B5D896375",
@@ -237,7 +297,19 @@
         "reasoning_output_tokens": 1012,
         "total_tokens": 26739
       },
-      "created_at": "2026-10-20T16:05:18.194850+00:00"
+      "created_at": "2026-10-20T16:05:18.194850+00:00",
+      "evaluation_mode": "joint",
+      "cost_estimate": {
+        "known_cost_cny": 0.173595,
+        "missing_token_fields": 0,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "api_call_count": 1,
+      "known_total_tokens": null,
+      "missing_usage_count": null,
+      "calls": {}
     },
     {
       "sample_id": "B6CA12DEB",
@@ -281,7 +353,19 @@
         "reasoning_output_tokens": 1518,
         "total_tokens": 28286
       },
-      "created_at": "2026-10-20T16:11:09.954588+00:00"
+      "created_at": "2026-10-20T16:11:09.954588+00:00",
+      "evaluation_mode": "joint",
+      "cost_estimate": {
+        "known_cost_cny": 0.20443,
+        "missing_token_fields": 0,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "api_call_count": 1,
+      "known_total_tokens": null,
+      "missing_usage_count": null,
+      "calls": {}
     },
     {
       "sample_id": "B50DFB016",
@@ -323,7 +407,19 @@
         "reasoning_output_tokens": 1303,
         "total_tokens": 34545
       },
-      "created_at": "2026-10-20T16:22:46.082733+00:00"
+      "created_at": "2026-10-20T16:22:46.082733+00:00",
+      "evaluation_mode": "joint",
+      "cost_estimate": {
+        "known_cost_cny": 0.227225,
+        "missing_token_fields": 0,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "api_call_count": 1,
+      "known_total_tokens": null,
+      "missing_usage_count": null,
+      "calls": {}
     },
     {
       "sample_id": "B46BA67A9",
@@ -368,7 +464,19 @@
         "reasoning_output_tokens": 1034,
         "total_tokens": 35837
       },
-      "created_at": "2026-10-20T16:28:45.618809+00:00"
+      "created_at": "2026-10-20T16:28:45.618809+00:00",
+      "evaluation_mode": "joint",
+      "cost_estimate": {
+        "known_cost_cny": 0.23336,
+        "missing_token_fields": 0,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "api_call_count": 1,
+      "known_total_tokens": null,
+      "missing_usage_count": null,
+      "calls": {}
     }
   ],
   "note": "GPT 独立评价最终选中 HTML；不反馈给 DeepSeek 流程。小样本评分供排查与比较，不当作人工真值。"

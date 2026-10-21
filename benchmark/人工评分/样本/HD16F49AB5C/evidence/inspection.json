@@ -1,0 +1,537 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/人工评分/样本/HD16F49AB5C/20261019_151904_803_round_01.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "2023 · 辽宁大连二十四中校联考三模\n曲线上的三点与面积比\n\n曲线 Γ 在 x 轴上方，其上每一点到 Q(0,2) 的距离减去到 x 轴的距离恒为 2。 A、C 在 y 轴右侧，B 在左侧，△ABC 的重心 G 在 y 轴上；AB 交 y 轴于 M， 且 3|AM|<|BM|，BC 交 y 轴于 N。记 △ABC、△AMG、△CNG 的面积为 S1、S2、S3。\n(1) 求 Γ 的方程；(2) 求 (S2+S3)/S1 的取值范围。\n\nx\ny\nΓ: x² = 8y（y > 0）\ny = -2\nQ(0,2)\nP\ny\ny+2\n|PQ|\nA\nB\nC\nG\n(0,0) 不在 Γ 上\n观察点 P 的横坐标 x（演示 |x| ≥ 0.6）\n4.5\n完整定义域是 x ≠ 0；为了看清被挖去的顶点 (0,0)，演示只取 |x| ≥ 0.6。\n上一步\n下一步\n靠近 r→2⁺（演示 2.25）\n复位\n1 曲线\n2 重心\n3 M/N\n4 面积\n5 范围\n步骤 1 / 5\n1. 曲线 Γ 的方程\n\nP(x,y) 在 Γ 上，且 Γ 在 x 轴上方。拖动 P：|PQ| 与 y+2 始终相等，也就是 P 到 Q 的距离等于 P 到直线 y=−2 的距离。\n\n|PQ| = √(x² + (y−2)²)，到 x 轴的距离 = y\n由 |PQ|−y=2 得 |PQ|=y+2，即 P 到 Q 的距离等于 P 到直线 y=−2 的距离\n√(x²+(y−2)²) = y+2\n⇒ x² + (y−2)² = (y+2)²\n⇒ x² = 8y\n又 Γ 在 x 轴上方，故 y>0；顶点 (0,0) 不在 Γ 上。\nP(4.50, 2.531)\n|PQ| = 4.531，y+2 = 4.531\n|PQ| − y = 2.000",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "pSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "4.5",
+          "min": "-7",
+          "max": "7",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "rSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "3",
+          "min": "2.25",
+          "max": "10",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": true
+        },
+        {
+          "index": 3,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "nearBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "靠近 r→2⁺（演示 2.25）",
+          "value": "",
+          "visible": true,
+          "disabled": true
+        },
+        {
+          "index": 5,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1 曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2 重心",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3 M/N",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4 面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "5 范围",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "click",
+            "label": "下一步"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "2023 · 辽宁大连二十四中校联考三模\n曲线上的三点与面积比\n\n曲线 Γ 在 x 轴上方，其上每一点到 Q(0,2) 的距离减去到 x 轴的距离恒为 2。 A、C 在 y 轴右侧，B 在左侧，△ABC 的重心 G 在 y 轴上；AB 交 y 轴于 M， 且 3|AM|<|BM|，BC 交 y 轴于 N。记 △ABC、△AMG、△CNG 的面积为 S1、S2、S3。\n(1) 求 Γ 的方程；(2) 求 (S2+S3)/S1 的取值范围。\n\nx\ny\nΓ: x² = 8y（y > 0）\ny = -2\nQ(0,2)\nP\ny\ny+2\n|PQ|\nA\nB\nC\nG\n上一步\n下一步\n靠近 r→2⁺（演示 2.25）\n复位\n1 曲线\n2 重心\n3 M/N\n4 面积\n5 范围\n步骤 2 / 5\n2. 三点与重心 G\n\n记 s = a+c。A、C 在 y 轴右侧，B 在左侧，G 在 y 轴上。用正伸缩把 s 归一化，图形更简洁。\n\nxG = (a+b+c)/3 = 0 ⇒ b = −(a+c) = −s（记 s=a+c）\n取 λ = 8/s > 0，作伸缩 T：(x,y) ↦ (λx, λ²y)。\nT 保持 Γ（作为点集）、y 轴、左右位置、G 在 y 轴，以及同一直线上的线段比与面积比。\n所以可令 s=a+c=8，于是 b = −8。\n令 r = c/a > 0，则 a = 8/(r+1)，c = 8r/(r+1)。\n本步固定示例 r=3；r 的滑块在第3步推出 r>2 后再开放。\na = 2.000，b = -8.000，c = 6.000\ns = a+c = 8.000，r = c/a = 3.00\nG(0, 4.333)\n归一化对照：伸缩前后\n伸缩前：s=a+c=12\n伸缩后：s=a+c=8\nλ = 8/12 = 2/3\nx 同乘 λ，y 同乘 λ²\nA0\nB0\nC0\nG0\nA\nB\nC\nG\n记 s=a+c：左图 s=12，右图 s=8。同一颜色对应同一点。伸缩后 y 轴、左右位置和 G 在 y 轴上都不变，同一直线上的线段比与面积比也不变。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "pSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "4.5",
+          "min": "-7",
+          "max": "7",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "rSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "3",
+          "min": "2.25",
+          "max": "10",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "nearBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "靠近 r→2⁺（演示 2.25）",
+          "value": "",
+          "visible": true,
+          "disabled": true
+        },
+        {
+          "index": 5,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1 曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2 重心",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3 M/N",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4 面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "5 范围",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no visible slider"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "2023 · 辽宁大连二十四中校联考三模\n曲线上的三点与面积比\n\n曲线 Γ 在 x 轴上方，其上每一点到 Q(0,2) 的距离减去到 x 轴的距离恒为 2。 A、C 在 y 轴右侧，B 在左侧，△ABC 的重心 G 在 y 轴上；AB 交 y 轴于 M， 且 3|AM|<|BM|，BC 交 y 轴于 N。记 △ABC、△AMG、△CNG 的面积为 S1、S2、S3。\n(1) 求 Γ 的方程；(2) 求 (S2+S3)/S1 的取值范围。\n\nx\ny\nΓ: x² = 8y（y > 0）\ny = -2\nQ(0,2)\nP\ny\ny+2\n|PQ|\nA\nB\nC\nG\n上一步\n下一步\n靠近 r→2⁺（演示 2.25）\n复位\n1 曲线\n2 重心\n3 M/N\n4 面积\n5 范围\n步骤 2 / 5\n2. 三点与重心 G\n\n记 s = a+c。A、C 在 y 轴右侧，B 在左侧，G 在 y 轴上。用正伸缩把 s 归一化，图形更简洁。\n\nxG = (a+b+c)/3 = 0 ⇒ b = −(a+c) = −s（记 s=a+c）\n取 λ = 8/s > 0，作伸缩 T：(x,y) ↦ (λx, λ²y)。\nT 保持 Γ（作为点集）、y 轴、左右位置、G 在 y 轴，以及同一直线上的线段比与面积比。\n所以可令 s=a+c=8，于是 b = −8。\n令 r = c/a > 0，则 a = 8/(r+1)，c = 8r/(r+1)。\n本步固定示例 r=3；r 的滑块在第3步推出 r>2 后再开放。\na = 2.000，b = -8.000，c = 6.000\ns = a+c = 8.000，r = c/a = 3.00\nG(0, 4.333)\n归一化对照：伸缩前后\n伸缩前：s=a+c=12\n伸缩后：s=a+c=8\nλ = 8/12 = 2/3\nx 同乘 λ，y 同乘 λ²\nA0\nB0\nC0\nG0\nA\nB\nC\nG\n记 s=a+c：左图 s=12，右图 s=8。同一颜色对应同一点。伸缩后 y 轴、左右位置和 G 在 y 轴上都不变，同一直线上的线段比与面积比也不变。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "pSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "4.5",
+          "min": "-7",
+          "max": "7",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "rSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "3",
+          "min": "2.25",
+          "max": "10",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "nearBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "靠近 r→2⁺（演示 2.25）",
+          "value": "",
+          "visible": true,
+          "disabled": true
+        },
+        {
+          "index": 5,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1 曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2 重心",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3 M/N",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4 面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "5 范围",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no visible slider"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "2023 · 辽宁大连二十四中校联考三模\n曲线上的三点与面积比\n\n曲线 Γ 在 x 轴上方，其上每一点到 Q(0,2) 的距离减去到 x 轴的距离恒为 2。 A、C 在 y 轴右侧，B 在左侧，△ABC 的重心 G 在 y 轴上；AB 交 y 轴于 M， 且 3|AM|<|BM|，BC 交 y 轴于 N。记 △ABC、△AMG、△CNG 的面积为 S1、S2、S3。\n(1) 求 Γ 的方程；(2) 求 (S2+S3)/S1 的取值范围。\n\nx\ny\nΓ: x² = 8y（y > 0）\ny = -2\nQ(0,2)\nP\ny\ny+2\n|PQ|\nA\nB\nC\nG\n上一步\n下一步\n靠近 r→2⁺（演示 2.25）\n复位\n1 曲线\n2 重心\n3 M/N\n4 面积\n5 范围\n步骤 2 / 5\n2. 三点与重心 G\n\n记 s = a+c。A、C 在 y 轴右侧，B 在左侧，G 在 y 轴上。用正伸缩把 s 归一化，图形更简洁。\n\nxG = (a+b+c)/3 = 0 ⇒ b = −(a+c) = −s（记 s=a+c）\n取 λ = 8/s > 0，作伸缩 T：(x,y) ↦ (λx, λ²y)。\nT 保持 Γ（作为点集）、y 轴、左右位置、G 在 y 轴，以及同一直线上的线段比与面积比。\n所以可令 s=a+c=8，于是 b = −8。\n令 r = c/a > 0，则 a = 8/(r+1)，c = 8r/(r+1)。\n本步固定示例 r=3；r 的滑块在第3步推出 r>2 后再开放。\na = 2.000，b = -8.000，c = 6.000\ns = a+c = 8.000，r = c/a = 3.00\nG(0, 4.333)\n归一化对照：伸缩前后\n伸缩前：s=a+c=12\n伸缩后：s=a+c=8\nλ = 8/12 = 2/3\nx 同乘 λ，y 同乘 λ²\nA0\nB0\nC0\nG0\nA\nB\nC\nG\n记 s=a+c：左图 s=12，右图 s=8。同一颜色对应同一点。伸缩后 y 轴、左右位置和 G 在 y 轴上都不变，同一直线上的线段比与面积比也不变。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "pSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "4.5",
+          "min": "-7",
+          "max": "7",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "rSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "3",
+          "min": "2.25",
+          "max": "10",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "nearBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "靠近 r→2⁺（演示 2.25）",
+          "value": "",
+          "visible": true,
+          "disabled": true
+        },
+        {
+          "index": 5,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1 曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2 重心",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3 M/N",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4 面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "5 范围",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

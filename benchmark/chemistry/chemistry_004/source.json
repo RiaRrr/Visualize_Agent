@@ -1,0 +1,83 @@
+{
+  "id": "4103222117957632",
+  "course_id": 30,
+  "type_id": "301101",
+  "kpoint_ids": [
+    6094,
+    6096,
+    102351,
+    72228
+  ],
+  "catalog_ids": [
+    227736,
+    195124,
+    187855,
+    194443
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.7,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861847-114651791852237200-Jq8sMjzNw_Ja73p0R2S-0l3mQaaskpJnYM-9XZSE4M5ejYui2C4QC53LgqLVArHw\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">下列化学反应中电子转移的表示方法正确的是</span></p><div class=\" qml-og\"><table class=\"qml-og\" style=\"width:100%\"><tr><td>A.&nbsp;<span class=\"qml-op\"><img  height=\"44\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/18/cab6284b-9232-4cbf-893f-a1e86fa93699.png\" width=\"177\" /></span></td></tr><tr><td>B.&nbsp;<span class=\"qml-op\"><img  height=\"85\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/19/edd96c3a-d4eb-4734-b9a4-a68648c73a65.png\" width=\"217\" /></span></td></tr><tr><td>C.&nbsp;<span class=\"qml-op\"><img  height=\"86\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/19/15adb235-74d5-48a8-9be1-745b8b3a7c9e.png\" width=\"262\" /></span></td></tr><tr><td colspan=\"1\">D.&nbsp;<span class=\"qml-op\"><img  height=\"59\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/19/d51a179f-ef78-47e0-a0f5-b3a9d49e1335.png\" width=\"270\" /></span></td></tr></table></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861847-114651791852237200-Jq8sMjzNw_Ja73p0R2S-0l3mQaaskpJnYM-9XZSE4M5ejYui2C4QC53LgqLVArHw\"><span class=\"qml-an-sq\"><span class=\"qml-an qml-isop \">C</span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861847-114651791852237200-Jq8sMjzNw_Ja73p0R2S-0l3mQaaskpJnYM-9XZSE4M5ejYui2C4QC53LgqLVArHw\"><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">．</span><span style=\"font-family: 'Times New Roman';\">Na </span><span style=\"font-family: 宋体;\">从 </span><span style=\"font-family: 'Times New Roman';\">0 </span><span style=\"font-family: 宋体;\">价升为 </span><span style=\"font-family: 'Times New Roman';\">+1 </span><span style=\"font-family: 宋体;\">价失去</span><img  src=\"https://img.xkw.com/dksih/formula/db60b4bd2556990138580fe492db7a42.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">2</span><span style=\"font-family: 宋体;\">个 </span><span style=\"font-family: 'Times New Roman';\">Na </span><span style=\"font-family: 宋体;\">参与反应失去</span><img  src=\"https://img.xkw.com/dksih/formula/7c56a1cb791d15b13b2d45ab61656a35.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，选项中电子数目标注错误，应为</span><img  height=\"44\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/19/1a9e99e6-3615-40d7-8d10-8de107d5ea5d.png\" width=\"166\" /><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">．该反应为归中反应，</span><img  src=\"https://img.xkw.com/dksih/formula/1a79458f1fa136c6e2ac992bc52194ed.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中</span><img  src=\"https://img.xkw.com/dksih/formula/0718efffa328c4c677660fa0d6e1a82a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">从</span><span style=\"font-family: 'Times New Roman';\">+5</span><span style=\"font-family: 宋体;\">价降为</span><span style=\"font-family: 'Times New Roman';\">0</span><span style=\"font-family: 宋体;\">价得</span><img  src=\"https://img.xkw.com/dksih/formula/2aa6f17a4028889880dd7ee4825fa72a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">5</span><span style=\"font-family: 宋体;\">个</span><img  src=\"https://img.xkw.com/dksih/formula/387d2029bc8e5f0ceb454be937a07e3f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中</span><img  src=\"https://img.xkw.com/dksih/formula/0718efffa328c4c677660fa0d6e1a82a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">从 </span><span style=\"font-family: 'Times New Roman';\">-1 </span><span style=\"font-family: 宋体;\">价升为 </span><span style=\"font-family: 'Times New Roman';\">0 </span><span style=\"font-family: 宋体;\">价失</span><img  src=\"https://img.xkw.com/dksih/formula/2aa6f17a4028889880dd7ee4825fa72a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，转移电子总数为</span><img  src=\"https://img.xkw.com/dksih/formula/2aa6f17a4028889880dd7ee4825fa72a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，选项电子数目标注错误，应为</span><img  height=\"75\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/19/8d6565db-f473-4dd3-92fb-cfeb3422209a.png\" width=\"193\" /><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">．该反应为歧化反应，</span><span style=\"font-family: 'Times New Roman';\">2</span><span style=\"font-family: 宋体;\">个</span><img  src=\"https://img.xkw.com/dksih/formula/39db0d5f5533066dab682ec1bf4c39bf.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中有</span><span style=\"font-family: 'Times New Roman';\">2</span><span style=\"font-family: 宋体;\">个</span><img  src=\"https://img.xkw.com/dksih/formula/0718efffa328c4c677660fa0d6e1a82a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">原子得</span><img  src=\"https://img.xkw.com/dksih/formula/c849b2b2aedd253d1bbdc5e37586d8e8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">生成</span><img  src=\"https://img.xkw.com/dksih/formula/1bf4d3b85e653149d9254d3edc07549f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中</span><span style=\"font-family: 'Times New Roman';\">-1</span><span style=\"font-family: 宋体;\">价</span><img  src=\"https://img.xkw.com/dksih/formula/0718efffa328c4c677660fa0d6e1a82a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，另有</span><span style=\"font-family: 'Times New Roman';\">2</span><span style=\"font-family: 宋体;\">个</span><img  src=\"https://img.xkw.com/dksih/formula/0718efffa328c4c677660fa0d6e1a82a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">原子失</span><img  src=\"https://img.xkw.com/dksih/formula/c849b2b2aedd253d1bbdc5e37586d8e8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">生成</span><img  src=\"https://img.xkw.com/dksih/formula/b7fd4e26142a3bfe001c2972ea0aed7f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中</span><span style=\"font-family: 'Times New Roman';\">+1</span><span style=\"font-family: 宋体;\">价</span><img  src=\"https://img.xkw.com/dksih/formula/0718efffa328c4c677660fa0d6e1a82a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，电子转移表示正确，</span><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">正确；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">．</span><img  src=\"https://img.xkw.com/dksih/formula/38976580545a0405e4847dc13b4d221f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">化合价升高失电子，浓</span><img  src=\"https://img.xkw.com/dksih/formula/dbc7bcfe5cacce080d9a3d2ccf9366e0.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中</span><img  src=\"https://img.xkw.com/dksih/formula/3482b3e788f6069d41ee5a190c7ef1f0.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">化合价降低得电子，电子应从</span><img  src=\"https://img.xkw.com/dksih/formula/38976580545a0405e4847dc13b4d221f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">指向</span><img  src=\"https://img.xkw.com/dksih/formula/3482b3e788f6069d41ee5a190c7ef1f0.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，选项箭头方向错误，应为</span><img  height=\"48\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/19/3b865566-1397-424c-81da-60dc6a594af7.png\" width=\"264\" /><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">错误。</span></p></div></div>",
+  "create_date": "2026-09-18 15:29:40",
+  "paper_type_ids": [
+    3
+  ],
+  "course": {
+    "id": 30,
+    "name": "高中化学"
+  },
+  "catalogs": [
+    {
+      "id": 227736,
+      "name": "2.2氧化还原反应和离子反应"
+    },
+    {
+      "id": 195124,
+      "name": "第一单元  物质及其反应的分类"
+    },
+    {
+      "id": 187855,
+      "name": "第三节 氧化还原反应"
+    },
+    {
+      "id": 194443,
+      "name": "第3节  氧化还原反应"
+    }
+  ],
+  "type": {
+    "id": "301101",
+    "name": "单题"
+  },
+  "kpoints": [
+    {
+      "id": 6094,
+      "name": "氧化还原反应定义、本质及特征"
+    },
+    {
+      "id": 6096,
+      "name": "单线桥、双线桥分析氧化还原反应"
+    },
+    {
+      "id": 102351,
+      "name": "歧化反应与归中反应"
+    },
+    {
+      "id": 72228,
+      "name": "电子转移计算"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4103181409910784"
+  ]
+}

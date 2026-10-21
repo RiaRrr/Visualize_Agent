@@ -1,0 +1,71 @@
+{
+  "sample_id": "B7309A232",
+  "question_id": "math_001",
+  "set": "calibration",
+  "html_sha256": "fe4841b6a632a8e719838d17dcc79fbf608783d35359c8e9a07e8ed0e9bf53b5",
+  "judge_id": "gpt_56",
+  "model": "gpt-5.6-sol",
+  "judge_version": "c3fcf583bc0c",
+  "evidence_sha256": "3c85608d7aa0460caa9722d12b86325bb0b1cc59f85f3fd37dc45607056975ea",
+  "image_inputs": [
+    {
+      "name": "input.png",
+      "sha256": "b3e38e164e8716d4a6b7d8f4d289bd020ac06d0bf6cbe3689ba18422f278f43c"
+    },
+    {
+      "name": "answer.png",
+      "sha256": "7a27a7a7291f0db3b9b3fe895313df5cd2b650aa25d7934fc87b8a61b2862ab3"
+    },
+    {
+      "name": "explanation.png",
+      "sha256": "c04d60648cac97f365add9d15955cd3dba20ca5ce7bdc20c87df2edf0e149ecd"
+    },
+    {
+      "name": "00_initial.png",
+      "sha256": "87f6ea50a31bf2327bc5f94d56b03284e5c85628104e652e15f11c3684b7a781"
+    },
+    {
+      "name": "01_next_step.png",
+      "sha256": "87f6ea50a31bf2327bc5f94d56b03284e5c85628104e652e15f11c3684b7a781"
+    },
+    {
+      "name": "02_slider_mid.png",
+      "sha256": "9686992e4991a75797d3f1e7e13986b9235c21957d5b9e4aaf2c452c06ddf104"
+    },
+    {
+      "name": "03_slider_high.png",
+      "sha256": "ddb376fe60d7c1d663d462909e923fb7ef2e4b8ff2965f06764f9e26132e4a33"
+    }
+  ],
+  "created_at": "2026-10-20T15:59:31.538253+00:00",
+  "status": "completed",
+  "judgment": {
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 5,
+      "interaction_quality": 5,
+      "teaching_effectiveness": 5
+    },
+    "overall_score": 5,
+    "issues": [],
+    "evidence": {
+      "problem_fidelity": "原题为求函数 y=−x²+2x−14 的值域，候选页面完整保留函数、定义域为全体实数的语境及唯一作答目标，没有改动系数或遗漏条件。",
+      "solution_correctness": "独立配方得 y=−(x−1)²−13，因此 y≤−13，且 x=1 时取到−13；当 |x−1| 趋于无穷时 y 趋于负无穷，值域确为 (−∞,−13]。页面中的顶点 (1,−13)、对称轴 x=1、示例 x=2 时 y=−14、x=4.5 时 y=−25.25 均计算正确；末步还用任意 t≤−13 构造 x=1±√(−13−t)，完整说明了区间内各值均可取得。",
+      "page_quality": "1280×900 桌面截图中标题、坐标图、滑块、读数、步骤按钮和讲解区均清楚可见，未见文字或公式重叠、裁切。坐标轴比例不同及图象继续延伸均有明确标注，避免局部窗口造成误读。",
+      "interaction_quality": "实际操作记录验证了滑块从 x=2 移至 x=1 和上界 x=4.5 时，点 P、辅助竖线以及 x、y 数值同步更新，且无运行时错误。源码显示步骤页签、回到顶点、自动扫描和复位均绑定了相应状态更新，但操作记录没有实际点击这些按钮，因此这些功能的运行效果仅有源码证据、未由截图实测覆盖。滑块只展示有限区间，但页面明确说明 x 取全体实数，并由代数推导覆盖完整定义域。",
+      "teaching_effectiveness": "内容按“观察点的纵坐标—配方确定顶点—利用平方非负—证明并表示值域”递进，从题设出发解释最高值及端点为何能取到；图象、动态数值、顶点式、距离 d 与数轴表示相互对应，没有把未经说明的参数交给学生操作。"
+    },
+    "reference_concern": "",
+    "summary": "题设、参考答案与候选页面结论一致。页面数学推导完整正确，桌面呈现清晰，已记录的滑块联动准确，教学路径能同时说明上界、端点可取性和向下无界性；其余按钮未在操作记录中实测，但源码逻辑完整。"
+  },
+  "duration_seconds": 45.85265312199772,
+  "usage": {
+    "input_tokens": 23400,
+    "output_tokens": 1594,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 969,
+    "total_tokens": 24994
+  }
+}

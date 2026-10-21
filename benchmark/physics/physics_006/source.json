@@ -1,0 +1,121 @@
+{
+  "id": "4073368526315520",
+  "course_id": 29,
+  "type_id": "2904",
+  "kpoint_ids": [
+    15848,
+    16021,
+    15840,
+    16033,
+    65958,
+    16653
+  ],
+  "catalog_ids": [
+    194995,
+    202590,
+    202665,
+    220593,
+    229943
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.71,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveNm8c4Nc2BmI4wkHJsjwgXpIsZG-jZ6awy4-7ixj6NwZ\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">如图所示，在水平向左的匀强电场中，光滑绝缘直角三角形斜劈</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">ABC</span><span style=\"font-family: 宋体;\">固定在水平面，斜面总长</span><img  src=\"https://img.xkw.com/dksih/formula/d933d101d9aac5bc5821308e566fcf0c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，倾角</span><img  src=\"https://img.xkw.com/dksih/formula/eb1a640781f3f6bac7466fdc95bbd682.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。电荷量</span><img  src=\"https://img.xkw.com/dksih/formula/67a5fa596217a256f6f775c6fa924e09.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、质量</span><img  src=\"https://img.xkw.com/dksih/formula/681a667c89a3caed2a70bbea75f31635.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的带电小物块（质点）静止在斜面顶端</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">。（</span><img  src=\"https://img.xkw.com/dksih/formula/46a6a294d3d7206bcdde5b943dbe94f0.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/839104324eca56a3c18d9863803bc466.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/ef84e4acf000ff39a15c197ce7be812f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">）。</span></p><p style=\"text-align: left;\"><img  height=\"107\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/8/7/414f28cf-8bf6-4c2c-949f-a23e3b877e8a.png\" width=\"155\" /></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveNm8c4Nc2BmI4wkHJsjwgXpIsZG-jZ6awy4-7ixj6NwZ\"><p style=\"\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 宋体;\">画出物块静止在</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">点的受力示意图；判断物块电性，并根据平衡条件求匀强电场的电场强度</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">E</span><span style=\"font-family: 宋体;\">；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveNm8c4Nc2BmI4wkHJsjwgXpIsZG-jZ6awy4-7ixj6NwZ\"><p style=\"\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 宋体;\">若电场强度减小为原来的</span><img  src=\"https://img.xkw.com/dksih/formula/4dac452fbb5ef6dd653e7fbbef639484.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，再次画出物块受力示意图；沿斜面方向建立坐标系，列式求解物块沿斜面下滑的加速度大小与方向；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveNm8c4Nc2BmI4wkHJsjwgXpIsZG-jZ6awy4-7ixj6NwZ\"><p style=\"\"><span class=\"ques-no\">（3）</span><span style=\"font-family: 宋体;\">物块从</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">点由静止开始沿斜面匀加速下滑至</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">点，利用运动学公式计算下滑总时间和到达</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">点的速度大小；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveNm8c4Nc2BmI4wkHJsjwgXpIsZG-jZ6awy4-7ixj6NwZ\"><p style=\"\"><span class=\"ques-no\">（4）</span><span style=\"font-family: 宋体;\">若电场强度持续减小，物块沿斜面向下的加速度会如何变化，并简要说明理由。</span></p></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveNm8c4Nc2BmI4wkHJsjwgXpIsZG-jZ6awy4-7ixj6NwZ\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><span style=\"font-family: 宋体;\">受力示意图如图所示：</span><p style=\"text-align:justify;word-break:break-word;\"><img  height=\"118\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/8/7/5560901f-32ac-406a-9dab-296429647877.png\" width=\"161\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">物块带负电；</span><img  src=\"https://img.xkw.com/dksih/formula/ea0ef77f6893a0a3cf73328816c0ca5e.svg\" class=\"xkw-math-img\" /></p></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><span style=\"font-family: 宋体;\">受力示意图如图所示：</span><p style=\"text-align:justify;word-break:break-word;\"><img  height=\"123\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/8/7/282382c1-3856-4f86-aac4-6fa57abd0b0e.png\" width=\"195\" /></p><p style=\"text-align:justify;word-break:break-word;\"><img  src=\"https://img.xkw.com/dksih/formula/2a1bbdc2280e973fc565ed04b4d5cb0f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，方向：沿斜面向下。</span></p></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/fec0ea7d94acd509d12b841fd2e50e8c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/b234685b84da31711626c384c94a3179.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><span style=\"font-family: 宋体;\">若电场强度持续减小，物块沿斜面向下的加速度逐渐增大，当电场强度减小到</span><span style=\"font-family: 'Times New Roman';\"> 0 </span><span style=\"font-family: 宋体;\">后，加速度保持不变。</span><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">物块带负电，电场力水平向右，电场力沿斜面向上的分力为</span><img  src=\"https://img.xkw.com/dksih/formula/1a8278d053bd440798ede6be28dc24e8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。电场强度</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">E</span><span style=\"font-family: 宋体;\">持续减小，</span><img  src=\"https://img.xkw.com/dksih/formula/1a8278d053bd440798ede6be28dc24e8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">减小，重力沿斜面向下分力</span><img  src=\"https://img.xkw.com/dksih/formula/15d4dc09ab89f56da8736d8c6f1a64ac.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">不变，沿斜面向下的合外力增大，因此加速度沿斜面向下逐渐增大。当电场强度减小至</span><span style=\"font-family: 'Times New Roman';\">0</span><span style=\"font-family: 宋体;\">后，受力不再改变，加速度保持恒定不变。</span></p></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveNm8c4Nc2BmI4wkHJsjwgXpIsZG-jZ6awy4-7ixj6NwZ\"><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">受力示意图如图所示：</span></p><p style=\"text-align:justify;word-break:break-word;\"><img  height=\"113\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/8/7/bc1cb5fb-ad71-4219-b5cb-18281dc57f00.png\" width=\"153\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">因为斜面光滑，物块若要保持静止，必须有一个沿斜面向上的分力来平衡重力沿斜面向下的分力，因此电场力方向必须是水平向右。已知匀强电场的方向水平向左，而物块受到的电场力方向水平向右。由于电场力方向与电场强度方向相反，因此该带电小物块带负电。根据平衡条件，沿斜面方向的合力为零，则</span><img  src=\"https://img.xkw.com/dksih/formula/ffb67f1646e9d4f8e492dc54855c43d5.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">解得</span><img  src=\"https://img.xkw.com/dksih/formula/ea0ef77f6893a0a3cf73328816c0ca5e.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">受力示意图如图所示：</span></p><p style=\"text-align:justify;word-break:break-word;\"><img  height=\"130\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/8/7/5789db3b-d991-4a79-bcab-792f43e19d7c.png\" width=\"206\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">以沿斜面向下为</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">x</span><span style=\"font-family: 宋体;\">轴正方向，垂直斜面向上为</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">y</span><span style=\"font-family: 宋体;\">轴正方向建立坐标系，根据牛顿第二定律有</span><img  src=\"https://img.xkw.com/dksih/formula/cdc40385fa22f86a4a3adc922f67aa6c.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">解得</span><img  src=\"https://img.xkw.com/dksih/formula/2a1bbdc2280e973fc565ed04b4d5cb0f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，方向：沿斜面向下。</span></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(3)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">物块从</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">点由静止开始做匀加速直线运动，位移</span><img  src=\"https://img.xkw.com/dksih/formula/6e6e87afe94935a29985b1c377644c39.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">解得</span><img  src=\"https://img.xkw.com/dksih/formula/4a6672af9722bd93d39ba60e87fe8d69.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">到达</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">点的速度大小</span><img  src=\"https://img.xkw.com/dksih/formula/f6a98bfde0248ab33e022f7fc64c6828.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(4)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">若电场强度持续减小，物块沿斜面向下的加速度逐渐增大，当电场强度减小到</span><span style=\"font-family: 'Times New Roman';\"> 0 </span><span style=\"font-family: 宋体;\">后，加速度保持不变。</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">物块带负电，电场力水平向右，电场力沿斜面向上的分力为</span><img  src=\"https://img.xkw.com/dksih/formula/1a8278d053bd440798ede6be28dc24e8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。电场强度</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">E</span><span style=\"font-family: 宋体;\">持续减小，</span><img  src=\"https://img.xkw.com/dksih/formula/1a8278d053bd440798ede6be28dc24e8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">减小，重力沿斜面向下分力</span><img  src=\"https://img.xkw.com/dksih/formula/15d4dc09ab89f56da8736d8c6f1a64ac.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">不变，沿斜面向下的合外力增大，因此加速度沿斜面向下逐渐增大。当电场强度减小至</span><span style=\"font-family: 'Times New Roman';\">0</span><span style=\"font-family: 宋体;\">后，受力不再改变，加速度保持恒定不变。</span></p></div></div>",
+  "create_date": "2026-08-07 11:12:23",
+  "paper_type_ids": [
+    1,
+    3
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 194995,
+      "name": "5. 带电粒子在电场中的运动"
+    },
+    {
+      "id": 202590,
+      "name": "第4节 带电粒子在电场中的运动"
+    },
+    {
+      "id": 202665,
+      "name": "第二节 带电粒子在电场中的运动"
+    },
+    {
+      "id": 220593,
+      "name": "9. 带电粒子在电场中的运动"
+    },
+    {
+      "id": 229943,
+      "name": "第五节 带电粒子在电场中的运动"
+    }
+  ],
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "kpoints": [
+    {
+      "id": 15848,
+      "name": "匀变速直线运动位移与时间的关系"
+    },
+    {
+      "id": 16021,
+      "name": "牛顿第二定律的初步应用"
+    },
+    {
+      "id": 15840,
+      "name": "匀变速直线运动速度与时间的关系"
+    },
+    {
+      "id": 16033,
+      "name": "已知受力求运动"
+    },
+    {
+      "id": 65958,
+      "name": "带电物体（计重力）在电场中的平衡问题"
+    },
+    {
+      "id": 16653,
+      "name": "带电物体（计重力）在匀强电场中的直线运动"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "source_papers": [
+    {
+      "title": "学易金卷：高二物理上学期第一次月考`素养提升卷（上海专用·必修第三册第9~10章）",
+      "area": {
+        "id": "310000",
+        "name": "上海市"
+      },
+      "type_id": 3,
+      "grade_id": 11,
+      "term": "LAST",
+      "year": 2026
+    },
+    {
+      "title": "专题 电场的力的性质  课后作业（提升）",
+      "area": {
+        "id": "1",
+        "name": "全国"
+      },
+      "type_id": 1,
+      "grade_id": 11,
+      "term": "LAST",
+      "year": 2026
+    }
+  ],
+  "_paper_ids": []
+}

@@ -1,0 +1,410 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261020_230852_143_93e60026/20261021_000509_022_round_03.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "匀变速直线运动 · 交互可视化\n飞机着陆：让速度图“走”成距离\n\n拖动时间轴，观察飞机位置、速度箭头和 v-t 图如何同步变化。\n\n题目\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止。其着陆速度为 36 m/s。\n\nv₀\n36 m/s\n减速大小\n6 m/s²\nv末\n0\n求 (1)\n滑行距离 ?\n求 (2)\n最后 4 s 位移 ?\n0\n建立运动图\n1\n求停稳时刻\n2\n第 (1) 问\n3\n最后 4 s 区间\n4\n第 (2) 问\n跑道示意\nt = 0.0 s\n位置基准：机头\n运动方向 →\n60 m\n起点 0 m（机头）\nv = 36.0 m/s\na\n最后 4 s 区间\n时间轴（0–6 s，可拖动）\n同一时刻的飞机、速度与面积同步更新\n0\n1\n2\n3\n4\n5\n6\n最后 4 s\n播放\n重置\n播放区间 0–6 s：速度箭头随速度变小而缩短，飞机在 6 s 时停稳。\nv-t 图\n线下面积 = 位移\n斜率 = 加速度\nt = 6 s（停稳）\nt = 2 s\nv=36.0\n0\n1\n2\n3\n4\n5\n6\n0\n12\n24\n36\nt / s\nv / (m·s⁻¹)\n斜率 = −6 m/s²\nt\n0.0\ns\nv\n36.0\nm/s\n滑行\n0.0\nm\n观察\n先把方向与符号定下来\n取运动方向为正方向\na = −6 m/s² （题中 6 m/s² 是减速的大小）\n初速度\nv₀ = +36 m/s\n末速度\nv = 0\n\n飞机沿正方向运动，加速度方向与运动方向相反，所以 a 取负。拖动下方时间轴或点“播放”，看速度箭头、飞机位置和 v-t 图中的点怎样同步变化。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "0\n建立运动图",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1\n求停稳时刻",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2\n第 (1) 问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3\n最后 4 s 区间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4\n第 (2) 问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no matching visible step control"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "匀变速直线运动 · 交互可视化\n飞机着陆：让速度图“走”成距离\n\n拖动时间轴，观察飞机位置、速度箭头和 v-t 图如何同步变化。\n\n题目\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止。其着陆速度为 36 m/s。\n\nv₀\n36 m/s\n减速大小\n6 m/s²\nv末\n0\n求 (1)\n滑行距离 ?\n求 (2)\n最后 4 s 位移 ?\n0\n建立运动图\n1\n求停稳时刻\n2\n第 (1) 问\n3\n最后 4 s 区间\n4\n第 (2) 问\n跑道示意\nt = 0.0 s\n位置基准：机头\n运动方向 →\n60 m\n起点 0 m（机头）\nv = 36.0 m/s\na\n最后 4 s 区间\n时间轴（0–6 s，可拖动）\n同一时刻的飞机、速度与面积同步更新\n0\n1\n2\n3\n4\n5\n6\n最后 4 s\n播放\n重置\n播放区间 0–6 s：速度箭头随速度变小而缩短，飞机在 6 s 时停稳。\nv-t 图\n线下面积 = 位移\n斜率 = 加速度\nt = 6 s（停稳）\nt = 2 s\nv=36.0\n0\n1\n2\n3\n4\n5\n6\n0\n12\n24\n36\nt / s\nv / (m·s⁻¹)\n斜率 = −6 m/s²\nt\n0.0\ns\nv\n36.0\nm/s\n滑行\n0.0\nm\n观察\n先把方向与符号定下来\n取运动方向为正方向\na = −6 m/s² （题中 6 m/s² 是减速的大小）\n初速度\nv₀ = +36 m/s\n末速度\nv = 0\n\n飞机沿正方向运动，加速度方向与运动方向相反，所以 a 取负。拖动下方时间轴或点“播放”，看速度箭头、飞机位置和 v-t 图中的点怎样同步变化。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "0\n建立运动图",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1\n求停稳时刻",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2\n第 (1) 问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3\n最后 4 s 区间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4\n第 (2) 问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "3"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "匀变速直线运动 · 交互可视化\n飞机着陆：让速度图“走”成距离\n\n拖动时间轴，观察飞机位置、速度箭头和 v-t 图如何同步变化。\n\n题目\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止。其着陆速度为 36 m/s。\n\nv₀\n36 m/s\n减速大小\n6 m/s²\nv末\n0\n求 (1)\n滑行距离 ?\n求 (2)\n最后 4 s 位移 ?\n0\n建立运动图\n1\n求停稳时刻\n2\n第 (1) 问\n3\n最后 4 s 区间\n4\n第 (2) 问\n跑道示意\nt = 3.0 s\n位置基准：机头\n运动方向 →\n60 m\n起点 0 m（机头）\nv = 18.0 m/s\na\n最后 4 s 区间\n时间轴（0–6 s，可拖动）\n同一时刻的飞机、速度与面积同步更新\n0\n1\n2\n3\n4\n5\n6\n最后 4 s\n播放\n重置\n播放区间 0–6 s：速度箭头随速度变小而缩短，飞机在 6 s 时停稳。\nv-t 图\n线下面积 = 位移\n斜率 = 加速度\nt = 6 s（停稳）\nt = 2 s\nv=18.0\n0\n1\n2\n3\n4\n5\n6\n0\n12\n24\n36\nt / s\nv / (m·s⁻¹)\n斜率 = −6 m/s²\nt\n3.0\ns\nv\n18.0\nm/s\n滑行\n81.0\nm\n观察\n先把方向与符号定下来\n取运动方向为正方向\na = −6 m/s² （题中 6 m/s² 是减速的大小）\n初速度\nv₀ = +36 m/s\n末速度\nv = 0\n\n飞机沿正方向运动，加速度方向与运动方向相反，所以 a 取负。拖动下方时间轴或点“播放”，看速度箭头、飞机位置和 v-t 图中的点怎样同步变化。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "0\n建立运动图",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1\n求停稳时刻",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2\n第 (1) 问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3\n最后 4 s 区间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4\n第 (2) 问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "3",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "6"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "匀变速直线运动 · 交互可视化\n飞机着陆：让速度图“走”成距离\n\n拖动时间轴，观察飞机位置、速度箭头和 v-t 图如何同步变化。\n\n题目\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止。其着陆速度为 36 m/s。\n\nv₀\n36 m/s\n减速大小\n6 m/s²\nv末\n0\n求 (1)\n滑行距离 ?\n求 (2)\n最后 4 s 位移 ?\n0\n建立运动图\n1\n求停稳时刻\n2\n第 (1) 问\n3\n最后 4 s 区间\n4\n第 (2) 问\n跑道示意\n已停稳\n位置基准：机头\n运动方向 →\n60 m\n起点 0 m（机头）\nv = 0（已停稳）\na\n最后 4 s 区间\n时间轴（0–6 s，可拖动）\n同一时刻的飞机、速度与面积同步更新\n0\n1\n2\n3\n4\n5\n6\n最后 4 s\n播放\n重置\n播放区间 0–6 s：速度箭头随速度变小而缩短，飞机在 6 s 时停稳。\nv-t 图\n线下面积 = 位移\n斜率 = 加速度\nt = 6 s（停稳）\nt = 2 s\n0\n1\n2\n3\n4\n5\n6\n0\n12\n24\n36\nt / s\nv / (m·s⁻¹)\n斜率 = −6 m/s²\nt\n6.0\ns\nv\n0.0\nm/s\n滑行\n108.0\nm\n观察\n先把方向与符号定下来\n取运动方向为正方向\na = −6 m/s² （题中 6 m/s² 是减速的大小）\n初速度\nv₀ = +36 m/s\n末速度\nv = 0\n\n飞机沿正方向运动，加速度方向与运动方向相反，所以 a 取负。拖动下方时间轴或点“播放”，看速度箭头、飞机位置和 v-t 图中的点怎样同步变化。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "0\n建立运动图",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1\n求停稳时刻",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2\n第 (1) 问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3\n最后 4 s 区间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4\n第 (2) 问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "6",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

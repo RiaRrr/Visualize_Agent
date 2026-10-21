@@ -1,0 +1,20 @@
+{
+  "rater": "primary",
+  "html_sha256": "fe4841b6a632a8e719838d17dcc79fbf608783d35359c8e9a07e8ed0e9bf53b5",
+  "revision": 7,
+  "status": "submitted",
+  "scores": {
+    "problem_fidelity": 4,
+    "solution_correctness": 5,
+    "page_quality": 2,
+    "interaction_quality": 3,
+    "teaching_effectiveness": 4
+  },
+  "overall_score": 2,
+  "comment": "",
+  "flags": [],
+  "sample_id": "B7309A232",
+  "question_id": "math_001",
+  "rubric_version": "v1",
+  "updated_at": "2026-10-21T03:41:24.579076+00:00"
+}

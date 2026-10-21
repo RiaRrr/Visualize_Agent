@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "summary": "题目对象与函数一致；配方顶点 (1, −13)、最大值取等条件及完整值域 (−∞, −13] 均正确。分步图、滑块与扫描读数同步，首屏先建立曲线观察而未提前给出答案，桌面预览清晰可读，未发现实质性问题。",
+  "issues": [],
+  "scores": {
+    "problem_fidelity": 5,
+    "solution_correctness": 5,
+    "page_quality": 5,
+    "interaction_quality": 5,
+    "teaching_effectiveness": 5
+  },
+  "overall_score": 5,
+  "source": "model"
+}

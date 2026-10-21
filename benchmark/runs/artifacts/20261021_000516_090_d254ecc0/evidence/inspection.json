@@ -1,0 +1,650 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261021_000516_090_d254ecc0/20261021_002210_441_round_03.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "导电能力为什么先降后升？\n\n拖动滑块或播放滴加，观察曲线、烧杯里的离子与沉淀怎样同步变化。\n\n?\n\n某同学向一定体积的 Ba(OH)₂ 溶液中滴加稀硫酸，测得混合溶液的导电能力随时间变化如图。下列说法正确的是（　　）\n\nA. AB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB. 实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线\nC. 实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD. 实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线\n时间\n导电\n能力\nO\nA\nB\nC\na\n题图（原实验实测曲线）\n模型曲线\n原实验\n0\n2\n4\n6\n8\n10\n12\n14\n0\n1\n2\n3\n4\n5\n6\n7\n8\n模型 · 定性示意\n最低点 0\n12\n滴加试剂（份）\n自由离子数（模型示意）\n播放滴加\n0 份 / 共 8 份\n自由离子：12\n模型设定（数字从哪来）：把初始 Ba(OH)₂ 记为 4 个单元， 即 Ba²⁺×4、OH⁻×8，共 12 个自由离子。 每滴 1 份试剂恰好提供 1 个 SO₄²⁻ 和 2 个 H⁺，按化学计量比反应， 所以原实验滴到 4 份时 Ba²⁺ 与 OH⁻ 刚好同时用完，这就是最低点。\n“份”只是比例示意，不是真实体积。可滴范围：原实验 / C / D 为 0–8 份，B（NaOH 起步只有 4 个 OH⁻）为 0–4 份，其最低点在 2 份。\n\n注意：本图纵轴用“自由离子数”近似导电能力，只是辅助定性示意。 真实导电能力还受离子种类（H⁺、OH⁻ 的导电本领明显更强）和体积稀释影响， 所以题图的实测曲线是平滑的，起止高度、上升斜率都不会与本图一致。 本图只用来判断趋势和最低点是否为 0。\n\n烧杯中的粒子\n原实验\nBa²⁺\nBa²⁺\nBa²⁺\nBa²⁺\nOH⁻\nOH⁻\nOH⁻\nOH⁻\nOH⁻\nOH⁻\nOH⁻\nOH⁻\nBa(OH)₂ + 稀 H₂SO₄\n阳离子\n阴离子\n起始：自由离子较多，导电能力较强\nBa²⁺\nOH⁻\n换一种试剂，曲线还一样吗？\n点击选题，再拖动滑块\n原实验 Ba(OH)₂+H₂SO₄\nB：NaOH\nC：KHSO₄\nD：MgSO₄\n分步观察：\n起点\nAB 段\nB 点（最低）\nBC 段\n起始：Ba(OH)₂ = Ba²⁺ + 2OH⁻\n4 个 Ba²⁺ + 8 个 OH⁻ = 12 个自由离子，导电能力最强。\n曲线最低点：滴加 4 份时，自由离子数 = 0 （导电能力接近 0）\n判断下列说法\n\n点击任一卡片，页面会切换到对应试剂与状态，再结合曲线最低点作出判断。\n\nA\nAB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线\nC\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放滴加",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "tSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "8",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "原实验 Ba(OH)₂+H₂SO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B：NaOH",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "C：KHSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "D：MgSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "起点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "AB 段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B 点（最低）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "BC 段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "A\nAB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "C\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "D\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no matching visible step control"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "导电能力为什么先降后升？\n\n拖动滑块或播放滴加，观察曲线、烧杯里的离子与沉淀怎样同步变化。\n\n?\n\n某同学向一定体积的 Ba(OH)₂ 溶液中滴加稀硫酸，测得混合溶液的导电能力随时间变化如图。下列说法正确的是（　　）\n\nA. AB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB. 实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线\nC. 实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD. 实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线\n时间\n导电\n能力\nO\nA\nB\nC\na\n题图（原实验实测曲线）\n模型曲线\n原实验\n0\n2\n4\n6\n8\n10\n12\n14\n0\n1\n2\n3\n4\n5\n6\n7\n8\n模型 · 定性示意\n最低点 0\n12\n滴加试剂（份）\n自由离子数（模型示意）\n播放滴加\n0 份 / 共 8 份\n自由离子：12\n模型设定（数字从哪来）：把初始 Ba(OH)₂ 记为 4 个单元， 即 Ba²⁺×4、OH⁻×8，共 12 个自由离子。 每滴 1 份试剂恰好提供 1 个 SO₄²⁻ 和 2 个 H⁺，按化学计量比反应， 所以原实验滴到 4 份时 Ba²⁺ 与 OH⁻ 刚好同时用完，这就是最低点。\n“份”只是比例示意，不是真实体积。可滴范围：原实验 / C / D 为 0–8 份，B（NaOH 起步只有 4 个 OH⁻）为 0–4 份，其最低点在 2 份。\n\n注意：本图纵轴用“自由离子数”近似导电能力，只是辅助定性示意。 真实导电能力还受离子种类（H⁺、OH⁻ 的导电本领明显更强）和体积稀释影响， 所以题图的实测曲线是平滑的，起止高度、上升斜率都不会与本图一致。 本图只用来判断趋势和最低点是否为 0。\n\n烧杯中的粒子\n原实验\nBa²⁺\nBa²⁺\nBa²⁺\nBa²⁺\nOH⁻\nOH⁻\nOH⁻\nOH⁻\nOH⁻\nOH⁻\nOH⁻\nOH⁻\nBa(OH)₂ + 稀 H₂SO₄\n阳离子\n阴离子\n起始：自由离子较多，导电能力较强\nBa²⁺\nOH⁻\n换一种试剂，曲线还一样吗？\n点击选题，再拖动滑块\n原实验 Ba(OH)₂+H₂SO₄\nB：NaOH\nC：KHSO₄\nD：MgSO₄\n分步观察：\n起点\nAB 段\nB 点（最低）\nBC 段\n起始：Ba(OH)₂ = Ba²⁺ + 2OH⁻\n4 个 Ba²⁺ + 8 个 OH⁻ = 12 个自由离子，导电能力最强。\n曲线最低点：滴加 4 份时，自由离子数 = 0 （导电能力接近 0）\n判断下列说法\n\n点击任一卡片，页面会切换到对应试剂与状态，再结合曲线最低点作出判断。\n\nA\nAB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线\nC\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放滴加",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "tSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "8",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "原实验 Ba(OH)₂+H₂SO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B：NaOH",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "C：KHSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "D：MgSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "起点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "AB 段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B 点（最低）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "BC 段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "A\nAB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "C\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "D\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "4"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "导电能力为什么先降后升？\n\n拖动滑块或播放滴加，观察曲线、烧杯里的离子与沉淀怎样同步变化。\n\n?\n\n某同学向一定体积的 Ba(OH)₂ 溶液中滴加稀硫酸，测得混合溶液的导电能力随时间变化如图。下列说法正确的是（　　）\n\nA. AB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB. 实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线\nC. 实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD. 实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线\n时间\n导电\n能力\nO\nA\nB\nC\na\n题图（原实验实测曲线）\n模型曲线\n原实验\n0\n2\n4\n6\n8\n10\n12\n14\n0\n1\n2\n3\n4\n5\n6\n7\n8\n模型 · 定性示意\n最低点 0\n滴加试剂（份）\n自由离子数（模型示意）\n播放滴加\n4 份 / 共 8 份\n自由离子：0\n模型设定（数字从哪来）：把初始 Ba(OH)₂ 记为 4 个单元， 即 Ba²⁺×4、OH⁻×8，共 12 个自由离子。 每滴 1 份试剂恰好提供 1 个 SO₄²⁻ 和 2 个 H⁺，按化学计量比反应， 所以原实验滴到 4 份时 Ba²⁺ 与 OH⁻ 刚好同时用完，这就是最低点。\n“份”只是比例示意，不是真实体积。可滴范围：原实验 / C / D 为 0–8 份，B（NaOH 起步只有 4 个 OH⁻）为 0–4 份，其最低点在 2 份。\n\n注意：本图纵轴用“自由离子数”近似导电能力，只是辅助定性示意。 真实导电能力还受离子种类（H⁺、OH⁻ 的导电本领明显更强）和体积稀释影响， 所以题图的实测曲线是平滑的，起止高度、上升斜率都不会与本图一致。 本图只用来判断趋势和最低点是否为 0。\n\n烧杯中的粒子\n原实验\nBaSO₄\nBaSO₄\nBaSO₄\nBaSO₄\nBa(OH)₂ + 稀 H₂SO₄\n阳离子\n阴离子\n最低点：自由离子几乎为 0，导电能力最弱\nBaSO₄↓\n换一种试剂，曲线还一样吗？\n点击选题，再拖动滑块\n原实验 Ba(OH)₂+H₂SO₄\nB：NaOH\nC：KHSO₄\nD：MgSO₄\n分步观察：\n起点\nAB 段\nB 点（最低）\nBC 段\n恰好完全反应：Ba(OH)₂ + H₂SO₄ → BaSO₄↓ + 2H₂O\n溶液中几乎没有自由离子，导电能力降到最低（对应题图的 a 点）。\n曲线最低点：滴加 4 份时，自由离子数 = 0 （导电能力接近 0）\n判断下列说法\n\n点击任一卡片，页面会切换到对应试剂与状态，再结合曲线最低点作出判断。\n\nA\nAB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线\nC\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放滴加",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "tSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "4",
+          "min": "0",
+          "max": "8",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "原实验 Ba(OH)₂+H₂SO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B：NaOH",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "C：KHSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "D：MgSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "起点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "AB 段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B 点（最低）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "BC 段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "A\nAB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "C\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "D\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "8"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "导电能力为什么先降后升？\n\n拖动滑块或播放滴加，观察曲线、烧杯里的离子与沉淀怎样同步变化。\n\n?\n\n某同学向一定体积的 Ba(OH)₂ 溶液中滴加稀硫酸，测得混合溶液的导电能力随时间变化如图。下列说法正确的是（　　）\n\nA. AB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB. 实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线\nC. 实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD. 实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线\n时间\n导电\n能力\nO\nA\nB\nC\na\n题图（原实验实测曲线）\n模型曲线\n原实验\n0\n2\n4\n6\n8\n10\n12\n14\n0\n1\n2\n3\n4\n5\n6\n7\n8\n模型 · 定性示意\n最低点 0\n12\n滴加试剂（份）\n自由离子数（模型示意）\n播放滴加\n8 份 / 共 8 份\n自由离子：12\n模型设定（数字从哪来）：把初始 Ba(OH)₂ 记为 4 个单元， 即 Ba²⁺×4、OH⁻×8，共 12 个自由离子。 每滴 1 份试剂恰好提供 1 个 SO₄²⁻ 和 2 个 H⁺，按化学计量比反应， 所以原实验滴到 4 份时 Ba²⁺ 与 OH⁻ 刚好同时用完，这就是最低点。\n“份”只是比例示意，不是真实体积。可滴范围：原实验 / C / D 为 0–8 份，B（NaOH 起步只有 4 个 OH⁻）为 0–4 份，其最低点在 2 份。\n\n注意：本图纵轴用“自由离子数”近似导电能力，只是辅助定性示意。 真实导电能力还受离子种类（H⁺、OH⁻ 的导电本领明显更强）和体积稀释影响， 所以题图的实测曲线是平滑的，起止高度、上升斜率都不会与本图一致。 本图只用来判断趋势和最低点是否为 0。\n\n烧杯中的粒子\n原实验\nH⁺\nH⁺\nH⁺\nH⁺\nH⁺\nH⁺\nH⁺\nH⁺\nSO₄²⁻\nSO₄²⁻\nSO₄²⁻\nSO₄²⁻\nBaSO₄\nBaSO₄\nBaSO₄\nBaSO₄\nBa(OH)₂ + 稀 H₂SO₄\n阳离子\n阴离子\n试剂过量：自由离子重新增多，导电能力回升\nH⁺\nSO₄²⁻\nBaSO₄↓\n换一种试剂，曲线还一样吗？\n点击选题，再拖动滑块\n原实验 Ba(OH)₂+H₂SO₄\nB：NaOH\nC：KHSO₄\nD：MgSO₄\n分步观察：\n起点\nAB 段\nB 点（最低）\nBC 段\nH₂SO₄ 过量：H₂SO₄ = 2H⁺ + SO₄²⁻\n过量的硫酸带来新的自由离子，导电能力回升。\n曲线最低点：滴加 4 份时，自由离子数 = 0 （导电能力接近 0）\n判断下列说法\n\n点击任一卡片，页面会切换到对应试剂与状态，再结合曲线最低点作出判断。\n\nA\nAB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线\nC\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放滴加",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "tSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "8",
+          "min": "0",
+          "max": "8",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "原实验 Ba(OH)₂+H₂SO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B：NaOH",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "C：KHSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "D：MgSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "起点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "AB 段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B 点（最低）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "BC 段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "A\nAB 段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "B\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "C\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "D\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

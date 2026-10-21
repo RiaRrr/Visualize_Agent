@@ -1,0 +1,89 @@
+{
+  "id": "4104616416649216",
+  "course_id": 30,
+  "type_id": "301101",
+  "kpoint_ids": [
+    6708,
+    6733,
+    7117,
+    7101,
+    7104
+  ],
+  "catalog_ids": [
+    213402,
+    208188,
+    207895,
+    230525
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.58,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861841-114651791852237200-wRCPENZYe7_2Homr0ISr213mQaaskpJnYM-9XZSE4M5mliNfaJ9ri3tNJy5zggPY\"><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">我国“热凝胶高分子”成果入选</span><span style=\"font-family: 'Times New Roman';\">2025</span><span style=\"font-family: 宋体;\">年</span><span style=\"font-family: 'Times New Roman';\">IUPAC</span><span style=\"font-family: 宋体;\">化学领域十大新兴技术。下列有关某热凝胶</span><img  src=\"https://img.xkw.com/dksih/formula/d4c783bab7586f60dc14d4f10b6d5b12.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的说法正确的是</span></p><p style=\"text-align:justify;word-break:break-word;\"><img  height=\"80\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/21/61567a28-0828-4387-a59e-6c03dcfeaa21.png\" width=\"288\" /></p><div class=\" qml-og\"><table class=\"qml-og\" style=\"width:100%\"><tr><td>A.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">由单体加聚而成</span></span></td></tr><tr><td>B.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">没有手性碳原子</span></span></td></tr><tr><td>C.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">可使溴的四氯化碳溶液褪色</span></span></td></tr><tr><td colspan=\"1\">D.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">可与</span><img  src=\"https://img.xkw.com/dksih/formula/ce93086f0133444d40743d654cba1c55.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">溶液发生水解反应</span></span></td></tr></table></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861841-114651791852237200-wRCPENZYe7_2Homr0ISr213mQaaskpJnYM-9XZSE4M5mliNfaJ9ri3tNJy5zggPY\"><span class=\"qml-an-sq\"><span class=\"qml-an qml-isop \">D</span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861841-114651791852237200-wRCPENZYe7_2Homr0ISr213mQaaskpJnYM-9XZSE4M5mliNfaJ9ri3tNJy5zggPY\"><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">．该物质结构中含有多个酯基，是由对应的单体通过缩聚反应脱去小分子（如水）形成的，不存在碳碳双键等可发生加聚的不饱和键，不属于加聚产物，</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">．分子中连接甲基的饱和碳原子同时连接羰基侧链、氧原子、氢原子，</span><span style=\"font-family: 'Times New Roman';\">4</span><span style=\"font-family: 宋体;\">个连接基团均不相同，属于手性碳原子，如图</span><span style=\"font-family: 'Times New Roman';\">(</span><span style=\"font-family: 宋体;\">带</span><span style=\"font-family: 'Times New Roman';\">*</span><span style=\"font-family: 宋体;\">号</span><span style=\"font-family: 'Times New Roman';\">)</span><span style=\"font-family: 宋体;\">：</span><img  height=\"72\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/21/76c209b6-6b45-4d2b-bace-7a6122bb7c79.png\" width=\"295\" /><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">．该有机物中不含碳碳双键或碳碳三键，无法和溴的四氯化碳溶液发生加成反应使其褪色，</span><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">．该有机物中含有酯基，酯基可在</span><img  src=\"https://img.xkw.com/dksih/formula/ce93086f0133444d40743d654cba1c55.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">溶液中发生碱性水解反应，</span><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">正确；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故选</span><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">。</span></p></div></div>",
+  "create_date": "2026-09-20 14:46:23",
+  "paper_type_ids": [
+    12,
+    6
+  ],
+  "course": {
+    "id": 30,
+    "name": "高中化学"
+  },
+  "catalogs": [
+    {
+      "id": 213402,
+      "name": "第三单元  有机合成设计"
+    },
+    {
+      "id": 208188,
+      "name": "第一节  合成高分子的基本方法"
+    },
+    {
+      "id": 207895,
+      "name": "第3节  合成高分子化合物"
+    },
+    {
+      "id": 230525,
+      "name": "5.1有机合成初步"
+    }
+  ],
+  "type": {
+    "id": "301101",
+    "name": "单题"
+  },
+  "kpoints": [
+    {
+      "id": 6708,
+      "name": "常见官能团名称、组成及结构"
+    },
+    {
+      "id": 6733,
+      "name": "分子的手性"
+    },
+    {
+      "id": 7117,
+      "name": "多官能团有机物的结构与性质"
+    },
+    {
+      "id": 7101,
+      "name": "加聚物的单体、链节及聚合度的确定"
+    },
+    {
+      "id": 7104,
+      "name": "缩聚物的单体、链节及聚合度的确定"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4104604293947392"
+  ]
+}

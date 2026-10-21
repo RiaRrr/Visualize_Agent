@@ -1,0 +1,95 @@
+{
+  "id": "3772640427663360",
+  "course_id": 27,
+  "type_id": "270201",
+  "kpoint_ids": [
+    11434,
+    11420
+  ],
+  "catalog_ids": [
+    207966,
+    208035,
+    219798,
+    220569,
+    226718,
+    225164
+  ],
+  "years": [
+    2025,
+    2026,
+    2027
+  ],
+  "difficulty": 0.8500000000000001,
+  "difficulty_level": 18,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791858265-114651791852237200-WxSVb6orIBPhOFk2FZ0zAytULbxsGoOqfpmVlWOscFHQ7O3dk2a0MtNPxGalhkgc\"><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">若一个等比数列的各项均为正数，且前</span><span style=\"font-family: 'Times New Roman';\">4</span><span style=\"font-family: 宋体;\">项的和等于</span><span style=\"font-family: 'Times New Roman';\">4</span><span style=\"font-family: 宋体;\">，前</span><span style=\"font-family: 'Times New Roman';\">8</span><span style=\"font-family: 宋体;\">项的和等于</span><span style=\"font-family: 'Times New Roman';\">68</span><span style=\"font-family: 宋体;\">，则这个数列的公比等于</span><span class=\"qml-bk\" index=\"1\" size=\"9\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791858265-114651791852237200-WxSVb6orIBPhOFk2FZ0zAytULbxsGoOqfpmVlWOscFHQ7O3dk2a0MtNPxGalhkgc\"><span class=\"qml-an-sq\"><span class=\"qml-an  qml-exact\"><img  src=\"https://img.xkw.com/dksih/formula/61128ab996360a038e6e64d82fcba004.svg\" class=\"xkw-math-img\" /></span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791858265-114651791852237200-WxSVb6orIBPhOFk2FZ0zAytULbxsGoOqfpmVlWOscFHQ7O3dk2a0MtNPxGalhkgc\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">法一：利用等比数列的求和公式作商即可得解；法二：利用等比数列的通项公式与前</span><img  src=\"https://img.xkw.com/dksih/formula/b6a24198bd04c29321ae5dc5a28fe421.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">项和的定义，得到关于</span><img  src=\"https://img.xkw.com/dksih/formula/9aa8a716a31b0f51b70fdf9bdb257909.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的方程，解之即可得解；法三：利用等比数列的前</span><img  src=\"https://img.xkw.com/dksih/formula/b6a24198bd04c29321ae5dc5a28fe421.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">项和性质得到关于</span><img  src=\"https://img.xkw.com/dksih/formula/9aa8a716a31b0f51b70fdf9bdb257909.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的方程，解之即可得解</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">法一：设该等比数列为</span><img  src=\"https://img.xkw.com/dksih/formula/76aef4cdcb5af742ce28003b7b6c8c20.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/08eb71ecf8d733b6932f4680874dbbf3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">是其前</span><img  src=\"https://img.xkw.com/dksih/formula/b6a24198bd04c29321ae5dc5a28fe421.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">项和，则</span><img  src=\"https://img.xkw.com/dksih/formula/fb44c0bc1208d5c681c758743bceb966.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">设</span><img  src=\"https://img.xkw.com/dksih/formula/76aef4cdcb5af742ce28003b7b6c8c20.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的公比为</span><img  src=\"https://img.xkw.com/dksih/formula/4dce941c94877cc21b1b818075b87d33.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">当</span><img  src=\"https://img.xkw.com/dksih/formula/dfa9bf65189dfb57a61644a1cb27f361.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时，</span><img  src=\"https://img.xkw.com/dksih/formula/2828dd1f5114a4698f87e61bc5d834ee.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，即</span><img  src=\"https://img.xkw.com/dksih/formula/b065334d8f60c49f4bd3d9f1373fe4cd.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则</span><img  src=\"https://img.xkw.com/dksih/formula/f3a4c048b88f0b5f4eb91e106f4af8ce.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，显然不成立，舍去；</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">当</span><img  src=\"https://img.xkw.com/dksih/formula/45482d31d1d7448c9f3922b4d2a55331.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时，则</span><img  src=\"https://img.xkw.com/dksih/formula/4bd3a81d755d1557bd8fd2e93230b4dd.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">两式相除得</span><img  src=\"https://img.xkw.com/dksih/formula/f5f7275ea4cfa0f20d5653a7d63bfecb.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，即</span><img  src=\"https://img.xkw.com/dksih/formula/f9b09681a312a5c95f7df6778871b027.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">则</span><img  src=\"https://img.xkw.com/dksih/formula/760c53b5f7905da9540de7e5cef92b34.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以</span><img  src=\"https://img.xkw.com/dksih/formula/f5f0b817512e1d4979c12c54db9fbc35.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">所以该等比数列公比为</span><span style=\"font-family: 'Times New Roman';\">2.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故答案为：</span><img  src=\"https://img.xkw.com/dksih/formula/61128ab996360a038e6e64d82fcba004.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">法二：设该等比数列为</span><img  src=\"https://img.xkw.com/dksih/formula/76aef4cdcb5af742ce28003b7b6c8c20.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/08eb71ecf8d733b6932f4680874dbbf3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">是其前</span><img  src=\"https://img.xkw.com/dksih/formula/b6a24198bd04c29321ae5dc5a28fe421.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">项和，则</span><img  src=\"https://img.xkw.com/dksih/formula/fb44c0bc1208d5c681c758743bceb966.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">设</span><img  src=\"https://img.xkw.com/dksih/formula/76aef4cdcb5af742ce28003b7b6c8c20.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的公比为</span><img  src=\"https://img.xkw.com/dksih/formula/4dce941c94877cc21b1b818075b87d33.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">所以</span><img  src=\"https://img.xkw.com/dksih/formula/e1aa820d664021fc5e5f76bbb402fab8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><img  src=\"https://img.xkw.com/dksih/formula/9495b9d82e465ef0a67ec7d9ed331fdd.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><img  src=\"https://img.xkw.com/dksih/formula/75da11d9a465e44842316aeb897519ab.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><img  src=\"https://img.xkw.com/dksih/formula/e7db07cbee00976047621aa9b43802ce.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">所以</span><img  src=\"https://img.xkw.com/dksih/formula/a601b6e6c5ee27ec32a9986e9de167b3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则</span><img  src=\"https://img.xkw.com/dksih/formula/760c53b5f7905da9540de7e5cef92b34.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以</span><img  src=\"https://img.xkw.com/dksih/formula/f5f0b817512e1d4979c12c54db9fbc35.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">所以该等比数列公比为</span><span style=\"font-family: 'Times New Roman';\">2.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故答案为：</span><span style=\"font-family: 'Times New Roman';\">2.</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">法三：设该等比数列为</span><img  src=\"https://img.xkw.com/dksih/formula/76aef4cdcb5af742ce28003b7b6c8c20.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/08eb71ecf8d733b6932f4680874dbbf3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">是其前</span><img  src=\"https://img.xkw.com/dksih/formula/b6a24198bd04c29321ae5dc5a28fe421.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">项和，则</span><img  src=\"https://img.xkw.com/dksih/formula/fb44c0bc1208d5c681c758743bceb966.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">设</span><img  src=\"https://img.xkw.com/dksih/formula/76aef4cdcb5af742ce28003b7b6c8c20.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的公比为</span><img  src=\"https://img.xkw.com/dksih/formula/4dce941c94877cc21b1b818075b87d33.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">因为</span><img  src=\"https://img.xkw.com/dksih/formula/fe451d813a98592d5ce9edf3c0ba0c0c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">又</span><img  src=\"https://img.xkw.com/dksih/formula/e1aa820d664021fc5e5f76bbb402fab8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">所以</span><img  src=\"https://img.xkw.com/dksih/formula/be46f3218cca8277950d9a64a009306d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><span>所以</span><img  src=\"https://img.xkw.com/dksih/formula/f5f0b817512e1d4979c12c54db9fbc35.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">所以该等比数列公比为</span><img  src=\"https://img.xkw.com/dksih/formula/61128ab996360a038e6e64d82fcba004.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故答案为：</span><img  src=\"https://img.xkw.com/dksih/formula/61128ab996360a038e6e64d82fcba004.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p></div></div>",
+  "create_date": "2025-06-08 13:59:30",
+  "paper_type_ids": [
+    12,
+    6,
+    8,
+    50,
+    3,
+    4,
+    45,
+    44,
+    5,
+    51,
+    24
+  ],
+  "course": {
+    "id": 27,
+    "name": "高中数学"
+  },
+  "catalogs": [
+    {
+      "id": 207966,
+      "name": "4.3.2等比数列的前n项和公式"
+    },
+    {
+      "id": 208035,
+      "name": "5.3.2 等比数列的前n项和"
+    },
+    {
+      "id": 219798,
+      "name": "3.2 等比数列的前n项和"
+    },
+    {
+      "id": 220569,
+      "name": "4.3.3 等比数列的前n项和"
+    },
+    {
+      "id": 226718,
+      "name": "2 等比数列的前n项和"
+    },
+    {
+      "id": 225164,
+      "name": "1.3.3 等比数列的前n项和"
+    }
+  ],
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "kpoints": [
+    {
+      "id": 11434,
+      "name": "等比数列前n项和的基本量计算"
+    },
+    {
+      "id": 11420,
+      "name": "等比数列通项公式的基本量计算"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "3772089624264704"
+  ]
+}

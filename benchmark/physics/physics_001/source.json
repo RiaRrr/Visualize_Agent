@@ -1,0 +1,79 @@
+{
+  "id": "3861377907318784",
+  "course_id": 29,
+  "type_id": "2904",
+  "kpoint_ids": [
+    15848,
+    15855
+  ],
+  "catalog_ids": [
+    194615,
+    195945,
+    225726,
+    187734,
+    194395
+  ],
+  "years": [
+    2025,
+    2026
+  ],
+  "difficulty": 0.8500000000000001,
+  "difficulty_level": 18,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861840-114651791852237200--we5qU88UmYELGouHUU3NbT-ASEoUiMcxVoWY8872hh641kxo4qUsx_2ykHai21G\"><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">飞机着陆后以</span><span style=\"font-family: 'Times New Roman';\">6m/s</span><span style=\"font-family: 'Times New Roman';\"><sup>2</sup></span><span style=\"font-family: 宋体;\">的加速度做匀减速直线运动直至静止。其着陆速度为</span><span style=\"font-family: 'Times New Roman';\">36m/s</span><span style=\"font-family: 宋体;\">，求：</span></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861840-114651791852237200--we5qU88UmYELGouHUU3NbT-ASEoUiMcxVoWY8872hh641kxo4qUsx_2ykHai21G\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 宋体;\">飞机着陆过程中滑行的距离；</span></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861840-114651791852237200--we5qU88UmYELGouHUU3NbT-ASEoUiMcxVoWY8872hh641kxo4qUsx_2ykHai21G\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 宋体;\">飞机着陆过程中最后</span><span style=\"font-family: 'Times New Roman';\">4s</span><span style=\"font-family: 宋体;\">内滑行的位移大小。</span></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861840-114651791852237200--we5qU88UmYELGouHUU3NbT-ASEoUiMcxVoWY8872hh641kxo4qUsx_2ykHai21G\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><span style=\"font-family: 'Times New Roman';\">108m</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><span style=\"font-family: 'Times New Roman';\">48m</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861840-114651791852237200--we5qU88UmYELGouHUU3NbT-ASEoUiMcxVoWY8872hh641kxo4qUsx_2ykHai21G\"><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">根据匀变速直线运动公式，飞机减速到</span><span style=\"font-family: 'Times New Roman';\">0</span><span style=\"font-family: 宋体;\">时的位移为</span><img  src=\"https://img.xkw.com/dksih/formula/41ceddda362f551d82d79a5abf77c64e.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">代入数据得</span><img  src=\"https://img.xkw.com/dksih/formula/22c040f3551658c5f7cbe3a182c3eaf4.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">飞机最后</span><span style=\"font-family: 'Times New Roman';\">4s</span><span style=\"font-family: 宋体;\">的运动，可以反向看成匀加速直线运动，所以运动的位移为</span><img  src=\"https://img.xkw.com/dksih/formula/48bac71c205492e0af7048384f0a4bfa.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">代入数据后，得</span><img  src=\"https://img.xkw.com/dksih/formula/0754c64ed8e193dcbc72e758374cf0d6.svg\" class=\"xkw-math-img\" /></p></div></div>",
+  "create_date": "2025-10-11 22:56:22",
+  "paper_type_ids": [
+    3
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 194615,
+      "name": "第二节 匀变速直线运动的规律"
+    },
+    {
+      "id": 195945,
+      "name": "3. 匀变速直线运动位移与时间的关系"
+    },
+    {
+      "id": 225726,
+      "name": "第三节 匀变速直线运动的规律"
+    },
+    {
+      "id": 187734,
+      "name": "3. 匀变速直线运动的位移与时间的关系"
+    },
+    {
+      "id": 194395,
+      "name": "第2节 位移变化规律"
+    }
+  ],
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "kpoints": [
+    {
+      "id": 15848,
+      "name": "匀变速直线运动位移与时间的关系"
+    },
+    {
+      "id": 15855,
+      "name": "匀变速直线运动速度与位移的关系"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4103763715465216"
+  ]
+}

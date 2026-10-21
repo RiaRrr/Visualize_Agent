@@ -1,0 +1,210 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261020_230856_432_4cbae96c:1",
+  "task_id": "20261020_230856_432_4cbae96c",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 1,
+  "created_at": "2026-10-20T23:55:09.925760+08:00",
+  "files": {
+    "image": "20261020_230856_432_input.png",
+    "html": "20261020_235509_782_round_01.html",
+    "screenshot": "20261020_235509_782_round_01.png",
+    "model_review": "20261020_235509_782_round_01.review.json",
+    "config": "20261020_230856_432_config.json",
+    "model_review_raw": "round_01.model_review_raw.txt"
+  },
+  "html_sha256": "b08230f7f481d0e599d61ed2cc6f5991495375a93d536daae2c895771f0f98eb",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "physics",
+    "name": "物理 · 过程与受力",
+    "version": "219290302036",
+    "subject": "physics"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "数值解答正确，分步、主图和 v–t 图整体清楚；但当状态到达 t=6 s 时仍显示加速度矢量并发生标签越界，且 v–t 图整块面积填充与“面积（位移）”当前读数口径不一致，会干扰学生对面积表示位移的理解，需修正后再判通过。",
+    "issues": [
+      "当时间到达 t=6 s（步骤②、③）时，主图仍绘制红色 a=6 m/s² 左箭头；此时 v=0，若继续保留该加速度会与“匀减速直至静止”的结束条件矛盾。并且源码中 aTail=X(108)+34 会使箭头尾部和“a=…”标签超出画布右侧而被裁切。应在 v=0 时隐藏/置零 a，或只绘制到 t<6 s，并保证矢量与标签均不越界。",
+      "v–t 图从首屏开始一直填充完整三角形，但“面积（位移）”读数显示的是 0→当前 t 的累计位移。t=0 时整块三角形可见而读数为 0.0 m，拖动时间滑块时填充面积也不随当前 t 变化，造成面积反馈与数值不对应。应只填充 0→当前 t 的面积，或明确区分完整总面积与当前累计面积。",
+      "步骤④在 t=2 s 时同时出现橙色 48 m 区间面积和“面积（位移）60.0 m”，但没有说明 60.0 m 是从 0 到当前时刻的累计位移，学生容易把 60 m 误认为最后 4 s 的答案。应改为“当前累计位移 60 m”，并在橙色高亮旁标明“2–6 s 位移 48 m”。",
+      "红色加速度矢量的标注与步骤公式符号不统一：图中写“a=6 m/s²”且指向左，步骤①公式写“a=−6 m/s²”。应明确“取向右为正”，或图中统一为“a 大小=6 m/s²，方向向左”。另外主图在 t=0 附近把 a 箭头 clamp 到飞机右侧较远处，应尽量把速度、加速度矢量锚定在研究对象附近。",
+      "步骤⑤“倒过来看”目前只增加了一句文字和公式，图中仍显示原方向运动和原时间轴，没有真正展示倒放后的 v–t 图或反向运动对照。应增加倒放时间轴/镜像面积图，展示从静止加速 4 s 产生同样 48 m 的视觉证据。"
+    ],
+    "scores": {
+      "problem_fidelity": 4,
+      "solution_correctness": 4,
+      "page_quality": 4,
+      "interaction_quality": 3,
+      "teaching_effectiveness": 3
+    },
+    "overall_score": 3
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 16,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:08:57.571381+08:00",
+        "ended_at": "2026-10-20T23:09:04.589709+08:00",
+        "duration_seconds": 7.018328,
+        "status": "error"
+      },
+      {
+        "id": 18,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:09:12.328417+08:00",
+        "ended_at": "2026-10-20T23:09:19.053099+08:00",
+        "duration_seconds": 6.724682,
+        "status": "error"
+      },
+      {
+        "id": 57,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:50:14.986985+08:00",
+        "ended_at": "2026-10-20T23:52:44.301162+08:00",
+        "duration_seconds": 149.314177,
+        "status": "completed"
+      },
+      {
+        "id": 59,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-20T23:52:44.301162+08:00",
+        "ended_at": "2026-10-20T23:52:44.363060+08:00",
+        "duration_seconds": 0.061898,
+        "status": "completed"
+      },
+      {
+        "id": 60,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-20T23:52:44.363060+08:00",
+        "ended_at": "2026-10-20T23:52:46.728335+08:00",
+        "duration_seconds": 2.365275,
+        "status": "completed"
+      },
+      {
+        "id": 61,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 1,
+        "stage": "reviewing",
+        "started_at": "2026-10-20T23:52:46.728335+08:00",
+        "ended_at": "2026-10-20T23:55:10.419747+08:00",
+        "duration_seconds": 143.691412,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 10,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:09:04.266480+08:00",
+        "duration_seconds": 6.2352876879958785,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 12,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:09:19.014125+08:00",
+        "duration_seconds": 6.510013081002398,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 35,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:52:44.257513+08:00",
+        "duration_seconds": 149.1152265970013,
+        "status": "completed",
+        "input_tokens": 2159,
+        "output_tokens": 31821,
+        "cached_input_tokens": 2048,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 22577,
+        "total_tokens": 33980
+      },
+      {
+        "id": 37,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:55:09.674098+08:00",
+        "duration_seconds": 142.72561890099314,
+        "status": "completed",
+        "input_tokens": 11277,
+        "output_tokens": 20272,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 19677,
+        "total_tokens": 31549
+      }
+    ]
+  }
+}

@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>二次函数值域探究</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: linear-gradient(180deg, #f4f8fe 0%, #edf3fb 100%);
+    color: #1e293b;
+    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  }
+  .app {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 22px 24px 34px;
+  }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(22px, 2.3vw, 32px);
+    letter-spacing: .2px;
+    color: #0f172a;
+  }
+  .sub {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 15px;
+  }
+  .answer-chip {
+    flex: none;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-weight: 750;
+    color: #475569;
+    background: #e2e8f0;
+    border: 1px solid #cbd5e1;
+    transition: background .25s, color .25s, border .25s;
+    white-space: nowrap;
+  }
+  .answer-chip.revealed {
+    background: #dcfce7;
+    color: #166534;
+    border-color: #86efac;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.58fr) minmax(320px, .82fr);
+    gap: 20px;
+    align-items: start;
+  }
+  .visual-panel {
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px 16px 14px;
+    box-shadow: 0 14px 40px rgba(15,23,42,.07);
+    border: 1px solid #e2e8f0;
+  }
+  .graph-wrap { width: 100%; }
+  #mainSvg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    background: #fff;
+  }
+  .control-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    padding: 14px 8px 4px;
+  }
+  .control-row label { font-weight: 750; color: #334155; }
+  #xSlider {
+    flex: 1 1 230px;
+    min-width: 170px;
+    accent-color: #ea580c;
+    cursor: pointer;
+  }
+  .readout {
+    display: flex;
+    gap: 12px;
+    min-width: 158px;
+    font-weight: 750;
+    color: #334155;
+    font-variant-numeric: tabular-nums;
+  }
+  button {
+    font: inherit;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #334155;
+    padding: 8px 12px;
+    font-weight: 650;
+    transition: background .2s, border .2s, transform .1s;
+  }
+  button:hover { background: #eff6ff; border-color: #93c5fd; }
+  button:active { transform: translateY(1px); }
+  #vertexBtn { border-color: #fbbf24; background: #fffbeb; color: #92400e; }
+  #playBtn { border-color: #93c5fd; background: #eff6ff; color: #1d4ed8; }
+  .side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .step-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .step-btn {
+    padding: 10px 8px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #dbe4ef;
+    color: #475569;
+    box-shadow: 0 4px 12px rgba(15,23,42,.03);
+  }
+  .step-btn.active {
+    background: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+    box-shadow: 0 10px 22px rgba(37,99,235,.23);
+  }
+  .card {
+    background: #fff;
+    border-radius: 18px;
+    border: 1px solid #e2e8f0;
+    padding: 18px;
+    box-shadow: 0 12px 30px rgba(15,23,42,.05);
+    min-height: 300px;
+  }
+  .card h2 {
+    margin: 0 0 12px;
+    font-size: 20px;
+    color: #0f172a;
+  }
+  .card p {
+    margin: 10px 0;
+    line-height: 1.65;
+    color: #334155;
+    font-size: 15px;
+  }
+  .card b { color: #0f172a; }
+  .hint {
+    font-size: 14px !important;
+    color: #64748b !important;
+    border-left: 3px solid #bfdbfe;
+    padding-left: 10px;
+  }
+  .live-box {
+    margin: 12px 0;
+    padding: 10px 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.7;
+    color: #334155;
+  }
+  .derivation {
+    background: #f8fafc;
+    border: 1px solid #e7eef7;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 16px;
+    line-height: 1.75;
+    font-variant-numeric: tabular-nums;
+    color: #1e293b;
+    margin: 10px 0;
+  }
+  .final-box {
+    margin: 14px 0;
+    padding: 14px 12px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: #166534;
+    background: #dcfce7;
+    border: 1px solid #86efac;
+    letter-spacing: .3px;
+  }
+  .range-panel {
+    background: #fff;
+    border-radius: 18px;
+    border: 1px solid #e2e8f0;
+    padding: 14px 16px 10px;
+    box-shadow: 0 12px 30px rgba(15,23,42,.05);
+  }
+  .range-title {
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 2px;
+  }
+  .range-label {
+    font-size: 14px;
+    fill: #475569;
+    font-family: inherit;
+  }
+  .range-label.strong {
+    font-weight: 800;
+    fill: #1d4ed8;
+  }
+  .range-caption {
+    font-size: 12px;
+    fill: #64748b;
+    font-family: inherit;
+  }
+  .range-formula {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1d4ed8;
+    margin-top: -2px;
+    letter-spacing: .5px;
+  }
+  .svg-label {
+    font-family: inherit;
+    font-size: 15px;
+    paint-order: stroke;
+    stroke: #fff;
+    stroke-width: 4px;
+    stroke-linejoin: round;
+  }
+  .svg-label.strong { font-weight: 700; }
+  .svg-label.teal { fill: #0f766e; }
+  .svg-label.orange { fill: #c2410c; }
+  .svg-label.purple { fill: #6d28d9; }
+  .svg-note {
+    font-family: inherit;
+    font-size: 12px;
+    fill: #94a3b8;
+    paint-order: stroke;
+    stroke: #fff;
+    stroke-width: 3px;
+  }
+  .axis-name {
+    font-size: 16px;
+    font-weight: 700;
+    fill: #64748b;
+    font-family: inherit;
+  }
+  .tick-label {
+    font-size: 12px;
+    fill: #7b8794;
+    font-family: inherit;
+  }
+  @media (max-width: 980px) {
+    .layout { grid-template-columns: 1fr; }
+    .step-buttons { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+  @media (max-width: 700px) {
+    .app { padding: 14px; }
+    .topbar { flex-direction: column; align-items: flex-start; }
+    .step-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .control-row { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div>
+      <h1>函数 y = −x<sup>2</sup> + 2x − 14 的值域</h1>
+      <p class="sub">拖动图象上的点 P，观察 y 能取到哪些值</p>
+    </div>
+    <div class="answer-chip" id="answerChip">值域：待探索</div>
+  </header>
+
+  <main class="layout">
+    <section class="visual-panel">
+      <div class="graph-wrap">
+        <svg id="mainSvg" viewBox="0 0 860 560" role="img" aria-label="二次函数图象与当前点">
+          <defs>
+            <marker id="axisArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#7b8794"></path>
+            </marker>
+            <marker id="extendArrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L9,4.5 L0,9 Z" fill="#2563eb"></path>
+            </marker>
+          </defs>
+
+          <rect x="0" y="0" width="860" height="560" fill="#ffffff" rx="16"></rect>
+          <g id="gridLayer"></g>
+          <g id="axesLayer"></g>
+
+          <rect id="rangeBand" x="80" y="266" width="720" height="214" fill="#0f766e" fill-opacity="0.08" opacity="0"></rect>
+
+          <path id="parabolaPath" d="" fill="none" stroke="#2563eb" stroke-width="3.8" stroke-linecap="round"></path>
+          <g id="extendLayer" opacity="0.96"></g>
+
+          <g id="guideLayer">
+            <line id="axisSym" stroke="#0f766e" stroke-width="2" stroke-dasharray="7 6" opacity="0"></line>
+            <text id="axisSymLabel" class="svg-label teal" text-anchor="start" opacity="0">对称轴 x = 1</text>
+
+            <line id="vertexLevel" stroke="#0f766e" stroke-width="1.8" stroke-dasharray="6 6" opacity="0"></line>
+            <text id="vertexLevelLabel" class="svg-label teal" text-anchor="start" opacity="0">y = −13</text>
+
+            <circle id="vertexDot" r="7" fill="#0f766e" stroke="#ffffff" stroke-width="2.5" opacity="0"></circle>
+            <text id="vertexLabel" class="svg-label teal strong" text-anchor="end" opacity="0">顶点 (1, −13)</text>
+
+            <line id="baseLine" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" opacity="0"></line>
+            <line id="dropLine" stroke="#7c3aed" stroke-width="5" stroke-linecap="round" opacity="0"></line>
+            <text id="dropLabel" class="svg-label purple strong" text-anchor="end" opacity="0"></text>
+
+            <line id="dSegment" stroke="#f59e0b" stroke-width="6" stroke-linecap="round" opacity="0"></line>
+            <text id="dLabel" class="svg-label orange strong" text-anchor="middle" opacity="0"></text>
+          </g>
+
+          <g id="pointLayer">
+            <line id="verticalGuide" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 5"></line>
+            <circle id="xTickDot" r="4" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5"></circle>
+            <circle id="pointDot" r="7" fill="#ea580c" stroke="#ffffff" stroke-width="2.5"></circle>
+            <text id="pointLabel" class="svg-label orange strong" text-anchor="start"></text>
+          </g>
+
+          <text x="805" y="512" class="svg-note" text-anchor="end">局部显示窗口：x 取全体实数，图象向左右及下方继续延伸</text>
+          <text x="805" y="530" class="svg-note" text-anchor="end">（x 轴与 y 轴显示比例不同）</text>
+        </svg>
+      </div>
+
+      <div class="control-row">
+        <label for="xSlider">拖动 x</label>
+        <input id="xSlider" type="range" min="-2.5" max="4.5" step="0.01" value="2">
+        <div class="readout">
+          <span id="xReadout"></span>
+          <span id="yReadout"></span>
+        </div>
+        <button id="vertexBtn" type="button">回到顶点 x = 1</button>
+        <button id="playBtn" type="button">自动扫描</button>
+        <button id="resetBtn" type="button">复位</button>
+      </div>
+    </section>
+
+    <aside class="side-panel">
+      <div class="step-buttons" id="stepButtons">
+        <button class="step-btn active" data-step="0" type="button">① 题设</button>
+        <button class="step-btn" data-step="1" type="button">② 配方</button>
+        <button class="step-btn" data-step="2" type="button">③ 非负平方</button>
+        <button class="step-btn" data-step="3" type="button">④ 值域</button>
+      </div>
+
+      <div class="card">
+        <h2 id="stepTitle"></h2>
+        <div id="stepBody"></div>
+      </div>
+
+      <div class="range-panel" id="rangePanel" style="display:none">
+        <div class="range-title">数轴上的值域</div>
+        <svg viewBox="0 0 360 96" width="100%" aria-label="值域数轴">
+          <line x1="34" y1="44" x2="332" y2="44" stroke="#94a3b8" stroke-width="2.5"></line>
+          <polygon points="22,44 38,37 38,51" fill="#2b6de5"></polygon>
+          <line x1="38" y1="44" x2="205" y2="44" stroke="#2b6de5" stroke-width="10" opacity="0.18" stroke-linecap="round"></line>
+          <circle cx="205" cy="44" r="8" fill="#2b6de5" stroke="#ffffff" stroke-width="2.5"></circle>
+          <text x="205" y="76" text-anchor="middle" class="range-label strong">−13</text>
+          <text x="332" y="76" text-anchor="end" class="range-label">0</text>
+          <text x="148" y="22" text-anchor="middle" class="range-caption">向左无限延伸，−13 可取到</text>
+          <circle id="rangeCurrentDot" cx="0" cy="44" r="5" fill="#ea580c" stroke="#ffffff" stroke-width="2" opacity="0"></circle>
+        </svg>
+        <div class="range-formula">(−∞, −13]</div>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<script>
+(function () {
+  const plot = {
+    left: 80,
+    right: 800,
+    top: 50,
+    bottom: 480,
+    xMin: -3,
+    xMax: 5,
+    yMin: -30,
+    yMax: 4
+  };
+
+  function f(x) {
+    return -x * x + 2 * x - 14;
+  }
+
+  function sx(x) {
+    return plot.left + (x - plot.xMin) / (plot.xMax - plot.xMin) * (plot.right - plot.left);
+  }
+
+  function sy(y) {
+    return plot.top + (plot.yMax - y) / (plot.yMax - plot.yMin) * (plot.bottom - plot.top);
+  }
+
+  function fmt(n, digits) {
+    if (digits === undefined) digits = 2;
+    return Number(n).toFixed(digits).replace("-", "−");
+  }
+
+  function rangeX(y) {
+    return 38 + (y + 30) / 30 * (332 - 38);
+  }
+
+  const state = {
+    step: 0,
+    x: 2,
+    playing: false
+  };
+
+  const xSlider = document.getElementById("xSlider");
+  const xReadout = document.getElementById("xReadout");
+  const yReadout = document.getElementById("yReadout");
+  const vertexBtn = document.getElementById("vertexBtn");
+  const playBtn = document.getElementById("playBtn");
+  const resetBtn = document.getElementById("resetBtn");
+  const stepTitle = document.getElementById("stepTitle");
+  const stepBody = document.getElementById("stepBody");
+  const answerChip = document.getElementById("answerChip");
+  const rangePanel = document.getElementById("rangePanel");
+  const rangeCurrentDot = document.getElementById("rangeCurrentDot");
+
+  const axisSym = document.getElementById("axisSym");
+  const axisSymLabel = document.getElementById("axisSymLabel");
+  const vertexLevel = document.getElementById("vertexLevel");
+  const vertexLevelLabel = document.getElementById("vertexLevelLabel");
+  const vertexDot = document.getElementById("vertexDot");
+  const vertexLabel = document.getElementById("vertexLabel");
+  const baseLine = document.getElementById("baseLine");
+  const dropLine = document.getElementById("dropLine");
+  const dropLabel = document.getElementById("dropLabel");
+  const dSegment = document.getElementById("dSegment");
+  const dLabel = document.getElementById("dLabel");
+  const rangeBand = document.getElementById("rangeBand");
+
+  const verticalGuide = document.getElementById("verticalGuide");
+  const xTickDot = document.getElementById("xTickDot");
+  const pointDot = document.getElementById("pointDot");
+  const pointLabel = document.getElementById("pointLabel");
+
+  function show(el, visible) {
+    if (!el) return;
+    el.style.transition = "opacity .25s ease";
+    el.style.opacity = visible ? "1" : "0";
+  }
+
+  function drawStatic() {
+    const gridLayer = document.getElementById("gridLayer");
+    let grid = "";
+
+    for (let x = -3; x <= 5; x++) {
+      const xx = sx(x);
+      grid += '<line x1="' + xx + '" y1="' + plot.top + '" x2="' + xx + '" y2="' + plot.bottom + '" stroke="#e8eef7" stroke-width="1"/>';
+    }
+    for (let y = -30; y <= 0; y += 5) {
+      const yy = sy(y);
+      grid += '<line x1="' + plot.left + '" y1="' + yy + '" x2="' + plot.right + '" y2="' + yy + '" stroke="#e8eef7" stroke-width="1"/>';
+    }
+    gridLayer.innerHTML = grid;
+
+    const axesLayer = document.getElementById("axesLayer");
+    const x0 = sx(0);
+    const y0 = sy(0);
+    let axes = "";
+
+    axes += '<line x1="' + plot.left + '" y1="' + y0 + '" x2="' + plot.right + '" y2="' + y0 + '" stroke="#8a98aa" stroke-width="1.5" marker-end="url(#axisArrow)"/>';
+    axes += '<line x1="' + x0 + '" y1="' + plot.bottom + '" x2="' + x0 + '" y2="' + plot.top + '" stroke="#8a98aa" stroke-width="1.5" marker-end="url(#axisArrow)"/>';
+
+    for (let x = -3; x <= 5; x++) {
+      const xx = sx(x);
+      axes += '<line x1="' + xx + '" y1="' + (y0 - 4) + '" x2="' + xx + '" y2="' + (y0 + 4) + '" stroke="#8a98aa" stroke-width="1.3"/>';
+      axes += '<text x="' + xx + '" y="' + (y0 + 21) + '" text-anchor="middle" class="tick-label">' + (x === 0 ? "0" : x) + '</text>';
+    }
+
+    for (let y = -30; y <= -5; y += 5) {
+      const yy = sy(y);
+      axes += '<line x1="' + (x0 - 4) + '" y1="' + yy + '" x2="' + (x0 + 4) + '" y2="' + yy + '" stroke="#8a98aa" stroke-width="1.3"/>';
+      axes += '<text x="' + (x0 - 9) + '" y="' + (yy + 4) + '" text-anchor="end" class="tick-label">' + String(y).replace("-", "−") + '</text>';
+    }
+
+    axes += '<text x="' + (plot.right + 18) + '" y="' + (y0 + 5) + '" class="axis-name" text-anchor="start">x</text>';
+    axes += '<text x="' + (x0 + 10) + '" y="' + (plot.top + 13) + '" class="axis-name">y</text>';
+    axesLayer.innerHTML = axes;
+
+    let pathData = "";
+    const N = 420;
+    for (let i = 0; i <= N; i++) {
+      const x = plot.xMin + (plot.xMax - plot.xMin) * i / N;
+      const px = sx(x);
+      const py = sy(f(x));
+      pathData += (i === 0 ? "M" : "L") + px.toFixed(2) + "," + py.toFixed(2) + " ";
+    }
+    document.getElementById("parabolaPath").setAttribute("d", pathData);
+
+    const leftEndX = sx(plot.xMin);
+    const leftEndY = sy(f(plot.xMin));
+    const rightEndX = sx(plot.xMax);
+    const rightEndY = sy(f(plot.xMax));
+    const extendLayer = document.getElementById("extendLayer");
+    extendLayer.innerHTML =
+      '<path d="M ' + (leftEndX + 5) + ' ' + (leftEndY - 2) + ' L ' + (leftEndX - 14) + ' ' + (leftEndY + 11) + '" fill="none" stroke="#2563eb" stroke-width="3.4" stroke-linecap="round" marker-end="url(#extendArrow)"/>' +
+      '<path d="M ' + (rightEndX - 5) + ' ' + (rightEndY - 2) + ' L ' + (rightEndX + 14) + ' ' + (rightEndY + 11) + '" fill="none" stroke="#2563eb" stroke-width="3.4" stroke-linecap="round" marker-end="url(#extendArrow)"/>' +
+      '<text x="' + sx(1) + '" y="' + (plot.bottom - 6) + '" text-anchor="middle" class="svg-note">曲线继续向下延伸</text>';
+
+    rangeBand.setAttribute("x", plot.left);
+    rangeBand.setAttribute("y", sy(-13));
+    rangeBand.setAttribute("width", plot.right - plot.left);
+    rangeBand.setAttribute("height", sy(-30) - sy(-13));
+
+    axisSym.setAttribute("x1", sx(1));
+    axisSym.setAttribute("x2", sx(1));
+    axisSym.setAttribute("y1", plot.top + 14);
+    axisSym.setAttribute("y2", plot.bottom - 10);
+
+    axisSymLabel.setAttribute("x", sx(1) + 8);
+    axisSymLabel.setAttribute("y", plot.top + 22);
+
+    vertexLevel.setAttribute("x1", plot.left);
+    vertexLevel.setAttribute("x2", plot.right);
+    vertexLevel.setAttribute("y1", sy(-13));
+    vertexLevel.setAttribute("y2", sy(-13));
+
+    vertexLevelLabel.setAttribute("x", plot.left + 10);
+    vertexLevelLabel.setAttribute("y", sy(-13) - 8);
+
+    vertexDot.setAttribute("cx", sx(1));
+    vertexDot.setAttribute("cy", sy(-13));
+
+    vertexLabel.setAttribute("x", sx(1) - 13);
+    vertexLabel.setAttribute("y", sy(-13) - 12);
+
+    baseLine.setAttribute("y1", sy(-13));
+    baseLine.setAttribute("y2", sy(-13));
+    baseLine.setAttribute("x1", sx(1));
+
+    dSegment.setAttribute("y1", sy(0));
+    dSegment.setAttribute("y2", sy(0));
+    dSegment.setAttribute("x1", sx(1));
+
+    xTickDot.setAttribute("cy", sy(0));
+  }
+
+  function updateCard(x, y, d, d2) {
+    let title = "";
+    let body = "";
+
+    if (state.step === 0) {
+      title = "① 观察：点 P 怎样改变 y";
+      body =
+        '<p>拖动滑块，让图象上的点 <b>P</b> 移动。P 的纵坐标就是函数值 <b>y</b>。</p>' +
+        '<div class="live-box">x = <b>' + fmt(x) + '</b> &nbsp;→&nbsp; y = <b>' + fmt(y) + '</b></div>' +
+        '<p class="hint">先观察 y 有没有可能比图上的最高点更大。</p>';
+    } else if (state.step === 1) {
+      title = "② 配方：找到最高点";
+      body =
+        '<p>把函数改写成顶点式，就能直接读出顶点。</p>' +
+        '<div class="derivation">' +
+          'y = −x<sup>2</sup> + 2x − 14<br>' +
+          '= −(x<sup>2</sup> − 2x) − 14<br>' +
+          '= −[(x − 1)<sup>2</sup> − 1] − 14<br>' +
+          '= −(x − 1)<sup>2</sup> − 13' +
+        '</div>' +
+        '<p>图上顶点是 <b>(1, −13)</b>，对称轴是 <b>x = 1</b>。</p>';
+    } else if (state.step === 2) {
+      title = "③ 把平方看成“离 1 的距离”";
+      body =
+        '<p>令 d = |x − 1|。顶点水平线上的橙色线段表示 d，紫色竖直下降量表示 d<sup>2</sup>。</p>' +
+        '<div class="derivation">y = −(x − 1)<sup>2</sup> − 13 = −13 − d<sup>2</sup></div>' +
+        '<div class="live-box">d = <b>' + fmt(d) + '</b> &nbsp; d<sup>2</sup> = <b>' + fmt(d2) + '</b> &nbsp; y = <b>' + fmt(y) + '</b></div>' +
+        '<p class="hint">平方 d<sup>2</sup> 永远 ≥ 0，所以 y 只能等于 −13 再减去一个非负数。</p>';
+    } else {
+      title = "④ 得出值域";
+      body =
+        '<p>无论 x 取什么值，都有 y = −13 − d<sup>2</sup> ≤ −13。并且当 x 取遍全体实数时，d = |x − 1| 取遍 [0, ∞)，所以 y 取遍 (−∞, −13]。</p>' +
+        '<div class="derivation">对任意 t ≤ −13，令 d = √(−13 − t)，取 x = 1 ± d，则 y = −13 − d<sup>2</sup> = t。</div>' +
+        '<div class="live-box">当前 y = <b>' + fmt(y) + '</b>；当 x = 1 时，y = <b>−13</b>。</div>' +
+        '<div class="final-box">值域：y ∈ (−∞, −13]</div>' +
+        '<p class="hint">−13 可取到；−∞ 只是向下无限延伸，不是能取到的数。</p>';
+    }
+
+    stepTitle.textContent = title;
+    stepBody.innerHTML = body;
+  }
+
+  function render() {
+    const x = state.x;
+    const y = f(x);
+    const d = Math.abs(x - 1);
+    const d2 = d * d;
+    const xPix = sx(x);
+    const yPix = sy(y);
+
+    xSlider.value = x;
+    xReadout.textContent = "x = " + fmt(x);
+    yReadout.textContent = "y = " + fmt(y);
+
+    pointDot.setAttribute("cx", xPix);
+    pointDot.setAttribute("cy", yPix);
+
+    verticalGuide.setAttribute("x1", xPix);
+    verticalGuide.setAttribute("x2", xPix);
+    verticalGuide.setAttribute("y1", yPix);
+    verticalGuide.setAttribute("y2", sy(0));
+
+    xTickDot.setAttribute("cx", xPix);
+
+    const labelRight = x <= 3.6;
+    pointLabel.setAttribute("x", xPix + (labelRight ? 12 : -12));
+    pointLabel.setAttribute("y", yPix - 12);
+    pointLabel.setAttribute("text-anchor", labelRight ? "start" : "end");
+    pointLabel.textContent = "P (" + fmt(x) + ", " + fmt(y) + ")";
+
+    baseLine.setAttribute("x2", xPix);
+    dropLine.setAttribute("x1", xPix);
+    dropLine.setAttribute("x2", xPix);
+    dropLine.setAttribute("y1", sy(-13));
+    dropLine.setAttribute("y2", yPix);
+
+    const midX = (sx(1) + xPix) / 2;
+    const dSmall = d < 0.8;
+    dLabel.setAttribute("x", dSmall ? (x >= 1 ? xPix + 12 : xPix - 12) : midX);
+    dLabel.setAttribute("text-anchor", dSmall ? (x >= 1 ? "start" : "end") : "middle");
+    dLabel.setAttribute("y", sy(-13) + (dSmall ? 32 : -10));
+    dLabel.textContent = "d = " + fmt(d);
+
+    dropLabel.setAttribute("x", xPix + (x >= 1 ? -12 : 12));
+    dropLabel.setAttribute("y", (sy(-13) + yPix) / 2 + 5);
+    dropLabel.setAttribute("text-anchor", x >= 1 ? "end" : "start");
+    dropLabel.textContent = "d² = " + fmt(d2);
+
+    dSegment.setAttribute("x2", xPix);
+
+    show(axisSym, state.step >= 1);
+    show(axisSymLabel, state.step >= 1);
+    show(vertexLevel, state.step >= 1);
+    show(vertexLevelLabel, state.step >= 1);
+    show(vertexDot, state.step >= 1);
+    show(vertexLabel, state.step >= 1);
+
+    show(baseLine, state.step >= 2);
+    show(dropLine, state.step >= 2);
+    show(dropLabel, state.step >= 2);
+    show(dSegment, false);
+    show(dLabel, state.step >= 2);
+
+    show(rangeBand, state.step >= 3);
+
+    rangePanel.style.display = state.step >= 3 ? "block" : "none";
+    rangeCurrentDot.setAttribute("cx", rangeX(y));
+    rangeCurrentDot.style.opacity = state.step >= 3 ? "1" : "0";
+
+    updateCard(x, y, d, d2);
+
+    if (state.step === 0) {
+      answerChip.textContent = "值域：待探索";
+      answerChip.classList.remove("revealed");
+    } else if (state.step === 1) {
+      answerChip.textContent = "顶点：最高点 (1, −13)";
+      answerChip.classList.remove("revealed");
+    } else if (state.step === 2) {
+      answerChip.textContent = "关键：y = −13 − d²";
+      answerChip.classList.remove("revealed");
+    } else {
+      answerChip.textContent = "值域：(−∞, −13]";
+      answerChip.classList.add("revealed");
+    }
+
+    document.querySelectorAll(".step-btn").forEach(function (btn) {
+      btn.classList.toggle("active", Number(btn.dataset.step) === state.step);
+    });
+  }
+
+  function setX(value, fromPlay) {
+    state.x = Math.max(-2.5, Math.min(4.5, value));
+    if (fromPlay) {
+      xSlider.value = state.x;
+    }
+    render();
+  }
+
+  let playRAF = null;
+  let playStart = 0;
+  let playPhase = 0;
+
+  function stopPlay() {
+    if (state.playing) {
+      state.playing = false;
+      if (playRAF) {
+        cancelAnimationFrame(playRAF);
+        playRAF = null;
+      }
+    }
+    playBtn.textContent = "自动扫描";
+  }
+
+  function animatePlay(now) {
+    if (!state.playing) return;
+    const elapsed = (now - playStart) / 1000;
+    const x = 1 + 3 * Math.sin(playPhase + elapsed * 1.15);
+    setX(x, true);
+    playRAF = requestAnimationFrame(animatePlay);
+  }
+
+  function startPlay() {
+    state.playing = true;
+    playBtn.textContent = "暂停扫描";
+    playStart = performance.now();
+    const ratio = Math.max(-1, Math.min(1, (state.x - 1) / 3));
+    playPhase = Math.asin(ratio);
+    playRAF = requestAnimationFrame(animatePlay);
+  }
+
+  xSlider.addEventListener("input", function () {
+    stopPlay();
+    setX(parseFloat(xSlider.value), false);
+  });
+
+  vertexBtn.addEventListener("click", function () {
+    stopPlay();
+    setX(1, false);
+  });
+
+  playBtn.addEventListener("click", function () {
+    if (state.playing) {
+      stopPlay();
+    } else {
+      startPlay();
+    }
+  });
+
+  resetBtn.addEventListener("click", function () {
+    stopPlay();
+    state.step = 0;
+    state.x = 2;
+    render();
+  });
+
+  document.querySelectorAll(".step-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      stopPlay();
+      state.step = Number(btn.dataset.step);
+      render();
+    });
+  });
+
+  drawStatic();
+  render();
+})();
+</script>
+</body>
+</html>

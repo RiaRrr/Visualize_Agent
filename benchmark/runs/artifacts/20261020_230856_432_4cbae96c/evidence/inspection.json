@@ -1,0 +1,410 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261020_230856_432_4cbae96c/20261021_000430_430_round_03.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "飞机着陆：匀减速直线运动\n拖动时间滑块或按播放，看速度怎样一点点变小，位移怎样一点点累积\n题 目\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止，其着陆速度为 36 m/s。求：\n\n飞机着陆过程中滑行的距离；\n飞机着陆过程中最后 4 s 内滑行的位移大小。\n取向右为正：v₀ = +36 m/s（向右）\na = −6 m/s²（大小 6，方向向左）\n末状态：v = 0，静止\n主图 · 滑行过程\n蓝箭头 v，红箭头 a\n时间 t\n0.0 s\n速度 v\n36.0 m/s\n已滑行 s\n0.0 m\nv–t 图像\n图线与 t 轴围成的面积 = 位移\n当前图线高度\n36.0 m/s\n当前累计位移（0→t）\n0.0 m\n播放\nt = 0.0 s\n重置\n① 看清题设\n② 先求停止时间\n③ 总距离 = 图像面积\n④ 最后 4 s 是哪一段\n⑤ 倒过来看更简单\n\n取向右为正：飞机以 +36 m/s 向右滑行，加速度 a = −6 m/s²，即方向向左、每秒让速度减少 6 m/s。\n\nv₀ = +36 m/s ，a = −6 m/s² ，v末 = 0",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 看清题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 先求停止时间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ 总距离 = 图像面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ 最后 4 s 是哪一段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 倒过来看更简单",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no matching visible step control"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "飞机着陆：匀减速直线运动\n拖动时间滑块或按播放，看速度怎样一点点变小，位移怎样一点点累积\n题 目\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止，其着陆速度为 36 m/s。求：\n\n飞机着陆过程中滑行的距离；\n飞机着陆过程中最后 4 s 内滑行的位移大小。\n取向右为正：v₀ = +36 m/s（向右）\na = −6 m/s²（大小 6，方向向左）\n末状态：v = 0，静止\n主图 · 滑行过程\n蓝箭头 v，红箭头 a\n时间 t\n0.0 s\n速度 v\n36.0 m/s\n已滑行 s\n0.0 m\nv–t 图像\n图线与 t 轴围成的面积 = 位移\n当前图线高度\n36.0 m/s\n当前累计位移（0→t）\n0.0 m\n播放\nt = 0.0 s\n重置\n① 看清题设\n② 先求停止时间\n③ 总距离 = 图像面积\n④ 最后 4 s 是哪一段\n⑤ 倒过来看更简单\n\n取向右为正：飞机以 +36 m/s 向右滑行，加速度 a = −6 m/s²，即方向向左、每秒让速度减少 6 m/s。\n\nv₀ = +36 m/s ，a = −6 m/s² ，v末 = 0",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 看清题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 先求停止时间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ 总距离 = 图像面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ 最后 4 s 是哪一段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 倒过来看更简单",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "3"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "飞机着陆：匀减速直线运动\n拖动时间滑块或按播放，看速度怎样一点点变小，位移怎样一点点累积\n题 目\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止，其着陆速度为 36 m/s。求：\n\n飞机着陆过程中滑行的距离；\n飞机着陆过程中最后 4 s 内滑行的位移大小。\n取向右为正：v₀ = +36 m/s（向右）\na = −6 m/s²（大小 6，方向向左）\n末状态：v = 0，静止\n主图 · 滑行过程\n蓝箭头 v，红箭头 a\n时间 t\n3.0 s\n速度 v\n18.0 m/s\n已滑行 s\n81.0 m\nv–t 图像\n图线与 t 轴围成的面积 = 位移\n当前图线高度\n18.0 m/s\n当前累计位移（0→t）\n81.0 m\n播放\nt = 3.0 s\n重置\n① 看清题设\n② 先求停止时间\n③ 总距离 = 图像面积\n④ 最后 4 s 是哪一段\n⑤ 倒过来看更简单\n\n取向右为正：飞机以 +36 m/s 向右滑行，加速度 a = −6 m/s²，即方向向左、每秒让速度减少 6 m/s。\n\nv₀ = +36 m/s ，a = −6 m/s² ，v末 = 0",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "3",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 看清题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 先求停止时间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ 总距离 = 图像面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ 最后 4 s 是哪一段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 倒过来看更简单",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "6"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "飞机着陆：匀减速直线运动\n拖动时间滑块或按播放，看速度怎样一点点变小，位移怎样一点点累积\n题 目\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止，其着陆速度为 36 m/s。求：\n\n飞机着陆过程中滑行的距离；\n飞机着陆过程中最后 4 s 内滑行的位移大小。\n取向右为正：v₀ = +36 m/s（向右）\na = −6 m/s²（大小 6，方向向左）\n末状态：v = 0，静止\n主图 · 滑行过程\n蓝箭头 v，红箭头 a\n时间 t\n6.0 s\n速度 v\n0.0 m/s\n已滑行 s\n108.0 m\nv–t 图像\n图线与 t 轴围成的面积 = 位移\n当前图线高度\n0.0 m/s\n当前累计位移（0→t）\n108.0 m\n播放\nt = 6.0 s\n重置\n① 看清题设\n② 先求停止时间\n③ 总距离 = 图像面积\n④ 最后 4 s 是哪一段\n⑤ 倒过来看更简单\n\n取向右为正：飞机以 +36 m/s 向右滑行，加速度 a = −6 m/s²，即方向向左、每秒让速度减少 6 m/s。\n\nv₀ = +36 m/s ，a = −6 m/s² ，v末 = 0",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "6",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 看清题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 先求停止时间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ 总距离 = 图像面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ 最后 4 s 是哪一段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 倒过来看更简单",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

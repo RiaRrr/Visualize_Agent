@@ -1,0 +1,90 @@
+{
+  "id": "4104616416747520",
+  "course_id": 30,
+  "type_id": "301101",
+  "kpoint_ids": [
+    7258,
+    7256,
+    7255,
+    47804,
+    47809
+  ],
+  "catalog_ids": [
+    208160,
+    207870,
+    213286,
+    230455
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.59,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861841-114651791852237200-wRCPENZYe7_2Homr0ISr213mQaaskpJnYM-9XZSE4M4nE7_eNrU35nAOFHm660OR\"><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">深蓝色的</span><img  src=\"https://img.xkw.com/dksih/formula/4511f77e10030a31653687b3071a29aa.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">溶液由</span><img  src=\"https://img.xkw.com/dksih/formula/bdcd76b0611c58a8a25dd1fc40454e9a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">与氨水反应制得。下列说法错误的是</span></p><div class=\" qml-og\"><table class=\"qml-og\" style=\"width:100%\"><tr><td>A.&nbsp;<span class=\"qml-op\"><img  src=\"https://img.xkw.com/dksih/formula/dbe2066525aa0616cf44d051d57bf713.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">有孤电子对，故</span><img  src=\"https://img.xkw.com/dksih/formula/dbe2066525aa0616cf44d051d57bf713.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">能与</span><img  src=\"https://img.xkw.com/dksih/formula/ab52c58d108a8e68c57129f2bb03dd01.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">配位</span></span></td></tr><tr><td>B.&nbsp;<span class=\"qml-op\"><img  src=\"https://img.xkw.com/dksih/formula/4511f77e10030a31653687b3071a29aa.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">溶液含</span><img  src=\"https://img.xkw.com/dksih/formula/b727a0e999eb425a28214e9eed349a04.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，故呈深蓝色</span></span></td></tr><tr><td>C.&nbsp;<span class=\"qml-op\"><img  src=\"https://img.xkw.com/dksih/formula/98183b7becdd0efb6fe8f57cdcbce983.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">比</span><img  src=\"https://img.xkw.com/dksih/formula/dbe2066525aa0616cf44d051d57bf713.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">稳定，故</span><img  src=\"https://img.xkw.com/dksih/formula/18cbe8d2f0430a6397644faf0090ae0d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">能转化为</span><img  src=\"https://img.xkw.com/dksih/formula/b727a0e999eb425a28214e9eed349a04.svg\" class=\"xkw-math-img\" /></span></td></tr><tr><td colspan=\"1\">D.&nbsp;<span class=\"qml-op\"><img  src=\"https://img.xkw.com/dksih/formula/a270adb1edf9e59f1fd852a46077a88e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的极性小于</span><img  src=\"https://img.xkw.com/dksih/formula/98183b7becdd0efb6fe8f57cdcbce983.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，故</span><img  src=\"https://img.xkw.com/dksih/formula/4511f77e10030a31653687b3071a29aa.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">溶液中加乙醇会析出晶体</span></span></td></tr></table></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861841-114651791852237200-wRCPENZYe7_2Homr0ISr213mQaaskpJnYM-9XZSE4M4nE7_eNrU35nAOFHm660OR\"><span class=\"qml-an-sq\"><span class=\"qml-an qml-isop \">C</span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861841-114651791852237200-wRCPENZYe7_2Homr0ISr213mQaaskpJnYM-9XZSE4M4nE7_eNrU35nAOFHm660OR\"><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"\"><span>A．</span><img  src=\"https://img.xkw.com/dksih/formula/c7da53ced7557030b023850e7e36d070.svg\" class=\"xkw-math-img\" /><span>中</span><img  src=\"https://img.xkw.com/dksih/formula/8346ced59eb87a592fca47a82a146912.svg\" class=\"xkw-math-img\" /><span>原子存在孤电子对，</span><img  src=\"https://img.xkw.com/dksih/formula/893db24198250da2f5429f89c8dd6d47.svg\" class=\"xkw-math-img\" /><span>有空轨道，二者可形成配位键，A正确；</span></p><p style=\"\"><span>B．</span><img  src=\"https://img.xkw.com/dksih/formula/c730d694f7c5048931ca2721e9a0b782.svg\" class=\"xkw-math-img\" /><span>是具有特征深蓝色的配离子，因此</span><img  src=\"https://img.xkw.com/dksih/formula/1a693f90682752ac8e431e3981aa1d31.svg\" class=\"xkw-math-img\" /><span>溶液呈深蓝色，B正确；</span></p><p style=\"\"><span>C．</span><img  src=\"https://img.xkw.com/dksih/formula/23182542ac2fedc525cf902e655f2979.svg\" class=\"xkw-math-img\" /><span>能转化为</span><img  src=\"https://img.xkw.com/dksih/formula/c730d694f7c5048931ca2721e9a0b782.svg\" class=\"xkw-math-img\" /><span>的原因是</span><img  src=\"https://img.xkw.com/dksih/formula/c7da53ced7557030b023850e7e36d070.svg\" class=\"xkw-math-img\" /><span>的配位能力强于</span><img  src=\"https://img.xkw.com/dksih/formula/4d01335034657bba6e883be5d7b868fb.svg\" class=\"xkw-math-img\" /><span>，与</span><img  src=\"https://img.xkw.com/dksih/formula/4d01335034657bba6e883be5d7b868fb.svg\" class=\"xkw-math-img\" /><span>、</span><img  src=\"https://img.xkw.com/dksih/formula/c7da53ced7557030b023850e7e36d070.svg\" class=\"xkw-math-img\" /><span>的分子热稳定性无因果关系，C错误；</span></p><p style=\"\"><span>D．</span><img  src=\"https://img.xkw.com/dksih/formula/1a693f90682752ac8e431e3981aa1d31.svg\" class=\"xkw-math-img\" /><span>属于离子化合物，在极性更小的</span><img  src=\"https://img.xkw.com/dksih/formula/b75ae41f5b558e1e737578a7c0360ee2.svg\" class=\"xkw-math-img\" /><span>中溶解度更低，因此加入乙醇会析出晶体，D正确；</span></p><p style=\"\"><span>故选C。</span></p></div></div>",
+  "create_date": "2026-09-20 14:46:23",
+  "paper_type_ids": [
+    6,
+    1,
+    12
+  ],
+  "course": {
+    "id": 30,
+    "name": "高中化学"
+  },
+  "catalogs": [
+    {
+      "id": 208160,
+      "name": "第四节  配合物与超分子"
+    },
+    {
+      "id": 207870,
+      "name": "第4节  分子间作用力"
+    },
+    {
+      "id": 213286,
+      "name": "第二单元 配合物的形成和应用"
+    },
+    {
+      "id": 230455,
+      "name": "2.3配位化合物和超分子"
+    }
+  ],
+  "type": {
+    "id": "301101",
+    "name": "单题"
+  },
+  "kpoints": [
+    {
+      "id": 7258,
+      "name": "配位键"
+    },
+    {
+      "id": 7256,
+      "name": "配合物的结构与性质"
+    },
+    {
+      "id": 7255,
+      "name": "配合物的概念、组成及形成条件"
+    },
+    {
+      "id": 47804,
+      "name": "极性分子和非极性分子"
+    },
+    {
+      "id": 47809,
+      "name": "氢键对物质性质的影响"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4104604293947392"
+  ]
+}

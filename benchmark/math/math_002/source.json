@@ -1,0 +1,52 @@
+{
+  "id": "3884019136626688",
+  "course_id": 27,
+  "type_id": "2701",
+  "kpoint_ids": [
+    10455,
+    11484
+  ],
+  "catalog_ids": [],
+  "years": [
+    2025,
+    2026
+  ],
+  "difficulty": 0.65,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791858270-114651791852237200-RxseAzPerGW6lBxUami1s7T-ASEoUiMcxVoWY8872hjixqcvNiFxRrWR2lMJq0wy\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">已知集合</span><img  src=\"https://img.xkw.com/dksih/formula/e6c798682e389025800e243408ac4187.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，集合</span><img  src=\"https://img.xkw.com/dksih/formula/3f664554b5f0f7b82d72ac16d25229de.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则</span><img  src=\"https://img.xkw.com/dksih/formula/b4b9b470218359a4a47be9244980489e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">（　　）</span></p><div class=\" qml-og\"><table class=\"qml-og\" style=\"width:100%\"><tr><td>A.&nbsp;<span class=\"qml-op\"><img  src=\"https://img.xkw.com/dksih/formula/c4c2949900c38e889ab4cb423bca093a.svg\" class=\"xkw-math-img\" /></span></td><td>B.&nbsp;<span class=\"qml-op\"><img  src=\"https://img.xkw.com/dksih/formula/0b3ed03b0f8fb8b88d7edf6165345c6f.svg\" class=\"xkw-math-img\" /></span></td><td>C.&nbsp;<span class=\"qml-op\"><img  src=\"https://img.xkw.com/dksih/formula/f4216159b10fe5eca38c738cb7539fd5.svg\" class=\"xkw-math-img\" /></span></td><td colspan=\"1\">D.&nbsp;<span class=\"qml-op\"><img  src=\"https://img.xkw.com/dksih/formula/38ab4879d5e412739c7aeba46dd0ffdb.svg\" class=\"xkw-math-img\" /></span></td></tr></table></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791858270-114651791852237200-RxseAzPerGW6lBxUami1s7T-ASEoUiMcxVoWY8872hjixqcvNiFxRrWR2lMJq0wy\"><span class=\"qml-an-sq\"><span class=\"qml-an qml-isop \">C</span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791858270-114651791852237200-RxseAzPerGW6lBxUami1s7T-ASEoUiMcxVoWY8872hjixqcvNiFxRrWR2lMJq0wy\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">确定集合</span><img  src=\"https://img.xkw.com/dksih/formula/01c74a907dda6bb7d9d56d009d9df253.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，再结合交集运算即可求解</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/formula/b6e1f6a4b9ffb4c504e88e64370822e2.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/formula/59027cb86f7609f410eff5b1dbe951cc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">所以</span><img  src=\"https://img.xkw.com/dksih/formula/b4b9b470218359a4a47be9244980489e.svg\" class=\"xkw-math-img\" /><img  src=\"https://img.xkw.com/dksih/formula/f4216159b10fe5eca38c738cb7539fd5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故选：</span><span style=\"font-family: 'Times New Roman';\">C</span></p></div></div>",
+  "create_date": "2025-11-12 22:40:04",
+  "paper_type_ids": [
+    4
+  ],
+  "course": {
+    "id": 27,
+    "name": "高中数学"
+  },
+  "catalogs": [],
+  "type": {
+    "id": "2701",
+    "name": "单选题"
+  },
+  "kpoints": [
+    {
+      "id": 10455,
+      "name": "交集的概念及运算"
+    },
+    {
+      "id": 11484,
+      "name": "解不含参数的一元二次不等式"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4118112778231808"
+  ]
+}

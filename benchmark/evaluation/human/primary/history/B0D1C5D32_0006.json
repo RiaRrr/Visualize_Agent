@@ -1,0 +1,20 @@
+{
+  "rater": "primary",
+  "html_sha256": "1df7f24297b60abb6dbd231d5347f8119f08984fd9bf7f73bfcd854ea9e1b7af",
+  "revision": 6,
+  "status": "draft",
+  "scores": {
+    "problem_fidelity": 5,
+    "solution_correctness": 5,
+    "page_quality": 3,
+    "interaction_quality": 4,
+    "teaching_effectiveness": 5
+  },
+  "overall_score": 3,
+  "comment": "",
+  "flags": [],
+  "sample_id": "B0D1C5D32",
+  "question_id": "physics_001",
+  "rubric_version": "v1",
+  "updated_at": "2026-10-21T03:39:10.390937+00:00"
+}

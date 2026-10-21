@@ -1,0 +1,76 @@
+{
+  "sample_id": "B6CA12DEB",
+  "question_id": "chemistry_001",
+  "set": "calibration",
+  "html_sha256": "49d09957742255e2a8c1d504b2300591466b75d25d2883e160a8c2a24eb562e2",
+  "judge_id": "gpt_56",
+  "model": "gpt-5.6-sol",
+  "judge_version": "c3fcf583bc0c",
+  "evidence_sha256": "40643819730b2a3f2e59ebf6e65b5466613bdc4e6e5a04d0468eec7e04288ea1",
+  "image_inputs": [
+    {
+      "name": "input.png",
+      "sha256": "1fee6ecf02f31231ef279a5621473ce277320ec9fee0275f89a518d6f1ff7716"
+    },
+    {
+      "name": "answer.png",
+      "sha256": "d8ca7938025accec640d1b13624bc15e57ba79dfccd1fd44285a9473f407e5c3"
+    },
+    {
+      "name": "explanation.png",
+      "sha256": "ef9160a60d2ba7db772a7a367a8c312f1cddf3cc0ee7e0e96757ceb48d9e7e38"
+    },
+    {
+      "name": "00_initial.png",
+      "sha256": "81b6392fcc0ef7854856c2a389092f4b8393790a0d9dd31e91c6c938fe0b6b11"
+    },
+    {
+      "name": "01_next_step.png",
+      "sha256": "56a60baf095685d7160d23ac6d480d4473aaa564b271ffb466c9a557293e4a5c"
+    },
+    {
+      "name": "02_slider_mid.png",
+      "sha256": "0add874066fe30230367f0b6cc68c4971a722e041e938af57a0f661bce7c22f7"
+    },
+    {
+      "name": "03_slider_high.png",
+      "sha256": "fbc51ea1796da1a198cae88c2843259f5bf989495deed9d82ebad451bc5df07e"
+    }
+  ],
+  "created_at": "2026-10-20T16:11:09.954588+00:00",
+  "status": "completed",
+  "judgment": {
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 4,
+      "page_quality": 5,
+      "interaction_quality": 4,
+      "teaching_effectiveness": 4
+    },
+    "overall_score": 4,
+    "issues": [
+      "曲线使用假定的摩尔电导率和统一浓度比例生成，但页面没有说明这些定量假设；滑块数值0至3也没有单位或与化学计量的明确对应，学生可能把示意曲线及百分比误认为题设给出的精确实验数据。",
+      "页面绘制的原情景AB段明显呈先陡后缓的凹形变化，与原题图中先缓后陡的示意形态不同；不影响“先降至最低再回升”和D选项结论，但不能称为对原图几何形状的严格复现。",
+      "实际操作记录只覆盖滑块中点和上界，未点击播放按钮、曲线拖动或A至D选项；选项切换、正误反馈以及替代试剂曲线仅由源码中的事件处理逻辑支持，不能视为截图操作已经验证。",
+      "微观粒子数经过缩放、取整并带淡入淡出效果，只能表达趋势，不能直接用于核对严格的粒子数比；页面虽标为“微观示意”，但未进一步说明该限制。"
+    ],
+    "evidence": {
+      "problem_fidelity": "页面保留了Ba(OH)₂溶液滴加稀硫酸、导电能力先降后升、最低点a以及A至D全部说法；各选项文字与原题实质一致，A、B、C标为不成立、D标为成立。",
+      "solution_correctness": "D结论及主要解释正确：Ba(OH)₂与MgSO₄恰好反应时生成BaSO₄和Mg(OH)₂两种沉淀，过量MgSO₄重新提供可移动离子。A中“BaSO₄是电解质但难溶”、B中Na⁺和SO₄²⁻保留、C中K⁺及SO₄²⁻保留的判断也正确。各场景电荷和化学计量关系基本自洽；扣分主要来自未经题设支持的定量模型及曲线形态与原图不完全一致。",
+      "page_quality": "1280×900桌面截图中标题、烧杯、曲线、状态说明、滑块和四个选项均完整可见，没有明显重叠、裁切或公式溢出；曲线当前点、离子图例和导电能力条辨识清楚。",
+      "interaction_quality": "操作记录显示滑块可从0移动到1.5和3，粒子种类、导电百分比、曲线当前点及状态文字同步变化，且无运行时错误。源码还实现播放、曲线横向拖动及选项场景切换，但这些操作未被实际记录覆盖；此外滑块量纲和关键化学计量点的含义不够明确。",
+      "teaching_effectiveness": "页面从反应方程、自由离子变化和导电能力变化建立联系，并为四个选项分别准备针对性反馈和替代试剂曲线，能够解释答案D如何产生。主要不足是学生首先面对未定义的0至3参数和经验化百分比，定量模型的假设没有交代，且粒子图与曲线的示意性质区分不够充分。"
+    },
+    "reference_concern": "参考答案D与独立核对一致。原题曲线最低点画在横轴上只能理解为理想化示意；现实中受水的自电离、BaSO₄微量溶解等影响，导电能力不应表述为严格等于零。参考解析中“生成难溶BaSO₄和弱电解质H₂O”是定性表述，更准确的机制是反应消耗溶液中的Ba²⁺、OH⁻、H⁺和SO₄²⁻，使可移动离子浓度显著降低。",
+    "summary": "答案选择和核心化学解释正确，桌面呈现清楚，滑块联动有效，是良好的教学页面。主要改进点是明确滑块与定量模型的假设，避免把经验参数生成的曲线当作原题实验曲线的精确复现；选项和播放等交互尚未由实际操作记录完整验证。"
+  },
+  "duration_seconds": 64.14796029900026,
+  "usage": {
+    "input_tokens": 25766,
+    "output_tokens": 2520,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 1518,
+    "total_tokens": 28286
+  }
+}

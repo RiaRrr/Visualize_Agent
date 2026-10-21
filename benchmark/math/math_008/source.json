@@ -1,0 +1,104 @@
+{
+  "id": "3730337597849600",
+  "course_id": 27,
+  "type_id": "2701",
+  "kpoint_ids": [
+    12241,
+    72081,
+    12245,
+    12249
+  ],
+  "catalog_ids": [
+    209889,
+    195162,
+    187266,
+    209604,
+    225847,
+    194728
+  ],
+  "years": [
+    2025,
+    2023,
+    2024,
+    2026,
+    2027
+  ],
+  "difficulty": 0.65,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1792031952-114651791852237200-zBQxayIuzrXrkTzHENkVUytULbxsGoOqfpmVlWOscFGj0KdPB2vHEmoV9BjHhyu1\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">甲、乙两名篮球运动员在</span><span style=\"font-family: 'Times New Roman';\">8</span><span style=\"font-family: 宋体;\">场比赛中的单场得分用茎叶图表示如左下图，茎叶图中甲的得分有部分数据丢失，但甲得分的折线图完好（右下图），则下列结论正确的是（</span><span style=\"font-family: 'Times New Roman';\"><span style=\"font-family: 'Times New Roman'\" qml-space-size=\"5\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span style=\"font-family: 宋体;\">）</span></p><p style=\"text-align: left;\"><img  height=\"154\" source-file=\"https://img.xkw.com/dksih/QBM/editorImg/2025/4/10/b9060f41-d382-4a78-9d07-73b0925703e3.ai\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2025/4/10/b9060f41-d382-4a78-9d07-73b0925703e3.png\" width=\"396\" /></p><div class=\" qml-og\"><table class=\"qml-og\" style=\"width:100%\"><tr><td>A.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">甲得分的极差小于乙得分的极差</span></span></td></tr><tr><td>B.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">甲得分的第</span><span style=\"font-family: 'Times New Roman';\">25</span><span style=\"font-family: 宋体;\">百分位数大于乙得分的第</span><span style=\"font-family: 'Times New Roman';\">75</span><span style=\"font-family: 宋体;\">百分位数</span></span></td></tr><tr><td>C.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">甲得分的平均数大于乙得分的平均数</span></span></td></tr><tr><td colspan=\"1\">D.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">甲得分的方差小于乙得分的方差</span></span></td></tr></table></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1792031952-114651791852237200-zBQxayIuzrXrkTzHENkVUytULbxsGoOqfpmVlWOscFGj0KdPB2vHEmoV9BjHhyu1\"><span class=\"qml-an-sq\"><span class=\"qml-an qml-isop \">C</span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1792031952-114651791852237200-zBQxayIuzrXrkTzHENkVUytULbxsGoOqfpmVlWOscFGj0KdPB2vHEmoV9BjHhyu1\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">利用极差、百分位数和平均数的计算公式可以判断</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">、</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">、</span><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">三个选项，对于</span><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">选项，利用数据的分散程度判断方差的大小即可</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">对于</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">选项，甲得分的极差为：</span><img  src=\"https://img.xkw.com/dksih/formula/f4736553d630b1067c70b77284374b85.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，乙得分的极差为：</span><img  src=\"https://img.xkw.com/dksih/formula/1b5312209954fda8991effa2a59f8a36.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">因为</span><img  src=\"https://img.xkw.com/dksih/formula/5d789d43a291225c7fe7ffe5f19dabd8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以甲得分的极差大于乙得分的极差，故</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">对于</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">选项，因为</span><img  src=\"https://img.xkw.com/dksih/formula/2d2adc450d60ad8b05ddfea9f3e552aa.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以甲得分的第</span><span style=\"font-family: 'Times New Roman';\">25</span><span style=\"font-family: 宋体;\">百分位数为</span><img  src=\"https://img.xkw.com/dksih/formula/01215cf5eaf6e562a6b73a9f9b0916f8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">又</span><img  src=\"https://img.xkw.com/dksih/formula/9ffd6ee6438d892b7f0d107fe2397b3b.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以乙得分的第</span><span style=\"font-family: 'Times New Roman';\">75</span><span style=\"font-family: 宋体;\">百分位数为</span><img  src=\"https://img.xkw.com/dksih/formula/346ca712cb8596eaa8d3f01dc2a854e2.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">因为</span><img  src=\"https://img.xkw.com/dksih/formula/52ad3240942062c42d3f8a763933f28d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以甲得分的第</span><span style=\"font-family: 'Times New Roman';\">25</span><span style=\"font-family: 宋体;\">百分位数小于乙得分的第</span><span style=\"font-family: 'Times New Roman';\">75</span><span style=\"font-family: 宋体;\">百分位数，故</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">对于</span><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">选项，由折线图可知，在茎叶图中甲的得分中丢失的数据一个为</span><img  src=\"https://img.xkw.com/dksih/formula/58b184c94e38f1e5dbe750b2168c2a37.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，另一个设为</span><img  src=\"https://img.xkw.com/dksih/formula/294f5ba74cdf695fc9a8a8e52f421328.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，其中</span><img  src=\"https://img.xkw.com/dksih/formula/a53ba085cca167785d6c5917ced31e14.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">所以甲的平均数为</span><img  src=\"https://img.xkw.com/dksih/formula/6a6f91d98862a51cc87ad3396b729153.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">乙的平均数为</span><img  src=\"https://img.xkw.com/dksih/formula/794a45a1dfb1a3569474ea05b71f14a9.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">因为</span><img  src=\"https://img.xkw.com/dksih/formula/a53ba085cca167785d6c5917ced31e14.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以</span><img  src=\"https://img.xkw.com/dksih/formula/ee88d9e6781079d2a7defe4b8ea866a6.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以</span><img  src=\"https://img.xkw.com/dksih/formula/cab1abfc6534ae792868d52b70fce5fe.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">所以甲得分的平均数大于乙得分的平均数，故</span><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">正确；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">对于</span><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">选项，方差是刻画数据离散程度或波动幅度的指标</span><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">从茎叶图中可以看到，甲的得分分布比乙的得分分布分散，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">所以甲得分的方差大于乙得分的方差，故</span><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">错误</span><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align: left;\"><span>故选：C</span></p></div></div>",
+  "create_date": "2025-04-09 19:34:10",
+  "paper_type_ids": [
+    22,
+    5,
+    50,
+    3,
+    6,
+    23,
+    24,
+    51
+  ],
+  "course": {
+    "id": 27,
+    "name": "高中数学"
+  },
+  "catalogs": [
+    {
+      "id": 209889,
+      "name": "9.2.4 总体离散程度的估计"
+    },
+    {
+      "id": 195162,
+      "name": "5.1.3 数据的直观表示"
+    },
+    {
+      "id": 187266,
+      "name": "4.3 百分位数"
+    },
+    {
+      "id": 209604,
+      "name": "14.4.4 百分位数"
+    },
+    {
+      "id": 225847,
+      "name": "3 估计百分位数"
+    },
+    {
+      "id": 194728,
+      "name": "6.4.4 百分位数"
+    }
+  ],
+  "type": {
+    "id": "2701",
+    "name": "单选题"
+  },
+  "kpoints": [
+    {
+      "id": 12241,
+      "name": "由茎叶图计算平均数"
+    },
+    {
+      "id": 72081,
+      "name": "总体百分位数的估计"
+    },
+    {
+      "id": 12245,
+      "name": "计算几个数据的极差、方差、标准差"
+    },
+    {
+      "id": 12249,
+      "name": "用方差、标准差说明数据的波动程度"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "3750706576285696"
+  ]
+}

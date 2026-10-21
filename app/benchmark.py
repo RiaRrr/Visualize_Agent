@@ -87,7 +87,7 @@ def list_samples(rater:str='primary'):
                        'topic':q['topic'],'set':s['set'],'html_sha256':s['html_sha256'],
                        'status':rating.get('status','unrated'),'overall_score':rating.get('overall_score')})
     result.sort(key=lambda s: hashlib.sha256(('blind-v1:'+s['id']).encode()).hexdigest())
-    return {'samples':result,'rubric':(BENCH/'rubric.md').read_text() if (BENCH/'rubric.md').exists() else '',
+    return {'samples':result,'rubric':(BENCH/'rubric.md').read_text(encoding='utf-8') if (BENCH/'rubric.md').exists() else '',
             'progress':read(BENCH/'runs/progress.json',{}),'judges':read(BENCH/'evaluation/judge_registry.json',[])}
 
 @router.get('/api/benchmark/samples/{sid}')
@@ -137,8 +137,13 @@ def save_rating(sid:str,payload:Annotation):
     with LOCK:
         previous=read(path,{})
         if previous.get('revision',0)!=payload.revision:raise HTTPException(409,'评分已在其他页面修改，请重新加载后再编辑')
+        rubric_path=BENCH/'rubric.md'
+        rubric_text=rubric_path.read_text(encoding='utf-8') if rubric_path.exists() else ''
+        rubric_version=re.search(r'\bv\d+\b',rubric_text.splitlines()[0] if rubric_text else '')
         record={**payload.model_dump(),'sample_id':sid,'question_id':s['question_id'],
-                'rubric_version':'v1','revision':payload.revision+1,'updated_at':datetime.now(timezone.utc).isoformat()}
+                'rubric_version':rubric_version.group() if rubric_version else 'unknown',
+                'rubric_sha256':sha(rubric_path) if rubric_path.exists() else None,
+                'revision':payload.revision+1,'updated_at':datetime.now(timezone.utc).isoformat()}
         if previous:write(path.parent/'history'/f'{sid}_{previous["revision"]:04d}.json',previous)
         write(path,record)
     return record

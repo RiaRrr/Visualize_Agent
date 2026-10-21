@@ -1,0 +1,87 @@
+{
+  "id": "3736075637735424",
+  "course_id": 27,
+  "type_id": "270201",
+  "kpoint_ids": [
+    11984
+  ],
+  "catalog_ids": [
+    207957,
+    220543,
+    226684,
+    219836,
+    207999,
+    225194,
+    219711
+  ],
+  "years": [
+    2025,
+    2026
+  ],
+  "difficulty": 0.65,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1792031967-114651791852237200-HFYyEr49civ3BNWYNxYB8StULbxsGoOqfpmVlWOscFH_pSYfKDj-G2HOf-YA2Tyy\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">经过点</span><img  src=\"https://img.xkw.com/dksih/formula/ab0fbf5844e5482dc00bac45cb50d880.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/be14af6ba191f83c422bd408900882b2.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的椭圆的标准方程为</span><span class=\"qml-bk\" index=\"1\" size=\"5\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　</span><span style=\"font-family: 宋体;\">．</span></p></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1792031967-114651791852237200-HFYyEr49civ3BNWYNxYB8StULbxsGoOqfpmVlWOscFH_pSYfKDj-G2HOf-YA2Tyy\"><span class=\"qml-an-sq\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/44d12ebd10f6c0bcf98be52c32b107f1.svg\" class=\"xkw-math-img\" /></span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1792031967-114651791852237200-HFYyEr49civ3BNWYNxYB8StULbxsGoOqfpmVlWOscFH_pSYfKDj-G2HOf-YA2Tyy\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">根据椭圆经过的两个点的坐标，确定椭圆焦点位置，进而求出</span><img  src=\"https://img.xkw.com/dksih/formula/0a6936d370d6a238a608ca56f87198de.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/2c94bb12cee76221e13f9ef955b0aab1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的值，最后写出椭圆的标准方程</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">已知椭圆经过</span><img  src=\"https://img.xkw.com/dksih/formula/7a297f399ee48fe07cd6aacc935a1c46.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/958e37f741741670658bba0ee08280ac.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">两点</span><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">点</span><img  src=\"https://img.xkw.com/dksih/formula/7a297f399ee48fe07cd6aacc935a1c46.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">在</span><img  src=\"https://img.xkw.com/dksih/formula/81dea63b8ce3e51adf66cf7b9982a248.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">轴上，点</span><img  src=\"https://img.xkw.com/dksih/formula/958e37f741741670658bba0ee08280ac.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">在</span><img  src=\"https://img.xkw.com/dksih/formula/d053b14c8588eee2acbbe44fc37a6886.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">轴上，且</span><img  src=\"https://img.xkw.com/dksih/formula/6834d7375e17639ef88384375e74a39e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以椭圆的焦点在</span><img  src=\"https://img.xkw.com/dksih/formula/81dea63b8ce3e51adf66cf7b9982a248.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">轴上</span><span style=\"font-family: 'Times New Roman';\">. </span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">对于焦点在</span><img  src=\"https://img.xkw.com/dksih/formula/81dea63b8ce3e51adf66cf7b9982a248.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">轴上的椭圆，其标准方程为</span><img  src=\"https://img.xkw.com/dksih/formula/1d7aea48c44781a844b5c19191f70f61.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">（</span><img  src=\"https://img.xkw.com/dksih/formula/5a0c4c098615c6bc7e6dcf72e5b5201a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">），</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">因为椭圆过点</span><img  src=\"https://img.xkw.com/dksih/formula/7a297f399ee48fe07cd6aacc935a1c46.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以</span><img  src=\"https://img.xkw.com/dksih/formula/aa4c355f11471a38f5583a434a1ddeb3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">椭圆过点</span><img  src=\"https://img.xkw.com/dksih/formula/958e37f741741670658bba0ee08280ac.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以</span><img  src=\"https://img.xkw.com/dksih/formula/03837b3769eda7f0d3804cc5ad4a6d60.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">. </span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">将</span><img  src=\"https://img.xkw.com/dksih/formula/aa4c355f11471a38f5583a434a1ddeb3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/03837b3769eda7f0d3804cc5ad4a6d60.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">代入椭圆标准方程</span><img  src=\"https://img.xkw.com/dksih/formula/1d7aea48c44781a844b5c19191f70f61.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中，可得</span><img  src=\"https://img.xkw.com/dksih/formula/89aed04f6a7770f329804630d67928c0.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，即</span><img  src=\"https://img.xkw.com/dksih/formula/44d12ebd10f6c0bcf98be52c32b107f1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">. </span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故答案为：</span><img  src=\"https://img.xkw.com/dksih/formula/44d12ebd10f6c0bcf98be52c32b107f1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p></div></div>",
+  "create_date": "2025-04-17 22:08:15",
+  "paper_type_ids": [
+    24,
+    22,
+    1,
+    6
+  ],
+  "course": {
+    "id": 27,
+    "name": "高中数学"
+  },
+  "catalogs": [
+    {
+      "id": 207957,
+      "name": "3.1.1椭圆及其标准方程"
+    },
+    {
+      "id": 220543,
+      "name": "3.1.1 椭圆的标准方程"
+    },
+    {
+      "id": 226684,
+      "name": "1 椭圆的标准方程"
+    },
+    {
+      "id": 219836,
+      "name": "二、椭圆的标准方程"
+    },
+    {
+      "id": 207999,
+      "name": "2.5.1 椭圆的标准方程"
+    },
+    {
+      "id": 225194,
+      "name": "3.1.1 椭圆的标准方程"
+    },
+    {
+      "id": 219711,
+      "name": "1.1 椭圆及其标准方程"
+    }
+  ],
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "kpoints": [
+    {
+      "id": 11984,
+      "name": "根据a、b、c求椭圆标准方程"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "3785268787003392"
+  ]
+}

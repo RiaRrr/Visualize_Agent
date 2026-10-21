@@ -1,0 +1,152 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261020_230837_544_d95b11b0:2",
+  "task_id": "20261020_230837_544_d95b11b0",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 2,
+  "created_at": "2026-10-20T23:44:22.321934+08:00",
+  "files": {
+    "image": "20261020_230837_544_input.png",
+    "html": "20261020_234422_229_round_02.html",
+    "screenshot": "20261020_234422_229_round_02.png",
+    "model_review": "20261020_234422_229_round_02.review.json",
+    "config": "20261020_230837_544_config.json",
+    "model_review_raw": "round_02.model_review_raw.txt"
+  },
+  "html_sha256": "ce654ce024ef5cab897118af46536411e2c0d357223d72c61800ee655d1ef12e",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "math-deepseek",
+    "name": "数学 · 分步 SVG 与教学示例（1019）",
+    "version": "7fa646244866",
+    "subject": "math"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "数学结论与推导正确，最终值域为（−∞，−13]；分步按钮、动态点、顶点式与非负平方解释能较好支撑学生理解。仅有少量操作文案和扫描范围提示可优化，不影响通过。",
+    "issues": [
+      "副标题写“拖动图象上的点 P”，但源码中 P 本身不可拖拽，实际只能拖动下方滑块；建议改为“拖动滑块，让点 P 在图象上移动”，避免学生错误尝试拖点。",
+      "根据源码，“自动扫描”仅按 x = 1 + 3sin(...) 扫描约 [-2, 4]，未覆盖滑块可达的 [-2.5, 4.5]；建议扩大扫描范围，或在按钮附近标明自动扫描的区间，避免误解为已扫描全部可用范围。",
+      "第③步文案提到“橙色线段”表示 d，但源码中专用元素 dSegment 始终被隐藏，实际显示的是 baseLine；建议清理隐藏元素或统一标注，减少维护与教学指向上的歧义。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 5,
+      "interaction_quality": 4,
+      "teaching_effectiveness": 5
+    },
+    "overall_score": 4
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 41,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "round_number": 2,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:41:29.731990+08:00",
+        "ended_at": "2026-10-20T23:43:13.561033+08:00",
+        "duration_seconds": 103.829043,
+        "status": "completed"
+      },
+      {
+        "id": 42,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "round_number": 2,
+        "stage": "validating",
+        "started_at": "2026-10-20T23:43:13.561033+08:00",
+        "ended_at": "2026-10-20T23:43:13.622556+08:00",
+        "duration_seconds": 0.061523,
+        "status": "completed"
+      },
+      {
+        "id": 43,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "round_number": 2,
+        "stage": "rendering",
+        "started_at": "2026-10-20T23:43:13.622556+08:00",
+        "ended_at": "2026-10-20T23:43:15.272131+08:00",
+        "duration_seconds": 1.649575,
+        "status": "completed"
+      },
+      {
+        "id": 44,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "round_number": 2,
+        "stage": "reviewing",
+        "started_at": "2026-10-20T23:43:15.272131+08:00",
+        "ended_at": "2026-10-20T23:44:22.767924+08:00",
+        "duration_seconds": 67.495793,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 26,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:43:13.476990+08:00",
+        "duration_seconds": 103.34633184500126,
+        "status": "completed",
+        "input_tokens": 11600,
+        "output_tokens": 19533,
+        "cached_input_tokens": 2048,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 17308,
+        "total_tokens": 31133
+      },
+      {
+        "id": 28,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:44:22.125019+08:00",
+        "duration_seconds": 66.14990185000352,
+        "status": "completed",
+        "input_tokens": 11323,
+        "output_tokens": 8949,
+        "cached_input_tokens": 4096,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 8678,
+        "total_tokens": 20272
+      }
+    ]
+  }
+}

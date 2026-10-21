@@ -1,0 +1,90 @@
+{
+  "id": "3742836393762816",
+  "course_id": 27,
+  "type_id": "270201",
+  "kpoint_ids": [
+    11335,
+    11332
+  ],
+  "catalog_ids": [
+    195206,
+    219390,
+    220677,
+    209733,
+    209581,
+    218125
+  ],
+  "years": [
+    2025,
+    2026
+  ],
+  "difficulty": 0.8500000000000001,
+  "difficulty_level": 18,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1792031942-114651791852237200-uNtaOPqQZJJVrpPPL4pyLytULbxsGoOqfpmVlWOscFGTNdR2pqV7-Vse_1kAROGq\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">在菱形</span><img  src=\"https://img.xkw.com/dksih/formula/411b38a18046fea8e9fab1f9f9b80a5f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中，</span><img  src=\"https://img.xkw.com/dksih/formula/2a30f3a8b673cc28bd90c50cf1a35281.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为边</span><img  src=\"https://img.xkw.com/dksih/formula/03902478df1a55bc99703210bccab910.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的中点，若</span><img  src=\"https://img.xkw.com/dksih/formula/d2596ac1a8301e39179b80fbd3bd3169.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则</span><img  src=\"https://img.xkw.com/dksih/formula/1d3d96958746b92bd71843bb9dbff77f.svg\" class=\"xkw-math-img\" /><span class=\"qml-bk\" index=\"1\" size=\"10\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1792031942-114651791852237200-uNtaOPqQZJJVrpPPL4pyLytULbxsGoOqfpmVlWOscFGTNdR2pqV7-Vse_1kAROGq\"><span class=\"qml-an-sq\"><span class=\"qml-an  qml-exact\"><img  src=\"https://img.xkw.com/dksih/formula/acbc6a613224461ade69362d46550474.svg\" class=\"xkw-math-img\" /></span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1792031942-114651791852237200-uNtaOPqQZJJVrpPPL4pyLytULbxsGoOqfpmVlWOscFGTNdR2pqV7-Vse_1kAROGq\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">方法一：根据数量积的运算律得到</span><img  src=\"https://img.xkw.com/dksih/formula/c1e0c1b15842698cefb330c43b4b207a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，由对称性易知</span><img  src=\"https://img.xkw.com/dksih/formula/160a5709e9b3f128cfae4a06ceabdb4c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，即可得解；方法二：设</span><img  src=\"https://img.xkw.com/dksih/formula/20208f039cb97423c584e11926643fbc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">在</span><img  src=\"https://img.xkw.com/dksih/formula/af5f1b06a56fc382feed28e01f1ad102.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">上的投影向量分别为</span><img  src=\"https://img.xkw.com/dksih/formula/dbc8b1e5c55bce554fc4a0de48279a8b.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，易知</span><img  src=\"https://img.xkw.com/dksih/formula/0b6e028fb4b3bc16cff44079a3dd681f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，根据数量积的几何意义计算可得</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">方法一：</span><img  src=\"https://img.xkw.com/dksih/formula/b1f30248638c82c8d281e18b24de2217.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/formula/ebb0b6a458731a488fcb35b71804f584.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，且由对称性易知</span><img  src=\"https://img.xkw.com/dksih/formula/160a5709e9b3f128cfae4a06ceabdb4c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/formula/43fcb26da26162a7227ca13e90bab264.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">方法二：设</span><img  src=\"https://img.xkw.com/dksih/formula/20208f039cb97423c584e11926643fbc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">在</span><img  src=\"https://img.xkw.com/dksih/formula/af5f1b06a56fc382feed28e01f1ad102.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">上的投影向量分别为</span><img  src=\"https://img.xkw.com/dksih/formula/dbc8b1e5c55bce554fc4a0de48279a8b.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，易知</span><img  src=\"https://img.xkw.com/dksih/formula/0b6e028fb4b3bc16cff44079a3dd681f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">由数量积的几何意义可知，</span><img  src=\"https://img.xkw.com/dksih/formula/49aa315b9985e4092fa5eda27111a1e5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/formula/3cb0b3f0f94b6edc0a3895ebd7b6efd8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/QBM/2025/4/25/3741473563025408/3742836393762816/EXPLANATION/f3bff25fcea34300902af42eaddaf11d.png\" width=\"328\" height=\"223\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故答案为：</span><img  src=\"https://img.xkw.com/dksih/formula/acbc6a613224461ade69362d46550474.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p></div></div>",
+  "create_date": "2025-04-27 11:23:02",
+  "paper_type_ids": [
+    22,
+    23,
+    6,
+    1,
+    45,
+    50,
+    24
+  ],
+  "course": {
+    "id": 27,
+    "name": "高中数学"
+  },
+  "catalogs": [
+    {
+      "id": 195206,
+      "name": "8.1.2 向量数量积的运算律"
+    },
+    {
+      "id": 219390,
+      "name": "三、数量积的运算性质"
+    },
+    {
+      "id": 220677,
+      "name": "四 数量积的运算律"
+    },
+    {
+      "id": 209733,
+      "name": "6.2.4 向量的数量积"
+    },
+    {
+      "id": 209581,
+      "name": "9.2.3 向量的数量积"
+    },
+    {
+      "id": 218125,
+      "name": "2向量的数量积的定义与运算律"
+    }
+  ],
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "kpoints": [
+    {
+      "id": 11335,
+      "name": "数量积的运算律"
+    },
+    {
+      "id": 11332,
+      "name": "平面向量数量积的几何意义"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "3785272045076480"
+  ]
+}

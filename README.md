@@ -1,101 +1,86 @@
-# 题目可视化工作台
-
-10 月 19 日 DeepSeek 原图实验与推荐结果见 [1019.md](1019.md)。主页面新增“数学 · 分步 SVG 与教学示例（1019）”：选择 DeepSeek 时，生成/审核显式开启 high 推理，单次输出上限各 64,000；使用原图直传无需 OCR。实验使用的精确型号为 `deepseek-v4-1-flash-261017`。固定框架与局部 JSON 修订暂保留在 `scripts/run_1019.py` 的实验配置中，未隐式改变其他页面配置的生成流程。
-
-上传一道题目的图片，生成可离线打开的 HTML 解答页，并由另一模型逐轮审核。最多返修 5 轮；每轮 HTML、截图和审核意见均留在本地。任务页面显示当前轮次、处理环节、等待时长和带时间戳的运行日志，历史任务也可查看日志。服务重启中断的任务可在原任务页点击“继续处理”，从已保存的轮次接着运行。
-
-新任务还记录上传、排队、分流与每轮生成、检查、渲染、审核的环节用时，页面上方以时间轴展示；模型接口返回用量时记录输入和输出 token，未返回则明确标注“接口未提供”。旧任务没有可靠的分段用时或 token 记录时保持空缺。五轮均未通过的任务仍标为未通过，但默认预览模型综合分最高的草稿；同分取较晚一轮，缺分排后，全部缺分时取最后一轮。可下载最佳草稿，所有轮次也可手动切换；人工评分不改变自动选择。项目目前不折算 API 费用。
-
-主页面可添加多行配置，用同一张题图比较不同 Prompt 方案、生成模型和审核模型。默认每组只运行一轮，也可选完整迭代。默认“自动识别学科”方案会对每张题图做一次数学、物理、化学或其他的短分类，并拼装相应 Prompt；另有三种数学指导、物理、化学与通用等显式方案用于对比，显式方案不调用分流模型。分类模型可在上传区选择。模型列表从各接口的目录读取；“短识图通过”只表示小图请求成功，不能保证长篇 HTML 请求成功。批量运行直接调用所选模型，不自动消耗额度做短识图测试；需要时可点击配置行中的按钮手动测试。历史页保存组合、Prompt 版本、模型接口、每轮文件和计时；同批次页面可并排预览结果。
-
-调研时还可选“固定五轮”：即使中途审核通过，也继续改进到第 5 轮并保存每轮文件；有通过轮时最终文件取模型综合评分最高的一轮。普通“完整迭代”仍在审核通过时停止。模型接口出错会保留任务日志，之后可在任务页恢复；接口未返回完整 HTML 时无法形成该轮页面文件。
-
-同一 Edumind 网关支持独立的 `edumind_alt` 密钥配置（`VISUALIZE_EDUMIND_ALT_KEY`），主页面会将它与原 `codex` 密钥分别列为模型接口。包含密钥、调用格式和实测模型状态的本地记录写在被 Git 忽略的 `api-capabilities.local.md`。
-
-## 运行
-
-需要 Python 3.10+ 和 Chrome/Chromium。Windows 建议在 WSL 中运行，在浏览器打开 `http://127.0.0.1:8000`。
-
+# Visualize Agent：题目交互式可视化与评测
+把数学、物理、化学题图生成面向学生的交互式 HTML，保存逐轮修改、模型审核、人工评分、token 与耗时。当前研究重点是用 DeepSeek 完成生成流程，用独立 GPT judge 和人工评价比较不同 workflow。
+**第一次看项目：先启动 benchmark，浏览已保存的结果，无需 API Key，也不会自动调用模型。**
+## 1. 克隆后直接看结果
+需要 Python 3.10+。以下命令从仓库根目录执行；Windows 推荐 WSL，单纯浏览 benchmark 也可直接用 Windows Python。
 ```bash
-cd /mnt/e/WORK/Visualize_Agent
+git clone -b experiment/ocr-multimodal https://github.com/RiaRrr/Visualize_Agent.git
+cd Visualize_Agent
 python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
-.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+source .venv/bin/activate
+python -m pip install -r requirements-lock.txt
+python -m uvicorn app.benchmark:standalone --host 127.0.0.1 --port 8002
 ```
-
-项目根目录的 `.env` 当前配置为 `gpt-6-sol` 生成、`gpt-5.6-sol` 审核。未设置模型变量时，程序默认用 Claude Sonnet 4.6 生成、Claude Opus 4.6 审核。Claude 密钥优先使用 `VISUALIZE_ANTHROPIC_KEY` 或 `ANTHROPIC_AUTH_TOKEN`，未设置时从 `apikeys.md` 读取。Grok 等 Responses 兼容模型读取 `VISUALIZE_API_KEY` 或 `XAI_API_KEY`。密钥文件不会由网页提供。可选设置：
-
-使用 `gpt-5.5` 等 OpenAI 模型时，服务端读取 `VISUALIZE_OPENAI_KEY`、`OPENAI_API_KEY` 或 `apikeys.md` 中 Codex 配置的 `OPENAI_API_KEY`，并通过 Responses 接口发送题图。OpenAI 密钥与 Grok 密钥分开使用。
-
-`gpt-5-codex` 等名称中包含 `-codex` 的模型使用独立的网关配置。把 `VISUALIZE_CODEX_KEY` 和 `VISUALIZE_CODEX_BASE_URL` 放在项目根目录的 `.env` 中；该文件已列入 `.gitignore`。Chat Completions 的文本、图片、输出上限、响应解析和错误处理统一写在 [app/model_api.py](app/model_api.py)。若内部网关使用未安装到系统的 CA，可在 `.env` 中设 `VISUALIZE_CODEX_VERIFY_TLS=0`；安装可信 CA 后删去这项即可恢复证书校验。网关模型列表列出模型不代表其推理通道可用，启动任务前可用网页的模型检查功能验证图片调用。
-
-当网关的 `gpt-5-codex` 推理通道可用时，将 `.env` 中的 `VISUALIZE_GENERATOR_MODEL` 改为 `gpt-5-codex` 并重启服务即可使用。接口调用遵循提供的 `POST /v1/chat/completions` 示例；图片作为 `messages[].content` 中的 `image_url` 数据 URL 发送。`max_completion_tokens` 控制生成上限。密钥仅由服务端读取。
-
-| 环境变量 | 默认值 | 作用 |
-| --- | --- | --- |
-| `VISUALIZE_BASE_URL` | `https://sub2api.minutex.cn/v1` | Responses 兼容接口地址 |
-| `VISUALIZE_OPENAI_BASE_URL` | `https://sub2api.minutex.cn/v1` | OpenAI/Codex 模型的 Responses 接口地址 |
-| `VISUALIZE_CODEX_BASE_URL` | `https://llm-gateway.edumind.ai/v1` | 独立 Codex 网关的 Chat Completions 接口地址 |
-| `VISUALIZE_ANTHROPIC_BASE_URL` | `https://sub2api.minutex.cn` | Claude Messages 兼容接口地址 |
-| `VISUALIZE_GENERATOR_MODEL` | `claude-sonnet-4-6` | 生成模型 ID |
-| `VISUALIZE_GENERATOR_MAX_TOKENS` | `16000` | 单次生成的输出上限，可试 `8192` 或 `4096`；修改后重启服务 |
-| `VISUALIZE_REVIEWER_MAX_TOKENS` | `6000` | 单次审核输出上限；推理模型输出截断时可提高 |
-| `VISUALIZE_DESCRIPTION_MAX_TOKENS` | `3000` | OCR 审核路径中截图描述的输出上限 |
-| `VISUALIZE_MODEL_TIMEOUT_SECONDS` | `300` | 单次模型请求的读写超时秒数，最多 `1800` |
-| `VISUALIZE_DEEPSEEK_THINKING` | `default` | 可设为 `disabled`，避免 DeepSeek 长任务将输出额度全部消耗于推理；网关需支持该参数 |
-| `VISUALIZE_REVIEWER_MODEL` | `claude-opus-4-6` | 审核模型 ID |
-| `VISUALIZE_DATA_DIR` | 项目内 `data/` | 历史数据目录 |
-| `VISUALIZE_USE_PROXY` | `0` | 设为 `1` 时使用系统代理访问模型网关 |
-
-图片直传模式下，对应的生成或审核模型需要支持图片输入；OCR＋文字模式下，只有识图模型需要支持图片输入。使用自动分流时，分流模型也需要支持图片输入。模型接口不兼容或图片权限不足时，任务会显示具体错误。
-
-## 本地文件
-
-每次上传建立 `data/<上传时间戳>_<任务ID>/`。原图使用 `<上传时间戳>_input.<格式>`；每轮页面使用 `<生成时间戳>_round_01.html` 这样的文件名，同前缀保存 `.png` 截图和 `.review.json` 审核结果。审核通过后另存 `<时间戳>_final.html`。`data/history.sqlite3` 为网页历史索引；手工备份时请同时复制 `data/` 整个目录。
-
-每个新配置任务还保存 `<时间戳>_config.json`，包含运行时的完整生成与审核 Prompt 快照、模型接口、模型 ID 和轮次上限；自动方案完成分流后会写入识别学科、分流模型以及实际使用的两份 Prompt。旧任务显示“配置未记录”。网页中的预览在隔离 iframe 中运行。模型生成的 HTML 仍属于自动生成内容，展示前请核对答案。
-
-每轮 HTML 旁另存同前缀的 `.meta.json`，可从轮次卡片及同题对比卡片下载。它包含该轮的模型、Prompt 方案版本、自动审核结果、文件名和人工评分；`files` 内均为相对该 JSON 所在任务目录的文件名。旧轮次会自动补建，无法确认的旧模型配置保持 `null`。`html_sha256` 用于核对评分记录对应的 HTML。评分规则 v2 包含五项 1–5 整数分：`problem_fidelity`（一致性）、`solution_correctness`（正确性）、`page_quality`（页面效果）、`interaction_quality`（交互效果）、`teaching_effectiveness`（教学效果，学生能否从零清晰了解解法）。新生成轮次要求审核模型给出这五项分数和 0–5 分综合评分，写入 `.review.json` 与 `.meta.json` 的 `model_review.scores` 和 `model_review.overall_score`；未评分或旧记录填 `null`。自动审核的 `passed` 仍用于控制是否继续迭代。`human_review.overall_score` 是独立填写的 0–5 分综合评分，不由五项分数计算；0 表示不合格，3 表示基本合格。旧人工标注自动映射为不合格 0 分、合格 3 分，原有 `passed` 字段保留在历史 JSON 中供追溯。同题对比每组占一行，桌面上左侧评分、右侧为纵向 HTML 预览；窄屏改为上下排列。卡片可选择轮次、查看模型分数并直接填写人工评分；页面下方只显示所选配置的运行进度与日志，避免重复预览。仅当 `model_review.source` 为 `model` 时，该轮的自动判定才来自审核模型；`local_validator` 表示基础检查直接拒绝，旧记录来源不明时为 `null`。
-新生成轮次的 `.meta.json` 还包含 `metrics.stages` 与 `metrics.api_calls`，用于保存各环节实际耗时和接口返回的 token 用量。缺少用量的接口不会按文本长度估算 token；自动分流在同批次中只请求一次，调用记录只写入发起请求的任务。
-
-当前本机 `.env` 将 `VISUALIZE_DATA_DIR` 指向新建的 `data_v2/`，用于重新测试；此前的 `data/` 保持原状。两个目录都被 Git 忽略。当前代码基线已保存为 Git 标签 `v1`。
-
-生成 Prompt 把页面读者设为刚读完题、尚不知道解法的学生。对斜率、参数、辅助量等非题设直接给出的表示，页面须先解释原题条件、转化依据和合法范围，再让学生操作；左右并排时，这段解释也要在控件旁边、按实际视觉阅读顺序先出现。初始值若只是示例，须明确标注。审核 Prompt 用同一学生视角评价教学效果及其余四项指标。
-
-## 可视化指导与模型对比
-
-生成 Prompt 统一由三部分拼装：[通用可视化要求](app/prompts/common_visual.md) + 学科经验 + [输入输出格式](app/prompts/io_format.md)。数学经验由 [math_current.md](app/prompts/math_current.md) 提供基础规则，可选叠加交互白板或推导工作流经验；物理、化学使用各自学科文件；“其他”只使用通用要求与输入输出格式。`{{QUESTION}}` 在请求时替换为题图说明，题图以图片内容发送。审核 Prompt 的通用核对、学科核对和 [评分输出格式](app/prompts/reviewer_format.md) 也放在 [app/prompts](app/prompts)。[分流 Prompt](app/prompts/router.md) 要求模型只返回四类 JSON。
-
-通用可视化要求以图形、动画、状态变化和交互为主，文字只作必要辅助；输入输出格式要求模型在 API 响应正文直接输出 HTML 源码，文件保存由本项目处理，不需要模型访问工作区或请求路径。审核会检查有无“开头一张图、后续关键推导全是脱节文字”的问题。Prompt 版本根据内容计算；已生成任务继续使用其保存的配置快照。项目仍对输出执行离线资源与文件大小检查。
-
-可用以下命令对本地三道题做同提示词、单轮生成对比。HTML、截图、审核意见和请求耗时保存到 `data/benchmarks/<时间戳>/`，原有任务历史不受影响：
-
+Windows PowerShell 将创建/激活虚拟环境两行换成 `python -m venv .venv`、`.venv\Scripts\Activate.ps1`，后续命令相同。
+若默认PyPI下载超时，可重试 `python -m pip install --timeout 60 -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements-lock.txt`；只影响本次安装，不修改全局源。
+打开 **http://127.0.0.1:8002/benchmark**。这不是静态的 HTML 首页，不能直接双击 `web/benchmark.html`；它需要上面的本地服务提供题目与评分数据。生成的单个解题 HTML 则可以直接用浏览器打开。
+页面包含：36道候选题及知识点、原题与参考解、交互式解题页面、五维人工评分与综合分、已有 GPT 评分理由、workflow 介绍。截图和已保存页面已随仓库提供，浏览不需要安装服务端 Chrome。
+已保存的人工评分者编号是 `primary`。自己评分时在页面改用新的编号（如 `senior`），保留原始评分；修改会保存历史。服务默认只监听本机。
+先读 [首批人工评分与成本汇总](benchmark/reports/分享汇总.md)，或者打开 [化学 W1 示例](http://127.0.0.1:8002/benchmark?sample=B50DFB016)。目录和完整操作说明见 [benchmark/README.md](benchmark/README.md)。
+## 2. 当前包含哪些实验和数据
+| 实验 | 数据与模型 | workflow / 状态 | 记录 |
+| --- | --- | --- | --- |
+| 原图与 OCR 对照 | 直角三角形等历史题；Qwen `qwen3.6-35b-a3b` 生成、`qwen3.6-flash` 识图/审核，另探索 DeepSeek 文本生成 | 原图直传 vs 一次题目OCR＋逐轮页面描述；已做，小样本，不能混入当前统一benchmark | [OCR对照实验](OCR对照实验.md)、[方案比较](方案比较.md) |
+| 直接生成 vs 规划后生成 | 三角形、抛物线、双曲线/椭圆历史题；Qwen Flash、DeepSeek Flash，并跟进 260910/261017 型号 | 结构化解题/交互规划→核对→HTML；复杂题仍会出现数学或代码错误，规划不保证更好 | [数学可视化迁移实验](数学可视化迁移实验.md) |
+| DeepSeek 原图改进 | 历史几何题；`deepseek-v4-1-flash-261017`，参考已有 GPT 页面可观察到的设计 | 尝试通用/强化规则、教学示例、SVG、固定模板、推理强度、局部补丁；GPT不在这批生成链路中 | [1019实验](1019.md) |
+| 当前统一 benchmark pilot-v1 | 36道候选题中先用数理化各1道开发题；DeepSeek 261017生成与内部审核 | W0单轮、W1三轮整页修订、W2三轮局部修订；9任务、21轮HTML、9选中页面 | [benchmark说明](benchmark/README.md) |
+| 当前独立评价 | 上述9份页面；`gpt-5.6-sol`＋用户人工评分 | 9份旧版GPT联合评分、9份人工评分均已保存；新的五维独立call＋综合call已实现，尚未重评 | [评分与费用](benchmark/reports/分享汇总.md)、[judge说明](benchmark/evaluation/README.md) |
+历史模型ID和可用性是当时网关的实验记录，不保证其他账号或今天同名接口可用。历史使用过 GPT/Codex 页面作参考；当前benchmark生成、内部审核、修订全部是 DeepSeek，没有 GPT 生成费用混入。
+仓库包含36道候选题的题图、原文、参考资料，以及当前pilot的21轮产物；另外归档了2道历史题的3份人工评分页面。完整历史 `data/`、`data_v2/`、`data_compare/` 和1875题的原始大题库不随仓库分发，历史报告里的本机历史路径不属于可直接打开的当前benchmark样本。
+## 3. 流程与模型
+```mermaid
+flowchart LR
+  A[题目图片] --> G[DeepSeek 生成HTML]
+  G --> C[本地HTML检查与浏览器渲染]
+  C --> R[DeepSeek 内部审核]
+  R -->|需要修订且有剩余轮次| G
+  R --> S[内部综合分最高轮：同分选后轮]
+  S --> H[人工评分]
+  S --> J[GPT独立评分：含参考答案]
+```
+生成提示词由 **通用可视化要求＋学科经验＋输入输出要求** 组成，均在 `app/prompts/`。普通工作台可自动分流数理化/其他，也支持显式选择学科、图片直传/OCR、规划生成和局部修订。
+当前benchmark已知学科，直接使用学科提示，不额外调用分流或OCR；参考答案不进入生成与内部审核。W0也做一次内部审核用于记录，只是不返修。W1/W2固定3轮，即使提前通过也保存后续轮次。各组首轮独立生成，未共用随机种子或同一初稿，所以还不是完全消除随机性的修订实验。
+独立GPT看原题、参考解、完整源码、页面截图和操作记录，不看人工评分，也不把意见反馈给生成流程。新judge将一致性、正确性、页面效果、交互效果、教学效果拆成5次互不传分的调用，综合分另1次。
+## 4. 配置自己的 Key，生成新页面
+只有重新生成/评测才需要模型账号；浏览随仓库提供的数据不需要。复制配置模板后填入自己的密钥：
 ```bash
-.venv/bin/python scripts/compare_generators.py
+cp .env.example .env
 ```
-
-## 测试
-
-### OCR 与图片直传对照
-
-数学题现在另有可选的“数学规划＋核对＋生成”策略，须显式选择数学 Prompt 方案，支持原图直传和 OCR＋文字输入。它先让所选生成模型输出公开的解题与交互规划 JSON，再由所选审核模型单独核对（沿用审核输入方式），最多修订两次；通过后仍使用原版数学 HTML Prompt，加上已核对规划生成页面。默认“直接生成”策略、原 Prompt 和现有历史不受影响。规划原文、逐次核对意见、API 用时与 token 单独保存；任务页及同题对比卡片可展开查看每次规划、核对意见和已通过的最终规划，并下载原始记录。两端均选图片输入时不会调用 OCR；规划、核对和 HTML 生成都直接接收原图。历史任务恢复沿用原配置。规划核对与 HTML 自动审核都不能代替人工数学核查。实现和实验口径见 `数学可视化迁移实验.md`。
-
-上传区的每组配置可分别选择生成和审核的输入方式：`直接输入图片` 或 `OCR 描述＋文本模型`。点击“加入 OCR 对照”可添加两组同模型配置，用一张题图比较完整链路；生成模型默认 `edumind_alt/qwen3.6-35b-a3b`，审核与识图模型默认 `edumind_alt/qwen3.6-flash`。两组的 Prompt 方案和轮次设置相同。原有任务或未传入新选项的 API 请求仍按图片直传运行。
-
-需要文字输入时，先用识图模型转写原题文字、条件及图形关系，存为 `<时间戳>_question_ocr.md`。同任务后续轮次直接复用；同批次且识图模型相同的任务也复用该结果。文字生成模型只收到这份转写和生成 Prompt。文字审核还会让识图模型每轮描述页面截图，存为 `<时间戳>_round_XX.page_description.md`，再把原题 OCR、当轮截图描述和 HTML 源码交给文本审核模型；原题无需逐轮重新 OCR。图片直传审核仍接收原图与当轮截图。各调用会记录到 `api_calls`，配置快照和 `.meta.json` 记录所选方式与文件名。
-
-模型选择器显示 2026-10-16 的短文本与短识图测试状态。识图下拉框及图片直传模式只列出已通过图片输入测试的入口；已知只支持文本的别名仍可用于文字生成或文字审核。实测列表在 [app/model_capabilities.py](app/model_capabilities.py)，本地带密钥的详细记录在被 Git 忽略的 `api-capabilities.local.md`。短测只验证接口可接收输入，不保证完整 HTML 质量。配置行的短识图按钮仅在手动点击时调用接口。
-
+- DeepSeek：填写 `VISUALIZE_CODEX_KEY` 与 `VISUALIZE_CODEX_BASE_URL`，使用兼容的 Chat Completions 网关；实验的精确模型ID是 `deepseek-v4-1-flash-261017`，provider 为 `codex`（这里是接口配置名）。
+- GPT judge：填写 `VISUALIZE_OPENAI_KEY` 与 `VISUALIZE_OPENAI_BASE_URL`，后者必须换成你可用的 Responses 兼容地址；模型配置在 `benchmark/evaluation/judge_registry.json`。
+- `.env`、真实密钥、本机历史目录均被Git忽略。系统环境变量优先于`.env`。示例地址和模型不是免费公共服务，访问权限由自己的网关账号决定。
+生成和重新截图需要 Linux/WSL 中已安装 Chrome/Chromium，且命令 `google-chrome`、`chromium` 或 `chromium-browser` 至少一个在 PATH；浏览已有页面不需要这个服务端依赖。使用有图形浏览器权限的普通用户启动。
+启动完整上传工作台：
 ```bash
-.venv/bin/pytest -q
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
-
-## 分步 SVG 与局部修订
-
-选择“数学 · 分步 SVG＋局部修订（1019）”，生成与审核均选 `deepseek-v4-1-flash-261017`、输入方式均选“直接输入图片”。首轮输出完整 HTML，后续按审核反馈返回精确代码替换 JSON，本地组装完整页面后再渲染与审核。DeepSeek 首轮与审核使用 high 推理，局部修订使用 low，上限各 64,000 token。每轮保留完整 HTML、审核结果、用量及原始补丁；无效补丁不会部分写入，记录为本地失败并交下一轮修复。选择“单轮”只会生成一次，不会触发修订；要比较各轮可选“固定五轮”。
-
-原“分步 SVG 与教学示例”配置保持整页返修。新配置的协议可在页面 Prompt 预览和任务配置快照中查看。针对历史两道题的数学验算仍是独立实验工具，不是任意题目的自动证明器。
-
-## 人民币费用显示
-
-任务时间轴、每轮汇总、各模型调用环节和同题对比卡片显示“已知缓存费约 ¥…（非总费用）”，与耗时并列。按用户指定的人民币单价（读取 ¥1.44、写入 ¥5.76 / 百万 token）计算，仅适用于 `codex/deepseek-v4-1-flash-261017`。未返回的用量及未配置价格的模型显示未知，不将输入/输出的“—”当作免费，也不把未命中输入推算为缓存写入。任务汇总含前置环节和已记录用量的失败调用，单轮仅计该轮调用，推理 token 不另加。金额是当前单价下的展示估算，不修改历史用量，也不代表网关实际账单。
+打开 http://127.0.0.1:8001 ，上传图片，选择模型、学科提示与轮次。模板默认将新数据写入相对目录 `data_local/`。手动选择 DeepSeek 和图片直传；模型下拉只将已通过历史图片测试的入口列为识图可用。模型目录可查询，但不会自动跑短识图测试，测试按钮仅在点击时调用。
+默认单轮与完整迭代/固定五轮可切换；普通迭代通过即停，达到上限仍未通过时保留最佳草稿。原图、每轮HTML、截图、审核和配置快照按时间戳保存，任务页可切轮、看日志、看每轮与整个任务的token和耗时。
+批量benchmark运行及单样本重评命令见 [benchmark/README.md](benchmark/README.md)。不要为浏览已有结果运行生成脚本。
+## 5. 人民币成本口径
+用户确认的价格，单位为人民币／百万token（MTok），不是缓存读写价：
+| 模型 | 输入 | 输出 |
+| --- | ---: | ---: |
+| deepseek-v4-1-flash-261017 | ¥1.20 | ¥4.80 |
+| gpt-5.6-sol | ¥5.00 | ¥30.00 |
+估算 = 输入token×输入价/百万＋输出token×输出价/百万。缓存token属于输入子项，推理token属于输出子项，不重复加价；暂不另设缓存折扣。模型价格取自用户提供的信息，估算不代表网关账单。
+首批DeepSeek已知1,620,461 token，约¥6.0857；GPT旧评分259,160 token，约¥1.6678；合计已知1,879,621 token、约**¥7.7535**。另有16次失败调用未返回usage，未算入价格，不当作免费。新六次judge尚未运行。
+## 6. 仓库结构
+| 路径 | 内容 |
+| --- | --- |
+| `app/` | FastAPI、模型调用、生成审核流程、存储、浏览器渲染 |
+| `app/prompts/` | 生成、审核、教学效果、学科与格式提示 |
+| `web/` | 上传工作台与benchmark浏览/评分界面 |
+| `benchmark/` | 36题、当前实验快照、逐轮HTML、人工与模型评分、报告 |
+| `scripts/` | 实验运行、准备题库、评分、无模型调用的数据汇总 |
+| `tests/` | 调用协议、评分、存储、批处理及成本等测试 |
+| `docs/reports/` | 阶段工作汇报；根目录日期/实验文档保留探索过程 |
+| `.env.example` | 可复制的无密钥配置模板 |
+`requirements-lock.txt` 固定了本次干净环境验收使用的依赖版本；`requirements.txt` 保留开发时允许的版本范围。验收步骤与边界见 [验收清单](docs/验收清单.md)。
+## 7. 测试与下一步
+```bash
+python -m pytest -q
+node --test tests/test_cost_display.cjs
+```
+Python测试使用mock，不发起付费模型调用。Node命令只用于前端费用计算测试，启动服务不需要Node。
+下一步：冻结新judge版本，在已有人评分页面上检验逐维评分是否更接近人工；再扩展开发题、按题而非HTML划分校准/验证，比较同题多次运行的质量与费用；最后才在留出集做最终检验。当前只有3道独立试运行题，尚不能判断哪种workflow最好。

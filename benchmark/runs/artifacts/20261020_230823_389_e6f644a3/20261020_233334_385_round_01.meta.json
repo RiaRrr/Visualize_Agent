@@ -1,0 +1,254 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261020_230823_389_e6f644a3:1",
+  "task_id": "20261020_230823_389_e6f644a3",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 1,
+  "created_at": "2026-10-20T23:33:34.420439+08:00",
+  "files": {
+    "image": "20261020_230823_389_input.png",
+    "html": "20261020_233334_385_round_01.html",
+    "screenshot": "20261020_233334_385_round_01.png",
+    "model_review": "20261020_233334_385_round_01.review.json",
+    "config": "20261020_230823_389_config.json",
+    "model_review_raw": "round_01.model_review_raw.txt"
+  },
+  "html_sha256": "d8d5283e1e9d58d759d1c24af288c20c3944f7bd5ff91ba9737cbb6c3228fbd8",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "math-deepseek",
+    "name": "数学 · 分步 SVG 与教学示例（1019）",
+    "version": "7fa646244866",
+    "subject": "math"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "原题函数、默认点 x=3 时 y=−17、配方顶点 (1,−13)、等号条件和最终值域 (−∞,−13] 均正确，步骤覆盖了上限与可达性。首屏清晰，但“拖动红点 P”与实际控制不符，播放路径只走单侧，且扫描到 −13 时两处标签按源码坐标会重叠，影响关键端点观察。",
+    "issues": [
+      "步骤1说明“拖动红点 P”，但源码只给横坐标滑块绑定了 input 事件，P 点本身没有拖拽监听；学生按提示拖动会无反馈。应改为“拖动下方横坐标滑块”，或为 P 添加指针拖拽并同步滑块、读数和投影线。",
+      "步骤4将扫描高度拖到 −13 或点击“扫到 −13”时，#maxLineLabel 与 #scanLabel 都位于 x≈858、y≈263–265，文本“最高高度 y=−13”和“y=−13.0”会重叠，扫描线还与最高高度线重合。应隐藏或上移最高高度标签，或把扫描标签移到左侧，并给重合线不同样式。",
+      "播放按钮的路径不完整：非扫描状态从默认 x=3 只向右移动到 4.65 后停住，不能展示“先升后降”；扫描状态从 −20 单调升到 −13 后也基本停住。建议用统一进度参数在显示区间内完整往返扫描，或在到达端点后复位并更新按钮为“重播”。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 4,
+      "interaction_quality": 3,
+      "teaching_effectiveness": 4
+    },
+    "overall_score": 4
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 4,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:08:23.911386+08:00",
+        "ended_at": "2026-10-20T23:08:29.956275+08:00",
+        "duration_seconds": 6.044889,
+        "status": "error"
+      },
+      {
+        "id": 6,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:08:33.330830+08:00",
+        "ended_at": "2026-10-20T23:08:38.698920+08:00",
+        "duration_seconds": 5.36809,
+        "status": "error"
+      },
+      {
+        "id": 20,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:18:09.192475+08:00",
+        "ended_at": "2026-10-20T23:22:25.714501+08:00",
+        "duration_seconds": 256.522026,
+        "status": "error"
+      },
+      {
+        "id": 22,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:22:35.375475+08:00",
+        "ended_at": "2026-10-20T23:32:00.541279+08:00",
+        "duration_seconds": 565.165804,
+        "status": "completed"
+      },
+      {
+        "id": 23,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-20T23:32:00.541279+08:00",
+        "ended_at": "2026-10-20T23:32:00.773430+08:00",
+        "duration_seconds": 0.232151,
+        "status": "completed"
+      },
+      {
+        "id": 24,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-20T23:32:00.773430+08:00",
+        "ended_at": "2026-10-20T23:32:04.109594+08:00",
+        "duration_seconds": 3.336164,
+        "status": "completed"
+      },
+      {
+        "id": 25,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "round_number": 1,
+        "stage": "reviewing",
+        "started_at": "2026-10-20T23:32:04.109594+08:00",
+        "ended_at": "2026-10-20T23:33:34.646205+08:00",
+        "duration_seconds": 90.536611,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 2,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:08:29.927783+08:00",
+        "duration_seconds": 5.850003102998016,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 4,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:08:38.663951+08:00",
+        "duration_seconds": 5.134126584001933,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 14,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:22:23.371919+08:00",
+        "duration_seconds": 251.47081670799525,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 16,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:24:23.815037+08:00",
+        "duration_seconds": 107.9009959929972,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 17,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:32:00.400027+08:00",
+        "duration_seconds": 398.0292720639991,
+        "status": "completed",
+        "input_tokens": 3307,
+        "output_tokens": 40847,
+        "cached_input_tokens": 3200,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 30041,
+        "total_tokens": 44154
+      },
+      {
+        "id": 19,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:33:34.329833+08:00",
+        "duration_seconds": 89.96670159700443,
+        "status": "completed",
+        "input_tokens": 13818,
+        "output_tokens": 12962,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 12577,
+        "total_tokens": 26780
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "sample_id": "BBE082C36",
+  "question_id": "math_001",
+  "set": "calibration",
+  "html_sha256": "d9c9df54bd4a63f484f9bc755c97a9919a3693b3f62a42095e382353bb3d12ca",
+  "judge_id": "gpt_56",
+  "model": "gpt-5.6-sol",
+  "judge_version": "c3fcf583bc0c",
+  "evidence_sha256": "3becbafd9773d3ab19d634a32489570a652edb10a9124112de434bdb981d3d74",
+  "image_inputs": [
+    {
+      "name": "input.png",
+      "sha256": "b3e38e164e8716d4a6b7d8f4d289bd020ac06d0bf6cbe3689ba18422f278f43c"
+    },
+    {
+      "name": "answer.png",
+      "sha256": "7a27a7a7291f0db3b9b3fe895313df5cd2b650aa25d7934fc87b8a61b2862ab3"
+    },
+    {
+      "name": "explanation.png",
+      "sha256": "c04d60648cac97f365add9d15955cd3dba20ca5ce7bdc20c87df2edf0e149ecd"
+    },
+    {
+      "name": "00_initial.png",
+      "sha256": "f671a109416af3840d746f211d0651a80e17543ec22e02a6861691dcb970cb0a"
+    },
+    {
+      "name": "01_next_step.png",
+      "sha256": "85ba7a6f5b0dc1bbf0a2cdbf8f423ea42a92422ed3b83a945a64e79b0aaaa3d8"
+    },
+    {
+      "name": "02_slider_mid.png",
+      "sha256": "9c8ed216f8dfe9e50bd383f7ec8db92cfe55a5971a28df26bec8925f3572a25d"
+    },
+    {
+      "name": "03_slider_high.png",
+      "sha256": "ad3784fbd101d40b1f5bd116571275975a9118ba6d431d2fb1ecb36c5e1fac61"
+    }
+  ],
+  "created_at": "2026-10-20T15:59:02.986721+00:00",
+  "status": "completed",
+  "judgment": {
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 5,
+      "interaction_quality": 5,
+      "teaching_effectiveness": 5
+    },
+    "overall_score": 5,
+    "issues": [],
+    "evidence": {
+      "problem_fidelity": "原题为求函数 y=-x²+2x-14 的值域，页面完整保留了函数、求值域任务及实数定义域语境，没有增删条件或把原题系数改成自由变量。",
+      "solution_correctness": "独立核算得 y=-(x-1)²-13，因此 y≤-13，x=1 时取等；任意 y≤-13 均可由 x=1±√(-13-y) 取得，值域为 (-∞,-13]。页面的配方、顶点 (1,-13)、不等式、交点公式及最终区间均正确；截图中 x=3 时 y=-17、x=5.2 时 y=-30.64 也与函数一致。",
+      "page_quality": "1280×900 截图中题目、曲线、坐标刻度、顶点、投影线、步骤导航、推导区和控制区均清楚可读，未见文字或公式重叠、明显裁切。横纵轴比例不同及有限显示范围也有明确说明。",
+      "interaction_quality": "实际记录验证了“下一步”和横坐标滑块的中点、上边界操作：状态从观察切换到配方步骤，滑块到 x=1 和 x=5.2 时，点、投影线及读数同步更新，且无运行错误。源码还设置了步骤直达、上一步、播放/暂停、到顶点、红点拖动和第四步高度扫描的联动；但操作记录未实际覆盖回退、播放、红点拖动及第三、四步高度扫描，因此这些交互的视觉结果主要依据源码，不能视为截图实测。",
+      "teaching_effectiveness": "内容按“观察开口与高度变化—配方找顶点—由平方项得到上限—扫描并证明所有 y≤-13 均可取得”的顺序展开，既解释最大值为何是 -13，也说明向下无界及区间端点为何闭合，适合尚不知道解法的学生逐步理解。"
+    },
+    "reference_concern": "",
+    "summary": "题设、推导和答案一致且数学上正确。桌面布局清晰，已执行的滑块与步骤切换联动正常；其余交互从源码看设计完整，但部分未被实际操作记录覆盖。"
+  },
+  "duration_seconds": 36.70973308599787,
+  "usage": {
+    "input_tokens": 26490,
+    "output_tokens": 1125,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 554,
+    "total_tokens": 27615
+  }
+}

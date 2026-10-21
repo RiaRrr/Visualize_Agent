@@ -1,0 +1,499 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261020_230823_389_e6f644a3/20261020_233626_459_round_02.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "二次函数 · 值域实验台\n看见 y = −x2 + 2x − 14 的值域\n\n先沿着曲线看高度怎样变化，再把“最高位置”从式子里找出来，最后扫描每一个可能的高度。\n\n题目\n函数 y = −x2 + 2x − 14 的值域是 ？\n当前图形\n看整条曲线\n1\n看曲线\n2\n找顶点\n3\n高度上限\n4\n扫描高度\n值域\n−13\n−∞\nx\ny\n−3\n−2\n−1\n0\n1\n2\n3\n4\n5\n−5\n−10\n−15\n−20\n−25\n−30\n横、纵轴单位长度不同；图形只显示其中一段范围\n最高高度 y = −13\n顶点 (1, −13)\n对称轴 x = 1\nP\ny = −17.00\n动点横坐标\nx\n拖滑块，或直接拖动红点 P\nx = 3.00　y = −17.00\n播放\n到最高处\n步骤 1 / 4 · 观察\n整条曲线在说什么？\n\n二次项系数是 −1，所以抛物线开口向下。拖动下方横坐标滑块，或直接拖动红点 P，比较它在不同位置的高度。\n\n观察：高度先升后降，顶点附近出现最高位置。\n原函数：y = −x2 + 2x − 14\n先不急着算：让图形告诉你最高处大概在哪里。\n上一步\n下一步\n主图按函数图像的显示范围绘制，横、纵轴单位长度不同；x 滑块只覆盖显示范围 −3.2 到 5.2，而函数本身对所有实数 x 都有定义。扫描高度只演示 −30 到 −13，抛物线还会继续向下无限延伸。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n看曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n找顶点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\n高度上限",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\n扫描高度",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "xSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "3",
+          "min": "-3.2",
+          "max": "5.2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "ySlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "-20",
+          "min": "-30",
+          "max": "-13",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "keyBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "到最高处",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": true
+        },
+        {
+          "index": 9,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "click",
+            "label": "下一步"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "二次函数 · 值域实验台\n看见 y = −x2 + 2x − 14 的值域\n\n先沿着曲线看高度怎样变化，再把“最高位置”从式子里找出来，最后扫描每一个可能的高度。\n\n题目\n函数 y = −x2 + 2x − 14 的值域是 ？\n当前图形\n配方找顶点\n1\n看曲线\n2\n找顶点\n3\n高度上限\n4\n扫描高度\n值域\n−13\n−∞\nx\ny\n−3\n−2\n−1\n0\n1\n2\n3\n4\n5\n−5\n−10\n−15\n−20\n−25\n−30\n横、纵轴单位长度不同；图形只显示其中一段范围\n最高高度 y = −13\n顶点 (1, −13)\n对称轴 x = 1\nP\ny = −17.00\n动点横坐标\nx\n拖滑块，或直接拖动红点 P\nx = 3.00　y = −17.00\n播放\n到顶点\n步骤 2 / 4 · 找最高位置\n把“最高点”从式子里找出来\n\n配方不改变函数，只把抛物线写成“顶点式”。绿色竖线是对称轴，绿色点是顶点。\n\n顶点式里，平方项会直接告诉我们最高高度。\ny = −x2 + 2x − 14\n　= −(x2 − 2x) − 14\n　= −[(x − 1)2 − 1] − 14\n　= −(x − 1)2 − 13\n顶点： (1, −13)\n上一步\n下一步\n主图按函数图像的显示范围绘制，横、纵轴单位长度不同；x 滑块只覆盖显示范围 −3.2 到 5.2，而函数本身对所有实数 x 都有定义。扫描高度只演示 −30 到 −13，抛物线还会继续向下无限延伸。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n看曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n找顶点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\n高度上限",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\n扫描高度",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "xSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "3",
+          "min": "-3.2",
+          "max": "5.2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "ySlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "-20",
+          "min": "-30",
+          "max": "-13",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "keyBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "到顶点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "1"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "二次函数 · 值域实验台\n看见 y = −x2 + 2x − 14 的值域\n\n先沿着曲线看高度怎样变化，再把“最高位置”从式子里找出来，最后扫描每一个可能的高度。\n\n题目\n函数 y = −x2 + 2x − 14 的值域是 ？\n当前图形\n配方找顶点\n1\n看曲线\n2\n找顶点\n3\n高度上限\n4\n扫描高度\n值域\n−13\n−∞\nx\ny\n−3\n−2\n−1\n0\n1\n2\n3\n4\n5\n−5\n−10\n−15\n−20\n−25\n−30\n横、纵轴单位长度不同；图形只显示其中一段范围\n最高高度 y = −13\n顶点 (1, −13)\n对称轴 x = 1\nP = 顶点\ny = −13.00\n动点横坐标\nx\n拖滑块，或直接拖动红点 P\nx = 1.00　y = −13.00\n播放\n到顶点\n步骤 2 / 4 · 找最高位置\n把“最高点”从式子里找出来\n\n配方不改变函数，只把抛物线写成“顶点式”。绿色竖线是对称轴，绿色点是顶点。\n\n顶点式里，平方项会直接告诉我们最高高度。\ny = −x2 + 2x − 14\n　= −(x2 − 2x) − 14\n　= −[(x − 1)2 − 1] − 14\n　= −(x − 1)2 − 13\n顶点： (1, −13)\n上一步\n下一步\n主图按函数图像的显示范围绘制，横、纵轴单位长度不同；x 滑块只覆盖显示范围 −3.2 到 5.2，而函数本身对所有实数 x 都有定义。扫描高度只演示 −30 到 −13，抛物线还会继续向下无限延伸。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n看曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n找顶点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\n高度上限",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\n扫描高度",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "xSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "1",
+          "min": "-3.2",
+          "max": "5.2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "ySlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "-20",
+          "min": "-30",
+          "max": "-13",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "keyBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "到顶点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "5.2"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "二次函数 · 值域实验台\n看见 y = −x2 + 2x − 14 的值域\n\n先沿着曲线看高度怎样变化，再把“最高位置”从式子里找出来，最后扫描每一个可能的高度。\n\n题目\n函数 y = −x2 + 2x − 14 的值域是 ？\n当前图形\n配方找顶点\n1\n看曲线\n2\n找顶点\n3\n高度上限\n4\n扫描高度\n值域\n−13\n−∞\nx\ny\n−3\n−2\n−1\n0\n1\n2\n3\n4\n5\n−5\n−10\n−15\n−20\n−25\n−30\n横、纵轴单位长度不同；图形只显示其中一段范围\n最高高度 y = −13\n顶点 (1, −13)\n对称轴 x = 1\nP\ny = −30.64\n动点横坐标\nx\n拖滑块，或直接拖动红点 P\nx = 5.20　y = −30.64\n播放\n到顶点\n步骤 2 / 4 · 找最高位置\n把“最高点”从式子里找出来\n\n配方不改变函数，只把抛物线写成“顶点式”。绿色竖线是对称轴，绿色点是顶点。\n\n顶点式里，平方项会直接告诉我们最高高度。\ny = −x2 + 2x − 14\n　= −(x2 − 2x) − 14\n　= −[(x − 1)2 − 1] − 14\n　= −(x − 1)2 − 13\n顶点： (1, −13)\n上一步\n下一步\n主图按函数图像的显示范围绘制，横、纵轴单位长度不同；x 滑块只覆盖显示范围 −3.2 到 5.2，而函数本身对所有实数 x 都有定义。扫描高度只演示 −30 到 −13，抛物线还会继续向下无限延伸。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n看曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n找顶点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\n高度上限",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\n扫描高度",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "xSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "5.2",
+          "min": "-3.2",
+          "max": "5.2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "ySlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "-20",
+          "min": "-30",
+          "max": "-13",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "keyBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "到顶点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

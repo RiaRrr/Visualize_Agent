@@ -1,0 +1,73 @@
+{
+  "id": "4111203501596672",
+  "course_id": 29,
+  "type_id": "290801",
+  "kpoint_ids": [
+    16958
+  ],
+  "catalog_ids": [
+    195058,
+    202735,
+    210065,
+    220869,
+    230570
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.65,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M41x8PBmOQRD-u_nIS4MFgP\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">某小组探究线圈的自感现象，实验电路如图所示，其中</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">和</span><img  src=\"https://img.xkw.com/dksih/formula/b34a75c2a392f235c5f07b91d9fb58d5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">是两个相同的灯泡，线圈的自感系数很大。下列选项正确的是（</span><span style=\"font-family: 'Times New Roman';\"><span style=\"font-family: 'Times New Roman'\" qml-space-size=\"5\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span style=\"font-family: 宋体;\">）</span></p><p style=\"text-align: left;\"><img  class=\"after-split-date\" height=\"144\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/e8343068-f6a1-4c36-83cf-df2723ba09ba.png\" width=\"182\" /></p><div class=\" qml-og\"><table class=\"qml-og\" style=\"width:100%\"><tr><td>A.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">闭合</span><img  src=\"https://img.xkw.com/dksih/formula/a454a2c91ace8ef50412a6adf91f8086.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，稳定后缓慢减小</span><img  src=\"https://img.xkw.com/dksih/formula/4aa0df7f1e45f9de29e802c7f19a4f64.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的阻值，</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">亮度不变，</span><img  src=\"https://img.xkw.com/dksih/formula/b34a75c2a392f235c5f07b91d9fb58d5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">变亮</span></span></td></tr><tr><td>B.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">闭合</span><img  src=\"https://img.xkw.com/dksih/formula/a454a2c91ace8ef50412a6adf91f8086.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">缓慢变亮</span></span></td></tr><tr><td>C.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">断开</span><img  src=\"https://img.xkw.com/dksih/formula/a454a2c91ace8ef50412a6adf91f8086.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的瞬间，通过</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的电流方向改变</span></span></td></tr><tr><td colspan=\"1\">D.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">断开</span><img  src=\"https://img.xkw.com/dksih/formula/a454a2c91ace8ef50412a6adf91f8086.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的瞬间，通过</span><img  src=\"https://img.xkw.com/dksih/formula/b34a75c2a392f235c5f07b91d9fb58d5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的电流方向改变</span></span></td></tr></table></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M41x8PBmOQRD-u_nIS4MFgP\"><span class=\"qml-an-sq\"><span class=\"qml-an qml-isop \">BD</span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M41x8PBmOQRD-u_nIS4MFgP\"><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">由图可知电路结构为</span><span style=\"font-weight: bold;font-family: 宋体;\">：</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">L</span><span style=\"font-family: 宋体;\">与</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">串联为一条支路，</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">R</span><span style=\"font-family: 宋体;\">与</span><img  src=\"https://img.xkw.com/dksih/formula/b34a75c2a392f235c5f07b91d9fb58d5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">串联为另一条支路，两条支路并联后，再与电源、开关</span><span style=\"font-family: 'Times New Roman';\">S</span><span style=\"font-family: 宋体;\">、滑动变阻器</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">R</span><sub word-font=\"Times New Roman\"><span>1</span></sub><span style=\"font-family: 宋体;\">串联</span><span style=\"font-weight: bold;font-family: 宋体;\">。</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">．闭合</span><span style=\"font-family: 'Times New Roman';\">S</span><span style=\"font-family: 宋体;\">稳定后缓慢减小</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">R</span><span style=\"font-family: 宋体;\">的阻值，并联总电阻减小，总电流增大，电源内阻</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">r</span><span style=\"font-family: 宋体;\">和</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">R</span><sub word-font=\"Times New Roman\"><span>1</span></sub><span style=\"font-family: 宋体;\">的分压增大，并联部分的电压会减小，因此</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的电流减小、亮度变暗；同时并联电压减小的过程中，线圈</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">L</span><span style=\"font-family: 宋体;\">的自感会阻碍电流的减小，使</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">亮度逐渐变暗；总电流变大，则流过</span><img  src=\"https://img.xkw.com/dksih/formula/b34a75c2a392f235c5f07b91d9fb58d5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">支路的电流变大，</span><img  src=\"https://img.xkw.com/dksih/formula/b34a75c2a392f235c5f07b91d9fb58d5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">变亮，故</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">．闭合</span><span style=\"font-family: 'Times New Roman';\">S</span><span style=\"font-family: 宋体;\">瞬间，线圈</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">L</span><span style=\"font-family: 宋体;\">的自感电动势会阻碍自身支路电流的增大，因此</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的电流是从</span><span style=\"font-family: 'Times New Roman';\">0</span><span style=\"font-family: 宋体;\">开始逐渐增大的，</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">缓慢变亮，故</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">正确；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">．闭合</span><span style=\"font-family: 'Times New Roman';\">S</span><span style=\"font-family: 宋体;\">稳定时，</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">L</span><span style=\"font-family: 宋体;\">支路的电流方向是从左向右经过</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">；断开</span><span style=\"font-family: 'Times New Roman';\">S</span><span style=\"font-family: 宋体;\">瞬间，线圈</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">L</span><span style=\"font-family: 宋体;\">作为自感电源维持自身电流大小、方向不变，因此通过</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的电流方向依然是从左向右，没有发生改变，故</span><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">．闭合</span><span style=\"font-family: 'Times New Roman';\">S</span><span style=\"font-family: 宋体;\">稳定时，</span><img  src=\"https://img.xkw.com/dksih/formula/b34a75c2a392f235c5f07b91d9fb58d5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的电流方向是从左向右；断开</span><span style=\"font-family: 'Times New Roman';\">S</span><span style=\"font-family: 宋体;\">后，电源被切断，</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">L</span><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/b34a75c2a392f235c5f07b91d9fb58d5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">R</span><span style=\"font-family: 宋体;\">构成闭合的自感回路，回路电流方向为</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">L</span><span style=\"font-family: 宋体;\">右端</span><span style=\"font-family: 'Times New Roman';\">→</span><img  src=\"https://img.xkw.com/dksih/formula/024e2379c58191758f8bd7602a6bcb9f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">右端</span><span style=\"font-family: 'Times New Roman';\">→</span><img  src=\"https://img.xkw.com/dksih/formula/b34a75c2a392f235c5f07b91d9fb58d5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">右端</span><span style=\"font-family: 'Times New Roman';\">→</span><img  src=\"https://img.xkw.com/dksih/formula/b34a75c2a392f235c5f07b91d9fb58d5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">左端</span><span style=\"font-family: 'Times New Roman';\">→</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">R</span><span style=\"font-family: 'Times New Roman';\">→</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">L</span><span style=\"font-family: 宋体;\">左端，因此通过</span><img  src=\"https://img.xkw.com/dksih/formula/b34a75c2a392f235c5f07b91d9fb58d5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的电流方向变为从右向左，和原方向相反，发生了改变，故</span><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">正确。</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故选</span><span style=\"font-family: 'Times New Roman';\">BD</span><span style=\"font-family: 宋体;\">。</span></p></div></div>",
+  "create_date": "2026-09-29 22:07:50",
+  "paper_type_ids": [
+    12
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 195058,
+      "name": "4. 互感和自感"
+    },
+    {
+      "id": 202735,
+      "name": "第四节 互感和自感"
+    },
+    {
+      "id": 210065,
+      "name": "第3节 自感现象与涡流"
+    },
+    {
+      "id": 220869,
+      "name": "4. 自感"
+    },
+    {
+      "id": 230570,
+      "name": "第一节 自感现象和涡流现象"
+    }
+  ],
+  "type": {
+    "id": "290801",
+    "name": "1个小题"
+  },
+  "kpoints": [
+    {
+      "id": 16958,
+      "name": "含自感线圈的电路闭合及断开后电流的变化及其图像"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4111183017492480"
+  ]
+}

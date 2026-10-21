@@ -1,0 +1,770 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261021_001043_491_48332379/20261021_002809_148_round_03.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "导电能力为什么先降后升？\n\n原实验：一定体积 Ba(OH)₂ 溶液中滴加稀 H₂SO₄。假设匀速滴加，横轴时间与滴加量成正比；把恰好完全反应所需稀 H₂SO₄ 的量归一化为 1 份。拖动滑块，观察曲线与烧杯粒子联动。\n\n导电能力—滴加量\n底液：Ba(OH)₂ 溶液 · 滴加：稀 H₂SO₄\n参考：原实验（Ba(OH)₂ + 稀 H₂SO₄）\n滴加量（份）\n相对导电能力\n0\n1\n2\n0\n0.5\n1.0\nA\nB\nC\n最低点：接近 0\n烧杯里的粒子\n底液：Ba(OH)₂ 溶液\n滴加：稀 H₂SO₄\n粒子数按比例放大\nBa\nBa\nBa\nBa\nBa\nBa\nBa\nBa\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\n沉淀\nBa²⁺\n× 8\nOH⁻\n× 16\nH⁺\n× 0\nSO₄²⁻\n× 0\nK⁺\n× 0\nNa⁺\n× 0\nMg²⁺\n× 0\n观察步骤\n1\n题设\n2\n表示\n3\nAB段\n4\nB点\n5\nBC段\n6\n对比\n题设理解\n\nBa(OH)₂ 溶液中有大量 Ba²⁺ 和 OH⁻，所以初始导电能力强。\n\n滴加量\n0.00\n份\n播放\n重置\n替换试剂：\n稀 H₂SO₄\nNaOH\nKHSO₄\nMgSO₄\n相对导电能力\n1.00\n初始：Ba²⁺、OH⁻ 多，导电强\n判断下列选项\n点击选项，看看曲线会怎样变化\nA\nAB段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也能得到该曲线\nC\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线\n曲线摘要\n底液：Ba(OH)₂ 溶液 · 滴加：稀 H₂SO₄\n最低点（示意）\n最低点特征\n接近 0\n残留离子少\n点击选项开始验证。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n表示",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\nAB段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\nB点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "5\nBC段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "6\n对比",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "dose",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "稀 H₂SO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "NaOH",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "KHSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "MgSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "A\nAB段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "B\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "C\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 16,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "D\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no matching visible step control"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "导电能力为什么先降后升？\n\n原实验：一定体积 Ba(OH)₂ 溶液中滴加稀 H₂SO₄。假设匀速滴加，横轴时间与滴加量成正比；把恰好完全反应所需稀 H₂SO₄ 的量归一化为 1 份。拖动滑块，观察曲线与烧杯粒子联动。\n\n导电能力—滴加量\n底液：Ba(OH)₂ 溶液 · 滴加：稀 H₂SO₄\n参考：原实验（Ba(OH)₂ + 稀 H₂SO₄）\n滴加量（份）\n相对导电能力\n0\n1\n2\n0\n0.5\n1.0\nA\nB\nC\n最低点：接近 0\n烧杯里的粒子\n底液：Ba(OH)₂ 溶液\n滴加：稀 H₂SO₄\n粒子数按比例放大\nBa\nBa\nBa\nBa\nBa\nBa\nBa\nBa\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\nOH\n沉淀\nBa²⁺\n× 8\nOH⁻\n× 16\nH⁺\n× 0\nSO₄²⁻\n× 0\nK⁺\n× 0\nNa⁺\n× 0\nMg²⁺\n× 0\n观察步骤\n1\n题设\n2\n表示\n3\nAB段\n4\nB点\n5\nBC段\n6\n对比\n题设理解\n\nBa(OH)₂ 溶液中有大量 Ba²⁺ 和 OH⁻，所以初始导电能力强。\n\n滴加量\n0.00\n份\n播放\n重置\n替换试剂：\n稀 H₂SO₄\nNaOH\nKHSO₄\nMgSO₄\n相对导电能力\n1.00\n初始：Ba²⁺、OH⁻ 多，导电强\n判断下列选项\n点击选项，看看曲线会怎样变化\nA\nAB段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也能得到该曲线\nC\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线\n曲线摘要\n底液：Ba(OH)₂ 溶液 · 滴加：稀 H₂SO₄\n最低点（示意）\n最低点特征\n接近 0\n残留离子少\n点击选项开始验证。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n表示",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\nAB段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\nB点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "5\nBC段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "6\n对比",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "dose",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "稀 H₂SO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "NaOH",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "KHSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "MgSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "A\nAB段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "B\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "C\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 16,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "D\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "1"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "导电能力为什么先降后升？\n\n原实验：一定体积 Ba(OH)₂ 溶液中滴加稀 H₂SO₄。假设匀速滴加，横轴时间与滴加量成正比；把恰好完全反应所需稀 H₂SO₄ 的量归一化为 1 份。拖动滑块，观察曲线与烧杯粒子联动。\n\n导电能力—滴加量\n底液：Ba(OH)₂ 溶液 · 滴加：稀 H₂SO₄\n参考：原实验（Ba(OH)₂ + 稀 H₂SO₄）\n滴加量（份）\n相对导电能力\n0\n1\n2\n0\n0.5\n1.0\nA\nB\nC\n最低点：接近 0\n烧杯里的粒子\n底液：Ba(OH)₂ 溶液\n滴加：稀 H₂SO₄\n粒子数按比例放大\n沉淀\nBa²⁺\n× 0\nOH⁻\n× 0\nH⁺\n× 0\nSO₄²⁻\n× 0\nK⁺\n× 0\nNa⁺\n× 0\nMg²⁺\n× 0\nBaSO₄↓\n× 8\n观察步骤\n1\n题设\n2\n表示\n3\nAB段\n4\nB点\n5\nBC段\n6\n对比\nB 点：恰好完全反应\n\n溶液中自由离子浓度接近 0，导电能力最低。\n\n滴加量\n1.00\n份\n播放\n重置\n替换试剂：\n稀 H₂SO₄\nNaOH\nKHSO₄\nMgSO₄\n相对导电能力\n0.00\nB 点：离子浓度接近 0，导电能力最低\n判断下列选项\n点击选项，看看曲线会怎样变化\nA\nAB段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也能得到该曲线\nC\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线\n曲线摘要\n底液：Ba(OH)₂ 溶液 · 滴加：稀 H₂SO₄\n最低点（示意）\n最低点特征\n接近 0\n残留离子少\n点击选项开始验证。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n表示",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\nAB段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\nB点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "5\nBC段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "6\n对比",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "dose",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "1",
+          "min": "0",
+          "max": "2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "稀 H₂SO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "NaOH",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "KHSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "MgSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "A\nAB段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "B\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "C\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 16,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "D\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "2"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "导电能力为什么先降后升？\n\n原实验：一定体积 Ba(OH)₂ 溶液中滴加稀 H₂SO₄。假设匀速滴加，横轴时间与滴加量成正比；把恰好完全反应所需稀 H₂SO₄ 的量归一化为 1 份。拖动滑块，观察曲线与烧杯粒子联动。\n\n导电能力—滴加量\n底液：Ba(OH)₂ 溶液 · 滴加：稀 H₂SO₄\n参考：原实验（Ba(OH)₂ + 稀 H₂SO₄）\n滴加量（份）\n相对导电能力\n0\n1\n2\n0\n0.5\n1.0\nA\nB\nC\n最低点：接近 0\n烧杯里的粒子\n底液：Ba(OH)₂ 溶液\n滴加：稀 H₂SO₄\n粒子数按比例放大\nH\nH\nH\nH\nH\nH\nH\nH\nH\nH\nH\nH\nH\nH\nH\nH\nSO₄\nSO₄\nSO₄\nSO₄\nSO₄\nSO₄\nSO₄\nSO₄\n沉淀\nBa²⁺\n× 0\nOH⁻\n× 0\nH⁺\n× 16\nSO₄²⁻\n× 8\nK⁺\n× 0\nNa⁺\n× 0\nMg²⁺\n× 0\nBaSO₄↓\n× 8\n观察步骤\n1\n题设\n2\n表示\n3\nAB段\n4\nB点\n5\nBC段\n6\n对比\nBC 段：硫酸过量\n\n过量的稀硫酸电离出 H⁺ 和 SO₄²⁻，自由离子增多，导电能力回升。\n\n滴加量\n2.00\n份\n播放\n重置\n替换试剂：\n稀 H₂SO₄\nNaOH\nKHSO₄\nMgSO₄\n相对导电能力\n0.50\nBC 段：硫酸过量，H⁺、SO₄²⁻ 增多，导电能力回升\n判断下列选项\n点击选项，看看曲线会怎样变化\nA\nAB段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质\nB\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也能得到该曲线\nC\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线\nD\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线\n曲线摘要\n底液：Ba(OH)₂ 溶液 · 滴加：稀 H₂SO₄\n最低点（示意）\n最低点特征\n接近 0\n残留离子少\n点击选项开始验证。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n表示",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\nAB段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\nB点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "5\nBC段",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "6\n对比",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "dose",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "2",
+          "min": "0",
+          "max": "2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "稀 H₂SO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "NaOH",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "KHSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "MgSO₄",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "A\nAB段溶液的导电能力减弱，说明生成的 BaSO₄ 不是电解质",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "B\n实验时用 NaOH 溶液代替 Ba(OH)₂ 溶液也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "C\n实验时用稀 KHSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 16,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "D\n实验时用稀 MgSO₄ 溶液代替稀硫酸也能得到该曲线",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

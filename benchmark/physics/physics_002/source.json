@@ -1,0 +1,94 @@
+{
+  "id": "3769195139145728",
+  "course_id": 29,
+  "type_id": "2904",
+  "kpoint_ids": [
+    15845,
+    15846,
+    15899
+  ],
+  "catalog_ids": [
+    187734,
+    194618,
+    194395,
+    195946,
+    225726
+  ],
+  "years": [
+    2025
+  ],
+  "difficulty": 0.65,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveCtULbxsGoOqfpmVlWOscFF5xR-MeTaC5bMDk1jr4Vlr\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">停在十字路口的</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车当绿灯亮起时，由静止匀加速前进</span><img  src=\"https://img.xkw.com/dksih/formula/bf24b28709354165dfbf079e4d4a1670.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">后做匀速直线运动，同时另一</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车以一定的速度通过该十字路口，</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">两车的速度（</span><img  src=\"https://img.xkw.com/dksih/formula/bc13a607ac0c7f76d252d7cb1bb040fd.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">）与时间（</span><img  src=\"https://img.xkw.com/dksih/formula/36a1b09c653185842513e24ebba60bb3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">）的关系图像如图所示。求：</span></p><p style=\"text-align: left;\"><img  height=\"143\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/8/8/22da273d-f4b8-43c9-a13c-cdfce6ceda99.png\" width=\"202\" /></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveCtULbxsGoOqfpmVlWOscFF5xR-MeTaC5bMDk1jr4Vlr\"><p style=\"\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 'Times New Roman';\">0</span><span style=\"font-family: 宋体;\">至</span><img  src=\"https://img.xkw.com/dksih/formula/bf24b28709354165dfbf079e4d4a1670.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">内，</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车的加速度大小；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveCtULbxsGoOqfpmVlWOscFF5xR-MeTaC5bMDk1jr4Vlr\"><p style=\"\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 'Times New Roman';\">0</span><span style=\"font-family: 宋体;\">至</span><img  src=\"https://img.xkw.com/dksih/formula/bf24b28709354165dfbf079e4d4a1670.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">内，</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车的加速度大小；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveCtULbxsGoOqfpmVlWOscFF5xR-MeTaC5bMDk1jr4Vlr\"><p style=\"\"><span class=\"ques-no\">（3）</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车在绿灯亮起后追上</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车所需要的时间。</span></p></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveCtULbxsGoOqfpmVlWOscFF5xR-MeTaC5bMDk1jr4Vlr\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/ff2e56a52cd0ac5faa55d8eb03706422.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><span style=\"font-family: 'Times New Roman';\">0</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/a08e1d1ee94d1355098a43fd076d3770.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveCtULbxsGoOqfpmVlWOscFF5xR-MeTaC5bMDk1jr4Vlr\"><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/formula/d1552707683293dcf684d101dd09b5c9.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">图像的斜率表示加速度，可得</span><span style=\"font-family: 'Times New Roman';\">0</span><span style=\"font-family: 宋体;\">至</span><img  src=\"https://img.xkw.com/dksih/formula/bf24b28709354165dfbf079e4d4a1670.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">内，</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车的加速度大小</span><img  src=\"https://img.xkw.com/dksih/formula/cab28d752621933d748d974958603f8f.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">根据图像可知，</span><span style=\"font-family: 'Times New Roman';\">0</span><span style=\"font-family: 宋体;\">至</span><img  src=\"https://img.xkw.com/dksih/formula/bf24b28709354165dfbf079e4d4a1670.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">内，</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车做匀速直线运动，可知</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车的加速度大小为</span><span style=\"font-family: 'Times New Roman';\">0</span></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(3)小问详解： <p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/formula/d1552707683293dcf684d101dd09b5c9.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">图像的面积表示位移，可知</span><span style=\"font-family: 'Times New Roman';\">0</span><span style=\"font-family: 宋体;\">至</span><img  src=\"https://img.xkw.com/dksih/formula/bf24b28709354165dfbf079e4d4a1670.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">内，</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车的位移</span><img  src=\"https://img.xkw.com/dksih/formula/5cdb4fd5dbc0ba3caf5b5a13305b3b11.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车的位移为</span><img  src=\"https://img.xkw.com/dksih/formula/6625dfd2feb499bed0fdcd007c22a587.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">即</span><img  src=\"https://img.xkw.com/dksih/formula/bf24b28709354165dfbf079e4d4a1670.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时，</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车没有追上</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车，设</span><img  src=\"https://img.xkw.com/dksih/formula/bf24b28709354165dfbf079e4d4a1670.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">以后经过时间</span><img  src=\"https://img.xkw.com/dksih/formula/87c7eb49a823f757461cd5260757b088.svg\" class=\"xkw-math-img\" /><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车追上</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车，有</span><img  src=\"https://img.xkw.com/dksih/formula/97cbd0ffaf7e0d5ff9d956adf24253e9.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">解得</span><img  src=\"https://img.xkw.com/dksih/formula/13fdbfc06811eb56b46da2c067cc5844.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">则</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车在绿灯亮起后追上</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">车所需要的时间为</span><img  src=\"https://img.xkw.com/dksih/formula/de4b0d4637705e1162279f08071e0173.svg\" class=\"xkw-math-img\" /></p></div></div>",
+  "create_date": "2025-06-03 17:10:03",
+  "paper_type_ids": [
+    5
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 187734,
+      "name": "3. 匀变速直线运动的位移与时间的关系"
+    },
+    {
+      "id": 194618,
+      "name": "第五节 匀变速直线运动与汽车安全行驶"
+    },
+    {
+      "id": 194395,
+      "name": "第2节 位移变化规律"
+    },
+    {
+      "id": 195946,
+      "name": "4. 匀变速直线运动规律的应用"
+    },
+    {
+      "id": 225726,
+      "name": "第三节 匀变速直线运动的规律"
+    }
+  ],
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "kpoints": [
+    {
+      "id": 15845,
+      "name": "利用v-t图像求加速度"
+    },
+    {
+      "id": 15846,
+      "name": "利用v-t图像求位移"
+    },
+    {
+      "id": 15899,
+      "name": "变速物体追匀速物体"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "source_papers": [
+    {
+      "title": "贵州省毕节市威宁彝族回族苗族自治县第八中学2024-2025学年高一上学期期末测试物理试卷",
+      "area": {
+        "id": "520000",
+        "name": "贵州省"
+      },
+      "type_id": 5,
+      "grade_id": 10,
+      "term": "LAST",
+      "year": 2025
+    }
+  ],
+  "_paper_ids": []
+}

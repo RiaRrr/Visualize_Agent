@@ -1,0 +1,20 @@
+{
+  "run_status": "failed",
+  "completed_rounds": 3,
+  "id": "B5D896375",
+  "question_id": "physics_001",
+  "set": "calibration",
+  "workflow_id": "W2",
+  "task_id": "20261020_230856_432_4cbae96c",
+  "round_number": 3,
+  "html": "runs/artifacts/20261020_230856_432_4cbae96c/20261021_000430_430_round_03.html",
+  "html_sha256": "5761e7536e1bb20dc498606cd8c4858a26e898e5952678dc27eed8aa9cc2adff",
+  "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+  "inspection": "runs/artifacts/20261020_230856_432_4cbae96c/evidence/public.json",
+  "screenshots": [
+    "runs/artifacts/20261020_230856_432_4cbae96c/evidence/00_initial.png",
+    "runs/artifacts/20261020_230856_432_4cbae96c/evidence/01_next_step.png",
+    "runs/artifacts/20261020_230856_432_4cbae96c/evidence/02_slider_mid.png",
+    "runs/artifacts/20261020_230856_432_4cbae96c/evidence/03_slider_high.png"
+  ]
+}

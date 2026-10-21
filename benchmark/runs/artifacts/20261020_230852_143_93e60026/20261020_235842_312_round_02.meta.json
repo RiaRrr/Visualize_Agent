@@ -1,0 +1,154 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261020_230852_143_93e60026:2",
+  "task_id": "20261020_230852_143_93e60026",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 2,
+  "created_at": "2026-10-20T23:58:42.411140+08:00",
+  "files": {
+    "image": "20261020_230852_143_input.png",
+    "html": "20261020_235842_312_round_02.html",
+    "screenshot": "20261020_235842_312_round_02.png",
+    "model_review": "20261020_235842_312_round_02.review.json",
+    "config": "20261020_230852_143_config.json",
+    "model_review_raw": "round_02.model_review_raw.txt"
+  },
+  "html_sha256": "f31f1957efb849ef08574b4bff49a8bea5091d26ac5812342f7c8e06d6e09574",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "physics",
+    "name": "物理 · 过程与受力",
+    "version": "219290302036",
+    "subject": "physics"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "物理模型、计算与分步图解均正确，页面整体可读且交互同步；主要问题是停稳时 v-t 图标签重叠、全程面积标签被图线穿过，以及首屏 0–4 s 播放范围与“逐渐停下”提示不一致。修正这些视觉与提示问题后质量更高。",
+    "issues": [
+      "v-t 图中停稳标记“t = 6 s”与当前点标签“v=0.0”在 t→6 s 时几乎同坐标（前者约 x=398,y=238，后者约 x=400,y=242），最终答案状态和动画尾段会重叠；建议 v 接近 0 时隐藏或移开当前点标签，或将“t = 6 s”移到停止线外侧。",
+      "步骤2在 t=6 s 显示的全程面积标签“108 m”位于图线附近，蓝线会穿过文字；建议下移、左移该标签，或增加白色描边/背景，确保面积数值清晰。",
+      "首屏控制提示“播放时速度箭头会缩短，飞机逐渐停下”与实际不符：步骤0的播放终点为 4 s，t=4 s 时 v=12 m/s，尚未停稳；应改为“播放当前 0–4 s 区间”，或在首屏禁用播放，或直接显示 0–6 s 但先隐藏答案。",
+      "时间滑块与上方时间轴的水平起止范围不一致（时间轴为 x=100..900/960，滑块为全宽），拖动时滑块拇指与时间轴标记横向错位；建议给滑块设置同样的左右留白，或直接用时间轴作为拖拽控件。",
+      "首屏暂用 0–4 s 时间范围与题目“直至静止”“最后 4 s”容易混淆，且未说明为何暂截取到 4 s；建议明确标注“暂时只显示 0–4 s，停稳时刻下一步求”，或首屏直接显示完整 0–6 s 运动范围。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 4,
+      "interaction_quality": 4,
+      "teaching_effectiveness": 5
+    },
+    "overall_score": 4
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 58,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 2,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:51:58.834715+08:00",
+        "ended_at": "2026-10-20T23:54:24.832497+08:00",
+        "duration_seconds": 145.997782,
+        "status": "completed"
+      },
+      {
+        "id": 62,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 2,
+        "stage": "validating",
+        "started_at": "2026-10-20T23:54:24.832497+08:00",
+        "ended_at": "2026-10-20T23:54:24.897569+08:00",
+        "duration_seconds": 0.065072,
+        "status": "completed"
+      },
+      {
+        "id": 63,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 2,
+        "stage": "rendering",
+        "started_at": "2026-10-20T23:54:24.897569+08:00",
+        "ended_at": "2026-10-20T23:54:27.067787+08:00",
+        "duration_seconds": 2.170218,
+        "status": "completed"
+      },
+      {
+        "id": 64,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 2,
+        "stage": "reviewing",
+        "started_at": "2026-10-20T23:54:27.067787+08:00",
+        "ended_at": "2026-10-20T23:58:43.126098+08:00",
+        "duration_seconds": 256.058311,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 36,
+        "task_id": "20261020_230852_143_93e60026",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:54:24.793060+08:00",
+        "duration_seconds": 145.7931588290012,
+        "status": "completed",
+        "input_tokens": 14849,
+        "output_tokens": 31951,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 18637,
+        "total_tokens": 46800
+      },
+      {
+        "id": 39,
+        "task_id": "20261020_230852_143_93e60026",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:58:42.201911+08:00",
+        "duration_seconds": 254.81833640299737,
+        "status": "completed",
+        "input_tokens": 15743,
+        "output_tokens": 41570,
+        "cached_input_tokens": 2048,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 41091,
+        "total_tokens": 57313
+      }
+    ]
+  }
+}

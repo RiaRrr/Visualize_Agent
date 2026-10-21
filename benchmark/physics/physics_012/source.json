@@ -1,0 +1,83 @@
+{
+  "id": "4111203501916160",
+  "course_id": 29,
+  "type_id": "2903",
+  "kpoint_ids": [
+    16070,
+    108551,
+    80687
+  ],
+  "catalog_ids": [
+    195041,
+    202718,
+    210045,
+    220849,
+    230553
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.62,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7TGBddPLhEjWjIERdjCQGv\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">某小组探究盐水浓度对折射率的影响。</span></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7TGBddPLhEjWjIERdjCQGv\"><p style=\"\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 宋体;\">首先在纸带上画一条直线，并在直线上作两个明显的标记点</span><img  src=\"https://img.xkw.com/dksih/formula/2708fa6298e52f617383efc175b71ddc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/9b9cb8e6ff801523b0304576cd69fd2d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，用游标卡尺测出两标记点的距离</span><img  src=\"https://img.xkw.com/dksih/formula/c5873c01192b7d33b7483f444f90b5b0.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，如图（</span><span style=\"font-family: 'Times New Roman';\">a</span><span style=\"font-family: 宋体;\">）所示，读出</span><img  src=\"https://img.xkw.com/dksih/formula/f9c7e7449010436e00dce3b6924a4258.svg\" class=\"xkw-math-img\" /><span class=\"qml-bk\" index=\"1\" size=\"11\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　　</span><img  src=\"https://img.xkw.com/dksih/formula/9efa9fbcfb9595e2f031aa691db4564b.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。然后将纸带固定在空水槽底部。</span></p><p style=\"text-align: left;\"><img  height=\"184\" source-file=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/4adcc0bb-9111-4934-8a8e-2998ea9c9baf.ai\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/4adcc0bb-9111-4934-8a8e-2998ea9c9baf.png\" width=\"291\" /></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7TGBddPLhEjWjIERdjCQGv\"><p style=\"\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 宋体;\">铁架台和水槽放置在同一水平桌面，激光笔安装于铁架台上。调整实验装置，使激光笔射出的光线与</span><img  src=\"https://img.xkw.com/dksih/formula/a4a949c00526fddf435423272cf10f25.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">连线在同一竖直面内，光线与竖直方向成</span><img  src=\"https://img.xkw.com/dksih/formula/79a97bb4dcfab4ec7539bc783d563c49.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">角，且光线照射的光斑恰好在标记点</span><img  src=\"https://img.xkw.com/dksih/formula/2708fa6298e52f617383efc175b71ddc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，此后装置固定不动，如图（</span><span style=\"font-family: 'Times New Roman';\">b</span><span style=\"font-family: 宋体;\">）所示。向水槽里缓慢加入被测液体，直至光斑沿</span><img  src=\"https://img.xkw.com/dksih/formula/a4a949c00526fddf435423272cf10f25.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">连线移动到标记点</span><img  src=\"https://img.xkw.com/dksih/formula/9b9cb8e6ff801523b0304576cd69fd2d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，测量并记录液面高度</span><img  src=\"https://img.xkw.com/dksih/formula/3eabd5f3a86afe49dcd70571e2b96cfd.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。</span></p><p style=\"text-align: left;\"><img  height=\"208\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/d604c809-4983-455a-8b43-c03f8cc8fc0c.png\" width=\"485\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">如图（</span><span style=\"font-family: 'Times New Roman';\">c</span><span style=\"font-family: 宋体;\">）所示，以</span><img  src=\"https://img.xkw.com/dksih/formula/2708fa6298e52f617383efc175b71ddc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为坐标原点、沿</span><img  src=\"https://img.xkw.com/dksih/formula/a4a949c00526fddf435423272cf10f25.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">方向为</span><img  src=\"https://img.xkw.com/dksih/formula/81dea63b8ce3e51adf66cf7b9982a248.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">轴建立直角坐标系，虚线为液面所在位置。请在图（</span><span style=\"font-family: 'Times New Roman';\">c</span><span style=\"font-family: 宋体;\">）中画出液面高度为</span><img  src=\"https://img.xkw.com/dksih/formula/3eabd5f3a86afe49dcd70571e2b96cfd.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时，激光由空气入射到液体的光路图（入射光线、法线和折射光线）。</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7TGBddPLhEjWjIERdjCQGv\"><p style=\"\"><span class=\"ques-no\">（3）</span><span style=\"font-family: 宋体;\">由折射定律可得，液体的折射率</span><img  src=\"https://img.xkw.com/dksih/formula/0f3cb8d72bb2e281b943b3b430138ef7.svg\" class=\"xkw-math-img\" /><span class=\"qml-bk\" index=\"2\" size=\"11\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　　</span><span style=\"font-family: 宋体;\">（用</span><img  src=\"https://img.xkw.com/dksih/formula/3eabd5f3a86afe49dcd70571e2b96cfd.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/c5873c01192b7d33b7483f444f90b5b0.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">表示）。</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7TGBddPLhEjWjIERdjCQGv\"><p style=\"\"><span class=\"ques-no\">（4）</span><span style=\"font-family: 宋体;\">该小组</span><span style=\"\">配制</span><span style=\"font-family: 宋体;\">了</span><span style=\"font-family: 'Times New Roman';\">5</span><span style=\"font-family: 宋体;\">种不同浓度</span><img  src=\"https://img.xkw.com/dksih/formula/071a7e733d466949ac935b4b8ee8d183.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的盐水，依据上述方案重复实验，所得数据点如图（</span><span style=\"font-family: 'Times New Roman';\">d</span><span style=\"font-family: 宋体;\">）所示。为得到折射率</span><img  src=\"https://img.xkw.com/dksih/formula/b6a24198bd04c29321ae5dc5a28fe421.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">随浓度</span><img  src=\"https://img.xkw.com/dksih/formula/071a7e733d466949ac935b4b8ee8d183.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的变化规律，请在图（</span><span style=\"font-family: 'Times New Roman';\">d</span><span style=\"font-family: 宋体;\">）中作出</span><img  src=\"https://img.xkw.com/dksih/formula/89b77c16dd8fe79f9f7b4fcf3249f2b5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">图线。</span></p><p style=\"text-align: left;\"><img  height=\"233\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/570c2066-a71c-4aba-bf1e-a338018c98f6.png\" width=\"257\" /></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7TGBddPLhEjWjIERdjCQGv\"><p style=\"\"><span class=\"ques-no\">（5）</span><span style=\"font-family: 宋体;\">从图（</span><span style=\"font-family: 'Times New Roman';\">d</span><span style=\"font-family: 宋体;\">）中可得盐水折射率</span><img  src=\"https://img.xkw.com/dksih/formula/b6a24198bd04c29321ae5dc5a28fe421.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">与其浓度</span><img  src=\"https://img.xkw.com/dksih/formula/071a7e733d466949ac935b4b8ee8d183.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的函数关系式为</span><img  src=\"https://img.xkw.com/dksih/formula/0f3cb8d72bb2e281b943b3b430138ef7.svg\" class=\"xkw-math-img\" /><span class=\"qml-bk\" index=\"3\" size=\"11\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　　</span><span style=\"font-family: 宋体;\">。（式中数字保留三位小数）</span></p></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7TGBddPLhEjWjIERdjCQGv\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  qml-exact\"><span style=\"font-family: 'Times New Roman';\">2.325</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  height=\"185\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/8335a168-a231-42d8-9508-2675250c93e3.png\" width=\"206\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/980029b7c138957e07b36b36bc2518df.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  height=\"211\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/fa35fb85-df08-4917-aa32-7080efba68c3.png\" width=\"254\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（5）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/4246b3d10bfbf369a0c94d60f431498a.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7TGBddPLhEjWjIERdjCQGv\"><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span>20分度游标尺最小刻度为0.05mm，故读数</span><img  src=\"https://img.xkw.com/dksih/formula/58a8ab2948037344545adc85f2c7dc20.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">根据题意可得激光由空气入射到液体的光路图如图所示</span></p><p style=\"text-align: left;\"><img  height=\"197\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/073fcd9f-d587-469c-9e02-743f31072ea9.png\" width=\"219\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(3)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span>折射角</span><img  src=\"https://img.xkw.com/dksih/formula/c24095e409b025db711f14be783a406c.svg\" class=\"xkw-math-img\" /><span>满足</span><img  src=\"https://img.xkw.com/dksih/formula/f72d88eb602064180ecb3f6b8766572e.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>折射率</span><img  src=\"https://img.xkw.com/dksih/formula/8041be6078e01d48443cec543ff60727.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(4)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">根据描点法可得</span><img  src=\"https://img.xkw.com/dksih/formula/89b77c16dd8fe79f9f7b4fcf3249f2b5.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">图线如图所示</span></p><p style=\"text-align: left;\"><img  height=\"230\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/cd848861-9ac4-47e6-862f-716456463485.png\" width=\"277\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(5)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span>由图可知</span><img  src=\"https://img.xkw.com/dksih/formula/89b77c16dd8fe79f9f7b4fcf3249f2b5.svg\" class=\"xkw-math-img\" /><span>图线斜率</span><img  src=\"https://img.xkw.com/dksih/formula/c731e1c6ff6e266f78f3e3ce6db6d12d.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>截距</span><img  src=\"https://img.xkw.com/dksih/formula/edab629deae8e3c06ae6a43d98b9a684.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>可得盐水折射率</span><img  src=\"https://img.xkw.com/dksih/formula/b6a24198bd04c29321ae5dc5a28fe421.svg\" class=\"xkw-math-img\" /><span>与其浓度</span><img  src=\"https://img.xkw.com/dksih/formula/071a7e733d466949ac935b4b8ee8d183.svg\" class=\"xkw-math-img\" /><span>的函数关系式为</span><img  src=\"https://img.xkw.com/dksih/formula/4246b3d10bfbf369a0c94d60f431498a.svg\" class=\"xkw-math-img\" /></p></div></div>",
+  "create_date": "2026-09-29 22:07:50",
+  "paper_type_ids": [
+    12
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 195041,
+      "name": "1. 光的折射"
+    },
+    {
+      "id": 202718,
+      "name": "第二节 测定介质的折射率"
+    },
+    {
+      "id": 210045,
+      "name": "第2节 科学测量：玻璃的折射率"
+    },
+    {
+      "id": 220849,
+      "name": "2. 实验：测定玻璃的折射率"
+    },
+    {
+      "id": 230553,
+      "name": "第一节 光的折射"
+    }
+  ],
+  "type": {
+    "id": "2903",
+    "name": "实验题"
+  },
+  "kpoints": [
+    {
+      "id": 16070,
+      "name": "游标卡尺的使用与读数"
+    },
+    {
+      "id": 108551,
+      "name": "测透明液体的折射率"
+    },
+    {
+      "id": 80687,
+      "name": "光学创新实验"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4111183017492480"
+  ]
+}

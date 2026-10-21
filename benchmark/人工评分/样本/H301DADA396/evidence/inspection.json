@@ -1,0 +1,571 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/人工评分/样本/H301DADA396/20261019_171118_109_round_04.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "椭圆上关于直线对称的两点 · 从条件到答案\n\n拖动滑块改变斜率 m，观察对称点 A、B 何时同时落在椭圆上，以及中点 M 落在哪里。\n\n题设：椭圆 x²/2 + y² = 1 上两个不同的点 A、B 关于直线 y = mx + 1/2 对称，O 为坐标原点。 (1) 求实数 m 的取值范围；(2) 求 △AOB 面积的最大值。\nx\ny\nO\n-2\n-1\n1\n2\n½\n−½\n1\nx²/2 + y² = 1\nl: y = 1.20x + ½\nA\nB\nM\nA、B 在椭圆上，关于 l 对称\n拖动 m：A、B 是否存在？\n椭圆\n对称轴 l: y = mx + ½\n弦 AB（⊥ l，M 为中点）\nA、B 两点\n△AOB\n分步演示 点击任一步，主图会切换到对应状态\n1\n题设\n2\n对称转化\n3\n点差法\n4\n内部条件\n5\n判别式\n6\n(1) m 范围\n7\nS 表达式\n8\n面积最值\n9\n结论\n上一步\n下一步\n当前 m = 1.20 · A、B 存在\n操作量：斜率 m 全程可调\nm =\n1.20\n拖动滑块：观察 M 是否落在椭圆内部，以及 S 随之怎样变化。\n当前 m\n1.20\n判别式 Δ\n1.9244\nM 在椭圆内？\n是\n面积 S(m)\n0.6936\n合法条件\n|m| > √6/3\n当前步骤\n椭圆 x²/2 + y² = 1 与直线 l: y = mx + ½。A、B 在椭圆上且关于 l 对称。\n拖动右侧 m 滑块：许多 m 值下 A、B 根本不存在——这将成为约束 m 的钥匙。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1\n题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2\n对称转化",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3\n点差法",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4\n内部条件",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5\n判别式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "6\n(1) m 范围",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "7\nS 表达式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "8\n面积最值",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "9\n结论",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "mSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "1.2",
+          "min": "-1.6",
+          "max": "1.6",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "click",
+            "label": "下一步"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "椭圆上关于直线对称的两点 · 从条件到答案\n\n拖动滑块改变斜率 m，观察对称点 A、B 何时同时落在椭圆上，以及中点 M 落在哪里。\n\n题设：椭圆 x²/2 + y² = 1 上两个不同的点 A、B 关于直线 y = mx + 1/2 对称，O 为坐标原点。 (1) 求实数 m 的取值范围；(2) 求 △AOB 面积的最大值。\nx\ny\nO\n-2\n-1\n1\n2\n½\n−½\n1\nx²/2 + y² = 1\nl: y = 1.20x + ½\nA\nB\nM\nAB ⟂ l ，M = AB 中点\nk_AB = −1/m (m ≠ 0)\n椭圆\n对称轴 l: y = mx + ½\n弦 AB（⊥ l，M 为中点）\nA、B 两点\n△AOB\n分步演示 点击任一步，主图会切换到对应状态\n1\n题设\n2\n对称转化\n3\n点差法\n4\n内部条件\n5\n判别式\n6\n(1) m 范围\n7\nS 表达式\n8\n面积最值\n9\n结论\n上一步\n下一步\nAB 斜率 k = −1/m = -0.83\n操作量：斜率 m 全程可调\nm =\n1.20\n拖动滑块：观察 M 是否落在椭圆内部，以及 S 随之怎样变化。\n当前 m\n1.20\n判别式 Δ\n1.9244\nM 在椭圆内？\n是\n面积 S(m)\n0.6936\n合法条件\n|m| > √6/3\n当前步骤\n对称拆成两条可算的条件：\n① M = AB 中点  在  l 上   ② AB ⟂ l ⟹ kAB = −1/m\n第一条让 M 必须满足 l 的方程；第二条把 AB 的方向锁定。两条一起，就能把 M 定出来。图中橙色虚线是 AB，直角标记在 M 处。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1\n题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2\n对称转化",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3\n点差法",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4\n内部条件",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5\n判别式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "6\n(1) m 范围",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "7\nS 表达式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "8\n面积最值",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "9\n结论",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "mSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "1.2",
+          "min": "-1.6",
+          "max": "1.6",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "0"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "椭圆上关于直线对称的两点 · 从条件到答案\n\n拖动滑块改变斜率 m，观察对称点 A、B 何时同时落在椭圆上，以及中点 M 落在哪里。\n\n题设：椭圆 x²/2 + y² = 1 上两个不同的点 A、B 关于直线 y = mx + 1/2 对称，O 为坐标原点。 (1) 求实数 m 的取值范围；(2) 求 △AOB 面积的最大值。\nx\ny\nO\n-2\n-1\n1\n2\n½\n−½\n1\nx²/2 + y² = 1\nl: y = 0.00x + ½\nAB ⟂ l ，M = AB 中点\nk_AB = −1/m (m ≠ 0)\n椭圆\n对称轴 l: y = mx + ½\n弦 AB（⊥ l，M 为中点）\nA、B 两点\n△AOB\n分步演示 点击任一步，主图会切换到对应状态\n1\n题设\n2\n对称转化\n3\n点差法\n4\n内部条件\n5\n判别式\n6\n(1) m 范围\n7\nS 表达式\n8\n面积最值\n9\n结论\n上一步\n下一步\nm = 0 时 AB 是竖直线，斜率不存在\n操作量：斜率 m 全程可调\nm =\n0.00\n拖动滑块：观察 M 是否落在椭圆内部，以及 S 随之怎样变化。\n当前 m\n0.00\n判别式 Δ\n—\nM 在椭圆内？\n否\n面积 S(m)\n—\n合法条件\n|m| > √6/3\n当前步骤\n对称拆成两条可算的条件：\n① M = AB 中点  在  l 上   ② AB ⟂ l ⟹ kAB = −1/m\n第一条让 M 必须满足 l 的方程；第二条把 AB 的方向锁定。两条一起，就能把 M 定出来。图中橙色虚线是 AB，直角标记在 M 处。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1\n题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2\n对称转化",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3\n点差法",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4\n内部条件",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5\n判别式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "6\n(1) m 范围",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "7\nS 表达式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "8\n面积最值",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "9\n结论",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "mSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "-1.6",
+          "max": "1.6",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "1.6"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "椭圆上关于直线对称的两点 · 从条件到答案\n\n拖动滑块改变斜率 m，观察对称点 A、B 何时同时落在椭圆上，以及中点 M 落在哪里。\n\n题设：椭圆 x²/2 + y² = 1 上两个不同的点 A、B 关于直线 y = mx + 1/2 对称，O 为坐标原点。 (1) 求实数 m 的取值范围；(2) 求 △AOB 面积的最大值。\nx\ny\nO\n-2\n-1\n1\n2\n½\n−½\n1\nx²/2 + y² = 1\nl: y = 1.60x + ½\nA\nB\nM\nAB ⟂ l ，M = AB 中点\nk_AB = −1/m (m ≠ 0)\n椭圆\n对称轴 l: y = mx + ½\n弦 AB（⊥ l，M 为中点）\nA、B 两点\n△AOB\n分步演示 点击任一步，主图会切换到对应状态\n1\n题设\n2\n对称转化\n3\n点差法\n4\n内部条件\n5\n判别式\n6\n(1) m 范围\n7\nS 表达式\n8\n面积最值\n9\n结论\n上一步\n下一步\nAB 斜率 k = −1/m = -0.63\n操作量：斜率 m 全程可调\nm =\n1.60\n拖动滑块：观察 M 是否落在椭圆内部，以及 S 随之怎样变化。\n当前 m\n1.60\n判别式 Δ\n1.9761\nM 在椭圆内？\n是\n面积 S(m)\n0.7029\n合法条件\n|m| > √6/3\n当前步骤\n对称拆成两条可算的条件：\n① M = AB 中点  在  l 上   ② AB ⟂ l ⟹ kAB = −1/m\n第一条让 M 必须满足 l 的方程；第二条把 AB 的方向锁定。两条一起，就能把 M 定出来。图中橙色虚线是 AB，直角标记在 M 处。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1\n题设",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2\n对称转化",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3\n点差法",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4\n内部条件",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5\n判别式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "6\n(1) m 范围",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "7\nS 表达式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "8\n面积最值",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "9\n结论",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "mSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "1.6",
+          "min": "-1.6",
+          "max": "1.6",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

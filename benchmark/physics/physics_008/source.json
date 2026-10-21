@@ -1,0 +1,78 @@
+{
+  "id": "4111203501809664",
+  "course_id": 29,
+  "type_id": "2903",
+  "kpoint_ids": [
+    16695,
+    16696
+  ],
+  "catalog_ids": [
+    195001,
+    202672,
+    202598,
+    220596,
+    229948
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.62,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7ByEl7Pxg5Et87zsRCsTqR\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">某小组利用一个量程为</span><img  src=\"https://img.xkw.com/dksih/formula/eefd03b7bd3651102394b10526144ef2.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、内阻为</span><img  src=\"https://img.xkw.com/dksih/formula/8d0f9319d8578bd01cc285a5aede23b7.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的表头（</span><img  src=\"https://img.xkw.com/dksih/formula/a95a54a38fb1a095e20b7e4e57e02492.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">）和两个电阻箱（</span><img  height=\"18\" src=\"https://img.xkw.com/dksih/QBM/2026/9/29/4111183017492480/4111203501809664/STEM/b4db42445bb848fe8d368a79705ab160.png\" width=\"31\" /><span style=\"font-family: 宋体;\">）改装成量程为</span><img  src=\"https://img.xkw.com/dksih/formula/3969911d4b607d9c3491dd9b1cbec05c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">和</span><img  src=\"https://img.xkw.com/dksih/formula/3d1d726c668687dfce3e6024bc75d9da.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">双量程电压表，并进行校准。</span></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7ByEl7Pxg5Et87zsRCsTqR\"><p style=\"\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 宋体;\">改装电压表的设计。请在图（</span><span style=\"font-family: 'Times New Roman';\">a</span><span style=\"font-family: 宋体;\">）虚线框内完成电路设计图，并在其中标出所用电阻的阻值。</span></p><p style=\"text-align: left;\"><img  height=\"103\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/73634502-9ae8-44eb-aa4a-bc1e021bad5b.png\" width=\"179\" /></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7ByEl7Pxg5Et87zsRCsTqR\"><p style=\"\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 宋体;\">改装电压表（</span><img  src=\"https://img.xkw.com/dksih/formula/1e99a2f3ef466973b66857a370771dd8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">量程）的校准。</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">①用改装电压表和数字电压表同时测量定值电阻两端电压。现有改装电压表、数字电压表、定值电阻、滑动变阻器、直流电源（</span><img  src=\"https://img.xkw.com/dksih/formula/3ed38527e1f2768d9b1ab6742acbdaaa.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">）、开关和导线，请在图（</span><span style=\"font-family: 'Times New Roman';\">b</span><span style=\"font-family: 宋体;\">）中画线完成电路实物连接</span><span class=\"qml-bk\" index=\"1\" size=\"11\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　　</span><span style=\"font-family: 宋体;\">。</span></p><p style=\"text-align: left;\"><img  height=\"173\" source-file=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/ea0416c5-2465-4724-be13-132688e3a685.psd\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/ea0416c5-2465-4724-be13-132688e3a685.png\" width=\"230\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">②检查电路连接无误后，应先</span><span class=\"qml-bk\" index=\"2\" size=\"33\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</span><span style=\"font-family: 宋体;\">，再打开电源，闭合开关，测量数据，进行校准。</span></p></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7ByEl7Pxg5Et87zsRCsTqR\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  height=\"99\" source-file=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/465a1b58-aa31-4a2c-91bc-fcb85e3c9543.psd\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/465a1b58-aa31-4a2c-91bc-fcb85e3c9543.png\" width=\"220\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\">&nbsp;&nbsp;&nbsp;&nbsp;①. <span class=\"qml-an  \"><img  height=\"181\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/a037e6aa-c4c9-4f58-8eaa-db8653dfe93a.png\" width=\"241\" /></span>&nbsp;&nbsp;&nbsp;&nbsp;②. <span class=\"qml-an  \"><span style=\"font-family: 宋体;\">使滑动变阻器滑片移到使定值电阻两端电压为零的位置</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M7ByEl7Pxg5Et87zsRCsTqR\"><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 'Times New Roman';\">200mV</span><span style=\"font-family: 宋体;\">量程的分压电阻</span><img  src=\"https://img.xkw.com/dksih/formula/d68930b8221791ed89c600e885e12aff.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 'Times New Roman';\">2V</span><span style=\"font-family: 宋体;\">量程的分压电阻</span><img  src=\"https://img.xkw.com/dksih/formula/6f6afc3215e7631c6f0f4bf36088e419.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">可得</span><img  src=\"https://img.xkw.com/dksih/formula/32a735debf659810796bfc8ea1ff3436.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">分压电阻与表头串联，如图所示</span></p><p style=\"text-align:justify;word-break:break-word;\"><img  height=\"95\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/5133f378-0db7-41d9-bb1f-fd3dcb94f790.png\" width=\"211\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">①</span><span style=\"font-family: 'Times New Roman';\">[1]</span><span style=\"font-family: 宋体;\">校准电压表需要让改装电压表和标准数字电压表并联在被测定值电阻两端，同时滑动变阻器接成分压式（因为电源</span><span style=\"font-family: 'Times New Roman';\">3V</span><span style=\"font-family: 宋体;\">大于改装表</span><span style=\"font-family: 'Times New Roman';\">2V</span><span style=\"font-family: 宋体;\">量程，分压式可以实现</span><span style=\"font-family: 'Times New Roman';\">0~2V</span><span style=\"font-family: 宋体;\">连续调压，完成全量程校准）：将滑动变阻器的两个下接线柱接电源两端，滑动端和其中一个下接线柱作为输出端，给定值电阻供电；改装电压表选择</span><span style=\"font-family: 'Times New Roman';\">2V</span><span style=\"font-family: 宋体;\">量程接线柱，和数字电压表正负极对应并联在定值电阻两端，如图所示</span></p><p style=\"text-align: left;\"><img  height=\"191\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/aad8c73f-36b1-4690-8dfe-63f3b82c9888.png\" width=\"253\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">②</span><span style=\"font-family: 'Times New Roman';\">[2]</span><span style=\"font-family: 宋体;\">为了保证电路安全，通电前让待测部分电压从</span><span style=\"font-family: 'Times New Roman';\">0</span><span style=\"font-family: 宋体;\">开始逐渐增大，避免初始电压过大损坏改装表头，即检查电路连接无误后，应先使滑动变阻器滑片移到使定值电阻两端电压为零的位置，再打开电源，闭合开关，测量数据，进行校准。</span></p></div></div>",
+  "create_date": "2026-09-29 22:07:50",
+  "paper_type_ids": [
+    12
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 195001,
+      "name": "4. 串联电路和并联电路"
+    },
+    {
+      "id": 202672,
+      "name": "第四节 电阻的串联和并联"
+    },
+    {
+      "id": 202598,
+      "name": "第4节 串联电路和并联电路"
+    },
+    {
+      "id": 220596,
+      "name": "1. 电流 电压 电阻"
+    },
+    {
+      "id": 229948,
+      "name": "第一节 简单串联、并联组合电路"
+    }
+  ],
+  "type": {
+    "id": "2903",
+    "name": "实验题"
+  },
+  "kpoints": [
+    {
+      "id": 16695,
+      "name": "灵敏电流计改装成电压表"
+    },
+    {
+      "id": 16696,
+      "name": "电表的校准原理及其电路"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4111183017492480"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "3738104561139712",
+  "course_id": 27,
+  "type_id": "270201",
+  "kpoint_ids": [
+    11634,
+    11623
+  ],
+  "catalog_ids": [
+    200541,
+    209596,
+    209763,
+    219427,
+    220748,
+    225829
+  ],
+  "years": [
+    2025
+  ],
+  "difficulty": 0.8500000000000001,
+  "difficulty_level": 18,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1792031958-114651791852237200-DvF161AP2JPkFDpiyFCNJitULbxsGoOqfpmVlWOscFEe8KCjhDCqLUugrT1cg0Lb\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">已知正三棱柱所有棱长都相等，它的六个顶点都在半径为</span><img  src=\"https://img.xkw.com/dksih/formula/619096595112f0340a43b756e114dd3d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的球面上，则此正三棱柱的体积为</span><span class=\"qml-bk\" index=\"1\" size=\"6\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1792031958-114651791852237200-DvF161AP2JPkFDpiyFCNJitULbxsGoOqfpmVlWOscFEe8KCjhDCqLUugrT1cg0Lb\"><span class=\"qml-an-sq\"><span class=\"qml-an  qml-exact\"><span>18</span></span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1792031958-114651791852237200-DvF161AP2JPkFDpiyFCNJitULbxsGoOqfpmVlWOscFEe8KCjhDCqLUugrT1cg0Lb\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">设</span><img  src=\"https://img.xkw.com/dksih/formula/1dde8112e8eb968fd042418dd632759e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为外接球的球心，</span><img  src=\"https://img.xkw.com/dksih/formula/895dc3dc3a6606ff487a4c4863e18509.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为底面</span><img  src=\"https://img.xkw.com/dksih/formula/15c0dbe3c080c4c4636c64803e5c1f76.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的中心，正三棱柱的棱长为</span><img  src=\"https://img.xkw.com/dksih/formula/878e89b6eca35e34c863e832a2c661db.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，求出</span><img  src=\"https://img.xkw.com/dksih/formula/4487d10a1984a70dd2793808cda502c0.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，在</span><img  src=\"https://img.xkw.com/dksih/formula/adac62d067449d720260f01663a246ef.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中利用勾股定理求出</span><img  src=\"https://img.xkw.com/dksih/formula/0a6936d370d6a238a608ca56f87198de.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，进而求出正三棱柱的体积</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">如图，正三棱柱</span><img  src=\"https://img.xkw.com/dksih/formula/42d3a82b8e587ee890467835bc4e854c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中，设</span><img  src=\"https://img.xkw.com/dksih/formula/1dde8112e8eb968fd042418dd632759e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为外接球的球心，</span><img  src=\"https://img.xkw.com/dksih/formula/895dc3dc3a6606ff487a4c4863e18509.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为底面</span><img  src=\"https://img.xkw.com/dksih/formula/15c0dbe3c080c4c4636c64803e5c1f76.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的中心，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">设正三棱柱的棱长为</span><img  src=\"https://img.xkw.com/dksih/formula/878e89b6eca35e34c863e832a2c661db.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则</span><img  src=\"https://img.xkw.com/dksih/formula/a4217f4375caaeef4d4221143d5f6bbf.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/d5ef4493ef2232ed1004fb28770d83e6.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/2e9681aa47b069a7a035838c685f2312.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/formula/561675b3626b13c7b05596cdeea163b8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，又</span><img  src=\"https://img.xkw.com/dksih/formula/a95beabc50316cb3394397998d3a2b2c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">平面</span><img  src=\"https://img.xkw.com/dksih/formula/7bef5239ddbb0972700ce01daf9ee7cf.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">在</span><img  src=\"https://img.xkw.com/dksih/formula/adac62d067449d720260f01663a246ef.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中，</span><img  src=\"https://img.xkw.com/dksih/formula/85dd363cd6ed8caa23ebf5715c30cc68.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，即</span><img  src=\"https://img.xkw.com/dksih/formula/37d4a990ac286733002064458ce9410e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，解得</span><img  src=\"https://img.xkw.com/dksih/formula/00854f7abcef6f47a0046a1e85ebf178.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，故</span><img  src=\"https://img.xkw.com/dksih/formula/f8120119749d4bc28067e73fca7d46cd.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">所以正三棱柱</span><img  src=\"https://img.xkw.com/dksih/formula/42d3a82b8e587ee890467835bc4e854c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的体积</span><img  src=\"https://img.xkw.com/dksih/formula/c6cd166c84813cfaf260306b006fbb62.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故答案为：</span><span style=\"font-family: 'Times New Roman';\">18.</span></p><p style=\"text-align: left;\"><img  height=\"144\" src=\"https://img.xkw.com/dksih/QBM/2025/4/20/3737821539819520/3738104561139712/EXPLANATION/f3b9853cb1014320afe06a42ea18feb8.png\" width=\"129\" /></p></div></div>",
+  "create_date": "2025-04-20 18:56:06",
+  "paper_type_ids": [
+    24,
+    22,
+    6,
+    3
+  ],
+  "course": {
+    "id": 27,
+    "name": "高中数学"
+  },
+  "catalogs": [
+    {
+      "id": 200541,
+      "name": "11.1.6 祖暅原理与几何体的体积"
+    },
+    {
+      "id": 209596,
+      "name": "13.3.2 空间图形的体积"
+    },
+    {
+      "id": 209763,
+      "name": "1. 圆柱、圆锥、圆台的表面积和体积"
+    },
+    {
+      "id": 219427,
+      "name": "一、棱柱和圆柱"
+    },
+    {
+      "id": 220748,
+      "name": "一 棱柱的体积"
+    },
+    {
+      "id": 225829,
+      "name": "1 球"
+    }
+  ],
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "kpoints": [
+    {
+      "id": 11634,
+      "name": "多面体与球体内切外接问题"
+    },
+    {
+      "id": 11623,
+      "name": "柱体体积的有关计算"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "3779764269735936"
+  ]
+}

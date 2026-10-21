@@ -1,0 +1,99 @@
+{
+  "id": "3997173487788032",
+  "course_id": 29,
+  "type_id": "2904",
+  "kpoint_ids": [
+    15877,
+    16348,
+    16345,
+    16339
+  ],
+  "catalog_ids": [
+    195019,
+    202697,
+    210025,
+    220823,
+    230536
+  ],
+  "years": [
+    2025
+  ],
+  "difficulty": 0.69,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdLhBYoieCkUrJNhDd95cOn\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">一个质量为</span><span style=\"font-family: 'Times New Roman';\">60kg</span><span style=\"font-family: 宋体;\">的蹦床运动员，某次训练中，从离水平网面</span><span style=\"font-family: 'Times New Roman';\">1.8m</span><span style=\"font-family: 宋体;\">高处自由下落，着网后沿竖直方向蹦回到离水平网面</span><span style=\"font-family: 'Times New Roman';\">3.2m</span><span style=\"font-family: 宋体;\">高处。已知运动员与网接触的时间为</span><span style=\"font-family: 'Times New Roman';\">0.6s</span><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';font-style: italic;\">g</span><span style=\"font-family: 宋体;\">取</span><span style=\"font-family: 'Times New Roman';\">10m/s</span><span style=\"font-family: 'Times New Roman';\"><sup>2</sup></span><span style=\"font-family: 宋体;\">。</span></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdLhBYoieCkUrJNhDd95cOn\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 宋体;\">求运动员与网接触的这段时间内动量的变化量大小；</span></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdLhBYoieCkUrJNhDd95cOn\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 宋体;\">求网对运动员的平均作用力大小；</span></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdLhBYoieCkUrJNhDd95cOn\"><span class=\"ques-no\">（3）</span><span style=\"font-family: 宋体;\">求从自由下落开始到蹦回离水平网面</span><span style=\"font-family: 'Times New Roman';\">3.2m</span><span style=\"font-family: 宋体;\">高处这一过程中运动员所受重力的冲量、弹力的冲量。</span></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdLhBYoieCkUrJNhDd95cOn\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/4cd45171952a7d435f4ab63541345691.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><span style=\"font-family: 'Times New Roman';\">2000N</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/bcbe093c1fcb93719a6dafa3018cdc04.svg\" class=\"xkw-math-img\" /><span>，</span><span style=\"font-family: 宋体;\">方向竖直向下；</span><img  src=\"https://img.xkw.com/dksih/formula/bcbe093c1fcb93719a6dafa3018cdc04.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">，</span><span style=\"font-family: 宋体;\">方向竖直向上</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhvdLhBYoieCkUrJNhDd95cOn\"><div class=\"qml-exps-sq\">(1)题详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">选向下为正方向，</span><span style=\"\">运动员自由下落直到与网接触</span><span style=\"font-family: 宋体;\">的过程中</span><img  src=\"https://img.xkw.com/dksih/formula/b38725407e973e75dd4241efc931b849.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span>解得</span><img  src=\"https://img.xkw.com/dksih/formula/0fdce8dfd671aacb858cfbe760a7cb20.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">选向上为正方向，</span><span style=\"\">运动员</span><span style=\"font-family: 宋体;\">离开网面上升的过程中</span><img  src=\"https://img.xkw.com/dksih/formula/a0d03d7d14c64f3ef14359497f8e6556.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span>解得</span><img  src=\"https://img.xkw.com/dksih/formula/562939975dbbbb6d60245a7b403f951b.svg\" class=\"xkw-math-img\" /></p><p style=\"\"><span style=\"font-family: 宋体;\">选向上为正方向，</span><span style=\"font-family: 'Times New Roman';\"> </span><span style=\"\">运动员</span><span style=\"font-family: 宋体;\">动量的变化量为</span><img  src=\"https://img.xkw.com/dksih/formula/07369b696747e5f2d4f76b5cd3070ab8.svg\" class=\"xkw-math-img\" /></p><p style=\"\"><span style=\"font-family: 宋体;\">联立解得</span><img  src=\"https://img.xkw.com/dksih/formula/1053cc733ea8002544dc64993af88bbe.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\">(2)题详解： <p style=\"\"><span style=\"font-family: 宋体;\">根据动量定理有</span><span style=\"font-family: 'Times New Roman';\"> </span><img  src=\"https://img.xkw.com/dksih/formula/c3f34eb2f16c96d68c5ca1ce19d71e3f.svg\" class=\"xkw-math-img\" /></p><p style=\"\"><span style=\"font-family: 宋体;\">解得</span><span>，</span><span style=\"font-family: 宋体;\">网对运动员的平均作用力大小为</span><img  src=\"https://img.xkw.com/dksih/formula/f108a5a354cfee4576aca7a9faac8042.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\">(3)题详解： <p style=\"text-align: left;\"><span style=\"\">运动员</span><span style=\"font-family: 宋体;\">自由下落过程</span><img  src=\"https://img.xkw.com/dksih/formula/9dc2345a0dc6102b575512828096e86d.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">解得</span><span>运动员自由下落时间</span><img  src=\"https://img.xkw.com/dksih/formula/559fbe8cafb3cf45b7dbce3124b854db.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\"> </span></p><p style=\"text-align: left;\"><span style=\"\">运动员</span><span style=\"font-family: 宋体;\">离开网面上升的过程中</span><img  src=\"https://img.xkw.com/dksih/formula/7fe8783b0603448b110a7534dbd4e92c.svg\" class=\"xkw-math-img\" /><span>，</span><img  src=\"https://img.xkw.com/dksih/formula/ef0b0c31146e4097b35d4559a11cb01a.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">解得</span><span style=\"font-family: 'Times New Roman';\"> </span><img  src=\"https://img.xkw.com/dksih/formula/251fb8928a9aad6a316025df88339b34.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\"> </span></p><p style=\"text-align: left;\"><span style=\"\">运动员所受重力的冲量</span><img  src=\"https://img.xkw.com/dksih/formula/ba8a606a0dbf12e8a7573e7267ef973e.svg\" class=\"xkw-math-img\" /><span>，</span><span style=\"font-family: 宋体;\">方向竖直向下。</span></p><p style=\"\"><span style=\"\">运动员所受</span><span style=\"font-family: 宋体;\">弹力的冲量</span><img  src=\"https://img.xkw.com/dksih/formula/6ffeb98feaa514e3cebc728d968528cc.svg\" class=\"xkw-math-img\" /><span>，</span><span style=\"font-family: 宋体;\">方向竖直向上。</span></p></div></div>",
+  "create_date": "2026-04-21 19:33:11",
+  "paper_type_ids": [
+    3
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 195019,
+      "name": "2. 动量定理"
+    },
+    {
+      "id": 202697,
+      "name": "第二节 动量定理"
+    },
+    {
+      "id": 210025,
+      "name": "第1节 动量和动量定理"
+    },
+    {
+      "id": 220823,
+      "name": "2. 动量定理"
+    },
+    {
+      "id": 230536,
+      "name": "第二节 物体动量变化的原因 动量定理"
+    }
+  ],
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "kpoints": [
+    {
+      "id": 15877,
+      "name": "自由落体运动的规律及应用"
+    },
+    {
+      "id": 16348,
+      "name": "动量定理的内容"
+    },
+    {
+      "id": 16345,
+      "name": "计算物体的动量及动量的变化"
+    },
+    {
+      "id": 16339,
+      "name": "求恒力的冲量"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "source_papers": [
+    {
+      "title": "湖南省株洲市第四中学2025-2026学年高二上学期12月月考物理试题",
+      "area": {
+        "id": "430000",
+        "name": "湖南省"
+      },
+      "type_id": 3,
+      "grade_id": 11,
+      "term": "LAST",
+      "year": 2025
+    }
+  ],
+  "_paper_ids": []
+}

@@ -1,0 +1,24 @@
+{
+  "id": "HD16F49AB5C",
+  "question_id": "HQ0822E89A4F0E",
+  "set": "historical_human",
+  "task_id": "20261019_151446_453_ff672585",
+  "round_number": 1,
+  "html": "人工评分/样本/HD16F49AB5C/20261019_151904_803_round_01.html",
+  "html_sha256": "15ac5ed4e7654e8fb202d85020a8e6728e8bc2edbf6b535b0a9c725933a8590d",
+  "inspection": "人工评分/样本/HD16F49AB5C/evidence/public.json",
+  "screenshots": [
+    "人工评分/样本/HD16F49AB5C/evidence/00_initial.png",
+    "人工评分/样本/HD16F49AB5C/evidence/01_next_step.png",
+    "人工评分/样本/HD16F49AB5C/evidence/02_slider_mid.png",
+    "人工评分/样本/HD16F49AB5C/evidence/03_slider_high.png"
+  ],
+  "source_metadata": "data_v2/20261019_151446_453_ff672585/20261019_151904_803_round_01.meta.json",
+  "source_metadata_sha256": "eb6079c5a73dee35584145cd6c4ece29692b94661ae0b0fbb9732401a0992e97",
+  "source_rubric_version": "2.0",
+  "source_generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "selection_rule": "all existing human-rated data_v2 pages with unchanged HTML"
+}

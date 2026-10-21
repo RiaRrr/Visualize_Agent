@@ -1,0 +1,155 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261021_001043_491_48332379:1",
+  "task_id": "20261021_001043_491_48332379",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 1,
+  "created_at": "2026-10-21T00:17:24.906087+08:00",
+  "files": {
+    "image": "20261021_001043_491_input.png",
+    "html": "20261021_001724_823_round_01.html",
+    "screenshot": "20261021_001724_823_round_01.png",
+    "model_review": "20261021_001724_823_round_01.review.json",
+    "config": "20261021_001043_491_config.json",
+    "model_review_raw": "round_01.model_review_raw.txt"
+  },
+  "html_sha256": "be7b96fb9bcbbc7dbd9993e7ae028c4d5ff99a34d1b266a70004b83e17356e0d",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "chemistry",
+    "name": "化学 · 粒子与反应",
+    "version": "7aeb255efc8b",
+    "subject": "chemistry"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "化学结论D正确，分步联动和粒子计数基本到位；但B选项的交互把“底液换NaOH”误呈现为滴加NaOH，滴管与图例语义错误，属于明显误导。最低点标注位置、横轴标签重叠及选项远离图形反馈也需修正，关键归一化“1份=恰好完全反应”未交代，故不通过。",
+    "issues": [
+      "B选项交互存在题意/图示矛盾：选项说“用NaOH溶液代替Ba(OH)₂溶液”是替换被滴液，但切换后图例显示“当前：NaOH溶液”，滴管变黄色，像是向Ba(OH)₂中滴加NaOH；而状态模型实际是“NaOH底液+滴加H₂SO₄”。应把实验拆成“底液/滴加液”两项分别标注，B实验明确显示底液NaOH、滴加稀H₂SO₄，滴管颜色不可变成NaOH。",
+      "图表最低点标签“最低点≈0.00”固定放在右上角，离B点很远且没有引线，容易被误读为右上角或C点数值。应把标签移到B点附近，或加从B点到标签的引导线，并随实验切换重定位。",
+      "横轴右端数字“2”与轴标题“滴加量（份）”在SVG中坐标过于接近，视觉上重叠/拥挤。应下移轴标题或右对齐到箭头下方空白处，并增大与刻度数字的间距。",
+      "点击底部选项后，曲线和烧杯变化发生在首屏上方，学生停留在选项区时看不到主要反馈，需上下滚动寻找。应在选项卡片内嵌当前/原实验的小型曲线与最低点读数，或把选项与图表放到同一可见区域，至少点击后在选项旁同步显示曲线变化摘要。",
+      "首屏没有解释“1份”的定义和来源。应明确说明：假设匀速滴加，横轴时间等价于滴加量；把恰好完全反应所需H₂SO₄的滴加量归一化为1份。否则学生不知道B点为什么对应x=1，也看不出“恰好完全反应”的转化依据。",
+      "第6步对比不同试剂时，关键证据仍主要靠反馈文字，烧杯中的Na⁺、K⁺残留没有被高亮。点击B/C选项后应在离子计数或烧杯中高亮残留的Na⁺/K⁺，并在最低点旁同步显示最低导电能力值，建立“残留离子→最低点不为0”的视觉对应。"
+    ],
+    "scores": {
+      "problem_fidelity": 3,
+      "solution_correctness": 4,
+      "page_quality": 3,
+      "interaction_quality": 3,
+      "teaching_effectiveness": 3
+    },
+    "overall_score": 3
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 88,
+        "task_id": "20261021_001043_491_48332379",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-21T00:10:45.064884+08:00",
+        "ended_at": "2026-10-21T00:15:28.874609+08:00",
+        "duration_seconds": 283.809725,
+        "status": "completed"
+      },
+      {
+        "id": 90,
+        "task_id": "20261021_001043_491_48332379",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-21T00:15:28.874609+08:00",
+        "ended_at": "2026-10-21T00:15:28.964621+08:00",
+        "duration_seconds": 0.090012,
+        "status": "completed"
+      },
+      {
+        "id": 91,
+        "task_id": "20261021_001043_491_48332379",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-21T00:15:28.964621+08:00",
+        "ended_at": "2026-10-21T00:15:31.172988+08:00",
+        "duration_seconds": 2.208367,
+        "status": "completed"
+      },
+      {
+        "id": 92,
+        "task_id": "20261021_001043_491_48332379",
+        "round_number": 1,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T00:15:31.172988+08:00",
+        "ended_at": "2026-10-21T00:17:25.384478+08:00",
+        "duration_seconds": 114.21149,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 49,
+        "task_id": "20261021_001043_491_48332379",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T00:15:28.813943+08:00",
+        "duration_seconds": 283.5259511319964,
+        "status": "completed",
+        "input_tokens": 2354,
+        "output_tokens": 56039,
+        "cached_input_tokens": 2304,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 45143,
+        "total_tokens": 58393
+      },
+      {
+        "id": 51,
+        "task_id": "20261021_001043_491_48332379",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T00:17:24.737507+08:00",
+        "duration_seconds": 113.35234569399472,
+        "status": "completed",
+        "input_tokens": 13707,
+        "output_tokens": 15627,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 15036,
+        "total_tokens": 29334
+      }
+    ]
+  }
+}

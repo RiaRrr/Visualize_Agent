@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>椭圆上关于直线对称的两点 · 交互式解题</title>
+<style>
+  :root{
+    --ink:#1c2430; --muted:#6b7686; --line:#dfe4ea; --bg:#f7f8fa; --card:#ffffff;
+    --blue:#2a6df4; --red:#e0483c; --green:#14875a; --amber:#c98a12; --violet:#7c4dff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    font-size:15px; line-height:1.55;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:18px 18px 40px}
+  header h1{font-size:19px;margin:0 0 4px;font-weight:700;letter-spacing:.2px}
+  header p{margin:0;color:var(--muted);font-size:13.5px}
+  .problem{
+    margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:12px 16px;font-size:14px;
+  }
+  .problem b{color:var(--ink)}
+  .problem .q{color:var(--blue)}
+
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 410px;gap:16px;margin-top:16px}
+  @media (max-width:1020px){ .layout{grid-template-columns:1fr} }
+
+  .stage{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;position:relative}
+  svg#board{display:block;width:100%;height:auto;border-radius:6px;background:#fcfcfd}
+
+  .panel{display:flex;flex-direction:column;gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .card h2{font-size:14px;margin:0 0 10px;font-weight:700;letter-spacing:.3px;color:var(--ink)}
+  .card h2 .tag{font-weight:500;color:var(--muted);font-size:12px;margin-left:6px}
+
+  .stepbar{display:flex;gap:6px;flex-wrap:wrap}
+  .stepbar button{
+    flex:1 1 40px; min-width:52px; padding:7px 6px; font-size:13px; cursor:pointer;
+    border:1px solid var(--line); background:#f3f5f8; color:var(--muted); border-radius:7px;
+    font-weight:600; transition:.15s;
+  }
+  .stepbar button .n{display:block;font-size:10.5px;font-weight:500;opacity:.85;white-space:nowrap}
+  .stepbar button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  .stepbar button:not(.on):hover{background:#e9edf4;color:var(--ink)}
+
+  .ctrlrow{display:flex;gap:8px;margin-top:10px}
+  .ctrlrow button{
+    flex:1;padding:8px 10px;border-radius:8px;border:1px solid var(--line);
+    background:#fff;color:var(--ink);font-size:13.5px;cursor:pointer;font-weight:600;
+  }
+  .ctrlrow button.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .ctrlrow button:hover{filter:brightness(.97)}
+
+  .readout{margin-top:10px;font-size:13.5px;color:var(--muted);min-height:20px}
+  .readout b{color:var(--ink)}
+  .readout .hl{color:var(--green);font-weight:700}
+
+  .sliderbox{margin-top:6px}
+  .sliderbox .lab{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:2px}
+  .sliderbox .lab b{color:var(--violet);font-size:13.5px}
+  input[type=range]{width:100%;accent-color:var(--violet);cursor:pointer}
+
+  .explain{font-size:13.5px;color:#37414f;min-height:96px}
+  .explain .formula{
+    margin:8px 0;padding:7px 10px;background:#f4f7ff;border-left:3px solid var(--blue);
+    border-radius:0 6px 6px 0;font-family:"Cambria Math",Georgia,serif;font-size:14.5px;
+    overflow-x:auto;white-space:nowrap;
+  }
+  .explain em{font-style:normal;color:var(--red);font-weight:700}
+
+  .mrange{display:grid;grid-template-columns:1fr;gap:4px;font-size:13px;margin-top:8px}
+  .mrange .row{display:flex;justify-content:space-between;gap:10px;padding:4px 0;border-bottom:1px dashed #eceff3}
+  .mrange .row:last-child{border-bottom:none}
+  .mrange .k{color:var(--muted)}
+  .mrange .v{font-family:"Cambria Math",Georgia,serif;color:var(--ink);font-weight:600;text-align:right}
+
+  .badge{display:inline-block;padding:1px 7px;border-radius:20px;font-size:11.5px;font-weight:700;vertical-align:1px}
+  .badge.ok{background:#e3f5ec;color:var(--green)}
+  .badge.no{background:#fdeceb;color:var(--red)}
+  .badge.tip{background:#f0ebff;color:var(--violet)}
+
+  .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted);margin-top:10px}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .sw{width:16px;height:0;border-top-width:3px;border-top-style:solid;display:inline-block}
+
+  .hint{font-size:12.5px;color:var(--muted);margin-top:8px}
+
+  .finalbox{
+    margin-top:10px;padding:10px 12px;border-radius:8px;background:#f2fbf6;border:1px solid #bfe6d1;
+    font-size:14px;color:#0d5c3d;display:none;
+  }
+  .finalbox.show{display:block}
+  .finalbox .f{font-family:"Cambria Math",Georgia,serif;font-size:15px}
+  .warn{background:#fff6ee;border:1px solid #f2d3b3;color:#8a5310;padding:8px 10px;border-radius:8px;font-size:13px;margin-top:8px}
+  .key{background:#fdeceb;border:1px solid #f5c2bd;color:#a1362b;padding:8px 10px;border-radius:8px;font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>椭圆上关于直线对称的两点 · 从条件到答案</h1>
+  <p>拖动滑块改变斜率 m，观察对称点 A、B 何时同时落在椭圆上，以及中点 M 落在哪里。</p>
+</header>
+
+<div class="problem">
+  <b>题设</b>：椭圆 <span style="font-family:Cambria Math,Georgia,serif">x²/2 + y² = 1</span> 上两个不同的点 A、B 关于直线
+  <span style="font-family:Cambria Math,Georgia,serif">y = mx + 1/2</span> 对称，O 为坐标原点。
+  <span class="q">(1) 求实数 m 的取值范围；(2) 求 △AOB 面积的最大值。</span>
+</div>
+
+<div class="layout">
+  <!-- 左：主图 -->
+  <div class="stage">
+    <svg id="board" viewBox="0 0 640 480" preserveAspectRatio="xMidYMid meet" aria-label="椭圆与对称直线主图">
+      <defs>
+        <marker id="arrowGray" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L7,3 L0,6 z" fill="#8b95a6"/>
+        </marker>
+      </defs>
+      <g id="layers"></g>
+    </svg>
+    <div class="legend">
+      <span><i class="sw" style="border-color:#2a6df4"></i>椭圆</span>
+      <span><i class="sw" style="border-color:#7c4dff"></i>对称轴 l: y = mx + ½</span>
+      <span><i class="sw" style="border-color:#c98a12"></i>弦 AB（⊥ l，M 为中点）</span>
+      <span><i class="sw" style="border-color:#e0483c"></i>A、B 两点</span>
+      <span><i class="sw" style="border-color:#14875a"></i>△AOB</span>
+    </div>
+  </div>
+
+  <!-- 右：控制与讲解 -->
+  <div class="panel">
+
+    <div class="card">
+      <h2>分步演示 <span class="tag">点击任一步，主图会切换到对应状态</span></h2>
+      <div class="stepbar" id="stepbar"></div>
+      <div class="ctrlrow">
+        <button id="prevBtn">上一步</button>
+        <button id="nextBtn" class="primary">下一步</button>
+      </div>
+      <div class="readout" id="readout"></div>
+    </div>
+
+    <div class="card">
+      <h2>操作量：斜率 m <span class="tag" id="sliderTag">全程可调</span></h2>
+      <div class="sliderbox">
+        <div class="lab"><span>m =</span><b id="mVal">1.20</b></div>
+        <input type="range" id="mSlider" min="-1.6" max="1.6" step="0.01" value="1.20">
+      </div>
+      <div class="hint" id="sliderHint">拖动滑块：观察 M 是否落在椭圆内部，以及 S 随之怎样变化。</div>
+      <div class="mrange" id="mrange"></div>
+    </div>
+
+    <div class="card">
+      <h2>当前步骤</h2>
+      <div class="explain" id="explain"></div>
+      <div class="finalbox" id="finalbox"></div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ================= 数学部分 =================
+     椭圆 E: x²/2 + y² = 1
+     对称轴 l: y = m x + 1/2
+     A,B 在 E 上, 关于 l 对称.
+     AB ⟂ l  => AB: y = -x/m + t  (m≠0)
+     代入 E: (1/2 + 1/m²) x² - (2t/m) x + (t²-1) = 0
+     韦达: x1+x2 = (2t/m)/(1/2+1/m²) = 4mt/(m²+2)
+           y1+y2 = -(x1+x2)/m + 2t = 2m²t/(m²+2)
+     M = (2mt/(m²+2), m²t/(m²+2))
+     M ∈ l: m²t/(m²+2) = m·2mt/(m²+2) + 1/2
+       => -m²t/(m²+2) = 1/2 => t = -(m²+2)/(2m²)
+     得 M(m) = ( -1/(2m), 1/2 - 1/(2m²) )
+     判别式 Δ = (2t/m)² - 4(1/2+1/m²)(t²-1)
+             = 2(m²+2)/m² > 0  (m≠0)  → 恒有两交点
+     但真正约束是 M 在椭圆内部(弦中点必须在椭圆内):
+       x_M²/2 + y_M² < 1
+       => (1/(4m²))/2 + (1/2 - 1/(2m²))² < 1
+       => 1/(8m²) + 1/4 - 1/(2m²) + 1/(4m⁴) < 1
+       令 u = 1/m² > 0: u²/4 - 3u/8 - 3/4 < 0
+          => 2u² - 3u - 6 < 0 => u < 3/4 + √(57)/2 ≈ 4.5249 (√57≈7.5498)
+       即 m² > 1/u_max = 1/(3/4 + √57/2) = 4/(3+2√57)
+               = 4(2√57-3)/(228-9) = 4(2√57-3)/219
+       数值: 4/(3+15.0997)=4/18.0997≈0.2210
+       即 |m| > 0.4701...
+     ★ 用标准简化条件复核: 若用常见的 M 在椭圆内判别(取 t 的第二个分支/中点条件形式)
+       许多教材直接检查判别式 + M 在内部, 得到 m² > 3/5.
+       检验: m²=3/5 时, t = -(3/5+2)/(2·3/5) = -(13/5)/(6/5) = -13/6
+       M = (-1/(2m), 1/2 - 1/(2m²)) = (-1/(2m), 1/2 - 5/6) = (-1/(2m), -1/3)
+       x_M²/2 + y_M² = (1/(4m²))/2 + 1/9 = 1/(8·3/5) + 1/9 = 5/24 + 1/9 = 15/72+8/72=23/72 < 1 ✓
+       所以 m²=3/5 时 M 确实在椭圆内. 判据应更严格? 严格解是 m² > 4/(3+2√57)≈0.221.
+       但实际上 AB 与椭圆有两交点已经由 Δ>0 保证; M 只是弦中点位置.
+       弦中点在椭圆内部是"任意弦"都成立的 (弦中点必在椭圆内).
+       所以 M ∈ 内部 是自动满足的? 
+       检查: 对任意 m≠0, M(m) = (-1/(2m), 1/2 - 1/(2m²)), 要 M 在椭圆内:
+       x_M²/2 + y_M² = 1/(8m²) + (1/2 - 1/(2m²))²
+       令 w=1/m²: 1/(8w) -> 不是; 用 u=1/m²: u/8 + (1/2 - u/2)² = u/8 + (1-u)²/4
+       = u/8 + (1 - 2u + u²)/4 = u/8 + 1/4 - u/2 + u²/4 = u²/4 - 3u/8 + 1/4
+       要求 < 1: u²/4 - 3u/8 - 3/4 < 0 → 2u² - 3u - 6 < 0
+       u < (3 + √(9+48))/4 = (3+√57)/4 ≈ (3+7.5498)/4 = 2.63745
+       所以 m² > 1/u = 4/(3+√57) = 4(√57-3)/(57-9) = 4(√57-3)/48 = (√57-3)/12 ≈ 0.37915
+       即 |m| > √((√57-3)/12) ≈ 0.6158
+       
+       等等, 计算有误: 4/(3+√57), 分母有理化: 4(√57-3)/((3+√57)(√57-3)) = 4(√57-3)/(57-9) = 4(√57-3)/48 = (√57-3)/12.
+       √57 ≈ 7.5498, (7.5498-3)/12 = 4.5498/12 ≈ 0.37915. 
+       √0.37915 ≈ 0.6158.
+       
+       但审题意见说 m² > 3/5 = 0.6, 得 |m| > 0.7746.
+       m²=3/5 时 M ≈ (-1/(2·0.7746), 1/2 - 1/(2·0.6)) = (-0.6455, 1/2 - 0.8333) = (-0.6455, -0.3333)
+       x_M²/2 + y_M² = 0.4167/2 + 0.1111 = 0.2083 + 0.1111 = 0.3194 < 1 ✓
+       所以 m²=3/5 时 M 在椭圆内, 但审题意见说 "m²>3/5". 
+       
+       我应该用审题意见的结论 m²>3/5 吗? 还是用严格解?
+       
+       仔细看审题意见: "将 M 代入椭圆内部条件 x²/2+y²<1，可得 m²>3/5". 
+       这里可能有更严格的几何约束，比如除了 M 在椭圆内，还要考虑 A、B 的对称性位置的合法性.
+       
+       但题目本身只说 A、B 在椭圆上、关于 l 对称.
+       对照常规高考解法:
+       设 A(x1,y1), B(x2,y2), AB 中点 M(x0,y0). 
+       由 A、B 在椭圆上相减得 (x1²-x2²)/2 + y1²-y2² = 0
+       → (x1-x2)(x1+x2)/2 + (y1-y2)(y1+y2) = 0
+       → 斜率 k_AB = (y1-y2)/(x1-x2) = -(x1+x2)/(2(y1+y2)) = -x0/(2y0)
+       又 k_AB = -1/m (因为 AB ⟂ l)
+       → -x0/(2y0) = -1/m → x0 = 2y0/m
+       M 在 l 上: y0 = m x0 + 1/2
+       → y0 = m·(2y0/m) + 1/2 = 2y0 + 1/2 → y0 = -1/2
+       → x0 = 2y0/m = -1/m
+       M = (-1/m, -1/2)
+       这是一个关键结果 !  M 在 l 上的定点投影位置固定, y 恒为 -1/2.
+       
+       但之前用 t 参数法得到 M = (-1/(2m), 1/2 - 1/(2m²)), 差异在哪？
+       我之前设 AB: y = -x/m + t, 代入椭圆得:
+       x²/2 + (-x/m + t)² = 1
+       x²/2 + x²/m² - 2tx/m + t² = 1
+       (1/2 + 1/m²)x² - (2t/m)x + (t²-1) = 0
+       x1+x2 = (2t/m)/(1/2+1/m²) = (2t/m)·2m²/(m²+2) = 4mt/(m²+2) ✓
+       y1+y2 = -(x1+x2)/m + 2t = -4t/(m²+2) + 2t = (-4t + 2t(m²+2))/(m²+2) = 2tm²/(m²+2) ✓
+       M = (2mt/(m²+2), m²t/(m²+2)) ✓
+       
+       相减法公式 (x1²-x2²)/2 + y1²-y2² = 0:
+       (x1+x2)(x1-x2)/2 + (y1+y2)(y1-y2) = 0
+       除以 (x1-x2): (x1+x2)/2 + (y1+y2)·k = 0
+       k = -(x1+x2)/(2(y1+y2)) = -x_M/(2y_M) ✓
+       而 k = -1/m → -x_M/(2y_M) = -1/m → x_M = 2y_M/m ✓
+       M ∈ l: y_M = m x_M + 1/2
+       代: y_M = m·(2y_M/m) + 1/2 = 2y_M + 1/2 → -y_M = 1/2 → y_M = -1/2 ✓
+       x_M = 2(-1/2)/m = -1/m ✓
+       So M = (-1/m, -1/2). 
+       
+       检验前法: M = (2mt/(m²+2), m²t/(m²+2)), M ∈ l
+       m²t/(m²+2) = m·2mt/(m²+2) + 1/2
+       → (m²t - 2m²t)/(m²+2) = 1/2
+       → -m²t/(m²+2) = 1/2
+       → t = -(m²+2)/(2m²)
+       M = (2m·(-(m²+2)/(2m²))/(m²+2), m²·(-(m²+2)/(2m²))/(m²+2))
+         = (-1/m, -1/2) ✓ 对!
+       
+       我之前的代码里写 M = (2mt/(m²+2), m²t/(m²+2)) 然后 t = -(m²+2)/(2m²), 代入得 M = (-1/m, -1/2).
+       但代码里 stateFromM 用 A、B 坐标算 M 是对的.
+       
+       所以审题意见里说的 M = (-1/(2m), 1/2-1/(2m²)) 是错的! 
+       但审题意见还说了面积 S = √(m²+2)/(2|m|) 这个是对的.
+       
+       再检查审题意见的面积结论: "在 m²>3/5 上取最大值, 当 m²=3/5 时 S_max=√2/2"
+       S(3/5) = √(3/5+2)/(2√(3/5)) = √(13/5)/(2√(3/5)) = √13/(2√3) = √39/6 ≈ 6.245/6 ≈ 1.0408
+       √2/2 ≈ 0.7071. 不符!
+       
+       让我算 S 的有界性:
+       S = √(m²+2)/(2|m|) = √(m²+2)/(2|m|). 当 |m|→0 时 → ∞. 当 |m|→∞ 时 → 1/2.
+       所以如果 m 约束在 |m| ≥ √(3/5), 则 S 在 |m|=√(3/5) 时 S = √(13/5)/(2√(3/5)) = (13/5)/(2√(3/5))×... 算一下:
+       √(m²+2)/(2|m|) 对称于 m² → 令 u=m², S = √(u+2)/(2√u) = (1/2)√((u+2)/u) = (1/2)√(1+2/u). 
+       u 减小时 (1+2/u) 增大, S 增大. u=0.6 时 S=(1/2)√(1+2/0.6)=(1/2)√(1+3.333)=(1/2)√(4.333)=(1/2)(2.0817)=1.0408.
+       
+       所以 σ(3/5) ≈ 1.0408, 不是 √2/2=0.7071.
+       
+       审题意见说 "请以正确化简 √2/2 核对" 带有质问语气. 
+       
+       ★ 关键洞察: 审题意见给的 M = (-1/(2m), 1/2 - 1/(2m²)) 是错误的. 正确的 M = (-1/m, -1/2).
+       
+       我按正确的推导做. 
+       
+       那么 m 的取值范围到底是什么? 判别式 Δ = 2(m²+2)/m² > 0 (m≠0) 恒成立, 所以对任意 m≠0, AB 与椭圆恒有两个交点.
+       但题目还有 A,B 不同, 那仍 m≠0.
+       
+       但标准高考答案是 m²>3/5 (或 m<-√15/5 或 m>√15/5). 让我查证.
+       
+       标准解法常采用 M = (-1/m, -1/2) (由点差法). 要求 M 在椭圆内部:
+       (-1/m)²/2 + (-1/2)² < 1
+       1/(2m²) + 1/4 < 1
+       1/(2m²) < 3/4
+       m² > 2/3
+       即 m² > 2/3. 这不是 3/5!
+       
+       但如果 M 在椭圆内部之外还需要别的东西? 其实还有一个隐含条件:
+       由 t = -(m²+2)/(2m²) 代回方程, 判别式:
+       Δ = (2t/m)² - 4(1/2+1/m²)(t²-1)
+       让我直接算: 用 a = 1/2+1/m², b = -2t/m, c = t²-1
+       t = -(m²+2)/(2m²) → 2t/m = -2(m²+2)/(2m³) = -(m²+2)/m³
+       t² = (m²+2)²/(4m⁴), t²-1 = ((m²+2)² - 4m⁴)/(4m⁴) = (m⁴+4m²+4-4m⁴)/(4m⁴) = (-3m⁴+4m²+4)/(4m⁴)
+       a = (m²+2)/(2m²)
+       Δ = (m²+2)²/m⁶ - 4·(m²+2)/(2m²)·(-3m⁴+4m²+4)/(4m⁴)
+          = (m²+2)²/m⁶ + (m²+2)(3m⁴-4m²-4)/(2m⁶)
+          = (m²+2)/m⁶ · [(m²+2) + (3m⁴-4m²-4)/2]
+          = (m²+2)/m⁶ · [2m²+4+3m⁴-4m²-4]/2
+          = (m²+2)/m⁶ · [3m⁴-2m²]/2
+          = (m²+2)/m⁶ · m²(3m²-2)/2
+          = (m²+2)(3m²-2)/(2m⁴)
+       
+       ★ 判别式 Δ = (m²+2)(3m²-2)/(2m⁴).
+       要求 Δ > 0 → 3m² - 2 > 0 → m² > 2/3.
+       
+       这就对了! Δ > 0 的条件是 m² > 2/3, 不是 m≠0!
+       
+       我之前写 Δ = 2(m²+2)/m² 是错的! 让我重新核对上次的算:
+       上次把 t 代入了吗? 如果没代入 t, Δ = (2t/m)² - 4(1/2+1/m²)(t²-1) 中有 t. 必须代入 t 才能得纯 m 的表达式.
+       上次直接写 Δ = 2(m²+2)/m² 是错的.
+       
+       正确结论: m² > 2/3, 即 m < -√6/3 或 m > √6/3. 
+       数值: ±√(2/3) ≈ ±0.8165.
+       
+       ★★ 这与审题意见的 m² > 3/5 不同. 
+       
+       让我用点差法再独立验证:
+       M = (-1/m, -1/2). M 在椭圆内部:
+       (1/m²)/2 + 1/4 < 1
+       1/(2m²) < 3/4
+       m² > 2/3 ✓ 与判别式一致!
+       
+       好, 所以 m² > 2/3 是正确结论. ✓✓✓
+       
+       审题意见说 m² > 3/5 是它自己的错误 (它使用了错误的 M). 我们应该用 m² > 2/3.
+       
+       等等, 再仔细想审题意见: "代入椭圆内部条件 x²/2+y²<1，可得 m²>3/5". 
+       如果我按它的 M 算: M = (-1/(2m), 1/2-1/(2m²)):
+       x_M²/2 = 1/(8m²), y_M² = (1/2-1/(2m²))²
+       1/(8m²) + 1/4 - 1/(2m²) + 1/(4m⁴) < 1
+       1/(4m⁴) - 3/(8m²) - 3/4 < 0
+       令 v = 1/m²: v²/4 - 3v/8 - 3/4 < 0 → 2v² - 3v - 6 < 0
+       v < (3+√57)/4 ≈ 2.637
+       m² > 1/2.637 ≈ 0.379 → 不是 3/5.
+       
+       所以审题意见自己内部也不一致. 我要用自己的正确推导.
+
+       ★ 最终确定: 用标准的点差法 M = (-1/m, -1/2), 得 m² > 2/3.
+       
+       面积公式: S(m) = ? 
+       用叉积: A,B 坐标. 方法1: 由 AB 直线方程和 M, 可用点差法结果.
+       
+       S = (1/2)|x_A y_B - x_B y_A|.
+       设 A = M + d·(1, k) 其中 k = -1/m 是 AB 斜率, d 是参数(半弦长的横向投影). 
+       不对, 方向向量应为 (1, k), 长度需注意.
+       A = (x_M + d, y_M + kd), B = (x_M - d, y_M - kd).
+       x_A y_B - x_B y_A = (x_M+d)(y_M-kd) - (x_M-d)(y_M+kd)
+       = x_M y_M - kd x_M + d y_M - k d² - [x_M y_M + k d x_M - d y_M - k d²]
+       = -2 k d x_M + 2 d y_M
+       = 2d(y_M - k x_M)
+       |S| = |d| |y_M - k x_M|.
+       
+       还需要 d. A 在椭圆上: (x_M+d)²/2 + (y_M+kd)² = 1.
+       x_M²/2 + y_M² + 2d(x_M/2 + k y_M) + d²(1/2 + k²) = 1.
+       d 是方程根: d²(1/2+k²) + 2d(x_M/2 + k y_M) + (x_M²/2 + y_M² - 1) = 0.
+       d 的两个解对应 A、B 的位置. d² = (1 - x_M²/2 - y_M²)/(1/2+k²). (因为两根对称)
+       (因为 M 是根的平均, 一次项系数对应 -2·(中点) 也就是原点平移...)
+       实际上: 二次方程解 d = ±√((1 - x_M²/2 - y_M²)/(1/2+k²)).
+       
+       k = -1/m, k² = 1/m². 1/2 + k² = (m²+2)/(2m²).
+       x_M = -1/m, y_M = -1/2.
+       x_M²/2 + y_M² = 1/(2m²) + 1/4.
+       1 - (1/(2m²)+1/4) = 3/4 - 1/(2m²).
+       
+       |d| = √[(3/4 - 1/(2m²)) / ((m²+2)/(2m²))]
+           = √[(3/4 - 1/(2m²)) · 2m²/(m²+2)]
+           = √[(3m²/2 - 1)/(m²+2)]
+           = √[(3m²-2)/(2(m²+2))].
+       
+       (3m²-2 > 0 与 Δ>0 一致 ✓)
+       
+       |y_M - k x_M| = |-1/2 - (-1/m)(-1/m)| = |-1/2 - 1/m²| = 1/2 + 1/m² = (m²+2)/(2m²).
+       
+       S = |d| · (m²+2)/(2m²) = √[(3m²-2)/(2(m²+2))] · (m²+2)/(2m²).
+       
+       这个表达式有点复杂. 检查化简:
+       S² = (3m²-2)/(2(m²+2)) · (m²+2)²/(4m⁴) = (3m²-2)(m²+2)/(8m⁴).
+       S = √[(3m²-2)(m²+2)]/(2√2 · m²).
+       
+       数值核对: m=1 → S² = (3-2)(3)/(8·1) = 3/8 → S = √(3/8) = √6/4 ≈ 0.6124.
+       
+       上次错误代码里用的 S = √(m²+2)/(2|m|) = √3/2 ≈ 0.866. 不对.
+       
+       等等, 让我重新检查 |y_M - k x_M| 的符号/方向.
+       实际上叉积公式: x_A y_B - x_B y_A, 
+       A = M + d·(1, k), B = M - d·(1, k). 
+       det(A,B) = (x_M+d)(y_M-kd) - (x_M-d)(y_M+kd)
+       = x_M y_M - k d x_M + d y_M - k d² - (x_M y_M + k d x_M - d y_M - k d²)
+       = -2 k d x_M + 2 d y_M
+       = 2d(y_M - k x_M)
+       
+       S = |det|/2 = |d| |y_M - k x_M|. ✓
+       
+       |y_M - k x_M| = |−1/2 − (−1/m)(−1/m)| = |−1/2 − 1/m²| = 1/2 + 1/m². ✓
+       
+       |d| = √[(1 − x_M²/2 − y_M²)/(1/2 + k²)]. 
+       x_M²/2 + y_M² = 1/(2m²) + 1/4
+       1 − (...) = 3/4 − 1/(2m²) = (3m² − 2)/(4m²)
+       1/2 + k² = (m²+2)/(2m²)
+       比值 = (3m² − 2)/(4m²) · 2m²/(m²+2) = (3m² − 2)/(2(m²+2)) ✓
+       
+       S = √[(3m²-2)/(2(m²+2))] · (m²+2)/(2m²)
+       
+       验证 m=1 时: √(1/6)·3/2 = (1/√6)·1.5 = 1.5/2.449 = 0.6124 ✓ 
+       S² = (3/2+1)/(8·1) 前面我算 (3-2)(3)/(8) = 3/8 ✓
+       
+       但审题意见说 S = √(m²+2)/(2|m|), 这不对!
+       让我用数值验证: m=1 时 A、B 坐标算一下:
+       t = -(1+2)/(2) = -3/2. 
+       a = 1/2+1 = 3/2. b = -2t/m = 3. c = t²-1 = 9/4-1 = 5/4.
+       3/2 x² + 3x + 5/4 = 0 → 6x² + 12x + 5 = 0
+       x = (-12±√(144-120))/12 = (-12±2√6)/12 = -1 ± √6/6
+       x_A = -1 - 0.4082 = -1.4082, y_A = -x/m + t = 1.4082 - 1.5 = -0.0918
+       x_B = -1 + 0.4082 = -0.5918, y_B = 0.5918 - 1.5 = -0.9082
+       检查 A: (-1.4082)²/2 + (-0.0918)² = 1.9833/2 + 0.0084 = 0.9917+0.0084 = 1.0001 ✓
+       检查 B: (-0.5918)²/2 + (-0.9082)² = 0.3502/2 + 0.8248 = 0.1751+0.8248 = 0.9999 ✓
+       S = 1/2|x_A y_B - x_B y_A| = 1/2|(-1.4082)(-0.9082) - (-0.5918)(-0.0918)|
+         = 1/2|1.2789 - 0.0543| = 1/2·1.2246 = 0.6123 ✓✓
+       
+       所以 S = √6/4 ≈ 0.6124, 不是 √3/2 ≈ 0.866.
+       
+       我的正确 S(m) = √[(3m²-2)(m²+2)]/(2√2 m²).
+       
+       化简比较: 令 u=m², 
+       S = √[(3u-2)(u+2)/(8u²)] = (1/2)√[(3u-2)(u+2)/(2u²)].
+       
+       求最大值 (u > 2/3):
+       f(u) = (3u-2)(u+2)/u² = (3u²+4u-4)/u² = 3 + 4/u - 4/u².
+       令 w = 1/u (w > 0, w < 3/2):
+       g(w) = 3 + 4w - 4w², 最大值在 w = 4/(2·4) = 1/2.
+       g(1/2) = 3 + 2 - 1 = 4. 
+       此时 S_max = (1/2)√(4/2) = (1/2)√2 = √2/2 ≈ 0.7071! ✓✓✓
+       
+       取等: 1/m² = 1/2 → m² = 2 → m = ±√2. 
+       验证 m=√2: 检查是否 m² > 2/3 ✓ (2 > 0.667)
+       此时 S = √2/2. ✓
+       
+       ★★★ 正确答案:
+       (1) m ∈ (-∞, -√6/3) ∪ (√6/3, +∞)
+       (2) S_max = √2/2, 当 m = ±√2 时取得.
+       
+       审题意见的核心错误在 M 坐标公式上. 但它要的"最大值√2/2"是对的!
+       (尽管它的 m²>3/5 判据是错的, 它只是碰巧给了正确的最大值; 或者说它的临界是错的, 但最大值的点 m²=2 也在它的合法范围内)
+       
+       所以正确的讲解应该是:
+       1. 对称转化: AB ⟂ l, 斜率 -1/m (m≠0)
+       2. 点差法得 M = (-1/m, -1/2) (要点: 不要用 t 参数, 用点差法更简捷)
+       3. 判别式 Δ = (m²+2)(3m²-2)/(2m⁴) > 0 → m² > 2/3
+          (同时 M 在椭圆内部, 也独立给出 m² > 2/3, 相互印证)
+       4. S = √[(3m²-2)(m²+2)]/(2√2 m²) = (1/2)√(3 + 4/m² - 4/m⁴)
+       5. 令 w = 1/m² ∈ (0, 3/2), 最值 w = 1/2 → m² = 2, S_max = √2/2
+       
+       取等条件: m = ±√2, 均在 m² > 2/3 的范围内 ✓
+       
+       两次检查:
+       - m = 1.0 (>√(2/3)≈0.816): 合法, S = √6/4 ≈ 0.612
+       - m = 1.414: S = √2/2 ≈ 0.707, 最大
+       - m = 0.7 (< √(2/3)): 不合法, Δ < 0, 无交点
+       - m = 0.9: Δ = (0.81+2)(2.43-2)/(2·0.6561) = 2.81·0.43/1.3122 = 1.2083/1.3122 ≈ 0.921 > 0 ✓
+       - m = 0.8: Δ = (0.64+2)(1.92-2)/(2·0.4096) = 2.64·(-0.08)/0.8192 ≈ -0.258 < 0 ✓
+       
+       临界 m² = 2/3, m ≈ ±0.8165. ✓
+
+  ============================================= */
+
+  const A2 = 2, B2 = 1, C0 = 0.5;
+  const M2_CRIT = 2/3;   // m² 临界
+  const M_CRIT = Math.sqrt(M2_CRIT);  // |m| 临界 ≈0.8165
+
+  function slopeAB(m){ return -1/m; }
+
+  // 由 m 精确计算 A,B,M 和面积 (从同一个数学参数 m 出发)
+  function stateFromM(m){
+    if (Math.abs(m) < 1e-9) return null;
+    const m2 = m*m;
+    // 要求 Δ > 0 → m² > 2/3
+    if (m2 <= M2_CRIT + 1e-12) return null;
+    const k = -1/m;
+    // 由点差法 M = (-1/m, -1/2)
+    const Mx = -1/m, My = -1/2;
+    // 用半弦长参数 d 求 A,B, 与判别式条件一致
+    // d² = (3m²-2)/(2(m²+2))
+    const d2 = (3*m2 - 2)/(2*(m2+2));
+    const d = Math.sqrt(d2);
+    // A = M + d(1,k), B = M - d(1,k)
+    const A = {x: Mx + d, y: My + k*d};
+    const B = {x: Mx - d, y: My - k*d};
+    // S 精算
+    const det = Math.abs(A.x*B.y - A.y*B.x);
+    const S = det/2;
+    return {m, A, B, M:{x:Mx,y:My}, S, k};
+  }
+
+  // S(m) 闭式
+  function S_of_m(m){
+    const m2 = m*m;
+    if (m2 <= M2_CRIT) return NaN;
+    return 0.5*Math.sqrt((3*m2-2)*(m2+2)/(2*m2*m2));
+  }
+
+  // 判别式
+  function Delta_of_m(m){
+    const m2 = m*m;
+    if (m2 < 1e-12) return -Infinity;
+    return (m2+2)*(3*m2-2)/(2*m2*m2);
+  }
+
+  /* ========= 绘制相关 ========= */
+  const svg = document.getElementById('board');
+  const layers = document.getElementById('layers');
+  const cx = 320, cy = 260;
+  let viewScale = 130;
+  function sx(x){ return cx + x*viewScale; }
+  function sy(y){ return cy - y*viewScale; }
+
+  function el(tag, attrs, parent){
+    const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    (parent||layers).appendChild(e);
+    return e;
+  }
+  function fmt(v, d){
+    if (d===undefined) d=2;
+    if (!isFinite(v)) return "∞";
+    let s = v.toFixed(d);
+    if (Math.abs(v) < Math.pow(10,-d)/2) s = (0).toFixed(d);
+    return s;
+  }
+  function clearLayers(){ layers.innerHTML = ''; }
+
+  function drawAxes(){
+    el('line',{x1:sx(-2.6), y1:sy(0), x2:sx(2.6), y2:sy(0), stroke:'#9aa4b4','stroke-width':1.2,'marker-end':'url(#arrowGray)'});
+    el('line',{x1:sx(0), y1:sy(1.9), x2:sx(0), y2:sy(-1.9), stroke:'#9aa4b4','stroke-width':1.2,'marker-end':'url(#arrowGray)'});
+    el('text',{x:sx(2.6)+6, y:sy(0)+16, fill:'#8b95a6','font-size':13}).textContent = 'x';
+    el('text',{x:sx(0)+8, y:sy(1.9)-6, fill:'#8b95a6','font-size':13}).textContent = 'y';
+    el('text',{x:sx(0)-16, y:sy(0)+16, fill:'#8b95a6','font-size':13,'font-style':'italic'}).textContent = 'O';
+    for (const v of [-2,-1,1,2]){
+      el('line',{x1:sx(v), y1:sy(0)-4, x2:sx(v), y2:sy(0)+4, stroke:'#c2c8d2','stroke-width':1});
+      el('text',{x:sx(v)-4, y:sy(0)+17, fill:'#a8b0bd','font-size':11}).textContent = ''+v;
+    }
+    el('line',{x1:sx(0)-5, y1:sy(0.5), x2:sx(0)+5, y2:sy(0.5), stroke:'#c2c8d2','stroke-width':1.2});
+    el('text',{x:sx(0)-26, y:sy(0.5)+4, fill:'#8b95a6','font-size':12}).textContent = '½';
+    el('line',{x1:sx(0)-5, y1:sy(-0.5), x2:sx(0)+5, y2:sy(-0.5), stroke:'#c2c8d2','stroke-width':1.2});
+    el('text',{x:sx(0)-26, y:sy(-0.5)+4, fill:'#8b95a6','font-size':12}).textContent = '−½';
+    el('line',{x1:sx(0)-5, y1:sy(1), x2:sx(0)+5, y2:sy(1), stroke:'#c2c8d2','stroke-width':1.2});
+    el('text',{x:sx(0)-18, y:sy(1)+4, fill:'#8b95a6','font-size':12}).textContent = '1';
+  }
+
+  function drawEllipse(){
+    el('ellipse',{cx:sx(0), cy:sy(0), rx:Math.sqrt(A2)*viewScale, ry:Math.sqrt(B2)*viewScale,
+      fill:'none', stroke:'#2a6df4','stroke-width':2.4});
+    el('text',{x:sx(1.45), y:sy(-0.95), fill:'#2a6df4','font-size':12.5}).textContent = 'x²/2 + y² = 1';
+  }
+
+  function drawAxisLine(m, opt){
+    opt = opt || {};
+    const halfRange = 2.6;
+    const x1 = -halfRange, x2 = halfRange;
+    const y1 = m*x1 + C0, y2 = m*x2 + C0;
+    const color = opt.color || '#7c4dff';
+    el('line',{x1:sx(x1), y1:sy(y1), x2:sx(x2), y2:sy(y2),
+      stroke:color, 'stroke-width':2.6, opacity:opt.opacity===undefined?1:opt.opacity});
+    el('circle',{cx:sx(0), cy:sy(C0), r:4, fill:color, stroke:'#fff','stroke-width':1.5});
+    el('text',{x:sx(x1)+8, y:sy(y1)-10, fill:color,'font-size':13}).textContent = 'l: y = ' + fmt(m) + 'x + ½';
+  }
+
+  function drawABLine(st, opt){
+    if (!st) return;
+    opt = opt || {};
+    const {M, k} = st;
+    const halfRange = 2.7;
+    const xa = M.x - halfRange, xb = M.x + halfRange;
+    const ya = M.y + k*(xa - M.x), yb = M.y + k*(xb - M.x);
+    el('line',{x1:sx(xa), y1:sy(ya), x2:sx(xb), y2:sy(yb),
+      stroke:'#c98a12','stroke-width':1.6,'stroke-dasharray':opt.dash||'7 5', opacity:opt.opacity===undefined?1:opt.opacity});
+  }
+
+  function drawPoints(st, opt){
+    opt = opt || {};
+    if (!st) return;
+    const {A,B,M} = st;
+    if (opt.segOpacity > 0){
+      el('line',{x1:sx(A.x), y1:sy(A.y), x2:sx(B.x), y2:sy(B.y),
+        stroke:'#c98a12','stroke-width':2.6, opacity:opt.segOpacity});
+    }
+    el('circle',{cx:sx(M.x), cy:sy(M.y), r:5, fill:'#fff', stroke:'#c98a12','stroke-width':2.4});
+    el('circle',{cx:sx(A.x), cy:sy(A.y), r:6.5, fill:'#e0483c', stroke:'#fff','stroke-width':1.6});
+    el('circle',{cx:sx(B.x), cy:sy(B.y), r:6.5, fill:'#e0483c', stroke:'#fff','stroke-width':1.6});
+
+    el('text',{x:sx(A.x)-22, y:sy(A.y)+20, fill:'#e0483c','font-size':14,'font-weight':700}).textContent='A';
+    el('text',{x:sx(B.x)+14, y:sy(B.y)-10, fill:'#e0483c','font-size':14,'font-weight':700}).textContent='B';
+    el('text',{x:sx(M.x)+10, y:sy(M.y)+20, fill:'#c98a12','font-size':13,'font-weight':700}).textContent='M';
+  }
+
+  function drawAreaTriangle(st, show){
+    if (!st || !show) return;
+    const {A,B} = st;
+    el('polygon',{points: sx(0)+','+sy(0)+' '+sx(A.x)+','+sy(A.y)+' '+sx(B.x)+','+sy(B.y),
+      fill:'#14875a', 'fill-opacity':0.16, stroke:'#14875a','stroke-width':1.6});
+    el('line',{x1:sx(0), y1:sy(0), x2:sx(A.x), y2:sy(A.y), stroke:'#14875a','stroke-width':1.4});
+    el('line',{x1:sx(0), y1:sy(0), x2:sx(B.x), y2:sy(B.y), stroke:'#14875a','stroke-width':1.4});
+  }
+
+  function drawNote(x, y, txt, color, size){
+    el('text',{x:x, y:y, fill:color||'#1c2430','font-size':size||14,'font-weight':700}).textContent = txt;
+  }
+
+  function drawForbiddenBands(){
+    // 在临界值之间绘制禁带 (m 的不可行区域)
+    const xLeft = sx(-M_CRIT), xRight = sx(M_CRIT);
+    const yTop = sy(1.85), yBot = sy(-1.85);
+    el('rect',{x:xLeft, y:yTop, width:(xRight-xLeft), height:(yBot-yTop),
+      fill:'#e0483c', 'fill-opacity':0.06, stroke:'#e0483c','stroke-dasharray':'4 4','stroke-width':1});
+    el('text',{x:(xLeft+xRight)/2, y:yTop+22, fill:'#a1362b','font-size':12.5,'text-anchor':'middle'})
+      .textContent = 'Δ < 0 区 (无 A、B)';
+    el('text',{x:sx(M_CRIT)+8, y:sy(-1.7), fill:'#a1362b','font-size':11.5}).textContent = 'm=√6/3';
+    el('text',{x:sx(-M_CRIT)-8, y:sy(-1.7), fill:'#a1362b','font-size':11.5,'text-anchor':'end'}).textContent = '−√6/3';
+  }
+
+  // S(m) 曲线小图
+  function drawSCurve(m){
+    const g = el('g', {});
+    const px0 = 14, py0 = 360, w = 606, h = 104;
+    el('rect', {x:px0, y:py0-14, width:w, height:h-2, fill:'#f9fbff', stroke:'#e2e8f2', 'rx':6}, g);
+    el('text', {x:px0+8, y:py0+2, fill:'#6b7686', 'font-size':11.5}, g)
+      .textContent = 'S(m) = (1/2)√(3 + 4/m² − 4/m⁴)，定义域 |m| > √6/3';
+
+    const mLeft = -2.2, mRight = 2.2, sMax = 0.85;
+    const X = (v)=> px0+34 + (v - mLeft)/(mRight-mLeft) * (w-52);
+    const Y = (s)=> py0+h-26 - Math.min(s,sMax)/sMax * (h-36);
+
+    el('line', {x1:X(mLeft), y1:Y(0), x2:X(mRight), y2:Y(0), stroke:'#b9c1cd', 'stroke-width':1}, g);
+    el('line', {x1:X(0), y1:Y(0), x2:X(0), y2:py0-6, stroke:'#e0483c', 'stroke-width':1, 'stroke-dasharray':'3 3'}, g);
+    el('text', {x:X(0)+3, y:py0-2, fill:'#e0483c', 'font-size':10.5}, g).textContent = 'm=0（不可取）';
+    el('text', {x:X(mRight)-6, y:Y(0)+14, fill:'#8b95a6', 'font-size':10.5, 'text-anchor':'end'}, g).textContent = 'm';
+
+    // 禁带
+    el('rect', {x:X(-M_CRIT), y:py0-10, width:X(M_CRIT)-X(-M_CRIT), height:(py0+h-16)-(py0-10),
+      fill:'#e0483c', 'fill-opacity':0.07}, g);
+
+    function branch(sgn){
+      let d = '';
+      const N = 180;
+      for (let i=0;i<=N;i++){
+        const t = i/N;
+        const am = M_CRIT + 0.005 + t*(mRight-0.02-M_CRIT);
+        const mm = sgn*am;
+        const ss = S_of_m(mm);
+        if (!isFinite(ss)) continue;
+        const pxp = X(mm), pyp = Y(ss);
+        d += (d===''?'M':'L') + pxp.toFixed(2) + ',' + pyp.toFixed(2);
+      }
+      el('path', {d:d, fill:'none', stroke:'#14875a', 'stroke-width':2.2}, g);
+    }
+    branch(+1); branch(-1);
+
+    // 最大点
+    const mx = X(1.4142), my = Y(Math.SQRT1_2);
+    el('circle', {cx:mx, cy:my, r:4.5, fill:'#c98a12', stroke:'#fff', 'stroke-width':1.5}, g);
+    el('text', {x:mx+6, y:my-4, fill:'#c98a12','font-size':11,'font-weight':700}, g)
+      .textContent = 'max = √2/2';
+    const mx2 = X(-1.4142);
+    el('circle', {cx:mx2, cy:my, r:4.5, fill:'#c98a12', stroke:'#fff', 'stroke-width':1.5}, g);
+
+    // 当前点
+    if (isFinite(S_of_m(m)) && Math.abs(m)>M_CRIT){
+      const ss = S_of_m(m);
+      const pxx = X(m), pyy = Y(ss);
+      el('circle', {cx:pxx, cy:pyy, r:5, fill:'#e0483c', stroke:'#fff', 'stroke-width':1.6}, g);
+    }
+  }
+
+  /* ========= 步骤系统 ========= */
+  const steps = [
+    {
+      name:'题设',
+      render(m){
+        drawAxes(); drawEllipse(); drawAxisLine(m);
+        const st = stateFromM(m);
+        if (st){
+          drawABLine(st, {opacity:.85});
+          drawPoints(st, {segOpacity:1});
+        }
+        drawNote(16, 26, 'A、B 在椭圆上，关于 l 对称', '#1c2430');
+        drawNote(16, 46, '拖动 m：A、B 是否存在？', '#6b7686', 12.5);
+      },
+      explain(){
+        return '椭圆 <span style="font-family:Cambria Math,Georgia,serif">x²/2 + y² = 1</span> 与直线 '+
+        '<span style="font-family:Cambria Math,Georgia,serif">l: y = mx + ½</span>。'+
+        'A、B 在椭圆上且关于 l 对称。<br>'+
+        '拖动右侧 <b>m</b> 滑块：许多 m 值下 A、B 根本不存在——这将成为约束 m 的钥匙。';
+      },
+      readout(m){
+        return '当前 m = <b>'+fmt(m)+'</b> · ' + (stateFromM(m)?'A、B 存在':'A、B 不存在');
+      }
+    },
+    {
+      name:'对称转化',
+      render(m){
+        drawAxes(); drawEllipse(); drawAxisLine(m);
+        const st = stateFromM(m);
+        if (st){
+          drawABLine(st, {opacity:1});
+          drawPoints(st, {segOpacity:1});
+        }
+        drawNote(16, 26, 'AB ⟂ l ，M = AB 中点', '#7c4dff');
+        drawNote(16, 46, 'k_AB = −1/m  (m ≠ 0)', '#7c4dff', 12.5);
+      },
+      explain(){
+        return '<b>对称</b>拆成两条可算的条件：'+
+        '<div class="formula">① M = AB 中点 &nbsp;在&nbsp; l 上&nbsp;&nbsp;&nbsp;② AB ⟂ l ⟹ k<sub>AB</sub> = −1/m</div>'+
+        '第一条让 M 必须满足 l 的方程；第二条把 AB 的方向锁定。两条一起，就能把 M 定出来。'+
+        '图中橙色虚线是 AB，直角标记在 M 处。';
+      },
+      readout(m){
+        if (Math.abs(m)<1e-6) return 'm = 0 时 AB 是竖直线，斜率不存在';
+        return 'AB 斜率 k = −1/m = <b>'+fmt(-1/m)+'</b>';
+      }
+    },
+    {
+      name:'点差法',
+      render(m){
+        drawAxes(); drawEllipse(); drawAxisLine(m);
+        const st = stateFromM(m);
+        if (st){
+          drawABLine(st, {opacity:.4});
+          drawPoints(st, {segOpacity:1});
+          el('line',{x1:sx(st.M.x)-3, y1:sy(st.M.y), x2:sx(st.M.x)+3, y2:sy(st.M.y), stroke:'#c98a12','stroke-width':2});
+          el('text',{x:sx(st.M.x)+12, y:sy(st.M.y)+5, fill:'#c98a12','font-size':12})
+            .textContent = 'M(−1/m, −½)';
+        }
+        drawNote(16, 26, '点差法：M 固定！', '#c98a12');
+      },
+      explain(){
+        return 'A、B 都在椭圆上，<b>两式相减</b>可消去平方项：'+
+        '<div class="formula">(x<sub>A</sub>²−x<sub>B</sub>²)/2 + (y<sub>A</sub>²−y<sub>B</sub>²) = 0</div>'+
+        '提出 (x<sub>A</sub>−x<sub>B</sub>) 并用中点 M(x₀,y₀) 代入，得到：'+
+        '<div class="formula">k<sub>AB</sub> = − x₀ / (2y₀)</div>'+
+        '结合 k<sub>AB</sub> = −1/m 及 y₀ = m x₀ + ½，解得：'+
+        '<div class="formula">M = ( −1/m ,&nbsp; −1/2 )</div>'+
+        'M 的纵坐标恒为 −½：这是关键约束。';
+      },
+      readout(m){
+        if (Math.abs(m)<1e-6) return 'm = 0 无法定义 AB 斜率';
+        return 'M = ( <b>'+fmt(-1/m)+'</b> , <b>−0.5</b> )';
+      }
+    },
+    {
+      name:'内部条件',
+      render(m){
+        drawAxes(); drawEllipse(); drawAxisLine(m);
+        drawForbiddenBands();
+        const st = stateFromM(m);
+        if (st){
+          drawABLine(st, {opacity:.4});
+          drawPoints(st, {segOpacity:1});
+        }
+        // 画当前 M 位置（即使不可行）
+        if (Math.abs(m)>1e-6){
+          const Mx = -1/m, My = -0.5;
+          const inside = (Mx*Mx)/2 + My*My < 1;
+          el('circle',{cx:sx(Mx), cy:sy(My), r:6, fill:inside?'#c98a12':'#e0483c', stroke:'#fff','stroke-width':1.6});
+          el('text',{x:sx(Mx)+10, y:sy(My)-8, fill:inside?'#c98a12':'#e0483c','font-size':12,'font-weight':700})
+            .textContent = inside?'M 在椭圆内':'M 在椭圆外';
+        }
+        drawNote(16, 26, 'M = (−1/m, −½) 必须在椭圆内部', '#e0483c');
+      },
+      explain(){
+        'use strict';
+        return '弦 AB 的中点 M 必在椭圆<b>内部</b>：'+
+        '<div class="formula">x<sub>M</sub>²/2 + y<sub>M</sub>² &lt; 1</div>'+
+        '代入 M = (−1/m, −½)：'+
+        '<div class="formula">1/(2m²) + 1/4 &lt; 1&nbsp;&nbsp;⟺&nbsp;&nbsp;m² &gt; 2/3</div>'+
+        '等价地：<em>|m| &gt; √6/3 ≈ 0.816</em>。'+
+        '红色带标出被排除的 m 区间，拖动滑块可以感受一下边界附近 M 已落在椭圆外。';
+      },
+      readout(m){
+        const m2 = m*m;
+        if (Math.abs(m)<1e-6) return 'm = 0 时无 M';
+        if (m2 > M2_CRIT) return 'm² = <b>'+fmt(m2,3)+'</b> &gt; 2/3 <span class="badge ok">✓ 合法</span>';
+        return 'm² = <b>'+fmt(m2,3)+'</b> ≤ 2/3 <span class="badge no">✗ 不合法</span>';
+      }
+    },
+    {
+      name:'判别式',
+      render(m){
+        drawAxes(); drawEllipse(); drawAxisLine(m);
+        drawForbiddenBands();
+        const st = stateFromM(m);
+        if (st){
+          drawABLine(st, {opacity:.5});
+          drawPoints(st, {segOpacity:1});
+        }
+        const Delta = Delta_of_m(m);
+        drawNote(16, 26, 'Δ = (m²+2)(3m²−2) / (2m⁴)', '#14875a');
+        drawNote(16, 46, 'Δ > 0 ⟺ m² > 2/3', (Delta>0?'#14875a':'#e0483c'), 12.5);
+      },
+      explain(){
+        return '把 AB 代入椭圆，得二次方程：'+
+        '<div class="formula">(½ + 1/m²)x² − (2t/m)x + (t² − 1) = 0</div>'+
+        '结合 t = −(m²+2)/(2m²) 代入计算判别式：'+
+        '<div class="formula">Δ = (m²+2)(3m²−2) / (2m⁴)</div>'+
+        '要求 <b>Δ &gt; 0</b>（两个不同交点）：m² &gt; 2/3 —— 与上一步的点差法内部条件完全一致。<br>'+
+        '<span class="badge tip">两条独立路线互证</span> 题目 (1) 的答案就是它。';
+      },
+      readout(m){
+        const D = Delta_of_m(m);
+        return 'Δ = <b>'+(isFinite(D)?fmt(D,4):'—')+'</b>　·　' + (D>0?'<span class="badge ok">有两交点</span>':'<span class="badge no">无交点</span>');
+      }
+    },
+    {
+      name:'(1) m 范围',
+      render(m){
+        drawAxes(); drawEllipse(); drawAxisLine(m);
+        drawForbiddenBands();
+        const st = stateFromM(m);
+        if (st){
+          drawABLine(st, {opacity:.5});
+          drawPoints(st, {segOpacity:1});
+        }
+        drawNote(16, 26, '(1) m ∈ (−∞, −√6/3) ∪ (√6/3, +∞)', '#1c2430');
+        drawNote(16, 46, '即 |m| > √6/3 ≈ 0.8165', '#6b7686', 12.5);
+      },
+      explain(){
+        return '综合对称性和两交点条件，得到：'+
+        '<div class="formula">m² &gt; 2/3 &nbsp;⟺&nbsp; m &lt; −√6/3 或 m &gt; √6/3</div>'+
+        '红色带是无效区（无 A、B）。注意：这<b>不是</b> m≠0 —— 仅仅两交点不够，M 必须落在椭圆内。';
+      },
+      readout(m){
+        return (stateFromM(m)?'<span class="badge ok">当前 m 在范围内</span>':'<span class="badge no">当前 m 不在范围内</span>') +
+          ' · |m| = ' + fmt(Math.abs(m), 3);
+      }
+    },
+    {
+      name:'S 表达式',
+      render(m){
+        drawAxes(); drawEllipse(); drawAxisLine(m);
+        const st = stateFromM(m);
+        if (st){
+          drawABLine(st, {opacity:.35});
+          drawPoints(st, {segOpacity:1});
+          drawAreaTriangle(st, true);
+        }
+        drawNote(16, 26, st?('S = ' + fmt(st.S,4) + ' ,  m = ' + fmt(m)):'m 不合法', '#14875a');
+        drawSCurve(m);
+      },
+      explain(){
+        return '以 O 为顶点，A、B 为底，用叉积算面积：'+
+        '<div class="formula">S = ½|x<sub>A</sub>y<sub>B</sub> − x<sub>B</sub>y<sub>A</sub>|</div>'+
+        '把 M 与 AB 一起代入，化简后：'+
+        '<div class="formula">S(m) = (1/2)·√( (3m²−2)(m²+2) / (2m⁴) )</div>'+
+        '整理为：'+
+        '<div class="formula">S(m) = (1/2)·√( 3 + 4/m² − 4/m⁴ )</div>'+
+        '下方绿色曲线即 S(m)，定义域 |m| &gt; √6/3。';
+      },
+      readout(m){
+        if (!stateFromM(m)) return 'm 不合法，S 无意义';
+        const s = S_of_m(m);
+        return 'S = <b>'+fmt(s,4)+'</b>   (m = '+fmt(m)+')';
+      }
+    },
+    {
+      name:'面积最值',
+      render(m){
+        drawAxes(); drawEllipse(); drawAxisLine(m);
+        const st = stateFromM(m);
+        if (st){
+          drawABLine(st, {opacity:.35});
+          drawPoints(st, {segOpacity:1});
+          drawAreaTriangle(st, true);
+        }
+        drawNote(16, 26, '取 w = 1/m²，S² = ¼(3 + 4w − 4w²)', '#14875a');
+        drawNote(16, 46, 'w = ½ 时 S 最大 = √2/2  (m² = 2)', '#c98a12', 12.5);
+        drawSCurve(m);
+      },
+      explain(){
+        return '记 w = 1/m² &gt; 0，则：'+
+        '<div class="formula">S² = ¼(3 + 4w − 4w²)</div>'+
+        '这是开口向下的抛物线，<b>顶点</b>在 w = 1/2：'+
+        '<div class="formula">w = 1/2 ⟹ S² = ¼(3 + 2 − 1) = 1/2 ⟹ S = √2/2</div>'+
+        'w = 1/2 对应 m² = 2，即 m = ±√2，均在合法范围（m² &gt; 2/3）内。<br>'+
+        '<span class="badge tip">注意</span> w 应取自 (0, 3/2)，而 w = 1/2 在此区间内，取等合法。';
+      },
+      readout(m){
+        if (!stateFromM(m)) return 'm 不合法';
+        const s = S_of_m(m);
+        return 'S = <b>'+fmt(s,4)+'</b>　·　最大 √2/2 = 0.7071';
+      }
+    },
+    {
+      name:'结论',
+      render(m){
+        drawAxes(); drawEllipse(); drawAxisLine(m);
+        const st = stateFromM(m);
+        if (st){
+          drawPoints(st, {segOpacity:1});
+          drawAreaTriangle(st, true);
+        }
+        drawNote(16, 26, '(1) m ∈ (−∞, −√6/3) ∪ (√6/3, +∞)', '#1c2430');
+        drawNote(16, 48, '(2) S_max = √2/2  (m = ±√2)', '#c98a12');
+        drawSCurve(m);
+      },
+      explain(){
+        return '最终结论：'+
+        '<div class="formula">(1)&nbsp; m ∈ (−∞, −√6/3) ∪ (√6/3, +∞)</div>'+
+        '<div class="formula">(2)&nbsp; S<sub>max</sub> = √2/2，当且仅当 m = ±√2 时取得</div>'+
+        '取等验证：m = √2 时，M = (−√2/2, −½) 在椭圆内，且 m² = 2 &gt; 2/3，'+
+        '所有条件均满足，<b>取等可实现</b>（并非不可达的边界）。'+
+        '再拖一下滑块，把 S 与 0.7071 对比，确认这是全程最大值。';
+      },
+      readout(m){
+        const s = stateFromM(m) ? S_of_m(m) : NaN;
+        return '(1) |m| > √6/3　(2) S_max = √2/2 (m = ±√2)' + (isFinite(s)?'　·　当前 S = '+fmt(s,4):'');
+      },
+      final: '(1) m ∈ (−∞, −√6/3) ∪ (√6/3, +∞)；(2) S<sub>max</sub> = √2/2，当 m = ±√2 时取得。'
+    }
+  ];
+
+  let currentStep = 0;
+  let currentM = 1.20;
+
+  const stepbar = document.getElementById('stepbar');
+  steps.forEach((s, i)=>{
+    const b = document.createElement('button');
+    b.innerHTML = (i+1) + '<span class="n">' + s.name + '</span>';
+    b.title = s.name;
+    b.addEventListener('click', function(){ gotoStep(i); renderAll(); });
+    stepbar.appendChild(b);
+  });
+
+  const explainEl = document.getElementById('explain');
+  const readoutEl = document.getElementById('readout');
+  const finalEl = document.getElementById('finalbox');
+  const mSlider = document.getElementById('mSlider');
+  const mValEl = document.getElementById('mVal');
+  const sliderTag = document.getElementById('sliderTag');
+  const mrangeEl = document.getElementById('mrange');
+
+  function gotoStep(i){
+    currentStep = Math.max(0, Math.min(steps.length-1, i));
+    Array.from(stepbar.children).forEach(function(b,k){
+      b.classList.toggle('on', k === currentStep);
+    });
+  }
+
+  function updateViewScale(m){
+    const st = stateFromM(m);
+    let ext = 1.2;
+    if (st){
+      ext = Math.max(ext, Math.abs(st.A.x), Math.abs(st.B.x), Math.abs(st.A.y), Math.abs(st.B.y));
+    }
+    let desired = 130;
+    if (ext > 1.4) desired = 130 * (1.4/ext);
+    if (desired < 55) desired = 55;
+    viewScale = viewScale*0.6 + desired*0.4;
+    if (!isFinite(viewScale)) viewScale = 130;
+  }
+
+  function renderAll(){
+    const m = currentM;
+    clearLayers();
+    updateViewScale(m);
+
+    steps[currentStep].render(m);
+
+    explainEl.innerHTML = steps[currentStep].explain();
+    readoutEl.innerHTML = steps[currentStep].readout(m);
+
+    if (steps[currentStep].final){
+      finalEl.classList.add('show');
+      finalEl.innerHTML = '<b>结论：</b><span class="f">'+steps[currentStep].final+'</span>';
+    } else {
+      finalEl.classList.remove('show');
+      finalEl.innerHTML = '';
+    }
+
+    mValEl.textContent = fmt(m);
+
+    const st = stateFromM(m);
+    const valid = !!st;
+    const s = valid ? S_of_m(m) : NaN;
+    const D = Delta_of_m(m);
+    mrangeEl.innerHTML =
+      '<div class="row"><span class="k">当前 m</span><span class="v">'+fmt(m)+'</span></div>'+
+      '<div class="row"><span class="k">判别式 Δ</span><span class="v">'+(isFinite(D)?fmt(D,4):'—')+'</span></div>'+
+      '<div class="row"><span class="k">M 在椭圆内？</span><span class="v">'+(valid?'是':'否')+'</span></div>'+
+      '<div class="row"><span class="k">面积 S(m)</span><span class="v">'+(isFinite(s)?fmt(s,4):'—')+'</span></div>'+
+      '<div class="row"><span class="k">合法条件</span><span class="v">|m| > √6/3</span></div>';
+  }
+
+  mSlider.addEventListener('input', function(){
+    currentM = parseFloat(mSlider.value);
+    renderAll();
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', function(){
+    gotoStep(currentStep-1); renderAll();
+  });
+  document.getElementById('nextBtn').addEventListener('click', function(){
+    gotoStep(currentStep+1); renderAll();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight'){ gotoStep(currentStep+1); renderAll(); }
+    if (e.key === 'ArrowLeft'){ gotoStep(currentStep-1); renderAll(); }
+  });
+
+  gotoStep(0);
+  viewScale = 130;
+  renderAll();
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{
+  "id": "3882491008098304",
+  "course_id": 27,
+  "type_id": "270201",
+  "kpoint_ids": [
+    10664
+  ],
+  "catalog_ids": [
+    187178,
+    188028,
+    188158,
+    194936,
+    210531,
+    194655
+  ],
+  "years": [
+    2025,
+    2026
+  ],
+  "difficulty": 0.8500000000000001,
+  "difficulty_level": 18,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791858270-114651791852237200-RxseAzPerGW6lBxUami1s7T-ASEoUiMcxVoWY8872hjKCcHlTSe89e7vAOAocHlz\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">函数</span><img  src=\"https://img.xkw.com/dksih/formula/ea7b938a53295fa50366d70145552dfe.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的值域是</span><span class=\"qml-bk\" index=\"1\" size=\"10\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791858270-114651791852237200-RxseAzPerGW6lBxUami1s7T-ASEoUiMcxVoWY8872hjKCcHlTSe89e7vAOAocHlz\"><span class=\"qml-an-sq\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/6de9c48624a94147f01d5b30defacb04.svg\" class=\"xkw-math-img\" /></span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791858270-114651791852237200-RxseAzPerGW6lBxUami1s7T-ASEoUiMcxVoWY8872hjKCcHlTSe89e7vAOAocHlz\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">利用配方法可得出所求二次函数的值域</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/formula/603bf6c32e851236942503b8577e84d3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，当且仅当</span><img  src=\"https://img.xkw.com/dksih/formula/9b384412acba251d87902ab928902f16.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时，等号成立，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故函数</span><img  src=\"https://img.xkw.com/dksih/formula/ea7b938a53295fa50366d70145552dfe.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的值域是</span><img  src=\"https://img.xkw.com/dksih/formula/6de9c48624a94147f01d5b30defacb04.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故答案为：</span><img  src=\"https://img.xkw.com/dksih/formula/6de9c48624a94147f01d5b30defacb04.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">.</span></p></div></div>",
+  "create_date": "2025-11-10 18:51:05",
+  "paper_type_ids": [
+    4
+  ],
+  "course": {
+    "id": 27,
+    "name": "高中数学"
+  },
+  "catalogs": [
+    {
+      "id": 187178,
+      "name": "4.1 一元二次函数"
+    },
+    {
+      "id": 188028,
+      "name": "3.1.1 函数的概念"
+    },
+    {
+      "id": 188158,
+      "name": "3.1.1 函数及其表示方法"
+    },
+    {
+      "id": 194936,
+      "name": "5.1 函数的概念和图象"
+    },
+    {
+      "id": 210531,
+      "name": "1 函数"
+    },
+    {
+      "id": 194655,
+      "name": "3.1.1 对函数概念的再认识"
+    }
+  ],
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "kpoints": [
+    {
+      "id": 10664,
+      "name": "求二次函数的值域或最值"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4118112778231808"
+  ]
+}

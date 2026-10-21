@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "summary": "题目条件、研究对象与两问所求一致；停稳时间、全程距离和最后4s位移计算正确；v-t图面积、跑道位置、时间轴与高亮同步，单位与符号方向一致，离线可用。",
+  "issues": [],
+  "scores": {
+    "problem_fidelity": 5,
+    "solution_correctness": 5,
+    "page_quality": 5,
+    "interaction_quality": 5,
+    "teaching_effectiveness": 5
+  },
+  "overall_score": 5,
+  "source": "model"
+}

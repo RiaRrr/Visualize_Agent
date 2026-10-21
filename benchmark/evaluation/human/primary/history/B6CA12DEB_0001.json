@@ -1,0 +1,20 @@
+{
+  "rater": "primary",
+  "html_sha256": "49d09957742255e2a8c1d504b2300591466b75d25d2883e160a8c2a24eb562e2",
+  "revision": 1,
+  "status": "draft",
+  "scores": {
+    "problem_fidelity": 2,
+    "solution_correctness": null,
+    "page_quality": null,
+    "interaction_quality": null,
+    "teaching_effectiveness": null
+  },
+  "overall_score": null,
+  "comment": "",
+  "flags": [],
+  "sample_id": "B6CA12DEB",
+  "question_id": "chemistry_001",
+  "rubric_version": "v1",
+  "updated_at": "2026-10-21T03:40:35.630322+00:00"
+}

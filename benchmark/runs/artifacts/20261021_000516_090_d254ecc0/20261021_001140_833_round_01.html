@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>导电能力随滴定变化 · 交互可视化</title>
+<style>
+  :root{
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --ink:#0f172a;
+    --muted:#64748b;
+    --line:#e2e8f0;
+    --blue:#2563eb;
+    --green:#16a34a;
+    --red:#dc2626;
+    --orange:#ea580c;
+    --purple:#9333ea;
+    --teal:#0d9488;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;
+    line-height:1.5;
+  }
+  header{
+    max-width:1200px;
+    margin:0 auto;
+    padding:24px 20px 8px;
+  }
+  h1{
+    font-size:clamp(20px,2.5vw,28px);
+    margin:0 0 8px;
+    letter-spacing:-0.02em;
+  }
+  .subtitle{
+    color:var(--muted);
+    font-size:14px;
+    margin:0;
+  }
+  main{
+    max-width:1200px;
+    margin:0 auto;
+    padding:12px 20px 40px;
+  }
+  .prompt-bar{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px 16px;
+    margin-bottom:16px;
+    box-shadow:0 2px 8px rgba(15,23,42,0.04);
+  }
+  .prompt-mark{
+    flex:0 0 auto;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#dbeafe;
+    color:#2563eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:15px;
+  }
+  .prompt-bar p{
+    margin:0;
+    font-size:14px;
+    color:#334155;
+  }
+  .main-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr);
+    gap:16px;
+    margin-bottom:16px;
+    align-items:start;
+  }
+  .panel{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:16px;
+    box-shadow:0 4px 16px rgba(15,23,42,0.05);
+  }
+  .panel-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:10px;
+  }
+  .panel-head h2{
+    font-size:16px;
+    margin:0;
+    font-weight:700;
+  }
+  .tag{
+    font-size:12px;
+    color:var(--muted);
+    background:#f1f5f9;
+    border-radius:999px;
+    padding:4px 10px;
+    white-space:nowrap;
+  }
+  #chart,#beaker{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .chart-controls{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:6px;
+    flex-wrap:wrap;
+  }
+  .chart-controls input[type="range"]{
+    flex:1;
+    min-width:120px;
+    accent-color:var(--blue);
+  }
+  #playBtn{
+    border:1px solid var(--line);
+    background:#f8fafc;
+    border-radius:10px;
+    padding:8px 14px;
+    font-size:13px;
+    font-weight:600;
+    color:#334155;
+    cursor:pointer;
+    transition:0.15s;
+  }
+  #playBtn:hover{background:#f1f5f9;}
+  #tLabel{
+    font-size:13px;
+    font-weight:700;
+    color:var(--blue);
+    min-width:52px;
+    text-align:right;
+  }
+  .free-label{
+    font-size:13px;
+    font-weight:600;
+    color:#475569;
+    white-space:nowrap;
+  }
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 14px;
+    margin-top:8px;
+    font-size:12px;
+    color:#475569;
+    min-height:24px;
+  }
+  .legend-item{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    white-space:nowrap;
+  }
+  .legend .dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    display:inline-block;
+  }
+  .legend .square{
+    width:12px;
+    height:8px;
+    border:1.5px solid;
+    display:inline-block;
+    border-radius:2px;
+  }
+  .legend-empty{
+    color:var(--muted);
+    font-style:italic;
+  }
+  .explore-panel{margin-bottom:16px;}
+  .exp-tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .exp-tab{
+    border:1.5px solid var(--line);
+    background:#fff;
+    border-radius:999px;
+    padding:8px 12px;
+    font-size:13px;
+    font-weight:600;
+    color:#475569;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    transition:0.15s;
+    font-family:inherit;
+  }
+  .exp-tab:hover{
+    border-color:#cbd5e1;
+    background:#f8fafc;
+  }
+  .exp-tab.active{
+    border-color:#0f172a;
+    background:#0f172a;
+    color:#fff;
+  }
+  .tab-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    display:inline-block;
+  }
+  .exp-tab.active .tab-dot{
+    box-shadow:0 0 0 2px rgba(255,255,255,0.35);
+  }
+  .step-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:12px;
+  }
+  .step-label{
+    font-size:12px;
+    font-weight:700;
+    color:var(--muted);
+    margin-right:2px;
+  }
+  .step-btn{
+    border:1px solid var(--line);
+    background:#f8fafc;
+    border-radius:8px;
+    padding:6px 12px;
+    font-size:13px;
+    font-weight:600;
+    color:#334155;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .step-btn:hover{background:#f1f5f9;}
+  .exp-info{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    font-size:13px;
+    color:#334155;
+    background:#f8fafc;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:10px 12px;
+  }
+  .exp-info strong{
+    font-size:13px;
+    color:#0f172a;
+  }
+  .exp-info span{
+    color:#64748b;
+    font-size:12px;
+  }
+  .exp-info b{color:#0f172a;}
+  .options-panel h2{
+    font-size:17px;
+    margin:0 0 4px;
+  }
+  .options-sub{
+    font-size:13px;
+    color:var(--muted);
+    margin:0 0 14px;
+  }
+  .option-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .option-card{
+    text-align:left;
+    border:2px solid var(--line);
+    background:#fff;
+    border-radius:12px;
+    padding:12px 14px;
+    cursor:pointer;
+    transition:0.15s;
+    font-family:inherit;
+  }
+  .option-card:hover{
+    border-color:#cbd5e1;
+    background:#f8fafc;
+  }
+  .option-card.selected{
+    box-shadow:0 0 0 3px rgba(37,99,235,0.12);
+  }
+  .option-card.correct{
+    border-color:#22c55e;
+    background:#f0fdf4;
+  }
+  .option-card.wrong{
+    border-color:#ef4444;
+    background:#fef2f2;
+  }
+  .opt-head{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+  }
+  .opt-letter{
+    flex:0 0 auto;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:#e2e8f0;
+    color:#475569;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    font-weight:800;
+  }
+  .option-card.correct .opt-letter{
+    background:#22c55e;
+    color:#fff;
+  }
+  .option-card.wrong .opt-letter{
+    background:#ef4444;
+    color:#fff;
+  }
+  .opt-text{
+    font-size:13px;
+    line-height:1.55;
+    color:#1e293b;
+    font-weight:500;
+  }
+  .opt-feedback{
+    display:none;
+    margin-top:9px;
+    padding-top:9px;
+    border-top:1px dashed #cbd5e1;
+    font-size:12.5px;
+    line-height:1.55;
+    color:#475569;
+  }
+  .option-card.correct .opt-feedback,
+  .option-card.wrong .opt-feedback{
+    display:block;
+  }
+  .axis-tick{font-size:12px;fill:#64748b;}
+  .axis-label{font-size:13px;fill:#475569;font-weight:500;}
+  .chart-label{
+    font-size:20px;
+    font-weight:700;
+    fill:#334155;
+    font-family:Georgia,"Times New Roman",serif;
+  }
+  .point-value{font-size:13px;font-weight:800;fill:#0f172a;}
+  .legend-svg{font-size:11px;fill:#64748b;}
+  .beaker-title{font-size:14px;font-weight:700;fill:#334155;}
+  .beaker-status{font-size:12px;fill:#64748b;}
+  .mini-label{font-size:11px;fill:#94a3b8;font-weight:600;}
+  @media (max-width:900px){
+    .main-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:800px){
+    .option-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>导电能力变化：把曲线和溶液中的离子对应起来</h1>
+  <p class="subtitle">拖动滑块或播放滴加，观察自由离子数、沉淀和导电能力曲线怎样同步变化。</p>
+</header>
+
+<main>
+  <section class="prompt-bar">
+    <div class="prompt-mark">?</div>
+    <p>某同学向一定体积的 Ba(OH)₂ 溶液中滴加稀硫酸，测得混合溶液的导电能力随时间变化如图。下列判断正确的是？</p>
+  </section>
+
+  <div class="main-grid">
+    <section class="panel">
+      <div class="panel-head">
+        <h2>导电能力曲线</h2>
+        <span class="tag">灰色虚线：题图参考</span>
+      </div>
+      <svg id="chart" viewBox="0 0 600 370" role="img" aria-label="导电能力随滴加量变化曲线"></svg>
+      <div class="chart-controls">
+        <button id="playBtn">播放滴加</button>
+        <input id="tSlider" type="range" min="0" max="8" step="1" value="0" aria-label="滴加量">
+        <span id="tLabel">0 滴</span>
+        <span id="freeLabel" class="free-label">自由离子：12</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>烧杯中的粒子</h2>
+        <span class="tag" id="expTag">原实验</span>
+      </div>
+      <svg id="beaker" viewBox="0 0 420 370" role="img" aria-label="烧杯中的离子和沉淀示意"></svg>
+      <div id="legend" class="legend"></div>
+    </section>
+  </div>
+
+  <section class="panel explore-panel">
+    <div class="panel-head">
+      <h2>换一种试剂，曲线还一样吗？</h2>
+      <span class="tag">点击对比，再拖动滑块</span>
+    </div>
+
+    <div class="exp-tabs" id="expTabs"></div>
+
+    <div class="step-row">
+      <span class="step-label">原实验分步观察：</span>
+      <button class="step-btn" data-t="0">初始</button>
+      <button class="step-btn" data-t="2">AB 段</button>
+      <button class="step-btn" data-t="4">B 点</button>
+      <button class="step-btn" data-t="6">BC 段</button>
+    </div>
+
+    <div id="expInfo" class="exp-info"></div>
+  </section>
+
+  <section class="panel options-panel">
+    <h2>判断下列说法</h2>
+    <p class="options-sub">点击卡片，页面会切换到对应实验或状态，再结合曲线最低点作出判断。</p>
+    <div class="option-grid" id="optionGrid"></div>
+  </section>
+</main>
+
+<script>
+  const experiments = {
+    original: {
+      id: 'original',
+      label: '原实验：Ba(OH)₂ + H₂SO₄',
+      short: '原实验',
+      desc: 'Ba(OH)₂ + H₂SO₄',
+      equation: 'Ba(OH)₂ + H₂SO₄ → BaSO₄↓ + 2H₂O',
+      color: '#2563eb',
+      eqT: 4,
+      maxT: 8,
+      hint: 'Ba²⁺与SO₄²⁻生成BaSO₄沉淀，H⁺与OH⁻生成水；自由离子减少。'
+    },
+    B: {
+      id: 'B',
+      label: 'B：NaOH + H₂SO₄',
+      short: 'B：NaOH',
+      desc: 'NaOH + H₂SO₄',
+      equation: '2NaOH + H₂SO₄ → Na₂SO₄ + 2H₂O',
+      color: '#ea580c',
+      eqT: 2,
+      maxT: 4,
+      hint: 'Na⁺不参与反应，始终留在溶液中；最低点自由离子数不为0。'
+    },
+    C: {
+      id: 'C',
+      label: 'C：Ba(OH)₂ + KHSO₄',
+      short: 'C：KHSO₄',
+      desc: 'Ba(OH)₂ + KHSO₄',
+      equation: 'Ba(OH)₂ + 2KHSO₄ → BaSO₄↓ + K₂SO₄ + 2H₂O',
+      color: '#9333ea',
+      eqT: 4,
+      maxT: 8,
+      hint: 'K⁺不参与反应，始终留在溶液中；最低点自由离子数不为0。'
+    },
+    D: {
+      id: 'D',
+      label: 'D：Ba(OH)₂ + MgSO₄',
+      short: 'D：MgSO₄',
+      desc: 'Ba(OH)₂ + MgSO₄',
+      equation: 'Ba(OH)₂ + MgSO₄ → BaSO₄↓ + Mg(OH)₂↓',
+      color: '#0d9488',
+      eqT: 4,
+      maxT: 8,
+      hint: 'Ba²⁺与SO₄²⁻、Mg²⁺与OH⁻同时沉淀；等当点自由离子接近0。'
+    }
+  };
+
+  const state = {
+    exp: 'original',
+    t: 0,
+    playing: false,
+    timer: null
+  };
+
+  function getState(expId, t) {
+    t = Math.max(0, Math.min(8, t));
+    const ions = { Ba: 0, OH: 0, H: 0, SO4: 0, Na: 0, K: 0, Mg: 0 };
+    const precipitates = { BaSO4: 0, MgOH2: 0 };
+
+    if (expId === 'original') {
+      const react = Math.min(4, t);
+      ions.Ba = 4 - react;
+      ions.OH = 8 - 2 * react;
+      ions.SO4 = Math.max(0, t - 4);
+      ions.H = Math.max(0, 2 * (t - 4));
+      precipitates.BaSO4 = react;
+    } else if (expId === 'B') {
+      ions.Na = 4;
+      ions.OH = Math.max(0, 4 - 2 * t);
+      ions.H = Math.max(0, 2 * t - 4);
+      ions.SO4 = t;
+    } else if (expId === 'C') {
+      ions.Ba = Math.max(0, 4 - t);
+      ions.OH = Math.max(0, 8 - t);
+      ions.SO4 = Math.max(0, t - 4);
+      ions.K = t;
+      ions.H = Math.max(0, t - 8);
+      precipitates.BaSO4 = Math.min(4, t);
+    } else if (expId === 'D') {
+      ions.Ba = Math.max(0, 4 - t);
+      ions.OH = Math.max(0, 8 - 2 * t);
+      ions.Mg = Math.max(0, t - 4);
+      ions.SO4 = Math.max(0, t - 4);
+      precipitates.BaSO4 = Math.min(4, t);
+      precipitates.MgOH2 = Math.min(4, t);
+    }
+
+    for (const k in ions) ions[k] = Math.max(0, ions[k]);
+    for (const k in precipitates) precipitates[k] = Math.max(0, precipitates[k]);
+
+    const freeCount = Object.values(ions).reduce((a, b) => a + b, 0);
+    return { ions, precipitates, freeCount };
+  }
+
+  function getMinFree(expId) {
+    const exp = experiments[expId];
+    let min = Infinity;
+    for (let t = 0; t <= exp.maxT + 0.001; t += 0.25) {
+      const st = getState(expId, t);
+      if (st.freeCount < min) min = st.freeCount;
+    }
+    return Math.round(min);
+  }
+
+  function getStatusText() {
+    const exp = experiments[state.exp];
+    const t = state.t;
+    const eq = exp.eqT;
+
+    if (t === 0) return '初始溶液：自由离子较多，导电能力较强';
+    if (t < eq) return '滴加中：自由离子减少，导电能力下降';
+    if (t === eq) {
+      if (state.exp === 'original' || state.exp === 'D') {
+        return '等当点：自由离子接近0，导电能力最弱';
+      }
+      if (state.exp === 'B') {
+        return '最低点：Na⁺仍在溶液中，自由离子不为0';
+      }
+      if (state.exp === 'C') {
+        return '最低点：K⁺仍在溶液中，自由离子不为0';
+      }
+    }
+    return '试剂过量：自由离子增多，导电能力回升';
+  }
+
+  function drawChart() {
+    const svg = document.getElementById('chart');
+    const W = 600, H = 370;
+    const ml = 64, mr = 28, mt = 30, mb = 56;
+    const plotW = W - ml - mr;
+    const plotH = H - mt - mb;
+    const maxT = 8, maxY = 14;
+    const sx = t => ml + (t / maxT) * plotW;
+    const sy = v => mt + plotH - (v / maxY) * plotH;
+    const exp = experiments[state.exp];
+
+    let s = `<rect width="${W}" height="${H}" fill="#ffffff"/>`;
+
+    for (let yv = 0; yv <= 12; yv += 3) {
+      const y = sy(yv);
+      s += `<line x1="${ml}" y1="${y}" x2="${ml + plotW}" y2="${y}" stroke="#e2e8f0" stroke-width="1"/>`;
+      s += `<text x="${ml - 10}" y="${y + 4}" text-anchor="end" class="axis-tick">${yv}</text>`;
+    }
+    for (let xt = 0; xt <= 8; xt += 2) {
+      const x = sx(xt);
+      s += `<line x1="${x}" y1="${mt}" x2="${x}" y2="${mt + plotH}" stroke="#e2e8f0" stroke-width="1"/>`;
+      s += `<text x="${x}" y="${mt + plotH + 22}" text-anchor="middle" class="axis-tick">${xt}</text>`;
+    }
+
+    s += `<line x1="${ml}" y1="${mt + plotH}" x2="${ml + plotW}" y2="${mt + plotH}" stroke="#475569" stroke-width="2"/>`;
+    s += `<line x1="${ml}" y1="${mt}" x2="${ml}" y2="${mt + plotH}" stroke="#475569" stroke-width="2"/>`;
+
+    let refD = '';
+    for (let t = 0; t <= maxT + 0.001; t += 0.1) {
+      const st = getState('original', t);
+      const x = sx(t), y = sy(st.freeCount);
+      refD += (refD === '' ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(1);
+    }
+    s += `<path d="${refD}" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="7 6" stroke-linecap="round"/>`;
+
+    const labelA = { t: 0.6, v: getState('original', 0.6).freeCount, off: -12 };
+    const labelC = { t: 7, v: getState('original', 7).freeCount, off: -12 };
+    s += `<text x="${sx(labelA.t)}" y="${sy(labelA.v) + labelA.off}" text-anchor="middle" class="chart-label">A</text>`;
+    s += `<text x="${sx(4)}" y="${sy(0) - 12}" text-anchor="middle" class="chart-label">B</text>`;
+    s += `<text x="${sx(labelC.t)}" y="${sy(labelC.v) + labelC.off}" text-anchor="middle" class="chart-label">C</text>`;
+
+    let fullD = '';
+    for (let t = 0; t <= exp.maxT + 0.001; t += 0.1) {
+      const st = getState(state.exp, t);
+      fullD += (fullD === '' ? 'M' : 'L') + sx(t).toFixed(1) + ' ' + sy(st.freeCount).toFixed(1);
+    }
+    s += `<path d="${fullD}" fill="none" stroke="${exp.color}" stroke-width="2" opacity="0.18"/>`;
+
+    const endT = Math.min(state.t, exp.maxT);
+    let doneD = '';
+    for (let t = 0; t <= endT + 0.001; t += 0.1) {
+      const st = getState(state.exp, t);
+      doneD += (doneD === '' ? 'M' : 'L') + sx(t).toFixed(1) + ' ' + sy(st.freeCount).toFixed(1);
+    }
+    const stEnd = getState(state.exp, endT);
+    doneD += (doneD === '' ? 'M' : 'L') + sx(endT).toFixed(1) + ' ' + sy(stEnd.freeCount).toFixed(1);
+    s += `<path d="${doneD}" fill="none" stroke="${exp.color}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+
+    const stCur = getState(state.exp, state.t);
+    const px = sx(state.t), py = sy(stCur.freeCount);
+    s += `<circle cx="${px}" cy="${py}" r="7" fill="#ffffff" stroke="${exp.color}" stroke-width="3"/>`;
+    s += `<text x="${px}" y="${py - 14}" text-anchor="middle" class="point-value">${stCur.freeCount}</text>`;
+
+    s += `<text x="${ml + plotW / 2}" y="${H - 12}" text-anchor="middle" class="axis-label">滴加量 / 滴（时间）</text>`;
+    s += `<text x="18" y="${mt + plotH / 2}" transform="rotate(-90 18 ${mt + plotH / 2})" text-anchor="middle" class="axis-label">自由离子数（导电能力示意）</text>`;
+
+    s += `<g transform="translate(${ml + 8},${mt + 8})">`;
+    s += `<line x1="0" y1="0" x2="24" y2="0" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="7 6"/>`;
+    s += `<text x="32" y="4" class="legend-svg">题图参考</text>`;
+    s += `<line x1="100" y1="0" x2="124" y2="0" stroke="${exp.color}" stroke-width="3.5"/>`;
+    s += `<text x="132" y="4" class="legend-svg">当前实验</text>`;
+    s += `</g>`;
+
+    svg.innerHTML = s;
+  }
+
+  function drawLegend(ionCounts, precipCounts) {
+    const legend = document.getElementById('legend');
+    const defs = {
+      Ba: { label: 'Ba²⁺', color: '#2563eb' },
+      Na: { label: 'Na⁺', color: '#ea580c' },
+      K: { label: 'K⁺', color: '#0891b2' },
+      Mg: { label: 'Mg²⁺', color: '#0d9488' },
+      H: { label: 'H⁺', color: '#dc2626' },
+      OH: { label: 'OH⁻', color: '#16a34a' },
+      SO4: { label: 'SO₄²⁻', color: '#9333ea' }
+    };
+
+    const items = [];
+    for (const key in defs) {
+      if (ionCounts[key] > 0) {
+        items.push(`<span class="legend-item"><span class="dot" style="background:${defs[key].color}"></span>${defs[key].label}</span>`);
+      }
+    }
+    if (precipCounts.BaSO4 > 0) {
+      items.push(`<span class="legend-item"><span class="square" style="border-color:#64748b"></span>BaSO₄↓</span>`);
+    }
+    if (precipCounts.MgOH2 > 0) {
+      items.push(`<span class="legend-item"><span class="square" style="border-color:#0d9488"></span>Mg(OH)₂↓</span>`);
+    }
+    legend.innerHTML = items.length ? items.join('') : '<span class="legend-empty">溶液中暂无自由离子</span>';
+  }
+
+  function drawBeaker() {
+    const svg = document.getElementById('beaker');
+    const W = 420, H = 370;
+    const exp = experiments[state.exp];
+    const st = getState(state.exp, state.t);
+
+    const ionCounts = {};
+    for (const k in st.ions) ionCounts[k] = Math.round(st.ions[k]);
+    const precipCounts = {};
+    for (const k in st.precipitates) precipCounts[k] = Math.round(st.precipitates[k]);
+
+    const cationDefs = [
+      { key: 'Ba', label: 'Ba²⁺', color: '#2563eb', fill: '#dbeafe', r: 12, font: 8 },
+      { key: 'Na', label: 'Na⁺', color: '#ea580c', fill: '#ffedd5', r: 11, font: 8 },
+      { key: 'K', label: 'K⁺', color: '#0891b2', fill: '#cffafe', r: 11, font: 8 },
+      { key: 'Mg', label: 'Mg²⁺', color: '#0d9488', fill: '#ccfbf1', r: 12, font: 8 },
+      { key: 'H', label: 'H⁺', color: '#dc2626', fill: '#fee2e2', r: 9, font: 8 }
+    ];
+    const anionDefs = [
+      { key: 'OH', label: 'OH⁻', color: '#16a34a', fill: '#dcfce7', r: 11, font: 8 },
+      { key: 'SO4', label: 'SO₄²⁻', color: '#9333ea', fill: '#f3e8ff', r: 13, font: 7 }
+    ];
+
+    const cations = [];
+    cationDefs.forEach(def => {
+      for (let i = 0; i < ionCounts[def.key]; i++) cations.push({ ...def });
+    });
+    const anions = [];
+    anionDefs.forEach(def => {
+      for (let i = 0; i < ionCounts[def.key]; i++) anions.push({ ...def });
+    });
+
+    function place(list, startX, startY, cols) {
+      return list.map((ion, i) => {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        return { ...ion, x: startX + col * 30, y: startY + row * 28 };
+      });
+    }
+
+    const placedCations = place(cations, 120, 130, 3);
+    const placedAnions = place(anions, 240, 130, 3);
+
+    let s = `<rect width="${W}" height="${H}" fill="#ffffff"/>`;
+    s += `<path d="M70 50 L70 310 Q70 325 85 325 L335 325 Q350 325 350 310 L350 50" fill="none" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>`;
+    s += `<rect x="74" y="105" width="272" height="200" fill="#e0f2fe" opacity="0.85"/>`;
+    s += `<line x1="74" y1="105" x2="346" y2="105" stroke="#38bdf8" stroke-width="2"/>`;
+    s += `<line x1="90" y1="120" x2="90" y2="290" stroke="#ffffff" stroke-width="2" opacity="0.6"/>`;
+
+    function precipRow(n, label, y, fill, stroke) {
+      if (n <= 0) return '';
+      const spacing = 30, w = 26, h = 15;
+      const totalW = n * spacing;
+      const startX = 210 - totalW / 2 + spacing / 2;
+      let str = '';
+      for (let i = 0; i < n; i++) {
+        const x = startX + i * spacing;
+        str += `<rect x="${x - w / 2}" y="${y - h / 2}" width="${w}" height="${h}" rx="3" fill="${fill}" stroke="${stroke}" stroke-width="1.5"/>`;
+        str += `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="600" fill="${stroke}">${label}</text>`;
+      }
+      return str;
+    }
+
+    const baCount = precipCounts.BaSO4 || 0;
+    const mgCount = precipCounts.MgOH2 || 0;
+    if (baCount > 0 && mgCount > 0) {
+      s += precipRow(baCount, 'BaSO₄', 282, '#f8fafc', '#64748b');
+      s += precipRow(mgCount, 'Mg(OH)₂', 303, '#f0fdfa', '#0d9488');
+    } else if (baCount > 0) {
+      s += precipRow(baCount, 'BaSO₄', 296, '#f8fafc', '#64748b');
+    } else if (mgCount > 0) {
+      s += precipRow(mgCount, 'Mg(OH)₂', 296, '#f0fdfa', '#0d9488');
+    }
+
+    function ionSVG(ion) {
+      return `<circle cx="${ion.x}" cy="${ion.y}" r="${ion.r}" fill="${ion.fill}" stroke="${ion.color}" stroke-width="2"/>` +
+             `<text x="${ion.x}" y="${ion.y}" text-anchor="middle" dominant-baseline="central" font-size="${ion.font}" font-weight="700" fill="${ion.color}">${ion.label}</text>`;
+    }
+    placedCations.forEach(ion => { s += ionSVG(ion); });
+    placedAnions.forEach(ion => { s += ionSVG(ion); });
+
+    s += `<text x="210" y="28" text-anchor="middle" class="beaker-title">${exp.desc}</text>`;
+    s += `<text x="210" y="348" text-anchor="middle" class="beaker-status">${getStatusText()}</text>`;
+    s += `<text x="135" y="112" text-anchor="middle" class="mini-label">阳离子</text>`;
+    s += `<text x="285" y="112" text-anchor="middle" class="mini-label">阴离子</text>`;
+
+    svg.innerHTML = s;
+    drawLegend(ionCounts, precipCounts);
+  }
+
+  function updateAll() {
+    const exp = experiments[state.exp];
+    if (state.t > exp.maxT) state.t = exp.maxT;
+
+    const slider = document.getElementById('tSlider');
+    slider.max = exp.maxT;
+    slider.value = state.t;
+
+    document.getElementById('tLabel').textContent = state.t + ' 滴';
+    document.getElementById('freeLabel').textContent = '自由离子：' + getState(state.exp, state.t).freeCount;
+    document.getElementById('expTag').textContent = exp.short;
+
+    document.querySelectorAll('.exp-tab').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.exp === state.exp);
+    });
+
+    const minFree = getMinFree(state.exp);
+    document.getElementById('expInfo').innerHTML =
+      `<strong>${exp.equation}</strong>` +
+      `<span>${exp.hint}</span>` +
+      `<span>最低点自由离子数：<b>${minFree}</b>（题图最低点接近 0）</span>`;
+
+    drawChart();
+    drawBeaker();
+  }
+
+  function stopPlay() {
+    if (state.timer) clearInterval(state.timer);
+    state.timer = null;
+    state.playing = false;
+    document.getElementById('playBtn').textContent = '播放滴加';
+  }
+
+  function startPlay() {
+    stopPlay();
+    state.t = 0;
+    state.playing = true;
+    document.getElementById('playBtn').textContent = '暂停';
+    updateAll();
+
+    state.timer = setInterval(() => {
+      const maxT = experiments[state.exp].maxT;
+      if (state.t >= maxT) {
+        stopPlay();
+        return;
+      }
+      state.t += 1;
+      updateAll();
+    }, 500);
+  }
+
+  function clearOptions() {
+    document.querySelectorAll('.option-card').forEach(card => {
+      card.classList.remove('correct', 'wrong', 'selected');
+      card.querySelector('.opt-feedback').textContent = '';
+    });
+  }
+
+  const optionData = {
+    A: {
+      correct: false,
+      exp: 'original',
+      t: 2,
+      feedback: '× 导电能力减弱是因为自由离子浓度降低。BaSO₄难溶，但它是强电解质，不是非电解质。'
+    },
+    B: {
+      correct: false,
+      exp: 'B',
+      t: 2,
+      feedback: '× Na⁺始终留在溶液中，最低点自由离子数不为0，曲线不会降到接近0。'
+    },
+    C: {
+      correct: false,
+      exp: 'C',
+      t: 4,
+      feedback: '× K⁺始终留在溶液中，最低点自由离子数不为0，曲线不会降到接近0。'
+    },
+    D: {
+      correct: true,
+      exp: 'D',
+      t: 4,
+      feedback: '√ Ba²⁺与SO₄²⁻、Mg²⁺与OH⁻同时沉淀，等当点自由离子接近0；继续滴加MgSO₄，离子浓度又增大，曲线与题图一致。'
+    }
+  };
+
+  function initOptions() {
+    const grid = document.getElementById('optionGrid');
+    const texts = {
+      A: 'AB段溶液的导电能力减弱，说明生成的BaSO₄不是电解质',
+      B: '实验时用NaOH溶液代替Ba(OH)₂溶液也得到该曲线',
+      C: '实验时用稀KHSO₄溶液代替稀硫酸也能得到该曲线',
+      D: '实验时用稀MgSO₄溶液代替稀硫酸也能得到该曲线'
+    };
+
+    Object.keys(texts).forEach(key => {
+      const btn = document.createElement('button');
+      btn.className = 'option-card';
+      btn.dataset.opt = key;
+      btn.innerHTML =
+        `<div class="opt-head">` +
+          `<span class="opt-letter">${key}</span>` +
+          `<span class="opt-text">${texts[key]}</span>` +
+        `</div>` +
+        `<div class="opt-feedback"></div>`;
+
+      btn.addEventListener('click', () => {
+        const data = optionData[key];
+        state.exp = data.exp;
+        state.t = data.t;
+        stopPlay();
+        clearOptions();
+        updateAll();
+        btn.classList.add(data.correct ? 'correct' : 'wrong', 'selected');
+        btn.querySelector('.opt-feedback').textContent = data.feedback;
+      });
+
+      grid.appendChild(btn);
+    });
+  }
+
+  function initExpTabs() {
+    const container = document.getElementById('expTabs');
+    Object.values(experiments).forEach(exp => {
+      const btn = document.createElement('button');
+      btn.className = 'exp-tab';
+      btn.dataset.exp = exp.id;
+      btn.innerHTML = `<span class="tab-dot" style="background:${exp.color}"></span>${exp.short}`;
+      btn.addEventListener('click', () => {
+        state.exp = exp.id;
+        state.t = exp.eqT;
+        stopPlay();
+        clearOptions();
+        updateAll();
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  function initControls() {
+    document.getElementById('tSlider').addEventListener('input', e => {
+      state.t = Number(e.target.value);
+      stopPlay();
+      updateAll();
+    });
+
+    document.getElementById('playBtn').addEventListener('click', () => {
+      if (state.playing) {
+        stopPlay();
+      } else {
+        startPlay();
+      }
+    });
+
+    document.querySelectorAll('.step-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.exp = 'original';
+        state.t = Number(btn.dataset.t);
+        stopPlay();
+        clearOptions();
+        updateAll();
+      });
+    });
+  }
+
+  initExpTabs();
+  initOptions();
+  initControls();
+  updateAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+  "sample_id": "HD16F49AB5C",
+  "question_id": "HQ0822E89A4F0E",
+  "set": "historical_human",
+  "html_sha256": "15ac5ed4e7654e8fb202d85020a8e6728e8bc2edbf6b535b0a9c725933a8590d",
+  "judge_id": "deepseek_1017",
+  "model": "deepseek-v4-1-flash-261017",
+  "judge_version": "c3fcf583bc0c",
+  "evidence_sha256": "d06b6e1ed47dc86650cb1bb085ca9b4fb554fb487c4fdedb226fa9caa1e179e3",
+  "image_inputs": [
+    {
+      "name": "input.png",
+      "sha256": "0822e89a4f0ea67a76e64ecd89ae2470b095f739680432c568407c069b9d8866"
+    },
+    {
+      "name": "answer.png",
+      "sha256": "b73804c91753a325df3026c97994831a4f2303a59ddd6e4c2d3dcc67cdb1bc27"
+    },
+    {
+      "name": "explanation.png",
+      "sha256": "451b4ea8a0fc827e970186c8212b9ac76a0993cb7bb2dc5b5cf2bb760c5e0ea0"
+    },
+    {
+      "name": "00_initial.png",
+      "sha256": "fa41dc6439b693d1248044a40bb1986665616f96dd3eb91e6ebcc4c9280ef03b"
+    },
+    {
+      "name": "01_next_step.png",
+      "sha256": "bf32c4bbc27b577765776fc6e5b512f5198f73f6b3572a813d828d7cb4daad07"
+    },
+    {
+      "name": "02_slider_mid.png",
+      "sha256": "bf32c4bbc27b577765776fc6e5b512f5198f73f6b3572a813d828d7cb4daad07"
+    },
+    {
+      "name": "03_slider_high.png",
+      "sha256": "bf32c4bbc27b577765776fc6e5b512f5198f73f6b3572a813d828d7cb4daad07"
+    }
+  ],
+  "created_at": "2026-10-20T15:53:58.601035+00:00",
+  "status": "completed",
+  "judgment": {
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 4,
+      "interaction_quality": 4,
+      "teaching_effectiveness": 4
+    },
+    "overall_score": 4,
+    "issues": [
+      "步骤1主图中，`y+2` 标在 x 轴到 y=-2 的虚线段旁；但该小段长度实际为 2，而 `y+2` 表示 P 到准线 y=-2 的整段距离。标注位置可能让学生误读距离含义。",
+      "步骤4的面积化简默认使用第2步归一化结论 `s=a+c=8`，因此公式中的 `yM=a`、`yN=c` 及 `S2+S3` 的简化式依赖该归一化；但步骤4未再次说明。若通过标签直接跳到步骤4，公式来源可能不清楚。"
+    ],
+    "evidence": {
+      "problem_fidelity": "页面完整保留题设对象与条件：Q(0,2)、Γ在x轴上方、到Q的距离减到x轴距离为2、A/C在右侧、B在左侧、G在y轴、3|AM|<|BM|、M/N及面积S1/S2/S3，并保留两个小问；同时明确 y>0 且原点不在Γ上。",
+      "solution_correctness": "独立核对与页面结论一致：Γ为 x²=8y 且 y>0；归一化 s=a+c=8 合法，条件推出 r>2；R(r)=(r²+4r+1)/(3(r+2)(2r+1)) 在 r>2 上严格递减，范围为 (1/6,13/60)。示例 r=3 时 R=22/105，与源码数值计算一致。",
+      "page_quality": "桌面截图中主图、侧栏、公式与图形整体清楚，无明显裁切或严重重叠；步骤2的归一化缩略图较拥挤。局部问题是步骤1的 `y+2` 标注位置可能误导。",
+      "interaction_quality": "实际操作记录只验证了点击“下一步”从步骤1进入步骤2；此时无可见滑块。步骤1的P滑块、步骤3以后的r滑块、靠近按钮、复位和标签跳转未在记录中实测。源码显示这些控件会同步更新状态、SVG和数值，且无运行时错误，但实际交互覆盖范围有限；r滑块为2.25–10，完整 r>2 由文字说明。",
+      "teaching_effectiveness": "页面按曲线推导、重心与归一化、M/N条件、面积化简、范围分析的顺序展开，初始从曲线条件开始，未先操作未知参数；图形和数值辅助理解较好。不足是步骤4依赖第2步归一化，直接跳转时上下文不够完整，且公式信息较密集。"
+    },
+    "reference_concern": "",
+    "summary": "数学答案与推导正确，桌面呈现总体清晰，步骤闭环较好；存在局部距离标注和归一化上下文提示不足，交互记录覆盖也有限，整体评为良好。"
+  },
+  "duration_seconds": 118.97534392400121,
+  "usage": {
+    "input_tokens": 22826,
+    "output_tokens": 19703,
+    "cached_input_tokens": 2048,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 19055,
+    "total_tokens": 42529
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "4086097452187648",
+  "course_id": 30,
+  "type_id": "301101",
+  "kpoint_ids": [
+    6071,
+    6074,
+    6080,
+    6079,
+    102415
+  ],
+  "catalog_ids": [
+    187854,
+    194442,
+    227736,
+    195133
+  ],
+  "years": [
+    2025,
+    2026
+  ],
+  "difficulty": 0.65,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861847-114651791852237200-Jq8sMjzNw_Ja73p0R2S-0tm8c4Nc2BmI4wkHJsjwgXpl4gRSNLaMfr5FBHiyc2FJ\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">某同学</span><span style=\"\">向</span><span style=\"font-family: 宋体;\">一定体积的</span><img  src=\"https://img.xkw.com/dksih/formula/22ef88c44e44e8021abaa12aaf6d467c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">溶液中滴加稀硫酸，测得混合溶液的导电能力随时间变化如图所示。下列说法中正确的是</span></p><p style=\"text-align: left;\"><img  height=\"115\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/8/25/306670a3-3673-4259-a7a0-c9d9b8a60a20.png\" width=\"181\" /></p><div class=\" qml-og\"><table class=\"qml-og\" style=\"width:100%\"><tr><td>A.&nbsp;<span class=\"qml-op\"><img  src=\"https://img.xkw.com/dksih/formula/d7d25313067f3e11f68da496344c4956.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">段溶液的导电能力减弱，说明生成的</span><img  src=\"https://img.xkw.com/dksih/formula/8ee4ff30fd5c452a8f5d231bea01a793.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">不是电解质</span></span></td></tr><tr><td>B.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">实验时用</span><img  src=\"https://img.xkw.com/dksih/formula/ce93086f0133444d40743d654cba1c55.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">溶液代替</span><img  src=\"https://img.xkw.com/dksih/formula/22ef88c44e44e8021abaa12aaf6d467c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">溶液也得到该曲线</span></span></td></tr><tr><td>C.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">实验时用稀</span><img  src=\"https://img.xkw.com/dksih/formula/9d09cea0891b8a3882f5e155a127fe41.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">溶液代替稀硫酸也能得到该曲线</span></span></td></tr><tr><td colspan=\"1\">D.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">实验时用稀</span><img  src=\"https://img.xkw.com/dksih/formula/cd4c631dff272568b008c7bf1b92d331.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">溶液代替稀硫酸也能得到该曲线</span></span></td></tr></table></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861847-114651791852237200-Jq8sMjzNw_Ja73p0R2S-0tm8c4Nc2BmI4wkHJsjwgXpl4gRSNLaMfr5FBHiyc2FJ\"><span class=\"qml-an-sq\"><span class=\"qml-an qml-isop \">D</span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861847-114651791852237200-Jq8sMjzNw_Ja73p0R2S-0tm8c4Nc2BmI4wkHJsjwgXpl4gRSNLaMfr5FBHiyc2FJ\"><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">．</span><span style=\"\">AB段导电能力减弱是因为反应生成难溶的</span><img  src=\"https://img.xkw.com/dksih/formula/79ed25765eee1a319c0156edf5b7d8b6.svg\" class=\"xkw-math-img\" /><span style=\"\">和弱电解质</span><img  src=\"https://img.xkw.com/dksih/formula/4d01335034657bba6e883be5d7b868fb.svg\" class=\"xkw-math-img\" /><span style=\"\">，溶液中自由移动离子浓度降低，</span><img  src=\"https://img.xkw.com/dksih/formula/79ed25765eee1a319c0156edf5b7d8b6.svg\" class=\"xkw-math-img\" /><span style=\"\">属于强电解质</span><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">．</span><img  src=\"https://img.xkw.com/dksih/formula/b111c41c444fb363891b3144d3eb20df.svg\" class=\"xkw-math-img\" /><span style=\"\">和稀硫酸反应生成强电解质</span><img  src=\"https://img.xkw.com/dksih/formula/f3ab654ebf6098165edd176ff77b811f.svg\" class=\"xkw-math-img\" /><span style=\"\">，恰好反应时溶液仍存在大量自由移动的离子，导电能力不会接近0，无法得到该曲线</span><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">．</span><img  src=\"https://img.xkw.com/dksih/formula/ce88475bf6313c82b783209c7ef3664c.svg\" class=\"xkw-math-img\" /><span style=\"\">和</span><img  src=\"https://img.xkw.com/dksih/formula/9c166597cb0949614bf6527422fe6d3c.svg\" class=\"xkw-math-img\" /><span style=\"\">反应时，始终存在</span><img  src=\"https://img.xkw.com/dksih/formula/990c36b10aa67db37cfd53c1cc2acfc2.svg\" class=\"xkw-math-img\" /><span style=\"\">等自由移动离子，恰好完全反应时溶液导电能力不会接近0，无法得到该曲线</span><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">．</span><img  src=\"https://img.xkw.com/dksih/formula/825e74ffb683bda79c88f5d59e20893d.svg\" class=\"xkw-math-img\" /><span style=\"\">和</span><img  src=\"https://img.xkw.com/dksih/formula/9c166597cb0949614bf6527422fe6d3c.svg\" class=\"xkw-math-img\" /><span style=\"\">反应生成</span><img  src=\"https://img.xkw.com/dksih/formula/79ed25765eee1a319c0156edf5b7d8b6.svg\" class=\"xkw-math-img\" /><span style=\"\">和</span><img  src=\"https://img.xkw.com/dksih/formula/cc98ea4aeef8b4828989a50858fa1db9.svg\" class=\"xkw-math-img\" /><span style=\"\">两种沉淀，恰好完全反应时溶液中几乎无自由移动离子，导电能力接近0，过量加入</span><img  src=\"https://img.xkw.com/dksih/formula/825e74ffb683bda79c88f5d59e20893d.svg\" class=\"xkw-math-img\" /><span style=\"\">后离子浓度升高，导电能力增强，可得到该曲线</span><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">正确；</span></p><p style=\"\"><span style=\"font-family: 宋体;\">故选</span><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">。</span></p></div></div>",
+  "create_date": "2026-08-25 10:49:27",
+  "paper_type_ids": [
+    3,
+    1
+  ],
+  "course": {
+    "id": 30,
+    "name": "高中化学"
+  },
+  "catalogs": [
+    {
+      "id": 187854,
+      "name": "第二节 离子反应"
+    },
+    {
+      "id": 194442,
+      "name": "第2节  电解质的电离  离子反应"
+    },
+    {
+      "id": 227736,
+      "name": "2.2氧化还原反应和离子反应"
+    },
+    {
+      "id": 195133,
+      "name": "第二单元  金属钠及钠的化合物"
+    }
+  ],
+  "type": {
+    "id": "301101",
+    "name": "单题"
+  },
+  "kpoints": [
+    {
+      "id": 6071,
+      "name": "非电解质、电解质物质类别判断"
+    },
+    {
+      "id": 6074,
+      "name": "物质水溶液的导电性"
+    },
+    {
+      "id": 6080,
+      "name": "离子反应的发生条件"
+    },
+    {
+      "id": 6079,
+      "name": "离子反应的发生及书写"
+    },
+    {
+      "id": 102415,
+      "name": "电导率变化曲线的应用"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4103181409910784"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "4111203502522368",
+  "course_id": 29,
+  "type_id": "2904",
+  "kpoint_ids": [
+    16345,
+    16348,
+    16646,
+    16859,
+    16895
+  ],
+  "catalog_ids": [
+    195052,
+    202729,
+    210060,
+    220862,
+    230563
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.38,
+  "difficulty_level": 20,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M5YCuCbP5uyI1W9G9xGvAV8\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">冷靶反冲离子动量谱仪可通过测量粒子的动量反推出碰撞动力学过程。其简化装置如图所示，在一个接近真空的圆柱形腔体内以其中心</span><img  src=\"https://img.xkw.com/dksih/formula/1dde8112e8eb968fd042418dd632759e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">点为原点建立</span><img  src=\"https://img.xkw.com/dksih/formula/a834024400d0730af3e640ca4d5f54b4.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">坐标系，其中</span><img  src=\"https://img.xkw.com/dksih/formula/e81e59019989b7dc2fb59b037ef6e010.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">轴沿腔体轴线方向。腔内存在沿</span><img  src=\"https://img.xkw.com/dksih/formula/e81e59019989b7dc2fb59b037ef6e010.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">轴正方向的匀强磁场和沿</span><img  src=\"https://img.xkw.com/dksih/formula/e81e59019989b7dc2fb59b037ef6e010.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">轴负方向的匀强电场，磁感应强度和电场强度大小分别为</span><img  src=\"https://img.xkw.com/dksih/formula/7f9e8449aad35c5d840a3395ea86df6d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">和</span><img  src=\"https://img.xkw.com/dksih/formula/2a30f3a8b673cc28bd90c50cf1a35281.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。腔体顶部（</span><img  src=\"https://img.xkw.com/dksih/formula/d48ea84e35a1ce5fcf4c5108ed8a6b13.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">）和底部（</span><img  src=\"https://img.xkw.com/dksih/formula/efd15048c774cf43561b2635f3c88eaa.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">）分别装有电子和离子探测器，探测器面积足够大。一束激光与某个超冷中性气体分子在</span><img  src=\"https://img.xkw.com/dksih/formula/1dde8112e8eb968fd042418dd632759e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">点处发生作用，以类似爆炸的方式产生一个电子和一个反冲离子，电子和反冲离子的质量分别为</span><img  src=\"https://img.xkw.com/dksih/formula/294f5ba74cdf695fc9a8a8e52f421328.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/ac047e91852b91af639feec23a9598b2.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，电荷量分别为</span><img  src=\"https://img.xkw.com/dksih/formula/409eb3f8c7654e0bf87c56eabeca6f34.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/168b3e4b1d6f04226fa2687a72a268b4.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。该反冲离子从</span><img  src=\"https://img.xkw.com/dksih/formula/1dde8112e8eb968fd042418dd632759e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">点运动到离子探测器上的时间为</span><img  src=\"https://img.xkw.com/dksih/formula/53c3815e355aa2623313a4fd7aaa805a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，打到离子探测器上的位置坐标为</span><img  src=\"https://img.xkw.com/dksih/formula/bc21b66dd158923d3cbcf5a138d8705a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。因为</span><img  src=\"https://img.xkw.com/dksih/formula/467f61f8d38c71fcb30f3f16d88650d7.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">较大，所以忽略磁场对反冲离子的作用。忽略激光与超冷中性气体分子的动量，不考虑电子和反冲离子所受重力的影响、电子和反冲离子之间的库仑相互作用。（</span><img  src=\"https://img.xkw.com/dksih/formula/168b3e4b1d6f04226fa2687a72a268b4.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为元电荷）</span></p><p style=\"text-align: left;\"><img  height=\"185\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/370f7c90-355d-4503-8b26-3454e9dfa5d0.png\" width=\"163\" /></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M5YCuCbP5uyI1W9G9xGvAV8\"><p style=\"\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 宋体;\">求电子在</span><img  src=\"https://img.xkw.com/dksih/formula/1dde8112e8eb968fd042418dd632759e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">点处沿</span><img  src=\"https://img.xkw.com/dksih/formula/81dea63b8ce3e51adf66cf7b9982a248.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">轴方向的动量大小；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M5YCuCbP5uyI1W9G9xGvAV8\"><p style=\"\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 宋体;\">求反冲离子刚打到离子探测器上时的动量大小；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M5YCuCbP5uyI1W9G9xGvAV8\"><p style=\"\"><span class=\"ques-no\">（3）</span><span style=\"font-family: 宋体;\">若</span><img  src=\"https://img.xkw.com/dksih/formula/2767834cb8ed9f44bc1f4eedf92975f3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，且</span><img  src=\"https://img.xkw.com/dksih/formula/2a30f3a8b673cc28bd90c50cf1a35281.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">与</span><img  src=\"https://img.xkw.com/dksih/formula/7f9e8449aad35c5d840a3395ea86df6d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的关系满足</span><img  src=\"https://img.xkw.com/dksih/formula/a1c2bc9e20e895dfb9312906b4f9f207.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，求电子打到电子探测器上的位置坐标（用</span><img  src=\"https://img.xkw.com/dksih/formula/79b752f0f189e5d8666daea73e145dff.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/ac047e91852b91af639feec23a9598b2.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/294f5ba74cdf695fc9a8a8e52f421328.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">和</span><img  src=\"https://img.xkw.com/dksih/formula/0c88d9142df6ba8e43c1a93bd04a1362.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">表示）。</span></p></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M5YCuCbP5uyI1W9G9xGvAV8\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/0eacb68cb58eb96bf2bdd33f5ec900e8.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/bdfe10b810911129c1458e86006330ea.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/998418bc406777abc4cc1cb975379f1b.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M5YCuCbP5uyI1W9G9xGvAV8\"><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span>反冲离子只在电场力下做抛体运动，</span><img  src=\"https://img.xkw.com/dksih/formula/e81e59019989b7dc2fb59b037ef6e010.svg\" class=\"xkw-math-img\" /><span>轴方向有</span><img  src=\"https://img.xkw.com/dksih/formula/f72499f075aae2c3e85846d2dfe087dd.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>其中</span><img  src=\"https://img.xkw.com/dksih/formula/067682013b3359d460473b56fbb333fa.svg\" class=\"xkw-math-img\" /><span>，</span><img  src=\"https://img.xkw.com/dksih/formula/f438d62113d6a228137931b87fc1b9ae.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">可得</span><img  src=\"https://img.xkw.com/dksih/formula/16d8cdd46bde5bab98535a4e0a6d0f8c.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>即反冲离子做类平抛运动，</span><span style=\"font-style: italic;\">x</span><span>轴方向上有</span><img  src=\"https://img.xkw.com/dksih/formula/477bae9412c418fed1be983acc2f8cdb.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>可得</span><img  src=\"https://img.xkw.com/dksih/formula/67ed37eb12f05d4553710d4488f2b625.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">爆炸过程系统动量守恒，故在</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">x</span><span style=\"font-family: 宋体;\">轴方向上有</span><img  src=\"https://img.xkw.com/dksih/formula/49f336480e275d6e30ad0766386c7856.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">可得电子在</span><img  src=\"https://img.xkw.com/dksih/formula/1dde8112e8eb968fd042418dd632759e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">点处沿</span><img  src=\"https://img.xkw.com/dksih/formula/81dea63b8ce3e51adf66cf7b9982a248.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">轴方向的动量大小</span><img  src=\"https://img.xkw.com/dksih/formula/a6feab9a94028b491ae43058246d86a4.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-style: italic;\">y</span><span>轴方向上有</span><img  src=\"https://img.xkw.com/dksih/formula/09f3d15bdb1ab3e5a83c09b745697684.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>可得</span><img  src=\"https://img.xkw.com/dksih/formula/ffa35c83891e1a69373a8708355db511.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><img  src=\"https://img.xkw.com/dksih/formula/e81e59019989b7dc2fb59b037ef6e010.svg\" class=\"xkw-math-img\" /><span>轴方向上有</span><img  src=\"https://img.xkw.com/dksih/formula/4b916af394b3328a3bb14e943b5379a9.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>可得</span><img  src=\"https://img.xkw.com/dksih/formula/09041fafcf0bf9b161dec909e49862b5.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>故末动量大小</span><img  src=\"https://img.xkw.com/dksih/formula/8e4eeff3d1bf59d30ea08ab533ff84c4.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>可得</span><img  src=\"https://img.xkw.com/dksih/formula/bee67711993863cf20c2a9c568dedc7b.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(3)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span>电子沿</span><span style=\"font-style: italic;\">z</span><span>轴方向做匀加速直线运动，有</span><img  src=\"https://img.xkw.com/dksih/formula/ec417b20c935ed7701b59622db294e72.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>可得</span><img  src=\"https://img.xkw.com/dksih/formula/be9246e3037196715fce361b5943ee0a.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>爆炸过程由动量守恒得</span><img  src=\"https://img.xkw.com/dksih/formula/69d6349fdc4026361740060c650acd2a.svg\" class=\"xkw-math-img\" /><span>，</span><img  src=\"https://img.xkw.com/dksih/formula/6d9692a4c3fb7107f29976bdd1c48a54.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>电子初速度</span><img  src=\"https://img.xkw.com/dksih/formula/f48bdf14c0fb862d44edec0d9f73c6a6.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>初速度方向与</span><span style=\"font-style: italic;\">y</span><span>轴负方向夹角</span><img  src=\"https://img.xkw.com/dksih/formula/c24095e409b025db711f14be783a406c.svg\" class=\"xkw-math-img\" /><span>满足</span><img  src=\"https://img.xkw.com/dksih/formula/32baaa4e3e2351991ce6c587f1d9f1c9.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>可得</span><img  src=\"https://img.xkw.com/dksih/formula/e7ddccda6d0ab0d00ed9292931216e90.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>在</span><span style=\"font-style: italic;\">Oxy</span><span>平面内做匀速圆周运动，由</span><img  src=\"https://img.xkw.com/dksih/formula/215cd51cbabbd2325f8a4a78ccc99a23.svg\" class=\"xkw-math-img\" /><span>，</span><img  src=\"https://img.xkw.com/dksih/formula/6782573686635bb20ea50ebc7d83d66b.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>可得</span><img  src=\"https://img.xkw.com/dksih/formula/a0e860abe1b88e5d0fb1c0942ea2be5e.svg\" class=\"xkw-math-img\" /><span>，</span><img  src=\"https://img.xkw.com/dksih/formula/482d7c97fa79415b123664cb2af6acf5.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>由于</span><img  src=\"https://img.xkw.com/dksih/formula/50350ea3b900559e845556d37630fd79.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>故</span><img  src=\"https://img.xkw.com/dksih/formula/5a54954e815bc3b5689ec270f8aac55a.svg\" class=\"xkw-math-img\" /><span>，</span><img  src=\"https://img.xkw.com/dksih/formula/91eee6303997c274a4cb879045986718.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span>故电子打到电子探测器上的位置坐标为</span><img  src=\"https://img.xkw.com/dksih/formula/becd03be521bb924a953c39161174436.svg\" class=\"xkw-math-img\" /><span>。</span></p><p style=\"text-align:justify;word-break:break-word;\"><img  height=\"206\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/dc68e612-5cef-49d0-9879-6ef324824cff.png\" width=\"277\" /></p></div></div>",
+  "create_date": "2026-09-29 22:07:50",
+  "paper_type_ids": [
+    12
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 195052,
+      "name": "4. 质谱仪与回旋加速器"
+    },
+    {
+      "id": 202729,
+      "name": "第四节 洛伦兹力与现代技术"
+    },
+    {
+      "id": 210060,
+      "name": "第3节 洛伦兹力的应用"
+    },
+    {
+      "id": 220862,
+      "name": "4. 洛伦兹力的应用"
+    },
+    {
+      "id": 230563,
+      "name": "第三节 带电粒子在匀强磁场中的圆周运动"
+    }
+  ],
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "kpoints": [
+    {
+      "id": 16345,
+      "name": "计算物体的动量及动量的变化"
+    },
+    {
+      "id": 16348,
+      "name": "动量定理的内容"
+    },
+    {
+      "id": 16646,
+      "name": "带电粒子在匀强电场中做直线运动"
+    },
+    {
+      "id": 16859,
+      "name": "带电粒子在磁场中做圆周运动的相关计算"
+    },
+    {
+      "id": 16895,
+      "name": "带电粒子在叠加场中的一般曲线运动"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4111183017492480"
+  ]
+}

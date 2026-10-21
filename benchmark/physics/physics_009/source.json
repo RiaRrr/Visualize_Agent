@@ -1,0 +1,83 @@
+{
+  "id": "4111203501703168",
+  "course_id": 29,
+  "type_id": "290801",
+  "kpoint_ids": [
+    16937,
+    16940,
+    17002
+  ],
+  "catalog_ids": [
+    195062,
+    202740,
+    210069,
+    220874,
+    230571
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.35,
+  "difficulty_level": 20,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M6yt3eShBeaQqXusRVZNn2x\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">某类电磁装置对物体的作用力源于磁场的空间分布随时间变化，这种变化可等效为磁场区域的空间平移。如图所示，沿水平直线轨道上存在足够多边长为</span><img  src=\"https://img.xkw.com/dksih/formula/167e6e41ac221847824a72e964f340f1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的正方形匀强磁场区域，相邻正方形区域磁感应强度大小均为</span><img  src=\"https://img.xkw.com/dksih/formula/98ab992b1ef4f9872ef16a421acf52db.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，方向相反，整个磁场区域沿轨道水平向右平移的速度可以调控，其瞬时速度记为</span><img  src=\"https://img.xkw.com/dksih/formula/ad481cbfb67ac9cdbc0537f3de23b022.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。物体正下方固定连接一水平单匝边长为</span><img  src=\"https://img.xkw.com/dksih/formula/167e6e41ac221847824a72e964f340f1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的正方形线圈，电阻为</span><img  src=\"https://img.xkw.com/dksih/formula/9db144c76e36b0c4d950698b2bbc39f9.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，物体（含线圈）质量为</span><img  src=\"https://img.xkw.com/dksih/formula/adf105fb3e6c8531dac701e60cb43c2a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，其水平向右运动的瞬时速度记为</span><img  src=\"https://img.xkw.com/dksih/formula/bc13a607ac0c7f76d252d7cb1bb040fd.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，运动过程中线圈完全处于磁场区域。</span><img  src=\"https://img.xkw.com/dksih/formula/ad481cbfb67ac9cdbc0537f3de23b022.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">与</span><img  src=\"https://img.xkw.com/dksih/formula/bc13a607ac0c7f76d252d7cb1bb040fd.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">之间的关系为</span><img  src=\"https://img.xkw.com/dksih/formula/65332e05ef1c26006938ee6b3cfb2f2b.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">（</span><img  src=\"https://img.xkw.com/dksih/formula/36a1b09c653185842513e24ebba60bb3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为时刻，</span><img  src=\"https://img.xkw.com/dksih/formula/f0a532e15e232cb4b99a8d4d07c89575.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/2c94bb12cee76221e13f9ef955b0aab1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为非负常数），采用国际单位制。忽略线圈自感、空气阻力和一切摩擦。下列选项正确的是（<span style=\"font-family: 'Times New Roman'\" qml-space-size=\"5\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>）</span></p><p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/7f7e8d43-5233-4756-9144-9867ccc48da0.png\" width=\"377\" height=\"114\" /></p><div class=\" qml-og\"><table class=\"qml-og\" style=\"width:100%\"><tr><td>A.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">若</span><img  src=\"https://img.xkw.com/dksih/formula/f8522cfa834fd711d1c828429eab07f8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则物体始终做加速直线运动</span></span></td></tr><tr><td>B.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">若</span><img  src=\"https://img.xkw.com/dksih/formula/5095a28bb1b91bf6bed9e2cfbd76bb18.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/143b917df0520097be222accbddf9394.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则线圈在</span><img  src=\"https://img.xkw.com/dksih/formula/54603702a99f27df1d29263c06dbac3f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">内产生的焦耳热为</span><img  src=\"https://img.xkw.com/dksih/formula/c9bd93bd6d9f611dd1cd67f33d972486.svg\" class=\"xkw-math-img\" /></span></td></tr><tr><td>C.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">若</span><img  src=\"https://img.xkw.com/dksih/formula/a882037b9ce104ecc496e0f31a139361.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/5a3c442579603164f3fc19458677d307.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则线圈中电流发生周期性变化，其频率为</span><img  src=\"https://img.xkw.com/dksih/formula/46bb733f75647f02a2ab776d0f47ab70.svg\" class=\"xkw-math-img\" /></span></td></tr><tr><td colspan=\"1\">D.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">若</span><img  src=\"https://img.xkw.com/dksih/formula/5095a28bb1b91bf6bed9e2cfbd76bb18.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/5a3c442579603164f3fc19458677d307.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则物体在</span><img  src=\"https://img.xkw.com/dksih/formula/8d74e38734e9938d03324c477ec2e5fc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">内</span><img  src=\"https://img.xkw.com/dksih/formula/bc13a607ac0c7f76d252d7cb1bb040fd.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的增量为</span><img  src=\"https://img.xkw.com/dksih/formula/a4a3f362a7ab57c34ab39ae34334c641.svg\" class=\"xkw-math-img\" /></span></td></tr></table></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M6yt3eShBeaQqXusRVZNn2x\"><span class=\"qml-an-sq\"><span class=\"qml-an qml-isop \">AD</span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M6yt3eShBeaQqXusRVZNn2x\"><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">．若</span><img  src=\"https://img.xkw.com/dksih/formula/f8522cfa834fd711d1c828429eab07f8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则</span><img  src=\"https://img.xkw.com/dksih/formula/6c7aaf260cd04995f60689e437ed3ba1.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">即始终有</span><img  src=\"https://img.xkw.com/dksih/formula/3531f6c8af0542dbe9d712e1bcd46917.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">由电磁驱动可知物体始终做加速直线运动，故</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">正确；</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">．若</span><img  src=\"https://img.xkw.com/dksih/formula/5095a28bb1b91bf6bed9e2cfbd76bb18.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/143b917df0520097be222accbddf9394.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则</span><img  src=\"https://img.xkw.com/dksih/formula/c48d1951ea4e4256b6a0d0958360e15c.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">物体相对磁场的切割速度</span><img  src=\"https://img.xkw.com/dksih/formula/606a847027b12e0b0ad1806d14fd4953.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">满足正弦函数，故产生正弦式电流，峰值电流</span><img  src=\"https://img.xkw.com/dksih/formula/daa7d1ba87b38a2c63db7ca2fd6285e5.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">根据</span><img  src=\"https://img.xkw.com/dksih/formula/c48d1951ea4e4256b6a0d0958360e15c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">可知相对速度的最大值</span><img  src=\"https://img.xkw.com/dksih/formula/50be8abfbcaaa7dae693829e591c8ada.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">可得</span><img  src=\"https://img.xkw.com/dksih/formula/e3e74f20908221e2ec1612a44087b4c2.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">在</span><span style=\"font-family: 'Times New Roman';\">0~3s</span><span style=\"font-family: 宋体;\">内焦耳热</span><img  src=\"https://img.xkw.com/dksih/formula/321e351c84a92449344ce8957888c991.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，故</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">．若</span><img  src=\"https://img.xkw.com/dksih/formula/a882037b9ce104ecc496e0f31a139361.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/5a3c442579603164f3fc19458677d307.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则</span><img  src=\"https://img.xkw.com/dksih/formula/b09c9db8d7a6fdf87f97de85bde07bc2.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">相对切割速度不变，产生感应电动势大小恒定不变，电流大小恒定不变，方向周期性变化，且周期为</span><img  src=\"https://img.xkw.com/dksih/formula/327ac30b99d0bc742d5450ae23b69f08.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">则频率为</span><img  src=\"https://img.xkw.com/dksih/formula/ddc38fb347b681866c564948d1e9a4d3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，故</span><span style=\"font-family: 'Times New Roman';\">C</span><span style=\"font-family: 宋体;\">错误；</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">．若</span><img  src=\"https://img.xkw.com/dksih/formula/5095a28bb1b91bf6bed9e2cfbd76bb18.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/5a3c442579603164f3fc19458677d307.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则</span><img  src=\"https://img.xkw.com/dksih/formula/c5733f88dd2a7d7b522e483141e8fec5.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">即物体始终做加速运动。感应电动势大小</span><img  src=\"https://img.xkw.com/dksih/formula/33ae09f049d54e4c18f7cbb6ef863347.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">安培力大小</span><img  src=\"https://img.xkw.com/dksih/formula/d408ceb21c9de30da0bd4e06de0fcb89.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">物体加速度</span><img  src=\"https://img.xkw.com/dksih/formula/f64c132c1835c8aa6b8f4c25ec15a5f0.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">可得</span><img  src=\"https://img.xkw.com/dksih/formula/e6bdd6c1ede03566b859fc41c92445cf.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">图像如图所示</span></p><p style=\"text-align:justify;word-break:break-word;\"><img  src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/e962398b-90bf-42fa-8745-755f28e2fae0.png\" width=\"194\" height=\"173\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">结合</span><img  src=\"https://img.xkw.com/dksih/formula/e6bdd6c1ede03566b859fc41c92445cf.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">图像，在</span><span style=\"font-family: 'Times New Roman';\">0~6s</span><span style=\"font-family: 宋体;\">内（即一个周期内）与</span><span style=\"font-family: 'Times New Roman';font-style: italic;\">t</span><span style=\"font-family: 宋体;\">轴包围面积即为</span><span style=\"font-family: 'Times New Roman';font-style: italic;\">v</span><span style=\"font-family: 宋体;\">的增量，可得</span><img  src=\"https://img.xkw.com/dksih/formula/e1f4566c234a137c6bd075c497db1433.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，故</span><span style=\"font-family: 'Times New Roman';\">D</span><span style=\"font-family: 宋体;\">正确。</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">故选</span><span style=\"font-family: 'Times New Roman';\">AD</span><span style=\"font-family: 宋体;\">。</span></p></div></div>",
+  "create_date": "2026-09-29 22:07:50",
+  "paper_type_ids": [
+    12
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 195062,
+      "name": "2. 交变电流的描述"
+    },
+    {
+      "id": 202740,
+      "name": "第二节 描述交变电流的物理量"
+    },
+    {
+      "id": 210069,
+      "name": "第2节 交变电流的产生"
+    },
+    {
+      "id": 220874,
+      "name": "2. 正弦交变电流的描述"
+    },
+    {
+      "id": 230571,
+      "name": "第二节 交变电流"
+    }
+  ],
+  "type": {
+    "id": "290801",
+    "name": "1个小题"
+  },
+  "kpoints": [
+    {
+      "id": 16937,
+      "name": "线框进出磁场产生的等效电路相关计算"
+    },
+    {
+      "id": 16940,
+      "name": "判断线框进出磁场区域的a-t图像"
+    },
+    {
+      "id": 17002,
+      "name": "计算交变流电路中的电功、电功率和焦耳热"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4111183017492480"
+  ]
+}

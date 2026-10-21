@@ -65,8 +65,10 @@ def test_gpt_score_only_accepts_unrated_pages_without_filling_human_scores(clien
     monkeypatch.setattr(ev,'BENCH',b.BENCH)
     (b.BENCH/'math/math_001').mkdir(parents=True)
     (b.BENCH/'math/math_001/input.png').write_bytes(b'fixture-image-for-mock')
-    (b.BENCH/'rubric.md').write_text('评分标准')
-    (b.BENCH/'evaluation/judge_prompt.md').write_text('独立评价 {{RUBRIC}}')
+    source=Path(__file__).resolve().parents[1]/'benchmark'
+    (b.BENCH/'rubric.md').write_text((source/'rubric.md').read_text())
+    for name in ('judge_prompt.md','dimension_prompt.md','overall_prompt.md','dimensions.json'):
+        (b.BENCH/'evaluation'/name).write_text((source/'evaluation'/name).read_text())
     b.write(b.BENCH/'evaluation/judge_registry.json',[{'id':'gpt_56','model':'gpt-5.6-sol','provider':'openai'}])
     requests=[]
     class Client:
@@ -74,16 +76,21 @@ def test_gpt_score_only_accepts_unrated_pages_without_filling_human_scores(clien
         async def complete(self,model,prompt,images,**kwargs):
             requests.append((model,prompt,len(images)))
             kwargs['usage']({'total_tokens':42})
-            return json.dumps({'scores':{k:3 for k in SCORE_KEYS},'overall_score':4,'issues':[],'evidence':{},'reference_concern':''})
+            key=prompt.split('当前评分维度：',1)[1].splitlines()[0]
+            return json.dumps({'dimension':key,'score':4 if key=='overall_score' else 3,
+                               'issues':[],'evidence':'独立核对证据','summary':'模拟评价','reference_concern':''})
     monkeypatch.setattr(ev,'ModelClient',Client)
     monkeypatch.setattr(sys,'argv',['evaluate','--score-only','--set','calibration','--judges','gpt_56'])
     asyncio.run(ev.main())
-    assert len(requests)==1 and requests[0][0]=='gpt-5.6-sol'
-    assert '<!doctype html><html>test</html>' in requests[0][1]
-    assert requests[0][2]==1
+    assert len(requests)==6 and all(r[0]=='gpt-5.6-sol' for r in requests)
+    assert all('<!doctype html><html>test</html>' in r[1] and r[2]==1 for r in requests)
+    assert all('独立核对证据' not in r[1] for r in requests)  # No previous responses fed to another call.
     assert not (b.BENCH/'evaluation/human').exists()
     report=b.read(b.BENCH/'reports/gpt_scores.json')
     assert report['rows'][0]['judgment']['overall_score']==4
+    assert report['rows'][0]['usage']['total_tokens']==252
+    assert report['rows'][0]['api_call_count']==6
+    assert set(report['rows'][0]['calls'])=={*SCORE_KEYS,'overall_score'}
     # A second execution reuses a completed judgment for the exact same evidence.
     asyncio.run(ev.main())
-    assert len(requests)==1
+    assert len(requests)==6

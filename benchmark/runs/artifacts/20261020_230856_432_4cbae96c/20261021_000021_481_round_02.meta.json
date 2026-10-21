@@ -1,0 +1,153 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261020_230856_432_4cbae96c:2",
+  "task_id": "20261020_230856_432_4cbae96c",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 2,
+  "created_at": "2026-10-21T00:00:21.573703+08:00",
+  "files": {
+    "image": "20261020_230856_432_input.png",
+    "html": "20261021_000021_481_round_02.html",
+    "screenshot": "20261021_000021_481_round_02.png",
+    "model_review": "20261021_000021_481_round_02.review.json",
+    "config": "20261020_230856_432_config.json",
+    "model_review_raw": "round_02.model_review_raw.txt"
+  },
+  "html_sha256": "30de77223dfe785cbfde4c41c2de08149e12269b0b4681c0edcfed906e8325f4",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "physics",
+    "name": "物理 · 过程与受力",
+    "version": "219290302036",
+    "subject": "physics"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "题目条件、物理量和两步解答均正确，滑块、播放和步骤切换能让主图、v-t图与读数和时间同步更新。主要问题是首屏过早显示待求的总距离和停止端点，以及速度配色和标记层级不够统一，影响学生自行推导的体验。",
+    "issues": [
+      "首屏主图跑道已直接标到 108 m，v-t 图也完整画到 t=6 s 并显示停止端点；这会在步骤②、③之前暴露停止时间和总距离。建议初始只显示当前时刻前的图线，或在步骤②、③中逐步显现 t=6 s 与 108 m。",
+      "速度对应的颜色不统一：主图速度箭头为绿色，初速度 chip、v-t 图线和当前时刻点使用蓝色。建议统一速度颜色，或增加两张图共用的颜色图例，避免学生混淆蓝色曲线、蓝色点和位移面积。",
+      "步骤④、⑤切到 t=2 s 时，橙色 (2 s, 24 m/s) 标记会被后绘制的蓝色当前时刻点覆盖，削弱“最后 4 s 起点”的对应关系。建议将当前点改为空心环或不同形状，并明确橙色标记与当前点的绘制层级。",
+      "步骤⑤源码中的倒放小图字号仅约 9.5–10.5px 且直接覆盖在 v-t 图右上角，实际阅读时可能偏小并分散注意。建议放大该小图、移到独立区域，或减少主图同时显示的标注。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 4,
+      "interaction_quality": 4,
+      "teaching_effectiveness": 4
+    },
+    "overall_score": 4
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 65,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 2,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:55:10.964996+08:00",
+        "ended_at": "2026-10-20T23:57:36.695715+08:00",
+        "duration_seconds": 145.730719,
+        "status": "completed"
+      },
+      {
+        "id": 66,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 2,
+        "stage": "validating",
+        "started_at": "2026-10-20T23:57:36.695715+08:00",
+        "ended_at": "2026-10-20T23:57:36.815746+08:00",
+        "duration_seconds": 0.120031,
+        "status": "completed"
+      },
+      {
+        "id": 67,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 2,
+        "stage": "rendering",
+        "started_at": "2026-10-20T23:57:36.815746+08:00",
+        "ended_at": "2026-10-20T23:57:39.174636+08:00",
+        "duration_seconds": 2.35889,
+        "status": "completed"
+      },
+      {
+        "id": 68,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 2,
+        "stage": "reviewing",
+        "started_at": "2026-10-20T23:57:39.174636+08:00",
+        "ended_at": "2026-10-21T00:00:22.030897+08:00",
+        "duration_seconds": 162.856261,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 38,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:57:36.624718+08:00",
+        "duration_seconds": 145.31296199200006,
+        "status": "completed",
+        "input_tokens": 11795,
+        "output_tokens": 29229,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 25855,
+        "total_tokens": 41024
+      },
+      {
+        "id": 40,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T00:00:21.416366+08:00",
+        "duration_seconds": 162.0619596530014,
+        "status": "completed",
+        "input_tokens": 12151,
+        "output_tokens": 23470,
+        "cached_input_tokens": 2048,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 23095,
+        "total_tokens": 35621
+      }
+    ]
+  }
+}

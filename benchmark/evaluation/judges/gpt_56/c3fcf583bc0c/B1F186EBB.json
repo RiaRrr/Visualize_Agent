@@ -1,0 +1,71 @@
+{
+  "sample_id": "B1F186EBB",
+  "question_id": "math_001",
+  "set": "calibration",
+  "html_sha256": "08e2a365b832573363e00de9e6e9f6e06cab73ea131bffbadf565838676920a4",
+  "judge_id": "gpt_56",
+  "model": "gpt-5.6-sol",
+  "judge_version": "c3fcf583bc0c",
+  "evidence_sha256": "3eb5a479559e879cd367cc73c5a2208548b5277aa2da70f5b6a4fc7b1fd83a82",
+  "image_inputs": [
+    {
+      "name": "input.png",
+      "sha256": "b3e38e164e8716d4a6b7d8f4d289bd020ac06d0bf6cbe3689ba18422f278f43c"
+    },
+    {
+      "name": "answer.png",
+      "sha256": "7a27a7a7291f0db3b9b3fe895313df5cd2b650aa25d7934fc87b8a61b2862ab3"
+    },
+    {
+      "name": "explanation.png",
+      "sha256": "c04d60648cac97f365add9d15955cd3dba20ca5ce7bdc20c87df2edf0e149ecd"
+    },
+    {
+      "name": "00_initial.png",
+      "sha256": "1ff51a1030483583dc9cc237c42ae1be3e79965604354ebe10eedf57874e4f78"
+    },
+    {
+      "name": "01_next_step.png",
+      "sha256": "5fe8cc9acc206e7db544efc6e6b78dcb3c905b43090fa4f4d601edc87512be43"
+    },
+    {
+      "name": "02_slider_mid.png",
+      "sha256": "6505d2dfde851b8d17de376d8dc077ddc2528589fe72687114c15f17ed5fc620"
+    },
+    {
+      "name": "03_slider_high.png",
+      "sha256": "7dce7bd421c2f844f5bbc1e3737a8c5d1877b38555cd6f3dbb534de8b4b95527"
+    }
+  ],
+  "created_at": "2026-10-20T15:58:56.928479+00:00",
+  "status": "completed",
+  "judgment": {
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 5,
+      "interaction_quality": 5,
+      "teaching_effectiveness": 5
+    },
+    "overall_score": 5,
+    "issues": [],
+    "evidence": {
+      "problem_fidelity": "原题为求函数 y=−x²+2x−14 的值域，候选页完整保留函数式、定义域为全体实数以及值域填空任务，没有改动系数或遗漏条件；滑块明确标为有限“演示范围”，页脚也说明实际定义域为全体实数。",
+      "solution_correctness": "独立配方得 y=−(x−1)²−13。因平方项非负，y≤−13，且 x=1 时取等；当 |x| 趋于无穷时 y 趋于负无穷，因此值域为 (−∞,−13]。候选页的公式、顶点 V(1,−13)、数值联动和最终答案均与此一致。截图中 x=3 时 y=−17，x=1 时 y=−13，x=5.2 时 y=−30.64，计算均正确。",
+      "page_quality": "1280×900 的操作前后截图中，题目、图像、步骤面板、公式、数值和控制区层次清楚，没有发现文字或图形重叠、裁切及不可读内容；高端滑块状态下点 P、辅助线和标签仍可辨认。",
+      "interaction_quality": "实际记录验证了“下一步”和滑块中值、上界操作，页面无运行时错误；截图显示滑块从 x=1 到 x=5.2 时，点位置、坐标、|x−1|、平方项及 y 值同步更新。源码还为播放、暂停、到顶点、复位、上一步和四步导航设置了对应状态更新，但这些操作以及第3、4步的最终显示未在实际操作记录中逐项执行，因此相关判断主要来自源码检查。",
+      "teaching_effectiveness": "页面从动点纵坐标表示函数值开始，再依次安排配方、平方项非负和取等，能够由题设自然推出上界及值域；图中用顶点、对称轴、水平距离 |x−1| 和纵向下降量 (x−1)² 配合实时数值，有限观察区间与全体实数定义域的区别也有明确说明。"
+    },
+    "reference_concern": "",
+    "summary": "参考答案经独立核算正确。候选页完整保留题意，数学推导和动态图示均正确，桌面呈现清晰，步骤设计能连贯解释值域的产生；已记录操作覆盖下一步及滑块联动，其余按钮主要由源码确认。"
+  },
+  "duration_seconds": 33.80902790699474,
+  "usage": {
+    "input_tokens": 24798,
+    "output_tokens": 1130,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 509,
+    "total_tokens": 25928
+  }
+}

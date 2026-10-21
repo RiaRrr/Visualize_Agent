@@ -1,0 +1,75 @@
+{
+  "sample_id": "HBA4CBB03AB",
+  "question_id": "HQ0822E89A4F0E",
+  "set": "historical_human",
+  "html_sha256": "4435c046d9c76a2dcf5eee57122c9b26f06f7259c8b04535568456dc87721304",
+  "judge_id": "gpt_56",
+  "model": "gpt-5.6-sol",
+  "judge_version": "c3fcf583bc0c",
+  "evidence_sha256": "9303cacf55b81f9f82d9d0a730c2dcf7698925040e6b6c300580be532ba58e16",
+  "image_inputs": [
+    {
+      "name": "input.png",
+      "sha256": "0822e89a4f0ea67a76e64ecd89ae2470b095f739680432c568407c069b9d8866"
+    },
+    {
+      "name": "answer.png",
+      "sha256": "b73804c91753a325df3026c97994831a4f2303a59ddd6e4c2d3dcc67cdb1bc27"
+    },
+    {
+      "name": "explanation.png",
+      "sha256": "451b4ea8a0fc827e970186c8212b9ac76a0993cb7bb2dc5b5cf2bb760c5e0ea0"
+    },
+    {
+      "name": "00_initial.png",
+      "sha256": "63d08d2300cae49856b1d7cc1938d4932f72880964e96ab32d7671fe690aeafb"
+    },
+    {
+      "name": "01_next_step.png",
+      "sha256": "2a02e073d77ec9f28bb2c5ac1b620363142eefcaa352d7f808c857487dcc47fc"
+    },
+    {
+      "name": "02_slider_mid.png",
+      "sha256": "2a02e073d77ec9f28bb2c5ac1b620363142eefcaa352d7f808c857487dcc47fc"
+    },
+    {
+      "name": "03_slider_high.png",
+      "sha256": "2a02e073d77ec9f28bb2c5ac1b620363142eefcaa352d7f808c857487dcc47fc"
+    }
+  ],
+  "created_at": "2026-10-20T15:53:20.325870+00:00",
+  "status": "completed",
+  "judgment": {
+    "scores": {
+      "problem_fidelity": 4,
+      "solution_correctness": 5,
+      "page_quality": 4,
+      "interaction_quality": 4,
+      "teaching_effectiveness": 5
+    },
+    "overall_score": 4,
+    "issues": [
+      "题目顶部、轨迹步骤和图中把原题定点 O(0,2) 未经说明改记为 Q(0,2)，同时把坐标原点标成 O。几何关系未因此改变，但没有忠实保留原题对象名称，学生对照原题时可能困惑。",
+      "第二步截图中重心 G 附近的点名与“x_G=0”标注距离过近，视觉上近似连成“Gx_G=0”，局部辨识度下降；第一步 P、PH、PQ 附近的标注也较密集。",
+      "实际操作记录只验证了初始页和一次“下一步”，到达第二步时滑块尚未按设计显示，因此中间值、上边界、复位、预设按钮以及后续步骤的图文联动均未被实际操作验证。源码表明这些控件和更新逻辑存在且范围设置合理，但不能等同于完整运行验证。"
+    ],
+    "evidence": {
+      "problem_fidelity": "原题的两问、曲线位于 x 轴上方、距离差为 2、A/C 在右侧、B 在左侧、重心在 y 轴、3|AM|<|BM|及三个面积定义均被保留；唯一明显偏差是把原题定点 O(0,2) 改名为 Q(0,2)。",
+      "solution_correctness": "独立核算可得距离条件为 sqrt(x^2+(y-2)^2)-y=2，从而 Γ 为 x^2=8y 且 y>0。令 A、C 横坐标为 a、c，重心条件给出 b=-(a+c)，线段条件推出 c>2a，即 r=c/a>2。页面给出的 M、N、G坐标、S1、S2+S3及 R(r)=(r^2+4r+1)/[3(r+2)(2r+1)] 均正确；R'(r)=(1-r^2)/[(r+2)(2r+1)]^2<0，端点极限为 13/60 与 1/6，故开区间 (1/6,13/60) 正确。",
+      "page_quality": "1280×900 截图中双栏布局、步骤导航、公式和主图均完整可见，无明显裁切；配色和区域区分清楚。局部点名与说明文字较拥挤，尤其是第二步 G 附近，但未妨碍主体阅读。",
+      "interaction_quality": "“下一步”实际点击成功且无运行错误，页面从轨迹条件同步切换到三点与重心。滑块从第三步才显示，所以记录中的两次滑块操作均未覆盖真实可见滑块。源码显示 r 的演示范围为 2.02 至 7，明确说明完整定义域是 r>2，并提供复位、近 r=2 的预设和 r=7 预设，计算与重绘共用同一参数；这些后续交互未在操作记录中实测。",
+      "teaching_effectiveness": "六步结构从距离定义、轨迹方程、重心约束、参数 r 的来源、面积计算、单调性和端点极限逐层展开。页面明确解释 a=1 仅用于作图、滑块范围不等于完整定义域、两个极限端点不可取得，能够从题设推到结论，而不是直接要求学生操作未知参数。"
+    },
+    "reference_concern": "",
+    "summary": "数学推导和最终范围均正确，步骤组织完整，图文对解题关键条件的呈现较好。主要问题是擅自把原题定点 O 改名为 Q、少量图中文字拥挤，以及操作记录没有覆盖第三步以后的滑块、预设和复位功能。"
+  },
+  "duration_seconds": 38.2182308229967,
+  "usage": {
+    "input_tokens": 25131,
+    "output_tokens": 1742,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 840,
+    "total_tokens": 26873
+  }
+}

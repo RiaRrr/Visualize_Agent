@@ -1,0 +1,20 @@
+{
+  "run_status": "passed",
+  "completed_rounds": 3,
+  "id": "BBE082C36",
+  "question_id": "math_001",
+  "set": "calibration",
+  "workflow_id": "W1",
+  "task_id": "20261020_230823_389_e6f644a3",
+  "round_number": 2,
+  "html": "runs/artifacts/20261020_230823_389_e6f644a3/20261020_233626_459_round_02.html",
+  "html_sha256": "d9c9df54bd4a63f484f9bc755c97a9919a3693b3f62a42095e382353bb3d12ca",
+  "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+  "inspection": "runs/artifacts/20261020_230823_389_e6f644a3/evidence/public.json",
+  "screenshots": [
+    "runs/artifacts/20261020_230823_389_e6f644a3/evidence/00_initial.png",
+    "runs/artifacts/20261020_230823_389_e6f644a3/evidence/01_next_step.png",
+    "runs/artifacts/20261020_230823_389_e6f644a3/evidence/02_slider_mid.png",
+    "runs/artifacts/20261020_230823_389_e6f644a3/evidence/03_slider_high.png"
+  ]
+}

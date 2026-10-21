@@ -1,0 +1,78 @@
+{
+  "id": "4111203502186496",
+  "course_id": 29,
+  "type_id": "2904",
+  "kpoint_ids": [
+    108275,
+    16245
+  ],
+  "catalog_ids": [
+    194978,
+    202642,
+    201443,
+    201260,
+    229291
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.5,
+  "difficulty_level": 20,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M49QFvXuIaahQlbWKvH12cv\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">如图（</span><span style=\"font-family: 'Times New Roman';\">a</span><span style=\"font-family: 宋体;\">）所示，质量为</span><img  src=\"https://img.xkw.com/dksih/formula/bd807b00edd29e8e04815363be86f24c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的长方体箱子在水平拉力</span><img  src=\"https://img.xkw.com/dksih/formula/a0ed1ec316bc54c37c4286c208f55667.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">作用下沿水平面向右加速运动，箱子与水平面间的动摩擦因数</span><img  src=\"https://img.xkw.com/dksih/formula/c8486580b44c5c4b2fd9bfec88ef3510.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。箱内后壁上有两物块</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，其质量均为</span><img  src=\"https://img.xkw.com/dksih/formula/94776b37df8aebae4d70e3ea49030348.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，与后壁间的动摩擦因数分别为</span><img  src=\"https://img.xkw.com/dksih/formula/3639b9b596019a23574b1dc4bf3e0ade.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">和</span><img  src=\"https://img.xkw.com/dksih/formula/60a80b95b69b2ccccd0954bf5f2ddfdc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。</span><img  src=\"https://img.xkw.com/dksih/formula/a0ed1ec316bc54c37c4286c208f55667.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">随时间</span><img  src=\"https://img.xkw.com/dksih/formula/36a1b09c653185842513e24ebba60bb3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的变化关系如图（</span><span style=\"font-family: 'Times New Roman';\">b</span><span style=\"font-family: 宋体;\">）所示，当</span><img  src=\"https://img.xkw.com/dksih/formula/412cc95279a267f6b1a8588555b6eba1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时，</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">恰好静止在后壁上，</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">静止在后壁上；当</span><img  src=\"https://img.xkw.com/dksih/formula/26399af5e5352c829a3788d2695a0dda.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时，</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">恰好静止在后壁上。在运动过程中，</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、</span><img  src=\"https://img.xkw.com/dksih/formula/ea1e8babee63bfc889ae5a34632284bc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">始终没有相碰。设最大静摩擦力等于滑动摩擦力，忽略空气阻力，且</span><img  src=\"https://img.xkw.com/dksih/formula/276509f01529d982ab21e479a4619268.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">取</span><img  src=\"https://img.xkw.com/dksih/formula/736b8522a2085470659d492f648092eb.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。求：</span></p><p style=\"text-align: left;\"><img  height=\"156\" source-file=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/4ef43afd-2b35-4a16-8825-7b6020380400.psd\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/4ef43afd-2b35-4a16-8825-7b6020380400.png\" width=\"334\" /></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M49QFvXuIaahQlbWKvH12cv\"><p style=\"\"><span class=\"ques-no\">（1）</span><img  src=\"https://img.xkw.com/dksih/formula/f5076289823db419f94e9c0c8f4aafd9.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的大小；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M49QFvXuIaahQlbWKvH12cv\"><p style=\"\"><span class=\"ques-no\">（2）</span><img  src=\"https://img.xkw.com/dksih/formula/a3fb78c5f885034612c0e030b920143d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的大小及在</span><img  src=\"https://img.xkw.com/dksih/formula/4ba9b122ac217651468b4dac1ed78376.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的时间内摩擦力对物块</span><img  src=\"https://img.xkw.com/dksih/formula/ff4489d9b83072184c0e1d6b09be50ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">所做的功，已知</span><img  src=\"https://img.xkw.com/dksih/formula/e21d53a6bafcce04554c63d92ced36af.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。</span></p></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M49QFvXuIaahQlbWKvH12cv\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/46423917d6195cec9cb099b4d75c1561.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/065ddb83126a37cf3e9661452df9c252.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/83fedea2f640672d810564e227970ad8.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M49QFvXuIaahQlbWKvH12cv\"><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">当</span><img  src=\"https://img.xkw.com/dksih/formula/412cc95279a267f6b1a8588555b6eba1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时，对</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">有</span><img  src=\"https://img.xkw.com/dksih/formula/7190daf4780bd22bfc6030d93af82583.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/da68d20e16e3e8ffcd7fa7a2fa67e829.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">得</span><img  src=\"https://img.xkw.com/dksih/formula/1f2a19efd4661b7844a53dc8d809eb8a.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">对整体有</span><img  src=\"https://img.xkw.com/dksih/formula/24ec5249b6570113516b20d4b530633e.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">得</span><img  src=\"https://img.xkw.com/dksih/formula/01ccf561fb9363e72543b3b9ea600441.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">当</span><img  src=\"https://img.xkw.com/dksih/formula/26399af5e5352c829a3788d2695a0dda.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时，</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">开始向下滑动，对</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">有</span><img  src=\"https://img.xkw.com/dksih/formula/2342deb42bb2d2ef77bf1c8d8d9eb4c2.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/2ce396b8a6e2f8e868c80552799a42e0.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">得</span><img  src=\"https://img.xkw.com/dksih/formula/1bbfbea7d1ee4881083b8432f42ae49e.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">对</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">有</span><img  src=\"https://img.xkw.com/dksih/formula/0b512144aceee9c387471d13b27f08b3.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">得</span><img  src=\"https://img.xkw.com/dksih/formula/34b3cf4328b7845b8cb0cee311834d81.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">对箱子有</span><img  src=\"https://img.xkw.com/dksih/formula/8a2d213900d767940b4c3c6dcf1c2a05.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">其中</span><img  src=\"https://img.xkw.com/dksih/formula/bcc1c8700abac46c36b53ae27054f83b.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">得</span><img  src=\"https://img.xkw.com/dksih/formula/02670ceff6fd5f8085c6f810dd10068d.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">对整体有</span><img  src=\"https://img.xkw.com/dksih/formula/9625ef6c44d67e1bc9ca51f2ccc6d2ac.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">得</span><img  src=\"https://img.xkw.com/dksih/formula/b59d8f254a2832b0d2b35d59b1880ac7.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">对</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">有</span><img  src=\"https://img.xkw.com/dksih/formula/af1a133ce512f1affe069641dd169202.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">得</span><img  src=\"https://img.xkw.com/dksih/formula/277ae64f77c7c4c943fad94542819411.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">有</span><img  src=\"https://img.xkw.com/dksih/formula/8cc81c850a056e8e30c04bf536d85ad8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/93ecf18961251cdab015725122b7c2e8.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">联立可得</span><img  src=\"https://img.xkw.com/dksih/formula/610f205d54150e87621550f8b7a1331a.svg\" class=\"xkw-math-img\" /></p></div></div>",
+  "create_date": "2026-09-29 22:07:50",
+  "paper_type_ids": [
+    12
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 194978,
+      "name": "1. 功与功率"
+    },
+    {
+      "id": 202642,
+      "name": "第一节 功"
+    },
+    {
+      "id": 201443,
+      "name": "第1节 机械功"
+    },
+    {
+      "id": 201260,
+      "name": "1. 功"
+    },
+    {
+      "id": 229291,
+      "name": "第一节 功"
+    }
+  ],
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "kpoints": [
+    {
+      "id": 108275,
+      "name": "接触面间接连接"
+    },
+    {
+      "id": 16245,
+      "name": "功的定义（式）"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4111183017492480"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "4111203502030848",
+  "course_id": 29,
+  "type_id": "2904",
+  "kpoint_ids": [
+    17166,
+    17202
+  ],
+  "catalog_ids": [
+    195102,
+    202771,
+    210097,
+    228362,
+    230602
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.87,
+  "difficulty_level": 18,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M6NPqPEuJBEFkZuCIlbYpCh\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">西汉青铜雁鱼灯构思巧妙，体现了我国古代工匠的智慧，如图（</span><span style=\"font-family: 'Times New Roman';\">a</span><span style=\"font-family: 宋体;\">）所示。假设灯内一定质量的理想气体吸收了热量</span><img  src=\"https://img.xkw.com/dksih/formula/acc290b44635265137fdf13146b6a6d9.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，从初态</span><img  src=\"https://img.xkw.com/dksih/formula/5963abe8f421bd99a2aaa94831a951e9.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">经历压强为</span><img  src=\"https://img.xkw.com/dksih/formula/3606c4a853a6a34cb7f33bea81b15a1f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的等压过程变化到末态</span><img  src=\"https://img.xkw.com/dksih/formula/7f9e8449aad35c5d840a3395ea86df6d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，如图（</span><span style=\"font-family: 'Times New Roman';\">b</span><span style=\"font-family: 宋体;\">）所示。已知气体初态温度为</span><img  src=\"https://img.xkw.com/dksih/formula/635ccd929471d564cc9d2d96266b34d1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">、体积为</span><img  src=\"https://img.xkw.com/dksih/formula/21c280c5f4ae649c3bb1f720633c886c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，末态体积为</span><img  src=\"https://img.xkw.com/dksih/formula/c4764374bd2fb78e59cd0b283637baeb.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。求：</span></p><p style=\"text-align: left;\"><img  height=\"158\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/30/c9f604a1-7c07-4b14-8b84-8e0a0c1279a6.png\" width=\"258\" /></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M6NPqPEuJBEFkZuCIlbYpCh\"><p style=\"\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 宋体;\">气体在末态</span><img  src=\"https://img.xkw.com/dksih/formula/7f9e8449aad35c5d840a3395ea86df6d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时的温度</span><img  src=\"https://img.xkw.com/dksih/formula/4e9a724b59c890095baa5cb73e267c44.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M6NPqPEuJBEFkZuCIlbYpCh\"><p style=\"\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 宋体;\">该过程中气体内能的变化量</span><img  src=\"https://img.xkw.com/dksih/formula/22aa57bd256e50068ece901f7cf82bb2.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。</span></p></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M6NPqPEuJBEFkZuCIlbYpCh\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/2a9ac9cf73f6e348c4dacf825b8640c3.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/04cfa2dd38dc0df7ecdab3db6837102b.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861838-114651791852237200-G4kp-u3VP21coQMQfxf4VV3mQaaskpJnYM-9XZSE4M6NPqPEuJBEFkZuCIlbYpCh\"><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">设末态</span><img  src=\"https://img.xkw.com/dksih/formula/7f9e8449aad35c5d840a3395ea86df6d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">时气体温度为</span><img  src=\"https://img.xkw.com/dksih/formula/4e9a724b59c890095baa5cb73e267c44.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。由盖</span><span style=\"font-family: 'Times New Roman';\">—</span><span style=\"font-family: 宋体;\">吕萨克定律，得</span><img  src=\"https://img.xkw.com/dksih/formula/fd5a57fa4559cb20de3f2f072ef8a771.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">可得</span><img  src=\"https://img.xkw.com/dksih/formula/2a9ac9cf73f6e348c4dacf825b8640c3.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"text-align: left;\"><img  src=\"https://img.xkw.com/dksih/formula/f52a58fbaf4fea03567e88a9f0f6e37e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为等压膨胀，外界对气体做功</span><img  src=\"https://img.xkw.com/dksih/formula/bbaa0c082c7cfa4405a384c5cf398733.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">由热力学第一定律</span><img  src=\"https://img.xkw.com/dksih/formula/3af19bb5e17ee498c81485ad1992a70d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\"> </span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">联立可得</span><img  src=\"https://img.xkw.com/dksih/formula/04cfa2dd38dc0df7ecdab3db6837102b.svg\" class=\"xkw-math-img\" /></p></div></div>",
+  "create_date": "2026-09-29 22:07:50",
+  "paper_type_ids": [
+    12
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 195102,
+      "name": "2. 热力学第一定律"
+    },
+    {
+      "id": 202771,
+      "name": "第一节 热力学第一定律"
+    },
+    {
+      "id": 210097,
+      "name": "第1节 热力学第一定律"
+    },
+    {
+      "id": 228362,
+      "name": "1. 热力学第一定律"
+    },
+    {
+      "id": 230602,
+      "name": "第二节 能量的转化与守恒"
+    }
+  ],
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "kpoints": [
+    {
+      "id": 17166,
+      "name": "盖-吕萨克定律的理解及初步应用"
+    },
+    {
+      "id": 17202,
+      "name": "热力学第一定律的应用"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4111183017492480"
+  ]
+}

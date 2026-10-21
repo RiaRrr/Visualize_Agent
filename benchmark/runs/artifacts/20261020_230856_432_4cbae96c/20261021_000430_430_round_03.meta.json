@@ -1,0 +1,154 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261020_230856_432_4cbae96c:3",
+  "task_id": "20261020_230856_432_4cbae96c",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 3,
+  "created_at": "2026-10-21T00:04:30.549961+08:00",
+  "files": {
+    "image": "20261020_230856_432_input.png",
+    "html": "20261021_000430_430_round_03.html",
+    "screenshot": "20261021_000430_430_round_03.png",
+    "model_review": "20261021_000430_430_round_03.review.json",
+    "config": "20261020_230856_432_config.json",
+    "model_review_raw": "round_03.model_review_raw.txt"
+  },
+  "html_sha256": "5761e7536e1bb20dc498606cd8c4858a26e898e5952678dc27eed8aa9cc2adff",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "physics",
+    "name": "物理 · 过程与受力",
+    "version": "219290302036",
+    "subject": "physics"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "题目条件、对象与两问答案均正确，主图、v–t 图和读数能随时间同步更新；但倒放图的正方向约定、步骤⑤反馈位置和滑块范围说明仍有清楚度问题，属于可改进但不改变答案的缺陷。",
+    "issues": [
+      "步骤⑤文字称“右侧小图”，但 `#reverseCard` 实际插入在主图/图表与控件之间、占满整行，位于步骤说明上方；点击⑤后还会把底部步骤按钮和公式向下顶出视口。请把倒放图放到步骤说明同屏附近，或至少将文字改为“上方/下方倒放视图”，并避免切换时把操作控件移出视野。",
+      "倒放视图未说明坐标正方向：若继续采用原题“向右为正”，时间反演后的速度应显示为 0→−24 m/s；当前图显示 0→+24 m/s。请在倒放卡片中明确写“本图以倒放方向为正，只比较位移大小”，或改用负速度图，避免与 a=−6 m/s² 的正方向约定冲突。",
+      "时间滑块的 0–6 s 范围是导出量，但控件旁没有交代来源和合法范围。建议在滑块标签或旁边直接标注“0–6 s（由 v₀/|a| 得）”，使学生在拖动前知道 6 s 的来历，而不是必须先在步骤②中寻找。",
+      "步骤②显示“静止处”终点线时，跑道刻度因 `showArea` 未开启而仍隐藏 108 m；建议在 `showStop` 时同步显示 108 m，或延后终点线，保持图和刻度一致。",
+      "初始 t=0 时飞机机身大部分在 0 m 刻度线左侧、跑道底色之外，容易被读成负位移或越界；建议明确以机头/重心对齐 0 m 起点，或将跑道向起点后方延伸。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 4,
+      "page_quality": 4,
+      "interaction_quality": 4,
+      "teaching_effectiveness": 4
+    },
+    "overall_score": 4
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 70,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 3,
+        "stage": "generating",
+        "started_at": "2026-10-21T00:00:22.329789+08:00",
+        "ended_at": "2026-10-21T00:02:27.733947+08:00",
+        "duration_seconds": 125.404158,
+        "status": "completed"
+      },
+      {
+        "id": 74,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 3,
+        "stage": "validating",
+        "started_at": "2026-10-21T00:02:27.733947+08:00",
+        "ended_at": "2026-10-21T00:02:27.868737+08:00",
+        "duration_seconds": 0.13479,
+        "status": "completed"
+      },
+      {
+        "id": 75,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 3,
+        "stage": "rendering",
+        "started_at": "2026-10-21T00:02:27.868737+08:00",
+        "ended_at": "2026-10-21T00:02:29.510496+08:00",
+        "duration_seconds": 1.641759,
+        "status": "completed"
+      },
+      {
+        "id": 76,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "round_number": 3,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T00:02:29.510496+08:00",
+        "ended_at": "2026-10-21T00:04:31.034970+08:00",
+        "duration_seconds": 121.524474,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 42,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 3,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T00:02:27.681513+08:00",
+        "duration_seconds": 125.06456111100124,
+        "status": "completed",
+        "input_tokens": 12460,
+        "output_tokens": 23234,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 19099,
+        "total_tokens": 35694
+      },
+      {
+        "id": 43,
+        "task_id": "20261020_230856_432_4cbae96c",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 3,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T00:04:30.358486+08:00",
+        "duration_seconds": 120.63461278899922,
+        "status": "completed",
+        "input_tokens": 12637,
+        "output_tokens": 17155,
+        "cached_input_tokens": 2048,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 16690,
+        "total_tokens": 29792
+      }
+    ]
+  }
+}

@@ -1,24 +1,26 @@
-// User-specified CNY rates; these cover cache components only, not a full bill.
-function cacheCost(calls = []) {
-  let read = 0, write = 0, known = 0, missing = 0, unpriced = 0;
+// User-provided CNY per million input/output tokens; cached/reasoning are subsets.
+function apiCost(calls = []) {
+  let input = 0, output = 0, known = 0, missing = 0, unpriced = 0;
   for (const call of calls) {
-    if (call.provider !== 'codex' || call.model !== 'deepseek-v4-1-flash-261017') { unpriced++; continue; }
-    for (const [key, rate] of [['cached_input_tokens', 1.44], ['cache_write_input_tokens', 5.76]]) {
+    const rates = ['codex','edumind_alt'].includes(call.provider) && call.model === 'deepseek-v4-1-flash-261017' ? [1.2, 4.8]
+      : call.provider === 'openai' && call.model === 'gpt-5.6-sol' ? [5, 30] : null;
+    if (!rates) { unpriced++; continue; }
+    for (const [key, rate] of [['input_tokens', rates[0]], ['output_tokens', rates[1]]]) {
       const count = call[key];
       if (!Number.isSafeInteger(count) || count < 0) { missing++; continue; }
       known++;
-      if (key === 'cached_input_tokens') read += count * rate / 1000000;
-      else write += count * rate / 1000000;
+      if (key === 'input_tokens') input += count * rate / 1000000;
+      else output += count * rate / 1000000;
     }
   }
-  return {amount: known ? read + write : null, read, write, known, missing, unpriced, calls: calls.length};
+  return {amount: known ? input + output : null, input, output, known, missing, unpriced, calls: calls.length};
 }
 
-function cacheCostText(calls = []) {
-  const cost = cacheCost(calls);
+function apiCostText(calls = []) {
+  const cost = apiCost(calls);
   if (!cost.calls) return '费用待记录';
   if (cost.amount == null) return '费用未知（缺用量或单价）';
-  return `已知缓存费约 ¥${cost.amount.toFixed(4)}（非总费用）`;
+  return `估算费用 ¥${cost.amount.toFixed(4)}${cost.missing || cost.unpriced ? '（部分用量或单价缺失）' : ''}`;
 }
 
 const historyList = document.getElementById('history-list');
@@ -333,9 +335,9 @@ function durationText(seconds) {
 }
 
 function costBadge(calls) {
-  const badge = el('small', 'cost-estimate', cacheCostText(calls));
-  const cost = cacheCost(calls);
-  badge.title = `按用户指定人民币单价估算：读取 ¥1.44、写入 ¥5.76 / 百万 token；仅适用于 codex 网关的 deepseek-v4-1-flash-261017。已知读取费 ¥${cost.read.toFixed(4)}，已知写入费 ¥${cost.write.toFixed(4)}；缺失缓存字段 ${cost.missing} 项，未配置价格的调用 ${cost.unpriced} 次。普通输入与输出单价未知，未计入。包含有用量记录的失败调用；未知费用不按零计算。`;
+  const badge = el('small', 'cost-estimate', apiCostText(calls));
+  const cost = apiCost(calls);
+  badge.title = `人民币/百万token：DeepSeek 261017 输入1.20、输出4.80；GPT-5.6-sol 输入5、输出30。已知输入费 ¥${cost.input.toFixed(4)}，输出费 ¥${cost.output.toFixed(4)}；缺失用量字段 ${cost.missing} 项，未配置价格的调用 ${cost.unpriced} 次。缓存及推理token不重复收费；含已返回用量的失败调用，未知费用不按零计算。`;
   return badge;
 }
 
@@ -366,7 +368,7 @@ function buildTimeline(task) {
     heading.append(el('small', '', known.length ? `Token：输入 ${inputs} · 输出 ${outputs}${known.length < calls.length ? '（部分接口未提供）' : ''}` : 'Token：接口未提供'));
   }
   wrap.append(heading);
-  wrap.append(el('small', 'cost-note', '人民币估算：缓存读 ¥1.44、写 ¥5.76 / 百万 token。仅计已返回用量的缓存项；输入、输出单价及缺失用量尚未计入。'));
+  wrap.append(el('small', 'cost-note', '人民币/百万token：DeepSeek 261017 输入¥1.20、输出¥4.80；GPT-5.6-sol 输入¥5、输出¥30。缓存、推理子项不另加；缺失用量不计入估算。'));
   if (!stages.length) {
     wrap.append(el('small', 'timeline-empty', '旧任务未记录分段用时；可在上方查看已有的生成与审核累计耗时。'));
     return wrap;

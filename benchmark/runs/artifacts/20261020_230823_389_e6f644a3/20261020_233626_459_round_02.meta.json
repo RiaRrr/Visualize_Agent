@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261020_230823_389_e6f644a3:2",
+  "task_id": "20261020_230823_389_e6f644a3",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 2,
+  "created_at": "2026-10-20T23:36:26.490349+08:00",
+  "files": {
+    "image": "20261020_230823_389_input.png",
+    "html": "20261020_233626_459_round_02.html",
+    "screenshot": "20261020_233626_459_round_02.png",
+    "model_review": "20261020_233626_459_round_02.review.json",
+    "config": "20261020_230823_389_config.json",
+    "model_review_raw": "round_02.model_review_raw.txt"
+  },
+  "html_sha256": "d9c9df54bd4a63f484f9bc755c97a9919a3693b3f62a42095e382353bb3d12ca",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "math-deepseek",
+    "name": "数学 · 分步 SVG 与教学示例（1019）",
+    "version": "7fa646244866",
+    "subject": "math"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": true,
+    "summary": "题目对象与函数一致；配方顶点 (1, −13)、最大值取等条件及完整值域 (−∞, −13] 均正确。分步图、滑块与扫描读数同步，首屏先建立曲线观察而未提前给出答案，桌面预览清晰可读，未发现实质性问题。",
+    "issues": [],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 5,
+      "interaction_quality": 5,
+      "teaching_effectiveness": 5
+    },
+    "overall_score": 5
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 29,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "round_number": 2,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:33:34.818803+08:00",
+        "ended_at": "2026-10-20T23:34:46.844000+08:00",
+        "duration_seconds": 72.025197,
+        "status": "completed"
+      },
+      {
+        "id": 30,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "round_number": 2,
+        "stage": "validating",
+        "started_at": "2026-10-20T23:34:46.844000+08:00",
+        "ended_at": "2026-10-20T23:34:46.906942+08:00",
+        "duration_seconds": 0.062942,
+        "status": "completed"
+      },
+      {
+        "id": 31,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "round_number": 2,
+        "stage": "rendering",
+        "started_at": "2026-10-20T23:34:46.906942+08:00",
+        "ended_at": "2026-10-20T23:34:48.350844+08:00",
+        "duration_seconds": 1.443902,
+        "status": "completed"
+      },
+      {
+        "id": 32,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "round_number": 2,
+        "stage": "reviewing",
+        "started_at": "2026-10-20T23:34:48.350844+08:00",
+        "ended_at": "2026-10-20T23:36:26.687172+08:00",
+        "duration_seconds": 98.336328,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 20,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:34:46.804654+08:00",
+        "duration_seconds": 71.85659274700447,
+        "status": "completed",
+        "input_tokens": 14372,
+        "output_tokens": 16494,
+        "cached_input_tokens": 2048,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 5101,
+        "total_tokens": 30866
+      },
+      {
+        "id": 21,
+        "task_id": "20261020_230823_389_e6f644a3",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:36:26.418898+08:00",
+        "duration_seconds": 97.91575226200075,
+        "status": "completed",
+        "input_tokens": 14405,
+        "output_tokens": 11305,
+        "cached_input_tokens": 4608,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 11185,
+        "total_tokens": 25710
+      }
+    ]
+  }
+}

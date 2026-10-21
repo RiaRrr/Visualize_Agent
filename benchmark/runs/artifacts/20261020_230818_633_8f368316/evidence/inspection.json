@@ -1,0 +1,491 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261020_230818_633_8f368316/20261020_233642_596_round_01.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "二次函数 · 值域\n把每一个函数值 y 找出来\n题目\n函数 y = −x2 + 2x − 14 的值域是 ______\n第 1 步 / 4 · 观察\n拖动滑块或按“播放”，观察点 P 的纵坐标 y。\nx\ny\n−4\n−2\n0\n2\n4\n6\n−30\n−25\n−20\n−15\n−10\n−5\nx = 1\nV(1, −13)\n(x−1)²\n|x−1|\ny ≤ −13\nP\n最大值 −13\n纵向压缩显示；横轴刻度间隔 2，纵轴刻度间隔 5\n点 P 的横坐标 x\nx = 3\n演示范围 [−3.2, 5.2]\n播放\n到顶点\n复位\n1\n观察\n2\n配方\n3\n非负\n4\n取等\n先看函数值怎样变化\n\n点 P 的纵坐标就是函数值 y。让 P 沿抛物线移动，注意 y 的最高位置。\n\ny = −x2 + 2x − 14\n当前点 P\n(3, −17)\n函数值 y\n−17\n值域\n？\n先拖动点，观察 y 的最高位置。\n上一步\n下一步\nx 的实际定义域为全体实数；滑块只展示一段便于观察的有限区间。图像按同一函数式计算，纵向经过压缩显示。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "xSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "3",
+          "min": "-3.2",
+          "max": "5.2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "vertexBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "到顶点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n观察",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n配方",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\n非负",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\n取等",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": true
+        },
+        {
+          "index": 9,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "click",
+            "label": "下一步"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "二次函数 · 值域\n把每一个函数值 y 找出来\n题目\n函数 y = −x2 + 2x − 14 的值域是 ______\n第 2 步 / 4 · 配方\n橙色段是 |x−1|，红色段是 (x−1)²。\nx\ny\n−4\n−2\n0\n2\n4\n6\n−30\n−25\n−20\n−15\n−10\n−5\nx = 1\nV(1, −13)\n(x−1)²\n|x−1|\ny ≤ −13\nP\n最大值 −13\n纵向压缩显示；横轴刻度间隔 2，纵轴刻度间隔 5\n点 P 的横坐标 x\nx = 3\n演示范围 [−3.2, 5.2]\n播放\n到顶点\n复位\n1\n观察\n2\n配方\n3\n非负\n4\n取等\n以 x = 1 为中心配方\n\n把函数写成 y = −(x−1)² − 13。函数值 = 基准 −13 减去平方项。\n\ny = −x2 + 2x − 14\ny = −(x − 1)2 − 13\n当前点 P\n(3, −17)\n|x − 1|\n2\n(x − 1)2\n4\ny = −13 − (x−1)2\n−17\n值域\n？\n配方后，平方项是唯一的“下降量”。\n上一步\n下一步\nx 的实际定义域为全体实数；滑块只展示一段便于观察的有限区间。图像按同一函数式计算，纵向经过压缩显示。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "xSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "3",
+          "min": "-3.2",
+          "max": "5.2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "vertexBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "到顶点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n观察",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n配方",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\n非负",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\n取等",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "1"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "二次函数 · 值域\n把每一个函数值 y 找出来\n题目\n函数 y = −x2 + 2x − 14 的值域是 ______\n第 2 步 / 4 · 配方\n橙色段是 |x−1|，红色段是 (x−1)²。\nx\ny\n−4\n−2\n0\n2\n4\n6\n−30\n−25\n−20\n−15\n−10\n−5\nx = 1\nV(1, −13)\n(x−1)²\n|x−1|\ny ≤ −13\nP\n最大值 −13\n纵向压缩显示；横轴刻度间隔 2，纵轴刻度间隔 5\n点 P 的横坐标 x\nx = 1\n演示范围 [−3.2, 5.2]\n播放\n到顶点\n复位\n1\n观察\n2\n配方\n3\n非负\n4\n取等\n以 x = 1 为中心配方\n\n把函数写成 y = −(x−1)² − 13。函数值 = 基准 −13 减去平方项。\n\ny = −x2 + 2x − 14\ny = −(x − 1)2 − 13\n当前点 P\n(1, −13)\n|x − 1|\n0\n(x − 1)2\n0\ny = −13 − (x−1)2\n−13\n值域\n？\n配方后，平方项是唯一的“下降量”。\n上一步\n下一步\nx 的实际定义域为全体实数；滑块只展示一段便于观察的有限区间。图像按同一函数式计算，纵向经过压缩显示。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "xSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "1",
+          "min": "-3.2",
+          "max": "5.2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "vertexBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "到顶点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n观察",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n配方",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\n非负",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\n取等",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "5.2"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "二次函数 · 值域\n把每一个函数值 y 找出来\n题目\n函数 y = −x2 + 2x − 14 的值域是 ______\n第 2 步 / 4 · 配方\n橙色段是 |x−1|，红色段是 (x−1)²。\nx\ny\n−4\n−2\n0\n2\n4\n6\n−30\n−25\n−20\n−15\n−10\n−5\nx = 1\nV(1, −13)\n(x−1)²\n|x−1|\ny ≤ −13\nP\n最大值 −13\n纵向压缩显示；横轴刻度间隔 2，纵轴刻度间隔 5\n点 P 的横坐标 x\nx = 5.2\n演示范围 [−3.2, 5.2]\n播放\n到顶点\n复位\n1\n观察\n2\n配方\n3\n非负\n4\n取等\n以 x = 1 为中心配方\n\n把函数写成 y = −(x−1)² − 13。函数值 = 基准 −13 减去平方项。\n\ny = −x2 + 2x − 14\ny = −(x − 1)2 − 13\n当前点 P\n(5.2, −30.64)\n|x − 1|\n4.2\n(x − 1)2\n17.64\ny = −13 − (x−1)2\n−30.64\n值域\n？\n配方后，平方项是唯一的“下降量”。\n上一步\n下一步\nx 的实际定义域为全体实数；滑块只展示一段便于观察的有限区间。图像按同一函数式计算，纵向经过压缩显示。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "xSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "5.2",
+          "min": "-3.2",
+          "max": "5.2",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "vertexBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "到顶点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "1\n观察",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "2\n配方",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "3\n非负",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "4\n取等",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "prevBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "nextBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

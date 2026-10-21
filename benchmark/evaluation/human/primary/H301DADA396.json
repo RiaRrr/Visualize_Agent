@@ -1,0 +1,22 @@
+{
+  "rater": "primary",
+  "sample_id": "H301DADA396",
+  "question_id": "HQC5BAAA3E416B",
+  "revision": 1,
+  "html_sha256": "4a5e760b50f2054f74ea073b4013fb1e964b0d9375c8f4854eeebe3d21710f5b",
+  "status": "submitted",
+  "scores": {
+    "problem_fidelity": 4,
+    "solution_correctness": 4,
+    "page_quality": 2,
+    "interaction_quality": 3,
+    "teaching_effectiveness": 3
+  },
+  "overall_score": 3,
+  "comment": "",
+  "flags": [],
+  "rubric_version": "2.0",
+  "updated_at": "2026-10-20T23:39:30.087591+08:00",
+  "imported_from": "data_v2/20261019_170716_302_6a23ea8b/20261019_171118_109_round_04.meta.json",
+  "imported_at": "2026-10-20T15:46:49.653687+00:00"
+}

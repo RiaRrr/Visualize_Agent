@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "summary": "题目与值域结论正确，配方、上界和扫描步骤完整，图形与数值基本同步；主要扣分在顶点附近标签避让、视窗/无限延伸提示位置以及相切状态图层重叠。",
+  "issues": [
+    "第 2/3 步将动点拖到 x≈1 或点击“到顶点”后，pointLabel 会改为“P = 顶点”并放在 (vx+12, vy+34)，而 dropLabel 放在 (vx+14, vy+26)，两处文字仅相差约 8px，会在顶点附近重叠；建议在 nearVertex 时隐藏 P 标签，或把 dropLabel 移到左侧/上方并做避让。",
+    "x 滑块范围 [−3.2,5.2] 与 y 扫描范围 [−30,−8] 是视窗/演示范围，但“函数定义域为 R”“y 向下无限延伸”主要只写在页脚；建议在步骤 1 的 x 滑块旁和步骤 4 的 y 滑块旁直接标注“滑块仅移动视窗；x∈R”“扫描仅演示，值域向下无界”，避免学生把控件范围误认为定义域或值域边界。",
+    "第 4 步把 y 调到 −13 时，紫色 scanLine 与绿色 ceilingLine 完全重合，紫色 scanDotL 还会覆盖绿色 vertexDot；建议在相切状态将扫描线设为半透明或错开，并调整图层顺序/顶点环，使“切于顶点”的视觉参照仍清晰可见。"
+  ],
+  "scores": {
+    "problem_fidelity": 5,
+    "solution_correctness": 5,
+    "page_quality": 4,
+    "interaction_quality": 4,
+    "teaching_effectiveness": 4
+  },
+  "overall_score": 4,
+  "source": "model"
+}

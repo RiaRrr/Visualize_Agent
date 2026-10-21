@@ -1,0 +1,71 @@
+{
+  "sample_id": "B83284572",
+  "question_id": "physics_001",
+  "set": "calibration",
+  "html_sha256": "478235f5ca5ab8d69720fb2034daf4a8e1cb86a90b3aa1581215c11086884ca2",
+  "judge_id": "gpt_56",
+  "model": "gpt-5.6-sol",
+  "judge_version": "c3fcf583bc0c",
+  "evidence_sha256": "86605d30038622a583cf493730b9a40910f9607b9f19483cc2ae49b692d86628",
+  "image_inputs": [
+    {
+      "name": "input.png",
+      "sha256": "24bb9007886b83bd6cd49e1d8ef259841dd0dc4f428c8593a0494115e91d899f"
+    },
+    {
+      "name": "answer.png",
+      "sha256": "2ff063d7df7285a07b8a9d710782537e1a10e8a9f2a12f78f8268c16ff5f2cad"
+    },
+    {
+      "name": "explanation.png",
+      "sha256": "479e9c7b046a06f82ab7b6a81c5df2d1e063b04a5b7be2d7cf37656e0b93b581"
+    },
+    {
+      "name": "00_initial.png",
+      "sha256": "e8ba1f1f2c5811e676886b543ac0211ed95e783ad2eb965e8036d340eb19815c"
+    },
+    {
+      "name": "01_next_step.png",
+      "sha256": "6dfff9f2903e10b868dd8a63e13a95fb7e536e5c9823d3a7e7d47f6696148d83"
+    },
+    {
+      "name": "02_slider_mid.png",
+      "sha256": "a89f7b9a3519cf7d115cde0c0c7e8ad26d02237d442082bed939101a1069b4ba"
+    },
+    {
+      "name": "03_slider_high.png",
+      "sha256": "78dcf6021a3a70e82abfc4be848812122b13b7807d1bc70886da5b7d0073b24b"
+    }
+  ],
+  "created_at": "2026-10-20T16:07:01.781985+00:00",
+  "status": "completed",
+  "judgment": {
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 5,
+      "interaction_quality": 5,
+      "teaching_effectiveness": 5
+    },
+    "overall_score": 5,
+    "issues": [],
+    "evidence": {
+      "problem_fidelity": "页面完整保留飞机着陆速度36 m/s、匀减速大小6 m/s²、直至静止及两个待求量，并明确区分减速度大小与取正方向后的a=-6 m/s²；未遗漏小问或改变条件。",
+      "solution_correctness": "独立核算得停车时间t=(0-36)/(-6)=6 s，总位移36×6-3×6²=108 m；最后4 s为t=2至6 s，v(2)=24 m/s，位移为(24+0)×4/2=48 m。页面公式、v-t图、60 m分界和108 m终点均与此一致。实际记录及截图还验证了t=3 s时v=18 m/s、x=81 m，t=6 s时v=0、x=108 m。",
+      "page_quality": "桌面截图中题干、步骤导航、跑道示意、v-t图、读数和公式区层次清楚，未见文字、公式或图形重叠、裁切；坐标轴、单位、速度与加速度方向标注可辨认。",
+      "interaction_quality": "实际操作记录验证滑块可从0调到3 s及6 s，截图显示飞机位置、速度箭头、v-t图当前点和t/v/x读数同步变化，且无运行时错误。源码还为步骤按钮、时间轴拖动、播放、暂停、重置及分段回放设置了联动逻辑；但实际操作记录未点击步骤按钮、播放或重置，因此这些按钮的动态表现主要由源码支持，未由操作截图直接验证。",
+      "teaching_effectiveness": "内容按定正方向与符号、求停稳时刻、求全程面积、确定最后4 s起点、求最后4 s位移的顺序展开；跑道位置、速度箭头、v-t图面积与数值读数相互对应，并用60+48=108进行核对，能从题设逐步说明答案来源。"
+    },
+    "reference_concern": "",
+    "summary": "参考答案与独立计算一致。候选页面完整、正确地呈现了两问，并通过位置、速度和v-t图面积的同步可视化形成清晰的分步教学；已记录的滑块操作表现正常，未发现实质缺陷。"
+  },
+  "duration_seconds": 43.50016009899991,
+  "usage": {
+    "input_tokens": 28823,
+    "output_tokens": 1312,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 742,
+    "total_tokens": 30135
+  }
+}

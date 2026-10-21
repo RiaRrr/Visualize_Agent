@@ -1,6 +1,6 @@
 # 已有人工评分归档
 本目录保存从 data_v2 的 `.meta.json / human_review` 中识别到的人工评分页面副本；这不是对所有历史标注存储方式的完整盘点。
-按用户后续指示，人工校准与 DeepSeek/GPT 评委对比已暂停，当前新 Benchmark 统一由 GPT 独立评分。
+本组为独立历史归档。当前新 Benchmark 的9份页面已有人工评分及GPT评分，见 ../reports/分享汇总.md；历史3份不混入该表。
 ## 目录
 - `样本/<匿名ID>/`：原 HTML、原始元数据、human_original.json、来源与哈希、截图与实际操作记录。
 - `题目/<题图哈希ID>/`：原题图片、reference/解析.md、参考答案与解析 HTML、数值核验说明。

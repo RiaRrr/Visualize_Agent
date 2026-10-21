@@ -1,0 +1,154 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261021_001043_491_48332379:2",
+  "task_id": "20261021_001043_491_48332379",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 2,
+  "created_at": "2026-10-21T00:23:26.179396+08:00",
+  "files": {
+    "image": "20261021_001043_491_input.png",
+    "html": "20261021_002326_044_round_02.html",
+    "screenshot": "20261021_002326_044_round_02.png",
+    "model_review": "20261021_002326_044_round_02.review.json",
+    "config": "20261021_001043_491_config.json",
+    "model_review_raw": "round_02.model_review_raw.txt"
+  },
+  "html_sha256": "89420147435bb0a034cd0ce397d9d26a493f2fac111be11ccd9aed11f4b01b28",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "chemistry",
+    "name": "化学 · 粒子与反应",
+    "version": "7aeb255efc8b",
+    "subject": "chemistry"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "页面结构清晰，原题选项和最终结论D正确，步骤化讲解也能把曲线与烧杯粒子联动；但源码中的粒子取整会破坏电荷与计量守恒，且切换试剂、选项状态同步和标注跟随存在问题，需修复后才能通过。",
+    "issues": [
+      "粒子示意未保持电荷和计量守恒：H₂SO₄实验 t=0.30 时源码会显示 Ba²⁺ 6、OH⁻ 11、BaSO₄ 2；按每生成2个 BaSO₄ 应同时消耗4个 OH⁻ 计算，剩余 OH⁻ 应为12，当前显示净电荷为+1。应先用一个整数沉淀量或滴加量统一推导其余离子数，或明确标为近似示意。",
+      "切换 NaOH、KHSO₄、MgSO₄ 后，A/B/C 文字仍固定使用原 H₂SO₄ 曲线的坐标；例如 NaOH/KHSO₄ 的当前最低点不为0，但 B 仍停在 y=0 附近，容易与当前蓝色曲线混淆。应让标注跟随当前曲线，或明确标注它们只属于虚线参考曲线。",
+      "拖动滑块、播放和重置只更新曲线、烧杯和读数，不更新右侧“观察步骤”的标题、说明和激活状态；切步骤或选试剂后也不清理旧的选项 correct/wrong 状态和“正确选项D”结论，可能出现多处同时高亮或步骤说明与当前滴加量矛盾。应统一状态并在每次新选择时重置旧反馈。",
+      "首屏在滴加量为0.00份且未播放时仍显示滴管液滴持续下落；源码中的液滴动画只按 t<1.99 显示，未绑定播放状态，与“尚未滴加”不一致。应在播放或 t>0 时才显示或播放，暂停和重置时停止。",
+      "NaOH、KHSO₄ 等替换实验的精确最低值（约0.73、0.40）来自页面内未说明的经验公式，并非由题给浓度和离子迁移率推导；建议改为定性描述，或展示模型来源，避免把任意归一化数值当作实验读数。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 3,
+      "page_quality": 4,
+      "interaction_quality": 2,
+      "teaching_effectiveness": 3
+    },
+    "overall_score": 2
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 96,
+        "task_id": "20261021_001043_491_48332379",
+        "round_number": 2,
+        "stage": "generating",
+        "started_at": "2026-10-21T00:17:25.669738+08:00",
+        "ended_at": "2026-10-21T00:19:22.097423+08:00",
+        "duration_seconds": 116.427685,
+        "status": "completed"
+      },
+      {
+        "id": 98,
+        "task_id": "20261021_001043_491_48332379",
+        "round_number": 2,
+        "stage": "validating",
+        "started_at": "2026-10-21T00:19:22.097423+08:00",
+        "ended_at": "2026-10-21T00:19:22.270830+08:00",
+        "duration_seconds": 0.173407,
+        "status": "completed"
+      },
+      {
+        "id": 99,
+        "task_id": "20261021_001043_491_48332379",
+        "round_number": 2,
+        "stage": "rendering",
+        "started_at": "2026-10-21T00:19:22.270830+08:00",
+        "ended_at": "2026-10-21T00:19:24.666976+08:00",
+        "duration_seconds": 2.396146,
+        "status": "completed"
+      },
+      {
+        "id": 100,
+        "task_id": "20261021_001043_491_48332379",
+        "round_number": 2,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T00:19:24.666976+08:00",
+        "ended_at": "2026-10-21T00:23:26.872229+08:00",
+        "duration_seconds": 242.205253,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 53,
+        "task_id": "20261021_001043_491_48332379",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T00:19:21.858996+08:00",
+        "duration_seconds": 114.82662533599796,
+        "status": "completed",
+        "input_tokens": 13961,
+        "output_tokens": 23189,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 18354,
+        "total_tokens": 37150
+      },
+      {
+        "id": 56,
+        "task_id": "20261021_001043_491_48332379",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T00:23:25.964408+08:00",
+        "duration_seconds": 240.92238024800463,
+        "status": "completed",
+        "input_tokens": 15810,
+        "output_tokens": 33973,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 33417,
+        "total_tokens": 49783
+      }
+    ]
+  }
+}

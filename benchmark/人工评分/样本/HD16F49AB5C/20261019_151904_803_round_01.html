@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>抛物线中的三点与面积比</title>
+<style>
+:root{
+  --ink:#0f172a;
+  --muted:#475569;
+  --line:#e2e8f0;
+  --blue:#2563eb;
+  --orange:#f59e0b;
+  --green:#10b981;
+  --purple:#7c3aed;
+  --red:#ef4444;
+  --bg:#f1f5f9;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+}
+.page{max-width:1400px;margin:0 auto;padding:24px 20px 36px;}
+.eyebrow{font-size:12px;letter-spacing:.08em;color:var(--blue);font-weight:700;margin-bottom:6px;}
+h1{margin:0 0 8px;font-size:clamp(24px,3vw,34px);line-height:1.2;}
+.brief{margin:0;max-width:1100px;color:var(--muted);font-size:14px;line-height:1.7;}
+.brief strong{color:var(--ink);}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start;margin-top:18px;}
+.viz-panel,.side-panel{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 30px rgba(15,23,42,.06);}
+.viz-panel{padding:12px;min-width:0;}
+.svg-wrap{width:100%;display:flex;justify-content:center;align-items:center;}
+#mainSvg{width:100%;height:auto;max-height:640px;display:block;}
+.controls{padding:10px 8px 4px;border-top:1px solid var(--line);margin-top:6px;}
+.control-row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;margin:8px 0;}
+.control-row label{grid-column:1/-1;font-size:13px;color:var(--muted);font-weight:600;}
+.control-row input[type=range]{width:100%;accent-color:var(--blue);}
+.control-row .val{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:800;min-width:132px;text-align:right;white-space:nowrap;}
+.control-note{grid-column:1/-1;font-size:12px;color:#64748b;margin-top:-2px;line-height:1.5;}
+.button-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+button{
+  border:1px solid #cbd5e1;background:#f8fafc;color:#334155;padding:8px 12px;
+  border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;
+  transition:background .15s ease,border-color .15s ease,color .15s ease,box-shadow .15s ease;
+  font-family:inherit;
+}
+button:hover:not(:disabled){background:#eff6ff;border-color:#93c5fd;color:#1d4ed8;}
+button:disabled{opacity:.45;cursor:not-allowed;}
+.side-panel{overflow:hidden;min-width:0;}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:12px;border-bottom:1px solid var(--line);background:#fbfdff;}
+.tab{padding:8px 2px;border:1px solid var(--line);background:#f8fafc;border-radius:10px;font-size:12px;cursor:pointer;color:var(--muted);font-weight:700;}
+.tab.active{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 4px 12px rgba(37,99,235,.25);}
+.step-card{padding:16px 16px 18px;}
+.step-kicker{font-size:12px;color:var(--blue);font-weight:800;letter-spacing:.04em;}
+.step-card h2{font-size:19px;line-height:1.3;margin:8px 0 8px;}
+.step-text{margin:0 0 12px;font-size:14px;line-height:1.65;color:var(--muted);}
+.formula{background:#f8fafc;border:1px solid var(--line);padding:12px;border-radius:12px;font-size:14px;line-height:1.8;overflow-wrap:anywhere;}
+.formula .hl{color:#1d4ed8;font-weight:800;}
+.formula .answer{display:inline-block;margin-top:6px;padding:6px 10px;background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;border-radius:9px;font-weight:800;font-size:15px;}
+.formula .small{font-size:12.5px;color:#64748b;}
+.values{margin-top:10px;font-size:13.5px;color:var(--muted);line-height:1.8;font-variant-numeric:tabular-nums;}
+.values b{color:var(--ink);}
+.graph-wrap{margin:0 16px 16px;padding:12px;border:1px solid var(--line);border-radius:14px;background:#fbfdff;}
+.graph-title{font-size:13px;font-weight:800;color:#334155;margin-bottom:4px;}
+#rangeSvg,#normSvg{width:100%;height:auto;display:block;}
+.graph-note{font-size:12px;color:#64748b;line-height:1.5;margin-top:2px;}
+
+/* SVG */
+.grid{stroke:#e8eef7;stroke-width:1;}
+.axis{stroke:#94a3b8;stroke-width:1.2;}
+.axis-label{font-size:13px;fill:#64748b;font-weight:700;}
+.curve{fill:none;stroke:#2563eb;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.hollow{fill:#fff;stroke:#ef4444;stroke-width:2.5;}
+.directrix{stroke:#ef4444;stroke-width:2;stroke-dasharray:7 5;}
+.label{font-size:14px;fill:#0f172a;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3.5;stroke-linejoin:round;}
+.label-small{font-size:12px;fill:#475569;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3;stroke-linejoin:round;}
+.label-red{fill:#dc2626;}
+.label-blue{fill:#1d4ed8;}
+.point{stroke:#fff;stroke-width:2.2;}
+.seg-pq{stroke:#7c3aed;stroke-width:3;stroke-linecap:round;}
+.seg-paxis{stroke:#0ea5e9;stroke-width:3;stroke-linecap:round;}
+.seg-pdir{stroke:#7c3aed;stroke-width:2.4;stroke-dasharray:6 5;stroke-linecap:round;}
+.line-ab{stroke:#64748b;stroke-width:2;stroke-linecap:round;}
+.line-bc{stroke:#64748b;stroke-width:2;stroke-linecap:round;}
+.line-ac{stroke:#94a3b8;stroke-width:1.5;stroke-dasharray:5 4;}
+.area-s1{fill:rgba(37,99,235,.15);stroke:#2563eb;stroke-width:1.5;}
+.area-s2{fill:rgba(245,158,11,.42);stroke:#f59e0b;stroke-width:1.6;}
+.area-s3{fill:rgba(16,185,129,.36);stroke:#10b981;stroke-width:1.6;}
+.area-outline{fill:rgba(37,99,235,.07);stroke:#2563eb;stroke-width:1.5;}
+.seg-am{stroke:#f59e0b;stroke-width:5;stroke-linecap:round;}
+.seg-mb{stroke:#8b5cf6;stroke-width:5;stroke-linecap:round;}
+.area-label{font-size:14px;font-weight:900;paint-order:stroke;stroke:#fff;stroke-width:4;stroke-linejoin:round;}
+.sim-a{fill:rgba(245,158,11,.22);stroke:none;}
+.sim-b{fill:rgba(139,92,246,.18);stroke:none;}
+.proj-line{fill:none;stroke-width:1.8;stroke-dasharray:6 5;stroke-linecap:round;}
+.base-hi{stroke-width:7;stroke-linecap:round;}
+.mini-label{font-size:10.5px;fill:#0f172a;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:2.4;stroke-linejoin:round;}
+
+/* range graph */
+.graph-axis{stroke:#94a3b8;stroke-width:1.1;}
+.graph-dash{stroke:#10b981;stroke-width:1.2;stroke-dasharray:5 4;}
+.range-curve{fill:none;stroke:#2563eb;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+.open-point{fill:#fff;stroke:#ef4444;stroke-width:2.4;}
+.range-dot{fill:#2563eb;stroke:#fff;stroke-width:2;}
+.graph-label{font-size:11px;fill:#0f172a;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:2.6;stroke-linejoin:round;}
+.graph-label-small{font-size:10.5px;fill:#475569;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:2.4;stroke-linejoin:round;}
+
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr;}
+  .side-panel{order:2;}
+  .viz-panel{order:1;}
+  #mainSvg{max-height:none;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="eyebrow">2023 · 辽宁大连二十四中校联考三模</div>
+    <h1>曲线上的三点与面积比</h1>
+    <p class="brief">
+      曲线 Γ 在 x 轴上方，其上每一点到 Q(0,2) 的距离减去到 x 轴的距离恒为 2。
+      A、C 在 y 轴右侧，B 在左侧，△ABC 的重心 G 在 y 轴上；AB 交 y 轴于 M，
+      且 3|AM|&lt;|BM|，BC 交 y 轴于 N。记 △ABC、△AMG、△CNG 的面积为 S<sub>1</sub>、S<sub>2</sub>、S<sub>3</sub>。<br>
+      <strong>(1) 求 Γ 的方程；(2) 求 (S<sub>2</sub>+S<sub>3</sub>)/S<sub>1</sub> 的取值范围。</strong>
+    </p>
+  </header>
+
+  <main class="layout">
+    <section class="viz-panel">
+      <div class="svg-wrap">
+        <svg id="mainSvg" viewBox="0 0 760 560" role="img" aria-label="抛物线与三点、重心、交点及面积的动态示意图"></svg>
+      </div>
+      <div class="controls">
+        <div id="pControl" class="control-row">
+          <label for="pSlider">观察点 P 的横坐标 x（演示 |x| ≥ 0.6）</label>
+          <input id="pSlider" type="range" min="-7" max="7" step="0.1" value="4.5">
+          <span class="val" id="pValue">4.5</span>
+          <div class="control-note">完整定义域是 x ≠ 0；为了看清被挖去的顶点 (0,0)，演示只取 |x| ≥ 0.6。</div>
+        </div>
+        <div id="rControl" class="control-row" style="display:none">
+          <label for="rSlider">比值 r = c/a（演示范围 2.25 ≤ r ≤ 10）</label>
+          <input id="rSlider" type="range" min="2.25" max="10" step="0.01" value="3">
+          <span class="val" id="rValue">3.00</span>
+          <div class="control-note" id="rNote">完整范围 r &gt; 2（第3步推出）；演示从 2.25 起。</div>
+        </div>
+        <div class="button-row">
+          <button id="prevBtn" type="button">上一步</button>
+          <button id="nextBtn" type="button">下一步</button>
+          <button id="nearBtn" type="button">靠近 r→2⁺（演示 2.25）</button>
+          <button id="resetBtn" type="button">复位</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="side-panel">
+      <div class="tabs">
+        <button class="tab active" type="button" data-step="1">1 曲线</button>
+        <button class="tab" type="button" data-step="2">2 重心</button>
+        <button class="tab" type="button" data-step="3">3 M/N</button>
+        <button class="tab" type="button" data-step="4">4 面积</button>
+        <button class="tab" type="button" data-step="5">5 范围</button>
+      </div>
+      <div class="step-card">
+        <div id="stepKicker" class="step-kicker">步骤 1 / 5</div>
+        <h2 id="stepTitle"></h2>
+        <p id="stepText" class="step-text"></p>
+        <div id="formulaBox" class="formula"></div>
+        <div id="valueBox" class="values"></div>
+      </div>
+      <div id="normWrap" class="graph-wrap" style="display:none">
+        <div class="graph-title">归一化对照：伸缩前后</div>
+        <svg id="normSvg" viewBox="0 0 360 180" role="img" aria-label="伸缩前后三角形与 y 轴位置对照"></svg>
+        <div class="graph-note">记 s=a+c：左图 s=12，右图 s=8。同一颜色对应同一点。伸缩后 y 轴、左右位置和 G 在 y 轴上都不变，同一直线上的线段比与面积比也不变。</div>
+      </div>
+      <div id="graphWrap" class="graph-wrap" style="display:none">
+        <div class="graph-title">R(r) 在 r &gt; 2 上的图像</div>
+        <svg id="rangeSvg" viewBox="0 0 360 220" role="img" aria-label="面积比关于 r 的函数图像"></svg>
+        <div class="graph-note">蓝点随 r 移动；红圈是 r→2⁺ 的端点 13/60，绿虚线是 r→∞ 的渐近线 1/6。两者都不取。</div>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const NS = "http://www.w3.org/2000/svg";
+  const MAP = {cx: 380, y0: 480, s: 30};
+  const X = x => MAP.cx + MAP.s * x;
+  const Y = y => MAP.y0 - MAP.s * y;
+
+  const state = {step: 1, p: 4.5, r: 3};
+  const els = {};
+
+  function el(tag, attrs){
+    const e = document.createElementNS(NS, tag);
+    if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function setLine(e, x1, y1, x2, y2){
+    e.setAttribute("x1", X(x1));
+    e.setAttribute("y1", Y(y1));
+    e.setAttribute("x2", X(x2));
+    e.setAttribute("y2", Y(y2));
+  }
+  function setPt(e, x, y){
+    e.setAttribute("cx", X(x));
+    e.setAttribute("cy", Y(y));
+  }
+  function setLbl(e, x, y, dx, dy, txt){
+    e.setAttribute("x", X(x) + dx);
+    e.setAttribute("y", Y(y) + dy);
+    if (txt !== undefined) e.textContent = txt;
+  }
+  function polyString(pts, fx, fy){
+    return pts.map(p => `${fx(p[0]).toFixed(2)},${fy(p[1]).toFixed(2)}`).join(" ");
+  }
+  function setPoly(e, pts){
+    e.setAttribute("points", polyString(pts, X, Y));
+  }
+  function setPolyWith(e, pts, fx, fy){
+    e.setAttribute("points", polyString(pts, fx, fy));
+  }
+
+  function buildMain(){
+    const svg = document.getElementById("mainSvg");
+    svg.innerHTML = "";
+
+    const grid = el("g");
+    svg.appendChild(grid);
+    for (let x = -12; x <= 12; x += 2){
+      if (x === 0) continue;
+      grid.appendChild(el("line", {x1: X(x), y1: Y(-2.4), x2: X(x), y2: Y(14), class: "grid"}));
+    }
+    for (let y = -2; y <= 14; y += 2){
+      if (y === 0) continue;
+      grid.appendChild(el("line", {x1: X(-12), y1: Y(y), x2: X(12), y2: Y(y), class: "grid"}));
+    }
+
+    svg.appendChild(el("line", {x1: X(-12), y1: Y(0), x2: X(12), y2: Y(0), class: "axis"}));
+    svg.appendChild(el("line", {x1: X(0), y1: Y(-2.4), x2: X(0), y2: Y(14), class: "axis"}));
+    const xl = el("text", {x: X(12) - 2, y: Y(0) - 8, class: "axis-label", "text-anchor": "end"});
+    xl.textContent = "x";
+    svg.appendChild(xl);
+    const yl = el("text", {x: X(0) + 8, y: Y(14) + 4, class: "axis-label"});
+    yl.textContent = "y";
+    svg.appendChild(yl);
+
+    function curvePath(x0, x1){
+      let d = "";
+      const n = 260;
+      for (let i = 0; i <= n; i++){
+        const xx = x0 + (x1 - x0) * i / n;
+        const yy = xx * xx / 8;
+        d += (i === 0 ? "M" : "L") + X(xx).toFixed(2) + " " + Y(yy).toFixed(2);
+      }
+      return d;
+    }
+    svg.appendChild(el("path", {d: curvePath(-10.5, -0.18), class: "curve"}));
+    svg.appendChild(el("path", {d: curvePath(0.18, 10.5), class: "curve"}));
+
+    const ttl = el("text", {x: 24, y: 34, class: "label-blue", "font-size": 16, "font-weight": 800});
+    ttl.textContent = "Γ: x² = 8y（y > 0）";
+    svg.appendChild(ttl);
+
+    const dirG = el("g");
+    svg.appendChild(dirG);
+    dirG.appendChild(el("line", {x1: X(-10.8), y1: Y(-2), x2: X(10.8), y2: Y(-2), class: "directrix"}));
+    const dl = el("text", {x: X(9.8), y: Y(-2) - 8, class: "label-small label-red", "text-anchor": "end"});
+    dl.textContent = "y = -2";
+    dirG.appendChild(dl);
+    els.directrixLayer = dirG;
+
+    const s1 = el("g");
+    svg.appendChild(s1);
+    els.s1 = s1;
+
+    els.pToQ = el("line", {class: "seg-pq"}); s1.appendChild(els.pToQ);
+    els.pToAxis = el("line", {class: "seg-paxis"}); s1.appendChild(els.pToAxis);
+    els.pToDir = el("line", {class: "seg-pdir"}); s1.appendChild(els.pToDir);
+
+    els.Qdot = el("circle", {r: 6, class: "point", fill: "#ef4444"}); s1.appendChild(els.Qdot);
+    els.Pdot = el("circle", {r: 6, class: "point", fill: "#2563eb"}); s1.appendChild(els.Pdot);
+
+    els.Qlbl = el("text", {class: "label"}); s1.appendChild(els.Qlbl);
+    els.Plbl = el("text", {class: "label"}); s1.appendChild(els.Plbl);
+    els.yLbl = el("text", {class: "label-small label-blue", "text-anchor": "end"}); s1.appendChild(els.yLbl);
+    els.pdLbl = el("text", {class: "label-small", fill: "#7c3aed", "text-anchor": "end"}); s1.appendChild(els.pdLbl);
+    els.pqLbl = el("text", {class: "label-small", fill: "#7c3aed"}); s1.appendChild(els.pqLbl);
+
+    const tri = el("g");
+    svg.appendChild(tri);
+    els.tri = tri;
+
+    els.polyS1 = el("polygon", {class: "area-outline"}); tri.appendChild(els.polyS1);
+    els.polyS2 = el("polygon", {class: "area-s2"}); tri.appendChild(els.polyS2);
+    els.polyS3 = el("polygon", {class: "area-s3"}); tri.appendChild(els.polyS3);
+    els.simA = el("polygon", {class: "sim-a"}); tri.appendChild(els.simA);
+    els.simB = el("polygon", {class: "sim-b"}); tri.appendChild(els.simB);
+
+    els.lineAB = el("line", {class: "line-ab"}); tri.appendChild(els.lineAB);
+    els.lineBC = el("line", {class: "line-bc"}); tri.appendChild(els.lineBC);
+    els.lineAC = el("line", {class: "line-ac"}); tri.appendChild(els.lineAC);
+
+    els.acBaseHi = el("line", {class: "base-hi", stroke: "#2563eb"}); tri.appendChild(els.acBaseHi);
+    els.alt4 = el("line", {stroke: "#ef4444", "stroke-width": 2.6, "stroke-dasharray": "6 4", "stroke-linecap": "round"}); tri.appendChild(els.alt4);
+    els.acLbl = el("text", {class: "label-small", fill: "#1d4ed8"}); els.acLbl.textContent = "底 AC"; tri.appendChild(els.acLbl);
+    els.altLbl = el("text", {class: "label-small", fill: "#dc2626"}); els.altLbl.textContent = "高"; tri.appendChild(els.altLbl);
+
+    els.projA3 = el("line", {class: "proj-line", stroke: "#f59e0b"}); tri.appendChild(els.projA3);
+    els.projB3 = el("line", {class: "proj-line", stroke: "#8b5cf6"}); tri.appendChild(els.projB3);
+    els.projA4 = el("line", {class: "proj-line", stroke: "#f59e0b"}); tri.appendChild(els.projA4);
+    els.projC4 = el("line", {class: "proj-line", stroke: "#10b981"}); tri.appendChild(els.projC4);
+
+    els.segAM = el("line", {class: "seg-am"}); tri.appendChild(els.segAM);
+    els.segMB = el("line", {class: "seg-mb"}); tri.appendChild(els.segMB);
+
+    els.mgHi = el("line", {class: "base-hi", stroke: "#f59e0b"}); tri.appendChild(els.mgHi);
+    els.ngHi = el("line", {class: "base-hi", stroke: "#10b981"}); tri.appendChild(els.ngHi);
+
+    els.Adot = el("circle", {r: 6, class: "point", fill: "#2563eb"}); tri.appendChild(els.Adot);
+    els.Bdot = el("circle", {r: 6, class: "point", fill: "#2563eb"}); tri.appendChild(els.Bdot);
+    els.Cdot = el("circle", {r: 6, class: "point", fill: "#2563eb"}); tri.appendChild(els.Cdot);
+    els.Gdot = el("circle", {r: 6, class: "point", fill: "#7c3aed"}); tri.appendChild(els.Gdot);
+    els.Mdot = el("circle", {r: 5.5, class: "point", fill: "#f59e0b"}); tri.appendChild(els.Mdot);
+    els.Ndot = el("circle", {r: 5.5, class: "point", fill: "#10b981"}); tri.appendChild(els.Ndot);
+
+    els.Albl = el("text", {class: "label"}); tri.appendChild(els.Albl);
+    els.Blbl = el("text", {class: "label"}); tri.appendChild(els.Blbl);
+    els.Clbl = el("text", {class: "label"}); tri.appendChild(els.Clbl);
+    els.Glbl = el("text", {class: "label"}); tri.appendChild(els.Glbl);
+    els.Mlbl = el("text", {class: "label"}); tri.appendChild(els.Mlbl);
+    els.Nlbl = el("text", {class: "label"}); tri.appendChild(els.Nlbl);
+
+    els.A1lbl = el("text", {class: "label-small", fill: "#b45309", "text-anchor": "end"}); tri.appendChild(els.A1lbl);
+    els.B1lbl = el("text", {class: "label-small", fill: "#6d28d9"}); tri.appendChild(els.B1lbl);
+
+    els.a3Lbl = el("text", {class: "label-small", fill: "#b45309", "text-anchor": "middle"}); tri.appendChild(els.a3Lbl);
+    els.s3Lbl = el("text", {class: "label-small", fill: "#6d28d9", "text-anchor": "middle"}); tri.appendChild(els.s3Lbl);
+    els.a4Lbl = el("text", {class: "label-small", fill: "#b45309", "text-anchor": "middle"}); tri.appendChild(els.a4Lbl);
+    els.c4Lbl = el("text", {class: "label-small", fill: "#047857", "text-anchor": "middle"}); tri.appendChild(els.c4Lbl);
+
+    els.mgLbl = el("text", {class: "label-small", fill: "#b45309"}); tri.appendChild(els.mgLbl);
+    els.ngLbl = el("text", {class: "label-small", fill: "#047857"}); tri.appendChild(els.ngLbl);
+
+    els.S1lbl = el("text", {class: "area-label", fill: "#1d4ed8", "text-anchor": "middle"}); tri.appendChild(els.S1lbl);
+    els.S2lbl = el("text", {class: "area-label", fill: "#b45309", "text-anchor": "middle"}); tri.appendChild(els.S2lbl);
+    els.S3lbl = el("text", {class: "area-label", fill: "#047857", "text-anchor": "middle"}); tri.appendChild(els.S3lbl);
+
+    const top = el("g");
+    svg.appendChild(top);
+    els.vertexHollow = el("circle", {cx: X(0), cy: Y(0), r: 5.5, class: "hollow"});
+    top.appendChild(els.vertexHollow);
+    els.vertexLbl = el("text", {x: X(0) + 12, y: Y(0) + 20, class: "label-small label-red"});
+    els.vertexLbl.textContent = "(0,0) 不在 Γ 上";
+    top.appendChild(els.vertexLbl);
+  }
+
+  function buildNorm(){
+    const svg = document.getElementById("normSvg");
+    svg.innerHTML = "";
+
+    const titleL = el("text", {x: 70, y: 16, "text-anchor": "middle", class: "mini-label"});
+    titleL.textContent = "伸缩前：s=a+c=12";
+    svg.appendChild(titleL);
+    const titleR = el("text", {x: 270, y: 16, "text-anchor": "middle", class: "mini-label"});
+    titleR.textContent = "伸缩后：s=a+c=8";
+    svg.appendChild(titleR);
+
+    const lam = el("text", {x: 170, y: 37, "text-anchor": "middle", class: "mini-label", fill: "#1d4ed8"});
+    lam.textContent = "λ = 8/12 = 2/3";
+    svg.appendChild(lam);
+    const lam2 = el("text", {x: 170, y: 52, "text-anchor": "middle", class: "mini-label", fill: "#64748b"});
+    lam2.textContent = "x 同乘 λ，y 同乘 λ²";
+    svg.appendChild(lam2);
+
+    svg.appendChild(el("line", {x1: 70, y1: 62, x2: 70, y2: 168, class: "graph-axis"}));
+    svg.appendChild(el("line", {x1: 270, y1: 62, x2: 270, y2: 168, class: "graph-axis"}));
+
+    els.norm = {};
+    els.norm.lTri = el("polygon", {fill: "rgba(37,99,235,.08)", stroke: "#2563eb", "stroke-width": 1.3, "stroke-linejoin": "round"});
+    els.norm.rTri = el("polygon", {fill: "rgba(16,185,129,.10)", stroke: "#10b981", "stroke-width": 1.3, "stroke-linejoin": "round"});
+    svg.appendChild(els.norm.lTri);
+    svg.appendChild(els.norm.rTri);
+
+    function mkPoint(fill){
+      return el("circle", {r: 2.8, fill: fill, stroke: "#fff", "stroke-width": 1.2});
+    }
+    els.norm.lA = mkPoint("#2563eb"); els.norm.lB = mkPoint("#2563eb"); els.norm.lC = mkPoint("#2563eb"); els.norm.lG = mkPoint("#7c3aed");
+    els.norm.rA = mkPoint("#059669"); els.norm.rB = mkPoint("#059669"); els.norm.rC = mkPoint("#059669"); els.norm.rG = mkPoint("#7c3aed");
+    [els.norm.lA, els.norm.lB, els.norm.lC, els.norm.lG, els.norm.rA, els.norm.rB, els.norm.rC, els.norm.rG].forEach(e => svg.appendChild(e));
+
+    function mkLbl(text, fill){
+      const t = el("text", {class: "mini-label", fill: fill});
+      t.textContent = text;
+      return t;
+    }
+    els.norm.lAl = mkLbl("A0", "#1d4ed8");
+    els.norm.lBl = mkLbl("B0", "#1d4ed8");
+    els.norm.lCl = mkLbl("C0", "#1d4ed8");
+    els.norm.lGl = mkLbl("G0", "#6d28d9");
+    els.norm.rAl = mkLbl("A", "#047857");
+    els.norm.rBl = mkLbl("B", "#047857");
+    els.norm.rCl = mkLbl("C", "#047857");
+    els.norm.rGl = mkLbl("G", "#6d28d9");
+    [els.norm.lAl, els.norm.lBl, els.norm.lCl, els.norm.lGl, els.norm.rAl, els.norm.rBl, els.norm.rCl, els.norm.rGl].forEach(e => svg.appendChild(e));
+  }
+
+  function gx(r){ return 50 + (r - 2) / 8 * 280; }
+  function gy(v){ return 185 - (v - 0.16) / (0.225 - 0.16) * 145; }
+  function rangeF(r){
+    return (r*r + 4*r + 1) / (3 * (r + 2) * (2*r + 1));
+  }
+
+  function buildRange(){
+    const svg = document.getElementById("rangeSvg");
+    svg.innerHTML = "";
+
+    svg.appendChild(el("line", {x1: 50, y1: 185, x2: 345, y2: 185, class: "graph-axis"}));
+    svg.appendChild(el("line", {x1: 50, y1: 25, x2: 50, y2: 190, class: "graph-axis"}));
+
+    [2,4,6,8,10].forEach(rv => {
+      const t = el("text", {x: gx(rv), y: 200, "text-anchor": "middle", class: "graph-label-small"});
+      t.textContent = rv;
+      svg.appendChild(t);
+    });
+    const rlab = el("text", {x: 345, y: 200, class: "graph-label"});
+    rlab.textContent = "r";
+    svg.appendChild(rlab);
+
+    const y1 = el("text", {x: 44, y: gy(1/6) + 4, "text-anchor": "end", class: "graph-label-small"});
+    y1.textContent = "1/6";
+    svg.appendChild(y1);
+    const y2 = el("text", {x: 44, y: gy(13/60) + 4, "text-anchor": "end", class: "graph-label-small"});
+    y2.textContent = "13/60";
+    svg.appendChild(y2);
+    const ylab = el("text", {x: 38, y: 29, "text-anchor": "middle", class: "graph-label"});
+    ylab.textContent = "R";
+    svg.appendChild(ylab);
+
+    svg.appendChild(el("line", {x1: 50, y1: gy(1/6), x2: 340, y2: gy(1/6), class: "graph-dash"}));
+    const inf = el("text", {x: 248, y: gy(1/6) - 6, class: "graph-label-small"});
+    inf.textContent = "r→∞";
+    svg.appendChild(inf);
+
+    let d = "";
+    for (let i = 0; i <= 420; i++){
+      const r = 2.02 + i * (10 - 2.02) / 420;
+      const v = rangeF(r);
+      d += (i === 0 ? "M" : "L") + gx(r).toFixed(2) + " " + gy(v).toFixed(2);
+    }
+    svg.appendChild(el("path", {d: d, class: "range-curve"}));
+
+    els.range = {};
+    els.range.leader = el("line", {stroke: "#2563eb", "stroke-width": 1.2, "stroke-dasharray": "4 3"});
+    svg.appendChild(els.range.leader);
+    els.range.actual = el("circle", {r: 2.6, fill: "#2563eb", stroke: "#fff", "stroke-width": 1.5});
+    svg.appendChild(els.range.actual);
+    els.range.dot = el("circle", {r: 4.5, class: "range-dot"});
+    svg.appendChild(els.range.dot);
+
+    const endpoint = el("circle", {cx: gx(2), cy: gy(13/60), r: 5.2, class: "open-point"});
+    svg.appendChild(endpoint);
+    const endpointLbl = el("text", {x: 55, y: gy(13/60) - 12, class: "graph-label-small", fill: "#dc2626"});
+    endpointLbl.textContent = "r=2：13/60 不取";
+    svg.appendChild(endpointLbl);
+
+    els.range.valLbl = el("text", {class: "graph-label"});
+    svg.appendChild(els.range.valLbl);
+  }
+
+  function derive(s){
+    const p = s.p;
+    const yP = p*p/8;
+    const distPQ = Math.hypot(p, yP - 2);
+
+    const r = s.r;
+    const a = 8 / (r + 1);
+    const b = -8;
+    const c = 8 * r / (r + 1);
+    const yA = a*a/8;
+    const yB = 8;
+    const yC = c*c/8;
+    const yG = (yA + yB + yC) / 3;
+    const yM = a;
+    const yN = c;
+
+    const S2 = 0.5 * a * (yG - yM);
+    const S3 = 0.5 * c * (yN - yG);
+    const det = (b - a) * (yC - yA) - (c - a) * (yB - yA);
+    const S1 = 0.5 * Math.abs(det);
+    const R = (S2 + S3) / S1;
+
+    return {p, yP, distPQ, r, a, b, c, yA, yB, yC, yG, yM, yN, S1, S2, S3, R};
+  }
+
+  function render(s, d){
+    const p = d.p, yP = d.yP;
+    setLine(els.pToQ, p, yP, 0, 2);
+    setLine(els.pToAxis, p, yP, p, 0);
+    setLine(els.pToDir, p, 0, p, -2);
+    setPt(els.Qdot, 0, 2);
+    setPt(els.Pdot, p, yP);
+    setLbl(els.Qlbl, 0, 2, 10, -10, "Q(0,2)");
+    setLbl(els.Plbl, p, yP, p >= 0 ? 10 : -22, -10, "P");
+
+    els.yLbl.setAttribute("x", X(p) - 8);
+    els.yLbl.setAttribute("y", Y(yP/2) + 4);
+    els.yLbl.textContent = "y";
+
+    els.pdLbl.setAttribute("x", X(p) - 8);
+    els.pdLbl.setAttribute("y", Y(-1) + 4);
+    els.pdLbl.textContent = "y+2";
+
+    const mx = (X(p) + X(0)) / 2;
+    const my = (Y(yP) + Y(2)) / 2;
+    els.pqLbl.setAttribute("x", mx + (p >= 0 ? 8 : -8));
+    els.pqLbl.setAttribute("y", my - 4);
+    els.pqLbl.setAttribute("text-anchor", p >= 0 ? "start" : "end");
+    els.pqLbl.textContent = "|PQ|";
+
+    setPt(els.Adot, d.a, d.yA);
+    setPt(els.Bdot, d.b, d.yB);
+    setPt(els.Cdot, d.c, d.yC);
+    setPt(els.Gdot, 0, d.yG);
+    setPt(els.Mdot, 0, d.yM);
+    setPt(els.Ndot, 0, d.yN);
+
+    setLine(els.lineAB, d.a, d.yA, d.b, d.yB);
+    setLine(els.lineBC, d.b, d.yB, d.c, d.yC);
+    setLine(els.lineAC, d.a, d.yA, d.c, d.yC);
+    setLine(els.acBaseHi, d.a, d.yA, d.c, d.yC);
+    const acx = d.c - d.a;
+    const acy = d.yC - d.yA;
+    const acLen2 = acx * acx + acy * acy;
+    const tFoot = ((d.b - d.a) * acx + (d.yB - d.yA) * acy) / acLen2;
+    const fx = d.a + tFoot * acx;
+    const fy = d.yA + tFoot * acy;
+    setLine(els.alt4, d.b, d.yB, fx, fy);
+    els.acLbl.setAttribute("x", X((d.a + d.c) / 2));
+    els.acLbl.setAttribute("y", Y((d.yA + d.yC) / 2) - 8);
+    els.acLbl.setAttribute("text-anchor", "middle");
+    els.altLbl.setAttribute("x", X((d.b + fx) / 2) + 8);
+    els.altLbl.setAttribute("y", Y((d.yB + fy) / 2) + 4);
+    els.altLbl.setAttribute("text-anchor", "start");
+    setLine(els.segAM, d.a, d.yA, 0, d.yM);
+    setLine(els.segMB, 0, d.yM, d.b, d.yB);
+
+    setLine(els.projA3, d.a, d.yA, 0, d.yA);
+    setLine(els.projB3, d.b, d.yB, 0, d.yB);
+    setLine(els.projA4, d.a, d.yA, 0, d.yA);
+    setLine(els.projC4, d.c, d.yC, 0, d.yC);
+
+    setLine(els.mgHi, 0, d.yM, 0, d.yG);
+    setLine(els.ngHi, 0, d.yG, 0, d.yN);
+
+    setPoly(els.polyS1, [[d.a, d.yA], [d.b, d.yB], [d.c, d.yC]]);
+    setPoly(els.polyS2, [[d.a, d.yA], [0, d.yM], [0, d.yG]]);
+    setPoly(els.polyS3, [[d.c, d.yC], [0, d.yN], [0, d.yG]]);
+    setPoly(els.simA, [[d.a, d.yA], [0, d.yA], [0, d.yM]]);
+    setPoly(els.simB, [[d.b, d.yB], [0, d.yB], [0, d.yM]]);
+
+    setLbl(els.Albl, d.a, d.yA, 10, -8, "A");
+    setLbl(els.Blbl, d.b, d.yB, -22, -8, "B");
+    setLbl(els.Clbl, d.c, d.yC, 10, -8, "C");
+    setLbl(els.Glbl, 0, d.yG, -14, -6, "G");
+    els.Glbl.setAttribute("text-anchor", "end");
+    setLbl(els.Mlbl, 0, d.yM, 12, 14, "M");
+    setLbl(els.Nlbl, 0, d.yN, 12, -8, "N");
+
+    setLbl(els.A1lbl, 0, d.yA, -8, 4, "A1");
+    els.A1lbl.setAttribute("text-anchor", "end");
+    setLbl(els.B1lbl, 0, d.yB, 8, -6, "B1");
+    els.B1lbl.setAttribute("text-anchor", "start");
+
+    setLbl(els.a3Lbl, d.a / 2, d.yA, 0, -6, "a");
+    els.a3Lbl.setAttribute("text-anchor", "middle");
+    setLbl(els.s3Lbl, d.b / 2, d.yB, 0, -6, "a+c = 8");
+    els.s3Lbl.setAttribute("text-anchor", "middle");
+
+    setLbl(els.a4Lbl, d.a / 2, d.yA, 0, -6, "a");
+    els.a4Lbl.setAttribute("text-anchor", "middle");
+    setLbl(els.c4Lbl, d.c / 2, d.yC, 0, -6, "c");
+    els.c4Lbl.setAttribute("text-anchor", "middle");
+
+    setLbl(els.mgLbl, 0, (d.yM + d.yG) / 2, 8, 4, "MG");
+    els.mgLbl.setAttribute("text-anchor", "start");
+    setLbl(els.ngLbl, 0, (d.yG + d.yN) / 2, 8, 4, "NG");
+    els.ngLbl.setAttribute("text-anchor", "start");
+
+    els.S1lbl.setAttribute("x", X(-2));
+    els.S1lbl.setAttribute("y", Y(d.yG) + 8);
+    els.S1lbl.textContent = "S1";
+
+    els.S2lbl.setAttribute("x", X(d.a * 0.55));
+    els.S2lbl.setAttribute("y", Y((d.yA + d.yM + d.yG) / 3) + 4);
+    els.S2lbl.textContent = "S2";
+
+    els.S3lbl.setAttribute("x", X(d.c * 0.55));
+    els.S3lbl.setAttribute("y", Y((d.yC + d.yN + d.yG) / 3) + 4);
+    els.S3lbl.textContent = "S3";
+
+    applyVisibility(s.step);
+    updateRangeGraph(d);
+    updateNorm(d);
+  }
+
+  function applyVisibility(step){
+    const is1 = step === 1;
+    els.s1.style.display = is1 ? "" : "none";
+    els.directrixLayer.style.display = is1 ? "" : "none";
+    els.vertexLbl.style.display = is1 ? "" : "none";
+    els.tri.style.display = is1 ? "none" : "";
+
+    const showMN = step >= 3;
+    [els.Mdot, els.Ndot, els.Mlbl, els.Nlbl].forEach(e => {
+      e.style.display = showMN ? "" : "none";
+    });
+
+    const s3 = step === 3;
+    [els.segAM, els.segMB, els.simA, els.simB, els.projA3, els.projB3,
+     els.a3Lbl, els.s3Lbl, els.A1lbl, els.B1lbl].forEach(e => {
+      e.style.display = s3 ? "" : "none";
+    });
+
+    const showArea = step >= 4;
+    [els.polyS2, els.polyS3, els.S1lbl, els.S2lbl, els.S3lbl,
+     els.projA4, els.projC4, els.a4Lbl, els.c4Lbl,
+     els.mgHi, els.ngHi, els.mgLbl, els.ngLbl,
+     els.acBaseHi, els.alt4, els.acLbl, els.altLbl].forEach(e => {
+      e.style.display = showArea ? "" : "none";
+    });
+
+    els.polyS1.setAttribute("class", showArea ? "area-s1" : "area-outline");
+  }
+
+  function updateNorm(d){
+    if (!els.norm) return;
+    const s0 = 12;
+    const lam = 8 / s0;
+    const r = d.r;
+    const a0 = s0 / (r + 1);
+    const b0 = -s0;
+    const c0 = s0 * r / (r + 1);
+    const yA0 = a0*a0/8;
+    const yB0 = 18;
+    const yC0 = c0*c0/8;
+    const yG0 = (yA0 + yB0 + yC0) / 3;
+
+    const a = lam * a0;
+    const b = -8;
+    const c = lam * c0;
+    const yA = d.yA;
+    const yB = d.yB;
+    const yC = d.yC;
+    const yG = d.yG;
+
+    const LX = 70, RX = 270, baseY = 160, xScale = 4.5, yScale = 4.0;
+    const lx = x => LX + xScale * x;
+    const ly = y => baseY - yScale * y;
+    const rx = x => RX + xScale * x;
+    const ry = y => baseY - yScale * y;
+
+    setPolyWith(els.norm.lTri, [[a0, yA0], [b0, yB0], [c0, yC0]], lx, ly);
+    setPolyWith(els.norm.rTri, [[a, yA], [b, yB], [c, yC]], rx, ry);
+
+    function placePt(e, x, y){
+      e.setAttribute("cx", x);
+      e.setAttribute("cy", y);
+    }
+    function placeLbl(e, x, y, anchor){
+      e.setAttribute("x", x);
+      e.setAttribute("y", y);
+      if (anchor) e.setAttribute("text-anchor", anchor);
+    }
+
+    placePt(els.norm.lA, lx(a0), ly(yA0));
+    placePt(els.norm.lB, lx(b0), ly(yB0));
+    placePt(els.norm.lC, lx(c0), ly(yC0));
+    placePt(els.norm.lG, lx(0), ly(yG0));
+    placePt(els.norm.rA, rx(a), ry(yA));
+    placePt(els.norm.rB, rx(b), ry(yB));
+    placePt(els.norm.rC, rx(c), ry(yC));
+    placePt(els.norm.rG, rx(0), ry(yG));
+
+    placeLbl(els.norm.lAl, lx(a0) + 4, ly(yA0) - 4, "start");
+    placeLbl(els.norm.lBl, lx(b0) + 4, ly(yB0) - 4, "start");
+    placeLbl(els.norm.lCl, lx(c0) + 4, ly(yC0) - 4, "start");
+    placeLbl(els.norm.lGl, LX + 6, ly(yG0) - 3, "start");
+
+    placeLbl(els.norm.rAl, rx(a) + 4, ry(yA) - 4, "start");
+    placeLbl(els.norm.rBl, rx(b) + 4, ry(yB) - 4, "start");
+    placeLbl(els.norm.rCl, rx(c) + 4, ry(yC) - 4, "start");
+    placeLbl(els.norm.rGl, RX + 6, ry(yG) - 3, "start");
+  }
+
+  function updateRangeGraph(d){
+    if (!els.range) return;
+    const cx = gx(d.r);
+    const cy = gy(d.R);
+    const near = d.r < 2.7;
+    const dx = near ? 12 : 0;
+    const dy = near ? 14 : 0;
+    const px = cx + dx;
+    const py = cy + dy;
+
+    els.range.dot.setAttribute("cx", px);
+    els.range.dot.setAttribute("cy", py);
+
+    els.range.leader.style.display = near ? "" : "none";
+    els.range.leader.setAttribute("x1", cx);
+    els.range.leader.setAttribute("y1", cy);
+    els.range.leader.setAttribute("x2", px);
+    els.range.leader.setAttribute("y2", py);
+
+    els.range.actual.style.display = near ? "" : "none";
+    els.range.actual.setAttribute("cx", cx);
+    els.range.actual.setAttribute("cy", cy);
+
+    let labelX = px + 8;
+    let anchor = "start";
+    if (px > 285){
+      labelX = px - 8;
+      anchor = "end";
+    }
+    els.range.valLbl.setAttribute("x", labelX);
+    els.range.valLbl.setAttribute("y", py - 7);
+    els.range.valLbl.setAttribute("text-anchor", anchor);
+    els.range.valLbl.textContent = "R=" + d.R.toFixed(4);
+  }
+
+  function updateSidebar(s, d){
+    const step = s.step;
+    document.getElementById("stepKicker").textContent = `步骤 ${step} / 5`;
+    const titleEl = document.getElementById("stepTitle");
+    const textEl = document.getElementById("stepText");
+    const formulaEl = document.getElementById("formulaBox");
+    const valueEl = document.getElementById("valueBox");
+
+    if (step === 1){
+      titleEl.textContent = "1. 曲线 Γ 的方程";
+      textEl.innerHTML = "P(x,y) 在 Γ 上，且 Γ 在 x 轴上方。拖动 P：|PQ| 与 y+2 始终相等，也就是 P 到 Q 的距离等于 P 到直线 y=−2 的距离。";
+      formulaEl.innerHTML = `
+        |PQ| = √(x² + (y−2)²)，到 x 轴的距离 = y<br>
+        由 |PQ|−y=2 得 <span class="hl">|PQ|=y+2</span>，即 P 到 Q 的距离等于 P 到直线 y=−2 的距离<br>
+        √(x²+(y−2)²) = y+2<br>
+        ⇒ x² + (y−2)² = (y+2)²<br>
+        ⇒ <span class="hl">x² = 8y</span><br>
+        <span class="small">又 Γ 在 x 轴上方，故 y&gt;0；顶点 (0,0) 不在 Γ 上。</span>
+      `;
+      valueEl.innerHTML = `
+        P(${d.p.toFixed(2)}, ${d.yP.toFixed(3)})<br>
+        |PQ| = <b>${d.distPQ.toFixed(3)}</b>，y+2 = <b>${(d.yP+2).toFixed(3)}</b><br>
+        |PQ| − y = <b>${(d.distPQ - d.yP).toFixed(3)}</b>
+      `;
+    } else if (step === 2){
+      titleEl.textContent = "2. 三点与重心 G";
+      textEl.innerHTML = "记 s = a+c。A、C 在 y 轴右侧，B 在左侧，G 在 y 轴上。用正伸缩把 s 归一化，图形更简洁。";
+      formulaEl.innerHTML = `
+        x<sub>G</sub> = (a+b+c)/3 = 0 ⇒ b = −(a+c) = −s（记 s=a+c）<br>
+        取 <span class="hl">λ = 8/s &gt; 0</span>，作伸缩 T：(x,y) ↦ (λx, λ²y)。<br>
+        T 保持 Γ（作为点集）、y 轴、左右位置、G 在 y 轴，以及同一直线上的线段比与面积比。<br>
+        所以可令 <span class="hl">s=a+c=8</span>，于是 b = −8。<br>
+        令 r = c/a &gt; 0，则 a = 8/(r+1)，c = 8r/(r+1)。<br>
+        <span class="small">本步固定示例 r=3；r 的滑块在第3步推出 r&gt;2 后再开放。</span>
+      `;
+      valueEl.innerHTML = `
+        a = <b>${d.a.toFixed(3)}</b>，b = <b>${d.b.toFixed(3)}</b>，c = <b>${d.c.toFixed(3)}</b><br>
+        s = a+c = <b>${(d.a+d.c).toFixed(3)}</b>，r = c/a = <b>${d.r.toFixed(2)}</b><br>
+        G(0, ${d.yG.toFixed(3)})
+      `;
+    } else if (step === 3){
+      titleEl.textContent = "3. M、N 与 3|AM| < |BM|";
+      textEl.innerHTML = "把 A、B 到 y 轴的水平投影标出，就能用相似三角形读出 AM/BM。";
+      formulaEl.innerHTML = `
+        作 A、B 到 y 轴的水平投影 A<sub>1</sub>、B<sub>1</sub>。<br>
+        △AA<sub>1</sub>M ∼ △BB<sub>1</sub>M<br>
+        ⇒ AM/BM = AA<sub>1</sub>/BB<sub>1</sub> = a/(a+c) = 1/(r+1)<br>
+        3|AM| &lt; |BM| ⇔ 3/(r+1) &lt; 1 ⇔ <span class="hl">r &gt; 2</span><br>
+        <span class="small">归一化后 M(0,a)，N(0,c)。</span>
+      `;
+      valueEl.innerHTML = `
+        r = <b>${d.r.toFixed(2)}</b><br>
+        AM/BM = <b>${(1/(d.r+1)).toFixed(3)}</b>，3·AM/BM = <b>${(3/(d.r+1)).toFixed(3)}</b> &lt; 1<br>
+        M(0, ${d.yM.toFixed(2)})，N(0, ${d.yN.toFixed(2)})
+      `;
+    } else if (step === 4){
+      titleEl.textContent = "4. 面积比化为 r 的函数";
+      textEl.innerHTML = "MG、NG 在 y 轴上；A、C 到 y 轴的水平投影就是 S₂、S₃ 的高。主图中蓝色粗线是底 AC，红色虚线是 B 到 AC 的高。";
+      formulaEl.innerHTML = `
+        y<sub>A</sub> = a²/8，y<sub>C</sub> = c²/8，y<sub>B</sub> = 8<br>
+        y<sub>G</sub> = (y<sub>A</sub>+y<sub>B</sub>+y<sub>C</sub>)/3 = (a²+ac+c²)/12<br>
+        y<sub>M</sub> = a，y<sub>N</sub> = c<br>
+        S<sub>2</sub> = ½·a·(y<sub>G</sub>−y<sub>M</sub>)，S<sub>3</sub> = ½·c·(y<sub>N</sub>−y<sub>G</sub>)<br>
+        S<sub>2</sub>+S<sub>3</sub> = (c−a)(a²+4ac+c²)/48<br>
+        S<sub>1</sub> = ½ |(b−a)(y<sub>C</sub>−y<sub>A</sub>) − (c−a)(y<sub>B</sub>−y<sub>A</sub>)|<br>
+        = ½ |(−8−a)(c²−a²)/8 − (c−a)(8−a²/8)|<br>
+        = (c−a)(2a+c)(a+2c)/16<br>
+        <span class="hl">R = (a²+4ac+c²) / [3(2a+c)(a+2c)]</span><br>
+        <span class="hl">R = (r²+4r+1) / [3(r+2)(2r+1)]</span>
+      `;
+      valueEl.innerHTML = `
+        r = <b>${d.r.toFixed(2)}</b><br>
+        S<sub>1</sub> = <b>${d.S1.toFixed(3)}</b>，S<sub>2</sub> = <b>${d.S2.toFixed(3)}</b>，S<sub>3</sub> = <b>${d.S3.toFixed(3)}</b><br>
+        R = (S<sub>2</sub>+S<sub>3</sub>)/S<sub>1</sub> = <b>${d.R.toFixed(4)}</b>
+      `;
+    } else {
+      titleEl.textContent = "5. R(r) 的范围（r > 2）";
+      textEl.innerHTML = "在 r&gt;2 上 R(r) 严格递减。两个端点只能无限接近，不能取到。";
+      formulaEl.innerHTML = `
+        R′(r) = (1−r²) / (2r²+5r+2)² &lt; 0（r &gt; 1）<br>
+        r→2⁺：R → 13/60（不取）<br>
+        r→∞：R → 1/6（不取）<br>
+        <span class="answer">1/6 &lt; (S<sub>2</sub>+S<sub>3</sub>)/S<sub>1</sub> &lt; 13/60</span>
+      `;
+      valueEl.innerHTML = `
+        当前 r = <b>${d.r.toFixed(2)}</b>，R = <b>${d.R.toFixed(4)}</b><br>
+        1/6 ≈ ${(1/6).toFixed(4)}，13/60 ≈ ${(13/60).toFixed(4)}<br>
+        演示范围 2.25 ≤ r ≤ 10；完整定义域 r &gt; 2。
+      `;
+    }
+  }
+
+  function updateControls(s, d){
+    const pSlider = document.getElementById("pSlider");
+    const rSlider = document.getElementById("rSlider");
+    pSlider.value = s.p;
+    rSlider.value = s.r;
+    document.getElementById("pValue").textContent = s.p.toFixed(1);
+    document.getElementById("rValue").textContent = `r=${s.r.toFixed(2)} · R=${d.R.toFixed(4)}`;
+    const rNote = document.getElementById("rNote");
+    if (rNote) rNote.textContent = `完整范围 r > 2（第3步推出）。当前 S₂+S₃ = ${(d.S2+d.S3).toFixed(3)}，S₁ = ${d.S1.toFixed(3)}。`;
+
+    document.getElementById("pControl").style.display = s.step === 1 ? "" : "none";
+    document.getElementById("rControl").style.display = s.step >= 3 ? "" : "none";
+    document.getElementById("normWrap").style.display = s.step === 2 ? "" : "none";
+    document.getElementById("graphWrap").style.display = s.step === 5 ? "" : "none";
+
+    document.getElementById("prevBtn").disabled = s.step === 1;
+    document.getElementById("nextBtn").disabled = s.step === 5;
+    document.getElementById("nearBtn").disabled = s.step < 3;
+
+    document.querySelectorAll(".tab").forEach(t => {
+      t.classList.toggle("active", +t.dataset.step === s.step);
+    });
+  }
+
+  function clampP(v, prev){
+    v = Math.max(-7, Math.min(7, v));
+    if (Math.abs(v) < 0.6){
+      if (v > 0) v = 0.6;
+      else if (v < 0) v = -0.6;
+      else v = prev < 0 ? -0.6 : 0.6;
+    }
+    return v;
+  }
+
+  function setState(partial){
+    const prevP = state.p;
+    Object.assign(state, partial);
+    state.step = Math.max(1, Math.min(5, state.step));
+    state.p = clampP(state.p, prevP);
+    state.r = Math.max(2.25, Math.min(10, state.r));
+    if (state.step === 2) state.r = 3;
+
+    const d = derive(state);
+    render(state, d);
+    updateSidebar(state, d);
+    updateControls(state, d);
+  }
+
+  function bindEvents(){
+    document.getElementById("pSlider").addEventListener("input", function(){
+      setState({p: parseFloat(this.value)});
+    });
+    document.getElementById("rSlider").addEventListener("input", function(){
+      setState({r: parseFloat(this.value)});
+    });
+    document.getElementById("prevBtn").addEventListener("click", () => setState({step: state.step - 1}));
+    document.getElementById("nextBtn").addEventListener("click", () => setState({step: state.step + 1}));
+    document.getElementById("nearBtn").addEventListener("click", () => setState({r: 2.25}));
+    document.getElementById("resetBtn").addEventListener("click", () => setState({step: 1, p: 4.5, r: 3}));
+    document.querySelectorAll(".tab").forEach(t => {
+      t.addEventListener("click", () => setState({step: +t.dataset.step}));
+    });
+  }
+
+  function init(){
+    buildMain();
+    buildNorm();
+    buildRange();
+    bindEvents();
+    setState({step: 1, p: 4.5, r: 3});
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
+</script>
+</body>
+</html>

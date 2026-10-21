@@ -1,0 +1,7 @@
+{
+  "planned": 9,
+  "ready_samples": 9,
+  "running": 0,
+  "errors": 0,
+  "note": "先生成9个匿名校准页面；其他开发题与留出测试集暂不运行"
+}

@@ -1,0 +1,208 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261020_230852_143_93e60026:1",
+  "task_id": "20261020_230852_143_93e60026",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 1,
+  "created_at": "2026-10-20T23:51:58.383298+08:00",
+  "files": {
+    "image": "20261020_230852_143_input.png",
+    "html": "20261020_235158_338_round_01.html",
+    "screenshot": "20261020_235158_338_round_01.png",
+    "model_review": "20261020_235158_338_round_01.review.json",
+    "config": "20261020_230852_143_config.json",
+    "model_review_raw": "round_01.model_review_raw.txt"
+  },
+  "html_sha256": "fc6d29377939f82c725bfa1224bda96101004b4260e54b114eec4dcc589ae2d3",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "physics",
+    "name": "物理 · 过程与受力",
+    "version": "219290302036",
+    "subject": "physics"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "题目条件、两问计算与图像数值均正确，时间滑块能同步更新飞机、速度、v-t图与位移读数。主要问题是首屏已把停稳时刻6 s通过完整v-t线和时间轴/滑块上限提前呈现，削弱了步骤1的推导；加速度取负的坐标正方向也未明确说明，且初始飞机尾部略超出跑道左端。",
+    "issues": [
+      "“建立运动图”首屏的v-t图已经画出从(0,36)到(6,0)的完整直线，时间轴和滑块上限也直接为6 s；停稳时刻在步骤1推导前就被预设。建议初始只显示起点或尚未对应答案的探索范围，待步骤1由0=36−6t推出t=6 s后再展开完整线段与6 s刻度。",
+      "题设给出的是减速度大小6 m/s²，页面直接使用a=−6 m/s²；建议在步骤0明确写出“取运动方向为正方向，因此a=−6 m/s²”，避免学生误以为题设直接给了负加速度。",
+      "t=0时飞机机尾/翼尖超出跑道左端，且位置映射取机头而非机身中心，容易让“起点0 m”与飞机对象的对应关系含糊；建议调整飞机图形或映射基准，使初始状态完整落在跑道起点之后。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 4,
+      "interaction_quality": 5,
+      "teaching_effectiveness": 3
+    },
+    "overall_score": 4
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 14,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:08:52.882687+08:00",
+        "ended_at": "2026-10-20T23:09:02.018610+08:00",
+        "duration_seconds": 9.135923,
+        "status": "error"
+      },
+      {
+        "id": 17,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:09:09.110906+08:00",
+        "ended_at": "2026-10-20T23:09:13.750615+08:00",
+        "duration_seconds": 4.639709,
+        "status": "error"
+      },
+      {
+        "id": 50,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:46:43.871166+08:00",
+        "ended_at": "2026-10-20T23:50:06.909635+08:00",
+        "duration_seconds": 203.038469,
+        "status": "completed"
+      },
+      {
+        "id": 54,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-20T23:50:06.909635+08:00",
+        "ended_at": "2026-10-20T23:50:06.990730+08:00",
+        "duration_seconds": 0.081095,
+        "status": "completed"
+      },
+      {
+        "id": 55,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-20T23:50:06.990730+08:00",
+        "ended_at": "2026-10-20T23:50:10.053034+08:00",
+        "duration_seconds": 3.062304,
+        "status": "completed"
+      },
+      {
+        "id": 56,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 1,
+        "stage": "reviewing",
+        "started_at": "2026-10-20T23:50:10.053034+08:00",
+        "ended_at": "2026-10-20T23:51:58.632554+08:00",
+        "duration_seconds": 108.57952,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 9,
+        "task_id": "20261020_230852_143_93e60026",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:09:01.976556+08:00",
+        "duration_seconds": 8.796811555002932,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 11,
+        "task_id": "20261020_230852_143_93e60026",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:09:13.549687+08:00",
+        "duration_seconds": 4.232137457001954,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 32,
+        "task_id": "20261020_230852_143_93e60026",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:50:06.863951+08:00",
+        "duration_seconds": 202.83919225600403,
+        "status": "completed",
+        "input_tokens": 2159,
+        "output_tokens": 40482,
+        "cached_input_tokens": 2048,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 28011,
+        "total_tokens": 42641
+      },
+      {
+        "id": 34,
+        "task_id": "20261020_230852_143_93e60026",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:51:58.288040+08:00",
+        "duration_seconds": 108.08059676099947,
+        "status": "completed",
+        "input_tokens": 14868,
+        "output_tokens": 14929,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 14592,
+        "total_tokens": 29797
+      }
+    ]
+  }
+}

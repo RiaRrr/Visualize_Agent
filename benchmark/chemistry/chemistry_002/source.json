@@ -1,0 +1,79 @@
+{
+  "id": "4078298205691904",
+  "course_id": 30,
+  "type_id": "300904",
+  "kpoint_ids": [
+    6525,
+    47817,
+    7349
+  ],
+  "catalog_ids": [
+    187854,
+    194442,
+    195128,
+    227736
+  ],
+  "years": [
+    2025,
+    2026
+  ],
+  "difficulty": 0.72,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861847-114651791852237200-Jq8sMjzNw_Ja73p0R2S-0tm8c4Nc2BmI4wkHJsjwgXrNhbbzFPnIV2Fcytp_q6OO\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">酸和碱能发生中和反应在日常生活和工农业生产中有广泛的应用。如图表示</span><img  src=\"https://img.xkw.com/dksih/formula/dabf3433f95b16485024c4eede9f2a50.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">和</span><span style=\"font-family: 'Times New Roman';\">NaOH</span><span style=\"font-family: 宋体;\">溶液发生反应时烧杯中溶液的</span><span style=\"font-family: 'Times New Roman';\">pH</span><span style=\"font-family: 宋体;\">随加入液体体积的变化曲线及相关的实验操作。请回答下列问题：</span></p><p style=\"text-align: left;\"><img  height=\"216\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/8/14/09f702ed-819d-4491-bb7f-6156fa031f98.png\" width=\"297\" /></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861847-114651791852237200-Jq8sMjzNw_Ja73p0R2S-0tm8c4Nc2BmI4wkHJsjwgXrNhbbzFPnIV2Fcytp_q6OO\"><p style=\"\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 宋体;\">烧杯中盛放的是</span><span class=\"qml-bk\" index=\"1\" size=\"9\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　</span><span style=\"font-family: 宋体;\">溶液。</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861847-114651791852237200-Jq8sMjzNw_Ja73p0R2S-0tm8c4Nc2BmI4wkHJsjwgXrNhbbzFPnIV2Fcytp_q6OO\"><p style=\"\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 宋体;\">小明向</span><span style=\"font-family: 'Times New Roman';\">NaOH</span><span style=\"font-family: 宋体;\">溶液中加入</span><img  src=\"https://img.xkw.com/dksih/formula/dabf3433f95b16485024c4eede9f2a50.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，发生了中和反应，该反应的离子方程式是：</span><span class=\"qml-bk\" index=\"2\" size=\"36\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</span><span style=\"font-family: 宋体;\">。</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">然后，对反应过程中废液的溶质进行了如下探究：</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">【提出问题】</span><span style=\"font-family: 'Times New Roman';\">NaOH</span><span style=\"font-family: 宋体;\">溶液和</span><img  src=\"https://img.xkw.com/dksih/formula/dabf3433f95b16485024c4eede9f2a50.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">混合后，溶质是什么？</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">【查阅资料】</span><img  src=\"https://img.xkw.com/dksih/formula/2b853eaed1b4d91371810f607dda5dd4.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">溶液呈中性。</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">【猜想假设】猜想Ⅰ：</span><img  src=\"https://img.xkw.com/dksih/formula/2b853eaed1b4d91371810f607dda5dd4.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">和</span><span style=\"font-family: 'Times New Roman';\">NaOH</span><span style=\"font-family: 宋体;\">；猜想Ⅱ：</span><img  src=\"https://img.xkw.com/dksih/formula/2b853eaed1b4d91371810f607dda5dd4.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">和</span><img  src=\"https://img.xkw.com/dksih/formula/dabf3433f95b16485024c4eede9f2a50.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">；猜想Ⅲ：</span><span class=\"qml-bk\" index=\"3\" size=\"9\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　</span><span style=\"font-family: 宋体;\">。</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">【设计实验】</span></p><table style=\"width:450.667px;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;border-color:black;border-collapse: collapse;\"><tr><td style=\"width:150px;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;border-color:black;\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">实验操作</span></p></td><td style=\"width:150px;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;border-color:black;\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">实验现象</span></p></td><td style=\"width:150px;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;border-color:black;\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">实验结论</span></p></td></tr><tr><td style=\"width:150px;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;border-color:black;\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">①取少量废液于试管中，滴入几滴酚酞溶液</span></p></td><td style=\"width:150px;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;border-color:black;\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">溶液无明显变化</span></p></td><td style=\"width:150px;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;border-color:black;\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">猜想</span><span class=\"qml-bk\" index=\"4\" size=\"5\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　</span><span style=\"font-family: 宋体;\">不成立</span></p></td></tr><tr><td style=\"width:150px;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;border-color:black;\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">②另取少量废液于试管中，滴入几滴氯化钡溶液</span></p></td><td style=\"width:150px;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;border-color:black;\"><p style=\"text-align: left;\"><span class=\"qml-bk\" index=\"5\" size=\"16\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　　　　　　　</span></p></td><td style=\"width:150px;border-width:1px 1px 1px 1px;border-style:solid solid solid solid;border-color:black;\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">猜想Ⅱ成立</span></p></td></tr></table><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">【反思与评价】小芳认为实验操作②得出的结论不成立，理由是</span><span class=\"qml-bk\" index=\"6\" size=\"9\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　</span><span style=\"font-family: 宋体;\">，可以改为</span><span class=\"qml-bk\" index=\"7\" size=\"23\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　　　　　　　　　　　　　　</span><span style=\"font-family: 宋体;\">，则证明猜想Ⅱ成立。</span></p></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861847-114651791852237200-Jq8sMjzNw_Ja73p0R2S-0tm8c4Nc2BmI4wkHJsjwgXrNhbbzFPnIV2Fcytp_q6OO\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/ad7c21a492758cf597536d6579e25007.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\">&nbsp;&nbsp;&nbsp;&nbsp;①. <span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/7f99d1f15791c981c8f2ce6105f9e50b.svg\" class=\"xkw-math-img\" /></span>&nbsp;&nbsp;&nbsp;&nbsp;②. <span class=\"qml-an  \"><span style=\"font-family: 宋体;\">只有</span><img  src=\"https://img.xkw.com/dksih/formula/ef8fa9b67cdea3c1f6d51206221a936b.svg\" class=\"xkw-math-img\" /></span>&nbsp;&nbsp;&nbsp;&nbsp;③. <span class=\"qml-an  \"><span>Ⅰ</span></span>&nbsp;&nbsp;&nbsp;&nbsp;④. <span class=\"qml-an  \"><span style=\"font-family: 宋体;\">产生白色沉淀</span></span>&nbsp;&nbsp;&nbsp;&nbsp;⑤. <span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/ef8fa9b67cdea3c1f6d51206221a936b.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">和</span><img  src=\"https://img.xkw.com/dksih/formula/30101d176018aa0197306515af0b1c68.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">均能与</span><img  src=\"https://img.xkw.com/dksih/formula/396901dcc8654e6a55e6185516dec5af.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">反应生成白色</span><img  src=\"https://img.xkw.com/dksih/formula/e3abe975110628a97863e56e9f447dbf.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">沉淀，故该现象不能证明硫酸过量</span></span>&nbsp;&nbsp;&nbsp;&nbsp;⑥. <span class=\"qml-an  \"><span style=\"font-family: 宋体;\">另取少量废液，滴加紫色石蕊溶液，若溶液变红，则证明猜想</span><span>Ⅱ</span><span style=\"font-family: 宋体;\">成立</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861847-114651791852237200-Jq8sMjzNw_Ja73p0R2S-0tm8c4Nc2BmI4wkHJsjwgXrNhbbzFPnIV2Fcytp_q6OO\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align:justify;word-break:break-word;\"><span>先根据曲线确定加液方向：反应开始时溶液的</span><img  src=\"https://img.xkw.com/dksih/formula/dc617bacf629bfb9c5ffd19c0b7e1ada.svg\" class=\"xkw-math-img\" /><span>约为12，随后随液体加入不断降低，说明烧杯内原有碱性溶液</span><img  src=\"https://img.xkw.com/dksih/formula/ad7c21a492758cf597536d6579e25007.svg\" class=\"xkw-math-img\" /><span>，滴加的是</span><img  src=\"https://img.xkw.com/dksih/formula/30101d176018aa0197306515af0b1c68.svg\" class=\"xkw-math-img\" /><span>。二者发生中和反应，反应后的共同产物为</span><img  src=\"https://img.xkw.com/dksih/formula/ef8fa9b67cdea3c1f6d51206221a936b.svg\" class=\"xkw-math-img\" /><span>。因此，废液中的溶质取决于两种反应物的相对用量：碱过量时为</span><img  src=\"https://img.xkw.com/dksih/formula/ef8fa9b67cdea3c1f6d51206221a936b.svg\" class=\"xkw-math-img\" /><span>和</span><img  src=\"https://img.xkw.com/dksih/formula/ad7c21a492758cf597536d6579e25007.svg\" class=\"xkw-math-img\" /><span>，酸过量时为</span><img  src=\"https://img.xkw.com/dksih/formula/ef8fa9b67cdea3c1f6d51206221a936b.svg\" class=\"xkw-math-img\" /><span>和</span><img  src=\"https://img.xkw.com/dksih/formula/30101d176018aa0197306515af0b1c68.svg\" class=\"xkw-math-img\" /><span>，恰好完全反应时只有</span><img  src=\"https://img.xkw.com/dksih/formula/ef8fa9b67cdea3c1f6d51206221a936b.svg\" class=\"xkw-math-img\" /><span>。验证猜想时必须选择只对待检物质产生特征现象、而不受共同产物干扰的试剂。</span></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align:justify;word-break:break-word;\"><span>曲线起点</span><img  src=\"https://img.xkw.com/dksih/formula/dc617bacf629bfb9c5ffd19c0b7e1ada.svg\" class=\"xkw-math-img\" /><span>大于7，说明烧杯内液体呈碱性；随着加入液体体积增大，</span><img  src=\"https://img.xkw.com/dksih/formula/dc617bacf629bfb9c5ffd19c0b7e1ada.svg\" class=\"xkw-math-img\" /><span>逐渐减小，说明加入的是酸。因此，烧杯中盛放的是</span><img  src=\"https://img.xkw.com/dksih/formula/ad7c21a492758cf597536d6579e25007.svg\" class=\"xkw-math-img\" /><span>溶液。</span></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"\"><span>硫酸与氢氧化钠发生中和反应，其实质是氢离子与氢氧根离子结合生成水：</span><img  src=\"https://img.xkw.com/dksih/formula/3d118d5d2628657a69e9038cebca3bea.svg\" class=\"xkw-math-img\" /><span>；</span></p><p style=\"text-align:justify;word-break:break-word;\"><span>若</span><img  src=\"https://img.xkw.com/dksih/formula/ad7c21a492758cf597536d6579e25007.svg\" class=\"xkw-math-img\" /><span>过量，酚酞遇碱变红；实验①中溶液无明显变化，说明废液中没有过量的</span><img  src=\"https://img.xkw.com/dksih/formula/ad7c21a492758cf597536d6579e25007.svg\" class=\"xkw-math-img\" /><span>，故猜想Ⅰ不成立。反应可能恰好完全，也可能</span><img  src=\"https://img.xkw.com/dksih/formula/30101d176018aa0197306515af0b1c68.svg\" class=\"xkw-math-img\" /><span>过量，所以猜想Ⅲ为只有</span><img  src=\"https://img.xkw.com/dksih/formula/ef8fa9b67cdea3c1f6d51206221a936b.svg\" class=\"xkw-math-img\" /><span>。</span></p><p style=\"\"><span>实验②加入</span><img  src=\"https://img.xkw.com/dksih/formula/396901dcc8654e6a55e6185516dec5af.svg\" class=\"xkw-math-img\" /><span>后会出现白色沉淀，相关离子方程式为：</span><img  src=\"https://img.xkw.com/dksih/formula/91394e8c3c8d437766406c120dc766ab.svg\" class=\"xkw-math-img\" /><span>；</span></p><p style=\"text-align:justify;word-break:break-word;\"><span>但无论硫酸是否过量，废液中都含有</span><img  src=\"https://img.xkw.com/dksih/formula/ef8fa9b67cdea3c1f6d51206221a936b.svg\" class=\"xkw-math-img\" /><span>，其中的硫酸根离子同样会与钡离子形成</span><img  src=\"https://img.xkw.com/dksih/formula/e3abe975110628a97863e56e9f447dbf.svg\" class=\"xkw-math-img\" /><span>白色沉淀。因此“出现白色沉淀”不能证明废液中含有过量硫酸。根据题给信息，</span><img  src=\"https://img.xkw.com/dksih/formula/ef8fa9b67cdea3c1f6d51206221a936b.svg\" class=\"xkw-math-img\" /><span>溶液呈中性，可另取少量废液滴加紫色石蕊溶液；若石蕊变红，说明废液显酸性，即</span><img  src=\"https://img.xkw.com/dksih/formula/30101d176018aa0197306515af0b1c68.svg\" class=\"xkw-math-img\" /><span>过量，猜想Ⅱ成立。</span></p></div></div>",
+  "create_date": "2026-08-14 10:21:51",
+  "paper_type_ids": [
+    3
+  ],
+  "course": {
+    "id": 30,
+    "name": "高中化学"
+  },
+  "catalogs": [
+    {
+      "id": 187854,
+      "name": "第二节 离子反应"
+    },
+    {
+      "id": 194442,
+      "name": "第2节  电解质的电离  离子反应"
+    },
+    {
+      "id": 195128,
+      "name": "第一单元  研究物质的实验方法"
+    },
+    {
+      "id": 227736,
+      "name": "2.2氧化还原反应和离子反应"
+    }
+  ],
+  "type": {
+    "id": "300904",
+    "name": "实验探究"
+  },
+  "kpoints": [
+    {
+      "id": 6525,
+      "name": "溶液的酸碱性与pH的关系"
+    },
+    {
+      "id": 47817,
+      "name": "实验方案设计"
+    },
+    {
+      "id": 7349,
+      "name": "实验方案评价"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4103181409910784"
+  ]
+}

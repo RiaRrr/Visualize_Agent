@@ -2,14 +2,14 @@
 from app.benchmark import BENCH, read
 
 def main():
-    rows=read(BENCH/'reports/gpt_scores.json',{}).get('rows',[])
+    rows=[r for r in read(BENCH/'reports/gpt_scores.json',{}).get('rows',[]) if r['version']=='c3fcf583bc0c']
     metrics=read(BENCH/'reports/pilot_metrics.json',{}).get('runs',[])
     keys=['problem_fidelity','solution_correctness','page_quality','interaction_quality','teaching_effectiveness']
     names={'W0':'单轮生成','W1':'三轮整页返修','W2':'三轮局部修订'}
     rows.sort(key=lambda r:({'math':0,'physics':1,'chemistry':2}.get(r['question_id'].split('_')[0],3),r['question_id'],r['workflow_id']))
     lines=['# 首批 Benchmark 结果',
         f'当前已保存 {len(rows)}/9 份独立 GPT 评分。'+('首批已完成。' if len(rows)==9 else '实验仍在进行，下面不是完整结果。'),
-        '模型分用于比较与排查，不当作人工真值。人工校准和双评委对比已按用户要求暂停。',
+        '此表保留旧联合judge版本。9份页面现已提交人工评分，对照见 分享汇总.md；新六次独立评分尚未重跑。模型分不当作人工真值。',
         '入口：http://localhost:8002/benchmark 。打开“GPT 评分”，点击题目/方案可查看实际 HTML。',
         '## 配置与边界',
         '数据集共 36 道候选题，数理化各 12 道，开发集和留出集各 18 道。首批仅运行每科 1 道开发题，不使用留出集调参。',
@@ -29,17 +29,17 @@ def main():
             str(j.get('overall_score') if j.get('overall_score') is not None else '—'),f'{r["seconds"]:.1f}',str(usage.get('total_tokens','未知'))]
         lines.append('| '+' | '.join(values)+' |')
     lines+=['## 运行用量',
-        '| 题目/流程 | 已完成轮数 | 已知 DeepSeek token | API 累计秒数（含失败） | 无 usage 调用 | 已知缓存费（人民币，非总价） |',
+        '| 题目/流程 | 已完成轮数 | 已知 DeepSeek token | API 累计秒数（含失败） | 无 usage 调用 | 已知输入输出费用估算（人民币） |',
         '| --- | ---: | ---: | ---: | ---: | ---: |']
     for r in metrics:
-        cost=r.get('known_cache_cost_cny')
+        cost=r.get('known_cost_cny')
         lines.append(f'| {r["job"]} | {r["round_count"]} | {r["known_total_tokens"]:,} | {r["api_seconds_including_failures"]:.1f} | {r["calls_missing_usage"]} | '+(f'¥{cost:.4f}' if cost is not None else '未知')+' |')
     lines+=['## 目前能得出的结论',
         '这是 3 道题上的试运行，尚不能判断哪种 workflow 在三科总体上最好，也不能把多轮页面数当成独立题数。',
         '数学三份页面的 GPT 评分全部为 5，出现评分集中于上限的情况；这表示本批评分没有区分出差异，不证明三个页面同样优秀。内部 reviewer 的扣分与 GPT 不完全一致，原始意见均保留，后续可以人工复核。',
         '本批没有中途调整生成或 judge Prompt 来追求更高分。后续应冻结下一版本，再扩大到其余开发题；留出题用于最终检验。',
         '网络异常与模型质量分开记录：WSL 曾无法稳定解析内部网关，使用进程内 DNS 覆盖后恢复。历史失败请求及重试保留；总 API 时间含这些开销，不是模型纯推理时间，也不是并发实验的墙钟总时间。',
-        '缓存费只按已知人民币读 ¥1.44 / MTok、写 ¥5.76 / MTok 计入。普通输入/输出和 GPT 单价未知，不给出伪精确总费用。',
+        'DeepSeek 261017 按人民币输入¥1.20、输出¥4.80 / MTok估算；GPT按输入¥5、输出¥30 / MTok估算。缓存、推理token不另加。缺失用量不当作免费，完整成本汇总见 分享汇总.md。',
         '自动检查只覆盖有限按钮、滑块与截图状态，不保证所有交互正确。参考答案仍保留待人工复核状态。',
         '## 对应页面']
     for r in rows:lines.append(f'- {r["question_id"]} / {r["workflow_id"]}：http://localhost:8002/benchmark?sample={r["sample_id"]}')

@@ -1,0 +1,153 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261021_000516_090_d254ecc0:2",
+  "task_id": "20261021_000516_090_d254ecc0",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 2,
+  "created_at": "2026-10-21T00:17:53.562629+08:00",
+  "files": {
+    "image": "20261021_000516_090_input.png",
+    "html": "20261021_001753_510_round_02.html",
+    "screenshot": "20261021_001753_510_round_02.png",
+    "model_review": "20261021_001753_510_round_02.review.json",
+    "config": "20261021_000516_090_config.json",
+    "model_review_raw": "round_02.model_review_raw.txt"
+  },
+  "html_sha256": "d4bb8169af18c2f72a161dbc60a3f3e191d6631eb2a4607e479bfc9a70380aad",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "chemistry",
+    "name": "化学 · 粒子与反应",
+    "version": "7aeb255efc8b",
+    "subject": "chemistry"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "题干、正确选项D及主要化学方程式基本正确，静态首屏清晰；但交互时沉淀核心视图因字段错误不显示，且模型参数缺少来源说明，不能通过。",
+    "issues": [
+      "修复烧杯渲染的数据字段不一致：getState 返回的是 prec，而 drawBeaker 读取 st.precipitates；切换到有沉淀的状态（如原实验/D实验最低点及AB段）时，BaSO₄ 和 Mg(OH)₂ 沉淀及图例不会出现。统一字段后应让沉淀数量、种类随滑块、分步按钮和选项切换同步更新。",
+      "在首次出现“4份最低点”“自由离子数12”等参数时，紧邻控件补出来源和范围：例如说明模型中设初始 Ba(OH)₂ 为4个单元、滴加试剂按化学计量比进行，故4份达到最低点；“份”与时间/滴加量是比例示意，合法范围为0–8（B为0–4）。否则学生必须先会配平才能理解这些数字。",
+      "题图缩略图横轴“时间”文字起点 x=288，超出 viewBox 宽度300，第二个字会被裁切；应左移或改用 text-anchor=end，确保完整显示。",
+      "主图将“导电能力”直接替换为“自由离子数”并画成对称折线，原实验终点又回到起点高度；这与原题平滑曲线及终点高度不一定相同的视觉特征不同。应把模型曲线明确标为辅助定性示意，避免让学生把12、对称斜率和终点高度当作原题曲线的定量信息。"
+    ],
+    "scores": {
+      "problem_fidelity": 4,
+      "solution_correctness": 4,
+      "page_quality": 3,
+      "interaction_quality": 2,
+      "teaching_effectiveness": 2
+    },
+    "overall_score": 2
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 89,
+        "task_id": "20261021_000516_090_d254ecc0",
+        "round_number": 2,
+        "stage": "generating",
+        "started_at": "2026-10-21T00:11:42.538865+08:00",
+        "ended_at": "2026-10-21T00:15:43.089397+08:00",
+        "duration_seconds": 240.550532,
+        "status": "completed"
+      },
+      {
+        "id": 93,
+        "task_id": "20261021_000516_090_d254ecc0",
+        "round_number": 2,
+        "stage": "validating",
+        "started_at": "2026-10-21T00:15:43.089397+08:00",
+        "ended_at": "2026-10-21T00:15:43.166101+08:00",
+        "duration_seconds": 0.076704,
+        "status": "completed"
+      },
+      {
+        "id": 94,
+        "task_id": "20261021_000516_090_d254ecc0",
+        "round_number": 2,
+        "stage": "rendering",
+        "started_at": "2026-10-21T00:15:43.166101+08:00",
+        "ended_at": "2026-10-21T00:15:44.808175+08:00",
+        "duration_seconds": 1.642074,
+        "status": "completed"
+      },
+      {
+        "id": 95,
+        "task_id": "20261021_000516_090_d254ecc0",
+        "round_number": 2,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T00:15:44.808175+08:00",
+        "ended_at": "2026-10-21T00:17:54.026660+08:00",
+        "duration_seconds": 129.218485,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 50,
+        "task_id": "20261021_000516_090_d254ecc0",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T00:15:43.042803+08:00",
+        "duration_seconds": 240.2819610239967,
+        "status": "completed",
+        "input_tokens": 11998,
+        "output_tokens": 43478,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 32223,
+        "total_tokens": 55476
+      },
+      {
+        "id": 52,
+        "task_id": "20261021_000516_090_d254ecc0",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 2,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T00:17:53.416451+08:00",
+        "duration_seconds": 128.32056067499798,
+        "status": "completed",
+        "input_tokens": 14098,
+        "output_tokens": 17297,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 16906,
+        "total_tokens": 31395
+      }
+    ]
+  }
+}

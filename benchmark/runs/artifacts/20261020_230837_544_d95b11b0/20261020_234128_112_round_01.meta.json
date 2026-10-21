@@ -1,0 +1,208 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261020_230837_544_d95b11b0:1",
+  "task_id": "20261020_230837_544_d95b11b0",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 1,
+  "created_at": "2026-10-20T23:41:28.165536+08:00",
+  "files": {
+    "image": "20261020_230837_544_input.png",
+    "html": "20261020_234128_112_round_01.html",
+    "screenshot": "20261020_234128_112_round_01.png",
+    "model_review": "20261020_234128_112_round_01.review.json",
+    "config": "20261020_230837_544_config.json",
+    "model_review_raw": "round_01.model_review_raw.txt"
+  },
+  "html_sha256": "effdab1b9fe21851152d1d3bf725fca3cc155cf144ae6dbb79adb3c4a66cb9fa",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "math-deepseek",
+    "name": "数学 · 分步 SVG 与教学示例（1019）",
+    "version": "7fa646244866",
+    "subject": "math"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "函数、配方、顶点和最终值域均正确，交互与视图同步基本可靠；但值域“所有小于等于−13的值都能取到”的可达性说明以及局部窗口提示还不够完整。",
+    "issues": [
+      "步骤③到④仅由 d²≥0 推出 y≤−13，并给出 x=1 时取到 −13；还需说明当 x 取遍实数时 d=|x−1| 也取遍 [0,∞)，或对任意 t≤−13 取 x=1±√(−13−t)，以证明 (−∞,−13] 中每个值都能取到。",
+      "主图只显示 x∈[−3,5]、y∈[−30,4] 的局部窗口，抛物线在上下边界被截断；应注明“仅显示局部窗口，x∈R，图象继续向下延伸”，或给曲线末端加延续箭头，避免学生把窗口边界误认为值域边界。",
+      "步骤②中 y=−13 上的橙色水平线和 x 轴上的橙色线段都表示 d，但只有一条标注“d=…”，容易让学生误以为两条橙色线段含义不同；建议只保留一条，或在图中明确标注两者均为同一水平距离并保持同步高亮。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 4,
+      "page_quality": 4,
+      "interaction_quality": 5,
+      "teaching_effectiveness": 4
+    },
+    "overall_score": 4
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 8,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:08:38.170276+08:00",
+        "ended_at": "2026-10-20T23:08:44.041690+08:00",
+        "duration_seconds": 5.871414,
+        "status": "error"
+      },
+      {
+        "id": 11,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:08:47.500469+08:00",
+        "ended_at": "2026-10-20T23:08:51.136624+08:00",
+        "duration_seconds": 3.636155,
+        "status": "error"
+      },
+      {
+        "id": 34,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:36:47.169399+08:00",
+        "ended_at": "2026-10-20T23:39:47.573105+08:00",
+        "duration_seconds": 180.403706,
+        "status": "completed"
+      },
+      {
+        "id": 35,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-20T23:39:47.573105+08:00",
+        "ended_at": "2026-10-20T23:39:47.710396+08:00",
+        "duration_seconds": 0.137291,
+        "status": "completed"
+      },
+      {
+        "id": 36,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-20T23:39:47.710396+08:00",
+        "ended_at": "2026-10-20T23:39:49.174243+08:00",
+        "duration_seconds": 1.463847,
+        "status": "completed"
+      },
+      {
+        "id": 39,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "round_number": 1,
+        "stage": "reviewing",
+        "started_at": "2026-10-20T23:39:49.174243+08:00",
+        "ended_at": "2026-10-20T23:41:28.985977+08:00",
+        "duration_seconds": 99.811734,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 5,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:08:44.014676+08:00",
+        "duration_seconds": 5.693747457000427,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 7,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:08:51.104399+08:00",
+        "duration_seconds": 3.433979993998946,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 23,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:39:47.384895+08:00",
+        "duration_seconds": 179.85763922300248,
+        "status": "completed",
+        "input_tokens": 3307,
+        "output_tokens": 32692,
+        "cached_input_tokens": 3200,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 24874,
+        "total_tokens": 35999
+      },
+      {
+        "id": 25,
+        "task_id": "20261020_230837_544_d95b11b0",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 1,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-20T23:41:28.047735+08:00",
+        "duration_seconds": 98.60699931399722,
+        "status": "completed",
+        "input_tokens": 10734,
+        "output_tokens": 13612,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 13292,
+        "total_tokens": 24346
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "4030835597312000",
+  "course_id": 27,
+  "type_id": "270201",
+  "kpoint_ids": [
+    11380,
+    11394
+  ],
+  "catalog_ids": [
+    207964,
+    208032,
+    219795,
+    220565,
+    225160,
+    226715
+  ],
+  "years": [
+    2026,
+    2027
+  ],
+  "difficulty": 0.75,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791858264-114651791852237200-TTi4TkGsLyfHOy7-9p5CxNm8c4Nc2BmI4wkHJsjwgXpA1L4n7KpDa9J2LZXx64n-\"><p style=\"text-align: left;\"><span>记</span><img  src=\"https://img.xkw.com/dksih/formula/08eb71ecf8d733b6932f4680874dbbf3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为等差数列</span><img  src=\"https://img.xkw.com/dksih/formula/76aef4cdcb5af742ce28003b7b6c8c20.svg\" class=\"xkw-math-img\" /><span>的</span><span style=\"font-family: 宋体;\">前</span><img  src=\"https://img.xkw.com/dksih/formula/b6a24198bd04c29321ae5dc5a28fe421.svg\" class=\"xkw-math-img\" /><span>项</span><span style=\"font-family: 宋体;\">和.若</span><img  src=\"https://img.xkw.com/dksih/formula/bbe7bdaaf8b0adf10bf2ef6c1255b1dc.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/7da6e97248df8f138ebe684c40c950c7.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则</span><img  src=\"https://img.xkw.com/dksih/formula/d36243198e5e20c56399e4ad5ac3c519.svg\" class=\"xkw-math-img\" /><span class=\"qml-bk\" index=\"1\" size=\"10\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　</span><span style=\"font-family: 宋体;\">．</span></p></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791858264-114651791852237200-TTi4TkGsLyfHOy7-9p5CxNm8c4Nc2BmI4wkHJsjwgXpA1L4n7KpDa9J2LZXx64n-\"><span class=\"qml-an-sq\"><span class=\"qml-an  qml-exact\"><span style=\"font-family: 'Times New Roman';\">24</span></span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791858264-114651791852237200-TTi4TkGsLyfHOy7-9p5CxNm8c4Nc2BmI4wkHJsjwgXpA1L4n7KpDa9J2LZXx64n-\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">根据等差数列通项公式求出公差，再结合求和公式求解即可</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">由等差数列通项公式</span><img  src=\"https://img.xkw.com/dksih/formula/e7c3dabcbcf5dbed29cbf18e3130f44a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">代入</span><img  src=\"https://img.xkw.com/dksih/formula/f584f736afa95f4265e1c893958a5d98.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">可得</span><img  src=\"https://img.xkw.com/dksih/formula/429acf202801cdd46bac5524d7ae45e6.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，解得</span><img  src=\"https://img.xkw.com/dksih/formula/c5c1344592c925b273f2cb9b9e47ebbb.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">因为</span><img  src=\"https://img.xkw.com/dksih/formula/e2bcd524b14735d9ddd98950a0b3a377.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，所以</span><img  src=\"https://img.xkw.com/dksih/formula/d2d233a6280b893b5b8655df5209920a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故</span><img  src=\"https://img.xkw.com/dksih/formula/a34792c7ff4c4a9a8deb980c2d06ff52.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p></div></div>",
+  "create_date": "2026-06-08 08:58:55",
+  "paper_type_ids": [
+    12,
+    6,
+    45,
+    50,
+    24,
+    3
+  ],
+  "course": {
+    "id": 27,
+    "name": "高中数学"
+  },
+  "catalogs": [
+    {
+      "id": 207964,
+      "name": "4.2.2等差数列的前n项和公式"
+    },
+    {
+      "id": 208032,
+      "name": "5.2.2 等差数列的前n项和"
+    },
+    {
+      "id": 219795,
+      "name": "2.2 等差数列的前n项和"
+    },
+    {
+      "id": 220565,
+      "name": "4.2.3 等差数列的前n项和"
+    },
+    {
+      "id": 225160,
+      "name": "1.2.3 等差数列的前n项和"
+    },
+    {
+      "id": 226715,
+      "name": "2 等差数列的前n项和"
+    }
+  ],
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "kpoints": [
+    {
+      "id": 11380,
+      "name": "等差数列通项公式的基本量计算"
+    },
+    {
+      "id": 11394,
+      "name": "等差数列前n项和的基本量计算"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4030435058696192"
+  ]
+}

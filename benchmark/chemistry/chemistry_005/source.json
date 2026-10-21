@@ -1,0 +1,90 @@
+{
+  "id": "4104616416862208",
+  "course_id": 30,
+  "type_id": "301101",
+  "kpoint_ids": [
+    47771,
+    6436,
+    6432,
+    102411,
+    6474
+  ],
+  "catalog_ids": [
+    208080,
+    207849,
+    213214,
+    230395
+  ],
+  "years": [
+    2026
+  ],
+  "difficulty": 0.65,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861841-114651791852237200-wRCPENZYe7_2Homr0ISr213mQaaskpJnYM-9XZSE4M5T4qtBL0Kjldh5SqNaNR_x\"><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">甲烷制乙烯能有效缓解石油危机。甲烷在催化剂</span><img  src=\"https://img.xkw.com/dksih/formula/28f1bb5c4144d484818054588a161e56.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">表面生成乙烯的两种反应历程如图。下列说法错误的是</span></p><p style=\"text-align:justify;word-break:break-word;\"><img  height=\"153\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/9/20/8b58ecda-d0b2-49ab-b50e-115cfaf98849.png\" width=\"552\" /></p><div class=\" qml-og\"><table class=\"qml-og\" style=\"width:100%\"><tr><td>A.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 'Times New Roman';\">Ⅰ</span><span style=\"font-family: 宋体;\">的反应速率大于</span><span style=\"font-family: 'Times New Roman';\">Ⅱ</span></span></td></tr><tr><td>B.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 'Times New Roman';\">Ⅰ</span><span style=\"font-family: 宋体;\">、</span><span style=\"font-family: 'Times New Roman';\">Ⅱ</span><span style=\"font-family: 宋体;\">均可生成</span><img  src=\"https://img.xkw.com/dksih/formula/5805b8c82259f32c7f04717168181791.svg\" class=\"xkw-math-img\" /></span></td></tr><tr><td>C.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">依次断开</span><img  src=\"https://img.xkw.com/dksih/formula/eff19349a80467d65564cc2953f0c978.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">中的</span><img  src=\"https://img.xkw.com/dksih/formula/2de502440ccf7700d7c221611c272190.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">键所需能量不同</span></span></td></tr><tr><td colspan=\"1\">D.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">步骤①逆过程的</span><img  src=\"https://img.xkw.com/dksih/formula/176db0b08d4cc37f9a1121ae50430bed.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，故步骤①吸热</span></span></td></tr></table></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861841-114651791852237200-wRCPENZYe7_2Homr0ISr213mQaaskpJnYM-9XZSE4M5T4qtBL0Kjldh5SqNaNR_x\"><span class=\"qml-an-sq\"><span class=\"qml-an qml-isop \">D</span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861841-114651791852237200-wRCPENZYe7_2Homr0ISr213mQaaskpJnYM-9XZSE4M5T4qtBL0Kjldh5SqNaNR_x\"><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"\"><span>A．多步反应总速率由活化能最大的决速步决定，历程Ⅰ决速步活化能最大值为</span><img  src=\"https://img.xkw.com/dksih/formula/6f94c217125205e7b312c3f807286128.svg\" class=\"xkw-math-img\" /><span>，历程Ⅱ决速步活化能最大值为</span><img  src=\"https://img.xkw.com/dksih/formula/a5a78a1c38b1b847237d7b13146dbc5e.svg\" class=\"xkw-math-img\" /><span>，活化能越小反应速率越快，故Ⅰ的反应速率大于Ⅱ，A正确；</span></p><p style=\"\"><span>B．历程Ⅱ生成两个</span><img  src=\"https://img.xkw.com/dksih/formula/87a0327a0d6a44a3025d2d7d9e90cb89.svg\" class=\"xkw-math-img\" /><span>，二者结合可得到</span><img  src=\"https://img.xkw.com/dksih/formula/e028f989b5a6e0f552d868a6e1ed9fa6.svg\" class=\"xkw-math-img\" /><span>；历程Ⅰ存在</span><img  src=\"https://img.xkw.com/dksih/formula/c755bd535c9237c7a7460344c61392ed.svg\" class=\"xkw-math-img\" /><span>、</span><img  src=\"https://img.xkw.com/dksih/formula/87a0327a0d6a44a3025d2d7d9e90cb89.svg\" class=\"xkw-math-img\" /><span>等中间体，也可生成</span><img  src=\"https://img.xkw.com/dksih/formula/e028f989b5a6e0f552d868a6e1ed9fa6.svg\" class=\"xkw-math-img\" /><span>，故Ⅰ、Ⅱ均可生成</span><img  src=\"https://img.xkw.com/dksih/formula/e028f989b5a6e0f552d868a6e1ed9fa6.svg\" class=\"xkw-math-img\" /><span>，B正确；</span></p><p style=\"\"><span>C．</span><img  src=\"https://img.xkw.com/dksih/formula/02187e31cb01b145418536d3157bde2f.svg\" class=\"xkw-math-img\" /><span>断开第一个</span><img  src=\"https://img.xkw.com/dksih/formula/d8bf3bb0eaaa089212fd043b79ae53b8.svg\" class=\"xkw-math-img\" /><span>键后，剩余</span><img  src=\"https://img.xkw.com/dksih/formula/d8bf3bb0eaaa089212fd043b79ae53b8.svg\" class=\"xkw-math-img\" /><span>键受电子效应影响键能发生改变，故依次断开</span><img  src=\"https://img.xkw.com/dksih/formula/02187e31cb01b145418536d3157bde2f.svg\" class=\"xkw-math-img\" /><span>中的</span><img  src=\"https://img.xkw.com/dksih/formula/d8bf3bb0eaaa089212fd043b79ae53b8.svg\" class=\"xkw-math-img\" /><span>键所需能量不同，C正确；</span></p><p style=\"\"><span>D．反应焓变</span><img  src=\"https://img.xkw.com/dksih/formula/e940166bbac5419869b3b98661019626.svg\" class=\"xkw-math-img\" /><span>，步骤①为放热反应，D错误；</span></p><p style=\"\"><span>故选D。</span></p></div></div>",
+  "create_date": "2026-09-20 14:46:23",
+  "paper_type_ids": [
+    12,
+    3,
+    6
+  ],
+  "course": {
+    "id": 30,
+    "name": "高中化学"
+  },
+  "catalogs": [
+    {
+      "id": 208080,
+      "name": "第一节  化学反应速率"
+    },
+    {
+      "id": 207849,
+      "name": "第3节 化学反应的速率"
+    },
+    {
+      "id": 213214,
+      "name": "第一单元  化学反应速率"
+    },
+    {
+      "id": 230395,
+      "name": "2.3化学反应的速率"
+    }
+  ],
+  "type": {
+    "id": "301101",
+    "name": "单题"
+  },
+  "kpoints": [
+    {
+      "id": 47771,
+      "name": "活化能对反应速率的影响"
+    },
+    {
+      "id": 6436,
+      "name": "吸热反应和放热反应"
+    },
+    {
+      "id": 6432,
+      "name": "化学键与化学反应中的能量关系"
+    },
+    {
+      "id": 102411,
+      "name": "基元反应与反应历程"
+    },
+    {
+      "id": 6474,
+      "name": "催化剂对化学反应速率的影响"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4104604293947392"
+  ]
+}

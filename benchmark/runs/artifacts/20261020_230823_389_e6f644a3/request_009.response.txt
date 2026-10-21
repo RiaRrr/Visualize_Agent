@@ -1,0 +1,1350 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二次函数值域实验台</title>
+<style>
+  :root{
+    --ink:#24323d;
+    --muted:#6b7280;
+    --paper:#f5f2ea;
+    --panel:#fffdf9;
+    --line:#e7e2d8;
+    --teal:#0f766e;
+    --teal-dark:#115e59;
+    --orange:#f97316;
+    --blue:#2563eb;
+    --green:#059669;
+    --purple:#7c3aed;
+    --red:#ef4444;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    min-width:320px;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 8% 0%, rgba(250,204,21,.10), transparent 26rem),
+      radial-gradient(circle at 96% 12%, rgba(13,148,136,.08), transparent 30rem),
+      linear-gradient(180deg,#f7f4ed 0%,var(--paper) 46%,#f3efe5 100%);
+    font-family:"Segoe UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",system-ui,sans-serif;
+    font-size:15px;
+  }
+  button,input{font:inherit;}
+  button{cursor:pointer;}
+  .is-hidden{display:none !important;}
+  .app{
+    max-width:1500px;
+    margin:0 auto;
+    padding:22px clamp(12px,3vw,34px) 38px;
+  }
+  .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:stretch;
+    gap:22px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+  }
+  .intro{flex:1 1 520px;padding:4px 0;}
+  .eyebrow{
+    color:var(--teal);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.14em;
+  }
+  .intro h1{
+    margin:6px 0 8px;
+    font-size:clamp(25px,3vw,38px);
+    line-height:1.18;
+    letter-spacing:-.025em;
+  }
+  .subtitle{
+    margin:0;
+    color:#5f6b76;
+    line-height:1.65;
+    max-width:700px;
+  }
+  .math-inline{
+    font-family:"Cambria Math","Times New Roman",serif;
+    color:#0f172a;
+    white-space:nowrap;
+  }
+  .problem-card{
+    flex:0 1 470px;
+    align-self:center;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    padding:16px 18px;
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    border-radius:18px;
+    box-shadow:0 8px 24px rgba(154,52,18,.06);
+  }
+  .problem-tag{
+    flex:none;
+    margin-top:2px;
+    padding:3px 8px;
+    border-radius:999px;
+    background:#ffedd5;
+    color:#c2410c;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.08em;
+  }
+  .problem-text{line-height:1.75;}
+  .blank{
+    display:inline-block;
+    min-width:92px;
+    border-bottom:2px dashed var(--orange);
+    color:#c2410c;
+    text-align:center;
+    font-weight:800;
+  }
+  .workspace{
+    display:grid;
+    grid-template-columns:minmax(0,1.55fr) minmax(340px,.8fr);
+    gap:18px;
+    align-items:start;
+  }
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:22px;
+    box-shadow:0 10px 30px rgba(64,54,40,.055);
+  }
+  .graph-panel{overflow:hidden;}
+  .graph-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    flex-wrap:wrap;
+    padding:18px 20px 8px;
+  }
+  .mini-label{
+    color:#8a7e6e;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+  .graph-head h2{
+    margin:3px 0 0;
+    font-size:20px;
+    line-height:1.3;
+  }
+  .step-pills{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+  .step-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:7px 11px;
+    border:1px solid #e5ddcf;
+    border-radius:999px;
+    background:#f5f1e8;
+    color:#6b6257;
+    font-size:12.5px;
+    font-weight:650;
+    transition:background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+  }
+  .step-pill:hover{transform:translateY(-1px);border-color:#c7bcaa;}
+  .step-pill span{
+    display:grid;
+    place-items:center;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:#fffdf9;
+    color:#7c6f5e;
+    font-size:11.5px;
+    font-weight:800;
+  }
+  .step-pill.active{
+    background:var(--teal);
+    color:#fff;
+    border-color:var(--teal);
+    box-shadow:0 5px 14px rgba(15,118,110,.20);
+  }
+  .step-pill.active span{
+    background:rgba(255,255,255,.18);
+    color:#fff;
+  }
+  .svg-shell{
+    padding:0 8px 2px;
+    overflow:hidden;
+  }
+  #board{
+    display:block;
+    width:100%;
+    height:auto;
+    min-height:280px;
+  }
+  .control-deck{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:18px;
+    align-items:end;
+    padding:15px 20px 18px;
+    border-top:1px solid #eee8dc;
+  }
+  .slider-group{min-width:0;}
+  .control-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:4px;
+    font-weight:700;
+  }
+  .control-head label{display:flex;align-items:center;gap:6px;}
+  .control-hint{
+    color:#948777;
+    font-size:11.5px;
+    font-weight:500;
+  }
+  .math-chip{
+    display:inline-block;
+    padding:1px 6px;
+    border:1px solid #bae6fd;
+    border-radius:6px;
+    background:#ecfeff;
+    color:#0369a1;
+    font-family:"Cambria Math","Times New Roman",serif;
+    font-size:13px;
+  }
+  input[type="range"]{
+    width:100%;
+    height:30px;
+    margin:0;
+    accent-color:var(--teal);
+    cursor:pointer;
+  }
+  .readout{
+    margin-top:4px;
+    padding:8px 10px;
+    border:1px solid #e8e1d4;
+    border-radius:10px;
+    background:#f7f4ed;
+    color:#4b5563;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+    font-size:13px;
+    line-height:1.5;
+    white-space:normal;
+  }
+  .action-row{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    padding-bottom:1px;
+  }
+  button{
+    border:0;
+    border-radius:12px;
+    padding:10px 15px;
+    font-weight:700;
+    line-height:1.2;
+    transition:background .18s ease, transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  }
+  button:hover:not(:disabled){transform:translateY(-1px);}
+  button:active:not(:disabled){transform:translateY(0);}
+  button:disabled{opacity:.42;cursor:not-allowed;}
+  .primary{
+    background:var(--teal);
+    color:#fff;
+    box-shadow:0 5px 14px rgba(15,118,110,.18);
+  }
+  .primary:hover:not(:disabled){background:var(--teal-dark);}
+  .ghost{
+    background:#f7f4ed;
+    color:#4b5563;
+    border:1px solid #e2dacd;
+  }
+  .side{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .explanation{padding:20px;}
+  .step-label{
+    color:var(--teal);
+    font-size:11.5px;
+    font-weight:800;
+    letter-spacing:.12em;
+  }
+  .explanation h2{
+    margin:6px 0 12px;
+    font-size:22px;
+    line-height:1.3;
+    letter-spacing:-.018em;
+  }
+  .explain-body p{
+    margin:0 0 10px;
+    color:#475569;
+    line-height:1.72;
+  }
+  .explain-body b{color:#0f172a;}
+  .cue{
+    margin-top:12px;
+    padding:11px 12px;
+    border-left:4px solid #14b8a6;
+    border-radius:0 10px 10px 0;
+    background:#ecfdf5;
+    color:#115e59;
+    font-size:13.5px;
+    line-height:1.62;
+  }
+  .formula-box{
+    margin-top:16px;
+    padding:14px 16px;
+    border:1px solid #e7e0d3;
+    border-radius:14px;
+    background:#f8f5ee;
+    color:#1f2937;
+    font-family:"Cambria Math","Times New Roman","Microsoft YaHei",serif;
+    font-size:16px;
+    line-height:1.7;
+    overflow:auto;
+  }
+  .calc-line{
+    margin:2px 0;
+    white-space:normal;
+  }
+  .strong-line{
+    color:#047857;
+    font-weight:800;
+  }
+  .formula-note{
+    margin-top:9px;
+    color:#7a7062;
+    font-family:"Segoe UI","Microsoft YaHei",sans-serif;
+    font-size:12.5px;
+    line-height:1.55;
+  }
+  .eq-main{
+    color:#0f172a;
+    font-weight:800;
+  }
+  .side-nav{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .side-nav button{width:100%;}
+  .answer-panel{
+    padding:20px;
+    border-color:#a7f3d0;
+    background:linear-gradient(135deg,#ecfdf5 0%,#f0fdfa 100%);
+    overflow:hidden;
+    position:relative;
+  }
+  .answer-panel::after{
+    content:"";
+    position:absolute;
+    right:-36px;
+    bottom:-52px;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    border:18px solid rgba(16,185,129,.10);
+    pointer-events:none;
+  }
+  .answer-kicker{
+    color:#047857;
+    font-size:11.5px;
+    font-weight:800;
+    letter-spacing:.12em;
+  }
+  .answer-value{
+    margin:6px 0 4px;
+    color:#047857;
+    font-family:"Cambria Math","Times New Roman",serif;
+    font-size:clamp(32px,4.6vw,44px);
+    font-weight:800;
+    letter-spacing:.02em;
+    line-height:1.12;
+  }
+  .answer-note{
+    position:relative;
+    z-index:1;
+    color:#065f46;
+    font-size:13px;
+    line-height:1.6;
+  }
+  .footnote{
+    margin:16px auto 0;
+    max-width:1040px;
+    text-align:center;
+    color:#7b7366;
+    font-size:12px;
+    line-height:1.65;
+  }
+
+  .plot-bg{
+    fill:#fbfaf6;
+    stroke:#ddd5c7;
+    stroke-width:1.2;
+  }
+  .grid-line{
+    stroke:#e5dfd3;
+    stroke-width:1;
+    shape-rendering:crispEdges;
+  }
+  .axis-line{
+    fill:none;
+    stroke:#56616f;
+    stroke-width:1.7;
+    stroke-linecap:round;
+  }
+  .axis-name{
+    fill:#475569;
+    font-size:18px;
+    font-weight:800;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:6px;
+    stroke-linejoin:round;
+  }
+  .tick-label{
+    fill:#85796b;
+    font-size:14px;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:4px;
+    stroke-linejoin:round;
+  }
+  .note-label{
+    fill:#8a7e6e;
+    font-size:12.5px;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:4px;
+    stroke-linejoin:round;
+  }
+  .curve-halo{
+    fill:none;
+    stroke:rgba(37,99,235,.14);
+    stroke-width:14;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .curve-line{
+    fill:none;
+    stroke:#2563eb;
+    stroke-width:4.4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .ceiling-line{
+    stroke:#059669;
+    stroke-width:2.4;
+    stroke-dasharray:8 6;
+    opacity:.9;
+  }
+  .ceiling-label{
+    fill:#047857;
+    font-size:14px;
+    font-weight:800;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:5px;
+    stroke-linejoin:round;
+  }
+  .sym-axis{
+    stroke:#16a34a;
+    stroke-width:1.5;
+    stroke-dasharray:5 7;
+    opacity:.65;
+  }
+  .vertex-dot{
+    fill:#16a34a;
+    stroke:#fffdf9;
+    stroke-width:3;
+  }
+  .vertex-label{
+    fill:#166534;
+    font-size:15px;
+    font-weight:800;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:6px;
+    stroke-linejoin:round;
+  }
+  .drop-h{
+    stroke:#10b981;
+    stroke-width:2;
+    stroke-dasharray:5 5;
+  }
+  .drop-v{
+    stroke:#059669;
+    stroke-width:3.8;
+    stroke-linecap:round;
+  }
+  .drop-label{
+    fill:#047857;
+    font-size:13.5px;
+    font-weight:800;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:5px;
+    stroke-linejoin:round;
+  }
+  .proj-line{
+    stroke:#ef4444;
+    stroke-width:1.7;
+    stroke-dasharray:6 5;
+    opacity:.86;
+  }
+  .proj-axis-dot{
+    fill:#ef4444;
+    stroke:#fffdf9;
+    stroke-width:2;
+  }
+  .point-ring{
+    fill:rgba(239,68,68,.16);
+    stroke:none;
+  }
+  .point-dot{
+    fill:#ef4444;
+    stroke:#fffdf9;
+    stroke-width:3;
+  }
+  .point-hit{
+    fill:transparent;
+    cursor:grab;
+    touch-action:none;
+  }
+  .point-hit:active{cursor:grabbing;}
+  .point-label{
+    fill:#b91c1c;
+    font-size:15px;
+    font-weight:800;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:5px;
+    stroke-linejoin:round;
+  }
+  .proj-label{
+    fill:#b91c1c;
+    font-size:13.5px;
+    font-weight:700;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:4px;
+    stroke-linejoin:round;
+  }
+  .scan-line{
+    stroke:#7c3aed;
+    stroke-width:2.6;
+    stroke-dasharray:9 5;
+  }
+  .scan-dot{
+    fill:#7c3aed;
+    stroke:#fffdf9;
+    stroke-width:3;
+  }
+  .scan-label{
+    fill:#6d28d9;
+    font-size:14px;
+    font-weight:800;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:5px;
+    stroke-linejoin:round;
+  }
+  .scan-root{
+    fill:#6d28d9;
+    font-size:12.5px;
+    font-weight:700;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:4px;
+    stroke-linejoin:round;
+  }
+  .scan-no-int{
+    fill:#b91c1c;
+    font-size:13.5px;
+    font-weight:800;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:5px;
+    stroke-linejoin:round;
+  }
+  .range-line{
+    stroke:#059669;
+    stroke-width:3.2;
+    stroke-linecap:round;
+  }
+  .range-tick{
+    stroke:#059669;
+    stroke-width:2;
+  }
+  .range-dot{
+    fill:#059669;
+    stroke:#fffdf9;
+    stroke-width:2.4;
+  }
+  .range-label{
+    fill:#047857;
+    font-size:14px;
+    font-weight:800;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:5px;
+    stroke-linejoin:round;
+  }
+  .plot-note{
+    fill:#8a7e6e;
+    font-size:12.5px;
+    paint-order:stroke;
+    stroke:#fbfaf6;
+    stroke-width:4px;
+    stroke-linejoin:round;
+  }
+
+  @media (max-width:1080px){
+    .workspace{grid-template-columns:1fr;}
+    .side{display:grid;grid-template-columns:1fr 1fr;align-items:start;}
+    .explanation{grid-column:1/-1;}
+    .side-nav{grid-column:1/-1;}
+    .answer-panel{grid-column:1/-1;}
+  }
+  @media (max-width:720px){
+    .app{padding-inline:10px;}
+    .topbar{gap:12px;}
+    .problem-card{flex-basis:100%;}
+    .graph-head{padding:15px 14px 8px;}
+    .step-pills{justify-content:flex-start;}
+    .control-deck{grid-template-columns:1fr;align-items:stretch;padding:14px;}
+    .action-row{justify-content:flex-start;}
+    .side{display:flex;}
+    .explanation{padding:17px;}
+    .explanation h2{font-size:20px;}
+    .side-nav{order:4;}
+    .svg-shell{
+      overflow-x:auto;
+      overflow-y:hidden;
+      -webkit-overflow-scrolling:touch;
+    }
+    #board{min-width:700px;min-height:250px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto !important;transition-duration:.001ms !important;animation-duration:.001ms !important;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="intro">
+      <div class="eyebrow">二次函数 · 值域实验台</div>
+      <h1>看见 <span class="math-inline">y = −x<sup>2</sup> + 2x − 14</span> 的值域</h1>
+      <p class="subtitle">拖动曲线上的点 P 看函数值；配方找到最高位置；再用一条水平线扫描所有可能的高度。</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-tag">题目</div>
+      <div class="problem-text">
+        函数 <span class="math-inline">y = −x<sup>2</sup> + 2x − 14</span> 的值域是
+        <span class="blank">？</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="panel graph-panel">
+      <div class="graph-head">
+        <div>
+          <div class="mini-label">当前图形</div>
+          <h2 id="stateTitle">曲线上点 P 的高度</h2>
+        </div>
+        <div class="step-pills" id="stepPills">
+          <button type="button" class="step-pill active" data-state="1"><span>1</span>看函数值</button>
+          <button type="button" class="step-pill" data-state="2"><span>2</span>配方找顶点</button>
+          <button type="button" class="step-pill" data-state="3"><span>3</span>高度上限</button>
+          <button type="button" class="step-pill" data-state="4"><span>4</span>扫描高度</button>
+        </div>
+      </div>
+
+      <div class="svg-shell">
+        <svg id="board" viewBox="0 0 1000 620" role="img" aria-label="二次函数图像、顶点与值域扫描图">
+          <defs>
+            <clipPath id="plotClip">
+              <rect x="90" y="55" width="780" height="500"></rect>
+            </clipPath>
+            <marker id="arrowAxis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 Z" fill="#56616f"></path>
+            </marker>
+            <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 Z" fill="#059669"></path>
+            </marker>
+          </defs>
+
+          <rect class="plot-bg" x="90" y="55" width="780" height="500" rx="16"></rect>
+
+          <g id="gridLayer"></g>
+          <g id="axisLayer"></g>
+
+          <g clip-path="url(#plotClip)">
+            <path id="curveHalo" class="curve-halo"></path>
+            <path id="curvePath" class="curve-line"></path>
+          </g>
+
+          <g id="ceilingLayer" class="is-hidden">
+            <line id="ceilingLine" class="ceiling-line" x1="90" y1="276" x2="870" y2="276"></line>
+            <text id="ceilingLabel" class="ceiling-label" x="858" y="262" text-anchor="end">最高高度 y = −13</text>
+          </g>
+
+          <g id="rangeLayer" class="is-hidden">
+            <line id="rangeLine" class="range-line" x1="910" y1="276" x2="910" y2="543" marker-end="url(#arrowGreen)"></line>
+            <line id="rangeTopTick" class="range-tick" x1="897" y1="276" x2="923" y2="276"></line>
+            <circle id="rangeDot" class="range-dot" cx="910" cy="276" r="5.5"></circle>
+            <text id="rangeTitle" class="range-label" x="910" y="252" text-anchor="middle">值域</text>
+            <text id="rangeTopLabel" class="range-label" x="927" y="281" text-anchor="start">−13（含）</text>
+            <text id="rangeBottomLabel" class="range-label" x="927" y="541" text-anchor="start">→ −∞</text>
+          </g>
+
+          <g id="vertexLayer" class="is-hidden">
+            <line id="symAxis" class="sym-axis" x1="480" y1="55" x2="480" y2="555"></line>
+            <circle id="vertexDot" class="vertex-dot" cx="480" cy="276" r="7"></circle>
+            <text id="vertexLabel" class="vertex-label" x="494" y="262">顶点 (1, −13)</text>
+            <text id="symLabel" class="note-label" x="488" y="80">对称轴 x = 1</text>
+          </g>
+
+          <g id="dropLayer" class="is-hidden">
+            <line id="dropH" class="drop-h" x1="480" y1="276" x2="650" y2="276"></line>
+            <line id="dropV" class="drop-v" x1="650" y1="276" x2="650" y2="330"></line>
+            <text id="dropLabel" class="drop-label" x="660" y="307">(x−1)² = 4.00</text>
+          </g>
+
+          <g id="scanLayer" class="is-hidden">
+            <line id="scanLine" class="scan-line" x1="90" y1="400" x2="870" y2="400"></line>
+            <circle id="scanDotL" class="scan-dot" cx="240" cy="400" r="6"></circle>
+            <circle id="scanDotR" class="scan-dot" cx="700" cy="400" r="6"></circle>
+            <text id="scanLabel" class="scan-label" x="102" y="390" text-anchor="start">y = −20.0</text>
+            <text id="scanRootL" class="scan-root" x="240" y="423" text-anchor="middle">x1 = −1.65</text>
+            <text id="scanRootR" class="scan-root" x="700" y="423" text-anchor="middle">x2 = 3.65</text>
+            <text id="scanNoInt" class="scan-no-int" x="480" y="218" text-anchor="middle"></text>
+          </g>
+
+          <g id="pointLayer">
+            <line id="projH" class="proj-line" x1="650" y1="330" x2="387" y2="330"></line>
+            <line id="projV" class="proj-line" x1="650" y1="330" x2="650" y2="84"></line>
+            <circle id="axisDot" class="proj-axis-dot" cx="387" cy="330" r="5"></circle>
+            <circle id="xAxisDot" class="proj-axis-dot" cx="650" cy="84" r="4"></circle>
+            <circle id="pointRing" class="point-ring" cx="650" cy="330" r="15"></circle>
+            <circle id="pointDot" class="point-dot" cx="650" cy="330" r="7"></circle>
+            <text id="pointLabel" class="point-label" x="662" y="318">P</text>
+            <text id="projYLabel" class="proj-label" x="397" y="322"></text>
+            <circle id="pointHit" class="point-hit" cx="650" cy="330" r="24"></circle>
+          </g>
+
+          <text class="plot-note" x="100" y="592">纵轴压缩显示：x、y 轴单位长度不同；曲线按函数式计算</text>
+        </svg>
+      </div>
+
+      <div class="control-deck">
+        <div class="slider-group" id="xControl">
+          <div class="control-head">
+            <label for="xSlider">动点横坐标 <span class="math-chip">x</span></label>
+            <span class="control-hint">拖滑块，或直接拖红点 P</span>
+          </div>
+          <input id="xSlider" type="range" min="-3.2" max="5.2" step="0.01" value="3" aria-label="动点横坐标 x">
+          <div class="readout" id="xReadout">x = 3.00　y = −17.00</div>
+        </div>
+
+        <div class="slider-group is-hidden" id="yControl">
+          <div class="control-head">
+            <label for="ySlider">扫描高度 <span class="math-chip">y</span></label>
+            <span class="control-hint">演示区间 −30 到 −8</span>
+          </div>
+          <input id="ySlider" type="range" min="-30" max="-8" step="0.1" value="-20" aria-label="扫描高度 y">
+          <div class="readout" id="yReadout">y = −20.0：交点 x₁ = −1.65，x₂ = 3.65</div>
+        </div>
+
+        <div class="action-row">
+          <button type="button" class="primary" id="playBtn">播放</button>
+          <button type="button" class="ghost" id="keyBtn">到最高处</button>
+          <button type="button" class="ghost is-hidden" id="testBtn">试 y = −10</button>
+          <button type="button" class="ghost" id="resetBtn">复位</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="side">
+      <section class="panel explanation">
+        <div class="step-label" id="stepLabel">步骤 1 / 4 · 观察</div>
+        <h2 id="explainTitle">先看函数值怎样出现</h2>
+        <div class="explain-body" id="explainBody"></div>
+        <div class="formula-box" id="formulaBox"></div>
+      </section>
+
+      <div class="side-nav">
+        <button type="button" class="ghost" id="prevBtn">上一步</button>
+        <button type="button" class="primary" id="nextBtn">下一步</button>
+      </div>
+
+      <section class="panel answer-panel is-hidden" id="answerPanel">
+        <div class="answer-kicker">值域的完整写法</div>
+        <div class="answer-value">(−∞, −13]</div>
+        <div class="answer-note">最大值 −13 在 x = 1 取得；向下没有最小值。</div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="footnote">
+    主图显示范围为 x ∈ [−3.2, 5.2]，y ∈ [−32, 2]，且纵轴经过压缩；函数本身对所有实数 x 都有定义。扫描高度只演示 −30 到 −8 这一段，抛物线还会继续向下无限延伸。
+  </footer>
+</div>
+
+<script>
+  const NS = "http://www.w3.org/2000/svg";
+  const XMIN = -3.2, XMAX = 5.2, YMIN = -32, YMAX = 2;
+  const L = 90, R = 870, T = 55, B = 555;
+  const VX = 1, VY = -13;
+
+  const sx = x => L + (x - XMIN) / (XMAX - XMIN) * (R - L);
+  const sy = y => T + (YMAX - y) / (YMAX - YMIN) * (B - T);
+  const f = x => -x * x + 2 * x - 14;
+
+  const $ = id => document.getElementById(id);
+  const svg = $("board");
+
+  let state = 1;
+  let currentX = 3;
+  let scanY = -20;
+  let playing = false;
+  let raf = null;
+  let animDir = 1;
+  let dwell = 0;
+  let draggingPoint = false;
+
+  function fmt(n, d = 2) {
+    const eps = 0.5 * Math.pow(10, -d);
+    if (Math.abs(n) < eps) n = 0;
+    const v = Math.abs(n).toFixed(d);
+    return (n < 0 ? "−" : "") + v;
+  }
+
+  function setAttrs(el, attrs) {
+    for (const key in attrs) el.setAttribute(key, attrs[key]);
+  }
+
+  function svgNode(tag, attrs = {}, text = null) {
+    const node = document.createElementNS(NS, tag);
+    setAttrs(node, attrs);
+    if (text !== null) node.textContent = text;
+    return node;
+  }
+
+  function addTo(parent, tag, attrs = {}, text = null) {
+    const node = svgNode(tag, attrs, text);
+    parent.appendChild(node);
+    return node;
+  }
+
+  function drawStatic() {
+    let d = "";
+    const step = 0.02;
+    for (let x = XMIN; x <= XMAX + 1e-9; x += step) {
+      const px = sx(x);
+      const py = sy(f(x));
+      d += (d === "" ? "M" : " L") + px.toFixed(2) + " " + py.toFixed(2);
+    }
+    $("curvePath").setAttribute("d", d);
+    $("curveHalo").setAttribute("d", d);
+
+    const vx = sx(VX);
+    const vy = sy(VY);
+
+    setAttrs($("ceilingLine"), { x1: L, y1: vy, x2: R, y2: vy });
+    setAttrs($("ceilingLabel"), { x: R - 12, y: vy - 13 });
+
+    setAttrs($("rangeLine"), { x1: 910, y1: vy, x2: 910, y2: B - 12 });
+    setAttrs($("rangeTopTick"), { x1: 897, y1: vy, x2: 923, y2: vy });
+    setAttrs($("rangeDot"), { cx: 910, cy: vy });
+    setAttrs($("rangeTitle"), { x: 910, y: vy - 24 });
+    setAttrs($("rangeTopLabel"), { x: 927, y: vy + 5 });
+    setAttrs($("rangeBottomLabel"), { x: 927, y: B - 14 });
+
+    setAttrs($("symAxis"), { x1: vx, y1: T, x2: vx, y2: B });
+    setAttrs($("vertexDot"), { cx: vx, cy: vy });
+    setAttrs($("vertexLabel"), { x: vx + 14, y: vy - 13 });
+    setAttrs($("symLabel"), { x: vx + 8, y: T + 25 });
+
+    const grid = $("gridLayer");
+    grid.innerHTML = "";
+
+    for (let x = -3; x <= 5; x++) {
+      addTo(grid, "line", {
+        x1: sx(x), y1: T, x2: sx(x), y2: B, class: "grid-line"
+      });
+    }
+
+    for (let y = -30; y <= 0; y += 5) {
+      addTo(grid, "line", {
+        x1: L, y1: sy(y), x2: R, y2: sy(y), class: "grid-line"
+      });
+    }
+
+    const axis = $("axisLayer");
+    axis.innerHTML = "";
+
+    addTo(axis, "line", {
+      x1: L, y1: sy(0), x2: R + 9, y2: sy(0),
+      class: "axis-line", "marker-end": "url(#arrowAxis)"
+    });
+
+    addTo(axis, "line", {
+      x1: sx(0), y1: B, x2: sx(0), y2: T - 9,
+      class: "axis-line", "marker-end": "url(#arrowAxis)"
+    });
+
+    addTo(axis, "text", {
+      x: R + 19, y: sy(0) + 6, class: "axis-name"
+    }, "x");
+
+    addTo(axis, "text", {
+      x: sx(0) + 12, y: T - 8, class: "axis-name"
+    }, "y");
+
+    for (let x = -3; x <= 5; x++) {
+      addTo(axis, "text", {
+        x: sx(x), y: sy(0) + 24, class: "tick-label", "text-anchor": "middle"
+      }, x === 0 ? "0" : fmt(x, 0));
+    }
+
+    for (let y = -5; y >= -30; y -= 5) {
+      addTo(axis, "text", {
+        x: sx(0) - 10, y: sy(y) + 5, class: "tick-label", "text-anchor": "end"
+      }, fmt(y, 0));
+    }
+  }
+
+  const stateData = [
+    {
+      graphTitle: "曲线上点 P 的高度",
+      stage: "观察",
+      explainTitle: "先看函数值怎样出现",
+      body: `<p>红点 P 在曲线上，它的纵坐标就是函数值 <b>y</b>。拖动 x 滑块，或直接拖动 P。</p>
+        <div class="cue">看 P 的高度怎样随横坐标 x 改变。</div>`,
+      formula: `<div class="calc-line">原函数：<span class="eq-main">y = −x<sup>2</sup> + 2x − 14</span></div>
+        <div class="formula-note">P 的坐标写作 (x, y)，其中 y = f(x)。</div>`
+    },
+    {
+      graphTitle: "配方后看见顶点",
+      stage: "顶点式",
+      explainTitle: "把平方项和高度差连起来",
+      body: `<p>配方不改变函数，只换一种写法：<b>y = −(x−1)<sup>2</sup> − 13</b>。</p>
+        <div class="cue">绿色竖段表示 P 比顶点低 (x−1)<sup>2</sup>；横坐标离 1 越远，P 就越低。</div>`,
+      formula: `<div class="calc-line">y = −x<sup>2</sup> + 2x − 14</div>
+        <div class="calc-line">　= −(x<sup>2</sup> − 2x) − 14</div>
+        <div class="calc-line">　= −[(x − 1)<sup>2</sup> − 1] − 14</div>
+        <div class="calc-line strong-line">　= −(x − 1)<sup>2</sup> − 13</div>
+        <div class="formula-note">顶点： (1, −13)</div>`
+    },
+    {
+      graphTitle: "高度上限 −13",
+      stage: "上界",
+      explainTitle: "平方项把高度往下拉",
+      body: `<p>平方项 <b>(x−1)<sup>2</sup></b> 最小为 0；前面的负号使它只能把高度往下拉。</p>
+        <div class="cue">所以 y 不可能高于 −13；当 x = 1 时正好到达 −13。</div>`,
+      formula: `<div class="calc-line">(x − 1)<sup>2</sup> ≥ 0</div>
+        <div class="calc-line">⇒ −(x − 1)<sup>2</sup> ≤ 0</div>
+        <div class="calc-line strong-line">⇒ y = −(x − 1)<sup>2</sup> − 13 ≤ −13</div>
+        <div class="formula-note">等号在 x = 1 时取得。</div>`
+    },
+    {
+      graphTitle: "扫描所有高度",
+      stage: "完整值域",
+      explainTitle: "哪些 y 能找到交点？",
+      body: `<p>紫色水平线表示某个高度 y。拖动扫描：低于 −13 有两个交点；等于 −13 只有一个；高于 −13 没有交点。</p>
+        <div class="cue">因此所有 y ≤ −13 都能取到，且只有这些高度能取到。</div>`,
+      formula: `<div class="calc-line">y = −(x − 1)<sup>2</sup> − 13</div>
+        <div class="calc-line">(x − 1)<sup>2</sup> = −13 − y</div>
+        <div class="calc-line strong-line">x = 1 ± √(−13 − y)</div>
+        <div class="formula-note">当且仅当 −13 − y ≥ 0，即 y ≤ −13，方程才有实数解。</div>`
+    }
+  ];
+
+  function renderGraph() {
+    const scanState = state === 4;
+
+    $("pointLayer").classList.toggle("is-hidden", scanState);
+    $("scanLayer").classList.toggle("is-hidden", !scanState);
+    $("vertexLayer").classList.toggle("is-hidden", state < 2);
+    $("ceilingLayer").classList.toggle("is-hidden", state < 3);
+    $("rangeLayer").classList.toggle("is-hidden", state < 4);
+    $("dropLayer").classList.toggle("is-hidden", !(state >= 2 && state <= 3));
+
+    $("xSlider").value = currentX;
+    $("ySlider").value = scanY;
+
+    if (!scanState) {
+      const yv = f(currentX);
+      const px = sx(currentX);
+      const py = sy(yv);
+      const axisX = sx(0);
+      const axisY0 = sy(0);
+      const drop = (currentX - 1) * (currentX - 1);
+
+      setAttrs($("projH"), { x1: px, y1: py, x2: axisX, y2: py });
+      setAttrs($("projV"), { x1: px, y1: py, x2: px, y2: axisY0 });
+      setAttrs($("axisDot"), { cx: axisX, cy: py });
+      setAttrs($("xAxisDot"), { cx: px, cy: axisY0 });
+      setAttrs($("pointRing"), { cx: px, cy: py });
+      setAttrs($("pointDot"), { cx: px, cy: py });
+      setAttrs($("pointHit"), { cx: px, cy: py });
+
+      const nearVertex = Math.abs(currentX - 1) < 0.06;
+      let anchor = currentX > 4.5 ? "end" : "start";
+      let dx = anchor === "end" ? -12 : 12;
+      let dy = state >= 2 ? 30 : -12;
+      if (nearVertex && state >= 2) dy = 34;
+
+      setAttrs($("pointLabel"), {
+        x: px + dx,
+        y: py + dy,
+        "text-anchor": anchor
+      });
+      $("pointLabel").textContent = nearVertex && state >= 2 ? "P = 顶点" : "P";
+
+      setAttrs($("projYLabel"), {
+        x: axisX + 10,
+        y: py - 8,
+        "text-anchor": "start"
+      });
+      $("projYLabel").textContent = "y = " + fmt(yv, 2);
+
+      if (state >= 2 && state <= 3) {
+        const vx = sx(VX);
+        const vy = sy(VY);
+        setAttrs($("dropH"), { x1: vx, y1: vy, x2: px, y2: vy });
+        setAttrs($("dropV"), { x1: px, y1: vy, x2: px, y2: py });
+
+        let labelX = px + 10;
+        let labelAnchor = "start";
+        if (currentX > 4.35) {
+          labelX = px - 10;
+          labelAnchor = "end";
+        }
+        let labelY = (vy + py) / 2 + 4;
+        if (drop < 0.04) {
+          labelX = vx + 14;
+          labelAnchor = "start";
+          labelY = vy + 26;
+        }
+
+        setAttrs($("dropLabel"), {
+          x: labelX,
+          y: labelY,
+          "text-anchor": labelAnchor
+        });
+        $("dropLabel").textContent = "(x−1)² = " + fmt(drop, 2);
+      }
+
+      if (state === 1) {
+        $("xReadout").innerHTML = `x = ${fmt(currentX, 2)}　y = ${fmt(yv, 2)}`;
+      } else {
+        $("xReadout").innerHTML =
+          `x = ${fmt(currentX, 2)}　y = ${fmt(yv, 2)}　(x−1)<sup>2</sup> = ${fmt(drop, 2)}`;
+      }
+    } else {
+      const lineY = sy(scanY);
+      const delta = -13 - scanY;
+      const s = Math.sqrt(Math.max(0, delta));
+      const leftX = sx(1 - s);
+      const rightX = sx(1 + s);
+
+      setAttrs($("scanLine"), { x1: L, y1: lineY, x2: R, y2: lineY });
+      setAttrs($("scanLabel"), { x: L + 12, y: lineY - 10, "text-anchor": "start" });
+      $("scanLabel").textContent = "y = " + fmt(scanY, 1);
+
+      const noRoot = scanY > -13 + 1e-9;
+      const tangent = !noRoot && delta < 0.01;
+
+      $("scanDotR").style.display = tangent || noRoot ? "none" : "";
+      $("scanRootR").style.display = tangent || noRoot ? "none" : "";
+
+      if (noRoot) {
+        $("scanDotL").style.display = "none";
+        $("scanRootL").style.display = "none";
+        $("scanNoInt").style.display = "";
+        setAttrs($("scanNoInt"), {
+          x: sx(1),
+          y: lineY - 16,
+          "text-anchor": "middle"
+        });
+        $("scanNoInt").textContent = "无实数交点：y 高于 −13";
+        $("yReadout").innerHTML =
+          `y = ${fmt(scanY, 1)}：方程无实数解（y 高于 −13）`;
+      } else if (tangent) {
+        $("scanDotL").style.display = "";
+        setAttrs($("scanDotL"), { cx: sx(1), cy: lineY });
+        $("scanRootL").style.display = "";
+        setAttrs($("scanRootL"), {
+          x: sx(1) + 16,
+          y: lineY + 22,
+          "text-anchor": "start"
+        });
+        $("scanRootL").textContent = "x = 1（顶点）";
+        $("scanNoInt").style.display = "none";
+        $("yReadout").innerHTML =
+          `y = −13：水平线与抛物线相切于顶点，x = 1`;
+      } else {
+        $("scanDotL").style.display = "";
+        setAttrs($("scanDotL"), { cx: leftX, cy: lineY });
+        setAttrs($("scanDotR"), { cx: rightX, cy: lineY });
+
+        let leftAnchor = "middle";
+        let leftLabelX = leftX;
+        if (leftX < L + 58) {
+          leftAnchor = "start";
+          leftLabelX = leftX + 10;
+        }
+
+        let rightAnchor = "middle";
+        let rightLabelX = rightX;
+        if (rightX > R - 58) {
+          rightAnchor = "end";
+          rightLabelX = rightX - 10;
+        }
+
+        $("scanRootL").style.display = "";
+        setAttrs($("scanRootL"), {
+          x: leftLabelX,
+          y: lineY + 22,
+          "text-anchor": leftAnchor
+        });
+        $("scanRootL").textContent = "x1 = " + fmt(1 - s, 2);
+
+        $("scanRootR").style.display = "";
+        setAttrs($("scanRootR"), {
+          x: rightLabelX,
+          y: lineY + 22,
+          "text-anchor": rightAnchor
+        });
+        $("scanRootR").textContent = "x2 = " + fmt(1 + s, 2);
+
+        $("scanNoInt").style.display = "none";
+        $("yReadout").innerHTML =
+          `y = ${fmt(scanY, 1)}：交点 x<sub>1</sub> = ${fmt(1 - s, 2)}，x<sub>2</sub> = ${fmt(1 + s, 2)}`;
+      }
+    }
+  }
+
+  function renderAll() {
+    const data = stateData[state - 1];
+
+    $("stateTitle").textContent = data.graphTitle;
+    $("stepLabel").textContent = `步骤 ${state} / 4 · ${data.stage}`;
+    $("explainTitle").textContent = data.explainTitle;
+    $("explainBody").innerHTML = data.body;
+    $("formulaBox").innerHTML = data.formula;
+
+    $("answerPanel").classList.toggle("is-hidden", state !== 4);
+    $("prevBtn").disabled = state === 1;
+    $("nextBtn").disabled = state === 4;
+    $("testBtn").classList.toggle("is-hidden", state !== 4);
+
+    if (state === 4) {
+      $("keyBtn").textContent = "扫到 −13";
+    } else if (state === 1) {
+      $("keyBtn").textContent = "到最高处";
+    } else {
+      $("keyBtn").textContent = "到顶点";
+    }
+
+    document.querySelectorAll(".step-pill").forEach(btn => {
+      btn.classList.toggle("active", Number(btn.dataset.state) === state);
+    });
+
+    $("xControl").classList.toggle("is-hidden", state === 4);
+    $("yControl").classList.toggle("is-hidden", state !== 4);
+
+    renderGraph();
+  }
+
+  function stopPlay() {
+    playing = false;
+    if (raf) {
+      cancelAnimationFrame(raf);
+      raf = null;
+    }
+    $("playBtn").textContent = "播放";
+  }
+
+  function startPlay() {
+    if (playing) return;
+    playing = true;
+    dwell = 0;
+    $("playBtn").textContent = "暂停";
+
+    if (state === 4) {
+      animDir = scanY < -13 ? 1 : -1;
+    } else {
+      animDir = currentX > 1 ? -1 : 1;
+    }
+
+    let last = performance.now();
+
+    function frame(ts) {
+      if (!playing) return;
+      const dt = Math.min(50, ts - last) / 1000;
+      last = ts;
+
+      if (dwell > 0) {
+        dwell -= dt;
+      } else if (state === 4) {
+        const prev = scanY;
+        scanY += animDir * 4.2 * dt;
+
+        if (prev < -13 && scanY >= -13 && animDir > 0) {
+          scanY = -13;
+          dwell = 0.38;
+        } else if (prev > -13 && scanY <= -13 && animDir < 0) {
+          scanY = -13;
+          dwell = 0.38;
+        }
+
+        if (scanY >= -8) {
+          scanY = -8;
+          animDir = -1;
+          dwell = 0.18;
+        } else if (scanY <= -30) {
+          scanY = -30;
+          animDir = 1;
+          dwell = 0.18;
+        }
+      } else {
+        currentX += animDir * 1.9 * dt;
+        if (currentX >= XMAX) {
+          currentX = XMAX;
+          animDir = -1;
+          dwell = 0.16;
+        } else if (currentX <= XMIN) {
+          currentX = XMIN;
+          animDir = 1;
+          dwell = 0.16;
+        }
+      }
+
+      renderGraph();
+      raf = requestAnimationFrame(frame);
+    }
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  function setState(n) {
+    if (n < 1 || n > 4) return;
+    stopPlay();
+    state = n;
+    renderAll();
+  }
+
+  function clientToSvgPoint(evt) {
+    const pt = svg.createSVGPoint();
+    pt.x = evt.clientX;
+    pt.y = evt.clientY;
+    return pt.matrixTransform(svg.getScreenCTM().inverse());
+  }
+
+  function movePointFromClient(evt) {
+    if (state === 4) return;
+    const p = clientToSvgPoint(evt);
+    let x = XMIN + (p.x - L) / (R - L) * (XMAX - XMIN);
+    x = Math.max(XMIN, Math.min(XMAX, x));
+    currentX = Math.round(x * 100) / 100;
+    renderGraph();
+  }
+
+  document.querySelectorAll(".step-pill").forEach(btn => {
+    btn.addEventListener("click", () => setState(Number(btn.dataset.state)));
+  });
+
+  $("prevBtn").addEventListener("click", () => setState(state - 1));
+  $("nextBtn").addEventListener("click", () => setState(state + 1));
+
+  $("xSlider").addEventListener("input", e => {
+    stopPlay();
+    currentX = parseFloat(e.target.value);
+    renderGraph();
+  });
+
+  $("ySlider").addEventListener("input", e => {
+    stopPlay();
+    scanY = parseFloat(e.target.value);
+    renderGraph();
+  });
+
+  $("playBtn").addEventListener("click", () => {
+    if (playing) {
+      stopPlay();
+    } else {
+      startPlay();
+    }
+  });
+
+  $("keyBtn").addEventListener("click", () => {
+    stopPlay();
+    if (state === 4) {
+      scanY = -13;
+    } else {
+      currentX = 1;
+    }
+    renderGraph();
+  });
+
+  $("testBtn").addEventListener("click", () => {
+    stopPlay();
+    scanY = -10;
+    renderGraph();
+  });
+
+  $("resetBtn").addEventListener("click", () => {
+    stopPlay();
+    state = 1;
+    currentX = 3;
+    scanY = -20;
+    renderAll();
+  });
+
+  $("pointHit").addEventListener("pointerdown", e => {
+    if (state === 4) return;
+    stopPlay();
+    draggingPoint = true;
+    e.target.setPointerCapture(e.pointerId);
+    movePointFromClient(e);
+    e.preventDefault();
+  });
+
+  $("pointHit").addEventListener("pointermove", e => {
+    if (!draggingPoint) return;
+    movePointFromClient(e);
+    e.preventDefault();
+  });
+
+  function endPointDrag(e) {
+    draggingPoint = false;
+    if (e.target.hasPointerCapture && e.target.hasPointerCapture(e.pointerId)) {
+      e.target.releasePointerCapture(e.pointerId);
+    }
+  }
+
+  $("pointHit").addEventListener("pointerup", endPointDrag);
+  $("pointHit").addEventListener("pointercancel", endPointDrag);
+
+  drawStatic();
+  setState(1);
+</script>
+</body>
+</html>

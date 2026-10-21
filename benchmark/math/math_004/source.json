@@ -1,0 +1,90 @@
+{
+  "id": "3750522406903808",
+  "course_id": 27,
+  "type_id": "270201",
+  "kpoint_ids": [
+    11214,
+    11055,
+    71123
+  ],
+  "catalog_ids": [
+    195210,
+    209586,
+    218106,
+    188052,
+    204184,
+    220688
+  ],
+  "years": [
+    2025
+  ],
+  "difficulty": 0.8500000000000001,
+  "difficulty_level": 18,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1792031951-114651791852237200-ftWO4rUksqq8sdPl5PtffCtULbxsGoOqfpmVlWOscFFtJWEYHsICAs7hWRE9WDax\"><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">若函数</span><img  src=\"https://img.xkw.com/dksih/formula/e7f77974d83e25bcaabda2b06aebb4c6.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为奇函数，则</span><img  src=\"https://img.xkw.com/dksih/formula/85527d190d4e1d6bac4145d1c716e65e.svg\" class=\"xkw-math-img\" /><span class=\"qml-bk\" index=\"1\" size=\"8\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　</span><span style=\"font-family: 宋体;\">．</span></p></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1792031951-114651791852237200-ftWO4rUksqq8sdPl5PtffCtULbxsGoOqfpmVlWOscFFtJWEYHsICAs7hWRE9WDax\"><span class=\"qml-an-sq\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/28c896706eca882e580e7fc72cf22aa7.svg\" class=\"xkw-math-img\" /></span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1792031951-114651791852237200-ftWO4rUksqq8sdPl5PtffCtULbxsGoOqfpmVlWOscFFtJWEYHsICAs7hWRE9WDax\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">根据辅助角公式得出</span><img  src=\"https://img.xkw.com/dksih/formula/c1352a78c3e4dcb62a21d3b5b9cbee35.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，再根据奇函数的性质求出</span><img  src=\"https://img.xkw.com/dksih/formula/c24095e409b025db711f14be783a406c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的值，得出答案</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">由辅助角公式，得</span><img  src=\"https://img.xkw.com/dksih/formula/c1352a78c3e4dcb62a21d3b5b9cbee35.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，其中</span><img  src=\"https://img.xkw.com/dksih/formula/cb8028f6388d79af586955de1b85af82.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">．</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">又因</span><img  src=\"https://img.xkw.com/dksih/formula/4fe7d5809da02c15a43a0e9a898b9086.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为奇函数，则有</span><img  src=\"https://img.xkw.com/dksih/formula/c2b5c6a164d9d61f9a3807d6c71f91b9.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><span>即</span><img  src=\"https://img.xkw.com/dksih/formula/eb459f441e4979f9b19b6de1728bf916.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><span>故</span><img  src=\"https://img.xkw.com/dksih/formula/07d50978aecc7c792567868871800118.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">（</span><img  src=\"https://img.xkw.com/dksih/formula/232d1ce3ad14256b1543e6007ff1675d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">），</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">于是</span><img  src=\"https://img.xkw.com/dksih/formula/868936ba941cadae6e2d4d1a6a9dffb3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，故</span><img  src=\"https://img.xkw.com/dksih/formula/70507f122e6df85b342ecefdd84284c0.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">．</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">故答案为：</span><img  src=\"https://img.xkw.com/dksih/formula/28c896706eca882e580e7fc72cf22aa7.svg\" class=\"xkw-math-img\" /><span>.</span></p></div></div>",
+  "create_date": "2025-05-08 08:00:16",
+  "paper_type_ids": [
+    22,
+    52,
+    24
+  ],
+  "course": {
+    "id": 27,
+    "name": "高中数学"
+  },
+  "catalogs": [
+    {
+      "id": 195210,
+      "name": "8.2.2 两角和与差的正弦、正切"
+    },
+    {
+      "id": 209586,
+      "name": "10.1.2 两角和与差的正弦"
+    },
+    {
+      "id": 218106,
+      "name": "1两角和与差的正弦、余弦、正切公式"
+    },
+    {
+      "id": 188052,
+      "name": "5.5.2 简单的三角恒等变换"
+    },
+    {
+      "id": 204184,
+      "name": "2.3三角函数的叠加及其应用"
+    },
+    {
+      "id": 220688,
+      "name": "2.1 两角和与差的三角函数"
+    }
+  ],
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "kpoints": [
+    {
+      "id": 11214,
+      "name": "辅助角公式"
+    },
+    {
+      "id": 11055,
+      "name": "正弦函数图象的应用"
+    },
+    {
+      "id": 71123,
+      "name": "由奇偶性求参数"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "3761360507355136"
+  ]
+}

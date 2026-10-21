@@ -1,14 +1,19 @@
 apikeys.md
 api-capabilities.local.md
 .env
+.env.*
+!.env.example
 .venv/
 __pycache__/
 .pytest_cache/
 data/
 data_v2/
+data_local/
 data_compare/
 *.pyc
 # Local benchmark resources and experimental artifacts
+# Reviewed pilot files already tracked in Git remain available after cloning.
+# These rules keep new runs / private annotations out until explicitly exported.
 benchmark/_asset_cache/
 benchmark/runs/
 benchmark/evaluation/human/

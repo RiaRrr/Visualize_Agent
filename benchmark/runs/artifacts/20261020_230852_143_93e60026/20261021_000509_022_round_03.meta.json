@@ -1,0 +1,148 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261020_230852_143_93e60026:3",
+  "task_id": "20261020_230852_143_93e60026",
+  "batch_id": "benchmark-pilot-v1",
+  "round": 3,
+  "created_at": "2026-10-21T00:05:09.077961+08:00",
+  "files": {
+    "image": "20261020_230852_143_input.png",
+    "html": "20261021_000509_022_round_03.html",
+    "screenshot": "20261021_000509_022_round_03.png",
+    "model_review": "20261021_000509_022_round_03.review.json",
+    "config": "20261020_230852_143_config.json",
+    "model_review_raw": "round_03.model_review_raw.txt"
+  },
+  "html_sha256": "478235f5ca5ab8d69720fb2034daf4a8e1cb86a90b3aa1581215c11086884ca2",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "physics",
+    "name": "物理 · 过程与受力",
+    "version": "219290302036",
+    "subject": "physics"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": true,
+    "summary": "题目条件、研究对象与两问所求一致；停稳时间、全程距离和最后4s位移计算正确；v-t图面积、跑道位置、时间轴与高亮同步，单位与符号方向一致，离线可用。",
+    "issues": [],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 5,
+      "interaction_quality": 5,
+      "teaching_effectiveness": 5
+    },
+    "overall_score": 5
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 69,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 3,
+        "stage": "generating",
+        "started_at": "2026-10-20T23:58:43.655969+08:00",
+        "ended_at": "2026-10-21T00:00:48.641149+08:00",
+        "duration_seconds": 124.98518,
+        "status": "completed"
+      },
+      {
+        "id": 71,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 3,
+        "stage": "validating",
+        "started_at": "2026-10-21T00:00:48.641149+08:00",
+        "ended_at": "2026-10-21T00:00:48.754052+08:00",
+        "duration_seconds": 0.112903,
+        "status": "completed"
+      },
+      {
+        "id": 72,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 3,
+        "stage": "rendering",
+        "started_at": "2026-10-21T00:00:48.754052+08:00",
+        "ended_at": "2026-10-21T00:00:50.690289+08:00",
+        "duration_seconds": 1.936237,
+        "status": "completed"
+      },
+      {
+        "id": 73,
+        "task_id": "20261020_230852_143_93e60026",
+        "round_number": 3,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T00:00:50.690289+08:00",
+        "ended_at": "2026-10-21T00:05:09.464855+08:00",
+        "duration_seconds": 258.774566,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 41,
+        "task_id": "20261020_230852_143_93e60026",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 3,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T00:00:48.489096+08:00",
+        "duration_seconds": 124.48286228199868,
+        "status": "completed",
+        "input_tokens": 15849,
+        "output_tokens": 27457,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 13201,
+        "total_tokens": 43306
+      },
+      {
+        "id": 44,
+        "task_id": "20261020_230852_143_93e60026",
+        "batch_id": "benchmark-pilot-v1",
+        "round_number": 3,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T00:05:08.963167+08:00",
+        "duration_seconds": 257.9609075459957,
+        "status": "completed",
+        "input_tokens": 16214,
+        "output_tokens": 35702,
+        "cached_input_tokens": 2048,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 35598,
+        "total_tokens": 51916
+      }
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "sample_id": "HBA4CBB03AB",
+  "question_id": "HQ0822E89A4F0E",
+  "set": "historical_human",
+  "html_sha256": "4435c046d9c76a2dcf5eee57122c9b26f06f7259c8b04535568456dc87721304",
+  "judge_id": "deepseek_1017",
+  "model": "deepseek-v4-1-flash-261017",
+  "judge_version": "c3fcf583bc0c",
+  "evidence_sha256": "9303cacf55b81f9f82d9d0a730c2dcf7698925040e6b6c300580be532ba58e16",
+  "image_inputs": [
+    {
+      "name": "input.png",
+      "sha256": "0822e89a4f0ea67a76e64ecd89ae2470b095f739680432c568407c069b9d8866"
+    },
+    {
+      "name": "answer.png",
+      "sha256": "b73804c91753a325df3026c97994831a4f2303a59ddd6e4c2d3dcc67cdb1bc27"
+    },
+    {
+      "name": "explanation.png",
+      "sha256": "451b4ea8a0fc827e970186c8212b9ac76a0993cb7bb2dc5b5cf2bb760c5e0ea0"
+    },
+    {
+      "name": "00_initial.png",
+      "sha256": "63d08d2300cae49856b1d7cc1938d4932f72880964e96ab32d7671fe690aeafb"
+    },
+    {
+      "name": "01_next_step.png",
+      "sha256": "2a02e073d77ec9f28bb2c5ac1b620363142eefcaa352d7f808c857487dcc47fc"
+    },
+    {
+      "name": "02_slider_mid.png",
+      "sha256": "2a02e073d77ec9f28bb2c5ac1b620363142eefcaa352d7f808c857487dcc47fc"
+    },
+    {
+      "name": "03_slider_high.png",
+      "sha256": "2a02e073d77ec9f28bb2c5ac1b620363142eefcaa352d7f808c857487dcc47fc"
+    }
+  ],
+  "created_at": "2026-10-20T15:53:16.093351+00:00",
+  "status": "completed",
+  "judgment": {
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 4,
+      "interaction_quality": 5,
+      "teaching_effectiveness": 5
+    },
+    "overall_score": 4,
+    "issues": [
+      "第2步“三点与重心”主图中，红色 G 点标签与 x_G=0 标注位置过近，截图中显得拥挤、近似连成“G x_G=0”，局部读图不够清晰；不影响数学结论。"
+    ],
+    "evidence": {
+      "problem_fidelity": "题图两小问的核心对象和条件均保留：Γ 在 x 轴上方、到 Q(0,2) 的距离减到 x 轴距离为 2、A/C 在 y 轴右侧、B 在左侧、重心 G 在 y 轴、3|AM|<|BM|、M/N 和 S1,S2,S3 定义；最终也要求 Γ 方程与面积比范围。",
+      "solution_correctness": "独立核对与页面推导一致：由距离条件得 x²=8y 且 y>0；重心条件给出 b=-(a+c)，3|AM|<|BM| 得 r=c/a>2；面积比化简为 R=(r²+4r+1)/(3(r+2)(2r+1))，导数为 (1-r²)/[(r+2)(2r+1)]²，两端极限为 13/60 和 1/6，范围 (1/6,13/60)。未发现数学错误。",
+      "page_quality": "1280×900 截图中双栏布局、SVG 曲线、公式和颜色层次清楚，未见公式或图形被裁切；操作记录无运行时错误。第2步 G 与 x_G=0 标签相邻拥挤，属于局部可读性问题。",
+      "interaction_quality": "第3步起提供 r=x_C/x_A 滑块，范围 2.02–7，并明确说明只是观察区间；源码显示拖动会重新计算并重绘主图、R 值和 inset，且设有复位与预设。实际操作记录只到第2步，未实际触发滑块，故动态联动仅由源码判断，未在记录中实测。",
+      "teaching_effectiveness": "页面先给题设，再从轨迹条件、重心条件、参数 r>2、面积分解到单调性与极限逐步推进；滑块放在参数化步骤之后，符合先理解再操作；主图与 inset 有助于连接代数式与范围。"
+    },
+    "reference_concern": "",
+    "summary": "数学推导与独立核对结果一致，教学结构和图形表达总体良好；存在一处局部标签拥挤，滑块联动未在实际操作记录中触发，但源码实现合理。"
+  },
+  "duration_seconds": 149.14836959800596,
+  "usage": {
+    "input_tokens": 15969,
+    "output_tokens": 24096,
+    "cached_input_tokens": 0,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 23521,
+    "total_tokens": 40065
+  }
+}

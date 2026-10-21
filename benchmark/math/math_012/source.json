@@ -1,0 +1,98 @@
+{
+  "id": "3772640427565056",
+  "course_id": 27,
+  "type_id": "270201",
+  "kpoint_ids": [
+    10879,
+    53699
+  ],
+  "catalog_ids": [
+    207970,
+    208044,
+    219811,
+    220577,
+    232760,
+    225263
+  ],
+  "years": [
+    2025,
+    2024,
+    2026,
+    2027
+  ],
+  "difficulty": 0.8500000000000001,
+  "difficulty_level": 18,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791858265-114651791852237200-WxSVb6orIBPhOFk2FZ0zAytULbxsGoOqfpmVlWOscFGcqcNesYZ6j2wRhUOLZp4K\"><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">若直线</span><img  src=\"https://img.xkw.com/dksih/formula/017ebcd839f65312db83ca09d42b14b6.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">是曲线</span><img  src=\"https://img.xkw.com/dksih/formula/83238cde4e3b5cff8bc600205cc4437b.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的一条切线，则</span><img  src=\"https://img.xkw.com/dksih/formula/380bbacf854e30e2e747fc286d2b9997.svg\" class=\"xkw-math-img\" /><span class=\"qml-bk\" index=\"1\" size=\"9\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791858265-114651791852237200-WxSVb6orIBPhOFk2FZ0zAytULbxsGoOqfpmVlWOscFGcqcNesYZ6j2wRhUOLZp4K\"><span class=\"qml-an-sq\"><span class=\"qml-an  qml-exact\"><img  src=\"https://img.xkw.com/dksih/formula/b8860d9787671b53b1ab68b3d526f5ca.svg\" class=\"xkw-math-img\" /></span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791858265-114651791852237200-WxSVb6orIBPhOFk2FZ0zAytULbxsGoOqfpmVlWOscFGcqcNesYZ6j2wRhUOLZp4K\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">法一：利用导数的几何性质与导数的四则运算求得切点，进而代入曲线方程即可得解；法二：利用导数的几何性质与导数的四则运算得到关于切点</span><img  src=\"https://img.xkw.com/dksih/formula/23b4f86e48e2b0d63c1865c60ed1e4d1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">与</span><img  src=\"https://img.xkw.com/dksih/formula/0a6936d370d6a238a608ca56f87198de.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的方程组，解之即可得解</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">法一：对于</span><img  src=\"https://img.xkw.com/dksih/formula/83238cde4e3b5cff8bc600205cc4437b.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，其导数为</span><img  src=\"https://img.xkw.com/dksih/formula/6565835390e52c857b1b09d3a7c75d68.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">因为直线</span><img  src=\"https://img.xkw.com/dksih/formula/017ebcd839f65312db83ca09d42b14b6.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">是曲线的切线，直线的斜率为</span><span style=\"font-family: 'Times New Roman';\">2</span><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">令</span><img  src=\"https://img.xkw.com/dksih/formula/172f317311889ca806d2871f7d4a70d4.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，即</span><img  src=\"https://img.xkw.com/dksih/formula/d2f0f390533faf312ae893c2753d5421.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，解得</span><img  src=\"https://img.xkw.com/dksih/formula/bb45f673c56a289ea78831c9237e8d20.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">将</span><img  src=\"https://img.xkw.com/dksih/formula/bb45f673c56a289ea78831c9237e8d20.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">代入切线方程</span><img  src=\"https://img.xkw.com/dksih/formula/017ebcd839f65312db83ca09d42b14b6.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，可得</span><img  src=\"https://img.xkw.com/dksih/formula/bc3db062ae221e597e5b89933dfcdd6a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">所以切点坐标为</span><img  src=\"https://img.xkw.com/dksih/formula/1dbd9ed5ae3f4e17fd82617d80d1a09f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">因为切点</span><img  src=\"https://img.xkw.com/dksih/formula/1dbd9ed5ae3f4e17fd82617d80d1a09f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">在曲线</span><img  src=\"https://img.xkw.com/dksih/formula/83238cde4e3b5cff8bc600205cc4437b.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">上，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">所以</span><img  src=\"https://img.xkw.com/dksih/formula/12e7358d7d61378873e1b9ca6db3a7b6.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，即</span><img  src=\"https://img.xkw.com/dksih/formula/bc8a10f787d88d337892e74489e79299.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，解得</span><img  src=\"https://img.xkw.com/dksih/formula/aa4c355f11471a38f5583a434a1ddeb3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故答案为：</span><img  src=\"https://img.xkw.com/dksih/formula/b8860d9787671b53b1ab68b3d526f5ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">法二：对于</span><img  src=\"https://img.xkw.com/dksih/formula/83238cde4e3b5cff8bc600205cc4437b.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，其导数为</span><img  src=\"https://img.xkw.com/dksih/formula/6565835390e52c857b1b09d3a7c75d68.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">假设</span><img  src=\"https://img.xkw.com/dksih/formula/017ebcd839f65312db83ca09d42b14b6.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">与</span><img  src=\"https://img.xkw.com/dksih/formula/83238cde4e3b5cff8bc600205cc4437b.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的切点为</span><img  src=\"https://img.xkw.com/dksih/formula/23b4f86e48e2b0d63c1865c60ed1e4d1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">则</span><img  src=\"https://img.xkw.com/dksih/formula/46703b065972a40883cc665a567f7a1f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，解得</span><img  src=\"https://img.xkw.com/dksih/formula/aa4c355f11471a38f5583a434a1ddeb3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">故答案为：</span><img  src=\"https://img.xkw.com/dksih/formula/b8860d9787671b53b1ab68b3d526f5ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p></div></div>",
+  "create_date": "2025-06-08 13:59:30",
+  "paper_type_ids": [
+    12,
+    6,
+    3,
+    5,
+    50,
+    8,
+    24,
+    51,
+    4,
+    45,
+    38,
+    7,
+    52
+  ],
+  "course": {
+    "id": 27,
+    "name": "高中数学"
+  },
+  "catalogs": [
+    {
+      "id": 207970,
+      "name": "5.2.2导数的四则运算法则"
+    },
+    {
+      "id": 208044,
+      "name": "6.1.4 求导法则及其应用"
+    },
+    {
+      "id": 219811,
+      "name": "4.1 导数的加法与减法法则"
+    },
+    {
+      "id": 220577,
+      "name": "5.2.2 函数的和、差、积、商的导数"
+    },
+    {
+      "id": 232760,
+      "name": "2 导数的四则运算"
+    },
+    {
+      "id": 225263,
+      "name": "一、函数和差积的求导法则"
+    }
+  ],
+  "type": {
+    "id": "270201",
+    "name": "单空题"
+  },
+  "kpoints": [
+    {
+      "id": 10879,
+      "name": "已知切线（斜率）求参数"
+    },
+    {
+      "id": 53699,
+      "name": "导数的加减法"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "3772089624264704"
+  ]
+}

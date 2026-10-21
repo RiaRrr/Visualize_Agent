@@ -1,0 +1,87 @@
+{
+  "id": "4031018274463744",
+  "course_id": 27,
+  "type_id": "270202",
+  "kpoint_ids": [
+    12396,
+    12441
+  ],
+  "catalog_ids": [
+    208014,
+    208061,
+    219762,
+    228493,
+    229877,
+    225298
+  ],
+  "years": [
+    2026,
+    2027
+  ],
+  "difficulty": 0.75,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791858261-114651791852237200-ewL3-yeFBwVi4PoyK9ufEdm8c4Nc2BmI4wkHJsjwgXoq5W06n9P6i2HOcwUPEN4q\"><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">箱子里有一个红球，两个黄球，三个白球，有放回的取三次，三次都没取到黄球的概率是</span><span class=\"qml-bk\" index=\"1\" size=\"10\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　</span><span style=\"font-family: 宋体;\">；在三次都没取到黄球的条件下，至少取到一次红球的概率是</span><span class=\"qml-bk\" index=\"2\" size=\"10\" type=\"underline\" style=\"text-decoration:underline\" >　　　　　　　　　　</span><span style=\"font-family: 宋体;\">．</span></p></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791858261-114651791852237200-ewL3-yeFBwVi4PoyK9ufEdm8c4Nc2BmI4wkHJsjwgXoq5W06n9P6i2HOcwUPEN4q\"><span class=\"qml-an-sq\">&nbsp;&nbsp;&nbsp;&nbsp;①. <span class=\"qml-an  qml-exact\"><img  src=\"https://img.xkw.com/dksih/formula/85f17bbff4c53be2439e24538aa64121.svg\" class=\"xkw-math-img\" /></span>&nbsp;&nbsp;&nbsp;&nbsp;②. <span class=\"qml-an  qml-exact\"><img  src=\"https://img.xkw.com/dksih/formula/3d2ea82005352015ddf78cca2e68cb1c.svg\" class=\"xkw-math-img\" /></span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791858261-114651791852237200-ewL3-yeFBwVi4PoyK9ufEdm8c4Nc2BmI4wkHJsjwgXoq5W06n9P6i2HOcwUPEN4q\"><div class=\"qml-seg\" seg-name=\"分析\">【分析】<p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">第一空：计算出每次取到不是黄球的概率，即可得出三次都没取到黄球的概率；第二空：计算出至少取到一次红球的概率，借助条件概率即可得出结论</span><span style=\"font-family: 'Times New Roman';\">.</span></p></div><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">由题意，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">第一空：</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">箱子里总共有</span><span style=\"font-family: 'Times New Roman';\">6</span><span style=\"font-family: 宋体;\">个球，其中黄球</span><span style=\"font-family: 'Times New Roman';\">2</span><span style=\"font-family: 宋体;\">个，非黄球共</span><span style=\"font-family: 'Times New Roman';\">4</span><span style=\"font-family: 宋体;\">个。</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">设事件</span><img  src=\"https://img.xkw.com/dksih/formula/a18722354086c42e62334983fc50eb6a.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">表示没取到黄球，事件</span><img  src=\"https://img.xkw.com/dksih/formula/cd3b9e816b14051f785aa5aae72b8eed.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">表示三次都没取到黄球，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">有放回抽取，每次取到非黄球的概率为</span><img  src=\"https://img.xkw.com/dksih/formula/22985c183f5b899a467f68ef6b7ff6a2.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">三次都没取到黄球的概率：</span><img  src=\"https://img.xkw.com/dksih/formula/b4bf503a1f8ae6f0af9002069d85bea0.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">第二空：</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">设事件</span><img  src=\"https://img.xkw.com/dksih/formula/97c01fdc7bc471af0b264a04aef0823e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">表示至少取到一次红球，事件</span><img  src=\"https://img.xkw.com/dksih/formula/43a71fc9c0068109dad1382354570665.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">表示三次都取到白球，</span></p><p style=\"text-align:justify;word-break:break-word;\"><img  src=\"https://img.xkw.com/dksih/formula/ae5433c693fff108305b998e2bb775b1.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">∵三次都没取到黄球的条件下，至少取到一次红球的概率：</span><img  src=\"https://img.xkw.com/dksih/formula/c2ffbd1939e46d45944d98a148ff79b3.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><img  src=\"https://img.xkw.com/dksih/formula/9311a7fdae1420f3dca6d671266858b0.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">∴</span><img  src=\"https://img.xkw.com/dksih/formula/7c0928916a227f8fefa7dd46ae3b169f.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span></p><p style=\"text-align:justify;word-break:break-word;\"><span style=\"font-family: 宋体;\">∴在三次都没取到黄球的条件下，至少取到一次红球的概率是</span><img  src=\"https://img.xkw.com/dksih/formula/3d2ea82005352015ddf78cca2e68cb1c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">.</span></p></div></div>",
+  "create_date": "2026-06-08 15:10:35",
+  "paper_type_ids": [
+    12,
+    6,
+    50,
+    8
+  ],
+  "course": {
+    "id": 27,
+    "name": "高中数学"
+  },
+  "catalogs": [
+    {
+      "id": 208014,
+      "name": "7.1.1 条件概率"
+    },
+    {
+      "id": 208061,
+      "name": "4.1.1 条件概率"
+    },
+    {
+      "id": 219762,
+      "name": "1.1 条件概率的概念"
+    },
+    {
+      "id": 228493,
+      "name": "8.1.1条件概率"
+    },
+    {
+      "id": 229877,
+      "name": "1 条件概率"
+    },
+    {
+      "id": 225298,
+      "name": "3.1.1 条件概率"
+    }
+  ],
+  "type": {
+    "id": "270202",
+    "name": "双空题"
+  },
+  "kpoints": [
+    {
+      "id": 12396,
+      "name": "计算古典概型问题的概率"
+    },
+    {
+      "id": 12441,
+      "name": "计算条件概率"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4030852324745216"
+  ]
+}

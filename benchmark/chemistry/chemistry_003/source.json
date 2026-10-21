@@ -1,0 +1,99 @@
+{
+  "id": "4076407763566592",
+  "course_id": 30,
+  "type_id": "301101",
+  "kpoint_ids": [
+    6100,
+    102348,
+    102349,
+    72228,
+    6105
+  ],
+  "catalog_ids": [
+    187855,
+    194443,
+    195137,
+    230419
+  ],
+  "years": [
+    2025
+  ],
+  "difficulty": 0.72,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861837-114651791852237200-DEov80bhXb7gTnBs8Oji79m8c4Nc2BmI4wkHJsjwgXpiqLAhzTAVQQyHVECQ8-lk\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">已知</span><img  src=\"https://img.xkw.com/dksih/formula/f1faefccfd56a1ea4f28e28e198b80d9.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。则下列说法中正确的是</span></p><div class=\" qml-og\"><table class=\"qml-og\" style=\"width:100%\"><tr><td>A.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">氧化性：</span><img  src=\"https://img.xkw.com/dksih/formula/2b7582723bcef26b88e31935eef3fe4b.svg\" class=\"xkw-math-img\" /></span></td></tr><tr><td>B.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">氧化剂与还原剂的个数之比为</span><img  src=\"https://img.xkw.com/dksih/formula/765fed228492b11196a8b2bc776a7645.svg\" class=\"xkw-math-img\" /></span></td></tr><tr><td>C.&nbsp;<span class=\"qml-op\"><img  src=\"https://img.xkw.com/dksih/formula/5d69d7191f7166d1c82e92bd9c6ef391.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">为氧化产物</span></span></td></tr><tr><td colspan=\"1\">D.&nbsp;<span class=\"qml-op\"><span style=\"font-family: 宋体;\">反应中消耗</span><span style=\"font-family: 'Times New Roman';\">1</span><span style=\"font-family: 宋体;\">个</span><img  src=\"https://img.xkw.com/dksih/formula/7a63afc18472bb4f4d6388cf207da8b4.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">转移的电子数为</span><img  src=\"https://img.xkw.com/dksih/formula/583be2c8748a2c110554b670225b1283.svg\" class=\"xkw-math-img\" /></span></td></tr></table></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861837-114651791852237200-DEov80bhXb7gTnBs8Oji79m8c4Nc2BmI4wkHJsjwgXpiqLAhzTAVQQyHVECQ8-lk\"><span class=\"qml-an-sq\"><span class=\"qml-an qml-isop \">C</span></span></div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861837-114651791852237200-DEov80bhXb7gTnBs8Oji79m8c4Nc2BmI4wkHJsjwgXpiqLAhzTAVQQyHVECQ8-lk\"><div class=\"qml-seg\" seg-name=\"详解\">【详解】<p style=\"\"><span>A．根据氧化还原反应规律，氧化性：氧化剂&gt;氧化产物，该反应中氧化剂为</span><img  src=\"https://img.xkw.com/dksih/formula/ea0d1517040507e1375be1a5d1046e1d.svg\" class=\"xkw-math-img\" /><span>，氧化产物为</span><img  src=\"https://img.xkw.com/dksih/formula/4194baba5fc223004fad6cd9593c831c.svg\" class=\"xkw-math-img\" /><span>，故氧化性</span><img  src=\"https://img.xkw.com/dksih/formula/6d0831def0a6c288e824330fed655e3d.svg\" class=\"xkw-math-img\" /><span>，A错误；</span></p><p style=\"\"><span>B．该反应中2个</span><img  src=\"https://img.xkw.com/dksih/formula/ea0d1517040507e1375be1a5d1046e1d.svg\" class=\"xkw-math-img\" /><span>作氧化剂，16个</span><img  src=\"https://img.xkw.com/dksih/formula/13ca153a4e6df625b3914422655a618a.svg\" class=\"xkw-math-img\" /><span>中只有10个</span><img  src=\"https://img.xkw.com/dksih/formula/6ba475d074ca055cafe6b7da9af99907.svg\" class=\"xkw-math-img\" /><span>元素化合价升高作还原剂，故氧化剂与还原剂的个数之比为</span><img  src=\"https://img.xkw.com/dksih/formula/4f5894016614b272ea3b2653cb140ada.svg\" class=\"xkw-math-img\" /><span>，B错误；</span></p><p style=\"\"><span>C．</span><img  src=\"https://img.xkw.com/dksih/formula/4194baba5fc223004fad6cd9593c831c.svg\" class=\"xkw-math-img\" /><span>是</span><img  src=\"https://img.xkw.com/dksih/formula/13ca153a4e6df625b3914422655a618a.svg\" class=\"xkw-math-img\" /><span>中-1价</span><img  src=\"https://img.xkw.com/dksih/formula/6ba475d074ca055cafe6b7da9af99907.svg\" class=\"xkw-math-img\" /><span>失电子被氧化得到的产物，为氧化产物，C正确；</span></p><p style=\"\"><span>D．</span><img  src=\"https://img.xkw.com/dksih/formula/ea0d1517040507e1375be1a5d1046e1d.svg\" class=\"xkw-math-img\" /><span>中</span><img  src=\"https://img.xkw.com/dksih/formula/65550a830c046e07d3028b48400d780b.svg\" class=\"xkw-math-img\" /><span>元素从+7价降低到+2价，每个</span><img  src=\"https://img.xkw.com/dksih/formula/ea0d1517040507e1375be1a5d1046e1d.svg\" class=\"xkw-math-img\" /><span>反应时得到</span><img  src=\"https://img.xkw.com/dksih/formula/13b823313373b238a1de297dc479abb1.svg\" class=\"xkw-math-img\" /><span>，即转移电子数为</span><img  src=\"https://img.xkw.com/dksih/formula/13b823313373b238a1de297dc479abb1.svg\" class=\"xkw-math-img\" /><span>，D错误；</span></p><p style=\"\"><span>故选C。</span></p></div></div>",
+  "create_date": "2026-08-11 18:15:44",
+  "paper_type_ids": [
+    3
+  ],
+  "course": {
+    "id": 30,
+    "name": "高中化学"
+  },
+  "catalogs": [
+    {
+      "id": 187855,
+      "name": "第三节 氧化还原反应"
+    },
+    {
+      "id": 194443,
+      "name": "第3节  氧化还原反应"
+    },
+    {
+      "id": 195137,
+      "name": "第二单元  硫及其化合物的相互转化"
+    },
+    {
+      "id": 230419,
+      "name": "4.1氧化还原反应"
+    }
+  ],
+  "type": {
+    "id": "301101",
+    "name": "单题"
+  },
+  "kpoints": [
+    {
+      "id": 6100,
+      "name": "氧化性、还原性强弱的比较"
+    },
+    {
+      "id": 102348,
+      "name": "氧化剂、还原剂的判断"
+    },
+    {
+      "id": 102349,
+      "name": "氧化产物、还原产物的判断"
+    },
+    {
+      "id": 72228,
+      "name": "电子转移计算"
+    },
+    {
+      "id": 6105,
+      "name": "与氧化剂、还原剂有关的计算"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 1,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "source_papers": [
+    {
+      "title": "广东省惠州市东江高级中学2025-2026学年高一上学期11月月考化学试题",
+      "area": {
+        "id": "440000",
+        "name": "广东省"
+      },
+      "type_id": 3,
+      "grade_id": 10,
+      "term": "LAST",
+      "year": 2025
+    }
+  ],
+  "_paper_ids": []
+}

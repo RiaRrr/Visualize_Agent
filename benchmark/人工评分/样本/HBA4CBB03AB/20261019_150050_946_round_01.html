@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>交互数学实验</title><style>
+:root{--ink:#203638;--muted:#667c7b;--teal:#0f766e;--line:#dbe6e2;--paper:#f4f6f1}*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,"Microsoft YaHei",sans-serif}button,input{font:inherit}button{cursor:pointer}
+main{max-width:1440px;margin:auto;padding:24px}h1{font-size:28px;margin:0 0 8px;letter-spacing:-.03em}.intro{color:var(--muted);max-width:1080px;font-size:14px;margin:0 0 18px}
+nav{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 18px}nav button{background:transparent;border:1px solid var(--line);border-radius:7px;padding:8px 13px;color:var(--muted);font-size:14px}nav button.active{background:var(--teal);color:white;border-color:var(--teal)}
+.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(340px,1fr);gap:20px;align-items:start}.board,.lesson{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden}.board{padding:16px}.board-head{font-size:14px;color:var(--teal);min-height:23px}.lesson{padding:22px}.lesson h2{font-size:22px;line-height:1.35;margin:6px 0 16px}.kicker{font-size:12px;color:var(--teal);font-weight:700;letter-spacing:.1em}#drawing{width:100%;display:block;aspect-ratio:760/530}svg text{font:15px system-ui,"Microsoft YaHei",sans-serif;paint-order:stroke;stroke:white;stroke-width:4;stroke-linejoin:round}
+#explanation{font-size:15px}#explanation p{margin:10px 0}.formula{background:#eff7f4;border-left:3px solid var(--teal);padding:11px 13px;margin:12px 0;overflow-wrap:anywhere;font-family:Georgia,"Microsoft YaHei",serif;font-size:17px}.controls{border-top:1px solid var(--line);margin-top:8px;padding-top:8px}.control{margin:8px 0}.control label{display:flex;justify-content:space-between;gap:14px;font-size:14px;font-weight:600}.control output{color:var(--teal)}input[type=range]{width:100%;accent-color:var(--teal);margin:7px 0}.note{font-size:12px;color:var(--muted)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.actions button,.pager button{border:1px solid var(--line);background:white;border-radius:6px;padding:8px 13px;color:var(--ink)}.actions .special,.pager button:last-child{background:var(--teal);color:white;border-color:var(--teal)}.pager{display:flex;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}button:disabled{opacity:.4;cursor:default}#insetWrap{border-top:1px solid var(--line);padding-top:12px;margin-top:18px}#insetTitle{font-size:13px;font-weight:600;color:var(--teal)}#inset{width:100%;aspect-ratio:360/240;display:block}#error{color:#b91c1c;white-space:pre-wrap}button:focus-visible,input:focus-visible{outline:3px solid #d97706;outline-offset:3px}[hidden]{display:none!important}@media(max-width:850px){main{padding:14px}.layout{grid-template-columns:1fr}.lesson{padding:18px}h1{font-size:24px}}
+</style></head><body><main><h1 id="title"></h1><p id="intro" class="intro"></p><nav id="steps" aria-label="学习步骤"></nav>
+<div class="layout"><section class="board"><div id="focus" class="board-head"></div><svg id="drawing" viewBox="0 0 760 530" role="img" aria-label="数学图形"></svg><div id="controls" class="controls"></div><div id="actions" class="actions"></div></section>
+<section class="lesson"><div id="stepCount" class="kicker"></div><h2 id="stepTitle"></h2><div id="explanation"></div><div id="insetWrap" hidden><div id="insetTitle"></div><svg id="inset" viewBox="0 0 360 240" role="img" aria-label="局部关系"></svg></div><div class="pager"><button id="previous">上一步</button><button id="next">下一步</button></div></section></div><div id="error" hidden></div></main>
+<script>
+const MathKit=Object.freeze({
+ slope:(a,b)=>(b[1]-a[1])/(b[0]-a[0]),
+ area:(a,b,c)=>Math.abs((b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]))/2,
+ midpoint:(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2],
+ centroid:ps=>[ps.reduce((s,p)=>s+p[0],0)/ps.length,ps.reduce((s,p)=>s+p[1],0)/ps.length],
+ axisY:(a,b)=>[0,a[1]-(b[1]-a[1])*a[0]/(b[0]-a[0])],
+ ellipseOther:(p,d,a,b)=>{const t=-2*(p[0]*d[0]/(a*a)+p[1]*d[1]/(b*b))/(d[0]*d[0]/(a*a)+d[1]*d[1]/(b*b));return[p[0]+t*d[0],p[1]+t*d[1]]},
+ fmt:(v,d=3)=>Number.isFinite(v)?v.toFixed(d):'不可定义'
+});
+/*__LESSON_START__*/
+window.LESSON = {
+  title: '抛物线上的三点与面积比',
+  intro: '曲线 Γ 在 x 轴上方，它上面每一点到 Q(0,2) 的距离减去到 x 轴的距离都等于 2。A、C 在 Γ 上且在 y 轴右侧，B 在 y 轴左侧，△ABC 的重心 G 在 y 轴上；直线 AB、BC 分别交 y 轴于 M、N，且 3|AM|<|BM|。S1=[ABC]，S2=[AMG]，S3=[CNG]。求 Γ 的方程及 (S2+S3)/S1 的取值范围。',
+  params: [
+    {
+      key: 'r',
+      label: '位置比 r = x_C / x_A',
+      min: 2.02,
+      max: 7,
+      step: 0.01,
+      value: 3,
+      introducedAt: 2,
+      note: '完整定义域为 r>2；滑块显示 2.02≤r≤7 只是观察区间，不是完整定义域。r=7 时 R 仍大于 1/6，只有 r→∞ 才趋近 1/6。图中取 a=1 仅为作图，面积比只依赖 r，与 a 无关。'
+    }
+  ],
+  steps: [
+    { title: '轨迹条件', focus: '动点到 Q 与到 x 轴的距离差固定为 2' },
+    { title: '三点与重心', focus: 'A、C 在右侧，B 在左侧，重心 G 落在 y 轴上' },
+    { title: '参数化位置', focus: '用 r=x_C/x_A 表示三点；由水平投影相似比得到 r>2' },
+    { title: '面积比', focus: '以 y 轴上的 MG、NG 为底，把 S2、S3 转化为可算面积' },
+    { title: '比值随 r 变化', focus: 'R(r) 在 r>2 上单调递减，并求两端极限' },
+    { title: '取值范围', focus: '两端极限决定开区间，且 r=7 不是极限状态' }
+  ],
+  view: [-9, 9, -1, 9.2],
+  compute(p) {
+    const r = p.r;
+    const a = 1;
+    const c = r;
+    const A = [a, a * a / 8];
+    const B = [-(a + c), (a + c) * (a + c) / 8];
+    const C = [c, c * c / 8];
+    const G = [0, (a * a + a * c + c * c) / 12];
+    const M = [0, a * (a + c) / 8];
+    const N = [0, c * (a + c) / 8];
+    const MG = G[1] - M[1];
+    const NG = N[1] - G[1];
+    const S1 = ((c - a) * (2 * a + c) * (a + 2 * c)) / 16;
+    const S2 = 0.5 * a * MG;
+    const S3 = 0.5 * c * NG;
+    const sum = S2 + S3;
+    const ratio = (r * r + 4 * r + 1) / (3 * (r + 2) * (2 * r + 1));
+
+    const curveNeg = [];
+    const curvePos = [];
+    for (let i = 0; i <= 120; i++) {
+      const x = -8.5 + (8.47 * i) / 120;
+      curveNeg.push([x, x * x / 8]);
+    }
+    for (let i = 0; i <= 120; i++) {
+      const x = 0.03 + (8.47 * i) / 120;
+      curvePos.push([x, x * x / 8]);
+    }
+
+    const centroidS1 = [
+      (B[0] + C[0] + G[0]) / 3,
+      (B[1] + C[1] + G[1]) / 3
+    ];
+    const centroidS2 = [
+      (A[0] + M[0] + G[0]) / 3,
+      (A[1] + M[1] + G[1]) / 3
+    ];
+    const centroidS3 = [
+      (C[0] + N[0] + G[0]) / 3,
+      (C[1] + N[1] + G[1]) / 3
+    ];
+
+    return {
+      r, a, c, A, B, C, G, M, N, MG, NG, S1, S2, S3, sum, ratio,
+      curveNeg, curvePos, centroidS1, centroidS2, centroidS3,
+      P0: [2, 0.5], H0: [2, 0], Q: [0, 2]
+    };
+  },
+  draw(g, d, step) {
+    const cyan = '#0f766e';
+    const orange = '#d97706';
+    const red = '#be4452';
+    const slate = '#334155';
+    const blue = '#2563eb';
+
+    g.axes();
+    g.path(d.curveNeg, cyan, 2);
+    g.path(d.curvePos, cyan, 2);
+
+    if (step === 0) {
+      g.line(d.P0, d.Q, orange, 2);
+      g.line(d.P0, d.H0, '#64748b', 2, '5 4');
+      g.point(d.Q, 'Q(0,2)', red, 8, -8);
+      g.point(d.P0, 'P', cyan, 10, -8);
+      g.point(d.H0, 'H', '#64748b', 8, 14);
+      g.segmentLabel(d.P0, d.Q, 'PQ', orange, -12);
+      g.segmentLabel(d.P0, d.H0, 'PH', '#64748b', -12);
+      g.text([3.0, 1.6], 'PQ − PH = 2', slate, 0, 0);
+
+      g.circle([0, 0], 0.12, red);
+      g.circle([0, 0], 0.07, '#ffffff');
+      g.text([-1.8, -0.55], 'O∉Γ', red, 0, 0);
+      g.line([-1.15, -0.42], [-0.12, -0.05], red, 1, '3 3');
+      return;
+    }
+
+    if (step === 1) {
+      g.polygon([d.A, d.B, d.C], '#dbeafe', '#60a5fa');
+      g.point(d.A, 'A', cyan, 8, -10);
+      g.point(d.B, 'B', cyan, -18, -8);
+      g.point(d.C, 'C', cyan, 8, -10);
+      g.point(d.G, 'G', red, 10, -10);
+      g.line([0, -0.4], [0, d.G[1]], '#94a3b8', 1, '4 4');
+      g.text([0.45, d.G[1] + 0.45], 'x_G=0', red, 0, 0);
+      return;
+    }
+
+    if (step === 2) {
+      g.point(d.A, 'A', cyan, 8, -10);
+      g.point(d.B, 'B', cyan, -18, -8);
+      g.point(d.C, 'C', cyan, 8, -10);
+      g.point(d.G, 'G', red, 10, -10);
+      g.line(d.A, d.B, orange, 3);
+      g.point(d.M, 'M', red, -24, 12);
+      g.segmentLabel(d.A, d.M, 'AM', red, -8);
+      g.segmentLabel(d.M, d.B, 'BM', orange, -8);
+
+      g.line(d.A, [0, d.A[1]], orange, 2, '5 4');
+      g.segmentLabel(d.A, [0, d.A[1]], 'a', orange, -10);
+      g.line(d.B, [0, d.B[1]], orange, 2, '5 4');
+      g.segmentLabel(d.B, [0, d.B[1]], 'a+c', orange, 12);
+
+      g.text([0.55, d.M[1] + 0.75], '3|AM| < |BM|', red, 0, 0);
+      g.text([3.7, 8.0], 'AM/BM = a/(a+c)', orange, 0, 0);
+      g.text([3.7, 7.35], '3a < a+c ⇒ r>2', red, 0, 0);
+      g.text([-8.6, 0.55], 'r = ' + MathKit.fmt(d.r, 2), slate, 0, 0);
+      return;
+    }
+
+    if (step === 3) {
+      g.polygon([d.A, d.B, d.C], '#eff6ff', '#93c5fd');
+      g.polygon([d.A, d.M, d.G], '#fde68a', orange);
+      g.polygon([d.C, d.N, d.G], '#fecdd3', red);
+
+      g.line(d.A, d.B, orange, 1.5, '3 3');
+      g.line(d.B, d.C, orange, 1.5, '3 3');
+      g.line(d.M, d.G, orange, 4);
+      g.line(d.G, d.N, red, 4);
+
+      g.line(d.A, [0, d.A[1]], orange, 2, '5 4');
+      g.segmentLabel(d.A, [0, d.A[1]], 'a', orange, -8);
+      g.line(d.C, [0, d.C[1]], red, 2, '5 4');
+      g.segmentLabel(d.C, [0, d.C[1]], 'c', red, 8);
+
+      g.point(d.A, 'A', cyan, 8, -10);
+      g.point(d.B, 'B', cyan, -18, -8);
+      g.point(d.C, 'C', cyan, 8, -10);
+      g.point(d.G, 'G', red, 14, -2);
+      g.point(d.M, 'M', orange, -30, 12);
+      g.point(d.N, 'N', red, -30, -12);
+
+      g.text(d.centroidS1, 'S1', blue, 0, 0);
+      g.text(d.centroidS2, 'S2', '#b45309', 0, 0);
+      g.text(d.centroidS3, 'S3', red, 0, 0);
+
+      g.text([-8.6, 0.55], 'r = ' + MathKit.fmt(d.r, 2), slate, 0, 0);
+      return;
+    }
+
+    g.polygon([d.A, d.B, d.C], '#f8fafc', '#cbd5e1');
+    g.polygon([d.A, d.M, d.G], '#fde68a', orange);
+    g.polygon([d.C, d.N, d.G], '#fecdd3', red);
+    g.line(d.A, d.B, orange, 1.5, '3 3');
+    g.line(d.B, d.C, orange, 1.5, '3 3');
+    g.line(d.M, d.G, orange, 3);
+    g.line(d.G, d.N, red, 3);
+
+    g.point(d.A, 'A', cyan, 8, -10);
+    g.point(d.B, 'B', cyan, -18, -8);
+    g.point(d.C, 'C', cyan, 8, -10);
+    g.point(d.G, 'G', red, 14, -2);
+    g.point(d.M, 'M', orange, -30, 12);
+    g.point(d.N, 'N', red, -30, -12);
+
+    g.text(d.centroidS1, 'S1', blue, 0, 0);
+    g.text(d.centroidS2, 'S2', '#b45309', 0, 0);
+    g.text(d.centroidS3, 'S3', red, 0, 0);
+
+    g.text([-8.6, 0.55], 'r = ' + MathKit.fmt(d.r, 2), slate, 0, 0);
+    g.text([-8.6, -0.05], 'R = ' + MathKit.fmt(d.ratio, 4), red, 0, 0);
+
+    if (step === 4) {
+      g.text([-8.6, -0.65], 'R(r) 递减', orange, 0, 0);
+      g.text([4.2, 8.55], 'R = ' + MathKit.fmt(d.ratio, 4), red, 0, 0);
+    }
+    if (step === 5) {
+      const R7 = (7 * 7 + 4 * 7 + 1) / (3 * (7 + 2) * (2 * 7 + 1));
+      g.text([-8.6, -0.65], 'r→∞ 时 R→1/6', orange, 0, 0);
+      g.text([4.0, 8.6], '1/6 < R < 13/60', red, 0, 0);
+      g.text([4.0, 7.95], 'R(7)≈' + MathKit.fmt(R7, 4) + ' > 1/6', slate, 0, 0);
+    }
+  },
+  explain(d, step) {
+    if (step === 0) {
+      return '<p>设 Γ 上点为 P(x,y)。因为 Γ 在 x 轴上方，到 x 轴的距离就是 y。</p>' +
+        '<div class="formula">√(x<sup>2</sup>+(y−2)<sup>2</sup>) − y = 2</div>' +
+        '<p>移项并平方：x<sup>2</sup>+(y−2)<sup>2</sup>=(y+2)<sup>2</sup>，化简得 x<sup>2</sup>=8y。由 y&gt;0，原点不在 Γ 上。</p>';
+    }
+    if (step === 1) {
+      return '<p>设 a=x<sub>A</sub>&gt;0，c=x<sub>C</sub>&gt;0，b=x<sub>B</sub>&lt;0。</p>' +
+        '<p>G 在 y 轴上，所以 a+b+c=0，即 b=−(a+c)。B 在 Γ 上，故</p>' +
+        '<div class="formula">B=(−(a+c), (a+c)<sup>2</sup>/8)</div>' +
+        '<p>G 的纵坐标是三点纵坐标的平均。</p>';
+    }
+    if (step === 2) {
+      return '<p>设 A=(a,a<sup>2</sup>/8)，C=(c,c<sup>2</sup>/8)，令 r=c/a。</p>' +
+        '<p>把 A、B 分别水平投影到 y 轴，得到水平距离 a 与 a+c。由相似三角形：</p>' +
+        '<div class="formula">|AM|/|BM| = a/(a+c) = 1/(1+r)</div>' +
+        '<p>3|AM|&lt;|BM| 化为 3a&lt;a+c，即 c&gt;2a，所以 r&gt;2。</p>' +
+        '<p>图中取 a=1 只为作图；面积比只由 r 决定，与 a 无关。</p>';
+    }
+    if (step === 3) {
+      return '<p>M、N 是 AB、BC 与 y 轴的交点：</p>' +
+        '<div class="formula">M=(0, a(a+c)/8)，N=(0, c(a+c)/8)</div>' +
+        '<div class="formula">G=(0, (a<sup>2</sup>+ac+c<sup>2</sup>)/12)</div>' +
+        '<p>于是</p>' +
+        '<div class="formula">MG=(c−a)(a+2c)/24，NG=(c−a)(2a+c)/24</div>' +
+        '<p>以 MG、NG 为底，A、C 到 y 轴的距离 a、c 为高：</p>' +
+        '<div class="formula">S<sub>2</sub>+S<sub>3</sub> = ½[a·MG+c·NG] = (c−a)(a<sup>2</sup>+4ac+c<sup>2</sup>)/48</div>' +
+        '<p>又 b=x<sub>B</sub>=−(a+c)，</p>' +
+        '<div class="formula">S<sub>1</sub> = |(b−a)(c−a)(c−b)|/16 = (2a+c)(c−a)(a+2c)/16</div>' +
+        '<div class="formula">(S<sub>2</sub>+S<sub>3</sub>)/S<sub>1</sub> = (a<sup>2</sup>+4ac+c<sup>2</sup>)/[3(2a+c)(a+2c)] = (r<sup>2</sup>+4r+1)/[3(r+2)(2r+1)]</div>';
+    }
+    if (step === 4) {
+      return '<div class="formula">R(r) = (r<sup>2</sup>+4r+1)/[3(r+2)(2r+1)]</div>' +
+        '<div class="formula">R′(r) = (1−r<sup>2</sup>)/[(r+2)(2r+1)]<sup>2</sup></div>' +
+        '<p>r&gt;2 时 R′(r)&lt;0，R(r) 单调递减。</p>' +
+        '<div class="formula">r→2<sup>+</sup>：R→13/60；r→∞：R→1/6</div>';
+    }
+    return '<p>r&gt;2 且 R 单调递减，故</p>' +
+      '<div class="formula">1/6 &lt; (S<sub>2</sub>+S<sub>3</sub>)/S<sub>1</sub> &lt; 13/60</div>' +
+      '<p>r=2 被严格不等式排除，r→∞ 不对应有限点，所以两端都取不到。</p>' +
+      '<div class="formula">Γ: x<sup>2</sup>=8y (y&gt;0)</div>' +
+      '<p>所求范围为 (1/6, 13/60)。</p>';
+  },
+  inset: {
+    title: 'R(r) 的放大示意（r>2）',
+    kind: 'plot',
+    fromStep: 4,
+    view: [1.8, 7.2, 0.16, 0.225],
+    draw(g, d, step) {
+      const red = '#be4452';
+      const slate = '#334155';
+      const cyan = '#0f766e';
+      const x0 = 1.8;
+      const x1 = 7.2;
+      const y0 = 0.16;
+      const y1 = 0.225;
+
+      g.line([x0, y0], [x1, y0], '#94a3b8', 1);
+      g.line([x0, y0], [x0, y1], '#94a3b8', 1);
+      g.text([x0 + 0.08, y1 - 0.003], 'R', slate, 0, 0);
+      g.text([x1 - 0.15, y0 + 0.003], 'r', slate, 0, 0);
+
+      [2, 4, 6].forEach((t) => {
+        g.line([t, y0], [t, y0 + 0.0015], '#94a3b8', 1);
+        g.text([t - 0.05, y0 + 0.003], String(t), slate, 0, 0);
+      });
+
+      g.line([x0, 13 / 60], [x1, 13 / 60], red, 1, '4 4');
+      g.line([x0, 1 / 6], [x1, 1 / 6], '#64748b', 1, '4 4');
+      g.text([x0 + 0.08, 13 / 60 + 0.0015], '13/60', red, 0, 0);
+      g.text([x1 - 0.75, 1 / 6 + 0.0015], '1/6', '#64748b', 0, 0);
+
+      const pts = [];
+      for (let i = 0; i <= 140; i++) {
+        const r = 2.01 + (7.2 - 2.01) * i / 140;
+        const R = (r * r + 4 * r + 1) / (3 * (r + 2) * (2 * r + 1));
+        pts.push([r, R]);
+      }
+      g.path(pts, cyan, 2);
+
+      g.point([2, 13 / 60], '', red, 0, 0);
+      g.text([1.9, 13 / 60 + 0.003], 'r=2 不取', red, 0, 0);
+
+      g.line([d.r, y0], [d.r, d.ratio], '#d97706', 1, '3 3');
+      g.point([d.r, d.ratio], 'R', red, 8, -8);
+      const lx = d.r < 2.6 ? d.r + 0.2 : d.r + 0.1;
+      const ly = d.r < 2.6 ? d.ratio - 0.0035 : d.ratio - 0.0025;
+      g.text([lx, ly], MathKit.fmt(d.ratio, 4), red, 0, 0);
+
+      if (step === 5) {
+        const R7 = (7 * 7 + 4 * 7 + 1) / (3 * (7 + 2) * (2 * 7 + 1));
+        g.line([7, y0], [7, R7], '#94a3b8', 1, '3 3');
+        g.text([6.45, y0 + 0.0035], 'r=7', slate, 0, 0);
+        g.text([4.3, 1 / 6 + 0.004], 'r→∞ 才到 1/6', slate, 0, 0);
+      }
+    }
+  },
+  presets: [
+    { label: '观察 r→2+（R→13/60）', fromStep: 4, values: { r: 2.05 } },
+    { label: '观察 r=7（R 仍大于 1/6）', fromStep: 5, values: { r: 7 } }
+  ]
+};
+/*__LESSON_END__*/
+</script><script>
+(()=>{'use strict';
+const L=window.LESSON, $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+if(!L||!Array.isArray(L.steps)||L.steps.length<2)throw new Error('教学模块缺少步骤');
+const params=L.params||[],p=Object.fromEntries(params.map(x=>[x.key,x.value]));let step=0;
+function painter(svg,view,equalScale=true){
+ svg.replaceChildren();const W=svg.viewBox.baseVal.width,H=svg.viewBox.baseVal.height,pad=W>400?50:28;
+ const [xmin,xmax,ymin,ymax]=view;if(!(xmax>xmin&&ymax>ymin))throw new Error('绘图坐标范围无效');
+ const scale=Math.min((W-pad*2)/(xmax-xmin),(H-pad*2)/(ymax-ymin));
+ const scaleX=equalScale?scale:(W-pad*2)/(xmax-xmin),scaleY=equalScale?scale:(H-pad*2)/(ymax-ymin);
+ const X=x=>W/2+(x-(xmin+xmax)/2)*scaleX,Y=y=>H/2-(y-(ymin+ymax)/2)*scaleY;
+ const node=(tag,attrs,text)=>{const n=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(attrs))n.setAttribute(k,v);if(text!==undefined)n.textContent=text;svg.append(n);return n};
+ const valid=a=>Array.isArray(a)&&a.length===2&&a.every(Number.isFinite);
+ const line=(a,b,c='#64748b',w=2,dash='')=>{if(!valid(a)||!valid(b))throw new Error('图中线段坐标非有限值');return node('line',{x1:X(a[0]),y1:Y(a[1]),x2:X(b[0]),y2:Y(b[1]),stroke:c,'stroke-width':w,'stroke-dasharray':dash})};
+ const text=(a,t,c='#334155',dx=0,dy=0)=>{if(!valid(a))throw new Error('标签坐标无效');return node('text',{x:Math.max(16,Math.min(W-36,X(a[0])+dx)),y:Math.max(20,Math.min(H-10,Y(a[1])+dy)),fill:c},t)};
+ return {line,text,
+  axes(){line([xmin,0],[xmax,0],'#cbd5d1',1);line([0,ymin],[0,ymax],'#cbd5d1',1);text([xmax,0],'x','#94a3a0',-12,-8);text([0,ymax],'y','#94a3a0',8,8)},
+  ellipse(a,rx,ry,c='#0f766e'){return node('ellipse',{cx:X(a[0]),cy:Y(a[1]),rx:rx*scaleX,ry:ry*scaleY,fill:'none',stroke:c,'stroke-width':2.5})},
+  circle(a,r,c='#0f766e'){return this.ellipse(a,r,r,c)},
+  path(ps,c='#0f766e',w=2,dash=''){let d='',pen=false;for(const a of ps){if(!valid(a)){pen=false;continue}d+=(pen?'L':'M')+X(a[0])+','+Y(a[1]);pen=true}return node('path',{d,fill:'none',stroke:c,'stroke-width':w,'stroke-dasharray':dash,'stroke-linejoin':'round'})},
+  polygon(ps,fill='#dbeafe',stroke='#60a5fa'){if(ps.some(a=>!valid(a)))throw new Error('区域坐标无效');return node('polygon',{points:ps.map(a=>X(a[0])+','+Y(a[1])).join(' '),fill,stroke,'stroke-width':1.5})},
+  point(a,t,c='#0f766e',dx=10,dy=-12){if(!valid(a))throw new Error('点坐标无效');node('circle',{cx:X(a[0]),cy:Y(a[1]),r:5.5,fill:c,stroke:'white','stroke-width':2});if(t)text(a,t,c,dx,dy)},
+  segmentLabel(a,b,t,c='#334155',offset=14){const dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy)||1;return text(MathKit.midpoint(a,b),t,c,offset*dy/len,offset*dx/len)}
+ };
+}
+$('title').textContent=L.title;document.title=L.title;$('intro').textContent=L.intro;
+const tabs=L.steps.map((s,i)=>{const b=document.createElement('button');b.textContent=(i+1)+'. '+s.title;b.onclick=()=>{step=i;render()};$('steps').append(b);return b});
+const controls=params.map(desc=>{const wrap=document.createElement('div');wrap.className='control';const label=document.createElement('label'),name=document.createElement('span'),out=document.createElement('output');name.textContent=desc.label;label.append(name,out);const input=document.createElement('input');input.type='range';input.id='param-'+desc.key;input.min=desc.min;input.max=desc.max;input.step=desc.step||'any';input.value=desc.value;input.setAttribute('aria-label',desc.label);input.oninput=()=>{p[desc.key]=Number(input.value);render()};const note=document.createElement('div');note.className='note';note.textContent=desc.note||'';wrap.append(label,input,note);$('controls').append(wrap);return{desc,wrap,input,out}});
+const reset=document.createElement('button');reset.textContent='复位';reset.id='reset';reset.onclick=()=>{for(const d of params)p[d.key]=d.value;render()};$('actions').append(reset);
+const specials=(L.presets||[]).map((x,i)=>{const b=document.createElement('button');b.textContent=x.label;b.className='special';b.id='preset-'+i;b.onclick=()=>{for(const [k,v]of Object.entries(x.values)){const d=params.find(x=>x.key===k);if(!d||!Number.isFinite(v)||v<d.min||v>d.max)throw new Error('预设值不在演示区间');p[k]=v}render()};$('actions').append(b);return{x,b}});
+$('previous').onclick=()=>{step=Math.max(0,step-1);render()};$('next').onclick=()=>{step=Math.min(L.steps.length-1,step+1);render()};
+function render(){
+ const d=L.compute({...p}),s=L.steps[step];$('focus').textContent=s.focus;$('stepCount').textContent='第 '+(step+1)+' / '+L.steps.length+' 步';$('stepTitle').textContent=s.title;
+ tabs.forEach((b,i)=>b.classList.toggle('active',i===step));$('previous').disabled=step===0;$('next').disabled=step===L.steps.length-1;
+ for(const c of controls){c.wrap.hidden=step<(c.desc.introducedAt||0);c.input.value=p[c.desc.key];c.out.value=MathKit.fmt(p[c.desc.key])}
+ const visible=controls.some(c=>!c.wrap.hidden);$('controls').hidden=!visible;reset.hidden=!visible;
+ specials.forEach(({x,b})=>b.hidden=step<(x.fromStep||0));$('actions').hidden=reset.hidden&&specials.every(x=>x.b.hidden);
+ $('explanation').innerHTML=L.explain(d,step);L.draw(painter($('drawing'),typeof L.view==='function'?L.view(d,step):L.view),d,step);
+ const inset=L.inset;const show=inset&&step>=(inset.fromStep||0);$('insetWrap').hidden=!show;
+ if(show){$('insetTitle').textContent=inset.title;inset.draw(painter($('inset'),typeof inset.view==='function'?inset.view(d,step):inset.view,inset.kind==='geometry'),d,step)}
+ window.__lessonDebug={params:{...p},step,data:d};
+}
+window.addEventListener('error',e=>{$('error').hidden=false;$('error').textContent='页面错误：'+e.message});render();
+})();
+</script></body></html>

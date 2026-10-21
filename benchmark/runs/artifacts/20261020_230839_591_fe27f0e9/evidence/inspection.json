@@ -1,0 +1,410 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261020_230839_591_fe27f0e9/20261020_235008_436_round_01.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "飞机着陆：把“每秒慢 6 m/s”画成一条直线\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止，其着陆速度为 36 m/s。求： （1）飞机着陆过程中滑行的距离； （2）最后 4 s 内滑行的位移大小。\n\n时间 t\n0.0\ns\n速度 v\n36.0\nm/s\n位移 x\n0.0\nm\n① 真实场景：飞机在跑道上匀减速滑行\n跑道刻度 / m\n0\n20\n40\n60\n80\n100\na = 6 m/s²（反向）\nv = 36.0 m/s\n108 m\n② 速度—时间图像：斜率是加速度，面积是位移\n0\n1\n2\n3\n4\n5\n6\n12\n24\n36\nt / s\nv / (m·s⁻¹)\nv = 0\nS = ½ × 6 × 36 = 108 m\n前 2 s：60 m\n48 m\n最后 4 s（t = 2 s → 6 s）\n播放\n重置\nt = 0.0 s\n① 读题\n② 何时停下\n③ 第（1）问\n④ 第（2）问\n⑤ 小结\n① 读题：把文字变成图\n\n已知：v₀ = 36 m/s，加速度大小 a = 6 m/s²，方向与运动相反（匀减速），一直滑到 v = 0。\n\n换句话说，飞机“每秒慢 6 m/s”。要求：（1）滑行距离；（2）最后 4 s 内的位移。\n\n拖动下面的时间滑块，看飞机的停位和右边 v–t 图上的点怎么一起变化。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 读题",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 何时停下",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ 第（1）问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ 第（2）问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 小结",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no matching visible step control"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "飞机着陆：把“每秒慢 6 m/s”画成一条直线\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止，其着陆速度为 36 m/s。求： （1）飞机着陆过程中滑行的距离； （2）最后 4 s 内滑行的位移大小。\n\n时间 t\n0.0\ns\n速度 v\n36.0\nm/s\n位移 x\n0.0\nm\n① 真实场景：飞机在跑道上匀减速滑行\n跑道刻度 / m\n0\n20\n40\n60\n80\n100\na = 6 m/s²（反向）\nv = 36.0 m/s\n108 m\n② 速度—时间图像：斜率是加速度，面积是位移\n0\n1\n2\n3\n4\n5\n6\n12\n24\n36\nt / s\nv / (m·s⁻¹)\nv = 0\nS = ½ × 6 × 36 = 108 m\n前 2 s：60 m\n48 m\n最后 4 s（t = 2 s → 6 s）\n播放\n重置\nt = 0.0 s\n① 读题\n② 何时停下\n③ 第（1）问\n④ 第（2）问\n⑤ 小结\n① 读题：把文字变成图\n\n已知：v₀ = 36 m/s，加速度大小 a = 6 m/s²，方向与运动相反（匀减速），一直滑到 v = 0。\n\n换句话说，飞机“每秒慢 6 m/s”。要求：（1）滑行距离；（2）最后 4 s 内的位移。\n\n拖动下面的时间滑块，看飞机的停位和右边 v–t 图上的点怎么一起变化。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 读题",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 何时停下",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ 第（1）问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ 第（2）问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 小结",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "3"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "飞机着陆：把“每秒慢 6 m/s”画成一条直线\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止，其着陆速度为 36 m/s。求： （1）飞机着陆过程中滑行的距离； （2）最后 4 s 内滑行的位移大小。\n\n时间 t\n3.0\ns\n速度 v\n18.0\nm/s\n位移 x\n81.0\nm\n① 真实场景：飞机在跑道上匀减速滑行\n跑道刻度 / m\n0\n20\n40\n60\n80\n100\na = 6 m/s²（反向）\nv = 18.0 m/s\n108 m\n② 速度—时间图像：斜率是加速度，面积是位移\n0\n1\n2\n3\n4\n5\n6\n12\n24\n36\nt / s\nv / (m·s⁻¹)\nv = 0\nS = ½ × 6 × 36 = 108 m\n前 2 s：60 m\n48 m\n最后 4 s（t = 2 s → 6 s）\n播放\n重置\nt = 3.0 s\n① 读题\n② 何时停下\n③ 第（1）问\n④ 第（2）问\n⑤ 小结\n① 读题：把文字变成图\n\n已知：v₀ = 36 m/s，加速度大小 a = 6 m/s²，方向与运动相反（匀减速），一直滑到 v = 0。\n\n换句话说，飞机“每秒慢 6 m/s”。要求：（1）滑行距离；（2）最后 4 s 内的位移。\n\n拖动下面的时间滑块，看飞机的停位和右边 v–t 图上的点怎么一起变化。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "3",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 读题",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 何时停下",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ 第（1）问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ 第（2）问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 小结",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "6"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "飞机着陆：把“每秒慢 6 m/s”画成一条直线\n\n飞机着陆后以 6 m/s² 的加速度做匀减速直线运动直至静止，其着陆速度为 36 m/s。求： （1）飞机着陆过程中滑行的距离； （2）最后 4 s 内滑行的位移大小。\n\n时间 t\n6.0\ns\n速度 v\n0.0\nm/s\n位移 x\n108.0\nm\n① 真实场景：飞机在跑道上匀减速滑行\n跑道刻度 / m\n0\n20\n40\n60\n80\n100\na = 6 m/s²（反向）\nv = 18.0 m/s\n108 m\n② 速度—时间图像：斜率是加速度，面积是位移\n0\n1\n2\n3\n4\n5\n6\n12\n24\n36\nt / s\nv / (m·s⁻¹)\nv = 0\nS = ½ × 6 × 36 = 108 m\n前 2 s：60 m\n48 m\n最后 4 s（t = 2 s → 6 s）\n播放\n重置\nt = 6.0 s\n① 读题\n② 何时停下\n③ 第（1）问\n④ 第（2）问\n⑤ 小结\n① 读题：把文字变成图\n\n已知：v₀ = 36 m/s，加速度大小 a = 6 m/s²，方向与运动相反（匀减速），一直滑到 v = 0。\n\n换句话说，飞机“每秒慢 6 m/s”。要求：（1）滑行距离；（2）最后 4 s 内的位移。\n\n拖动下面的时间滑块，看飞机的停位和右边 v–t 图上的点怎么一起变化。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "重置",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "6",
+          "min": "0",
+          "max": "6",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 读题",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 何时停下",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ 第（1）问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ 第（2）问",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 小结",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}
