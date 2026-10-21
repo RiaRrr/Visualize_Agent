@@ -1,0 +1,28 @@
+{
+  "dimension": "solution_correctness",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "request_timeout_seconds": 300.0,
+  "evidence_sha256": "49e3a307a237b6da156f01043b1f39eff1a53343aedd39f476bbf4e0a15e8351",
+  "prompt_sha256": "b9ad3b0fcf8fe94a27eea285ab483f16c607451774c178dc67c543a186e5adb0",
+  "created_at": "2026-10-21T08:20:30.712023+00:00",
+  "status": "completed",
+  "attempt": 2,
+  "judgment": {
+    "dimension": "solution_correctness",
+    "score": 5,
+    "issues": [],
+    "evidence": "独立核算与候选页面一致：（1）A停车前相对位置差S=56+(16-4)t-1.5t²=56+12t-1.5t²，S'=12-3t，故t=4 s取最大值80 m；（2）A在t=8 s停于绝对位置120 m，B满足4t+0.5t²=120，正根t=12 s；（3）交换前后位置后，t≤8 s时D=xB-xA=x₀-12t+1.5t²，其最小值为D(4)=x₀-24。两次相遇要求初始间距为正且最小值严格小于0，因此0<x₀<24 m；对应两根4±√(16-2x₀/3)均位于0至8 s之间，未错误延伸到A停车后的运动段。页面的位置、速度及分段停车模型也一致：t=7 s时A、B位置分别为119 m、52.5 m，间距66.5 m；t=14 s时分别为120 m、154 m，间距34 m，均与操作截图相符。速度图在t=8 s后令A速度为0，相对位置图也使用A停在120 m或64 m的分段位置。实际操作记录只验证了原题模式的t=7 s和t=14 s状态；第（3）问的切换与参数预设未被实际点击，但其公式、边界和根数逻辑可由源码核实。",
+    "reference_concern": "参考答案的最终结果正确，但第（2）问解析中先记B在8 s内位移x₂=64 m，随后又使用含t₂的表达式，符号复用和等式书写较含混；第（3）问只写x₀<24 m，未显式写出作为正初始间距应有的x₀>0。候选页面给出的0<x₀<24 m更完整。",
+    "summary": "三个小问的结论、分段运动方程、极值、相遇时刻及参数边界均正确，图中关键数值与运动模型相符，无实质性正确性缺陷。"
+  },
+  "duration_seconds": 23.28684519699891,
+  "usage": {
+    "input_tokens": 33499,
+    "output_tokens": 1054,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 516,
+    "total_tokens": 34553
+  }
+}

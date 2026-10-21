@@ -7,6 +7,23 @@ from app.config import Settings
 from app.model_api import ModelClient, ModelError, chat_text, token_usage
 
 
+def test_total_request_deadline_cancels_a_stalled_response(monkeypatch,tmp_path):
+    import pytest
+    cancelled=[]
+    class FakeClient:
+        def __init__(self,**kwargs):pass
+        async def __aenter__(self):return self
+        async def __aexit__(self,*args):pass
+        async def post(self,*args,**kwargs):
+            try:await asyncio.sleep(10)
+            finally:cancelled.append(True)
+    monkeypatch.setattr('app.model_api.httpx.AsyncClient',FakeClient)
+    settings=Settings(tmp_path,'https://unused.test',None,'x','y',codex_key='test',model_timeout_seconds=.01)
+    with pytest.raises(ModelError,match='请求超时'):
+        asyncio.run(ModelClient(settings).complete('deepseek-test','test',[],max_tokens=100,provider='codex'))
+    assert cancelled==[True]
+
+
 def test_codex_gateway_chat_request(monkeypatch, tmp_path: Path):
     image = tmp_path / "problem.png"
     image.write_bytes(b"image")

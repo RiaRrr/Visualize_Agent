@@ -25,6 +25,7 @@ def build_prompts(bench: Path) -> dict[str, str]:
     rubric = (bench / "rubric.md").read_text(encoding="utf-8")
     teaching = (Path(__file__).parent / "prompts/reviewer_teaching.md").read_text(encoding="utf-8")
     criteria = read(folder / "dimensions.json")
+    calibration = read(folder / "calibration_anchors.json", {})
     if set(criteria) != set(SCORE_KEYS):
         raise ValueError("独立评分标准的维度不完整")
     prompts = {}
@@ -32,8 +33,9 @@ def build_prompts(bench: Path) -> dict[str, str]:
         item = criteria[key]
         text = item["criteria"] + ("\n" + teaching if key == "teaching_effectiveness" else "")
         instruction = dimension.replace("{{DIMENSION}}", key).replace("{{LABEL}}", item["label"]).replace("{{CRITERIA}}", text)
-        prompts[key] = common + "\n\n" + instruction
+        prompts[key] = common + "\n\n" + instruction + "\n\n" + calibration.get(key, "")
     prompts["overall_score"] = common + "\n\n" + overall.replace("{{RUBRIC}}", rubric).replace("{{TEACHING}}", teaching)
+    prompts["overall_score"] += "\n\n" + calibration.get("overall_score", "")
     return prompts
 
 
@@ -107,6 +109,7 @@ async def evaluate_dimensions(client, judge: dict, prompts: dict[str, str], mate
         attempt = len(list(folder.glob(key + ".attempt-*.json"))) + 1
         attempt_path = folder / f"{key}.attempt-{attempt:03d}.json"
         record = {"dimension": key, "model": judge["model"], "provider": judge["provider"],
+                  "request_timeout_seconds": getattr(getattr(client, "settings", None), "model_timeout_seconds", None),
                   "evidence_sha256": evidence_hash, "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
                   "created_at": datetime.now(timezone.utc).isoformat(), "status": "running", "attempt": attempt}
         write(attempt_path, record)

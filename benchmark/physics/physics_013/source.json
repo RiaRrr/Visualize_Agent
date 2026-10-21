@@ -1,0 +1,74 @@
+{
+  "id": "3888992658481152",
+  "course_id": 29,
+  "type_id": "2904",
+  "kpoint_ids": [
+    15900
+  ],
+  "catalog_ids": [
+    225726,
+    187734,
+    194395,
+    194618,
+    195946
+  ],
+  "years": [
+    2025,
+    2026
+  ],
+  "difficulty": 0.4,
+  "difficulty_level": 20,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861840-114651791852237200--we5qU88UmYELGouHUU3NbT-ASEoUiMcxVoWY8872hioWTTSnltzPF-S1JZmhNQH\"><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">、</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">两辆汽车在一条足够长的平直公路上沿着同一方向并排行驶，初始时刻，</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">车在前，</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">车在后，二者间距为</span><img  src=\"https://img.xkw.com/dksih/formula/9e352f750097394dbb56f9079c2f46ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，两车均做匀变速直线运动，初始速度分别为</span><img  src=\"https://img.xkw.com/dksih/formula/430e3e0ee7f9aed9c1507775e2d95791.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">和</span><img  src=\"https://img.xkw.com/dksih/formula/760f798e6d827bdd731fb07a2907fc53.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，汽车</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">以大小为</span><img  src=\"https://img.xkw.com/dksih/formula/0cadd6c2617a6d86b221cc67ff76d748.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的加速度减速行驶，汽车</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">以大小为</span><img  src=\"https://img.xkw.com/dksih/formula/49c9ccb846209ceecc8de14fe7318e4d.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">的加速度加速行驶，通过计算求：</span></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861840-114651791852237200--we5qU88UmYELGouHUU3NbT-ASEoUiMcxVoWY8872hioWTTSnltzPF-S1JZmhNQH\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 宋体;\">两车经过多长时间相距最大？此时最大间距是多少？</span></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861840-114651791852237200--we5qU88UmYELGouHUU3NbT-ASEoUiMcxVoWY8872hioWTTSnltzPF-S1JZmhNQH\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 宋体;\">经过多长时间两车相遇？</span></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861840-114651791852237200--we5qU88UmYELGouHUU3NbT-ASEoUiMcxVoWY8872hioWTTSnltzPF-S1JZmhNQH\"><span class=\"ques-no\">（3）</span><span style=\"font-family: 宋体;\">若初始时，</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">车在后，</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">车在前，当两汽车初始间距</span><img  src=\"https://img.xkw.com/dksih/formula/79b752f0f189e5d8666daea73e145dff.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">满足什么条件时，两车可以相遇两次。</span></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861840-114651791852237200--we5qU88UmYELGouHUU3NbT-ASEoUiMcxVoWY8872hioWTTSnltzPF-S1JZmhNQH\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><span style=\"font-family: 'Times New Roman';\">4 s</span><span style=\"font-family: 宋体;\">；</span><span style=\"font-family: 'Times New Roman';\">80 m</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><span style=\"font-family: 'Times New Roman';\">12s</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/1e6a610eff9556f2f096dbfcad078e7c.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\">m</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861840-114651791852237200--we5qU88UmYELGouHUU3NbT-ASEoUiMcxVoWY8872hioWTTSnltzPF-S1JZmhNQH\"><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">当两车速度相等时距离最大，设经过的时间为</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">t</span><span style=\"font-family: 宋体;\">，则</span><img  src=\"https://img.xkw.com/dksih/formula/94922624b1ccc3291ea084a14007bb99.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">解得</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">t</span><span style=\"font-family: 'Times New Roman';\">=4s</span><span style=\"font-family: 宋体;\">，</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">v</span><span style=\"font-family: 'Times New Roman';\">=8m/s</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">此时</span><span style=\"font-family: 'Times New Roman';\">AB</span><span style=\"font-family: 宋体;\">的位移分别为</span><img  src=\"https://img.xkw.com/dksih/formula/1b298599173badfffd624ad519d604f9.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，</span><img  src=\"https://img.xkw.com/dksih/formula/2b0f48303b9ff355a757d45d95a1d6d1.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">最大间距</span><img  src=\"https://img.xkw.com/dksih/formula/122771c8a398834d9d9c6e0fd1998706.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">当</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">的速度减为零时，用时间</span><img  src=\"https://img.xkw.com/dksih/formula/b5d44b6dc562990e0397ccf77ac23d9e.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 'Times New Roman';\"> </span></p><p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">的位移</span><img  src=\"https://img.xkw.com/dksih/formula/351c510e83e7bd1a534074d4dea6a95c.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">此时</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">的位移</span><img  src=\"https://img.xkw.com/dksih/formula/7f3d155c82564dd5cecd303f28d4b132.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">此时</span><span style=\"font-family: 'Times New Roman';\">AB</span><span style=\"font-family: 宋体;\">相距</span><img  src=\"https://img.xkw.com/dksih/formula/9e352f750097394dbb56f9079c2f46ca.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则当</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">追上</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">时满足</span><img  src=\"https://img.xkw.com/dksih/formula/434c82c5ed94e7b4ceaf56f53955d97a.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">解得</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">t</span><sub word-font=\"Times New Roman\"><span>2</span></sub><span style=\"font-family: 'Times New Roman';\">=12s</span></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(3)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">车在后减速，</span><span style=\"font-family: 'Times New Roman';\">B</span><span style=\"font-family: 宋体;\">车在前加速，当两车速度相等时，两车恰好相遇，则以后两车可以再次相遇，有</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">x</span><sub word-font=\"Times New Roman\"><span>0</span></sub><span style=\"font-family: 'Times New Roman';\">=</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">x</span><sub word-font=\"Times New Roman\"><span>A</span></sub><span style=\"font-family: 'Times New Roman';\">-</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">x</span><sub word-font=\"Times New Roman\"><span>B</span></sub></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">代入数据解得</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">x</span><sub word-font=\"Times New Roman\"><span>0</span></sub><span style=\"font-family: 'Times New Roman';\">=24m</span></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">两汽车初始间距</span><img  src=\"https://img.xkw.com/dksih/formula/a7abef70f137c8d6d43715208ab67fcd.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">。</span></p></div></div>",
+  "create_date": "2025-11-19 23:18:43",
+  "paper_type_ids": [
+    3
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 225726,
+      "name": "第三节 匀变速直线运动的规律"
+    },
+    {
+      "id": 187734,
+      "name": "3. 匀变速直线运动的位移与时间的关系"
+    },
+    {
+      "id": 194395,
+      "name": "第2节 位移变化规律"
+    },
+    {
+      "id": 194618,
+      "name": "第五节 匀变速直线运动与汽车安全行驶"
+    },
+    {
+      "id": 195946,
+      "name": "4. 匀变速直线运动规律的应用"
+    }
+  ],
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "kpoints": [
+    {
+      "id": 15900,
+      "name": "变速物体追变速物体"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "_paper_ids": [
+    "4103763715465216"
+  ]
+}

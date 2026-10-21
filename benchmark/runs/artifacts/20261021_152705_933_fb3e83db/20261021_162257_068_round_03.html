@@ -1,0 +1,1349 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>有机合成路线推理 · 从 A 到 K</title>
+<style>
+  :root{
+    --ink:#1e293b; --muted:#64748b; --line:#cbd5e1;
+    --bg:#f4f7fb; --card:#ffffff; --accent:#2563eb;
+    --green:#16a34a; --red:#dc2626; --orange:#ea580c; --purple:#7c3aed;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+    line-height:1.5;
+  }
+  header{
+    padding:20px 24px 8px;
+    max-width:1280px; margin:0 auto;
+  }
+  header h1{
+    font-size:clamp(20px,2.4vw,28px);
+    margin:0 0 6px;
+    letter-spacing:.2px;
+  }
+  header p{
+    margin:0; color:var(--muted); font-size:14px;
+    max-width:860px;
+  }
+  .tabs{
+    display:flex; gap:8px; overflow-x:auto; padding:12px 24px 0;
+    max-width:1280px; margin:0 auto;
+    scrollbar-width:thin;
+  }
+  .tab-btn{
+    flex:0 0 auto;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:13px;
+    cursor:pointer;
+    transition:.2s;
+    white-space:nowrap;
+  }
+  .tab-btn:hover{border-color:#93c5fd}
+  .tab-btn.active{
+    background:var(--accent); color:#fff; border-color:var(--accent);
+    box-shadow:0 4px 12px rgba(37,99,235,.25);
+  }
+  main{
+    max-width:1280px; margin:0 auto; padding:16px 24px 56px;
+  }
+  .tab-panel{display:none}
+  .tab-panel.active{display:block}
+  .card{
+    background:var(--card);
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    padding:16px;
+    box-shadow:0 6px 20px rgba(15,23,42,.04);
+  }
+  .card h3{
+    margin:0 0 10px;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .hint{
+    font-size:12.5px;
+    color:var(--muted);
+    margin:6px 0;
+  }
+  .feedback{
+    min-height:22px;
+    font-size:13px;
+    color:var(--muted);
+    margin:10px 0 0;
+  }
+  .btn-row{
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;
+  }
+  button{
+    font-family:inherit;
+  }
+  .btn{
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    padding:8px 12px;
+    border-radius:10px;
+    font-size:13px;
+    cursor:pointer;
+    transition:.18s;
+  }
+  .btn:hover{border-color:#93c5fd; background:#f8fbff}
+  .btn.primary{
+    background:var(--accent); color:#fff; border-color:var(--accent);
+  }
+  .btn.primary:hover{background:#1d4ed8}
+  .btn.done{
+    background:#ecfdf5; color:#047857; border-color:#6ee7b7;
+  }
+  .btn.shake{animation:shake .35s}
+  @keyframes shake{
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-4px)}
+    75%{transform:translateX(4px)}
+  }
+  .badge{
+    display:inline-block;
+    background:#fef3c7; color:#92400e;
+    font-size:11px;
+    padding:1px 7px;
+    border-radius:999px;
+    margin-left:6px;
+    vertical-align:middle;
+  }
+  .badge.green{background:#dcfce7;color:#166534}
+
+  /* 总览 */
+  .overview-wrap{
+    display:grid;
+    grid-template-columns:minmax(0,1.6fr) minmax(280px,.8fr);
+    gap:16px;
+  }
+  @media(max-width:900px){
+    .overview-wrap{grid-template-columns:1fr}
+  }
+  .route-map{
+    overflow-x:auto;
+    padding:4px 0;
+  }
+  .route-row{
+    display:flex; align-items:center; gap:4px;
+    min-width:max-content;
+    padding:6px 0;
+  }
+  .route-node{
+    width:76px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:4px;
+    cursor:pointer;
+    text-align:center;
+    transition:.18s;
+    flex:0 0 auto;
+  }
+  .route-node:hover{border-color:#93c5fd; transform:translateY(-1px)}
+  .route-node.active{
+    background:#eff6ff;
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(37,99,235,.12);
+  }
+  .node-mini{height:54px; display:flex; align-items:center; justify-content:center}
+  .node-label{font-size:12px; font-weight:700; color:var(--ink)}
+  .node-tag{font-size:10px; color:var(--muted); line-height:1.2}
+  .route-arrow{
+    width:22px; text-align:center; color:#94a3b8; font-size:16px;
+    flex:0 0 auto;
+  }
+  .route-extra{
+    font-size:11px; color:var(--purple);
+    padding:4px 8px; background:#f5f3ff; border-radius:8px;
+    white-space:nowrap;
+  }
+  .detail-panel{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    padding:14px;
+  }
+  .detail-title{
+    font-weight:700; font-size:16px; margin-bottom:6px;
+  }
+  .detail-meta{
+    font-size:12px; color:var(--muted); margin-bottom:10px;
+  }
+  .detail-body{
+    font-size:13.5px; color:#334155;
+  }
+  .detail-body strong{color:var(--accent)}
+  .known-reaction{
+    margin-top:10px;
+    background:#fffbeb;
+    border:1px solid #fde68a;
+    border-radius:10px;
+    padding:8px 10px;
+    font-size:12.5px;
+    color:#78350f;
+  }
+
+  /* 通用双栏 */
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media(max-width:900px){
+    .two-col{grid-template-columns:1fr}
+  }
+  .svg-box{
+    width:100%;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+  }
+  svg{display:block; max-width:100%; height:auto}
+
+  /* 同分异构体 */
+  .iso-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
+    gap:16px;
+  }
+  @media(max-width:1000px){
+    .iso-layout{grid-template-columns:1fr}
+  }
+  .builder-area{
+    display:flex; align-items:center; justify-content:center;
+    gap:0;
+    margin:20px 0 10px;
+    padding:16px 0;
+    background:#f8fafc;
+    border-radius:14px;
+    border:1px dashed #cbd5e1;
+  }
+  .carbon-node{
+    width:116px;
+    min-height:120px;
+    display:flex; flex-direction:column; align-items:center;
+    cursor:pointer;
+    padding:4px;
+    border-radius:12px;
+    transition:.15s;
+  }
+  .carbon-node:hover{background:#eff6ff}
+  .carbon-ball{
+    width:52px; height:52px;
+    border-radius:50%;
+    background:#fff;
+    border:2px solid #94a3b8;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:14px;
+    color:#334155;
+    flex:0 0 auto;
+  }
+  .carbon-node[data-c="2"] .carbon-ball{border-color:var(--accent)}
+  .bond-line{
+    width:42px; height:2px; background:#94a3b8; margin-top:-60px;
+    flex:0 0 auto;
+  }
+  .slots{
+    min-height:38px;
+    display:flex; flex-wrap:wrap; gap:4px;
+    justify-content:center;
+    margin-top:6px;
+  }
+  .slot{
+    font-size:11px;
+    padding:2px 5px;
+    border-radius:6px;
+    background:#eef2ff;
+    border:1px solid #c7d2fe;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .slot:hover{background:#fee2e2; border-color:#fca5a5}
+  .chips{
+    display:flex; flex-wrap:wrap; gap:8px;
+    justify-content:center;
+    margin:10px 0;
+  }
+  .chip{
+    border:1px solid #cbd5e1;
+    background:#fff;
+    border-radius:10px;
+    padding:8px 12px;
+    font-size:13px;
+    cursor:pointer;
+    transition:.15s;
+    color:#334155;
+  }
+  .chip:hover{border-color:#93c5fd}
+  .chip.selected{
+    background:#eff6ff;
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(37,99,235,.12);
+  }
+  .chip.used{
+    opacity:.42;
+    cursor:not-allowed;
+    background:#f1f5f9;
+  }
+  .chip[data-sub="OH"]{color:var(--red)}
+  .chip[data-sub="OCH3"]{color:var(--purple)}
+  .result-groups{
+    display:flex; flex-wrap:wrap; gap:6px;
+    margin-bottom:10px;
+  }
+  .filter-btn{
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:999px;
+    padding:5px 10px;
+    font-size:11.5px;
+    cursor:pointer;
+    color:var(--muted);
+  }
+  .filter-btn.active{
+    background:var(--accent); color:#fff; border-color:var(--accent);
+  }
+  .structure-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    gap:8px;
+    max-height:430px;
+    overflow:auto;
+    padding-right:2px;
+  }
+  .iso-card{
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:9px;
+    background:#fff;
+    cursor:pointer;
+    transition:.15s;
+  }
+  .iso-card:hover{
+    border-color:#93c5fd;
+    transform:translateY(-1px);
+    box-shadow:0 4px 12px rgba(15,23,42,.06);
+  }
+  .iso-card.nmr-hit{
+    border-color:#34d399;
+    background:#f0fdf4;
+  }
+  .iso-card-head{
+    font-size:11.5px;
+    color:var(--muted);
+    margin-bottom:4px;
+  }
+  .iso-formula{
+    font-size:12.5px;
+    font-weight:700;
+    color:#0f172a;
+    word-break:break-all;
+    line-height:1.35;
+  }
+  .iso-cat{
+    font-size:10.5px;
+    color:#64748b;
+    margin-top:5px;
+  }
+  .iso-detail{
+    margin-top:10px;
+    font-size:12.5px;
+    color:#334155;
+    background:#f8fafc;
+    border-radius:10px;
+    padding:8px 10px;
+    min-height:38px;
+  }
+  .found-area{
+    margin-top:10px;
+  }
+
+  /* 合成设计 */
+  .synth-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    gap:16px;
+  }
+  @media(max-width:900px){
+    .synth-layout{grid-template-columns:1fr}
+  }
+  .step-buttons{
+    display:flex; flex-wrap:wrap; gap:8px;
+    margin:8px 0 12px;
+  }
+  .step-buttons .btn{font-size:12.5px}
+  .synth-steps{
+    display:flex; flex-wrap:wrap; gap:6px;
+    min-height:38px;
+    align-items:center;
+  }
+  .synth-step-pill{
+    background:#eff6ff;
+    border:1px solid #bfdbfe;
+    color:#1d4ed8;
+    border-radius:999px;
+    padding:4px 9px;
+    font-size:12px;
+  }
+  .synth-step-arrow{color:#94a3b8; font-size:14px}
+
+  /* 动画 */
+  .hcl-float{
+    animation:floatUp 1.4s ease-out forwards;
+  }
+  @keyframes floatUp{
+    0%{opacity:1; transform:translate(0,0)}
+    100%{opacity:0; transform:translate(26px,-26px)}
+  }
+  .boc-leave{
+    animation:floatUp 1.6s ease-out forwards;
+  }
+  .pulse{
+    animation:pulse .9s infinite alternate;
+  }
+  @keyframes pulse{
+    from{opacity:.45}
+    to{opacity:1}
+  }
+  .conclusion{
+    margin-top:12px;
+    background:#f0fdf4;
+    border:1px solid #bbf7d0;
+    border-radius:12px;
+    padding:10px 12px;
+    font-size:13px;
+    color:#166534;
+  }
+  .conclusion strong{color:#047857}
+  .muted{color:var(--muted)}
+  .small{font-size:12px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>有机合成路线推理 · 从 A 到 K</h1>
+  <p>化合物 K 是制备药物咪达唑仑的中间体。下面把题中的合成路线变成可点击、可操作的结构图：先看清每一步“发生了什么”，再逐步回答各小问。</p>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="tab-overview">路线总览</button>
+  <button class="tab-btn" data-tab="tab-ac">A 与 C</button>
+  <button class="tab-btn" data-tab="tab-fg">官能团与消去</button>
+  <button class="tab-btn" data-tab="tab-boc">Boc 保护基</button>
+  <button class="tab-btn" data-tab="tab-iso">同分异构体</button>
+  <button class="tab-btn" data-tab="tab-synth">合成设计</button>
+</nav>
+
+<main>
+
+  <!-- 总览 -->
+  <section class="tab-panel active" id="tab-overview">
+    <div class="overview-wrap">
+      <div class="card">
+        <h3>合成路线地图</h3>
+        <p class="hint">点击任意分子节点，查看它的名称、关键官能团和在本路线中的作用。</p>
+        <div class="route-map">
+          <div class="route-row" id="route-row-1"></div>
+          <div class="route-row" id="route-row-2"></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" id="btn-play-route">播放路线</button>
+          <button class="btn" id="btn-stop-route">停止</button>
+        </div>
+        <div class="known-reaction">
+          已知反应：R—NH₂ + R′—CH=CH—NO₂ <span class="muted">—Δ→</span> R—NH—CH(R′)—CH₂NO₂
+        </div>
+      </div>
+      <div class="card">
+        <h3>当前节点</h3>
+        <div class="detail-panel" id="overview-detail">
+          <div class="detail-title"></div>
+          <div class="detail-meta"></div>
+          <div class="detail-body"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A 与 C -->
+  <section class="tab-panel" id="tab-ac">
+    <div class="two-col">
+      <div class="card">
+        <h3>第 (1) 问：A 的名称</h3>
+        <p class="hint">观察苯环上 Cl 与 NO₂ 的位置关系。</p>
+        <div class="svg-box">
+          <svg id="svg-A" viewBox="0 0 220 180"></svg>
+        </div>
+        <div class="btn-row" id="name-options">
+          <button class="btn" data-answer="wrong-2">2-氯硝基苯</button>
+          <button class="btn primary" data-answer="right-4">4-氯硝基苯</button>
+          <button class="btn" data-answer="wrong-1">1,1-二氯硝基苯</button>
+        </div>
+        <p class="feedback" id="feedback-A">选择你认为正确的名称。</p>
+        <div id="conclusion-A"></div>
+      </div>
+
+      <div class="card">
+        <h3>第 (2) 问：C 的结构</h3>
+        <p class="hint">B 的 —NH₂ 进攻 2-氟苯甲酰氯的羰基，脱去 HCl 形成酰胺键。</p>
+        <div class="svg-box">
+          <svg id="svg-C" viewBox="0 0 400 230"></svg>
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" id="btn-amidation">形成酰胺键</button>
+          <button class="btn" id="btn-reset-C">重置</button>
+        </div>
+        <p class="feedback" id="feedback-C"></p>
+        <div id="conclusion-C"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 官能团与消去 -->
+  <section class="tab-panel" id="tab-fg">
+    <div class="two-col">
+      <div class="card">
+        <h3>第 (3) 问：D 中的官能团</h3>
+        <p class="hint">先看 D 的结构，再高亮其中的官能团。</p>
+        <div class="svg-box">
+          <svg id="svg-D" viewBox="0 0 240 150"></svg>
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" id="btn-highlight-D">高亮官能团</button>
+        </div>
+        <p class="feedback" id="feedback-D"></p>
+        <div id="conclusion-D"></div>
+      </div>
+
+      <div class="card">
+        <h3>第 (4) 问：F → G 的反应类型</h3>
+        <p class="hint">F 中的 —OH 先变成 —OMs 离去基团，然后在碱的作用下发生 β-消去。</p>
+        <div class="svg-box">
+          <svg id="svg-FG" viewBox="0 0 280 170"></svg>
+        </div>
+        <div class="btn-row">
+          <button class="btn" data-fg-step="0">0 · F</button>
+          <button class="btn" data-fg-step="1">1 · 加 MsCl</button>
+          <button class="btn" data-fg-step="2">2 · 碱夺 H</button>
+          <button class="btn primary" data-fg-step="3">3 · 形成 C=C</button>
+        </div>
+        <p class="feedback" id="feedback-FG"></p>
+        <div id="conclusion-FG"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Boc 保护基 -->
+  <section class="tab-panel" id="tab-boc">
+    <div class="two-col">
+      <div class="card">
+        <h3>第 (5) 问：I → J 中 HCl 的作用</h3>
+        <p class="hint">Boc 是氨基的保护基。加入 HCl 后，Boc 基团会脱落。</p>
+        <div class="svg-box">
+          <svg id="svg-Boc" viewBox="0 0 340 220"></svg>
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" id="btn-boc-hcl">步骤 (i) 加 HCl</button>
+          <button class="btn" id="btn-boc-base">步骤 (ii) NaHCO₃</button>
+          <button class="btn" id="btn-boc-reset">重置</button>
+        </div>
+        <p class="feedback" id="feedback-Boc"></p>
+        <div id="conclusion-Boc"></div>
+      </div>
+      <div class="card">
+        <h3>观察重点</h3>
+        <div class="detail-panel">
+          <div class="detail-title">Boc 基团是什么？</div>
+          <div class="detail-body">
+            <p>Boc 是 <strong>叔丁氧羰基</strong>，常写作 —COO—C(CH₃)₃。它连在氨基上可以“保护”氨基不参与后续反应。</p>
+            <p>酸性条件下，Boc 基团会脱去，生成异丁烯和 CO₂，氨基恢复为 —NH₂（先以铵盐形式存在）。</p>
+            <p>所以第 (i) 步加 HCl 的目的是：<strong>脱去 Boc 保护基</strong>；第 (ii) 步 NaHCO₃ 用来中和过量酸，使氨基游离。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 同分异构体 -->
+  <section class="tab-panel" id="tab-iso">
+    <div class="iso-layout">
+      <div class="card">
+        <h3>第 (6) 问：搭建 C₅H₁₂O₃ 的醚醇异构体</h3>
+        <p class="hint">条件：① 能与 Na 反应 → 含 —OH；② 含有两个 —OCH₃。点击下方筹码选中，再点击碳原子放置。</p>
+        <div class="builder-area">
+          <div class="carbon-node" data-c="1">
+            <div class="carbon-ball">C1</div>
+            <div class="slots"></div>
+          </div>
+          <div class="bond-line"></div>
+          <div class="carbon-node" data-c="2">
+            <div class="carbon-ball">C2</div>
+            <div class="slots"></div>
+          </div>
+          <div class="bond-line"></div>
+          <div class="carbon-node" data-c="3">
+            <div class="carbon-ball">C3</div>
+            <div class="slots"></div>
+          </div>
+        </div>
+        <div class="chips" id="iso-chips">
+          <button class="chip" data-chip="0" data-sub="OCH3">—OCH₃</button>
+          <button class="chip" data-chip="1" data-sub="OCH3">—OCH₃</button>
+          <button class="chip" data-chip="2" data-sub="OH">—OH</button>
+        </div>
+        <div class="btn-row">
+          <button class="btn" id="btn-clear-iso">清空</button>
+          <button class="btn primary" id="btn-enumerate">显示全部 9 种</button>
+          <button class="btn" id="btn-nmr">筛选 NMR 6:3:2:1</button>
+        </div>
+        <p class="feedback" id="iso-feedback">先尝试放完三个取代基，看看你能找到几种。</p>
+        <div class="found-area">
+          <h3 style="font-size:13px;margin:12px 0 6px;color:var(--muted)">你找到的结构</h3>
+          <div class="structure-list" id="iso-found"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>结构清单与 NMR 筛选</h3>
+        <div class="result-groups" id="iso-filters"></div>
+        <div class="structure-list" id="iso-list"></div>
+        <div class="iso-detail" id="iso-detail">点击“显示全部 9 种”或搭建一个结构后，这里会显示分类和氢谱分析。</div>
+        <div id="conclusion-iso"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 合成设计 -->
+  <section class="tab-panel" id="tab-synth">
+    <div class="synth-layout">
+      <div class="card">
+        <h3>第 (7) 问：从二氯苄醇合成咪康唑中间体</h3>
+        <p class="hint">原料：二氯苄醇；另一原料：CH₃NO₂。目标：二氯苯基—CH(OH)—CH₂NH₂。</p>
+        <div class="svg-box">
+          <svg id="svg-synth" viewBox="0 0 520 240"></svg>
+        </div>
+      </div>
+      <div class="card">
+        <h3>选择反应步骤</h3>
+        <p class="hint">按正确顺序点击：先把苄醇变成醛，再引入硝基，最后还原硝基。</p>
+        <div class="step-buttons">
+          <button class="btn" data-step="ox">氧化（MnO₂）</button>
+          <button class="btn" data-step="con">与 CH₃NO₂ 缩合（碱）</button>
+          <button class="btn" data-step="red">还原（Fe/HCl）</button>
+          <button class="btn" data-step="prot">Boc 保护</button>
+          <button class="btn" data-step="hyd">水解</button>
+        </div>
+        <div class="synth-steps" id="synth-steps"></div>
+        <p class="feedback" id="synth-feedback">从原料出发，第一步应该做什么？</p>
+        <div id="conclusion-synth"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+/* ================= 基础绘图工具 ================= */
+const NS = 'http://www.w3.org/2000/svg';
+
+function hexPoints(cx, cy, r, rot=-90){
+  const pts = [];
+  for(let i=0;i<6;i++){
+    const a = (rot + i*60) * Math.PI/180;
+    pts.push([cx + r*Math.cos(a), cy + r*Math.sin(a)]);
+  }
+  return pts;
+}
+function benzenePath(cx, cy, r, rot=-90){
+  const pts = hexPoints(cx,cy,r,rot);
+  return 'M' + pts.map(p=>p.join(',')).join('L') + 'Z';
+}
+function benzene(cx, cy, r, rot=-90, stroke='#334155'){
+  const inner = benzenePath(cx, cy, r*0.70, rot);
+  return `<path d="${benzenePath(cx,cy,r,rot)}" fill="#fff" stroke="${stroke}" stroke-width="1.8"/>` +
+         `<path d="${inner}" fill="none" stroke="${stroke}" stroke-width="1" stroke-dasharray="2 4"/>`;
+}
+function line(x1,y1,x2,y2,color='#334155',w=1.8){
+  return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${w}" stroke-linecap="round"/>`;
+}
+function txt(x,y,str,color='#1e293b',size=13,anchor='middle',weight='normal'){
+  return `<text x="${x}" y="${y}" fill="${color}" font-size="${size}" text-anchor="${anchor}" font-weight="${weight}" font-family="system-ui,-apple-system,'Microsoft YaHei',sans-serif">${str}</text>`;
+}
+
+/* ================= 标签页 ================= */
+function initTabs(){
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      const panel = document.getElementById(btn.dataset.tab);
+      if(panel) panel.classList.add('active');
+
+      if(btn.dataset.tab === 'tab-overview') drawOverview();
+      if(btn.dataset.tab === 'tab-ac'){ drawA(); drawC(false); }
+      if(btn.dataset.tab === 'tab-fg'){ drawD(false); drawFG(0); }
+      if(btn.dataset.tab === 'tab-boc'){ drawBoc(0); }
+      if(btn.dataset.tab === 'tab-synth'){ drawSynth(0); }
+    });
+  });
+}
+
+/* ================= 总览 ================= */
+const overviewData = {
+  A:{name:'对氯硝基苯', formula:'C₆H₄ClNO₂', note:'苯环上 —Cl 与 —NO₂ 处于对位。', role:'起始原料，经 Fe/HCl 还原得到苯胺 B。'},
+  B:{name:'对氯苯胺', formula:'C₆H₆ClN', note:'—NO₂ 被还原为 —NH₂。', role:'亲核试剂，与 2-氟苯甲酰氯形成酰胺 C。'},
+  C:{name:'2-氟-N-(4-氯苯基)苯甲酰胺', formula:'C₁₃H₉ClFNO', note:'B 的 —NH₂ 与 2-氟苯甲酰氯缩合，脱去 HCl。', role:'提供酰胺 N—H，参与后续氮杂-迈克尔加成。'},
+  D:{name:'2-氨基乙醇', formula:'C₂H₇NO', note:'含 —OH 和 —NH₂。', role:'经 Boc 保护、氧化得到 E。'},
+  E:{name:'N-Boc-2-氨基乙醛', formula:'C₇H₁₃NO₃', note:'—NH₂ 被 Boc 保护，—OH 氧化为醛基。', role:'与 CH₃NO₂ 发生缩合。'},
+  F:{name:'N-Boc-2-氨基-3-硝基丙-1-醇', formula:'C₈H₁₆N₂O₅', note:'含 —OH、—NO₂ 和 BocNH—。', role:'经 MsCl/碱发生消去。'},
+  G:{name:'N-Boc-硝基烯烃', formula:'C₈H₁₄N₂O₄', note:'C=C 与 —NO₂ 共轭，是缺电子烯烃。', role:'与 C 的酰胺 N—H 发生氮杂-迈克尔加成。'},
+  H:{name:'加成产物', formula:'', note:'C 的 N—H 加到 G 的 β-碳上，得到 H。', role:'硝基还原后环化。'},
+  I:{name:'Boc 保护的环化产物', formula:'', note:'Fe/乙酸还原硝基，随后分子内环化形成七元环。', role:'酸性脱 Boc。'},
+  J:{name:'脱 Boc 产物', formula:'', note:'伯胺恢复，准备与 CH₃C(OCH₃)₃ 成环。', role:'与 CH₃C(OCH₃)₃ 反应生成咪唑环。'},
+  K:{name:'咪达唑仑中间体', formula:'', note:'咪唑环与苯二氮䓬环稠合。', role:'目标中间体。'}
+};
+
+function miniSvg(key){
+  const w=64,h=52;
+  let s = `<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">`;
+  if(['A','B','C','I','J','K'].includes(key)){
+    const cx=32, cy=26, r=14;
+    s += `<path d="${benzenePath(cx,cy,r)}" fill="#fff" stroke="#334155" stroke-width="1.5"/>`;
+    const labels = {
+      A:[['Cl','#16a34a',32,7],['NO₂','#dc2626',32,48]],
+      B:[['Cl','#16a34a',32,7],['NH₂','#2563eb',32,48]],
+      C:[['F','#ea580c',32,7],['Cl','#16a34a',32,48]],
+      I:[['Boc','#7c3aed',32,7],['Cl','#16a34a',32,48]],
+      J:[['NH₂','#2563eb',32,7],['Cl','#16a34a',32,48]],
+      K:[['咪唑','#7c3aed',32,7],['Cl','#16a34a',32,48]]
+    };
+    (labels[key]||[]).forEach(([t,c,x,y])=>{
+      s += `<text x="${x}" y="${y}" fill="${c}" font-size="8" text-anchor="middle">${t}</text>`;
+    });
+  }else{
+    s += `<path d="M10 31 L22 18 L34 34 L46 22" fill="none" stroke="#334155" stroke-width="1.6"/>`;
+    s += `<text x="32" y="48" fill="#64748b" font-size="7" text-anchor="middle">${key}</text>`;
+  }
+  s += `</svg>`;
+  return s;
+}
+
+let playTimer = null;
+
+function renderRouteRow(id, keys){
+  const row = document.getElementById(id);
+  if(!row) return;
+  row.innerHTML = '';
+  keys.forEach((k, idx)=>{
+    const node = document.createElement('div');
+    node.className = 'route-node';
+    node.dataset.key = k;
+    node.innerHTML = `<div class="node-mini">${miniSvg(k)}</div><div class="node-label">${k}</div>`;
+    node.addEventListener('click', ()=> selectNode(k));
+    row.appendChild(node);
+    if(idx < keys.length-1){
+      const arrow = document.createElement('div');
+      arrow.className = 'route-arrow';
+      arrow.textContent = '→';
+      row.appendChild(arrow);
+    }
+  });
+  if(id === 'route-row-2'){
+    const extra = document.createElement('div');
+    extra.className = 'route-extra';
+    extra.textContent = 'G 与 C 汇合生成 H';
+    row.appendChild(extra);
+  }
+}
+
+function drawOverview(){
+  renderRouteRow('route-row-1', ['A','B','C','H','I','J','K']);
+  renderRouteRow('route-row-2', ['D','E','F','G']);
+  selectNode('A');
+}
+
+function selectNode(key){
+  document.querySelectorAll('.route-node').forEach(n=>{
+    n.classList.toggle('active', n.dataset.key === key);
+  });
+  const d = overviewData[key];
+  if(!d) return;
+  const box = document.getElementById('overview-detail');
+  box.innerHTML = `
+    <div class="detail-title">${key} · ${d.name}</div>
+    <div class="detail-meta">${d.formula ? '分子式：' + d.formula : ''}</div>
+    <div class="detail-body">
+      <p>${d.note}</p>
+      <p><strong>在路线中的作用：</strong>${d.role}</p>
+    </div>
+  `;
+}
+
+function playRoute(){
+  stopRoute();
+  const seq = ['A','B','C','D','E','F','G','H','I','J','K'];
+  let i = 0;
+  playTimer = setInterval(()=>{
+    if(i >= seq.length){ stopRoute(); return; }
+    selectNode(seq[i]);
+    i++;
+  }, 720);
+}
+function stopRoute(){
+  if(playTimer){ clearInterval(playTimer); playTimer = null; }
+}
+
+/* ================= A ================= */
+function drawA(){
+  const cx=110, cy=92, r=38;
+  let s = benzene(cx,cy,r);
+  s += line(cx, cy-r, cx, cy-r-18);
+  s += txt(cx, cy-r-24, 'Cl', '#16a34a', 16, 'middle', '700');
+  s += line(cx, cy+r, cx, cy+r+18);
+  s += txt(cx, cy+r+31, 'NO₂', '#dc2626', 15, 'middle', '700');
+  s += txt(cx+48, cy-r+4, '1', '#94a3b8', 11);
+  s += txt(cx+48, cy+r+4, '4', '#94a3b8', 11);
+  document.getElementById('svg-A').innerHTML = s;
+}
+
+function initA(){
+  document.querySelectorAll('#name-options .btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const fb = document.getElementById('feedback-A');
+      if(btn.dataset.answer === 'right-4'){
+        fb.innerHTML = '<span style="color:#16a34a">正确。</span> 以硝基为母体，Cl 在 4 位，所以叫 4-氯硝基苯（也可叫对氯硝基苯）。';
+        document.getElementById('conclusion-A').innerHTML = '<div class="conclusion"><strong>A：</strong>4-氯硝基苯（或 1-氯-4-硝基苯）。</div>';
+      }else{
+        fb.innerHTML = '<span style="color:#dc2626">再看位置：</span> Cl 与 NO₂ 在苯环两侧相对，是 1,4-关系。';
+      }
+    });
+  });
+}
+
+/* ================= C ================= */
+function drawC(formed=false){
+  const svg = document.getElementById('svg-C');
+  const cxL=95, cy=110, r=32;
+  const cxR=305;
+  let s = '';
+  s += benzene(cxL, cy, r);
+  s += benzene(cxR, cy, r);
+
+  const p2 = [cxL + r*Math.cos(-60*Math.PI/180), cy + r*Math.sin(-60*Math.PI/180)];
+  s += line(p2[0], p2[1], p2[0]+17, p2[1]-10);
+  s += txt(p2[0]+27, p2[1]-14, 'F', '#ea580c', 15, 'middle', '700');
+
+  const q4 = [cxR + r, cy];
+  s += line(q4[0], q4[1], q4[0]+17, q4[1]);
+  s += txt(q4[0]+27, q4[1]+5, 'Cl', '#16a34a', 15, 'middle', '700');
+
+  if(!formed){
+    const p1 = [cxL + r, cy];
+    s += line(p1[0], p1[1], p1[0]+27, p1[1]-9);
+    s += txt(p1[0]+40, p1[1]-13, 'C', '#1e293b', 14, 'middle', '700');
+    s += line(p1[0]+40, p1[1]-18, p1[0]+40, p1[1]-36);
+    s += txt(p1[0]+40, p1[1]-43, 'O', '#dc2626', 14, 'middle', '700');
+    s += line(p1[0]+40, p1[1]-9, p1[0]+58, p1[1]-9);
+    s += txt(p1[0]+65, p1[1]-5, 'Cl', '#16a34a', 14, 'middle', '700');
+
+    const q1 = [cxR - r, cy];
+    s += line(q1[0], q1[1], q1[0]-17, q1[1]);
+    s += txt(q1[0]-30, q1[1]+5, 'NH₂', '#2563eb', 14, 'middle', '700');
+    s += txt(200, 40, '2-氟苯甲酰氯 + 4-氯苯胺', '#64748b', 13);
+  }else{
+    const p1 = [cxL + r, cy];
+    const c = [p1[0]+32, p1[1]-10];
+    s += line(p1[0], p1[1], c[0], c[1]);
+    s += line(c[0], c[1], c[0], c[1]-20);
+    s += txt(c[0], c[1]-27, 'O', '#dc2626', 14, 'middle', '700');
+    s += line(c[0], c[1], c[0]+30, c[1]-11);
+    s += txt(c[0]+17, c[1]-2, 'N', '#2563eb', 14, 'middle', '700');
+    s += txt(c[0]+28, c[1]-24, 'H', '#1e293b', 11);
+    const q1 = [cxR - r, cy];
+    s += line(c[0]+30, c[1]-11, q1[0]-6, q1[1]);
+    s += txt(200, 38, 'C：2-氟-N-(4-氯苯基)苯甲酰胺', '#2563eb', 13);
+    s += `<g class="hcl-float">${txt(c[0]+58, c[1]+10, 'HCl', '#64748b', 12)}</g>`;
+  }
+  svg.innerHTML = s;
+}
+
+function initC(){
+  document.getElementById('btn-amidation').addEventListener('click', ()=>{
+    drawC(true);
+    document.getElementById('feedback-C').innerHTML = '酰胺键形成：<strong>—C(=O)—NH—</strong>。B 的氨基氮与酰氯的羰基碳成键，HCl 离去。';
+    document.getElementById('conclusion-C').innerHTML = '<div class="conclusion"><strong>C 的结构简式：</strong>2-氟-N-(4-氯苯基)苯甲酰胺。</div>';
+  });
+  document.getElementById('btn-reset-C').addEventListener('click', ()=>{
+    drawC(false);
+    document.getElementById('feedback-C').textContent = '';
+    document.getElementById('conclusion-C').innerHTML = '';
+  });
+}
+
+/* ================= D ================= */
+function drawD(highlight=false){
+  let s = '';
+  s += line(62,82,100,62);
+  s += line(100,62,140,100);
+  s += line(140,100,178,80);
+  s += txt(44,87,'HO','#dc2626',15,'middle','700');
+  s += txt(100,52,'CH₂','#1e293b',13);
+  s += txt(140,118,'CH₂','#1e293b',13);
+  s += txt(198,85,'NH₂','#2563eb',15,'middle','700');
+  if(highlight){
+    s += `<circle cx="55" cy="82" r="18" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="4 3"/>`;
+    s += `<circle cx="198" cy="80" r="19" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="4 3"/>`;
+    s += txt(55,122,'羟基','#dc2626',12);
+    s += txt(198,122,'氨基','#2563eb',12);
+  }
+  document.getElementById('svg-D').innerHTML = s;
+}
+
+function initD(){
+  document.getElementById('btn-highlight-D').addEventListener('click', ()=>{
+    drawD(true);
+    document.getElementById('feedback-D').innerHTML = 'D 中同时含有 <strong>—OH</strong> 和 <strong>—NH₂</strong>。';
+    document.getElementById('conclusion-D').innerHTML = '<div class="conclusion"><strong>D 的官能团：</strong>羟基、氨基。</div>';
+  });
+}
+
+/* ================= F → G ================= */
+function drawFG(step){
+  let s = '';
+  s += `<defs><marker id="arrowFG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#2563eb"/></marker></defs>`;
+  s += line(60,85,100,60);
+  s += line(100,60,140,100);
+  s += line(140,100,180,80);
+  s += txt(40,90,'BocNH','#7c3aed',12,'middle','700');
+  s += txt(96,52,'CH₂','#1e293b',12);
+  s += txt(140,120,'CH','#1e293b',12);
+  s += txt(192,72,'CH₂','#1e293b',12);
+  s += txt(228,85,'NO₂','#dc2626',12,'middle','700');
+
+  if(step === 0){
+    s += txt(162,98,'OH','#dc2626',13,'middle','700');
+  }else if(step === 1){
+    s += txt(162,98,'OMs','#dc2626',13,'middle','700');
+    s += txt(150,145,'—OH 被 MsCl 转化为离去基团 —OMs','#64748b',11.5);
+  }else if(step === 2){
+    s += txt(162,98,'OMs','#dc2626',13,'middle','700');
+    s += `<path d="M92 57 Q118 28 148 82" fill="none" stroke="#2563eb" stroke-width="1.6" marker-end="url(#arrowFG)"/>`;
+    s += txt(112,35,'碱夺 β-H','#2563eb',11);
+  }else{
+    s += line(100,60,136,96,'#334155',4);
+    s += txt(164,98,'+ MsOH','#64748b',11);
+    s += txt(140,148,'形成 C=C，—OMs 离去','#16a34a',12);
+  }
+  document.getElementById('svg-FG').innerHTML = s;
+}
+
+function initFG(){
+  document.querySelectorAll('[data-fg-step]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const step = +btn.dataset.fgStep;
+      drawFG(step);
+      const fb = document.getElementById('feedback-FG');
+      if(step === 0) fb.textContent = 'F 中有一个 —OH，它接下来会被转化为更容易离去的 —OMs。';
+      if(step === 1) fb.textContent = 'MsCl 把 —OH 变成 —OMs，为消去做准备。';
+      if(step === 2) fb.textContent = '碱夺取与 —OMs 相邻碳上的 β-H。';
+      if(step === 3){
+        fb.textContent = '—OMs 离去，同时形成 C=C 双键。';
+        document.getElementById('conclusion-FG').innerHTML = '<div class="conclusion"><strong>F → G：</strong>消去反应。</div>';
+      }
+    });
+  });
+}
+
+/* ================= Boc ================= */
+function drawBoc(step){
+  let s = '';
+  s += `<circle cx="150" cy="118" r="56" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>`;
+  s += txt(150,118,'七元环','#94a3b8',13);
+  s += line(150,62,150,42);
+  s += txt(150,34,'N','#2563eb',17,'middle','700');
+
+  if(step === 0){
+    s += txt(188,34,'—Boc','#7c3aed',14,'middle','700');
+    s += txt(150,200,'Boc 基团保护着氨基','#64748b',12);
+  }else if(step === 1){
+    s += txt(150,26,'NH₃⁺','#2563eb',14,'middle','700');
+    s += `<g class="boc-leave">${txt(245,48,'Boc → 异丁烯 + CO₂','#7c3aed',11)}</g>`;
+    s += txt(150,200,'HCl 酸性条件脱去 Boc 保护基','#64748b',12);
+  }else{
+    s += txt(150,26,'NH₂','#2563eb',14,'middle','700');
+    s += txt(150,200,'NaHCO₃ 中和，得到游离胺 J','#16a34a',12);
+  }
+  document.getElementById('svg-Boc').innerHTML = s;
+}
+
+function initBoc(){
+  document.getElementById('btn-boc-hcl').addEventListener('click', ()=>{
+    drawBoc(1);
+    document.getElementById('feedback-Boc').innerHTML = 'HCl 使 Boc 基团脱落，氨基先以 <strong>—NH₃⁺</strong> 形式存在。';
+    document.getElementById('conclusion-Boc').innerHTML = '<div class="conclusion"><strong>第 (i) 步加 HCl 的目的：</strong>脱去 Boc 保护基，使被保护的氨基恢复。</div>';
+  });
+  document.getElementById('btn-boc-base').addEventListener('click', ()=>{
+    drawBoc(2);
+    document.getElementById('feedback-Boc').innerHTML = 'NaHCO₃ 中和过量酸，—NH₃⁺ 变为游离的 <strong>—NH₂</strong>。';
+  });
+  document.getElementById('btn-boc-reset').addEventListener('click', ()=>{
+    drawBoc(0);
+    document.getElementById('feedback-Boc').textContent = '';
+    document.getElementById('conclusion-Boc').innerHTML = '';
+  });
+}
+
+/* ================= 同分异构体 ================= */
+const isoChips = [
+  {id:0, sub:'OCH3', used:false},
+  {id:1, sub:'OCH3', used:false},
+  {id:2, sub:'OH', used:false}
+];
+let isoPlaced = {1:[],2:[],3:[]};
+let selectedChip = null;
+let foundKeys = new Set();
+
+const isoStructures = [
+  {id:1, c1:['OCH3','OCH3'], c2:[], c3:['OH'], group:'同碳OCH3', cat:'两个 —OCH₃ 在端碳，—OH 在另一端碳', formula:'(CH₃O)₂CH—CH₂—CH₂OH', nmr:false},
+  {id:2, c1:['OCH3','OCH3'], c2:['OH'], c3:[], group:'同碳OCH3', cat:'两个 —OCH₃ 在端碳，—OH 在中间碳', formula:'(CH₃O)₂CH—CH(OH)—CH₃', nmr:false},
+  {id:3, c1:[], c2:['OCH3','OCH3'], c3:['OH'], group:'同碳OCH3', cat:'两个 —OCH₃ 在中间碳，—OH 在端碳', formula:'(CH₃O)₂C(CH₃)—CH₂OH', nmr:true},
+  {id:4, c1:['OCH3'], c2:['OCH3'], c3:['OH'], group:'三', cat:'三个取代基分居三个碳（—OH 在端碳）', formula:'CH₃O—CH₂—CH(OCH₃)—CH₂OH', nmr:false},
+  {id:5, c1:['OCH3'], c2:['OH'], c3:['OCH3'], group:'三', cat:'三个取代基分居三个碳（—OH 在中间碳）', formula:'CH₃O—CH₂—CH(OH)—CH₂—OCH₃', nmr:false},
+  {id:6, c1:['OCH3','OH'], c2:[], c3:['OCH3'], group:'同碳OH', cat:'—OCH₃ 与 —OH 同碳（端碳）', formula:'HO—CH(OCH₃)—CH₂—CH₂OCH₃', nmr:false},
+  {id:7, c1:['OCH3','OH'], c2:['OCH3'], c3:[], group:'同碳OH', cat:'—OCH₃ 与 —OH 同碳（端碳），另一 —OCH₃ 在中间碳', formula:'HO—CH(OCH₃)—CH(OCH₃)—CH₃', nmr:false},
+  {id:8, c1:['OCH3'], c2:['OCH3','OH'], c3:[], group:'同碳OH', cat:'—OCH₃ 与 —OH 同碳（中间碳）', formula:'CH₃O—CH₂—C(OH)(OCH₃)—CH₃', nmr:false},
+  {id:9, c1:['OCH3','OCH3','OH'], c2:[], c3:[], group:'同碳全部', cat:'三个取代基同碳', formula:'(CH₃O)₂C(OH)—CH₂—CH₃', nmr:true}
+];
+
+function normalizeKey(c1,c2,c3){
+  const a1 = c1.slice().sort();
+  const a2 = c2.slice().sort();
+  const a3 = c3.slice().sort();
+  const a = JSON.stringify([a1,a2,a3]);
+  const b = JSON.stringify([a3,a2,a1]);
+  return a < b ? a : b;
+}
+isoStructures.forEach(s=>{
+  s.key = normalizeKey(s.c1, s.c2, s.c3);
+});
+
+function renderChips(){
+  document.querySelectorAll('#iso-chips .chip').forEach(btn=>{
+    const id = +btn.dataset.chip;
+    const chip = isoChips[id];
+    btn.disabled = chip.used;
+    btn.classList.toggle('used', chip.used);
+    btn.classList.toggle('selected', selectedChip === id);
+  });
+}
+
+function renderBuilder(){
+  [1,2,3].forEach(c=>{
+    const node = document.querySelector(`.carbon-node[data-c="${c}"]`);
+    if(!node) return;
+    const slots = node.querySelector('.slots');
+    slots.innerHTML = '';
+    isoPlaced[c].forEach(chipId=>{
+      const chip = isoChips[chipId];
+      const span = document.createElement('span');
+      span.className = 'slot';
+      span.textContent = chip.sub === 'OCH3' ? '—OCH₃' : '—OH';
+      span.style.color = chip.sub === 'OH' ? '#dc2626' : '#7c3aed';
+      span.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        isoPlaced[c] = isoPlaced[c].filter(id=>id !== chipId);
+        isoChips[chipId].used = false;
+        renderBuilder();
+      });
+      slots.appendChild(span);
+    });
+  });
+  renderChips();
+}
+
+function isoFeedback(msg, color){
+  const fb = document.getElementById('iso-feedback');
+  fb.innerHTML = color ? `<span style="color:${color}">${msg}</span>` : msg;
+}
+
+function getCurrentKey(){
+  const subs = [1,2,3].map(c=> isoPlaced[c].map(id=> isoChips[id].sub));
+  return normalizeKey(subs[0], subs[1], subs[2]);
+}
+
+function appendFoundCard(s){
+  const list = document.getElementById('iso-found');
+  if(list.querySelector(`[data-sid="${s.id}"]`)) return;
+  const card = document.createElement('div');
+  card.className = 'iso-card' + (s.nmr ? ' nmr-hit' : '');
+  card.dataset.sid = s.id;
+  card.innerHTML = `
+    <div class="iso-card-head">结构 ${s.id} ${s.nmr ? '<span class="badge">NMR 符合</span>' : ''}</div>
+    <div class="iso-formula">${s.formula}</div>
+    <div class="iso-cat">${s.cat}</div>
+  `;
+  card.addEventListener('click', ()=> showIsoDetail(s));
+  list.appendChild(card);
+}
+
+function checkIsoComplete(){
+  if(!isoChips.every(c=>c.used)) return;
+  const key = getCurrentKey();
+  const found = isoStructures.find(s=>s.key === key);
+  if(found){
+    if(!foundKeys.has(key)){
+      foundKeys.add(key);
+      appendFoundCard(found);
+      isoFeedback(`合法结构：${found.formula}（${found.cat}）`, '#16a34a');
+    }else{
+      isoFeedback(`这个结构与已找到的「${found.formula}」相同。`, '#64748b');
+    }
+    if(found.nmr){
+      isoFeedback(`合法结构：${found.formula}。它的氢谱为 4 组峰，面积比 6:3:2:1。`, '#16a34a');
+    }
+  }else{
+    isoFeedback('这个组合不合法或不是题目条件下的结构，检查一下价数或位置。', '#dc2626');
+  }
+}
+
+function renderIsoList(structs, title){
+  const list = document.getElementById('iso-list');
+  list.innerHTML = '';
+  if(!structs || structs.length === 0){
+    list.innerHTML = '<p class="hint">没有符合条件的结构。</p>';
+    return;
+  }
+  structs.forEach(s=>{
+    const card = document.createElement('div');
+    card.className = 'iso-card' + (s.nmr ? ' nmr-hit' : '');
+    card.dataset.sid = s.id;
+    card.innerHTML = `
+      <div class="iso-card-head">结构 ${s.id} ${s.nmr ? '<span class="badge">NMR 符合</span>' : ''}</div>
+      <div class="iso-formula">${s.formula}</div>
+      <div class="iso-cat">${s.cat}</div>
+    `;
+    card.addEventListener('click', ()=> showIsoDetail(s));
+    list.appendChild(card);
+  });
+}
+
+function showIsoDetail(s){
+  const d = document.getElementById('iso-detail');
+  d.innerHTML = `<strong>${s.formula}</strong><br>${s.cat}` +
+    (s.nmr
+      ? '<br><span style="color:#047857">两个 —OCH₃ 等价（6H），—CH₃（3H），—CH₂—（2H），—OH（1H）→ 4 组峰，6:3:2:1。</span>'
+      : '<br><span class="muted">不等价氢较多，峰组数不等于 4，不符合 NMR 条件。</span>');
+}
+
+function initIso(){
+  // 筹码点击
+  document.querySelectorAll('#iso-chips .chip').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = +btn.dataset.chip;
+      if(isoChips[id].used) return;
+      selectedChip = (selectedChip === id ? null : id);
+      renderChips();
+    });
+  });
+
+  // 碳节点点击
+  document.querySelectorAll('.carbon-node').forEach(node=>{
+    node.addEventListener('click', ()=>{
+      if(selectedChip === null) return;
+      const c = +node.dataset.c;
+      const max = c === 2 ? 2 : 3;
+      if(isoPlaced[c].length >= max){
+        isoFeedback('这个碳上已经放不下更多取代基了。', '#dc2626');
+        return;
+      }
+      isoPlaced[c].push(selectedChip);
+      isoChips[selectedChip].used = true;
+      selectedChip = null;
+      renderBuilder();
+      checkIsoComplete();
+    });
+  });
+
+  document.getElementById('btn-clear-iso').addEventListener('click', ()=>{
+    isoPlaced = {1:[],2:[],3:[]};
+    isoChips.forEach(c=>c.used = false);
+    selectedChip = null;
+    renderBuilder();
+    document.getElementById('iso-found').innerHTML = '';
+    foundKeys = new Set();
+    isoFeedback('已清空。再试着放完三个取代基。');
+  });
+
+  document.getElementById('btn-enumerate').addEventListener('click', ()=>{
+    renderIsoList(isoStructures, '全部 9 种');
+    renderFilters();
+    document.getElementById('iso-detail').innerHTML = '按取代基分布分类：<br>分居三碳 2 种；两个 —OCH₃ 同碳 3 种；—OCH₃ 与 —OH 同碳 3 种；三个同碳 1 种。<br>点击结构卡片查看氢谱。';
+    document.getElementById('conclusion-iso').innerHTML = '<div class="conclusion"><strong>第 (6) 问：</strong>符合条件的同分异构体共有 <strong>9 种</strong>（按价键规则完整计数）。</div>';
+  });
+
+  document.getElementById('btn-nmr').addEventListener('click', ()=>{
+    const hits = isoStructures.filter(s=>s.nmr);
+    renderIsoList(hits, 'NMR 6:3:2:1');
+    renderFilters(true);
+    document.getElementById('iso-detail').innerHTML = hits.map(s=>
+      `<strong>${s.formula}</strong>：两个 —OCH₃ 等价（6H），—CH₃（3H），—CH₂—（2H），—OH（1H）。`
+    ).join('<br><br>');
+    document.getElementById('conclusion-iso').innerHTML = '<div class="conclusion"><strong>NMR 符合 6:3:2:1 的结构可写：</strong><br>(CH₃O)₂C(CH₃)—CH₂OH<br>或 (CH₃O)₂C(OH)—CH₂—CH₃（任写一种）。</div>';
+  });
+}
+
+function renderFilters(nmrOnly){
+  const wrap = document.getElementById('iso-filters');
+  wrap.innerHTML = '';
+  const groups = [
+    {key:'all', label:'全部 9 种'},
+    {key:'三', label:'分居三碳 · 2 种'},
+    {key:'同碳OCH3', label:'两个 OCH₃ 同碳 · 3 种'},
+    {key:'同碳OH', label:'OCH₃ 与 OH 同碳 · 3 种'},
+    {key:'同碳全部', label:'三个同碳 · 1 种'}
+  ];
+  groups.forEach(g=>{
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.textContent = g.label;
+    btn.addEventListener('click', ()=>{
+      wrap.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      let arr;
+      if(g.key === 'all') arr = isoStructures;
+      else arr = isoStructures.filter(s=>s.group === g.key);
+      if(nmrOnly) arr = arr.filter(s=>s.nmr);
+      renderIsoList(arr);
+    });
+    wrap.appendChild(btn);
+  });
+}
+
+/* ================= 合成设计 ================= */
+let synthStage = 0;
+const synthSeq = ['ox','con','red'];
+
+function drawSynth(stage){
+  const svg = document.getElementById('svg-synth');
+  const cx=150, cy=120, r=40;
+  let s = '';
+
+  // 苯环
+  s += `<path d="${benzenePath(cx,cy,r,0)}" fill="#fff" stroke="#334155" stroke-width="2"/>`;
+  // 侧链在 1 位（右侧，角度 0°）
+  const p1 = [cx + r, cy];
+  // 2 位（右下，角度 60°）Cl
+  const p2 = [cx + r*Math.cos(60*Math.PI/180), cy + r*Math.sin(60*Math.PI/180)];
+  // 4 位（左侧，角度 180°）Cl
+  const p4 = [cx + r*Math.cos(180*Math.PI/180), cy + r*Math.sin(180*Math.PI/180)];
+
+  s += line(p2[0], p2[1], p2[0]+14, p2[1]+10);
+  s += txt(p2[0]+22, p2[1]+16, 'Cl', '#16a34a', 14, 'middle', '700');
+  s += line(p4[0], p4[1], p4[0]-14, p4[1]);
+  s += txt(p4[0]-24, p4[1]+5, 'Cl', '#16a34a', 14, 'middle', '700');
+
+  if(stage === 0){
+    s += line(p1[0], p1[1], p1[0]+28, p1[1]);
+    s += txt(p1[0]+46, p1[1]+5, 'CH₂OH', '#dc2626', 14, 'middle', '700');
+    s += txt(370, 150, '+ CH₃NO₂', '#7c3aed', 14);
+    s += txt(260, 40, '二氯苄醇', '#64748b', 13);
+  }else if(stage === 1){
+    s += line(p1[0], p1[1], p1[0]+28, p1[1]);
+    s += txt(p1[0]+44, p1[1]+5, 'CHO', '#dc2626', 14, 'middle', '700');
+    s += txt(260, 40, '氧化：—CH₂OH → —CHO', '#2563eb', 13);
+  }else if(stage === 2){
+    s += line(p1[0], p1[1], p1[0]+30, p1[1]);
+    s += txt(p1[0]+58, p1[1]-22, 'CH(OH)', '#dc2626', 13, 'middle', '700');
+    s += line(p1[0]+58, p1[1]-18, p1[0]+80, p1[1]-8);
+    s += txt(p1[0]+98, p1[1]-4, 'CH₂NO₂', '#dc2626', 13, 'middle', '700');
+    s += txt(260, 40, '缩合：醛 + CH₃NO₂ → 硝基醇', '#7c3aed', 13);
+  }else{
+    s += line(p1[0], p1[1], p1[0]+30, p1[1]);
+    s += txt(p1[0]+58, p1[1]-22, 'CH(OH)', '#dc2626', 13, 'middle', '700');
+    s += line(p1[0]+58, p1[1]-18, p1[0]+80, p1[1]-8);
+    s += txt(p1[0]+98, p1[1]-4, 'CH₂NH₂', '#2563eb', 13, 'middle', '700');
+    s += txt(260, 40, '还原：—NO₂ → —NH₂', '#16a34a', 13);
+  }
+  svg.innerHTML = s;
+}
+
+function updateSynthSteps(){
+  const wrap = document.getElementById('synth-steps');
+  const labels = {
+    ox:'氧化',
+    con:'与 CH₃NO₂ 缩合',
+    red:'还原硝基'
+  };
+  wrap.innerHTML = '';
+  synthSeq.slice(0, synthStage).forEach((step, i)=>{
+    const pill = document.createElement('span');
+    pill.className = 'synth-step-pill';
+    pill.textContent = labels[step];
+    wrap.appendChild(pill);
+    if(i < synthStage-1){
+      const arr = document.createElement('span');
+      arr.className = 'synth-step-arrow';
+      arr.textContent = '→';
+      wrap.appendChild(arr);
+    }
+  });
+}
+
+function initSynth(){
+  document.querySelectorAll('[data-step]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const step = btn.dataset.step;
+      const fb = document.getElementById('synth-feedback');
+      if(synthStage >= 3) return;
+
+      if(synthSeq[synthStage] === step){
+        btn.classList.add('done');
+        synthStage++;
+        drawSynth(synthStage);
+        updateSynthSteps();
+
+        if(synthStage === 1) fb.innerHTML = '苄醇被氧化为醛。下一步要引入硝基。';
+        if(synthStage === 2) fb.innerHTML = '醛与 CH₃NO₂ 缩合，得到硝基醇。下一步还原硝基。';
+        if(synthStage === 3){
+          fb.innerHTML = '<span style="color:#16a34a">路线完成！</span> 苄醇 → 氧化 → 缩合 → 还原，得到目标氨基醇。';
+          document.getElementById('conclusion-synth').innerHTML = '<div class="conclusion"><strong>合成路线：</strong>二氯苄醇 <span class="muted">—MnO₂→</span> 二氯苯甲醛 <span class="muted">+CH₃NO₂/碱→</span> 硝基醇 <span class="muted">—Fe/HCl→</span> 二氯苯基—CH(OH)—CH₂NH₂。</div>';
+        }
+      }else{
+        btn.classList.add('shake');
+        setTimeout(()=>btn.classList.remove('shake'), 380);
+        fb.innerHTML = '<span style="color:#dc2626">顺序不对。</span> 先想想：苄醇要变成醛，才能与 CH₃NO₂ 缩合引入硝基。';
+      }
+    });
+  });
+}
+
+/* ================= 启动 ================= */
+document.addEventListener('DOMContentLoaded', ()=>{
+  initTabs();
+  drawOverview();
+  initA(); drawA();
+  initC(); drawC(false);
+  initD(); drawD(false);
+  initFG(); drawFG(0);
+  initBoc(); drawBoc(0);
+  initIso(); renderBuilder(); renderFilters();
+  initSynth(); drawSynth(0);
+
+  document.getElementById('btn-play-route').addEventListener('click', playRoute);
+  document.getElementById('btn-stop-route').addEventListener('click', stopRoute);
+});
+</script>
+</body>
+</html>

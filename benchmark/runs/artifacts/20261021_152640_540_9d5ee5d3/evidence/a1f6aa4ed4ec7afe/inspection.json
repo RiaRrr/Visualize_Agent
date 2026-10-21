@@ -1,0 +1,339 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261021_152640_540_9d5ee5d3/20261021_153627_928_round_01.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "A、B 两车追及问题\n\n同向行驶 · 匀变速直线运动 · 用「位置–时间图」和「速度–时间图」看清间距的变化\n\nA 车（在前） v₀ = 16 m/s，a = −2 m/s²\nB 车（在后） v₀ = 4 m/s，a = +1 m/s²\n初始间距 x₀ = 56 m\n两车位置（俯视）\nt = 0.00 s\n0\n20\n40\n60\n80\n100\n120\n140\n160\n位置 / m\n56 m\nB\nA\nA 车\nx = 56.0 m ， v = 16.0 m/s\n两车间距\n56.0 m\nB 车\nx = 0.0 m ， v = 4.0 m/s\n播放\n回到 t = 0\nt = 0.00 s\n0\n2\n4\n6\n8\n10\n12\n14\n位置–时间图\n速度–时间图\n上一步\n下一步\n1 / 6\n① 先把题意画成「位置–时间图」\n\n横轴是时间 t，纵轴是位置 x。A 车从 56 m 处出发、初速 16 m/s、加速度 −2 m/s²，曲线先陡后缓，8 s 时停在 120 m 不再前进；B 车从 0 出发，速度从 4 m/s 起越来越大。拖动时间滑块，两辆车会在图上同步移动。\n\nxA = 56 + 16t − t²  (0 ≤ t ≤ 8)   |   xB = 4t + ½t²\n第（3）问 · 若 A 在后、B 在前，初始间距 x₀ 取什么值会相遇两次？\nx₀ = 18.0 m\n0 < x₀ = 18.0 m < 24 m：曲线两次穿过零线 ⇒ 相遇两次（t = 2.00 s 和 t = 6.00 s）。\n\n拖动滑块 / 播放动画，观察两条曲线的高度差如何变化",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "回到 t = 0",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "tSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "14",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "prevStep",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": true
+        },
+        {
+          "index": 4,
+          "id": "nextStep",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "x0Slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "18",
+          "min": "0",
+          "max": "40",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "click",
+            "label": "下一步"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "A、B 两车追及问题\n\n同向行驶 · 匀变速直线运动 · 用「位置–时间图」和「速度–时间图」看清间距的变化\n\nA 车（在前） v₀ = 16 m/s，a = −2 m/s²\nB 车（在后） v₀ = 4 m/s，a = +1 m/s²\n初始间距 x₀ = 56 m\n两车位置（俯视）\nt = 2.00 s\n0\n20\n40\n60\n80\n100\n120\n140\n160\n位置 / m\n74 m\nB\nA\nA 车\nx = 84.0 m ， v = 12.0 m/s\n两车间距\n74.0 m\nB 车\nx = 10.0 m ， v = 6.0 m/s\n播放\n回到 t = 0\nt = 2.00 s\n0\n2\n4\n6\n8\n10\n12\n14\n位置–时间图\n速度–时间图\n上一步\n下一步\n2 / 6\n② 两车间距 = 两条曲线的竖直高度差\n\n同一时刻，两条曲线的高度差就是两车的间距（图中绿色竖线）。t 从 0 增大时这个差先被拉大——因为这段时间里 A 的速度一直比 B 大，A 在往前跑。\n\nd(t) = xA − xB = 56 + 12t − 1.5t²\n第（3）问 · 若 A 在后、B 在前，初始间距 x₀ 取什么值会相遇两次？\nx₀ = 18.0 m\n0 < x₀ = 18.0 m < 24 m：曲线两次穿过零线 ⇒ 相遇两次（t = 2.00 s 和 t = 6.00 s）。\n\n拖动滑块 / 播放动画，观察两条曲线的高度差如何变化",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "回到 t = 0",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "tSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "2",
+          "min": "0",
+          "max": "14",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "prevStep",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "nextStep",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "x0Slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "18",
+          "min": "0",
+          "max": "40",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "7"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "A、B 两车追及问题\n\n同向行驶 · 匀变速直线运动 · 用「位置–时间图」和「速度–时间图」看清间距的变化\n\nA 车（在前） v₀ = 16 m/s，a = −2 m/s²\nB 车（在后） v₀ = 4 m/s，a = +1 m/s²\n初始间距 x₀ = 56 m\n两车位置（俯视）\nt = 7.00 s\n0\n20\n40\n60\n80\n100\n120\n140\n160\n位置 / m\n67 m\nB\nA\nA 车\nx = 119.0 m ， v = 2.0 m/s\n两车间距\n66.5 m\nB 车\nx = 52.5 m ， v = 11.0 m/s\n播放\n回到 t = 0\nt = 7.00 s\n0\n2\n4\n6\n8\n10\n12\n14\n位置–时间图\n速度–时间图\n上一步\n下一步\n2 / 6\n② 两车间距 = 两条曲线的竖直高度差\n\n同一时刻，两条曲线的高度差就是两车的间距（图中绿色竖线）。t 从 0 增大时这个差先被拉大——因为这段时间里 A 的速度一直比 B 大，A 在往前跑。\n\nd(t) = xA − xB = 56 + 12t − 1.5t²\n第（3）问 · 若 A 在后、B 在前，初始间距 x₀ 取什么值会相遇两次？\nx₀ = 18.0 m\n0 < x₀ = 18.0 m < 24 m：曲线两次穿过零线 ⇒ 相遇两次（t = 2.00 s 和 t = 6.00 s）。\n\n拖动滑块 / 播放动画，观察两条曲线的高度差如何变化",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "回到 t = 0",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "tSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "7",
+          "min": "0",
+          "max": "14",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "prevStep",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "nextStep",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "x0Slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "18",
+          "min": "0",
+          "max": "40",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "14"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "A、B 两车追及问题\n\n同向行驶 · 匀变速直线运动 · 用「位置–时间图」和「速度–时间图」看清间距的变化\n\nA 车（在前） v₀ = 16 m/s，a = −2 m/s²\nB 车（在后） v₀ = 4 m/s，a = +1 m/s²\n初始间距 x₀ = 56 m\n两车位置（俯视）\nt = 14.00 s\n0\n20\n40\n60\n80\n100\n120\n140\n160\n位置 / m\n34 m\nB\nA\nA 车\nx = 120.0 m ， v = 0.0 m/s\n两车间距\n34.0 m\nB 车\nx = 154.0 m ， v = 18.0 m/s\n播放\n回到 t = 0\nt = 14.00 s\n0\n2\n4\n6\n8\n10\n12\n14\n位置–时间图\n速度–时间图\n上一步\n下一步\n2 / 6\n② 两车间距 = 两条曲线的竖直高度差\n\n同一时刻，两条曲线的高度差就是两车的间距（图中绿色竖线）。t 从 0 增大时这个差先被拉大——因为这段时间里 A 的速度一直比 B 大，A 在往前跑。\n\nd(t) = xA − xB = 56 + 12t − 1.5t²\n第（3）问 · 若 A 在后、B 在前，初始间距 x₀ 取什么值会相遇两次？\nx₀ = 18.0 m\n0 < x₀ = 18.0 m < 24 m：曲线两次穿过零线 ⇒ 相遇两次（t = 2.00 s 和 t = 6.00 s）。\n\n拖动滑块 / 播放动画，观察两条曲线的高度差如何变化",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "回到 t = 0",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "tSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "14",
+          "min": "0",
+          "max": "14",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "prevStep",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "上一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "nextStep",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "x0Slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "18",
+          "min": "0",
+          "max": "40",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

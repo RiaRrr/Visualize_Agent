@@ -1,4 +1,32 @@
 # Benchmark：数据、实验与浏览入口
+
+## 2026-10-21 综合题扩展与Judge校准
+现有题目共42道：原36道不变，新增数理化各2道综合题；开发集21道、留出集21道。新增题图、原题和参考答案均本地保存。按原题库等级，新增5题为较难/困难；physics_014为“一般”但包含分阶段动力学与图像反推。物理新增仍偏力学，不宣称全面覆盖难题。
+| 题目 | 内容 | 用途 |
+| --- | --- | --- |
+| math_013 | 导数、恒成立、双零点与不等式证明 | 本批开发评测 |
+| math_014 | 椭圆面积、投影、斜率约束与定圆 | 留出，未运行 |
+| physics_013 | 停车边界、多阶段追及与两次相遇 | 本批开发评测 |
+| physics_014 | 斜面—水平面运动、摩擦与受力反推 | 留出，未运行 |
+| chemistry_013 | 七小问有机合成、官能团、异构与合成迁移 | 本批开发评测 |
+| chemistry_014 | 制备、气体净化干燥、装置连接与验证 | 留出，未运行 |
+本批使用DeepSeek 261017图片直传，W0单轮和W2固定三轮局部修订；独立评分用GPT 5.6 sol，五维与综合分共六次互不传分的call。各轮、选中页面、用量、费用、缺陷及当前完成状态见 [hard-v1报告](reports/hard-v1.md)。新增页面出现在同一个8002评分界面，仍待人工评分；不会自动代填。
+| 新开发题 | W0 单轮页面 | W2 三轮修订页面 |
+| --- | --- | --- |
+| math_013 | [B9A724ED8](http://localhost:8002/benchmark?sample=B9A724ED8) | [B03715FF7](http://localhost:8002/benchmark?sample=B03715FF7) |
+| physics_013 | [BF326FBCC](http://localhost:8002/benchmark?sample=BF326FBCC) | [B936A825C](http://localhost:8002/benchmark?sample=B936A825C) |
+| chemistry_013 | [B6AA79355](http://localhost:8002/benchmark?sample=B6AA79355) | [B63B46592](http://localhost:8002/benchmark?sample=B63B46592) |
+
+Judge新版按人工案例归纳档位，强调可见证据、相邻档区别与同题相对质量；不强制分数分布、不输入目标页面人工分。数学旧题用于尺度校准，物理/化学旧题作回顾性验证，未声称盲测；新题需补人工分再测泛化。
+复现已有结果只需按下文启动8002，不需模型Key。以下命令会产生付费调用，仅在有自己的账号时运行：
+```bash
+python -m scripts.run_benchmark --batch hard-v1 --questions math_013 physics_013 chemistry_013 --workflows W0 W2 --concurrency 2
+python -m scripts.evaluate_benchmark --score-only --judges gpt_56 --samples SAMPLE_ID --prompt-bundle benchmark/evaluation/calibration-v3/calibrated_prompts.json
+python -m scripts.report_hard_benchmark
+```
+`SAMPLE_ID`换为报告中具体编号。已有完成任务与维度评分会复用。批次配置冻结，改prompt或模型须用新的`--batch`；不能用同一个版本名覆盖实验。不要运行`prepare_benchmark`重建原36题来复现，完整原题库没有随仓库分发。
+以下“36题”“9份页面”等数字若用于pilot-v1，均指原始首批快照；新扩展单独统计。
+
 这是一套用于比较“题图→交互式HTML”流程的小型数理化测试集。当前是 **v1-candidate**，参考答案和题族仍需复核，不是已全面审定的标准答案集。
 ## 先启动，看看包含什么
 从克隆后的仓库根目录执行（安装步骤见[根README](../README.md)）：
@@ -79,3 +107,13 @@ python -m scripts.run_benchmark --concurrency 2
 只想浏览，不需要 `prepare_benchmark`。该准备脚本用于从原始题库重建，依赖未随仓库分发的大题库和下载资源。
 ## 后续计划
 先用已有人工分校准新逐维judge，再扩展开发题、增加重复运行并按题划分验证组；冻结workflow和评委后再测留出集。用户可继续在本地页面人工评分，`primary`原始记录与新评分者分开保存。
+
+题图完整性补充：hard-v1审计修复了原留出题`physics_012`、`chemistry_008`的空白截图，原题内容与split不变，未调用模型；哈希记录见`benchmark/extensions/hard-v1_input_fixes.json`（benchmark目录内路径去掉首层benchmark）。
+
+### 实验中断与续跑
+同一条生成命令会复用已完成任务、已保存轮次和待审核HTML；同一评分命令只补失败维度。遇到402先更换自己有额度的凭据，不继续重复请求。`--credential-alias alternate`只使用已配置的`VISUALIZE_EDUMIND_ALT_KEY`，不修改`.env`，请求记录只保存别名。
+若任务明确因输出预算耗尽而处于error，可显式运行：
+```bash
+python -m scripts.recover_benchmark_tokens TASK_ID --max-tokens 128000
+```
+此命令保留原配置，生成新的恢复配置和日志；是否支持128000由网关决定。本次仅提供该恢复工具，实际64k截断的数学任务在原预算重试成功，未调用128k。参数改变后不应把结果宣称为完全相同预算的对照。

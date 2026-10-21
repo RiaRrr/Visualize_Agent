@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "summary": "页面基础检查未通过",
+  "issues": [
+    "浏览器渲染失败：页面脚本运行错误：SyntaxError: Identifier 'cy' has already been declared"
+  ],
+  "source": "local_validator",
+  "scores": {
+    "problem_fidelity": null,
+    "solution_correctness": null,
+    "page_quality": null,
+    "interaction_quality": null,
+    "teaching_effectiveness": null
+  }
+}

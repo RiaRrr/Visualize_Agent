@@ -1,0 +1,13 @@
+{
+  "dimension": "page_quality",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "evidence_sha256": "ca0814c08582f0469fce8d98e8439946b05c7da04a6adf1b226fd630364a4b91",
+  "prompt_sha256": "c3fe105df26c02083fc03369e1a71e454b7eb5a4d24f12ba463b3885371c25cc",
+  "created_at": "2026-10-21T07:25:21.505765+00:00",
+  "status": "cancelled",
+  "attempt": 1,
+  "error": "评价已停止；未返回用量的费用未知",
+  "duration_seconds": 18.08606505699572,
+  "usage": null
+}

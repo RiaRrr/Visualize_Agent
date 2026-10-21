@@ -1,0 +1,47 @@
+{
+  "id": "chemistry_013",
+  "source_id": "4104616418041856",
+  "subject": "chemistry",
+  "topic": "有机合成与结构推断",
+  "split": "dev",
+  "family_id": "chemistry_013",
+  "difficulty_level": 20,
+  "difficulty": 0.49,
+  "type": {
+    "id": "300905",
+    "name": "有机推断"
+  },
+  "knowledge_points": [
+    {
+      "id": 6708,
+      "name": "常见官能团名称、组成及结构"
+    },
+    {
+      "id": 6729,
+      "name": "根据要求书写同分异构体"
+    },
+    {
+      "id": 6731,
+      "name": "同分异构体的数目的确定"
+    },
+    {
+      "id": 6677,
+      "name": "核磁共振氢谱"
+    },
+    {
+      "id": 66801,
+      "name": "信息给予的有机合成"
+    }
+  ],
+  "selection_reason": "七小问、官能团变化、保护基、异构与迁移合成",
+  "source_paper_ids": [
+    "4104604293947392"
+  ],
+  "path": "chemistry/chemistry_013",
+  "pilot": false,
+  "cohort": "hard-v1",
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "input_sha256": "9bd4901e65750e4ad17a8f60d0fe90db63e29e503af85961a482e745d10198e4",
+  "source_sha256": "4f1af1f7dc29841bddbb390a95aa044f9f2935f22934b762f3b82979abf1ef7d"
+}

@@ -1,0 +1,31 @@
+{
+  "dimension": "problem_fidelity",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "evidence_sha256": "f2421e6eafc0f70a5fff405eba15289fb7eae6426034651df9321952209c58b8",
+  "prompt_sha256": "888a571f9668dd38ce5566936a788ecee5426125fd6190849714c3db4f999687",
+  "created_at": "2026-10-21T06:39:37.151892+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "problem_fidelity",
+    "score": 4,
+    "issues": [
+      "曲线横轴标为“时间 / 滴加量”，把原题明确的“时间”与模型控制量“滴加量”并列混用；二者只有在滴加速率恒定时才可对应，页面未说明这一前提。",
+      "顶部“测得”标签写成“a 点最低”，但原图中最低曲线点标为大写 B，小写 a 是该点在时间轴上的横坐标；页面曲线内部仍正确显示了 B 与 a，因此属于局部表述错误。",
+      "候选模型生成的下降段曲率与原图示意不同，但页面明确采用相对电导模型，且原题没有定量数据，故不构成需要精确拟合的核心缺失。"
+    ],
+    "evidence": "原题对象为向一定体积Ba(OH)₂溶液滴加稀硫酸，纵轴为导电能力、横轴为时间，包含A、B、C及横轴位置a，并要求判断A-D四项。候选页面保留了反应对象、先降后升且最低点接近零的核心关系、全部四个选项及其原有含义；源码还为NaOH、KHSO₄、MgSO₄替代情景分别建立对应曲线和粒子模型。桌面截图验证了初始、滑块1.5和3.0状态下原情景曲线与粒子示意会变化；实际操作未点击任何选项，因此替代情景的可见切换未由截图直接验证，仅由源码中的selectOption及各SCEN定义支持。",
+    "reference_concern": "",
+    "summary": "题设对象、条件、曲线核心关系和全部选项均得到保留，替代实验也有对应模型；主要不足是横轴混合“时间”和“滴加量”，以及将最低点误称为小写a，整体仍属良好但有少量一致性问题。"
+  },
+  "duration_seconds": 36.202016487004585,
+  "usage": {
+    "input_tokens": 25352,
+    "output_tokens": 805,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 353,
+    "total_tokens": 26157
+  }
+}

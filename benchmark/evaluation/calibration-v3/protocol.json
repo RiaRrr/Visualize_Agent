@@ -1,0 +1,33 @@
+{
+  "calibration_question_ids": [
+    "math_001"
+  ],
+  "calibration_sample_ids": [
+    "B1F186EBB",
+    "BBE082C36",
+    "B7309A232"
+  ],
+  "validation_question_ids": [
+    "physics_001",
+    "chemistry_001"
+  ],
+  "validation_sample_ids": [
+    "B0D1C5D32",
+    "B83284572",
+    "B5D896375",
+    "B6CA12DEB",
+    "B50DFB016",
+    "B46BA67A9"
+  ],
+  "baseline_version": "f73135caf026",
+  "calibrated_version": "8ceed087b2f5",
+  "model": "gpt-5.6-sol",
+  "calls_per_sample": 6,
+  "method": "仅更改独立judge的评分尺度说明；相同模型、HTML、图像、操作证据及六次独立call。人工原始值不变。",
+  "limitations": [
+    "三个数学页面用于归纳尺度；不是三个独立题目",
+    "物理和化学六个页面是两个题目的回顾性验证，既有分数此前可见，不是严格盲测",
+    "硬题生成后无人工分数，暂不能断言人机一致性；新增test题保持未运行",
+    "不拟合或强制目标直方图，不把目标样本人工分数输入judge"
+  ]
+}

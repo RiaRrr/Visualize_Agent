@@ -1,0 +1,43 @@
+{
+  "id": "chemistry_014",
+  "source_id": "3892456722882560",
+  "subject": "chemistry",
+  "topic": "制备与气体检验综合实验",
+  "split": "test",
+  "family_id": "chemistry_014",
+  "difficulty_level": 20,
+  "difficulty": 0.4,
+  "type": {
+    "id": "300904",
+    "name": "实验探究"
+  },
+  "knowledge_points": [
+    {
+      "id": 6115,
+      "name": "氯气的实验室制法"
+    },
+    {
+      "id": 7345,
+      "name": "物质制备的探究"
+    },
+    {
+      "id": 7349,
+      "name": "实验方案评价"
+    },
+    {
+      "id": 102719,
+      "name": "气体的净化和干燥"
+    }
+  ],
+  "selection_reason": "装置顺序、除杂干燥、证据排干扰与反应计量",
+  "source_paper_ids": [
+    "4117548670083072"
+  ],
+  "path": "chemistry/chemistry_014",
+  "pilot": false,
+  "cohort": "hard-v1",
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "input_sha256": "72cb33110176c1aa87a0817322e38cfecf1cfa82fb3e80f8c9016ea1fcce8454",
+  "source_sha256": "91760ebc70905ba8fe932caf75feef136b9bbb9c093b24bc2ca4555d32104fa9"
+}

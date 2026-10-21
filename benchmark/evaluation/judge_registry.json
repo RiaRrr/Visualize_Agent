@@ -5,6 +5,8 @@
     "model": "gpt-5.6-sol",
     "role": "independent_evaluator",
     "status": "active_verified_in_pilot",
-    "verification": "已实际完成原题+参考解+页面截图+完整HTML的评分调用，usage已返回"
+    "verification": "已实际完成原题+参考解+页面截图+完整HTML的评分调用，usage已返回",
+    "calibration_status": "experimental_text_anchors_not_validated",
+    "calibration_report": "reports/hard-v1.md"
   }
 ]

@@ -178,5 +178,131 @@
       "runs/artifacts/20261021_001043_491_48332379/evidence/02_slider_mid.png",
       "runs/artifacts/20261021_001043_491_48332379/evidence/03_slider_high.png"
     ]
+  },
+  {
+    "run_status": "failed",
+    "completed_rounds": 1,
+    "id": "B9A724ED8",
+    "question_id": "math_013",
+    "set": "calibration",
+    "workflow_id": "W0",
+    "batch": "hard-v1",
+    "task_id": "20261021_144323_855_ca047dfc",
+    "round_number": 1,
+    "html": "runs/artifacts/20261021_144323_855_ca047dfc/20261021_153140_989_round_01.html",
+    "html_sha256": "258d1519c622963a005990218b5f24e4df0635080db1afd4848b7e5bff8c7eb1",
+    "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+    "inspection": "runs/artifacts/20261021_144323_855_ca047dfc/evidence/258d1519c622963a/public.json",
+    "screenshots": [
+      "runs/artifacts/20261021_144323_855_ca047dfc/evidence/258d1519c622963a/00_initial.png",
+      "runs/artifacts/20261021_144323_855_ca047dfc/evidence/258d1519c622963a/01_next_step.png",
+      "runs/artifacts/20261021_144323_855_ca047dfc/evidence/258d1519c622963a/02_slider_mid.png",
+      "runs/artifacts/20261021_144323_855_ca047dfc/evidence/258d1519c622963a/03_slider_high.png"
+    ]
+  },
+  {
+    "run_status": "failed",
+    "completed_rounds": 3,
+    "id": "B03715FF7",
+    "question_id": "math_013",
+    "set": "calibration",
+    "workflow_id": "W2",
+    "batch": "hard-v1",
+    "task_id": "20261021_144330_143_71c28aab",
+    "round_number": 3,
+    "html": "runs/artifacts/20261021_144330_143_71c28aab/20261021_153621_138_round_03.html",
+    "html_sha256": "24fa4bee03e9747bb39006fa9b1212591595fcbfc3542334d7fc994175a2d8bb",
+    "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+    "inspection": "runs/artifacts/20261021_144330_143_71c28aab/evidence/24fa4bee03e9747b/public.json",
+    "screenshots": [
+      "runs/artifacts/20261021_144330_143_71c28aab/evidence/24fa4bee03e9747b/00_initial.png",
+      "runs/artifacts/20261021_144330_143_71c28aab/evidence/24fa4bee03e9747b/01_next_step.png",
+      "runs/artifacts/20261021_144330_143_71c28aab/evidence/24fa4bee03e9747b/02_slider_mid.png",
+      "runs/artifacts/20261021_144330_143_71c28aab/evidence/24fa4bee03e9747b/03_slider_high.png"
+    ]
+  },
+  {
+    "run_status": "failed",
+    "completed_rounds": 1,
+    "id": "BF326FBCC",
+    "question_id": "physics_013",
+    "set": "calibration",
+    "workflow_id": "W0",
+    "batch": "hard-v1",
+    "task_id": "20261021_152640_540_9d5ee5d3",
+    "round_number": 1,
+    "html": "runs/artifacts/20261021_152640_540_9d5ee5d3/20261021_153627_928_round_01.html",
+    "html_sha256": "a1f6aa4ed4ec7afe22d6bfd4b5583336c3ec169fae9e5c95254d47f9f2d033a5",
+    "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+    "inspection": "runs/artifacts/20261021_152640_540_9d5ee5d3/evidence/a1f6aa4ed4ec7afe/public.json",
+    "screenshots": [
+      "runs/artifacts/20261021_152640_540_9d5ee5d3/evidence/a1f6aa4ed4ec7afe/00_initial.png",
+      "runs/artifacts/20261021_152640_540_9d5ee5d3/evidence/a1f6aa4ed4ec7afe/01_next_step.png",
+      "runs/artifacts/20261021_152640_540_9d5ee5d3/evidence/a1f6aa4ed4ec7afe/02_slider_mid.png",
+      "runs/artifacts/20261021_152640_540_9d5ee5d3/evidence/a1f6aa4ed4ec7afe/03_slider_high.png"
+    ]
+  },
+  {
+    "run_status": "failed",
+    "completed_rounds": 1,
+    "id": "B6AA79355",
+    "question_id": "chemistry_013",
+    "set": "calibration",
+    "workflow_id": "W0",
+    "batch": "hard-v1",
+    "task_id": "20261021_152657_454_24af324b",
+    "round_number": 1,
+    "html": "runs/artifacts/20261021_152657_454_24af324b/20261021_154500_079_round_01.html",
+    "html_sha256": "dec1388ee00fdbecf1c7dfa11f769ae29755c918ae2f5121181760df208a9f15",
+    "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+    "inspection": "runs/artifacts/20261021_152657_454_24af324b/evidence/dec1388ee00fdbec/public.json",
+    "screenshots": [
+      "runs/artifacts/20261021_152657_454_24af324b/evidence/dec1388ee00fdbec/00_initial.png",
+      "runs/artifacts/20261021_152657_454_24af324b/evidence/dec1388ee00fdbec/01_next_step.png",
+      "runs/artifacts/20261021_152657_454_24af324b/evidence/dec1388ee00fdbec/02_slider_mid.png",
+      "runs/artifacts/20261021_152657_454_24af324b/evidence/dec1388ee00fdbec/03_slider_high.png"
+    ]
+  },
+  {
+    "run_status": "failed",
+    "completed_rounds": 3,
+    "id": "B936A825C",
+    "question_id": "physics_013",
+    "set": "calibration",
+    "workflow_id": "W2",
+    "batch": "hard-v1",
+    "task_id": "20261021_152655_882_31ed1067",
+    "round_number": 3,
+    "html": "runs/artifacts/20261021_152655_882_31ed1067/20261021_154713_375_round_03.html",
+    "html_sha256": "14587373e3482e041aacbf2756333e030f6e60b6bd24897d97c3a72083317ee3",
+    "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+    "inspection": "runs/artifacts/20261021_152655_882_31ed1067/evidence/14587373e3482e04/public.json",
+    "screenshots": [
+      "runs/artifacts/20261021_152655_882_31ed1067/evidence/14587373e3482e04/00_initial.png",
+      "runs/artifacts/20261021_152655_882_31ed1067/evidence/14587373e3482e04/01_next_step.png",
+      "runs/artifacts/20261021_152655_882_31ed1067/evidence/14587373e3482e04/02_slider_mid.png",
+      "runs/artifacts/20261021_152655_882_31ed1067/evidence/14587373e3482e04/03_slider_high.png"
+    ]
+  },
+  {
+    "run_status": "failed",
+    "completed_rounds": 3,
+    "id": "B63B46592",
+    "question_id": "chemistry_013",
+    "set": "calibration",
+    "workflow_id": "W2",
+    "batch": "hard-v1",
+    "task_id": "20261021_152705_933_fb3e83db",
+    "round_number": 3,
+    "html": "runs/artifacts/20261021_152705_933_fb3e83db/20261021_162257_068_round_03.html",
+    "html_sha256": "406cb101580a2d0cc8f57c562cd07c1a69646969b50dbff08c46aa704169fce3",
+    "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+    "inspection": "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/public.json",
+    "screenshots": [
+      "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/00_initial.png",
+      "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/01_next_step.png",
+      "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/02_slider_mid.png",
+      "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/03_slider_high.png"
+    ]
   }
 ]

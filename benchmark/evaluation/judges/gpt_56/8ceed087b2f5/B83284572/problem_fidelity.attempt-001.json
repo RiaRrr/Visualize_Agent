@@ -1,0 +1,27 @@
+{
+  "dimension": "problem_fidelity",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "evidence_sha256": "138a3acd40738cc9667aa183c02d0165aadefc81b46ef84db1623ff2280c6fd9",
+  "prompt_sha256": "37bdd3326eb77d79632329bfb0160a3f3e3809802e64583014714e26e15a9873",
+  "created_at": "2026-10-21T06:45:21.064752+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "problem_fidelity",
+    "score": 5,
+    "issues": [],
+    "evidence": "候选页完整保留原题对象（飞机着陆后的匀减速直线运动）、初速度36 m/s、减速度大小6 m/s²、直至静止，以及两个待求量“滑行距离”和“最后4 s内位移”。页面明确取运动方向为正并将加速度写为a=-6 m/s²，避免了题面中“6 m/s²的加速度”与减速方向之间的符号歧义。v-t图横轴为t/s、纵轴为v/(m·s⁻¹)，从(0,36)线性降至(6,0)，与原题物理量及合法运动区间一致；跑道位置按x=36t-3t²同步映射，源码在t=6 s后不延伸到负速度。两个小问均被覆盖：全程对应0至6 s、结果108 m；最后4 s明确对应t=2至6 s，起点位置60 m、区间位移48 m。操作记录实际验证了滑块在t=3 s和t=6 s的状态，截图分别显示v=18 m/s、x=81 m及v=0、x=108 m；分步按钮和最后4 s高亮未被操作记录实际点击验证，但其对应关系在源码中明确实现，不影响题设一致性的判断。相较4分档，没有发现对象、条件、小问、范围或核心量映射的局部遗漏。",
+    "reference_concern": "",
+    "summary": "题设条件、两个小问、时间范围以及速度和位移的物理含义均被完整且正确保留，辅助图与原题量之间的映射清晰，无实质一致性缺陷。"
+  },
+  "duration_seconds": 15.502479204005795,
+  "usage": {
+    "input_tokens": 28832,
+    "output_tokens": 551,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 145,
+    "total_tokens": 29383
+  }
+}

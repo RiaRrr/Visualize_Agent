@@ -1,0 +1,442 @@
+{
+  "64b305f3b93852ba2be6e2d7ad5cbfeae00ef012b04054ffb611008f18d56ea9": {
+    "source_url": "https://img.xkw.com/dksih/formula/0a6936d370d6a238a608ca56f87198de.svg",
+    "path": "assets/64b305f3b93852ba2be6e2d7ad5cbfeae00ef012b04054ffb611008f18d56ea9.svg",
+    "sha256": "d337a2ad2bf7baf9daf09cfcc75d1bc580ca7149379ecd39bc1ef6ed97b0db71"
+  },
+  "b203f3460c64f46808560a47f28ab2732c74033d51109d849653bce4427adb82": {
+    "source_url": "https://img.xkw.com/dksih/formula/4d39942910c5043fd33891805f7507a3.svg",
+    "path": "assets/b203f3460c64f46808560a47f28ab2732c74033d51109d849653bce4427adb82.svg",
+    "sha256": "f123b50b3543b6b094212c529780327b68756b496e79758b56e78fd35686829f"
+  },
+  "7216f485bbd93773308c1dde3235f624aa80e825a7fd757ca46d3cb8e4ee0d8d": {
+    "source_url": "https://img.xkw.com/dksih/formula/a6e2e79843faf62dde86bf858d1e0569.svg",
+    "path": "assets/7216f485bbd93773308c1dde3235f624aa80e825a7fd757ca46d3cb8e4ee0d8d.svg",
+    "sha256": "b6acd056db09bc524a31383c7586f78d58d81d7bc43a9e3dd6054bf753e2bed3"
+  },
+  "c71bfbcd92f3256af7593fcac52d410d27f304c69189071939943b172a745234": {
+    "source_url": "https://img.xkw.com/dksih/formula/26d8dafc71b106f39f4e15442220897b.svg",
+    "path": "assets/c71bfbcd92f3256af7593fcac52d410d27f304c69189071939943b172a745234.svg",
+    "sha256": "bbfd529bd12501a31173d9dcc67268dc0fa3c8cad2d31b4bf2d85a758cb287ff"
+  },
+  "5f56f1e25ebd10168cba583b93f0c6c6936b6199ed6878e2e9fa2033c02ec4fd": {
+    "source_url": "https://img.xkw.com/dksih/formula/aec19b68e3add9d5bfcc6269a1855b87.svg",
+    "path": "assets/5f56f1e25ebd10168cba583b93f0c6c6936b6199ed6878e2e9fa2033c02ec4fd.svg",
+    "sha256": "b0eb9800aa4f24430f100ad3e4932683566fa159e2ca7efcb10e3f16bd87f852"
+  },
+  "cde2777dc895356bd4470cf17bddef0e4914076ce71d5a5df4b2f93336181012": {
+    "source_url": "https://img.xkw.com/dksih/formula/7b672f564d03ed46d092bb130f229ad8.svg",
+    "path": "assets/cde2777dc895356bd4470cf17bddef0e4914076ce71d5a5df4b2f93336181012.svg",
+    "sha256": "b1a03bf11f38b9bef6357bf1e521d2c1efc405104491db3dda8c8c90d0aeec22"
+  },
+  "a42387eae099a8241de75bc431a36837b2cec6928991ee85c7e052afeb7a2d5a": {
+    "source_url": "https://img.xkw.com/dksih/formula/c814128ea2139e33db94ea590e7c2223.svg",
+    "path": "assets/a42387eae099a8241de75bc431a36837b2cec6928991ee85c7e052afeb7a2d5a.svg",
+    "sha256": "728330cf0dd219ea31fcb510b2830da81b26a5bba756088be2729bc79aa93c0b"
+  },
+  "79a876a34132e4d04f4ab66cde83586edff511c3f2058ae1e2825bfa25971495": {
+    "source_url": "https://img.xkw.com/dksih/formula/b49ad84dd803c013bb4d7aeb66a2012d.svg",
+    "path": "assets/79a876a34132e4d04f4ab66cde83586edff511c3f2058ae1e2825bfa25971495.svg",
+    "sha256": "cecb214dc2585331dddb4ccbdf25ceede72fc488601ce9f3f8e74f5ace126b81"
+  },
+  "c29cebae7eacdcdf55a0c68723410ae5ce22365b8dbff744e9034c8dc79116a1": {
+    "source_url": "https://img.xkw.com/dksih/formula/f4a14b58d6b59104c2ebd3dc42bea1cf.svg",
+    "path": "assets/c29cebae7eacdcdf55a0c68723410ae5ce22365b8dbff744e9034c8dc79116a1.svg",
+    "sha256": "b9a661237b205e408a59a8cae52174288ef0754c743b33ad449c5d5ac44b650c"
+  },
+  "8908e3edf91ddaf9f2d6ac312e7aa022634f1adc568b2978062b1d4651b94dcc": {
+    "source_url": "https://img.xkw.com/dksih/formula/94440d3e4c073f94f2b266ff99d50e74.svg",
+    "path": "assets/8908e3edf91ddaf9f2d6ac312e7aa022634f1adc568b2978062b1d4651b94dcc.svg",
+    "sha256": "345139bf5e7c5964f606f40928aa1b6569bb9ebbe5a9ada188a67f2835b44f3f"
+  },
+  "9a93da5f0be25d314609396f64233921f451ea0bea794ffc9be2b5c536de24b7": {
+    "source_url": "https://img.xkw.com/dksih/formula/01d6272d5c26c3929978d41db65ccffb.svg",
+    "path": "assets/9a93da5f0be25d314609396f64233921f451ea0bea794ffc9be2b5c536de24b7.svg",
+    "sha256": "f394ed729b510e5f451a31f83cb5a6be946c8e9209da9e3560b42b91c025e734"
+  },
+  "369682ef9751c633c49afbed7a1fdcef37612a5d2d540d09162e75f7f98e0c24": {
+    "source_url": "https://img.xkw.com/dksih/formula/c1fe2115d883d13561e28006d3f6143b.svg",
+    "path": "assets/369682ef9751c633c49afbed7a1fdcef37612a5d2d540d09162e75f7f98e0c24.svg",
+    "sha256": "ac2cf793c34062398e48a34416e56eb60767a16e13a188b46aeb583727b1414b"
+  },
+  "5deca0e545fa7fe8c4d63a9d0eb10979125f372a7055a250b918e216834b651d": {
+    "source_url": "https://img.xkw.com/dksih/formula/8ba449c9813d84069836e2996cc030a0.svg",
+    "path": "assets/5deca0e545fa7fe8c4d63a9d0eb10979125f372a7055a250b918e216834b651d.svg",
+    "sha256": "2977d8aced0a026999f9e888f3f88bd74344d11c376672f0e68dbd7056a3aae0"
+  },
+  "7e312840463a9efddf2fd824d88d4c87f39c3a5eae6fa126479979dd31c4bd9f": {
+    "source_url": "https://img.xkw.com/dksih/formula/ddcd8887b2b220a2e23ef5428c70046f.svg",
+    "path": "assets/7e312840463a9efddf2fd824d88d4c87f39c3a5eae6fa126479979dd31c4bd9f.svg",
+    "sha256": "fb58565f2f66683a9223dfb839731bb797330d5e6cc7d044e6bb919716f07a35"
+  },
+  "0211d5906740285efd8401fbaeb53a1d00ddb540078c89b23b31c576482a78ba": {
+    "source_url": "https://img.xkw.com/dksih/formula/1f471084abc8c6d9bc11788fdcc5ca10.svg",
+    "path": "assets/0211d5906740285efd8401fbaeb53a1d00ddb540078c89b23b31c576482a78ba.svg",
+    "sha256": "0069c496bcbe770f8851ab87c5151fbfe2e08624cfb958219069c977158b8ddf"
+  },
+  "4fb4908ae1ad6aed46b0f295c295e5f9b8e0eab436e87d7ece2e22e68c07ff0c": {
+    "source_url": "https://img.xkw.com/dksih/formula/06f654b4b65b74104447df44c6e1b777.svg",
+    "path": "assets/4fb4908ae1ad6aed46b0f295c295e5f9b8e0eab436e87d7ece2e22e68c07ff0c.svg",
+    "sha256": "78109aa43f838d6f60e0298d1f4e72a9022f3efe1bb25d8fd1bfef5c5043250a"
+  },
+  "e474c528bb882f9576ee4eb635e7db3c45e9efe682fde7530800faf4e95255b0": {
+    "source_url": "https://img.xkw.com/dksih/formula/087a3e4cfa078169457cce91f079dc5a.svg",
+    "path": "assets/e474c528bb882f9576ee4eb635e7db3c45e9efe682fde7530800faf4e95255b0.svg",
+    "sha256": "1c73f60776f3ac5aa571723078bee3ce179711814a5a74973a13ddbd81d242cc"
+  },
+  "2c3f6e73e18806c7683fa8c9a739a5799cdcc45d872c9bccf9a6b38926f0a8b6": {
+    "source_url": "https://img.xkw.com/dksih/formula/da7220417116045101961c8bd3b9fd8a.svg",
+    "path": "assets/2c3f6e73e18806c7683fa8c9a739a5799cdcc45d872c9bccf9a6b38926f0a8b6.svg",
+    "sha256": "3ee85125c391c5b5d35dd16c12731d6ba9670c0dbe6e39fed7af0c54fc34bf60"
+  },
+  "108dbfa08c0d39764384d1b96c986f3c305dffe0b9f5dff2d23654a8cd406486": {
+    "source_url": "https://img.xkw.com/dksih/formula/6ea42240547ffda096a5bd6582aa2216.svg",
+    "path": "assets/108dbfa08c0d39764384d1b96c986f3c305dffe0b9f5dff2d23654a8cd406486.svg",
+    "sha256": "03da9a7bb4e77c4d71e3b5d797c836a70064389525acd7640fdac4612cb1fe3f"
+  },
+  "cf3c1e01cc64951ce294ef4f19640a6dd34a1c86a29cb892b15974955ca257de": {
+    "source_url": "https://img.xkw.com/dksih/formula/1804116cd2b81449d33bda6245077af2.svg",
+    "path": "assets/cf3c1e01cc64951ce294ef4f19640a6dd34a1c86a29cb892b15974955ca257de.svg",
+    "sha256": "b599795b17bf83437885485a80ed6d28c2da43a2e912744f36b2ea228699cd67"
+  },
+  "45e59070ffa21e03b8d39e2201922eff3dd8c45862485e9b6d1a1b3f72cc9595": {
+    "source_url": "https://img.xkw.com/dksih/formula/85226cca96427ac1a24a400dca8fe98a.svg",
+    "path": "assets/45e59070ffa21e03b8d39e2201922eff3dd8c45862485e9b6d1a1b3f72cc9595.svg",
+    "sha256": "ee02746c45558adb43fef60b6393ffe6db53c192e1f601fce28dff2f150c5432"
+  },
+  "69d21a03ffaf9ea6d30b528c07883d4f7956a8d83e94f1bc0217197e11da31c2": {
+    "source_url": "https://img.xkw.com/dksih/formula/222fabf5acac7cbf829a32343e7d1dcd.svg",
+    "path": "assets/69d21a03ffaf9ea6d30b528c07883d4f7956a8d83e94f1bc0217197e11da31c2.svg",
+    "sha256": "766cae35bb4c1302e17aaf1dc002050dd03f58182a2c337bb90355e7d8f77da1"
+  },
+  "708d8e8bdc67d749ddd15344772a20ed98823b1d6307be5f74ce7f89d454f1fe": {
+    "source_url": "https://img.xkw.com/dksih/formula/acff83b0cf18aa38dcaec5e8782e1cdf.svg",
+    "path": "assets/708d8e8bdc67d749ddd15344772a20ed98823b1d6307be5f74ce7f89d454f1fe.svg",
+    "sha256": "6c9f8a1600df899b985846015f9a8fa5400d185381db20099339ec5b446a62e0"
+  },
+  "cff6a0ad884509df72238006335f0e1ddb99ec15558ab1b92e8a052ab5cbfa8a": {
+    "source_url": "https://img.xkw.com/dksih/formula/9c9626dc41063c34f4243b5a637668b0.svg",
+    "path": "assets/cff6a0ad884509df72238006335f0e1ddb99ec15558ab1b92e8a052ab5cbfa8a.svg",
+    "sha256": "5d7717e74729ac302efc31077421bfb7808f44b7ff0cd78903e55dd01585b669"
+  },
+  "618b963d392556163a540ee87d25baa77ae823f6fa997413152c782a716cc102": {
+    "source_url": "https://img.xkw.com/dksih/formula/d37d669f9b4f5533e0134df5e310ab86.svg",
+    "path": "assets/618b963d392556163a540ee87d25baa77ae823f6fa997413152c782a716cc102.svg",
+    "sha256": "bcfb30c2f7ec2b4f25892d63dda7f8273365ba745e121cfd5ff1fba140e88561"
+  },
+  "213f7f1cf158f7047a2bc7be5ff680a6f225139929e6827b2490fc8c21b988db": {
+    "source_url": "https://img.xkw.com/dksih/formula/eb34a40e4cb1b3a37897adf60b5faf75.svg",
+    "path": "assets/213f7f1cf158f7047a2bc7be5ff680a6f225139929e6827b2490fc8c21b988db.svg",
+    "sha256": "4e8883e003cb48eef388fd7bc5428b6cd64f0d6f47a41b398a43e66a4a8be042"
+  },
+  "b4f46f72de9caea4f6e53d06f3a58928542c40e22880a33231907eb97ee3b868": {
+    "source_url": "https://img.xkw.com/dksih/formula/3cac001df026b62f04553f6851d8e83d.svg",
+    "path": "assets/b4f46f72de9caea4f6e53d06f3a58928542c40e22880a33231907eb97ee3b868.svg",
+    "sha256": "78b89c3c5367dd3e7ce86d20933e549981c385a252fc0814f75ba02f3d3f7513"
+  },
+  "103402debff3746f46060b6b319a5377ed3ae5e799d0f2a679653e25e1521949": {
+    "source_url": "https://img.xkw.com/dksih/formula/9f70c82d25813d3c0c6ac912f16129be.svg",
+    "path": "assets/103402debff3746f46060b6b319a5377ed3ae5e799d0f2a679653e25e1521949.svg",
+    "sha256": "117381a702ad23b78b2b363ac3c570522ad1cf390220414831d29448fa1fcd25"
+  },
+  "bb3b8b9eb77b8af558a5ac247a0167c09a2e64eeb0137a524085f57778260c4f": {
+    "source_url": "https://img.xkw.com/dksih/formula/39cf6bec741a5cbfbc88bb29628e34b2.svg",
+    "path": "assets/bb3b8b9eb77b8af558a5ac247a0167c09a2e64eeb0137a524085f57778260c4f.svg",
+    "sha256": "ceefdcbf8d2eac217c93ee8e46635665546bd9c605347ae4376a72a52f3d9b29"
+  },
+  "2897fea545022e3632506f47a2b94cc773320fc86df2f0c00ef37bbd569ff52a": {
+    "source_url": "https://img.xkw.com/dksih/formula/41cbac7a8d9f25964a2413c8c7845e59.svg",
+    "path": "assets/2897fea545022e3632506f47a2b94cc773320fc86df2f0c00ef37bbd569ff52a.svg",
+    "sha256": "ae7771813106620eb9ab68ac41fc1a3eb2b83bce6f764c63f10e50e63f836622"
+  },
+  "7186cfd6f2bccbadcb4dcd448dabe4dd3e4d287a46753f5ffb1a347860cca21c": {
+    "source_url": "https://img.xkw.com/dksih/formula/ed99520c6ff5617e74d5630092018761.svg",
+    "path": "assets/7186cfd6f2bccbadcb4dcd448dabe4dd3e4d287a46753f5ffb1a347860cca21c.svg",
+    "sha256": "9c8836bf0c54c2a303f2b0932339916473ed0f018b834c8f31a88c0bfd297986"
+  },
+  "dded253d83cfcaae49cb0c6bc21f8b15388c92fa1a0f428c82ade40edf49bbea": {
+    "source_url": "https://img.xkw.com/dksih/formula/5fc48c8266a168bcb58613f3b4ac3632.svg",
+    "path": "assets/dded253d83cfcaae49cb0c6bc21f8b15388c92fa1a0f428c82ade40edf49bbea.svg",
+    "sha256": "fa962496620c0f9286eb339b4c7034bef363ac9c782275294a1c040662d45f1d"
+  },
+  "c941068ddd6c2051cd0dcbf907c611f833411fe171d8fffd6c7efabed8ea245c": {
+    "source_url": "https://img.xkw.com/dksih/formula/4d65bdc820ab87b9a7909d2be591abec.svg",
+    "path": "assets/c941068ddd6c2051cd0dcbf907c611f833411fe171d8fffd6c7efabed8ea245c.svg",
+    "sha256": "47053dd14b86ee2d719785f6fbf77fce3da0bb6d3d9db71c7c8c81520df3ed7f"
+  },
+  "38fc7fbb84b7cd107a7c074165b7e01c41577f4df4d50158bdd11d8bdab2478f": {
+    "source_url": "https://img.xkw.com/dksih/formula/85f3a06a6f4ef2d44199ed100152210f.svg",
+    "path": "assets/38fc7fbb84b7cd107a7c074165b7e01c41577f4df4d50158bdd11d8bdab2478f.svg",
+    "sha256": "951a70432708fbb08b02bab020a2cb273476a832c3615f1e1c155885e3fe3e80"
+  },
+  "5e3965fab8b57d968e617448d04c069a18257a5657e2834e9a10cfb982bc93ab": {
+    "source_url": "https://img.xkw.com/dksih/formula/5c34ca77fde3e4307745de7d40c22873.svg",
+    "path": "assets/5e3965fab8b57d968e617448d04c069a18257a5657e2834e9a10cfb982bc93ab.svg",
+    "sha256": "e418dc2b6e188d8d814dae023d82b7571be57a4e6b8a473c36aa27a3205f82bc"
+  },
+  "95c705796928a6a4d04704b286e4a8da1d516444e4d667fac8ccf1e15460795f": {
+    "source_url": "https://img.xkw.com/dksih/formula/600ab99276ca652c4c14266307b534b8.svg",
+    "path": "assets/95c705796928a6a4d04704b286e4a8da1d516444e4d667fac8ccf1e15460795f.svg",
+    "sha256": "5190928d94d1df8aa03bbe67b4c28efb1be525e2ecc0baa5e7a9ead8b525ab7e"
+  },
+  "cbc172bf7522873c81ad49f3b6f1529406e147d25c682e22b4956fc34d676ff3": {
+    "source_url": "https://img.xkw.com/dksih/formula/62bb3b9775b622c02ca50ee6db813d8d.svg",
+    "path": "assets/cbc172bf7522873c81ad49f3b6f1529406e147d25c682e22b4956fc34d676ff3.svg",
+    "sha256": "3ebbae2f5ce87688c85876dc82e807bc7b80f8648ed831e25759c4ba1817c2ff"
+  },
+  "cc42212dad3f7978377cfd41e5dcf2d9bbcadb6e7ccc61eb610e0321a4c9918a": {
+    "source_url": "https://img.xkw.com/dksih/formula/e4038cef00a2a84c163ae39816057ae7.svg",
+    "path": "assets/cc42212dad3f7978377cfd41e5dcf2d9bbcadb6e7ccc61eb610e0321a4c9918a.svg",
+    "sha256": "1d4a0f5a879519c3271654a5bc99fa258188fba0d5e89d148554da0e25d493ed"
+  },
+  "07dcade107364f97cedcdadd6cedfcc0a123b11dade755500d4608ab5006d7e7": {
+    "source_url": "https://img.xkw.com/dksih/formula/79b752f0f189e5d8666daea73e145dff.svg",
+    "path": "assets/07dcade107364f97cedcdadd6cedfcc0a123b11dade755500d4608ab5006d7e7.svg",
+    "sha256": "fa9d36f3ba6097358570635bd8bcf92b8a8690d145c1f967b5cf37a2320dfba3"
+  },
+  "6a3594a27b0d6413dfeb82fd99eb7d5c5ba21f6162daf8f5192c7654c26eaf12": {
+    "source_url": "https://img.xkw.com/dksih/formula/ec433bd085a9377b0a0ade58de7a9205.svg",
+    "path": "assets/6a3594a27b0d6413dfeb82fd99eb7d5c5ba21f6162daf8f5192c7654c26eaf12.svg",
+    "sha256": "bdcde612cbd956b9e8ccc7360dd70bd8433e1825e4c1f80a86a0c03f8968f295"
+  },
+  "b29a6f3ddaa0f3bcee7e846d28a5b7326cf5a8b31d0cface66c81408d470405e": {
+    "source_url": "https://img.xkw.com/dksih/formula/7da9b1a9387023e87a61ead99cdb752c.svg",
+    "path": "assets/b29a6f3ddaa0f3bcee7e846d28a5b7326cf5a8b31d0cface66c81408d470405e.svg",
+    "sha256": "3d5b8451c0076e3a26ff2b855c9b3a0e44999ff05a6a31c980a964ca41a57235"
+  },
+  "f41834ba3138ffd53c44776608b95673368a03b4f9171b389607c7e04f2bb419": {
+    "source_url": "https://img.xkw.com/dksih/formula/d43ca0d9521ef343bf185e649b908c8b.svg",
+    "path": "assets/f41834ba3138ffd53c44776608b95673368a03b4f9171b389607c7e04f2bb419.svg",
+    "sha256": "a361a1cb8dec557d51d759202cfa6023eefa4db23a58ffa3246962c7619c9b11"
+  },
+  "e51882506d9336ac210938294d055f7e245b9656e80804390633dfbc8fd79644": {
+    "source_url": "https://img.xkw.com/dksih/formula/1d33da711e50e96568facb18cef27165.svg",
+    "path": "assets/e51882506d9336ac210938294d055f7e245b9656e80804390633dfbc8fd79644.svg",
+    "sha256": "d96ccf9b7d2d34b8f0e7554441fbf12bbf6788239b3307c3f5391ad5581f7716"
+  },
+  "0a9aa32804bcb44456846e28c971c956d08069f6e565fc2f80628595fa1e25ba": {
+    "source_url": "https://img.xkw.com/dksih/formula/93cb14153ca43402376a79bd6a8f0097.svg",
+    "path": "assets/0a9aa32804bcb44456846e28c971c956d08069f6e565fc2f80628595fa1e25ba.svg",
+    "sha256": "56be3946afe4485ba0c016a9ebe794bd58c86f073455ff08acfbb35eefc5e831"
+  },
+  "13af2e37835faa020aaab9df526afad341e7bca0df665fc3c22d9712681ed5b1": {
+    "source_url": "https://img.xkw.com/dksih/formula/7b252d15b7273fab3e4d5b006002f6b2.svg",
+    "path": "assets/13af2e37835faa020aaab9df526afad341e7bca0df665fc3c22d9712681ed5b1.svg",
+    "sha256": "d9cba7c8287a5d09c59fd619de6bc983700a4c02733c34966a365a1d85781ccb"
+  },
+  "7c1cfc072d7986fcee000070e56cea531c8430e88ee6865f9ed8cbef5bf36d41": {
+    "source_url": "https://img.xkw.com/dksih/formula/5c7bbd9169f5b11dff06ed12cb2a0044.svg",
+    "path": "assets/7c1cfc072d7986fcee000070e56cea531c8430e88ee6865f9ed8cbef5bf36d41.svg",
+    "sha256": "93b8cd877d54fda1f8c029a5ab66558d56d29dc83006c35b5e71f9bac40f6279"
+  },
+  "c4680b1c4f213d6809f7eb56f8328d2dd2ffdba8374121fdb102d383fe8d61af": {
+    "source_url": "https://img.xkw.com/dksih/formula/c01e23439c1f64b63f7e874c939f581b.svg",
+    "path": "assets/c4680b1c4f213d6809f7eb56f8328d2dd2ffdba8374121fdb102d383fe8d61af.svg",
+    "sha256": "8527d94950dc3eb4889d0ec6fc631fd31d0fd8ca0fac88557397bdc22fe83c22"
+  },
+  "dbc17960d8695b135b39fe0f861b76b0355dc07f1bab46c62ddc085559e226db": {
+    "source_url": "https://img.xkw.com/dksih/formula/cf55d06436a191a070bf89f9e185999a.svg",
+    "path": "assets/dbc17960d8695b135b39fe0f861b76b0355dc07f1bab46c62ddc085559e226db.svg",
+    "sha256": "c8d723300cdf697044cd2de5317afad6a3067b0bff07bcca25fa0fd54802271b"
+  },
+  "63e87be10a12389b35ec23ea588ff3229acaf6ca4bd6b61f8e62e80fdd1abe84": {
+    "source_url": "https://img.xkw.com/dksih/formula/9aa378d9dfc178c8bccb355bda511fcd.svg",
+    "path": "assets/63e87be10a12389b35ec23ea588ff3229acaf6ca4bd6b61f8e62e80fdd1abe84.svg",
+    "sha256": "586cf64b0d618c02639f81375129207a2243acc4a7853fc7aaec9afef3961c12"
+  },
+  "8451cb1c46a497149732c6f9118fd6132c601ffae75600fc572f4ca6aa08ec1c": {
+    "source_url": "https://img.xkw.com/dksih/formula/a43b2faa4f81f32d94612dce724e772b.svg",
+    "path": "assets/8451cb1c46a497149732c6f9118fd6132c601ffae75600fc572f4ca6aa08ec1c.svg",
+    "sha256": "62bd02a039c500d2216632e9a905018692e46135cb74d956972ffb50e6f1626a"
+  },
+  "2f0090cbf9a821df5d9136530dbd65c95d9a291f2f532bcc323d7a7e86371f36": {
+    "source_url": "https://img.xkw.com/dksih/formula/7d8b2dafc26cda8b8ff4b7a216c20ee7.svg",
+    "path": "assets/2f0090cbf9a821df5d9136530dbd65c95d9a291f2f532bcc323d7a7e86371f36.svg",
+    "sha256": "cf7cef4dc426170956762676f3154d04ec886bc00c5a4e547bc3e2d43cb314e2"
+  },
+  "db7d4d844ad97e68bc02d1a794df43e9d1d93a8d87b135717e432ca2554617a9": {
+    "source_url": "https://img.xkw.com/dksih/formula/bb5f421939ee855f25927e7570d82c71.svg",
+    "path": "assets/db7d4d844ad97e68bc02d1a794df43e9d1d93a8d87b135717e432ca2554617a9.svg",
+    "sha256": "1ed2c2b647cd28fbd32d0e8ba737c4a700acea863f4851a7a58ae8144cd65f41"
+  },
+  "34446bba452fdddcf0cad5b46bf5742702a7e10f8adef89793c6ab76fc512e88": {
+    "source_url": "https://img.xkw.com/dksih/formula/d72a4fac789e542ac407d470317bf4c5.svg",
+    "path": "assets/34446bba452fdddcf0cad5b46bf5742702a7e10f8adef89793c6ab76fc512e88.svg",
+    "sha256": "b010dcdd09e02ceb61d86424bc9b6b7379ad4401a1e3e2c38f56026717381a8c"
+  },
+  "13aad49d99305805cb52e3daaa5fb17ee1288910f1953bae40036ddb4d829d33": {
+    "source_url": "https://img.xkw.com/dksih/formula/03923e93530b896c121889fe614cdbab.svg",
+    "path": "assets/13aad49d99305805cb52e3daaa5fb17ee1288910f1953bae40036ddb4d829d33.svg",
+    "sha256": "32c680375d582e845ff4d38a468139333da7975b21bffee7303361bc8db4092e"
+  },
+  "4ced56aa45e500b325a4241bdc39a1a6dfef6b93d582d6d3288064c0470f3500": {
+    "source_url": "https://img.xkw.com/dksih/formula/5b185940041220f7f7fd3757342a5657.svg",
+    "path": "assets/4ced56aa45e500b325a4241bdc39a1a6dfef6b93d582d6d3288064c0470f3500.svg",
+    "sha256": "404688667a0a995226845fede5cac7e681a2e848e7ca1438c5ca55a446448906"
+  },
+  "82b238df5859eeb7ba8b99136443bb1e7893e4f1e1ed6ab71085e4bd3be733ff": {
+    "source_url": "https://img.xkw.com/dksih/formula/4588d4afd8e5eba8afe6e4722a49521c.svg",
+    "path": "assets/82b238df5859eeb7ba8b99136443bb1e7893e4f1e1ed6ab71085e4bd3be733ff.svg",
+    "sha256": "26c9506440496eb1d4e8ee43fe75d8f4289fe691c8a35151798c9873365869b0"
+  },
+  "d8119cae7ab00d457b5cf864548d79f925f3480a752b31af64011193363e0ca9": {
+    "source_url": "https://img.xkw.com/dksih/formula/73682d99c513dcea8fe3d61359a02121.svg",
+    "path": "assets/d8119cae7ab00d457b5cf864548d79f925f3480a752b31af64011193363e0ca9.svg",
+    "sha256": "8be46a6a3c354069701ed7c7144361d7c123c78bac3d4eaf94c676301deedfec"
+  },
+  "727aee6bdadf79b6aad1bfad866aa0ae4bff1c683a86c066236c0c6f101dfc30": {
+    "source_url": "https://img.xkw.com/dksih/formula/b95796dbec6b3990d49532f97b3a4d45.svg",
+    "path": "assets/727aee6bdadf79b6aad1bfad866aa0ae4bff1c683a86c066236c0c6f101dfc30.svg",
+    "sha256": "2d6dd5859752179c616b9ae14b2217913056aecca2e20d01656d1f34a9121341"
+  },
+  "cc745a832757ce0d81ff11ad2de390333e431a348c6cda3cb8c64cc32939036d": {
+    "source_url": "https://img.xkw.com/dksih/formula/816dd27bf8376052b28192826b4b4f59.svg",
+    "path": "assets/cc745a832757ce0d81ff11ad2de390333e431a348c6cda3cb8c64cc32939036d.svg",
+    "sha256": "ce7b08c9d8b4f58149d4139482462eefce884d8708c237afd49e7518c9345cc4"
+  },
+  "f0644d210fbced47800d2e7a72d8def9b7d39f5659efe3b33c29b36c674a23e6": {
+    "source_url": "https://img.xkw.com/dksih/formula/022efc4b0c090d5bd2fb4d2ee5253ca0.svg",
+    "path": "assets/f0644d210fbced47800d2e7a72d8def9b7d39f5659efe3b33c29b36c674a23e6.svg",
+    "sha256": "ccb924cbd0b2eb9f1d8a7591b3d1c4aa0a5ef79cecaacdd95dd65ba0e14ba5e4"
+  },
+  "de9914caa308076f0683fddadd1e9f3e1f847b4eea1a093d13e1ba79c875c7a3": {
+    "source_url": "https://img.xkw.com/dksih/formula/9af780fc20ef9bd6968d8e9ae7d7a2e5.svg",
+    "path": "assets/de9914caa308076f0683fddadd1e9f3e1f847b4eea1a093d13e1ba79c875c7a3.svg",
+    "sha256": "ac6aa9da0dab5e8bc592acfa76aefae2e4f34431045229d7049ce8465004a5bb"
+  },
+  "e263ec1077106dc89d954b5d1a18eac6155cd0b05cac1c8b00b1a9050fcc01d0": {
+    "source_url": "https://img.xkw.com/dksih/formula/61cfa81847bad6623de99bab7dfb5549.svg",
+    "path": "assets/e263ec1077106dc89d954b5d1a18eac6155cd0b05cac1c8b00b1a9050fcc01d0.svg",
+    "sha256": "e2d31cd8e715a037602c95fa75c2d0d958d84ece3178a24f2d4a760c93336659"
+  },
+  "f316b0e683fe66893e4c95bdc6dfc5a30c98cc451808c938f8a676749f893247": {
+    "source_url": "https://img.xkw.com/dksih/formula/7326ea56be82bd616fec7e6aa3c884c8.svg",
+    "path": "assets/f316b0e683fe66893e4c95bdc6dfc5a30c98cc451808c938f8a676749f893247.svg",
+    "sha256": "130b9672e50cd1c6f6dadb52bee08ce73c847e8c3d5f1206ba15dd135368a383"
+  },
+  "1b092cb70d658440c31ec8144cdad2efa6a28bb0ad90da845d53cd9d611ae525": {
+    "source_url": "https://img.xkw.com/dksih/formula/cf12cf431e333e9b3651ad46de538cca.svg",
+    "path": "assets/1b092cb70d658440c31ec8144cdad2efa6a28bb0ad90da845d53cd9d611ae525.svg",
+    "sha256": "6d4a44896f6dc53e9c8f65943ceff65cd4a90d1e66b5dc841c5baf1dfc354cfa"
+  },
+  "f28f7de3fa1eedf08b3f5e9664d4529d11e392a7e36b5a37842359d60ccbd4ba": {
+    "source_url": "https://img.xkw.com/dksih/formula/5f26f6cc6cf7d49eeffa37036436bc54.svg",
+    "path": "assets/f28f7de3fa1eedf08b3f5e9664d4529d11e392a7e36b5a37842359d60ccbd4ba.svg",
+    "sha256": "a398673548e786d53ac6929d93e2fbc7187f0b911fb71f21436f0bb402212a20"
+  },
+  "6bf421ee2ab5cb1af479907720018504bfa10a82e47833925c7b2c24c11854dd": {
+    "source_url": "https://img.xkw.com/dksih/formula/af89d73be24649ed0b4a87bcdaae22f1.svg",
+    "path": "assets/6bf421ee2ab5cb1af479907720018504bfa10a82e47833925c7b2c24c11854dd.svg",
+    "sha256": "91ba20e1da66f6cfcd5653170b660952531b969b8a210b07409d4b41b69ebaa2"
+  },
+  "7aed2277936ebbd442e1707016312b96247ede5a2ab0ca4f69ea9dcf92cabb13": {
+    "source_url": "https://img.xkw.com/dksih/formula/5c413478033f18046f268a2bcdb4be6b.svg",
+    "path": "assets/7aed2277936ebbd442e1707016312b96247ede5a2ab0ca4f69ea9dcf92cabb13.svg",
+    "sha256": "2782f5119b05e0eddba01f511098af66d9ccbea0ca218191da5a07c654f92e4f"
+  },
+  "755144e345c453caad1bd50238ae87645ff8f0c6c9bd420cccaf2340c779c344": {
+    "source_url": "https://img.xkw.com/dksih/formula/4eaa22142ae2df5a6039cecb18f04efd.svg",
+    "path": "assets/755144e345c453caad1bd50238ae87645ff8f0c6c9bd420cccaf2340c779c344.svg",
+    "sha256": "e7caaf8a2a6fc53078820455c1cbda87b8316a453eb473628234874158d58d66"
+  },
+  "0a72af809e783dca3bdb369c70b5ad76c3c9d2b30effce95e53c222ca5bdf0c1": {
+    "source_url": "https://img.xkw.com/dksih/formula/bcc179a2a802d78c14dda99da36c91f5.svg",
+    "path": "assets/0a72af809e783dca3bdb369c70b5ad76c3c9d2b30effce95e53c222ca5bdf0c1.svg",
+    "sha256": "662c0edaacff1f32128b6aade44a205c8ff40905e950b4b1aa6b7307fa0c4554"
+  },
+  "2c2a96fc4fb21fdbd2e49bb977f317ceaa1d438c160aee623aa6593a006c56a6": {
+    "source_url": "https://img.xkw.com/dksih/formula/3e4b3c210f5f3046b5de2feb035d6b75.svg",
+    "path": "assets/2c2a96fc4fb21fdbd2e49bb977f317ceaa1d438c160aee623aa6593a006c56a6.svg",
+    "sha256": "01f68af6330b46a31bc77e4654f04f0b3d450d68ba47b13cc683c1fe634a9dc5"
+  },
+  "daf4854ef8680e02310a5fe546ab24173d18d327801495bbb4c03103eb5818e6": {
+    "source_url": "https://img.xkw.com/dksih/formula/68a23644c6952417c12eaf279f71a6f0.svg",
+    "path": "assets/daf4854ef8680e02310a5fe546ab24173d18d327801495bbb4c03103eb5818e6.svg",
+    "sha256": "76b460f6747c8989a8422ccad646443b54c481177d74693f5243b898978f2653"
+  },
+  "5b770751a4bb4679c8d1427f13d34bdd9ce58cbf150bfa20b7c81b6738cc9b4f": {
+    "source_url": "https://img.xkw.com/dksih/formula/34f43df4b00269612235d04564342af0.svg",
+    "path": "assets/5b770751a4bb4679c8d1427f13d34bdd9ce58cbf150bfa20b7c81b6738cc9b4f.svg",
+    "sha256": "91dfdb8a8a715d0cb233a7fbc5f00287bd7da1a00215b79bfdde945aa681f77f"
+  },
+  "65d1305cdd89f06299611a8e4313850dd1fd8357c078a635bc68b46f0e556d71": {
+    "source_url": "https://img.xkw.com/dksih/formula/0b550ee821ee1838384835e81fc34b67.svg",
+    "path": "assets/65d1305cdd89f06299611a8e4313850dd1fd8357c078a635bc68b46f0e556d71.svg",
+    "sha256": "9f98d9285a39f2c81e5ffb2cbc3451fff1c921a8b9ed7f2794cca9243a107df0"
+  },
+  "fc7311406437f5e2df3807318eea6e7368b9629a72c736129afe7bd4082ab36f": {
+    "source_url": "https://img.xkw.com/dksih/formula/adc3e5be1796493161a4df7e28a6f6b7.svg",
+    "path": "assets/fc7311406437f5e2df3807318eea6e7368b9629a72c736129afe7bd4082ab36f.svg",
+    "sha256": "6f3b408cf00d5e0e64dc0f22042926f115a3a0d4a4c13835e216a48fbc0cfc90"
+  },
+  "ba6d7dc295ba4e668739546c7ced901b52298624892043600e1d8a27d369429b": {
+    "source_url": "https://img.xkw.com/dksih/formula/1931fdd49e2b5cba9def6536ad676b9c.svg",
+    "path": "assets/ba6d7dc295ba4e668739546c7ced901b52298624892043600e1d8a27d369429b.svg",
+    "sha256": "8f36abf78ff6d621d691613f679fffa917cb7c17133941a3f8ec03e5e2d1dddc"
+  },
+  "5c69b1b7fa07bd7f6a070e090c4afcef1de86818ae295afbe407e25b3ec93fc1": {
+    "source_url": "https://img.xkw.com/dksih/formula/9d84ae7f43ef85da907d2917ff5f2a80.svg",
+    "path": "assets/5c69b1b7fa07bd7f6a070e090c4afcef1de86818ae295afbe407e25b3ec93fc1.svg",
+    "sha256": "c7d80f932d978881d226073cebecc5a79d8c9a40fbbfdcbf28aaa680d6319f49"
+  },
+  "7dd19d030f5d101ef021699eb954eb604ca33ae7368c2a5de7398a31a1999da0": {
+    "source_url": "https://img.xkw.com/dksih/formula/bb60c6696cdc9d6dfc4cfd36bd193434.svg",
+    "path": "assets/7dd19d030f5d101ef021699eb954eb604ca33ae7368c2a5de7398a31a1999da0.svg",
+    "sha256": "b77ef5c6b9f46f16f7ac3378de6e1d86dfa68bc40b6e1c9ce354df48cbbdf819"
+  },
+  "99cdffb0051cc3f90fd0ca2d43f0b5d348d38e24ca913887d53de9451d76d0c1": {
+    "source_url": "https://img.xkw.com/dksih/formula/703a54be3307b31dbd8ef9ec9e5da845.svg",
+    "path": "assets/99cdffb0051cc3f90fd0ca2d43f0b5d348d38e24ca913887d53de9451d76d0c1.svg",
+    "sha256": "ede17f70bb95c9c2cd3233062d94027b6d763ac9238f69e8af520b6e0ae688c2"
+  },
+  "9c04ff7112461f5d57ed6590e6d00d8ab77d6fa4b0eee8ce841d900bca13a305": {
+    "source_url": "https://img.xkw.com/dksih/formula/6249785bf6a498b30909f32330938ce1.svg",
+    "path": "assets/9c04ff7112461f5d57ed6590e6d00d8ab77d6fa4b0eee8ce841d900bca13a305.svg",
+    "sha256": "3f957b8e8ef548d322501f2f2eead56b3a74cb4d05702a6cf0e79bba1dbd33b6"
+  },
+  "04210c728b922e65e793c8452a9ca4f97efa62fc87452eabbffb83aeb268b341": {
+    "source_url": "https://img.xkw.com/dksih/formula/5f8a4e2bfd2fbbe563185ca77df8ec39.svg",
+    "path": "assets/04210c728b922e65e793c8452a9ca4f97efa62fc87452eabbffb83aeb268b341.svg",
+    "sha256": "301278c99b401a3d29f9b2eb8463028f1bbee2e937aa018347254d80b96609f3"
+  },
+  "791f80dd0d532729d203a1797cd442108ac702533ecb1c1f70aaf4e1cc6ddebd": {
+    "source_url": "https://img.xkw.com/dksih/formula/ca3b611af8b6b73b2dde50f8302c7ba7.svg",
+    "path": "assets/791f80dd0d532729d203a1797cd442108ac702533ecb1c1f70aaf4e1cc6ddebd.svg",
+    "sha256": "115ae31cc2baeb90e8e364d8a0674ac6e250869534819e95a74da28601a1eba3"
+  },
+  "86119cad86a7a7a2cf769d31039fb06330d38e661c1dbcc57c38405e76e3ab96": {
+    "source_url": "https://img.xkw.com/dksih/formula/7368bc41805c47a5c1cc17c1bc77cdbb.svg",
+    "path": "assets/86119cad86a7a7a2cf769d31039fb06330d38e661c1dbcc57c38405e76e3ab96.svg",
+    "sha256": "40eadf62234b4cd45c42c175f50a3458ecb6d268026a15925dbffa1c37c8f3c5"
+  },
+  "13629c6acb6d63618ff870021317aca3634b59e61ac7721f8aa826ea9268f5f0": {
+    "source_url": "https://img.xkw.com/dksih/formula/217b60335cff6ec6363d74bac95b85dc.svg",
+    "path": "assets/13629c6acb6d63618ff870021317aca3634b59e61ac7721f8aa826ea9268f5f0.svg",
+    "sha256": "efdacc9f3cc89074e3676c5bb014e642a9d31a217d23f41de153e6174eade2d8"
+  },
+  "bfd06a81e6144c2b6f95cbd2d11e4b7d502713ef5e60497bbc570ed0f678cb17": {
+    "source_url": "https://img.xkw.com/dksih/formula/08115d6d9f876dea921a4d32260ff1fb.svg",
+    "path": "assets/bfd06a81e6144c2b6f95cbd2d11e4b7d502713ef5e60497bbc570ed0f678cb17.svg",
+    "sha256": "ce1e7dc1c259c2cc9485474f0d2eb2125c1c522032ea3495245671a468a4242c"
+  },
+  "8aef7e2b00d06f5d624cc79b7d002202b5f54df6fe3d2dcffa78d96a253c04e7": {
+    "source_url": "https://img.xkw.com/dksih/formula/e3303da250757adbf31999a43e700dfe.svg",
+    "path": "assets/8aef7e2b00d06f5d624cc79b7d002202b5f54df6fe3d2dcffa78d96a253c04e7.svg",
+    "sha256": "1cdaef8ad974ce3e1057e83de496098df46e7b6438a28701486b852a0c9b154e"
+  },
+  "73a7b338b1377067dc9f22f20f04690ae25917a82e5d7240240f84fef961eff1": {
+    "source_url": "https://img.xkw.com/dksih/formula/7040057e255316f45180792a519ea77e.svg",
+    "path": "assets/73a7b338b1377067dc9f22f20f04690ae25917a82e5d7240240f84fef961eff1.svg",
+    "sha256": "b65f5bd0fe8bdf133e82bd303559674333ef640b6bc07c2a2c705be629184b43"
+  },
+  "cb5ce7b30bcb4e0f93de5e132fdb12bdbd13b23296c4f94f887ba9205270fa1b": {
+    "source_url": "https://img.xkw.com/dksih/formula/648181c147ea4571545dbbf1ac62dc2b.svg",
+    "path": "assets/cb5ce7b30bcb4e0f93de5e132fdb12bdbd13b23296c4f94f887ba9205270fa1b.svg",
+    "sha256": "f975b54798b705060bd6c63e6463c05119f715e8f3b55c0ad07fe6f10484b2cb"
+  },
+  "77b284e464234c6b9b6e8031989eb3bc9ee9e76aa091e0971774aeb4966ae208": {
+    "source_url": "https://img.xkw.com/dksih/formula/fc3736775622bd6ff0215bb2334f6e6b.svg",
+    "path": "assets/77b284e464234c6b9b6e8031989eb3bc9ee9e76aa091e0971774aeb4966ae208.svg",
+    "sha256": "cefb4e3a26d1119f0048fd0407e167819011388e07ec2436ec722792dfd50e1a"
+  }
+}

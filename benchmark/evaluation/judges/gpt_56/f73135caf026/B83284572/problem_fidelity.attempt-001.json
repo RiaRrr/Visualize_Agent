@@ -1,0 +1,27 @@
+{
+  "dimension": "problem_fidelity",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "evidence_sha256": "6c1fd9444a541ea830861ad1727ea503d4346ef4411c26d1be915f11505d7802",
+  "prompt_sha256": "10fa125e7bc650321de1f4f180309ec10ef1aceafd2faf497105491c0accdc8a",
+  "created_at": "2026-10-21T06:39:16.436123+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "problem_fidelity",
+    "score": 5,
+    "issues": [],
+    "evidence": "原题给出的对象、条件和两问均被完整保留：飞机着陆后做匀减速直线运动直至静止，初速度36 m/s，减速度大小6 m/s²；待求量分别为全程滑行距离和最后4 s内的位移。候选页面明确取运动方向为正，并将加速度写为a=-6 m/s²，与题意一致。v-t图横轴为t/s、纵轴为v/(m·s⁻¹)，展示速度由36 m/s在6 s内线性减至0；跑道位置、速度读数和源码中的x(t)=36t-3t²对应同一运动。源码完整包含两问的对应区间与结果：全程0至6 s为108 m，最后4 s明确对应t=2至6 s、从60 m到108 m，位移48 m。实际操作截图验证了滑块在t=0、3、6 s时分别显示(x,v)=(0,36)、(81,18)、(108,0)，且飞机位置与v-t图同步；步骤按钮及最后4 s高亮状态未在操作记录中实际点击验证，其内容依据源码核对。",
+    "reference_concern": "",
+    "summary": "页面忠实保留原题对象、全部条件、两小问及合法运动区间，图轴物理量和单位正确，运动模型、区间对应及结果均与独立核算一致，无实质性一致性缺陷。"
+  },
+  "duration_seconds": 41.438656861995696,
+  "usage": {
+    "input_tokens": 28409,
+    "output_tokens": 463,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 109,
+    "total_tokens": 28872
+  }
+}

@@ -24,9 +24,11 @@ Windows PowerShell 将创建/激活虚拟环境两行换成 `python -m venv .ven
 | 直接生成 vs 规划后生成 | 三角形、抛物线、双曲线/椭圆历史题；Qwen Flash、DeepSeek Flash，并跟进 260910/261017 型号 | 结构化解题/交互规划→核对→HTML；复杂题仍会出现数学或代码错误，规划不保证更好 | [数学可视化迁移实验](数学可视化迁移实验.md) |
 | DeepSeek 原图改进 | 历史几何题；`deepseek-v4-1-flash-261017`，参考已有 GPT 页面可观察到的设计 | 尝试通用/强化规则、教学示例、SVG、固定模板、推理强度、局部补丁；GPT不在这批生成链路中 | [1019实验](1019.md) |
 | 当前统一 benchmark pilot-v1 | 36道候选题中先用数理化各1道开发题；DeepSeek 261017生成与内部审核 | W0单轮、W1三轮整页修订、W2三轮局部修订；9任务、21轮HTML、9选中页面 | [benchmark说明](benchmark/README.md) |
-| 当前独立评价 | 上述9份页面；`gpt-5.6-sol`＋用户人工评分 | 9份旧版GPT联合评分、9份人工评分均已保存；新的五维独立call＋综合call已实现，尚未重评 | [评分与费用](benchmark/reports/分享汇总.md)、[judge说明](benchmark/evaluation/README.md) |
+| 当前独立评价 | 上述9份页面；`gpt-5.6-sol`＋用户人工评分 | 9份旧版GPT联合评分、9份人工评分均已保存；五维独立call＋综合call已实现；新增prompt对照与综合题评测见hard-v1报告 | [评分与费用](benchmark/reports/分享汇总.md)、[judge说明](benchmark/evaluation/README.md) |
 历史模型ID和可用性是当时网关的实验记录，不保证其他账号或今天同名接口可用。历史使用过 GPT/Codex 页面作参考；当前benchmark生成、内部审核、修订全部是 DeepSeek，没有 GPT 生成费用混入。
-仓库包含36道候选题的题图、原文、参考资料，以及当前pilot的21轮产物；另外归档了2道历史题的3份人工评分页面。完整历史 `data/`、`data_v2/`、`data_compare/` 和1875题的原始大题库不随仓库分发，历史报告里的本机历史路径不属于可直接打开的当前benchmark样本。
+仓库包含42道候选题的题图、原文、参考资料（原36题＋数理化综合题各2道），以及当前pilot的21轮产物；另外归档了2道历史题的3份人工评分页面。完整历史 `data/`、`data_v2/`、`data_compare/` 和1875题的原始大题库不随仓库分发，历史报告里的本机历史路径不属于可直接打开的当前benchmark样本。
+新增 **hard-v1综合题扩展**：数理化各2道大题，每科013为开发题、014为留出题；在3道新开发题上比较W0和W2。原pilot数据保留。题目、实际运行完成情况、token/费用、Judge校准对照见 [hard-v1报告](benchmark/reports/hard-v1.md)。
+
 ## 3. 流程与模型
 ```mermaid
 flowchart LR
@@ -87,3 +89,7 @@ node --test tests/test_cost_display.cjs
 ```
 Python测试使用mock，不发起付费模型调用。Node命令只用于前端费用计算测试，启动服务不需要Node。
 下一步：冻结新judge版本，在已有人评分页面上检验逐维评分是否更接近人工；再扩展开发题、按题而非HTML划分校准/验证，比较同题多次运行的质量与费用；最后才在留出集做最终检验。当前只有3道独立试运行题，尚不能判断哪种workflow最好。
+
+题图完整性补充：hard-v1审计修复了原留出题`physics_012`、`chemistry_008`的空白截图，原题内容与split不变，未调用模型；哈希记录见`benchmark/extensions/hard-v1_input_fixes.json`（benchmark目录内路径去掉首层benchmark）。
+
+Judge校准状态：新版文字档位要求已实现并做同材料对照，但尚未达到可靠的人机一致性；请同时看人工评分和版本差异，不把GPT分数当作学生学习效果的实证。

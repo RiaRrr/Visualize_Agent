@@ -1,0 +1,23 @@
+{
+  "questions": [
+    "math_013",
+    "math_014",
+    "physics_013",
+    "physics_014",
+    "chemistry_013",
+    "chemistry_014"
+  ],
+  "selection": "按多小问、跨知识点、条件转化与可视化需求选题；题库难度系数仅作辅助，不声称覆盖所有难题。",
+  "near_duplicate_candidates": [],
+  "limitation": "物理题库难题数量少，新增题仍集中在力学；参考解未人工审定。",
+  "dev": [
+    "math_013",
+    "physics_013",
+    "chemistry_013"
+  ],
+  "test": [
+    "math_014",
+    "physics_014",
+    "chemistry_014"
+  ]
+}

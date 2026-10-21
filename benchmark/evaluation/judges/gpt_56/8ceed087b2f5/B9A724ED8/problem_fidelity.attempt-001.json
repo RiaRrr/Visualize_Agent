@@ -1,0 +1,31 @@
+{
+  "dimension": "problem_fidelity",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "request_timeout_seconds": 300.0,
+  "evidence_sha256": "ba9505be55ba4d78c8fffc8589f9729d40423f66ef5dd6c03b528a85ef49f9d4",
+  "prompt_sha256": "114c10c13d273d1b459b6e45a417fdb8eafbfd38b64a28c5f3b205a96eab323a",
+  "created_at": "2026-10-21T07:32:20.661656+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "problem_fidelity",
+    "score": 4,
+    "issues": [
+      "第②步用于第（1）问的参数滑块范围被设为 a∈[0,2.8]，第③步设为 a∈[0.6,3.4]，不能展示结论 a≤1 中 a<0 的合法情形；文字结论虽完整，但对应交互范围未完整保留。",
+      "第⑤、⑥步的滑块最小值为 a=1，无法交互展示第（2）问合法范围 0<a<1 的情形；证明文字专门讨论了 a≤1 的分支，但辅助图不能验证该分支。"
+    ],
+    "evidence": "题设区准确保留了 f(x)=e^x−ax−3、a∈R、x≥0、恒成立不等式以及第（2）问的两个零点条件、次序和两个小问。源码中的六个步骤覆盖了全部小问，给出的结论 a≤1、a>0 及待证不等式均与原题和参考材料一致。辅助图的量也有明确对应：第（1）问比较 y=e^x−x²/2−1 与 y=ax，随后绘制 g(x)=(e^x−x²/2−1)/x；第（2）问绘制原函数或等价的 y=e^x 与 y=ax+3，交点对应 x₁、x₂，没有把不同物理量或不同函数趋势冒充原题曲线。操作记录仅实际验证了初始页滑块从1.2变化到1.25及4时图形随参数更新，未实际点击其余步骤；其余步骤的覆盖依据为页面源码。整体已良好对应原题，但多个分步滑块截去了题目结论中的合法参数区间，因此尚未达到“所有合法范围完整保留”的5分。",
+    "reference_concern": "",
+    "summary": "原题对象、条件和全部小问均被准确保留，辅助函数及图像与原题关系清楚；主要不足是分步交互的参数范围未覆盖若干合法情形。"
+  },
+  "duration_seconds": 29.03885641800298,
+  "usage": {
+    "input_tokens": 28317,
+    "output_tokens": 1277,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 791,
+    "total_tokens": 29594
+  }
+}

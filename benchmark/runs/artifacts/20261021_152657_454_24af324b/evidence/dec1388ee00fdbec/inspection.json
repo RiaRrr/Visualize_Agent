@@ -1,0 +1,951 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261021_152657_454_24af324b/20261021_154500_079_round_01.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "咪达唑仑中间体 K 的合成路线 · 交互式解析\n\n拖动、点击、观察结构如何一步步变化——把每一步的“依据”变成看得见的东西。\n\n① 路线总览\n② 推断 A→C（1）（2）\n③ D→G（3）（4）\n④ I→J（5）\n⑤ 同分异构体（6）\n⑥ 合成设计（7）\n题目在做什么？\n\n目标是合成药物咪达唑仑的中间体 K。整条路线分成两支，最后合并：\n\nA\nFe / HCl\nB\n2-氟苯甲酰氯 / ZnCl₂\nC\nD\n(i) Boc₂O (ii) Py·SO₃\nE\nCH₃NO₂ / KF\nF\nCH₃SO₂Cl / 碱\nG\nC + G\nΔ（已知反应）\nH\nFe / 乙酸\nI\n(i) HCl (ii) NaHCO₃\nJ\nCH₃C(OCH₃)₃\nK\n已知信息（题目给出）\nR–NH₂  +  R′–CH=CH–NO₂  ——Δ——▶  R–NH–CH(R′)–CH₂NO₂\n\n这是一个 Michael 加成：胺上的氮加到硝基烯烃的 β-碳上，生成 β-硝基胺。\n\n看不懂没关系\n点上方标签，一块一块拆开看",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 路线总览",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 推断 A→C（1）（2）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ D→G（3）（4）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ I→J（5）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 同分异构体（6）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑥ 合成设计（7）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "NO₂ 在邻位",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "NO₂ 在间位",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "NO₂ 在对位",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "goB",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步：Fe / HCl 还原 →",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "p2next",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "加入 Boc₂O（保护氨基）→",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "p3go",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "加入 HCl，加热",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1(CH₃O)₂C(OH)CH₂CH₃1,1-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2HOCH(OCH₃)CH(OCH₃)CH₃1,2-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3HOCH(OCH₃)CH₂CH₂OCH₃1,3-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4HOCH₂C(OCH₃)₂CH₃2,2-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 16,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5HOCH₂CH(OCH₃)CH₂OCH₃1,3-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 17,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "6HOCH₂CH₂CH(OCH₃)₂1,1-二甲氧基丙-3-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 18,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "7(CH₃O)₂CHCH(OH)CH₃1,1-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 19,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "8CH₃OCH₂C(OH)(OCH₃)CH₃1,2-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 20,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "9CH₃OCH₂CH(OH)CH₂OCH₃1,3-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 21,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "O₂ / Cu，加热",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 22,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "H₂ / Ni",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 23,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "浓硫酸，170 ℃",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "click",
+            "label": "下一步：Fe / HCl 还原 →"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "咪达唑仑中间体 K 的合成路线 · 交互式解析\n\n拖动、点击、观察结构如何一步步变化——把每一步的“依据”变成看得见的东西。\n\n① 路线总览\n② 推断 A→C（1）（2）\n③ D→G（3）（4）\n④ I→J（5）\n⑤ 同分异构体（6）\n⑥ 合成设计（7）\n题目在做什么？\n\n目标是合成药物咪达唑仑的中间体 K。整条路线分成两支，最后合并：\n\nA\nFe / HCl\nB\n2-氟苯甲酰氯 / ZnCl₂\nC\nD\n(i) Boc₂O (ii) Py·SO₃\nE\nCH₃NO₂ / KF\nF\nCH₃SO₂Cl / 碱\nG\nC + G\nΔ（已知反应）\nH\nFe / 乙酸\nI\n(i) HCl (ii) NaHCO₃\nJ\nCH₃C(OCH₃)₃\nK\n已知信息（题目给出）\nR–NH₂  +  R′–CH=CH–NO₂  ——Δ——▶  R–NH–CH(R′)–CH₂NO₂\n\n这是一个 Michael 加成：胺上的氮加到硝基烯烃的 β-碳上，生成 β-硝基胺。\n\n看不懂没关系\n点上方标签，一块一块拆开看",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 路线总览",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 推断 A→C（1）（2）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ D→G（3）（4）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ I→J（5）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 同分异构体（6）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑥ 合成设计（7）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "goPick",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步：Friedel–Crafts 酰化 →",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "p2next",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "加入 Boc₂O（保护氨基）→",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "p3go",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "加入 HCl，加热",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1(CH₃O)₂C(OH)CH₂CH₃1,1-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2HOCH(OCH₃)CH(OCH₃)CH₃1,2-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3HOCH(OCH₃)CH₂CH₂OCH₃1,3-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4HOCH₂C(OCH₃)₂CH₃2,2-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5HOCH₂CH(OCH₃)CH₂OCH₃1,3-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "6HOCH₂CH₂CH(OCH₃)₂1,1-二甲氧基丙-3-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "7(CH₃O)₂CHCH(OH)CH₃1,1-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 16,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "8CH₃OCH₂C(OH)(OCH₃)CH₃1,2-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 17,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "9CH₃OCH₂CH(OH)CH₂OCH₃1,3-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 18,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "O₂ / Cu，加热",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 19,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "H₂ / Ni",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 20,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "浓硫酸，170 ℃",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no visible slider"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "咪达唑仑中间体 K 的合成路线 · 交互式解析\n\n拖动、点击、观察结构如何一步步变化——把每一步的“依据”变成看得见的东西。\n\n① 路线总览\n② 推断 A→C（1）（2）\n③ D→G（3）（4）\n④ I→J（5）\n⑤ 同分异构体（6）\n⑥ 合成设计（7）\n题目在做什么？\n\n目标是合成药物咪达唑仑的中间体 K。整条路线分成两支，最后合并：\n\nA\nFe / HCl\nB\n2-氟苯甲酰氯 / ZnCl₂\nC\nD\n(i) Boc₂O (ii) Py·SO₃\nE\nCH₃NO₂ / KF\nF\nCH₃SO₂Cl / 碱\nG\nC + G\nΔ（已知反应）\nH\nFe / 乙酸\nI\n(i) HCl (ii) NaHCO₃\nJ\nCH₃C(OCH₃)₃\nK\n已知信息（题目给出）\nR–NH₂  +  R′–CH=CH–NO₂  ——Δ——▶  R–NH–CH(R′)–CH₂NO₂\n\n这是一个 Michael 加成：胺上的氮加到硝基烯烃的 β-碳上，生成 β-硝基胺。\n\n看不懂没关系\n点上方标签，一块一块拆开看",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 路线总览",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 推断 A→C（1）（2）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ D→G（3）（4）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ I→J（5）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 同分异构体（6）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑥ 合成设计（7）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "goPick",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步：Friedel–Crafts 酰化 →",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "p2next",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "加入 Boc₂O（保护氨基）→",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "p3go",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "加入 HCl，加热",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1(CH₃O)₂C(OH)CH₂CH₃1,1-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2HOCH(OCH₃)CH(OCH₃)CH₃1,2-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3HOCH(OCH₃)CH₂CH₂OCH₃1,3-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4HOCH₂C(OCH₃)₂CH₃2,2-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5HOCH₂CH(OCH₃)CH₂OCH₃1,3-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "6HOCH₂CH₂CH(OCH₃)₂1,1-二甲氧基丙-3-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "7(CH₃O)₂CHCH(OH)CH₃1,1-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 16,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "8CH₃OCH₂C(OH)(OCH₃)CH₃1,2-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 17,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "9CH₃OCH₂CH(OH)CH₂OCH₃1,3-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 18,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "O₂ / Cu，加热",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 19,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "H₂ / Ni",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 20,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "浓硫酸，170 ℃",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no visible slider"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "咪达唑仑中间体 K 的合成路线 · 交互式解析\n\n拖动、点击、观察结构如何一步步变化——把每一步的“依据”变成看得见的东西。\n\n① 路线总览\n② 推断 A→C（1）（2）\n③ D→G（3）（4）\n④ I→J（5）\n⑤ 同分异构体（6）\n⑥ 合成设计（7）\n题目在做什么？\n\n目标是合成药物咪达唑仑的中间体 K。整条路线分成两支，最后合并：\n\nA\nFe / HCl\nB\n2-氟苯甲酰氯 / ZnCl₂\nC\nD\n(i) Boc₂O (ii) Py·SO₃\nE\nCH₃NO₂ / KF\nF\nCH₃SO₂Cl / 碱\nG\nC + G\nΔ（已知反应）\nH\nFe / 乙酸\nI\n(i) HCl (ii) NaHCO₃\nJ\nCH₃C(OCH₃)₃\nK\n已知信息（题目给出）\nR–NH₂  +  R′–CH=CH–NO₂  ——Δ——▶  R–NH–CH(R′)–CH₂NO₂\n\n这是一个 Michael 加成：胺上的氮加到硝基烯烃的 β-碳上，生成 β-硝基胺。\n\n看不懂没关系\n点上方标签，一块一块拆开看",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "① 路线总览",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "② 推断 A→C（1）（2）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "③ D→G（3）（4）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "④ I→J（5）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑤ 同分异构体（6）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "⑥ 合成设计（7）",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "goPick",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "下一步：Friedel–Crafts 酰化 →",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "p2next",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "加入 Boc₂O（保护氨基）→",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "p3go",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "加入 HCl，加热",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1(CH₃O)₂C(OH)CH₂CH₃1,1-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2HOCH(OCH₃)CH(OCH₃)CH₃1,2-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3HOCH(OCH₃)CH₂CH₂OCH₃1,3-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4HOCH₂C(OCH₃)₂CH₃2,2-二甲氧基丙-1-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5HOCH₂CH(OCH₃)CH₂OCH₃1,3-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "6HOCH₂CH₂CH(OCH₃)₂1,1-二甲氧基丙-3-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "7(CH₃O)₂CHCH(OH)CH₃1,1-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 16,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "8CH₃OCH₂C(OH)(OCH₃)CH₃1,2-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 17,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "9CH₃OCH₂CH(OH)CH₂OCH₃1,3-二甲氧基丙-2-醇",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 18,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "O₂ / Cu，加热",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 19,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "H₂ / Ni",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 20,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "浓硫酸，170 ℃",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

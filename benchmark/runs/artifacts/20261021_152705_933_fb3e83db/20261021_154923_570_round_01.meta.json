@@ -1,0 +1,177 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261021_152705_933_fb3e83db:1",
+  "task_id": "20261021_152705_933_fb3e83db",
+  "batch_id": "benchmark-hard-v1",
+  "round": 1,
+  "created_at": "2026-10-21T15:49:23.598889+08:00",
+  "files": {
+    "image": "20261021_152705_933_input.png",
+    "html": "20261021_154923_570_round_01.html",
+    "screenshot": null,
+    "model_review": "20261021_154923_570_round_01.review.json",
+    "config": "20261021_152705_933_config.json"
+  },
+  "html_sha256": "0bffebab0216e2c01334cc89b7c638871cceeedfe172291f73506e9e2d91c7bb",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "chemistry",
+    "name": "化学 · 粒子与反应",
+    "version": "c5d6e9b981f7",
+    "subject": "chemistry"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "local_validator",
+    "passed": false,
+    "summary": "页面基础检查未通过",
+    "issues": [
+      "浏览器渲染失败：页面脚本运行错误：SyntaxError: Identifier 'cy' has already been declared"
+    ],
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 140,
+        "task_id": "20261021_152705_933_fb3e83db",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-21T15:27:08.288670+08:00",
+        "ended_at": "2026-10-21T15:27:16.612584+08:00",
+        "duration_seconds": 8.323914,
+        "status": "error"
+      },
+      {
+        "id": 143,
+        "task_id": "20261021_152705_933_fb3e83db",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-21T15:27:22.905766+08:00",
+        "ended_at": "2026-10-21T15:27:25.615769+08:00",
+        "duration_seconds": 2.710003,
+        "status": "error"
+      },
+      {
+        "id": 171,
+        "task_id": "20261021_152705_933_fb3e83db",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-21T15:45:08.087730+08:00",
+        "ended_at": "2026-10-21T15:49:21.725544+08:00",
+        "duration_seconds": 253.637814,
+        "status": "completed"
+      },
+      {
+        "id": 172,
+        "task_id": "20261021_152705_933_fb3e83db",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-21T15:49:21.725544+08:00",
+        "ended_at": "2026-10-21T15:49:21.800705+08:00",
+        "duration_seconds": 0.075161,
+        "status": "completed"
+      },
+      {
+        "id": 173,
+        "task_id": "20261021_152705_933_fb3e83db",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-21T15:49:21.800705+08:00",
+        "ended_at": "2026-10-21T15:49:23.889019+08:00",
+        "duration_seconds": 2.088314,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 76,
+        "task_id": "20261021_152705_933_fb3e83db",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:27:16.573206+08:00",
+        "duration_seconds": 8.05846400000155,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 78,
+        "task_id": "20261021_152705_933_fb3e83db",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:27:25.600297+08:00",
+        "duration_seconds": 2.592855139009771,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 92,
+        "task_id": "20261021_152705_933_fb3e83db",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:49:21.690007+08:00",
+        "duration_seconds": 253.31518996199884,
+        "status": "completed",
+        "input_tokens": 2479,
+        "output_tokens": 49082,
+        "cached_input_tokens": 2432,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 32626,
+        "total_tokens": 51561
+      }
+    ]
+  }
+}

@@ -41,7 +41,14 @@ def main():
                  'runs/jobs.json','runs/artifacts/history.sqlite3','rubric.md'):
         file(name)
     rounds=list((BENCH/'runs/artifacts').glob('*/*_round_*.html'))
-    if len(questions)!=36 or len(samples)!=12 or len(rounds)!=21:errors.append('pilot snapshot counts differ from README')
+    original=[q for q in questions if not q.get('cohort')]
+    pilot=[s for s in samples if s.get('batch','pilot-v1')=='pilot-v1' and s['set']=='calibration']
+    pilot_tasks={s['task_id'] for s in pilot}
+    pilot_rounds=[p for p in rounds if p.parent.name in pilot_tasks]
+    if len(original)!=36 or len(pilot)!=9 or len(pilot_rounds)!=21:errors.append('original pilot snapshot changed')
+    for key in ('id','source_id'):
+        if len({q[key] for q in questions})!=len(questions):errors.append('duplicate question '+key)
+    if len({s['id'] for s in samples})!=len(samples):errors.append('duplicate sample id')
     print(json.dumps({'questions':len(questions),'samples':len(samples),'round_htmls':len(rounds),'errors':errors},ensure_ascii=False,indent=2))
     if errors:raise SystemExit(1)
 

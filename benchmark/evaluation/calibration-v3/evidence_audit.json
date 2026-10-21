@@ -1,0 +1,41 @@
+{
+  "rows": [
+    {
+      "sample_id": "B0D1C5D32",
+      "same_html": true,
+      "same_ordered_images": true,
+      "same_materials_all_six_calls": true
+    },
+    {
+      "sample_id": "B83284572",
+      "same_html": true,
+      "same_ordered_images": true,
+      "same_materials_all_six_calls": true
+    },
+    {
+      "sample_id": "B5D896375",
+      "same_html": true,
+      "same_ordered_images": true,
+      "same_materials_all_six_calls": true
+    },
+    {
+      "sample_id": "B6CA12DEB",
+      "same_html": true,
+      "same_ordered_images": true,
+      "same_materials_all_six_calls": true
+    },
+    {
+      "sample_id": "B50DFB016",
+      "same_html": true,
+      "same_ordered_images": true,
+      "same_materials_all_six_calls": true
+    },
+    {
+      "sample_id": "B46BA67A9",
+      "same_html": true,
+      "same_ordered_images": true,
+      "same_materials_all_six_calls": true
+    }
+  ],
+  "note": "实际保存请求逐项比较；只改变prompt，不包含目标人工标签。"
+}

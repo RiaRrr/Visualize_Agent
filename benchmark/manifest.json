@@ -1,5 +1,5 @@
 {
-  "version": "v1-candidate",
+  "version": "v1-plus-hard-v1",
   "status": "candidate_pending_reference_and_family_review",
   "bank_sha256": "92d7e16f37d779f422b9ffc7ac12c93ebc26dbe5a3c0fe9cc651a2a08662da1c",
   "selection_method": "explicit coverage quotas with local frequency and visualization diversity; no model calls",
@@ -858,7 +858,8 @@
       "reference_status": "source_answer_not_independently_verified",
       "input_status": "ready",
       "source_sha256": "5dac31df39a7122dc82909bb9f320bb840c5adab9a2dc2a4e3b941a49df5873a",
-      "input_sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+      "input_sha256": "3fd5a81d71d2a81c37baac7d1b50d2db86f5791a356ca9b54d04b8da0b546a11",
+      "input_render_repair": "hard-v1 audit: blank screenshot repaired, stem unchanged, test not run"
     },
     {
       "id": "chemistry_001",
@@ -1204,7 +1205,8 @@
       "reference_status": "source_answer_not_independently_verified",
       "input_status": "ready",
       "source_sha256": "cd771240f929ff320962f847b13c56e1543a8a244754d4ee9762b5ef5a17eef9",
-      "input_sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+      "input_sha256": "4636e86257488a51b3a5c184ea749c43bec5c34bb450ce603140ba0a0facfbff",
+      "input_render_repair": "hard-v1 audit: blank screenshot repaired, stem unchanged, test not run"
     },
     {
       "id": "chemistry_009",
@@ -1387,8 +1389,241 @@
       "input_status": "ready",
       "source_sha256": "74cb0d25290d5c72ba1440ecbafe7f18e07ddab8ede96cb8c31998f27d5cc6d4",
       "input_sha256": "3a402e3c9f4bfbe0ae83b5dae7ddff1a8253fab603b3f5803eeb76a4c0986391"
+    },
+    {
+      "id": "math_013",
+      "source_id": "3725816550539264",
+      "subject": "math",
+      "topic": "导数、恒成立与双零点证明",
+      "split": "dev",
+      "family_id": "math_013",
+      "difficulty_level": 20,
+      "difficulty": 0.4,
+      "type": {
+        "id": "270303",
+        "name": "证明题"
+      },
+      "knowledge_points": [
+        {
+          "id": 10922,
+          "name": "利用导数研究不等式恒成立问题"
+        },
+        {
+          "id": 10921,
+          "name": "利用导数证明不等式"
+        },
+        {
+          "id": 10924,
+          "name": "利用导数研究函数的零点"
+        }
+      ],
+      "selection_reason": "参数分类、零点区间与辅助函数的因果链",
+      "source_paper_ids": [
+        "3785272162279424"
+      ],
+      "path": "math/math_013",
+      "pilot": false,
+      "cohort": "hard-v1",
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "input_sha256": "73c732242bff75c40b764d78cf061031f78b1050bd84f0122a5240224e8fef87",
+      "source_sha256": "5008775f75f1cf8932d1fcf9ff6e00423b534c66d50239977a25e601c7f0f0dc"
+    },
+    {
+      "id": "math_014",
+      "source_id": "3730389030707200",
+      "subject": "math",
+      "topic": "椭圆、投影与定圆",
+      "split": "test",
+      "family_id": "math_014",
+      "difficulty_level": 21,
+      "difficulty": 0.15,
+      "type": {
+        "id": "270305",
+        "name": "问答题"
+      },
+      "knowledge_points": [
+        {
+          "id": 11976,
+          "name": "椭圆中焦点三角形的周长问题"
+        },
+        {
+          "id": 12097,
+          "name": "椭圆中三角形（四边形）的面积"
+        },
+        {
+          "id": 12106,
+          "name": "椭圆中的直线过定点问题"
+        }
+      ],
+      "selection_reason": "三小问、斜率约束转化、投影与定圆证明",
+      "source_paper_ids": [
+        "3750706545295360"
+      ],
+      "path": "math/math_014",
+      "pilot": false,
+      "cohort": "hard-v1",
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "input_sha256": "0204bb29836f1edf9408e8daf4d6ab15f6dbb87842d56debedfbe6ed39658deb",
+      "source_sha256": "bb79dfea7ff7f4df7d830317fd1e0a8a6dc6e1a94dd52c02aa6aafeb8eb40382"
+    },
+    {
+      "id": "physics_013",
+      "source_id": "3888992658481152",
+      "subject": "physics",
+      "topic": "多阶段追及与两次相遇",
+      "split": "dev",
+      "family_id": "physics_013",
+      "difficulty_level": 20,
+      "difficulty": 0.4,
+      "type": {
+        "id": "2904",
+        "name": "解答题"
+      },
+      "knowledge_points": [
+        {
+          "id": 15900,
+          "name": "变速物体追变速物体"
+        }
+      ],
+      "selection_reason": "停车边界、相对位移与两次相遇的参数范围",
+      "source_paper_ids": [
+        "4103763715465216"
+      ],
+      "path": "physics/physics_013",
+      "pilot": false,
+      "cohort": "hard-v1",
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "input_sha256": "c7b199098c60bee460b59dfe3aa387755ae1531b798654f10d53b333f07cb349",
+      "source_sha256": "f207839d1b8f3740ca0ec08383b3f217def1592d8502beb9b3348bb0a8b9ff12"
+    },
+    {
+      "id": "physics_014",
+      "source_id": "3915158089498624",
+      "subject": "physics",
+      "topic": "斜面—水平面动力学",
+      "split": "test",
+      "family_id": "physics_014",
+      "difficulty_level": 19,
+      "difficulty": 0.65,
+      "type": {
+        "id": "2904",
+        "name": "解答题"
+      },
+      "knowledge_points": [
+        {
+          "id": 15848,
+          "name": "匀变速直线运动位移与时间的关系"
+        },
+        {
+          "id": 16034,
+          "name": "已知运动求受力"
+        }
+      ],
+      "selection_reason": "从速度图像反推分阶段运动、摩擦和受力",
+      "source_paper_ids": [],
+      "path": "physics/physics_014",
+      "pilot": false,
+      "cohort": "hard-v1",
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "input_sha256": "cb82bb4a16206ca9f2d0d08109db736d45800918d6adb452f280f51fff32984c",
+      "source_sha256": "e491783f2cc09336c8a41bf04da84ba876ef379200a6ae6b2f96e4d0d7caf576"
+    },
+    {
+      "id": "chemistry_013",
+      "source_id": "4104616418041856",
+      "subject": "chemistry",
+      "topic": "有机合成与结构推断",
+      "split": "dev",
+      "family_id": "chemistry_013",
+      "difficulty_level": 20,
+      "difficulty": 0.49,
+      "type": {
+        "id": "300905",
+        "name": "有机推断"
+      },
+      "knowledge_points": [
+        {
+          "id": 6708,
+          "name": "常见官能团名称、组成及结构"
+        },
+        {
+          "id": 6729,
+          "name": "根据要求书写同分异构体"
+        },
+        {
+          "id": 6731,
+          "name": "同分异构体的数目的确定"
+        },
+        {
+          "id": 6677,
+          "name": "核磁共振氢谱"
+        },
+        {
+          "id": 66801,
+          "name": "信息给予的有机合成"
+        }
+      ],
+      "selection_reason": "七小问、官能团变化、保护基、异构与迁移合成",
+      "source_paper_ids": [
+        "4104604293947392"
+      ],
+      "path": "chemistry/chemistry_013",
+      "pilot": false,
+      "cohort": "hard-v1",
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "input_sha256": "9bd4901e65750e4ad17a8f60d0fe90db63e29e503af85961a482e745d10198e4",
+      "source_sha256": "4f1af1f7dc29841bddbb390a95aa044f9f2935f22934b762f3b82979abf1ef7d"
+    },
+    {
+      "id": "chemistry_014",
+      "source_id": "3892456722882560",
+      "subject": "chemistry",
+      "topic": "制备与气体检验综合实验",
+      "split": "test",
+      "family_id": "chemistry_014",
+      "difficulty_level": 20,
+      "difficulty": 0.4,
+      "type": {
+        "id": "300904",
+        "name": "实验探究"
+      },
+      "knowledge_points": [
+        {
+          "id": 6115,
+          "name": "氯气的实验室制法"
+        },
+        {
+          "id": 7345,
+          "name": "物质制备的探究"
+        },
+        {
+          "id": 7349,
+          "name": "实验方案评价"
+        },
+        {
+          "id": 102719,
+          "name": "气体的净化和干燥"
+        }
+      ],
+      "selection_reason": "装置顺序、除杂干燥、证据排干扰与反应计量",
+      "source_paper_ids": [
+        "4117548670083072"
+      ],
+      "path": "chemistry/chemistry_014",
+      "pilot": false,
+      "cohort": "hard-v1",
+      "reference_status": "source_answer_not_independently_verified",
+      "input_status": "ready",
+      "input_sha256": "72cb33110176c1aa87a0817322e38cfecf1cfa82fb3e80f8c9016ea1fcce8454",
+      "source_sha256": "91760ebc70905ba8fe932caf75feef136b9bbb9c093b24bc2ca4555d32104fa9"
     }
   ],
   "generation_reference_access": false,
-  "test_policy": "holdout must be explicitly unlocked after workflow and judge freeze"
+  "test_policy": "holdout must be explicitly unlocked after workflow and judge freeze",
+  "extension": "原36题及原split不变；新增3开发题与3留出题"
 }

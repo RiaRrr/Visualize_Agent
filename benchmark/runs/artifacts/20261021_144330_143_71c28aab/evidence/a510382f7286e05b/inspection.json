@@ -1,0 +1,410 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261021_144330_143_71c28aab/20261021_145212_969_round_01.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "看见“恒成立”与“两个零点”\n拖动参数，观察曲线如何穿过临界位置；每一步只改变图中的观察重点，不先给出完整答案。\n已知：f(x) = ex − a x − 3，a ∈ R。\n(1) x ≥ 0 时，f(x) ≥ x2/2 − 2 恒成立，求 a 的范围。\n(2) f(x) 有两个零点 x1 < x2：(i) 求 a 的范围；(ii) 证明 3ex1 + ex2 > 3a。\n1 转化\n2 g 的走向\n3 两根条件\n4 移位\n5 证明\n0\n0.5\n1\n1.5\n2\n2.5\n0.5\n1\n1.5\n2\n2.5\n3\n3.5\n把恒成立化成 a 与 g(x) 的比较\n极限值 1\n当前 a = 0.8\ng(x)\n全部 x>0：g(x) ≥ a\nx\ng\n参数 a\n0.8\na=1 边界\n复位\n第 (1) 问结论\na ≤ 1\n第 (2)(i) 结论\na > 0\n第 (2)(ii) 结论\n3ex1 + ex2 > 3a\n第 (1) 问 · 转化\n先把不等式移成“a 与一条曲线”的问题\nex − ax − 3 ≥ x2/2 − 2\n移项，在 x>0 时两边除以 x：\na ≤ g(x) = (ex − 1)/x − x/2\n\nx = 0 时两边都是 −2，不给 a 增加限制。于是问题变成：橙线（当前 a）不能高过蓝线（g(x)）。\n\n当前 a\n0.8\n是否全部满足\n是\n临界位置\ng(x) 趋近 1\n\n拖动滑块：a 一旦超过 1，蓝线左端就会落到橙线下方。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1 转化",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2 g 的走向",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3 两根条件",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4 移位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5 证明",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0.8",
+          "min": "0.2",
+          "max": "1.8",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "quickBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "a=1 边界",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no matching visible step control"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "看见“恒成立”与“两个零点”\n拖动参数，观察曲线如何穿过临界位置；每一步只改变图中的观察重点，不先给出完整答案。\n已知：f(x) = ex − a x − 3，a ∈ R。\n(1) x ≥ 0 时，f(x) ≥ x2/2 − 2 恒成立，求 a 的范围。\n(2) f(x) 有两个零点 x1 < x2：(i) 求 a 的范围；(ii) 证明 3ex1 + ex2 > 3a。\n1 转化\n2 g 的走向\n3 两根条件\n4 移位\n5 证明\n0\n0.5\n1\n1.5\n2\n2.5\n0.5\n1\n1.5\n2\n2.5\n3\n3.5\n把恒成立化成 a 与 g(x) 的比较\n极限值 1\n当前 a = 0.8\ng(x)\n全部 x>0：g(x) ≥ a\nx\ng\n参数 a\n0.8\na=1 边界\n复位\n第 (1) 问结论\na ≤ 1\n第 (2)(i) 结论\na > 0\n第 (2)(ii) 结论\n3ex1 + ex2 > 3a\n第 (1) 问 · 转化\n先把不等式移成“a 与一条曲线”的问题\nex − ax − 3 ≥ x2/2 − 2\n移项，在 x>0 时两边除以 x：\na ≤ g(x) = (ex − 1)/x − x/2\n\nx = 0 时两边都是 −2，不给 a 增加限制。于是问题变成：橙线（当前 a）不能高过蓝线（g(x)）。\n\n当前 a\n0.8\n是否全部满足\n是\n临界位置\ng(x) 趋近 1\n\n拖动滑块：a 一旦超过 1，蓝线左端就会落到橙线下方。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1 转化",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2 g 的走向",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3 两根条件",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4 移位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5 证明",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0.8",
+          "min": "0.2",
+          "max": "1.8",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "quickBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "a=1 边界",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "1"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "看见“恒成立”与“两个零点”\n拖动参数，观察曲线如何穿过临界位置；每一步只改变图中的观察重点，不先给出完整答案。\n已知：f(x) = ex − a x − 3，a ∈ R。\n(1) x ≥ 0 时，f(x) ≥ x2/2 − 2 恒成立，求 a 的范围。\n(2) f(x) 有两个零点 x1 < x2：(i) 求 a 的范围；(ii) 证明 3ex1 + ex2 > 3a。\n1 转化\n2 g 的走向\n3 两根条件\n4 移位\n5 证明\n0\n0.5\n1\n1.5\n2\n2.5\n0.5\n1\n1.5\n2\n2.5\n3\n3.5\n把恒成立化成 a 与 g(x) 的比较\n极限值 1\n当前 a = 1\ng(x)\n全部 x>0：g(x) ≥ a\nx\ng\n参数 a\n1\na=1 边界\n复位\n第 (1) 问结论\na ≤ 1\n第 (2)(i) 结论\na > 0\n第 (2)(ii) 结论\n3ex1 + ex2 > 3a\n第 (1) 问 · 转化\n先把不等式移成“a 与一条曲线”的问题\nex − ax − 3 ≥ x2/2 − 2\n移项，在 x>0 时两边除以 x：\na ≤ g(x) = (ex − 1)/x − x/2\n\nx = 0 时两边都是 −2，不给 a 增加限制。于是问题变成：橙线（当前 a）不能高过蓝线（g(x)）。\n\n当前 a\n1\n是否全部满足\n是\n临界位置\ng(x) 趋近 1\n\n拖动滑块：a 一旦超过 1，蓝线左端就会落到橙线下方。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1 转化",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2 g 的走向",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3 两根条件",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4 移位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5 证明",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "1",
+          "min": "0.2",
+          "max": "1.8",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "quickBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "a=1 边界",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "1.8"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "看见“恒成立”与“两个零点”\n拖动参数，观察曲线如何穿过临界位置；每一步只改变图中的观察重点，不先给出完整答案。\n已知：f(x) = ex − a x − 3，a ∈ R。\n(1) x ≥ 0 时，f(x) ≥ x2/2 − 2 恒成立，求 a 的范围。\n(2) f(x) 有两个零点 x1 < x2：(i) 求 a 的范围；(ii) 证明 3ex1 + ex2 > 3a。\n1 转化\n2 g 的走向\n3 两根条件\n4 移位\n5 证明\n0\n0.5\n1\n1.5\n2\n2.5\n0.5\n1\n1.5\n2\n2.5\n3\n3.5\n把恒成立化成 a 与 g(x) 的比较\n极限值 1\n交点\n当前 a = 1.8\ng(x)\n靠近 0 处：g(x) < a\nx\ng\n参数 a\n1.8\na=1 边界\n复位\n第 (1) 问结论\na ≤ 1\n第 (2)(i) 结论\na > 0\n第 (2)(ii) 结论\n3ex1 + ex2 > 3a\n第 (1) 问 · 转化\n先把不等式移成“a 与一条曲线”的问题\nex − ax − 3 ≥ x2/2 − 2\n移项，在 x>0 时两边除以 x：\na ≤ g(x) = (ex − 1)/x − x/2\n\nx = 0 时两边都是 −2，不给 a 增加限制。于是问题变成：橙线（当前 a）不能高过蓝线（g(x)）。\n\n当前 a\n1.8\n是否全部满足\n否，靠近 0 处失败\n临界位置\ng(x) 趋近 1\n\n拖动滑块：a 一旦超过 1，蓝线左端就会落到橙线下方。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "1 转化",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "2 g 的走向",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "3 两根条件",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "4 移位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "5 证明",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "1.8",
+          "min": "0.2",
+          "max": "1.8",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "quickBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "a=1 边界",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "submit",
+          "text": "复位",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

@@ -1,0 +1,28 @@
+{
+  "dimension": "problem_fidelity",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "request_timeout_seconds": 300.0,
+  "evidence_sha256": "86961d4d8504b103b6d81295af9dd12f1e3a3079b750a39fb03688ba1371e072",
+  "prompt_sha256": "c5914478559e9ddd9497d698f4bc2e94a99ff5951aed66403380ff1a724398ba",
+  "created_at": "2026-10-21T07:37:31.260635+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "problem_fidelity",
+    "score": 5,
+    "issues": [],
+    "evidence": "页面题干完整保留了原题对象 f(x)=e^x-ax-3、参数条件 a∈R、第(1)问的定义域 x≥0 与恒成立不等式，以及第(2)问的两个零点次序 x1<x2、参数范围小问和待证不等式。第(1)问的辅助曲线 g(x)=(e^x-1)/x-x/2 与原不等式在 x>0 时严格等价，并单独处理了 x=0；图中横轴为 x、纵向量明确标为 g，未将其冒充原函数 f。第(2)(i)的图明确绘制 f(x)、横轴 x、极小点 t=ln a 及两个零点，所得 a>0 与题设一致。第(2)(ii)通过 x1=t-u、x2=t+v，再引入 p=e^-u、z=e^v、r=e^(u+v)，各辅助量都明确映射回原题零点关系，并注明 r 不是原题中可独立调节的参数；最终结论仍是原题要求的 3e^x1+e^x2>3a。滑块仅覆盖部分示例范围，但页面明确说明完整范围分别为 a≤1、a>0，未用演示范围替换合法范围。操作截图只直接验证了第(1)步及 a=0.8、1、1.8 的状态变化；其余步骤的呈现依据所附源码核对，未由实际操作截图直接验证。整体对象、约束、全部小问及量的含义均完整对应原题，无实质缺失。",
+    "reference_concern": "",
+    "summary": "原题条件与全部小问均被完整保留，各辅助函数和参数与原题关系明确，示例滑块范围也没有被误作答案范围。"
+  },
+  "duration_seconds": 23.845276191001176,
+  "usage": {
+    "input_tokens": 28455,
+    "output_tokens": 950,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 505,
+    "total_tokens": 29405
+  }
+}

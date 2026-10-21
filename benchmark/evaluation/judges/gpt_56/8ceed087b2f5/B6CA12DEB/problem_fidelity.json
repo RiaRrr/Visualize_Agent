@@ -1,0 +1,30 @@
+{
+  "dimension": "problem_fidelity",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "evidence_sha256": "5a2c7b2e4b451a8c4dff644e94c9e8f583abf7976608fa60408cd21ccaf26fc1",
+  "prompt_sha256": "c5d4c20c5a22f77c0ab265a3f749b3b6a33a4321c6b217a2ee83521074fea168",
+  "created_at": "2026-10-21T06:48:18.116383+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "problem_fidelity",
+    "score": 4,
+    "issues": [
+      "候选页将原图横轴“时间”多处改写为“时间 / 滴加量”，标题也称“滴加量曲线”，但未说明滴加速率恒定或给出时间与滴加量的映射；两者只有在相应假设下才可直接等同，属于辅助模型对应关系说明不足。",
+      "顶部条件写成“a点最低”，而原图中最低曲线点标为B，a是其对应的横轴时刻；候选图本身仍正确区分了B与a，因此主要是局部表述不严谨。"
+    ],
+    "evidence": "原题对象“一定体积Ba(OH)₂溶液中滴加稀硫酸”、纵轴导电能力、先降后升且在t=a时最低的关系，以及A至D四个说法均被保留；选项内容与原题实质一致，候选图也保留A、B、C和横轴a的位置关系。源码中的原始情景、NaOH、KHSO₄、MgSO₄四种模型分别对应原题及三个替换条件，没有改换所判断的化学对象；D场景体现两种沉淀并在MgSO₄过量后回升。实际操作记录验证了滑块可到1.5和3，截图显示相应过量硫酸阶段的离子与曲线点变化；选项点击后的替代情景没有出现在操作记录中，其内容只能依据源码确认，不能视为截图交互已验证。整体核心题设和全部小问完整，仅横轴量的等同缺少明确前提，故为4分而非5分。",
+    "reference_concern": "",
+    "summary": "核心对象、曲线关系和四个选项均完整对应原题，但把时间与滴加量并列为同一横轴而未交代恒速滴加假设，存在局部一致性问题。"
+  },
+  "duration_seconds": 23.791329204002977,
+  "usage": {
+    "input_tokens": 25775,
+    "output_tokens": 917,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 462,
+    "total_tokens": 26692
+  }
+}

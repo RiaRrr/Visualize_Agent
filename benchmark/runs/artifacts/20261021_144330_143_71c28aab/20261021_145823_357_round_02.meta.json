@@ -1,0 +1,154 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261021_144330_143_71c28aab:2",
+  "task_id": "20261021_144330_143_71c28aab",
+  "batch_id": "benchmark-hard-v1",
+  "round": 2,
+  "created_at": "2026-10-21T14:58:23.583460+08:00",
+  "files": {
+    "image": "20261021_144330_143_input.png",
+    "html": "20261021_145823_357_round_02.html",
+    "screenshot": "20261021_145823_357_round_02.png",
+    "model_review": "20261021_145823_357_round_02.review.json",
+    "config": "20261021_144330_143_config.json",
+    "model_review_raw": "round_02.model_review_raw.txt"
+  },
+  "html_sha256": "d4046c55c591e0fa3b3a992b2d35077d05ee60778c73195e9ec43bdeeb1a0f8e",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "math-deepseek",
+    "name": "数学 · 分步 SVG 与教学示例（1019）",
+    "version": "d4e8236d6318",
+    "subject": "math"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "题目条件、三问最终答案和主要证明均正确，页面也能通过滑块观察临界位置；但第(2)(i)的关键不等式缺少推导，首屏提前透露临界值1，且第5步r滑块极端值处存在标签重叠/截断。",
+    "issues": [
+      "首屏“1 转化”右侧说明直接写“a 一旦超过 1…”，在尚未证明 g(x)>1 前就揭示了临界答案；应把该句移到“2 g 的走向”结论之后，或改为待验证的观察提示。",
+      "“3 两根条件”中 f(t)=a−a ln a−3≤−2<0 只是直接给出，未说明来源；应补充 h(a)=a(1−ln a)−3、h′(a)=−ln a、h(1)=−2 为最大值及 a=1 取等的推导。",
+      "第5步“5 证明”中，r 滑块接近 8 时点标签从图形右边界外起排，文字会超出 SVG 被截断；接近 1.02 时又可能与左上“φ(r)>1”徽标重叠。应按 r 切换标签左/右锚点或移动徽标。",
+      "第2/3步的 a 滑块只覆盖 0.2–3，且没有像第1步那样标注“演示区间”；建议扩展范围或在滑块旁明确标注，避免学生把滑块边界误认为最终取值域。",
+      "第5步 H 的单调性证明全部集中在一段文字中，缺少 H′ 的符号变化可视化；建议增加 H′ 在 (1,3) 与 (3,+∞) 的符号条或分区间高亮，减轻理解负担。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 4,
+      "page_quality": 4,
+      "interaction_quality": 4,
+      "teaching_effectiveness": 3
+    },
+    "overall_score": 3
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 116,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 2,
+        "stage": "generating",
+        "started_at": "2026-10-21T14:52:40.335591+08:00",
+        "ended_at": "2026-10-21T14:53:44.987950+08:00",
+        "duration_seconds": 64.652359,
+        "status": "completed"
+      },
+      {
+        "id": 117,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 2,
+        "stage": "validating",
+        "started_at": "2026-10-21T14:53:44.987950+08:00",
+        "ended_at": "2026-10-21T14:53:49.470237+08:00",
+        "duration_seconds": 4.482287,
+        "status": "completed"
+      },
+      {
+        "id": 118,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 2,
+        "stage": "rendering",
+        "started_at": "2026-10-21T14:53:49.470237+08:00",
+        "ended_at": "2026-10-21T14:54:10.519746+08:00",
+        "duration_seconds": 21.049509,
+        "status": "completed"
+      },
+      {
+        "id": 119,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 2,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T14:54:10.519746+08:00",
+        "ended_at": "2026-10-21T14:58:26.059605+08:00",
+        "duration_seconds": 255.539859,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 62,
+        "task_id": "20261021_144330_143_71c28aab",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 2,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T14:53:40.610430+08:00",
+        "duration_seconds": 52.953985031999764,
+        "status": "completed",
+        "input_tokens": 14915,
+        "output_tokens": 8147,
+        "cached_input_tokens": 2048,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 7441,
+        "total_tokens": 23062
+      },
+      {
+        "id": 64,
+        "task_id": "20261021_144330_143_71c28aab",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 2,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T14:58:21.668671+08:00",
+        "duration_seconds": 242.88710080100282,
+        "status": "completed",
+        "input_tokens": 14816,
+        "output_tokens": 33844,
+        "cached_input_tokens": 6144,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 33419,
+        "total_tokens": 48660
+      }
+    ]
+  }
+}

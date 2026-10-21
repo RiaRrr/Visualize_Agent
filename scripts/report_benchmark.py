@@ -9,10 +9,11 @@ from app.pricing import estimate_cost
 def main():
     db=sqlite3.connect(BENCH/'runs/artifacts/history.sqlite3')
     db.row_factory=sqlite3.Row
-    samples={s['task_id']:s for s in read(BENCH/'evaluation/samples.json',[])}
+    samples={s['task_id']:s for s in read(BENCH/'evaluation/samples.json',[]) if s.get('batch','pilot-v1')=='pilot-v1'}
     jobs=read(BENCH/'runs/jobs.json',{})
     records=[]
     for key,tid in jobs.items():
+        if tid not in samples:continue
         task=dict(db.execute('SELECT * FROM tasks WHERE id=?',(tid,)).fetchone())
         calls=[dict(r) for r in db.execute('SELECT * FROM api_calls WHERE task_id=? ORDER BY id',(tid,))]
         rounds=[dict(r) for r in db.execute('SELECT number,html_name,passed,summary FROM rounds WHERE task_id=? ORDER BY number',(tid,))]

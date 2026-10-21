@@ -1,0 +1,31 @@
+{
+  "dimension": "page_quality",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "evidence_sha256": "256fccfe10e509dc1b49e32591fef61942fd02f3f68306cd00bf3abaf65b8b75",
+  "prompt_sha256": "4cf00c4d008b45ff994a1c8deec0f6663cd591ba28456879daa244f80b26ab9e",
+  "created_at": "2026-10-21T06:37:23.793410+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "page_quality",
+    "score": 4,
+    "issues": [
+      "主图画布上半部留白较多，飞机、跑道和矢量集中在下半部，空间利用率与信息密度略显不均衡。",
+      "浅灰色辅助文字、坐标刻度及面板提示字号偏小且对比度较低，在桌面整页视图中可读性弱于主要内容。",
+      "滑块到 6 s 时，主图距离刻度仍只显示到 72 m，108 m 主要依赖下方读数辨认，终点位置的视觉标识不够直接。"
+    ],
+    "evidence": "在1280×900桌面截图中，题目区、双图面板、控制条和步骤区均完整显示，没有明显裁切或互相遮挡；中文、单位、公式和动态读数总体清晰。滑块在0 s、3 s、6 s三种已记录状态下，飞机、速度/加速度标注、v–t图线及面积填充均保持稳定布局，未见重叠。操作记录无运行错误。步骤按钮未被实际操作，源码中后续步骤会显示的总面积标注、最后4 s高亮及倒放视图未在提供截图中验证，因此不对这些状态的最终视觉效果作确定断言。",
+    "reference_concern": "",
+    "summary": "桌面页面结构完整、层级清楚，图文和动态状态总体易读；主要不足是局部留白偏多、辅助标注偏淡偏小，以及终点距离在当前实测状态下缺少直接刻度，属于少量局部问题。"
+  },
+  "duration_seconds": 19.76418181999179,
+  "usage": {
+    "input_tokens": 24713,
+    "output_tokens": 774,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 405,
+    "total_tokens": 25487
+  }
+}

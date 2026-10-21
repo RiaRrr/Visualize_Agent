@@ -1,0 +1,21 @@
+{
+  "run_status": "failed",
+  "completed_rounds": 3,
+  "id": "B63B46592",
+  "question_id": "chemistry_013",
+  "set": "calibration",
+  "workflow_id": "W2",
+  "batch": "hard-v1",
+  "task_id": "20261021_152705_933_fb3e83db",
+  "round_number": 3,
+  "html": "runs/artifacts/20261021_152705_933_fb3e83db/20261021_162257_068_round_03.html",
+  "html_sha256": "406cb101580a2d0cc8f57c562cd07c1a69646969b50dbff08c46aa704169fce3",
+  "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+  "inspection": "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/public.json",
+  "screenshots": [
+    "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/00_initial.png",
+    "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/01_next_step.png",
+    "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/02_slider_mid.png",
+    "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/03_slider_high.png"
+  ]
+}

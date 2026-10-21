@@ -213,7 +213,10 @@ class ModelClient:
                 try:
                     if progress:
                         progress(f"正在请求 {model}（第 {attempt + 1}/3 次）")
-                    result = await client.post(url, headers=headers, json=payload)
+                    result = await asyncio.wait_for(
+                        client.post(url, headers=headers, json=payload),
+                        timeout=self.settings.model_timeout_seconds,
+                    )
                     if result.status_code in (429, 500, 502, 503, 504) and attempt < 2:
                         if progress:
                             progress(f"{model} 返回 HTTP {result.status_code}，准备重试")
@@ -226,7 +229,7 @@ class ModelClient:
                     if usage:
                         usage(token_usage(data, "anthropic" if is_claude else "chat" if is_codex else "responses"))
                     return message_text(data) if is_claude else chat_text(data) if is_codex else response_text(data)
-                except httpx.TimeoutException as exc:
+                except (httpx.TimeoutException, asyncio.TimeoutError) as exc:
                     if progress:
                         progress(f"{model} 请求超时，本轮已停止")
                     raise ModelError(f"模型请求超时（{model}）；可在任务页继续处理") from exc

@@ -1,0 +1,32 @@
+{
+  "dimension": "page_quality",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "request_timeout_seconds": 180.0,
+  "evidence_sha256": "03bcbcbfb7e1adcca812de0aac93dd2bab834c7ec2ef34c426f6a8edcd855125",
+  "prompt_sha256": "21b6af79e67ed7fab9aa4422a6876e5b79923d8122af48a23c36cc97fd7eee7f",
+  "created_at": "2026-10-21T07:28:02.779926+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "page_quality",
+    "score": 4,
+    "issues": [
+      "页面下半部“曲线摘要”区域高度明显偏大，重复展示与上方主图近似的信息，造成纵向空间利用率偏低，选项与反馈内容需要较长滚动距离才能完整查看。",
+      "“烧杯里的粒子”图例、离子符号及计数文字相对偏小且颜色较浅，尤其零计数项目对比度较低，阅读细节略费力。",
+      "主图顶部同时放置当前实验和参考实验的较长图例文字，信息略拥挤；在两条曲线重合时，虚线参考曲线也不易直接辨认。"
+    ],
+    "evidence": "在1280px桌面截图中，标题、主曲线、A/B/C标注、坐标轴、步骤控件、滑块、烧杯和选项均清晰可辨，未见文字重叠、裁切或图形遮挡。滑块位于0、1、2份时，红色状态点、曲线和烧杯粒子状态仍保持稳定布局，B点与最低点标注也没有冲突，说明复杂状态下主要视觉结构可靠。整体层级明确，左右栏分工清楚，达到良好档；但下方重复曲线占据大面积空间、粒子区细字偏小，信息密度和浏览效率尚未达到完整无瑕疵的5分。操作记录只验证了滑块中点和高点，按钮选择后的视觉状态未由提供的实际操作记录验证。",
+    "reference_concern": "",
+    "summary": "桌面呈现清楚稳定，核心图文无重叠或裁切，层级良好；主要不足是下方重复图表过大以及粒子区局部文字偏小，整体评为4分。"
+  },
+  "duration_seconds": 20.5629724169994,
+  "usage": {
+    "input_tokens": 33704,
+    "output_tokens": 657,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 242,
+    "total_tokens": 34361
+  }
+}

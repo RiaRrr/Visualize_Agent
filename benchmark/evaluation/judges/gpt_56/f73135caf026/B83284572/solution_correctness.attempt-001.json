@@ -1,0 +1,27 @@
+{
+  "dimension": "solution_correctness",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "evidence_sha256": "6c1fd9444a541ea830861ad1727ea503d4346ef4411c26d1be915f11505d7802",
+  "prompt_sha256": "659a0c32ecf866ca5158e76930a27a798f67718a976375ad87d3b8aa14b9375c",
+  "created_at": "2026-10-21T06:40:03.013146+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "solution_correctness",
+    "score": 5,
+    "issues": [],
+    "evidence": "独立核算：取运动方向为正，a=-6 m/s²，v0=36 m/s，停稳时间由0=36-6t得t=6 s；全程位移为36×6+0.5×(-6)×6²=108 m。最后4 s对应t=2至6 s，v(2)=24 m/s，x(2)=36×2-3×2²=60 m，故该段位移108-60=48 m，也等于(24+0)×4/2。候选源码中的常量、公式卡、v-t图斜率和面积、位置函数posAt(t)=36t-3t²、速度函数velAt(t)=max(0,36-6t)及答案108 m、48 m均与上述结果一致；速度被限制为非负，避免停稳后错误倒行。实际截图验证了t=0、3、6时读数分别为(x,v)=(0,36)、(81,18)、(108,0)，均正确且单位一致。操作记录未实际点击步骤1至4，因此这些步骤切换后的动态显示未由截图直接验证，但其内容和计算逻辑可由源码核对。",
+    "reference_concern": "",
+    "summary": "题设、参考答案与候选页面一致；推导、数值、符号、单位、时间区间和图形关系均正确，无实质缺陷。"
+  },
+  "duration_seconds": 15.220877055005985,
+  "usage": {
+    "input_tokens": 28409,
+    "output_tokens": 565,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 224,
+    "total_tokens": 28974
+  }
+}

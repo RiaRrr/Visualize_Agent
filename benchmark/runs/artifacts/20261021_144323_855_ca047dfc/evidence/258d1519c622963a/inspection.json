@@ -1,0 +1,370 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261021_144323_855_ca047dfc/20261021_153140_989_round_01.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "f(x) = ex − ax − 3 与 两个零点 · 交互解题台\n已知函数 f(x) = ex − ax − 3（a ∈ R）。\n（1）当 x ≥ 0 时，若不等式 f(x) ≥ x²⁄₂ − 2 恒成立，求 a 的取值范围；\n（2）若 f(x) 有两个零点 x1，x2，且 x1 < x2。\n　　（i）求 a 的取值范围；　（ii）证明：3ex₁ + ex₂ > 3a。\nx\ny\n-2\n-1\n1\n2\n3\n4\n-10\n-5\n5\n10\n15\n20\n25\nx₁\nx₂\n最小值点\ny = ex − ax − 3\n参数 a\n1.20\n① 认识函数\n② 转成面积\n③ 解出 a\n④ 两个零点\n⑤ 证明不等式\n⑥ 结论\n第 ① 步 · 先把函数“看见”\n\n拖动参数 a，观察曲线 y = ex − ax − 3 的形状怎么变。\n\nf(x) = ex − ax − 3 ，  f′(x) = ex − a\n\nf(x) = 0 就是 ex = ax + 3：指数曲线与一条过 (0, 3) 的直线的交点。\n\na\n1.2\n零点个数\n2\n\na 越大，直线越陡，右侧零点越往右跑；当 a ≤ 0 时曲线始终上升，只有一个零点。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "aSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "1.2",
+          "min": "-1.5",
+          "max": "4",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "① 认识函数",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "② 转成面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "③ 解出 a",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "④ 两个零点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "⑤ 证明不等式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "⑥ 结论",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no matching visible step control"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "f(x) = ex − ax − 3 与 两个零点 · 交互解题台\n已知函数 f(x) = ex − ax − 3（a ∈ R）。\n（1）当 x ≥ 0 时，若不等式 f(x) ≥ x²⁄₂ − 2 恒成立，求 a 的取值范围；\n（2）若 f(x) 有两个零点 x1，x2，且 x1 < x2。\n　　（i）求 a 的取值范围；　（ii）证明：3ex₁ + ex₂ > 3a。\nx\ny\n-2\n-1\n1\n2\n3\n4\n-10\n-5\n5\n10\n15\n20\n25\nx₁\nx₂\n最小值点\ny = ex − ax − 3\n参数 a\n1.20\n① 认识函数\n② 转成面积\n③ 解出 a\n④ 两个零点\n⑤ 证明不等式\n⑥ 结论\n第 ① 步 · 先把函数“看见”\n\n拖动参数 a，观察曲线 y = ex − ax − 3 的形状怎么变。\n\nf(x) = ex − ax − 3 ，  f′(x) = ex − a\n\nf(x) = 0 就是 ex = ax + 3：指数曲线与一条过 (0, 3) 的直线的交点。\n\na\n1.2\n零点个数\n2\n\na 越大，直线越陡，右侧零点越往右跑；当 a ≤ 0 时曲线始终上升，只有一个零点。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "aSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "1.2",
+          "min": "-1.5",
+          "max": "4",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "① 认识函数",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "② 转成面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "③ 解出 a",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "④ 两个零点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "⑤ 证明不等式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "⑥ 结论",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "1.25"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "f(x) = ex − ax − 3 与 两个零点 · 交互解题台\n已知函数 f(x) = ex − ax − 3（a ∈ R）。\n（1）当 x ≥ 0 时，若不等式 f(x) ≥ x²⁄₂ − 2 恒成立，求 a 的取值范围；\n（2）若 f(x) 有两个零点 x1，x2，且 x1 < x2。\n　　（i）求 a 的取值范围；　（ii）证明：3ex₁ + ex₂ > 3a。\nx\ny\n-2\n-1\n1\n2\n3\n4\n-10\n-5\n5\n10\n15\n20\n25\nx₁\nx₂\n最小值点\ny = ex − ax − 3\n参数 a\n1.25\n① 认识函数\n② 转成面积\n③ 解出 a\n④ 两个零点\n⑤ 证明不等式\n⑥ 结论\n第 ① 步 · 先把函数“看见”\n\n拖动参数 a，观察曲线 y = ex − ax − 3 的形状怎么变。\n\nf(x) = ex − ax − 3 ，  f′(x) = ex − a\n\nf(x) = 0 就是 ex = ax + 3：指数曲线与一条过 (0, 3) 的直线的交点。\n\na\n1.25\n零点个数\n2\n\na 越大，直线越陡，右侧零点越往右跑；当 a ≤ 0 时曲线始终上升，只有一个零点。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "aSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "1.25",
+          "min": "-1.5",
+          "max": "4",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "① 认识函数",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "② 转成面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "③ 解出 a",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "④ 两个零点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "⑤ 证明不等式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "⑥ 结论",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "4"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "f(x) = ex − ax − 3 与 两个零点 · 交互解题台\n已知函数 f(x) = ex − ax − 3（a ∈ R）。\n（1）当 x ≥ 0 时，若不等式 f(x) ≥ x²⁄₂ − 2 恒成立，求 a 的取值范围；\n（2）若 f(x) 有两个零点 x1，x2，且 x1 < x2。\n　　（i）求 a 的取值范围；　（ii）证明：3ex₁ + ex₂ > 3a。\nx\ny\n-2\n-1\n1\n2\n3\n4\n-10\n-5\n5\n10\n15\n20\n25\nx₁\nx₂\n最小值点\ny = ex − ax − 3\n参数 a\n4.00\n① 认识函数\n② 转成面积\n③ 解出 a\n④ 两个零点\n⑤ 证明不等式\n⑥ 结论\n第 ① 步 · 先把函数“看见”\n\n拖动参数 a，观察曲线 y = ex − ax − 3 的形状怎么变。\n\nf(x) = ex − ax − 3 ，  f′(x) = ex − a\n\nf(x) = 0 就是 ex = ax + 3：指数曲线与一条过 (0, 3) 的直线的交点。\n\na\n4\n零点个数\n2\n\na 越大，直线越陡，右侧零点越往右跑；当 a ≤ 0 时曲线始终上升，只有一个零点。",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "aSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "4",
+          "min": "-1.5",
+          "max": "4",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "① 认识函数",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "② 转成面积",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "③ 解出 a",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "④ 两个零点",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "⑤ 证明不等式",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "⑥ 结论",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

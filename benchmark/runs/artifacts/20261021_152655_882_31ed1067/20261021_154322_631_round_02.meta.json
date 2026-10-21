@@ -1,0 +1,153 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261021_152655_882_31ed1067:2",
+  "task_id": "20261021_152655_882_31ed1067",
+  "batch_id": "benchmark-hard-v1",
+  "round": 2,
+  "created_at": "2026-10-21T15:43:22.725911+08:00",
+  "files": {
+    "image": "20261021_152655_882_input.png",
+    "html": "20261021_154322_631_round_02.html",
+    "screenshot": "20261021_154322_631_round_02.png",
+    "model_review": "20261021_154322_631_round_02.review.json",
+    "config": "20261021_152655_882_config.json",
+    "model_review_raw": "round_02.model_review_raw.txt"
+  },
+  "html_sha256": "ce0533c1aa05d4f9518c2d207e4b01159517fdc68e86401a9244993f227f9bca",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "physics",
+    "name": "物理 · 过程与受力",
+    "version": "b3651eff52e4",
+    "subject": "physics"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "页面正确复现了原题条件、运动过程与三问结论；图文同步、标注清楚，交互反馈与控件距离合理。主要扣分点在于关键判据和部分公式的推导仍偏结论化，学生需要自行补足若干中间解释。",
+    "issues": [
+      "“找最大间距”的结论公式直接从 vA = vB 起步，建议先用速度—时间图和相对位置差图的同一时刻高亮，说明“间距变化率等于 vA−vB，相对速度为 0 时出现极值”，再列方程，避免把关键判据当作已知前提。",
+      "点击“初态”或切换情形时，建议同步清除 revealed 状态及峰值、相遇点等标记，否则时间已回到 0 但图上仍残留上次揭示的答案，影响前后对照。",
+      "第（3）问显示 D = x₀−12t+1.5t² 之前，建议补出 xA、xB 的位移表达式或至少展示一步合并过程，减少公式突然出现带来的理解跳跃。",
+      "相对位置差—时间图建议补全纵轴物理量与单位标注，如 S / m 或 D / m，并明确“间距 = |S|/|D|”，避免学生把有符号相对位置直接当作间距。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 5,
+      "interaction_quality": 5,
+      "teaching_effectiveness": 4
+    },
+    "overall_score": 4
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 160,
+        "task_id": "20261021_152655_882_31ed1067",
+        "round_number": 2,
+        "stage": "generating",
+        "started_at": "2026-10-21T15:39:29.058669+08:00",
+        "ended_at": "2026-10-21T15:41:07.316147+08:00",
+        "duration_seconds": 98.257478,
+        "status": "completed"
+      },
+      {
+        "id": 161,
+        "task_id": "20261021_152655_882_31ed1067",
+        "round_number": 2,
+        "stage": "validating",
+        "started_at": "2026-10-21T15:41:07.316147+08:00",
+        "ended_at": "2026-10-21T15:41:07.471959+08:00",
+        "duration_seconds": 0.155812,
+        "status": "completed"
+      },
+      {
+        "id": 162,
+        "task_id": "20261021_152655_882_31ed1067",
+        "round_number": 2,
+        "stage": "rendering",
+        "started_at": "2026-10-21T15:41:07.471959+08:00",
+        "ended_at": "2026-10-21T15:41:10.776353+08:00",
+        "duration_seconds": 3.304394,
+        "status": "completed"
+      },
+      {
+        "id": 163,
+        "task_id": "20261021_152655_882_31ed1067",
+        "round_number": 2,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T15:41:10.776353+08:00",
+        "ended_at": "2026-10-21T15:43:23.023936+08:00",
+        "duration_seconds": 132.247583,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 86,
+        "task_id": "20261021_152655_882_31ed1067",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 2,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:41:07.219008+08:00",
+        "duration_seconds": 98.00175517400203,
+        "status": "completed",
+        "input_tokens": 19275,
+        "output_tokens": 18308,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 14170,
+        "total_tokens": 37583
+      },
+      {
+        "id": 88,
+        "task_id": "20261021_152655_882_31ed1067",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 2,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:43:22.563980+08:00",
+        "duration_seconds": 131.65316636099305,
+        "status": "completed",
+        "input_tokens": 20251,
+        "output_tokens": 18651,
+        "cached_input_tokens": 4096,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 18325,
+        "total_tokens": 38902
+      }
+    ]
+  }
+}

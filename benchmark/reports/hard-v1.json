@@ -1,0 +1,1986 @@
+{
+  "updated_at": "2026-10-21T08:38:00.321954+00:00",
+  "protocol": {
+    "calibration_question_ids": [
+      "math_001"
+    ],
+    "calibration_sample_ids": [
+      "B1F186EBB",
+      "BBE082C36",
+      "B7309A232"
+    ],
+    "validation_question_ids": [
+      "physics_001",
+      "chemistry_001"
+    ],
+    "validation_sample_ids": [
+      "B0D1C5D32",
+      "B83284572",
+      "B5D896375",
+      "B6CA12DEB",
+      "B50DFB016",
+      "B46BA67A9"
+    ],
+    "baseline_version": "f73135caf026",
+    "calibrated_version": "8ceed087b2f5",
+    "model": "gpt-5.6-sol",
+    "calls_per_sample": 6,
+    "method": "仅更改独立judge的评分尺度说明；相同模型、HTML、图像、操作证据及六次独立call。人工原始值不变。",
+    "limitations": [
+      "三个数学页面用于归纳尺度；不是三个独立题目",
+      "物理和化学六个页面是两个题目的回顾性验证，既有分数此前可见，不是严格盲测",
+      "硬题生成后无人工分数，暂不能断言人机一致性；新增test题保持未运行",
+      "不拟合或强制目标直方图，不把目标样本人工分数输入judge"
+    ]
+  },
+  "comparisons": {
+    "baseline": {
+      "version": "f73135caf026",
+      "rows": [
+        {
+          "sample_id": "B0D1C5D32",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 3,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 5,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B83284572",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 4,
+            "solution_correctness": 4,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 5,
+            "teaching_effectiveness": 4,
+            "overall_score": 5
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B5D896375",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 3,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 5,
+            "overall_score": 4
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B50DFB016",
+          "question_id": "chemistry_001",
+          "human": {
+            "problem_fidelity": 4,
+            "solution_correctness": 5,
+            "page_quality": 3,
+            "interaction_quality": 3,
+            "teaching_effectiveness": 2,
+            "overall_score": 3
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 5,
+            "teaching_effectiveness": 4,
+            "overall_score": 5
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B46BA67A9",
+          "question_id": "chemistry_001",
+          "human": {
+            "problem_fidelity": 2,
+            "solution_correctness": 4,
+            "page_quality": 2,
+            "interaction_quality": 3,
+            "teaching_effectiveness": 3,
+            "overall_score": 2
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 3,
+            "page_quality": 4,
+            "interaction_quality": 5,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "reference_concern": ""
+        }
+      ],
+      "excluded": [
+        {
+          "sample_id": "B6CA12DEB",
+          "reason": "题设与参考答案 D 基本一致；参考解析中将 H₂O 表述为“弱电解质”不够严谨，但不影响本次页面效果评分。\n参考答案D与题设及反应关系一致。最低点为0只能理解为忽略难溶物溶解、水的微弱电离等因素的理想化示意；候选页面使用“几乎没有自由离子”“接近0”，未把现实情况断言为严格零。"
+        }
+      ],
+      "all_rows": [
+        {
+          "sample_id": "B0D1C5D32",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 3,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 5,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B83284572",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 4,
+            "solution_correctness": 4,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 5,
+            "teaching_effectiveness": 4,
+            "overall_score": 5
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B5D896375",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 3,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 5,
+            "overall_score": 4
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B6CA12DEB",
+          "question_id": "chemistry_001",
+          "human": {
+            "problem_fidelity": 2,
+            "solution_correctness": 4,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 3,
+            "overall_score": 2
+          },
+          "model": {
+            "problem_fidelity": 4,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "reference_concern": "题设与参考答案 D 基本一致；参考解析中将 H₂O 表述为“弱电解质”不够严谨，但不影响本次页面效果评分。\n参考答案D与题设及反应关系一致。最低点为0只能理解为忽略难溶物溶解、水的微弱电离等因素的理想化示意；候选页面使用“几乎没有自由离子”“接近0”，未把现实情况断言为严格零。"
+        },
+        {
+          "sample_id": "B50DFB016",
+          "question_id": "chemistry_001",
+          "human": {
+            "problem_fidelity": 4,
+            "solution_correctness": 5,
+            "page_quality": 3,
+            "interaction_quality": 3,
+            "teaching_effectiveness": 2,
+            "overall_score": 3
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 5,
+            "teaching_effectiveness": 4,
+            "overall_score": 5
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B46BA67A9",
+          "question_id": "chemistry_001",
+          "human": {
+            "problem_fidelity": 2,
+            "solution_correctness": 4,
+            "page_quality": 2,
+            "interaction_quality": 3,
+            "teaching_effectiveness": 3,
+            "overall_score": 2
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 3,
+            "page_quality": 4,
+            "interaction_quality": 5,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "reference_concern": ""
+        }
+      ],
+      "all_metrics": {
+        "problem_fidelity": {
+          "n": 6,
+          "human_mean": 3.6666666666666665,
+          "judge_mean": 4.833333333333333,
+          "mae": 1.1666666666666667,
+          "bias": 1.1666666666666667,
+          "human_histogram": {
+            "2": 2,
+            "4": 2,
+            "5": 2
+          },
+          "judge_histogram": {
+            "4": 1,
+            "5": 5
+          },
+          "distribution_wasserstein": 1.1666666666666665,
+          "same_question_unequal_pairs": 4,
+          "pairwise_order_agreement": 0.25,
+          "same_question_human_ties": 2,
+          "tie_agreement": 0.5
+        },
+        "solution_correctness": {
+          "n": 6,
+          "human_mean": 4.5,
+          "judge_mean": 4.666666666666667,
+          "mae": 0.5,
+          "bias": 0.16666666666666666,
+          "human_histogram": {
+            "4": 3,
+            "5": 3
+          },
+          "judge_histogram": {
+            "3": 1,
+            "5": 5
+          },
+          "distribution_wasserstein": 0.5,
+          "same_question_unequal_pairs": 4,
+          "pairwise_order_agreement": 0.25,
+          "same_question_human_ties": 2,
+          "tie_agreement": 0.5
+        },
+        "page_quality": {
+          "n": 6,
+          "human_mean": 3.1666666666666665,
+          "judge_mean": 4.0,
+          "mae": 0.8333333333333334,
+          "bias": 0.8333333333333334,
+          "human_histogram": {
+            "2": 1,
+            "3": 3,
+            "4": 2
+          },
+          "judge_histogram": {
+            "4": 6
+          },
+          "distribution_wasserstein": 0.8333333333333333,
+          "same_question_unequal_pairs": 5,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 1.0
+        },
+        "interaction_quality": {
+          "n": 6,
+          "human_mean": 3.6666666666666665,
+          "judge_mean": 4.5,
+          "mae": 0.8333333333333334,
+          "bias": 0.8333333333333334,
+          "human_histogram": {
+            "3": 2,
+            "4": 4
+          },
+          "judge_histogram": {
+            "4": 3,
+            "5": 3
+          },
+          "distribution_wasserstein": 0.8333333333333333,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 4,
+          "tie_agreement": 0.5
+        },
+        "teaching_effectiveness": {
+          "n": 6,
+          "human_mean": 3.5,
+          "judge_mean": 4.166666666666667,
+          "mae": 1.0,
+          "bias": 0.6666666666666666,
+          "human_histogram": {
+            "2": 1,
+            "3": 2,
+            "4": 2,
+            "5": 1
+          },
+          "judge_histogram": {
+            "4": 5,
+            "5": 1
+          },
+          "distribution_wasserstein": 0.6666666666666666,
+          "same_question_unequal_pairs": 4,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 2,
+          "tie_agreement": 0.5
+        },
+        "overall_score": {
+          "n": 6,
+          "human_mean": 3.1666666666666665,
+          "judge_mean": 4.333333333333333,
+          "mae": 1.1666666666666667,
+          "bias": 1.1666666666666667,
+          "human_histogram": {
+            "2": 2,
+            "3": 1,
+            "4": 3
+          },
+          "judge_histogram": {
+            "4": 4,
+            "5": 2
+          },
+          "distribution_wasserstein": 1.1666666666666665,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 1.0,
+          "same_question_human_ties": 4,
+          "tie_agreement": 0.5
+        }
+      },
+      "metrics": {
+        "problem_fidelity": {
+          "n": 5,
+          "human_mean": 4.0,
+          "judge_mean": 5.0,
+          "mae": 1.0,
+          "bias": 1.0,
+          "human_histogram": {
+            "2": 1,
+            "4": 2,
+            "5": 2
+          },
+          "judge_histogram": {
+            "5": 5
+          },
+          "distribution_wasserstein": 1.0,
+          "same_question_unequal_pairs": 3,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 1.0
+        },
+        "solution_correctness": {
+          "n": 5,
+          "human_mean": 4.6,
+          "judge_mean": 4.6,
+          "mae": 0.4,
+          "bias": 0.0,
+          "human_histogram": {
+            "4": 2,
+            "5": 3
+          },
+          "judge_histogram": {
+            "3": 1,
+            "5": 4
+          },
+          "distribution_wasserstein": 0.4,
+          "same_question_unequal_pairs": 3,
+          "pairwise_order_agreement": 0.3333333333333333,
+          "same_question_human_ties": 1,
+          "tie_agreement": 1.0
+        },
+        "page_quality": {
+          "n": 5,
+          "human_mean": 3.0,
+          "judge_mean": 4.0,
+          "mae": 1.0,
+          "bias": 1.0,
+          "human_histogram": {
+            "2": 1,
+            "3": 3,
+            "4": 1
+          },
+          "judge_histogram": {
+            "4": 5
+          },
+          "distribution_wasserstein": 1.0,
+          "same_question_unequal_pairs": 3,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 1.0
+        },
+        "interaction_quality": {
+          "n": 5,
+          "human_mean": 3.6,
+          "judge_mean": 4.6,
+          "mae": 1.0,
+          "bias": 1.0,
+          "human_histogram": {
+            "3": 2,
+            "4": 3
+          },
+          "judge_histogram": {
+            "4": 2,
+            "5": 3
+          },
+          "distribution_wasserstein": 1.0,
+          "same_question_unequal_pairs": 0,
+          "pairwise_order_agreement": null,
+          "same_question_human_ties": 4,
+          "tie_agreement": 0.5
+        },
+        "teaching_effectiveness": {
+          "n": 5,
+          "human_mean": 3.6,
+          "judge_mean": 4.2,
+          "mae": 1.0,
+          "bias": 0.6,
+          "human_histogram": {
+            "2": 1,
+            "3": 1,
+            "4": 2,
+            "5": 1
+          },
+          "judge_histogram": {
+            "4": 4,
+            "5": 1
+          },
+          "distribution_wasserstein": 0.6000000000000001,
+          "same_question_unequal_pairs": 3,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 0.0
+        },
+        "overall_score": {
+          "n": 5,
+          "human_mean": 3.4,
+          "judge_mean": 4.4,
+          "mae": 1.0,
+          "bias": 1.0,
+          "human_histogram": {
+            "2": 1,
+            "3": 1,
+            "4": 3
+          },
+          "judge_histogram": {
+            "4": 3,
+            "5": 2
+          },
+          "distribution_wasserstein": 1.0,
+          "same_question_unequal_pairs": 1,
+          "pairwise_order_agreement": 1.0,
+          "same_question_human_ties": 3,
+          "tie_agreement": 0.3333333333333333
+        }
+      },
+      "matched_metrics": {
+        "problem_fidelity": {
+          "n": 4,
+          "human_mean": 4.0,
+          "judge_mean": 5.0,
+          "mae": 1.0,
+          "bias": 1.0,
+          "human_histogram": {
+            "2": 1,
+            "4": 1,
+            "5": 2
+          },
+          "judge_histogram": {
+            "5": 4
+          },
+          "distribution_wasserstein": 1.0,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 1.0
+        },
+        "solution_correctness": {
+          "n": 4,
+          "human_mean": 4.5,
+          "judge_mean": 4.5,
+          "mae": 0.5,
+          "bias": 0.0,
+          "human_histogram": {
+            "4": 2,
+            "5": 2
+          },
+          "judge_histogram": {
+            "3": 1,
+            "5": 3
+          },
+          "distribution_wasserstein": 0.5,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 1.0
+        },
+        "page_quality": {
+          "n": 4,
+          "human_mean": 3.0,
+          "judge_mean": 4.0,
+          "mae": 1.0,
+          "bias": 1.0,
+          "human_histogram": {
+            "2": 1,
+            "3": 2,
+            "4": 1
+          },
+          "judge_histogram": {
+            "4": 4
+          },
+          "distribution_wasserstein": 1.0,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 1.0
+        },
+        "interaction_quality": {
+          "n": 4,
+          "human_mean": 3.75,
+          "judge_mean": 4.5,
+          "mae": 0.75,
+          "bias": 0.75,
+          "human_histogram": {
+            "3": 1,
+            "4": 3
+          },
+          "judge_histogram": {
+            "4": 2,
+            "5": 2
+          },
+          "distribution_wasserstein": 0.75,
+          "same_question_unequal_pairs": 0,
+          "pairwise_order_agreement": null,
+          "same_question_human_ties": 3,
+          "tie_agreement": 0.3333333333333333
+        },
+        "teaching_effectiveness": {
+          "n": 4,
+          "human_mean": 4.0,
+          "judge_mean": 4.25,
+          "mae": 0.75,
+          "bias": 0.25,
+          "human_histogram": {
+            "3": 1,
+            "4": 2,
+            "5": 1
+          },
+          "judge_histogram": {
+            "4": 3,
+            "5": 1
+          },
+          "distribution_wasserstein": 0.25,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 0.0
+        },
+        "overall_score": {
+          "n": 4,
+          "human_mean": 3.5,
+          "judge_mean": 4.25,
+          "mae": 0.75,
+          "bias": 0.75,
+          "human_histogram": {
+            "2": 1,
+            "4": 3
+          },
+          "judge_histogram": {
+            "4": 3,
+            "5": 1
+          },
+          "distribution_wasserstein": 0.75,
+          "same_question_unequal_pairs": 0,
+          "pairwise_order_agreement": null,
+          "same_question_human_ties": 3,
+          "tie_agreement": 0.3333333333333333
+        }
+      }
+    },
+    "calibrated": {
+      "version": "8ceed087b2f5",
+      "rows": [
+        {
+          "sample_id": "B0D1C5D32",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 3,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 5,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B83284572",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 4,
+            "solution_correctness": 4,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": null,
+            "overall_score": 5
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B5D896375",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 3,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 5,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 5
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B46BA67A9",
+          "question_id": "chemistry_001",
+          "human": {
+            "problem_fidelity": 2,
+            "solution_correctness": 4,
+            "page_quality": 2,
+            "interaction_quality": 3,
+            "teaching_effectiveness": 3,
+            "overall_score": 2
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 3,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "reference_concern": ""
+        }
+      ],
+      "excluded": [
+        {
+          "sample_id": "B6CA12DEB",
+          "reason": "参考答案D及主要解析与独立核对一致。“也能得到该曲线”应理解为同样的先降至近零再上升的定性形状，而非要求各点电导数值完全相同。\n参考答案D与反应关系基本一致；曲线最低点接近零应理解为理想化示意，现实中不应解释为严格无离子。"
+        },
+        {
+          "sample_id": "B50DFB016",
+          "reason": "参考答案 D 与反应关系一致。原图最低点落在横轴是理想化表达，现实中水的自偶电离、难溶盐的微量溶解等使导电能力通常不是严格为零；候选页面已用“几乎为 0”“接近 0”并注明模型局限，未将其错误表述为严格实验事实。"
+        }
+      ],
+      "all_rows": [
+        {
+          "sample_id": "B0D1C5D32",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 3,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 5,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B83284572",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 4,
+            "solution_correctness": 4,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": null,
+            "overall_score": 5
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B5D896375",
+          "question_id": "physics_001",
+          "human": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 3,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 5,
+            "page_quality": 5,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 5
+          },
+          "reference_concern": ""
+        },
+        {
+          "sample_id": "B6CA12DEB",
+          "question_id": "chemistry_001",
+          "human": {
+            "problem_fidelity": 2,
+            "solution_correctness": 4,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 3,
+            "overall_score": 2
+          },
+          "model": {
+            "problem_fidelity": 4,
+            "solution_correctness": 4,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 3,
+            "overall_score": 4
+          },
+          "reference_concern": "参考答案D及主要解析与独立核对一致。“也能得到该曲线”应理解为同样的先降至近零再上升的定性形状，而非要求各点电导数值完全相同。\n参考答案D与反应关系基本一致；曲线最低点接近零应理解为理想化示意，现实中不应解释为严格无离子。"
+        },
+        {
+          "sample_id": "B50DFB016",
+          "question_id": "chemistry_001",
+          "human": {
+            "problem_fidelity": 4,
+            "solution_correctness": 5,
+            "page_quality": 3,
+            "interaction_quality": 3,
+            "teaching_effectiveness": 2,
+            "overall_score": 3
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 4,
+            "page_quality": 4,
+            "interaction_quality": 5,
+            "teaching_effectiveness": 5,
+            "overall_score": 5
+          },
+          "reference_concern": "参考答案 D 与反应关系一致。原图最低点落在横轴是理想化表达，现实中水的自偶电离、难溶盐的微量溶解等使导电能力通常不是严格为零；候选页面已用“几乎为 0”“接近 0”并注明模型局限，未将其错误表述为严格实验事实。"
+        },
+        {
+          "sample_id": "B46BA67A9",
+          "question_id": "chemistry_001",
+          "human": {
+            "problem_fidelity": 2,
+            "solution_correctness": 4,
+            "page_quality": 2,
+            "interaction_quality": 3,
+            "teaching_effectiveness": 3,
+            "overall_score": 2
+          },
+          "model": {
+            "problem_fidelity": 5,
+            "solution_correctness": 3,
+            "page_quality": 4,
+            "interaction_quality": 4,
+            "teaching_effectiveness": 4,
+            "overall_score": 4
+          },
+          "reference_concern": ""
+        }
+      ],
+      "all_metrics": {
+        "problem_fidelity": {
+          "n": 6,
+          "human_mean": 3.6666666666666665,
+          "judge_mean": 4.833333333333333,
+          "mae": 1.1666666666666667,
+          "bias": 1.1666666666666667,
+          "human_histogram": {
+            "2": 2,
+            "4": 2,
+            "5": 2
+          },
+          "judge_histogram": {
+            "4": 1,
+            "5": 5
+          },
+          "distribution_wasserstein": 1.1666666666666665,
+          "same_question_unequal_pairs": 4,
+          "pairwise_order_agreement": 0.25,
+          "same_question_human_ties": 2,
+          "tie_agreement": 0.5
+        },
+        "solution_correctness": {
+          "n": 6,
+          "human_mean": 4.5,
+          "judge_mean": 4.333333333333333,
+          "mae": 0.5,
+          "bias": -0.16666666666666666,
+          "human_histogram": {
+            "4": 3,
+            "5": 3
+          },
+          "judge_histogram": {
+            "3": 1,
+            "4": 2,
+            "5": 3
+          },
+          "distribution_wasserstein": 0.16666666666666666,
+          "same_question_unequal_pairs": 4,
+          "pairwise_order_agreement": 0.25,
+          "same_question_human_ties": 2,
+          "tie_agreement": 0.5
+        },
+        "page_quality": {
+          "n": 6,
+          "human_mean": 3.1666666666666665,
+          "judge_mean": 4.166666666666667,
+          "mae": 1.0,
+          "bias": 1.0,
+          "human_histogram": {
+            "2": 1,
+            "3": 3,
+            "4": 2
+          },
+          "judge_histogram": {
+            "4": 5,
+            "5": 1
+          },
+          "distribution_wasserstein": 0.9999999999999999,
+          "same_question_unequal_pairs": 5,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 0.0
+        },
+        "interaction_quality": {
+          "n": 6,
+          "human_mean": 3.6666666666666665,
+          "judge_mean": 4.166666666666667,
+          "mae": 0.5,
+          "bias": 0.5,
+          "human_histogram": {
+            "3": 2,
+            "4": 4
+          },
+          "judge_histogram": {
+            "4": 5,
+            "5": 1
+          },
+          "distribution_wasserstein": 0.49999999999999994,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 4,
+          "tie_agreement": 0.75
+        },
+        "teaching_effectiveness": {
+          "n": 5,
+          "human_mean": 3.4,
+          "judge_mean": 4.0,
+          "mae": 1.0,
+          "bias": 0.6,
+          "human_histogram": {
+            "2": 1,
+            "3": 2,
+            "4": 1,
+            "5": 1
+          },
+          "judge_histogram": {
+            "3": 1,
+            "4": 3,
+            "5": 1
+          },
+          "distribution_wasserstein": 0.6,
+          "same_question_unequal_pairs": 3,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 0.0
+        },
+        "overall_score": {
+          "n": 6,
+          "human_mean": 3.1666666666666665,
+          "judge_mean": 4.5,
+          "mae": 1.3333333333333333,
+          "bias": 1.3333333333333333,
+          "human_histogram": {
+            "2": 2,
+            "3": 1,
+            "4": 3
+          },
+          "judge_histogram": {
+            "4": 3,
+            "5": 3
+          },
+          "distribution_wasserstein": 1.3333333333333333,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 1.0,
+          "same_question_human_ties": 4,
+          "tie_agreement": 0.5
+        }
+      },
+      "metrics": {
+        "problem_fidelity": {
+          "n": 4,
+          "human_mean": 4.0,
+          "judge_mean": 5.0,
+          "mae": 1.0,
+          "bias": 1.0,
+          "human_histogram": {
+            "2": 1,
+            "4": 1,
+            "5": 2
+          },
+          "judge_histogram": {
+            "5": 4
+          },
+          "distribution_wasserstein": 1.0,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 1.0
+        },
+        "solution_correctness": {
+          "n": 4,
+          "human_mean": 4.5,
+          "judge_mean": 4.5,
+          "mae": 0.5,
+          "bias": 0.0,
+          "human_histogram": {
+            "4": 2,
+            "5": 2
+          },
+          "judge_histogram": {
+            "3": 1,
+            "5": 3
+          },
+          "distribution_wasserstein": 0.5,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 1.0
+        },
+        "page_quality": {
+          "n": 4,
+          "human_mean": 3.0,
+          "judge_mean": 4.25,
+          "mae": 1.25,
+          "bias": 1.25,
+          "human_histogram": {
+            "2": 1,
+            "3": 2,
+            "4": 1
+          },
+          "judge_histogram": {
+            "4": 3,
+            "5": 1
+          },
+          "distribution_wasserstein": 1.25,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 0.0
+        },
+        "interaction_quality": {
+          "n": 4,
+          "human_mean": 3.75,
+          "judge_mean": 4.0,
+          "mae": 0.25,
+          "bias": 0.25,
+          "human_histogram": {
+            "3": 1,
+            "4": 3
+          },
+          "judge_histogram": {
+            "4": 4
+          },
+          "distribution_wasserstein": 0.25,
+          "same_question_unequal_pairs": 0,
+          "pairwise_order_agreement": null,
+          "same_question_human_ties": 3,
+          "tie_agreement": 1.0
+        },
+        "teaching_effectiveness": {
+          "n": 3,
+          "human_mean": 4.0,
+          "judge_mean": 4.0,
+          "mae": 0.6666666666666666,
+          "bias": 0.0,
+          "human_histogram": {
+            "3": 1,
+            "4": 1,
+            "5": 1
+          },
+          "judge_histogram": {
+            "4": 3
+          },
+          "distribution_wasserstein": 0.6666666666666667,
+          "same_question_unequal_pairs": 1,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 0,
+          "tie_agreement": null
+        },
+        "overall_score": {
+          "n": 4,
+          "human_mean": 3.5,
+          "judge_mean": 4.5,
+          "mae": 1.0,
+          "bias": 1.0,
+          "human_histogram": {
+            "2": 1,
+            "4": 3
+          },
+          "judge_histogram": {
+            "4": 2,
+            "5": 2
+          },
+          "distribution_wasserstein": 1.0,
+          "same_question_unequal_pairs": 0,
+          "pairwise_order_agreement": null,
+          "same_question_human_ties": 3,
+          "tie_agreement": 0.3333333333333333
+        }
+      },
+      "matched_metrics": {
+        "problem_fidelity": {
+          "n": 4,
+          "human_mean": 4.0,
+          "judge_mean": 5.0,
+          "mae": 1.0,
+          "bias": 1.0,
+          "human_histogram": {
+            "2": 1,
+            "4": 1,
+            "5": 2
+          },
+          "judge_histogram": {
+            "5": 4
+          },
+          "distribution_wasserstein": 1.0,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 1.0
+        },
+        "solution_correctness": {
+          "n": 4,
+          "human_mean": 4.5,
+          "judge_mean": 4.5,
+          "mae": 0.5,
+          "bias": 0.0,
+          "human_histogram": {
+            "4": 2,
+            "5": 2
+          },
+          "judge_histogram": {
+            "3": 1,
+            "5": 3
+          },
+          "distribution_wasserstein": 0.5,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 1.0
+        },
+        "page_quality": {
+          "n": 4,
+          "human_mean": 3.0,
+          "judge_mean": 4.25,
+          "mae": 1.25,
+          "bias": 1.25,
+          "human_histogram": {
+            "2": 1,
+            "3": 2,
+            "4": 1
+          },
+          "judge_histogram": {
+            "4": 3,
+            "5": 1
+          },
+          "distribution_wasserstein": 1.25,
+          "same_question_unequal_pairs": 2,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 1,
+          "tie_agreement": 0.0
+        },
+        "interaction_quality": {
+          "n": 4,
+          "human_mean": 3.75,
+          "judge_mean": 4.0,
+          "mae": 0.25,
+          "bias": 0.25,
+          "human_histogram": {
+            "3": 1,
+            "4": 3
+          },
+          "judge_histogram": {
+            "4": 4
+          },
+          "distribution_wasserstein": 0.25,
+          "same_question_unequal_pairs": 0,
+          "pairwise_order_agreement": null,
+          "same_question_human_ties": 3,
+          "tie_agreement": 1.0
+        },
+        "teaching_effectiveness": {
+          "n": 3,
+          "human_mean": 4.0,
+          "judge_mean": 4.0,
+          "mae": 0.6666666666666666,
+          "bias": 0.0,
+          "human_histogram": {
+            "3": 1,
+            "4": 1,
+            "5": 1
+          },
+          "judge_histogram": {
+            "4": 3
+          },
+          "distribution_wasserstein": 0.6666666666666667,
+          "same_question_unequal_pairs": 1,
+          "pairwise_order_agreement": 0.0,
+          "same_question_human_ties": 0,
+          "tie_agreement": null
+        },
+        "overall_score": {
+          "n": 4,
+          "human_mean": 3.5,
+          "judge_mean": 4.5,
+          "mae": 1.0,
+          "bias": 1.0,
+          "human_histogram": {
+            "2": 1,
+            "4": 3
+          },
+          "judge_histogram": {
+            "4": 2,
+            "5": 2
+          },
+          "distribution_wasserstein": 1.0,
+          "same_question_unequal_pairs": 0,
+          "pairwise_order_agreement": null,
+          "same_question_human_ties": 3,
+          "tie_agreement": 0.3333333333333333
+        }
+      }
+    }
+  },
+  "runs": [
+    {
+      "job": "hard-v1_math_013_W0",
+      "task_id": "20261021_144323_855_ca047dfc",
+      "status": "failed",
+      "sample": {
+        "run_status": "failed",
+        "completed_rounds": 1,
+        "id": "B9A724ED8",
+        "question_id": "math_013",
+        "set": "calibration",
+        "workflow_id": "W0",
+        "batch": "hard-v1",
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "html": "runs/artifacts/20261021_144323_855_ca047dfc/20261021_153140_989_round_01.html",
+        "html_sha256": "258d1519c622963a005990218b5f24e4df0635080db1afd4848b7e5bff8c7eb1",
+        "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+        "inspection": "runs/artifacts/20261021_144323_855_ca047dfc/evidence/258d1519c622963a/public.json",
+        "screenshots": [
+          "runs/artifacts/20261021_144323_855_ca047dfc/evidence/258d1519c622963a/00_initial.png",
+          "runs/artifacts/20261021_144323_855_ca047dfc/evidence/258d1519c622963a/01_next_step.png",
+          "runs/artifacts/20261021_144323_855_ca047dfc/evidence/258d1519c622963a/02_slider_mid.png",
+          "runs/artifacts/20261021_144323_855_ca047dfc/evidence/258d1519c622963a/03_slider_high.png"
+        ]
+      },
+      "rounds": [
+        {
+          "number": 1,
+          "html_name": "20261021_153140_989_round_01.html",
+          "passed": 0,
+          "summary": "题目条件与三个最终答案基本正确，页面也清晰可操作；但第③步可行域图与控件只展示正 a、未覆盖结论 a≤1 的负值部分，第⑤步对 a>1 的证明缺少 u≤ln a 分支，且 a≤1 分支无法在控件和图中操作验证，关键不等式的来源主要靠长段文字，因此不能判为合格。"
+        }
+      ],
+      "api_seconds": 1699.8828370730043,
+      "successful_api_seconds": 486.6158332870109,
+      "failed_api_seconds": 1213.2670037859934,
+      "stage_metrics": {
+        "reviewer": {
+          "calls": 4,
+          "seconds": 982.6908571709937,
+          "known_tokens": 37544,
+          "cost": {
+            "known_cost_cny": 0.1237452,
+            "missing_token_fields": 6,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        },
+        "generator": {
+          "calls": 2,
+          "seconds": 717.1919799020106,
+          "known_tokens": 125670,
+          "cost": {
+            "known_cost_cny": 0.5794055999999999,
+            "missing_token_fields": 0,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        }
+      },
+      "known_tokens": 163214,
+      "calls_missing_usage": 3,
+      "cost": {
+        "known_cost_cny": 0.7031507999999999,
+        "missing_token_fields": 6,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 4,
+          "solution_correctness": 4,
+          "page_quality": 4,
+          "interaction_quality": 4,
+          "teaching_effectiveness": 2
+        },
+        "overall_score": 4,
+        "issues": [
+          "第②步用于第（1）问的参数滑块范围被设为 a∈[0,2.8]，第③步设为 a∈[0.6,3.4]，不能展示结论 a≤1 中 a<0 的合法情形；文字结论虽完整，但对应交互范围未完整保留。",
+          "第⑤、⑥步的滑块最小值为 a=1，无法交互展示第（2）问合法范围 0<a<1 的情形；证明文字专门讨论了 a≤1 的分支，但辅助图不能验证该分支。",
+          "第⑤步对 x₂>3−3/a 的论证存在局部逻辑缺口：当 a>1 时，由 f(u)<0 和“f 在 (ln a,+∞) 上递增”不能直接推出 u<x₂，因为例如 a 很大时 u=3−3/a 可能小于 ln a。结论本身正确，但应补充 f(0)=-2<0、x₁<0<u，或利用 f<0 的区间恰为 (x₁,x₂)，从而由 f(u)<0 得出 u<x₂。",
+          "第⑤步将“x₁<0”主要表述为图上观察，严格证明应明确写出 f(0)=-2<0，且两个零点外侧函数为正、两零点之间为负，因此 x₁<0<x₂；这是上述证明链所需的依据。",
+          "左侧坐标图的刻度数字、轴名及“最小值点”等辅助标注字号偏小，相对于大面积绘图区辨识度稍弱。",
+          "指数曲线在绘图区上边缘直接截断，且没有明确的绘图边界框或延伸提示；不影响判断走势，但视觉收束略显突兀。",
+          "滑块只标注“参数 a”和当前值，未显示当前步骤对应的最小值、最大值；而源码中六个步骤会分别改变滑块范围，用户难以直接判断可操作边界及其为何变化。",
+          "操作记录只实际覆盖了第①步的初始值、a=1.25和a=4，未点击六个步骤按钮，因此其他步骤的图形、公式和读数同步效果仅能由源码推断，不能视为截图实测。",
+          "第⑤步和第⑥步把滑块下限设为a=1，未覆盖题设中有两个零点的完整范围0<a<1；尤其第⑤步文字还专门讨论a≤1，但用户无法操作观察0<a<1及接近0的边界状态，削弱了证明交互的完整性。",
+          "第③步从“对所有 x>0 有 a≤g(x)”转到“g 的下确界为 1”是第（1）问的核心，但页面直接断言 g′(x)>0；其分子 e^x(x−1)+1−x²/2 为正的理由没有展开。“g(x)=1+x²/6+…>1”也用未说明余项符号的省略级数代替了全区间论证，刚读题的学生仍需自行补上关键证明。",
+          "第⑤步证明的关键是 x₂>3−3/a。页面虽计算了 f(u)<0，却接着用“f 在 (ln a,+∞) 上递增，故 u<x₂”；这里没有证明 u=3−3/a 位于该递增区间，而且对较大的 a 实际有 u<ln a，因此这条推理本身不能覆盖全部 a>1。正确衔接还需利用 f(0)=−2、x₁<0<u 以及 f(u)<0 来说明 u 位于两零点之间，页面没有把这条逻辑写出。",
+          "第⑤步又把“x₁<0”主要表述为从交点图上观察，没有就近给出 f(0)=−2 及左、右零点位置的论证；它恰好是修复上一处推理所需的关键事实，使学生更难独立补全证明。",
+          "实际操作记录只验证了初始“认识函数”页及参数滑块在 a=1.25、4 时的反馈，没有实际打开第②至第⑥步；因此后续图形变化、高亮与文字是否在真实页面中便于对应观察未获截图或操作验证，只能确认源码中设计了这些内容。",
+          "第⑤步证明中，由“f(u)<0”接着引用“f在(ln a,+∞)上递增”便推出u<x₂，论证形式存在缺口：页面没有证明u=3−3/a一定属于该递增区间，且当a很大时事实上u<ln a。结论仍可由已知恰有两个零点、两端趋于正无穷及f(u)<0直接得到，即u位于两零点之间，但这一步需要学生自行补全。",
+          "实际操作记录只验证了第①步滑块从1.2变到1.25及上界4时曲线、零点、最小值和读数同步；记录中的“下一步”未找到匹配按钮，因此第②至⑥步虽可从源码确认存在对应标签按钮和绘制逻辑，但其实际点击后的桌面呈现与交互没有被操作截图完整验证。"
+        ],
+        "evidence": {
+          "problem_fidelity": "题设区准确保留了 f(x)=e^x−ax−3、a∈R、x≥0、恒成立不等式以及第（2）问的两个零点条件、次序和两个小问。源码中的六个步骤覆盖了全部小问，给出的结论 a≤1、a>0 及待证不等式均与原题和参考材料一致。辅助图的量也有明确对应：第（1）问比较 y=e^x−x²/2−1 与 y=ax，随后绘制 g(x)=(e^x−x²/2−1)/x；第（2）问绘制原函数或等价的 y=e^x 与 y=ax+3，交点对应 x₁、x₂，没有把不同物理量或不同函数趋势冒充原题曲线。操作记录仅实际验证了初始页滑块从1.2变化到1.25及4时图形随参数更新，未实际点击其余步骤；其余步骤的覆盖依据为页面源码。整体已良好对应原题，但多个分步滑块截去了题目结论中的合法参数区间，因此尚未达到“所有合法范围完整保留”的5分。",
+          "solution_correctness": "独立核算表明各小问结论均正确。（1）原不等式等价于 a≤g(x)=(e^x−x²/2−1)/x（x>0）；其导数分子 h(x)=e^x(x−1)+1−x²/2，满足 h(0)=0、h'(x)=x(e^x−1)>0，故 g 严格递增且下确界为 lim(x→0+)g(x)=1，得到 a≤1，端点 a=1 可取。（2）（i）a≤0 时 f严格递增，不能有两个零点；a>0 时唯一极小值为 a−a ln a−3，其关于a的最大值是−2，且函数两端趋于正无穷，因此恰有两个零点，范围为a>0。（2）（ii）页面构造 u=3−3/a；a≤1 时 u≤0<x₂，a>1 时 0<u<3，且 f(u)=e^u−9/(3−u)<0，因为 e^u(3−u)≤e²<9。结合 x₁<0<u 便可严格推出 u<x₂，进而 e^{x₂}=ax₂+3>3a，最终目标成立。图中曲线、极小值位置 ln a、数值零点随已记录滑块值1.25和4的变化也与计算一致。未实际操作第②至第⑥步按钮，但其数学内容可由所给源码核查；主要差距是证明文字漏写了连接 f(u)<0 与 u<x₂ 的必要区间论证，因此未达到完整无实质缺口的5分。",
+          "page_quality": "在1280×900桌面截图中，题设、主图、步骤导航和右侧说明形成清楚的上下及左右层级；公式、零点x₁/x₂、最小值点和参数读数均未见重叠或裁切。初始a=1.20、中间a=1.25及高值a=4.00三种已截图状态下，曲线与关键标注仍保持清晰，滑块变化也未引发布局跳动。右侧步骤按钮虽换为两行，但排列规整；说明卡片行距和留白合理。整体已达到良好档，但坐标辅助文字偏小、曲线顶端截断的局部呈现使其距离“完整清晰、无实质缺陷”的5分仍有差距。操作记录只实际验证了当前“认识函数”页及滑块状态，其他步骤虽可从源码看到对应绘制逻辑，但没有提供其桌面截图，因此不将其视觉效果断言为已验证。",
+          "interaction_quality": "已验证的第①步中，滑块来源明确为参数a；从a=1.20变为1.25及4.00时，底部输出、右侧a读数、函数曲线、最小值点和两个零点位置均同步变化，且零点个数保持为2，未出现运行错误。控件紧邻主图，右侧读数也与图并排，反馈容易就近比较。源码显示六个步骤按钮分别对应函数形状、恒成立区域、辅助函数g、两个零点、目标不等式和结论；切换时会重设滑块范围并同步重绘SVG和右侧公式/数值，交互围绕参数分类、零点和不等式关系，具有明确教学意义。第②步还以红绿区域反馈恒成立是否被破坏，第④步同步给出最小值和零点数，第⑤步同步计算x1、x2、3−3/a及两侧数值，这些设计达到良好水平。但操作记录未实测这些步骤，且关键的0<a<1证明状态被第⑤、⑥步范围排除，距离“关键步骤、边界与状态切换均完整验证”的5分仍有差距。",
+          "teaching_effectiveness": "起点页完整重述题目，给出 f′(x)=e^x−a，并把零点解释为 e^x 与 ax+3 的交点；截图也显示零点、最小值点随 a 改变，学生能建立参数、曲线和零点个数的初步联系。页面随后形成了可辨认的主线：恒成立条件先改写为 e^x−x²/2−1≥ax，再在 x>0 时化为 a≤g(x)，并以 g 的下确界得到 a≤1；两个零点部分则由导数、最小值和两端趋势得到 a>0；最后把零点表示为指数曲线与直线的交点并试图借助辅助点 Q 完成不等式。因此“条件→表示→关系→结论”的总体结构能够跟随，图中的上下关系、零点和最小值也承担了一定解释作用。但第（1）问的下确界证明仅断言关键正性，第（2）（ii）问最核心的辅助点次序推理存在适用区间缺口，学生必须自行修正论证才能解释答案为何对所有 a>0 成立，尚不足以独立复述完整解法，故低于3分。",
+          "overall_score": "题设与原题一致，完整保留（1）、（2）(i)、（ii），页面结论a≤1、a>0及目标不等式均可独立核实，与参考答案一致。教学顺序总体清楚：先用函数图像和参数滑块建立零点直观，再把恒成立转为固定曲线与直线的上下关系，继而引入g(x)并用单调性及x→0+的下确界得到a≤1；两个零点部分通过导数、唯一极小值及两端趋势得到a>0；最后把零点解释为e^x与ax+3的交点，并构造u=3−3/a比较x₂。首屏截图显示题目、图像、控制条和讲解区布局清楚，无明显重叠或裁切，已记录的滑块操作也显示数值与图形同步。相较3分，页面覆盖全部小问，关键参数分类和图形对应具有较完整的可见依据，已经达到良好教学材料水平；未给5分主要因为最终不等式证明中的关键推断写法有逻辑缺口，刚读题的学生可能无法仅凭页面严谨复述该步，同时后续步骤的实际呈现缺少操作截图验证。"
+        },
+        "reference_concern": "",
+        "summary": "整体教学链完整、结论正确且可视化联动有实质作用，属于良好水平；修补第⑤步由f(u)<0推出u<x₂的论证，并实际验证各步骤页面后，才更接近优秀。"
+      },
+      "judge_status": "completed"
+    },
+    {
+      "job": "hard-v1_math_013_W2",
+      "task_id": "20261021_144330_143_71c28aab",
+      "status": "failed",
+      "sample": {
+        "run_status": "failed",
+        "completed_rounds": 3,
+        "id": "B03715FF7",
+        "question_id": "math_013",
+        "set": "calibration",
+        "workflow_id": "W2",
+        "batch": "hard-v1",
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 3,
+        "html": "runs/artifacts/20261021_144330_143_71c28aab/20261021_153621_138_round_03.html",
+        "html_sha256": "24fa4bee03e9747bb39006fa9b1212591595fcbfc3542334d7fc994175a2d8bb",
+        "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+        "inspection": "runs/artifacts/20261021_144330_143_71c28aab/evidence/24fa4bee03e9747b/public.json",
+        "screenshots": [
+          "runs/artifacts/20261021_144330_143_71c28aab/evidence/24fa4bee03e9747b/00_initial.png",
+          "runs/artifacts/20261021_144330_143_71c28aab/evidence/24fa4bee03e9747b/01_next_step.png",
+          "runs/artifacts/20261021_144330_143_71c28aab/evidence/24fa4bee03e9747b/02_slider_mid.png",
+          "runs/artifacts/20261021_144330_143_71c28aab/evidence/24fa4bee03e9747b/03_slider_high.png"
+        ]
+      },
+      "rounds": [
+        {
+          "number": 1,
+          "html_name": "20261021_145212_969_round_01.html",
+          "passed": 0,
+          "summary": "题目条件、两个小问的结论及(2)(ii)的证明均正确，首屏能建立恒成立问题的转化关系，分步图和文字基本对应；存在第(1)问滑块局部越出绘图区、x=0处极限点画成实心点等可改进瑕疵。"
+        },
+        {
+          "number": 2,
+          "html_name": "20261021_145823_357_round_02.html",
+          "passed": 0,
+          "summary": "题目条件、三问最终答案和主要证明均正确，页面也能通过滑块观察临界位置；但第(2)(i)的关键不等式缺少推导，首屏提前透露临界值1，且第5步r滑块极端值处存在标签重叠/截断。"
+        },
+        {
+          "number": 3,
+          "html_name": "20261021_153621_138_round_03.html",
+          "passed": 0,
+          "summary": "题意、三问结论及核心推导均正确，首屏转化与参数动态反馈清楚；但第5步的关键代数证明仍主要依赖右侧长文，图形承担的解释稍弱。"
+        }
+      ],
+      "api_seconds": 1759.672135240995,
+      "successful_api_seconds": 1010.7748606020032,
+      "failed_api_seconds": 748.8972746389918,
+      "stage_metrics": {
+        "reviewer": {
+          "calls": 3,
+          "seconds": 543.5214926890039,
+          "known_tokens": 118333,
+          "cost": {
+            "known_cost_cny": 0.4065744,
+            "missing_token_fields": 0,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        },
+        "generator": {
+          "calls": 6,
+          "seconds": 1216.150642551991,
+          "known_tokens": 113794,
+          "cost": {
+            "known_cost_cny": 0.426198,
+            "missing_token_fields": 6,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        }
+      },
+      "known_tokens": 232127,
+      "calls_missing_usage": 3,
+      "cost": {
+        "known_cost_cny": 0.8327724,
+        "missing_token_fields": 6,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 5,
+          "solution_correctness": 5,
+          "page_quality": 4,
+          "interaction_quality": 4,
+          "teaching_effectiveness": 4
+        },
+        "overall_score": 5,
+        "issues": [
+          "在参数 a=1.8 的图中，交点附近的“g(x)”“交点”和橙色水平线距离较近，局部标注略显拥挤，但仍可辨认。",
+          "右侧说明区正文和图表刻度字号偏小，在桌面预览中尚可阅读，但长时间查看的舒适度略受影响。",
+          "实际截图只覆盖第1步及其滑块的三个状态；第2至第5步虽可由源码判断其布局结构，但未在截图或操作记录中实际展开，无法确认复杂证明状态下是否仍无裁切或标注冲突。",
+          "第 (2)(i) 步的 a 滑块仅覆盖 0.2–5，无法通过操作直接比较 a≤0 时“至多一个零点”和 a>0 时“两个零点”的状态切换；这一关键分类只能从右侧文字获知，交互对因果边界的覆盖不完整。",
+          "第 (2)(ii) 证明步把辅助参数 r 作为可独立调节量，页面虽明确说明它并非原题中可单独调节的参数，但交互没有展示 r 与前一步 a、x₁、x₂、u、v 的具体联动，因果链在步骤切换处略有断开。",
+          "实际操作记录只覆盖初始“转化”页的滑块中值与上界；自动查找“下一/继续”等按钮未匹配到分步标签，因此第2至第5步的标签切换、滑块及快捷按钮没有得到实际操作验证。",
+          "“4 移位”中直接给出 e^{-u}=t-u+3/a、e^v=t+v+3/a，未在可见推导中明确写出它们来自 f(x₁)=f(x₂)=0，并结合 e^t=a 逐项代入；学生能够补出，但这是本题特有的关键转化，形成局部跳步。",
+          "“5 证明”的图标题使用 φ(r)>1，图中也标注 φ(r)，但页面没有显式写出 φ(r)=(r+3)ln r/[3(r−1)] 的定义。右侧改用 H(r)完成了证明，因此不妨碍主线成立，但会让学生短暂疑惑图像与代数证明如何对应。"
+        ],
+        "evidence": {
+          "problem_fidelity": "页面题干完整保留了原题对象 f(x)=e^x-ax-3、参数条件 a∈R、第(1)问的定义域 x≥0 与恒成立不等式，以及第(2)问的两个零点次序 x1<x2、参数范围小问和待证不等式。第(1)问的辅助曲线 g(x)=(e^x-1)/x-x/2 与原不等式在 x>0 时严格等价，并单独处理了 x=0；图中横轴为 x、纵向量明确标为 g，未将其冒充原函数 f。第(2)(i)的图明确绘制 f(x)、横轴 x、极小点 t=ln a 及两个零点，所得 a>0 与题设一致。第(2)(ii)通过 x1=t-u、x2=t+v，再引入 p=e^-u、z=e^v、r=e^(u+v)，各辅助量都明确映射回原题零点关系，并注明 r 不是原题中可独立调节的参数；最终结论仍是原题要求的 3e^x1+e^x2>3a。滑块仅覆盖部分示例范围，但页面明确说明完整范围分别为 a≤1、a>0，未用演示范围替换合法范围。操作截图只直接验证了第(1)步及 a=0.8、1、1.8 的状态变化；其余步骤的呈现依据所附源码核对，未由实际操作截图直接验证。整体对象、约束、全部小问及量的含义均完整对应原题，无实质缺失。",
+          "solution_correctness": "题设与原题图片一致，三个结论均经独立核验正确。(1) 对x>0移项并除以x得到a≤g(x)=(e^x−1)/x−x/2；x=0时原不等式恒取等号。页面给出的g′(x)分子N(x)=2e^x(x−1)+2−x²满足N(0)=0、N′(x)=2x(e^x−1)>0，因此g在x>0严格递增且下确界为lim(x→0+)g(x)=1，故充要条件为a≤1，端点也处理正确。(2)(i) 当a≤0时f′(x)=e^x−a>0，至多一个零点；当a>0时唯一极小点t=ln a，极小值h(a)=a−a ln a−3，而h在a=1处取最大值−2，因此极小值恒小于0；结合x→±∞时f(x)→+∞，恰有两个零点，所以范围a>0正确。(2)(ii) 令x1=t−u、x2=t+v后，页面从零点方程正确推出e^v−e^(−u)=u+v；再令p=e^(−u)、z=e^v、r=z/p=e^(u+v)>1，得到p=ln r/(r−1)、z=pr，目标等价于H(r)=(r+3)ln r−3(r−1)>0。其H′(r)=ln r+3/r−2、H″(r)=(r−3)/r²，H′在r=3处取得最小值ln3−1>0，结合H(1)=0可严格推出目标不等式。图中g与水平参数线、f的极小点和双零点、φ(r)>1的关系均与上述推导一致，示例范围也明确标为演示而非完整定义域。实际操作记录只验证了初始页及第(1)问滑块在a=1和a=1.8时的更新；其余步骤的正确性依据所附源码核验，未声称截图中已实际操作验证。",
+          "page_quality": "原题与候选页题设一致，参考给出的 a≤1、a>0 及待证不等式也与页面内容一致。提供的桌面截图中，标题、题干、步骤导航、主图、控制区和右侧推导形成清楚的视觉层级；坐标轴、曲线、极限线和参数线均清晰，无明显裁切。a=0.8、1、1.8 三个状态下布局稳定，参数变化没有引起面板跳动；a=1 时两条虚线重合但左右标签分离，仍能理解其临界含义；a=1.8 时红色失效区与曲线分段表达明确。整体已达到良好档，但局部标注密度和偏小文字，以及后续复杂步骤缺少实际截图验证，使其不足以据此认定为“复杂状态仍完整清晰”的5分。",
+          "interaction_quality": "已实际验证初始页中 a 从0.8变为1和1.8时，滑块数值、图中橙色水平线、当前参数标注、交点/红色失败区以及右侧“是否全部满足”读数同步更新；反馈集中在图形、控件和相邻侧栏内，能够清楚呈现 a=1 的临界关系，且运行记录无报错。源码显示五个分步标签均绑定点击后重绘；不同步骤会同步切换滑块含义与合法演示范围：第(1)问 a∈[0.2,1.8]、两根示例 a∈[0.2,5]、证明辅助参数 r∈[1.02,8]，标签和注释也明确区分“演示范围”与完整数学范围。源码还表明第(2)(i)步会同步重算极小点、极小值和两个零点，第(2)(ii)移位步会同步重算并标示 u、v，证明步会同步更新 φ(r)、p、z及3p+z，均具有教学意义而非装饰。综合来看控制来源清楚、首步同步反馈有直接证据，其余步骤有明确源码证据，但关键参数分类未被交互完整覆盖且后续状态未经实际操作记录验证，因此达到良好而未到完整清晰的5分。",
+          "teaching_effectiveness": "起点清楚：页面先完整列出已知条件和三个任务；第1步把原不等式移项，并区分 x=0 与 x>0，得到 a≤g(x)，同时用水平参数线与 g 曲线解释“恒成立”就是参数线不能高于曲线。随后第2步通过 g′的分子 N(x)、N(0)=0、N′(x)>0 说明 g 单调递增且下确界为1，从而得到 a≤1，条件→表示→关系→结论的链条完整。第(2)(i)也依次展示 f′(x)=e^x−a、极小点 t=ln a、极小值 h(a)≤−2，并结合两端趋于正无穷说明左右各有一个零点；同时单独排除 a≤0，足以支持 a>0。第(2)(ii)先用图上的两段距离引入 u=t−x₁、v=x₂−t，再将目标化为3e^{-u}+e^v>3，最后令 p=e^{-u}、z=e^v、r=z/p，通过 z−p=ln r 化为 H(r)>0，并以导数符号完成证明。整体顺序允许学生复述主要解法，图形确实承担了参数线比较、极小点与两根位置、移位距离等解释作用；但上述移位等式来源和 φ 的定义仍需学生自行补一小步，因此更符合4分而非5分。实际截图与操作记录只验证了初始第1步以及滑块在 a=1、1.8 时的反馈；其余标签页的教学内容依据页面源码可见逻辑评估，未由操作截图直接验证。",
+          "overall_score": "题设中的函数、定义域、两问及第(2)问的两个小问均完整保留。独立核算表明各结论和关键推导正确：(1)在x>0时化为a≤g(x)=(e^x−1)/x−x/2，并通过g′分子N满足N(0)=0、N′(x)=2x(e^x−1)>0证明g递增，结合x→0+时g(x)→1得到a≤1；(2)(i)正确区分a≤0与a>0，并由唯一极小点t=ln a及极小值a(1−ln a)−3≤−2推出恰有两个零点当且仅当a>0；(2)(ii)以x1=t−u、x2=t+v完成移位，得到e^v−e^(−u)=u+v，再引入r=e^(u+v)>1，将目标化为H(r)=(r+3)ln r−3(r−1)>0，并用H′的最小值H′(3)=ln3−1>0严格证明。教学链从条件转化、单调性、两根条件、移位到辅助函数证明逐步展开，关键非显然转换均给出可见依据，图中曲线、极限、参数线、零点和移位长度与公式对应；演示滑块范围与完整数学范围也有明确区分。桌面截图中首步布局清楚，无明显重叠或裁切，且实际记录验证了滑块在中间值和上界时图形、数值、判定及失败区同步变化。源码显示其余步骤标签、复位和分步渲染均已实现，但操作记录未实际点击步骤标签，因此后续步骤的动态呈现和视觉状态只能依据源码确认，不能视为截图实测；这一证据限制未显示出页面本身的实质缺陷。整体达到从题设到结论可理解并可复述的优秀教学材料标准。"
+        },
+        "reference_concern": "",
+        "summary": "内容完整、数学正确，分步可视化承担了关键关系的解释，整体教学链完整清晰；现有实测主要覆盖首步滑块，未发现实质缺陷。"
+      },
+      "judge_status": "completed"
+    },
+    {
+      "job": "hard-v1_physics_013_W0",
+      "task_id": "20261021_152640_540_9d5ee5d3",
+      "status": "failed",
+      "sample": {
+        "run_status": "failed",
+        "completed_rounds": 1,
+        "id": "BF326FBCC",
+        "question_id": "physics_013",
+        "set": "calibration",
+        "workflow_id": "W0",
+        "batch": "hard-v1",
+        "task_id": "20261021_152640_540_9d5ee5d3",
+        "round_number": 1,
+        "html": "runs/artifacts/20261021_152640_540_9d5ee5d3/20261021_153627_928_round_01.html",
+        "html_sha256": "a1f6aa4ed4ec7afe22d6bfd4b5583336c3ec169fae9e5c95254d47f9f2d033a5",
+        "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+        "inspection": "runs/artifacts/20261021_152640_540_9d5ee5d3/evidence/a1f6aa4ed4ec7afe/public.json",
+        "screenshots": [
+          "runs/artifacts/20261021_152640_540_9d5ee5d3/evidence/a1f6aa4ed4ec7afe/00_initial.png",
+          "runs/artifacts/20261021_152640_540_9d5ee5d3/evidence/a1f6aa4ed4ec7afe/01_next_step.png",
+          "runs/artifacts/20261021_152640_540_9d5ee5d3/evidence/a1f6aa4ed4ec7afe/02_slider_mid.png",
+          "runs/artifacts/20261021_152640_540_9d5ee5d3/evidence/a1f6aa4ed4ec7afe/03_slider_high.png"
+        ]
+      },
+      "rounds": [
+        {
+          "number": 1,
+          "html_name": "20261021_153627_928_round_01.html",
+          "passed": 0,
+          "summary": "前两问条件、计算和主要图示正确，但第（3）问间距曲线在A于8s停车后的趋势画反，且第（3）问结论在初始页面提前展示；A停车的分段推导与相遇后的速度差解释不足，存在实质误导，故不通过。"
+        }
+      ],
+      "api_seconds": 345.99880687199766,
+      "successful_api_seconds": 340.4560373400018,
+      "failed_api_seconds": 5.542769531995873,
+      "stage_metrics": {
+        "reviewer": {
+          "calls": 1,
+          "seconds": 156.35286939800426,
+          "known_tokens": 34509,
+          "cost": {
+            "known_cost_cny": 0.11532599999999998,
+            "missing_token_fields": 0,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        },
+        "generator": {
+          "calls": 3,
+          "seconds": 189.6459374739934,
+          "known_tokens": 39230,
+          "cost": {
+            "known_cost_cny": 0.1805316,
+            "missing_token_fields": 4,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        }
+      },
+      "known_tokens": 73739,
+      "calls_missing_usage": 2,
+      "cost": {
+        "known_cost_cny": 0.29585759999999994,
+        "missing_token_fields": 4,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 4,
+          "solution_correctness": 3,
+          "page_quality": 4,
+          "interaction_quality": 3,
+          "teaching_effectiveness": 4
+        },
+        "overall_score": 4,
+        "issues": [
+          "第（3）问的纵轴标为“间距 d / m”，但曲线在两车相遇后取负值；这里实际表示带符号的相对位置差，而不是通常非负的几何间距，量的含义标注不够准确。",
+          "第（3）问中 t>8 s 的分段函数写成 d=x₀+64−4t−0.5t²。若 d 在前一段定义为“B的位置−A的位置”，A于8 s后停在64 m、B继续加速前进，则应为 d=x₀+4t+0.5t²−64；页面在8 s后的紫色曲线方向错误。该错误不改变两次相遇条件，因为0<x₀<24时两个相遇时刻均严格落在0到8 s内，但辅助图超出8 s的部分与原运动不一致。",
+          "步骤②给出的 d(t)=56+12t−1.5t²未标注仅适用于0≤t≤8 s；A停车后应使用新的分段关系。后续步骤⑤实际按停车后的模型求解，因此答案未被这一省略改换。",
+          "第（3）问的间距函数在 t>8 s 时符号错误。源码使用 d=x₀+64−4t−0.5t²，但 A 停止后应有 d=x_B−x_A=x₀−64+4t+0.5t²；当前曲线在 t=8 s 后向下，物理上应向上。这会在较小正 x₀ 时画出额外的错误过零趋势，与“只相遇两次”的状态文字冲突。",
+          "步骤②给出 d(t)=56+12t−1.5t²，却未注明仅适用于 0≤t≤8 s。页面允许把时间拖到14 s，此时该公式仍显示，但 A 已停止，正确间距应改用 d(t)=120−(4t+0.5t²)；操作后截图中 t=14 s 的实际间距为34 m，而直接使用当前展示公式会得到错误结果。",
+          "俯视道路图最右端的“160”刻度与“位置 / m”轴标题距离过近，截图中视觉上挤连在一起，降低该处辨识度。",
+          "道路图的绿色间距数值贴近 SVG 下边界，在 56 m、74 m 等状态下留白偏少，呈现略显局促。",
+          "整页内容较长且图表较多，但步骤说明与第三问图同时持续展示，信息密度略高，需要纵向浏览才能完整对应各部分。",
+          "时间滑块在 t=0、2、7、14 s 的截图中可见车辆位置、位置图、速度图、时刻和数值读数同步变化，但步骤②仍固定显示 d(t)=56+12t−1.5t²；该式只适用于 A 停车前的 0≤t≤8 s。实测拖到 t=14 s 时，页面读数和图形给出间距 34 m，而固定公式代入会得到 −70 m，造成同一交互状态下公式与图形、数值明显不一致。",
+          "第三问图的源码在 t>8 s 使用 d3=x₀+64−4t−0.5t²，其变化方向与 A 停车后 B 继续前进的物理关系相反；曲线在 t=8 s 后出现错误折返。虽然主要的两次相遇交点均位于 0到8 s 内，但该边界后的反馈具有误导性。",
+          "第三问 x₀ 滑块标明当前值且源码范围为 0到40 m、步长0.5 m，状态区会区分两次、相切一次和不相遇，但界面没有端点刻度；更重要的是实际操作记录只操作了页面第一个时间滑块，未覆盖 x₀ 滑块及 x₀=0、24、40 等边界，因此这些状态的实际呈现未被截图验证。",
+          "“下一步”操作已验证能从第1步进入第2步并自动把时间设为2 s；其余步骤、上一步、播放、暂停和复位仅能从源码确认已绑定处理逻辑，没有实际操作记录验证。",
+          "步骤②给出 d(t)=56+12t−1.5t²，却未在公式旁标明只适用于 0≤t≤8 s；时间滑块可继续拖到14 s，此时页面仍显示该公式，而实际位置图已按“A在8 s停车”分段计算，学生可能混淆公式的适用范围。",
+          "第（3）问的间距图在 t>8 s 的延伸方向错误：A停车后，若 d 表示“前车B位置−后车A位置”，应为 d=x₀−64+4t+0.5t²并继续增大；页面曲线却在8 s后向下。这不影响0<x₀<24时两个交点均位于0到8 s内的结论，但会误导学生对停车后间距变化的理解。",
+          "第（3）问图在页面初始状态就完整显示曲线、交点和状态结论，早于步骤⑥对 d(t)、最小值和两次过零条件的解释；按实际阅读顺序，学生可能先看到尚未定义的紫色间距函数和“x₀−24”，增加局部理解负担。",
+          "第（3）问把 d 标为“间距”，但曲线在两次相遇之间取负值；这里实际是有正负方向的相对位置差。页面没有明确给出 d=x_B-x_A 及负值表示“A已超过B”，与上方始终取绝对值的“两车间距”读数也不一致，可能使学生困惑于物理距离为何为负。",
+          "第（3）问的分段函数在 t>8 s 时写成 x₀+64−4t−0.5t²，方向错误。A停车后应有 d=x_B−x_A=x₀−64+4t+0.5t²；因此图中曲线在 t=8 s 后向下弯的尾段不正确。两次相遇的判定所用交点均位于0至8 s内，所以不改变0<x₀<24 m的核心结论，但属于可见的局部数学误导。",
+          "实际操作记录只验证了“下一步”一次以及时间滑块的中点7 s和上界14 s；第（3）问的x₀滑块、播放、回退和重置没有操作记录，因而这些交互只能依据源码判断设计逻辑，不能视为已完整运行验证。"
+        ],
+        "evidence": {
+          "problem_fidelity": "页面保留了原题的两车对象、同向运动、A在前/B在后、初距56 m，以及A的v₀=16 m/s、a=−2 m/s²和B的v₀=4 m/s、a=1 m/s²。三个小问均有对应内容：第（1）问得到t=4 s、最大间距80 m；第（2）问明确考虑A在8 s停止于120 m并得到相遇时刻12 s；第（3）问交换前后位置，给出并可视化0<x₀<24 m。主位置图和速度图的横纵轴、单位及分段停车模型与原题相符，操作记录也验证了时间滑块在t=7、14时更新，且无运行错误。距5分的主要差距是第（3）问辅助曲线在8 s后的物理关系错误，以及将有符号相对位移直接标成“间距”；这是局部模型问题，但未改变三个小问的结论和合法范围。操作记录只实际改变了时间滑块，未验证x₀滑块的各边界状态；相关边界行为依据源码判断。",
+          "solution_correctness": "独立计算可得：A 在 t=8 s 停止于 x=120 m；0≤t≤8 时 d=x_A−x_B=56+12t−1.5t²，导数为12−3t，因此 t=4 s 取最大值80 m；之后令 x_B=120，得到 t=12 s，相应前两问结论及主位置、速度图数值正确。第（3）问在0≤t≤8内，d=x₀−12t+1.5t²，最小值为x₀−24，结合“A在后、B在前”所要求的x₀>0，恰有两次相遇的范围确为0<x₀<24 m，x₀=18时两根2 s和6 s也正确。实际记录验证了主时间滑块在7 s和14 s的显示，且无运行错误；第三问滑块未被实际操作记录覆盖，但其错误的 t>8 分段可由源码直接确认。由于全部最终答案和核心推导成立，但两个可交互图文状态存在明显的分段运动错误，未达到4分所需的整体可靠性。",
+          "page_quality": "在 1280×900 桌面视口对应的初始、下一步、t=7 和 t=14 截图中，标题、参数、车辆、读数、两张主图、步骤区和第三问图均能清楚辨认；蓝橙车辆及曲线对应一致，坐标刻度、当前时刻虚线、间距线和状态框未见实质性重叠或裁切。不同操作状态下布局稳定，曲线阴影和动态标注仍保持可读，视觉层级也较明确。未达到5分主要是道路图右端轴标拥挤、间距文字贴边，以及长页面信息密度稍高等局部问题；这些问题不妨碍核心阅读，因此更接近4分而非3分。操作记录未覆盖全部六个步骤及第三问滑块的多个取值，未验证状态不作额外断言。",
+          "interaction_quality": "控制量来源总体清楚：时间滑块显示0到14 s刻度并在旁边实时显示t，第三问显示x₀当前值；控件与受影响图表距离合理。实际截图验证了点击“下一步”后步骤变为2/6且t同步到2 s，也验证了时间滑块到7 s和14 s时，俯视车辆、两车位置与速度读数、位置图当前点和间距线、速度图当前点与阴影同步更新，具有观察“速度差决定间距增减”的教学意义。源码还显示时间滑块以0.02 s步进并统一调用render，播放和复位也复用同一状态。然而，已验证的t=14 s状态直接暴露出步骤公式与动态反馈不同步，第三问在停车边界后的曲线模型也有错误；因此只能评为基本可用，尚不足以达到“反馈同步、仅少量局部问题”的4分。",
+          "teaching_effectiveness": "学生起点总体清楚：页首列出A在前、B在后、两车初速度与加速度及56 m初距，俯视图和同色读数把对象、位置、速度对应起来。页面提供了较完整的“条件→表示→关系→结论”链条：先由匀变速条件写出 x_A=56+16t−t²、x_B=4t+0.5t²，并在位置—时间图中把同一时刻的竖直高度差解释为间距；再用速度—时间图说明 v_A>v_B时间距增大、v_A<v_B时缩小，由16−2t=4+t得到t=4 s，代回得最大间距80 m；之后明确A在8 s停车，令B的位置等于120 m得到相遇时刻12 s。第（3）问也把换位后的间距表示为 d=x₀−12t+1.5t²，用顶点最小值x₀−24与两次穿越零线建立联系，推出0<x₀<24 m；初始截图中x₀=18 m时图上两个交点t=2 s、6 s与公式一致，因此学生有依据复述主要解法。可视化确实承担了说明作用：时间滑块同步改变车辆位置、两张曲线上的当前点、位置高度差及速度差阴影；操作记录验证了“下一步”可进入步骤②以及时间滑块在7 s、14 s时有相应反馈，且无运行错误。未实际操作第（3）问的x₀滑块，也未逐项点击到步骤③至⑥，因此这些交互状态只能依据给出的源码和截图判断，不能视为全部实操验证。整体关键转化可循序理解，达到良好水平；但分段函数适用域提示不足及第三问8 s后的错误曲线，使其尚不属于无实质缺陷的5分。",
+          "overall_score": "题设中的两车初始位置、初速度、加速度、56 m初距及三个小问均被覆盖。页面正确处理A在8 s停车：第（1）问通过速度图交点得到t=4 s，并由位置差算出最大间距80 m；第（2）问使用A停车后的固定位置120 m得到t=12 s；第（3）问在0至8 s内用d=x₀−12t+1.5t²、最小值x₀−24和两次过零说明0<x₀<24 m，核心结果均可独立核算。教学链条从位置函数、曲线竖直差、速度相等、最大间距到相遇条件逐步展开，位置图、速度图、道路示意和数值读数随时间同步；截图中7 s与14 s状态的车辆位置、速度和绝对间距也与模型一致，桌面布局清楚且未见重叠裁切。相较3分，页面不仅给出答案，还提供了较完整且有意义的图文联动，整体教学效果良好；未到5分的主要原因是第（3）问混用“间距”和有符号相对位置，并且8 s后的曲线模型确有错误，学生若继续追问负值含义或停车后的走势会受到误导。"
+        },
+        "reference_concern": "参考答案第（3）问只写x₀<24 m，未显式给出下界。由于x₀是初始间距且题目要求相遇两次，应排除x₀=0，严格范围应为0<x₀<24 m；候选页面在这一点上比参考答案更完整。\n参考答案第（3）问只写x₀<24 m，未显式写出x₀>0；若“初始间距”及“A在后、B在前”已约定严格正距离，则该下界是隐含条件，否则参考答案边界不完整。\n参考答案第（3）问仅写x₀<24 m；若“初始间距”按通常定义为正数，则候选页写成0<x₀<24 m是更完整的边界表述，不构成页面效果问题。\n参考答案第（3）问只写x₀<24 m，未显式给出距离应满足x₀>0；若按“初始间距”的通常定义，应为0<x₀<24 m。候选页面对此作了更严谨的边界区分。\n参考答案第（3）问仅写x₀<24 m，未明确下界。若“初始间距”按物理语境默认为正数，该写法可视为省略x₀>0；若允许x₀=0，则出发时已同位置，之后只有一次重新相遇，不能算通常意义上的相遇两次。候选页面给出的0<x₀<24 m更严谨。其余两问80 m、4 s、12 s与题设计算一致。\n参考答案第（3）问只写x₀<24 m，未显式写下界；按“A在后、B在前”和“初始间距”的题意通常隐含x₀>0，因此候选页写成0<x₀<24 m更严谨。参考解析还默认A减速至8 s后停车，这与常见车辆情境及第（2）问答案12 s一致，但原题“匀变速直线运动”的字面表述没有单独说明停车后模型，存在轻微表述歧义。",
+        "summary": "核心计算、三个小问和主要可视化教学链均较完整，整体适合作为本题教学材料；但第（3）问对有符号相对位置的命名不严谨，且8 s后的曲线公式错误，故评为4分而非5分。"
+      },
+      "judge_status": "completed"
+    },
+    {
+      "job": "hard-v1_physics_013_W2",
+      "task_id": "20261021_152655_882_31ed1067",
+      "status": "failed",
+      "sample": {
+        "run_status": "failed",
+        "completed_rounds": 3,
+        "id": "B936A825C",
+        "question_id": "physics_013",
+        "set": "calibration",
+        "workflow_id": "W2",
+        "batch": "hard-v1",
+        "task_id": "20261021_152655_882_31ed1067",
+        "round_number": 3,
+        "html": "runs/artifacts/20261021_152655_882_31ed1067/20261021_154713_375_round_03.html",
+        "html_sha256": "14587373e3482e041aacbf2756333e030f6e60b6bd24897d97c3a72083317ee3",
+        "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+        "inspection": "runs/artifacts/20261021_152655_882_31ed1067/evidence/14587373e3482e04/public.json",
+        "screenshots": [
+          "runs/artifacts/20261021_152655_882_31ed1067/evidence/14587373e3482e04/00_initial.png",
+          "runs/artifacts/20261021_152655_882_31ed1067/evidence/14587373e3482e04/01_next_step.png",
+          "runs/artifacts/20261021_152655_882_31ed1067/evidence/14587373e3482e04/02_slider_mid.png",
+          "runs/artifacts/20261021_152655_882_31ed1067/evidence/14587373e3482e04/03_slider_high.png"
+        ]
+      },
+      "rounds": [
+        {
+          "number": 1,
+          "html_name": "20261021_153928_796_round_01.html",
+          "passed": 0,
+          "summary": "核心题意、公式和结果正确，首屏也先建立原题关系；但第（3）问的相对速度符号与间距解释不够一致，关键点提示还存在写死数值与实时读数不同步的问题。"
+        },
+        {
+          "number": 2,
+          "html_name": "20261021_154322_631_round_02.html",
+          "passed": 0,
+          "summary": "页面正确复现了原题条件、运动过程与三问结论；图文同步、标注清楚，交互反馈与控件距离合理。主要扣分点在于关键判据和部分公式的推导仍偏结论化，学生需要自行补足若干中间解释。"
+        },
+        {
+          "number": 3,
+          "html_name": "20261021_154713_375_round_03.html",
+          "passed": 0,
+          "summary": "题目条件、三类结论和数值均正确，场景与两张图能随时间同步，整体教学主线清楚；仍需修正时间读数的字号层级、第（3）问结论的就近反馈，并避免小间距时车辆图标重叠造成误读。"
+        }
+      ],
+      "api_seconds": 977.1769969159795,
+      "successful_api_seconds": 973.6496367619839,
+      "failed_api_seconds": 3.527360153995687,
+      "stage_metrics": {
+        "reviewer": {
+          "calls": 3,
+          "seconds": 479.1929327199905,
+          "known_tokens": 126616,
+          "cost": {
+            "known_cost_cny": 0.39046439999999993,
+            "missing_token_fields": 0,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        },
+        "generator": {
+          "calls": 5,
+          "seconds": 497.98406419598905,
+          "known_tokens": 128466,
+          "cost": {
+            "known_cost_cny": 0.46811519999999995,
+            "missing_token_fields": 4,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        }
+      },
+      "known_tokens": 255082,
+      "calls_missing_usage": 2,
+      "cost": {
+        "known_cost_cny": 0.8585795999999999,
+        "missing_token_fields": 4,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 4,
+          "solution_correctness": 5,
+          "page_quality": 4,
+          "interaction_quality": 4,
+          "teaching_effectiveness": 4
+        },
+        "overall_score": 5,
+        "issues": [
+          "候选页在 t=8 s 后将 A 车固定在 120 m，并据此得到第（2）问 t=12 s；原题只写“以 2 m/s² 的加速度减速行驶”和“匀变速直线运动”，没有明确说明速度降为零后停车、不反向。这是影响第（2）问结果的额外模型假设。",
+          "第（3）问的 x₀ 交互滑块只覆盖 1～40 m，未直接展示全部正数范围；不过页面明确归纳出 0<x₀<24 m，并展示 x₀=24 与 x₀>24 的情形，因此未改换核心问题。",
+          "两张底部图表的坐标刻度、轴标题和曲线旁注字号偏小，尤其“0轴：相遇”“A停”等标注在当前桌面截图中阅读需要靠近查看。",
+          "右侧栏同时容纳时间控制、关键观察、实时读数和结论，信息块较密；与左侧较宽松的道路图区相比，视觉密度略不均衡。",
+          "操作记录只展示了原题模式下时间滑块的0、7、14秒状态，未提供第（3）问模式的实际截图，因此该模式中公式、交点及临界状态的视觉呈现无法按截图确认。",
+          "时间滑块虽然由源码限定为原题0–14 s、第（3）问0–10 s，但界面未标出端点或合法时间范围，用户主要依赖滑块位置和图轴推断范围。",
+          "第（3）问的x₀滑块源码范围为1–40 m，界面只显示当前值及18、24、30 m预设，没有明确展示1 m和40 m端点；控制量含义清楚，但可调范围不够直观。",
+          "实际操作记录只覆盖原题时间滑块的0、7、14 s状态；播放、关键时刻按钮、情形切换、x₀滑块及临界状态没有被实际操作验证，其效果只能由源码确认。",
+          "第（2）问的讲解先把“A 停在 120 m”作为已知事实，再据此列出 B 的位置方程；页面虽可通过“A 停下的时刻”和实时读数观察到该数值，但没有像第（1）、（3）问那样在结论区完整写出由 vA=16−2t 得 t=8 s、再由位移公式得 64 m、加初始位置得 120 m 的连续推导，学生复述时需要自行补一小段。",
+          "第（3）问中写“A 的位移 xA=16t−t²”，同时把 xB=x₀+4t+½t²称为位置，位置与位移术语略有混用；结合切换后的坐标设定仍能理解，但会增加局部辨认负担。",
+          "实际操作记录只验证了时间滑块在 t=7 s、14 s 的反馈，没有点击“找最大间距”“求相遇时间”、情形切换或第（3）问的归纳按钮；这些按钮后的分步公式和结论只能由源码确认其设计存在，不能断言截图层面已经实际验证显示效果。",
+          "操作记录仅实际验证了原题模式下时间滑块的中点与上界状态，未实际点击“找最大间距”“求相遇时间”、播放、回退及第（3）问切换；这些功能的逻辑可由源码核对，但其操作后的桌面呈现没有截图实证。"
+        ],
+        "evidence": {
+          "problem_fidelity": "页面保留了同向平直公路、初始前后关系、56 m 初距、A/B 初速度 16/4 m·s⁻¹、A/B 加速度大小 2/1 m·s⁻²及全部三问。原题情形与第（3）问交换前后位置被分为两个明确模式；第（1）（2）问结论分别为 4 s、80 m 和 12 s，第（3）问归纳为 0<x₀<24 m。速度图的横轴为 t/s、纵轴为 v/(m·s⁻¹)；另一图明确使用有符号相对位置 S=xA−xB 或 D=xB−xA，并反复标明实际间距为其绝对值，没有把相对位置差直接冒充间距。操作记录仅实际验证了原题模式下时间滑块在 0、7、14 s 的状态变化；第（3）问模式及其 x₀ 控件未由记录实际点击验证，但源码完整提供了对应模式、公式、交点计数和结论。整体与参考采用的停车模型高度一致，仅模型前提在原题中不够明确，故未评为完整无实质疑点的5分。",
+          "solution_correctness": "独立核算与候选页面一致：（1）A停车前相对位置差S=56+(16-4)t-1.5t²=56+12t-1.5t²，S'=12-3t，故t=4 s取最大值80 m；（2）A在t=8 s停于绝对位置120 m，B满足4t+0.5t²=120，正根t=12 s；（3）交换前后位置后，t≤8 s时D=xB-xA=x₀-12t+1.5t²，其最小值为D(4)=x₀-24。两次相遇要求初始间距为正且最小值严格小于0，因此0<x₀<24 m；对应两根4±√(16-2x₀/3)均位于0至8 s之间，未错误延伸到A停车后的运动段。页面的位置、速度及分段停车模型也一致：t=7 s时A、B位置分别为119 m、52.5 m，间距66.5 m；t=14 s时分别为120 m、154 m，间距34 m，均与操作截图相符。速度图在t=8 s后令A速度为0，相对位置图也使用A停在120 m或64 m的分段位置。实际操作记录只验证了原题模式的t=7 s和t=14 s状态；第（3）问的切换与参数预设未被实际点击，但其公式、边界和根数逻辑可由源码核实。",
+          "page_quality": "1280像素宽桌面截图中，道路示意、两车、间距括号、速度箭头、两张函数图和右侧实时读数均有明确分区；初态、7秒和14秒状态下未见文字重叠、关键标注裁切或控件遮挡，车辆接近右端时仍完整可见。标题、主场景、图表、控制区和读数区层级清楚，颜色对应A/B一致，动态竖线也能在两图中建立当前时刻的对应关系。整体已达到清楚且布局合理的良好水平；但图表细字和右栏密度仍构成局部阅读负担，加之第（3）问复杂状态缺少截图证据，尚不足以认定为所有复杂状态都完整清晰的5分。源码显示第（3）问有独立模式和响应式绘图逻辑，但这不能替代实际截图验证。",
+          "interaction_quality": "原题时间滑块的实际记录覆盖初态、中值7 s和上限14 s，且无运行错误。截图显示操作到7 s后，道路车辆位置、速度箭头、间距标注、两张图的同步竖线与取值点、实时速度/位置/间距及状态提示均同步更新；到14 s时也一致显示A停在120 m、B位于154 m、B在前且间距34 m，说明主要反馈同步且能就近观察。源码进一步表明时间滑块、±0.5 s、播放和关键时刻按钮共用render更新场景、速度图、相对位置图、实时读数与文字状态；关键按钮会跳至t=4、8、12 s并揭示最大间距、停车和相遇关系，具有明确教学意义。第（3）问源码提供情形切换、x₀调节、18/24/30 m预设、交点次数和D_min同步反馈，可用于检验0<x₀<24 m这一关键条件。整体已达到良好，但控制范围标示不完整，且多项关键交互缺少实际操作覆盖，因此不足以认定为“完整清晰、无实质缺陷”的5分。",
+          "teaching_effectiveness": "学生起点较清楚：首屏直接给出 A、B 的前后关系、56 m 初距、两车初速度及加减速度，车辆颜色、道路位置、速度箭头、实时读数与题设对象能够对应。页面形成了可跟随的“条件→表示→关系→结论”主线：由 vA=16−2t、vB=4+t 表示速度，在速度—时间图中看到两线于 t=4 s 相交；页面明确写出“S 的变化率=vA−vB”，并说明相交前 S 增大、相交后 S 减小，进而得到 t=4 s 时间距最大，再以 S=56+12t−1.5t²算得 80 m。截图中的 t=7 s 状态也同步显示 vA<vB、相对速度为负、间距曲线下降和道路间距缩小，使图形确实承担了因果解释，而不只是展示答案。相遇部分通过 A 在 t=8 s 后静止、B 继续加速、令 xB=120 m 得 t=12 s，主线基本可复述。第（3）问则把前后位置交换后定义 D=xB−xA，合并得到 D=x₀−12t+1.5t²，以 vA=vB 对应 t=4 s 的极小值 Dmin=x₀−24，并用 D 穿过零轴两次归纳 0<x₀<24 m；这比参考答案只列结果更完整。整体关键转换均有可见文字或图形依据，达到良好水平；距5分主要差在第（2）问的120 m来源没有在最终推导中完全展开，以及关键揭示状态未被实际操作截图验证。",
+          "overall_score": "题设与参考结论一致，且页面独立计算正确：（1）由vA-vB=12-3t在t=4 s变号，得到最大间距S=56+12t-1.5t²=80 m；（2）A在t=8 s停于120 m，B满足4t+0.5t²=120，得t=12 s；（3）交换前后位置后，D=xB-xA=x₀-12t+1.5t²，在t=4 s取最小值x₀-24，结合初始间距为正，得到两次相遇条件0<x₀<24 m。候选页面完整覆盖三个小问，并正确处理A停车后的分段运动。对刚读题的学生，起点通过道路位置、速度箭头、初始间距和实时读数建立对象对应；关键转化通过速度—时间图与相对位置差—时间图的同一时刻竖线、相对速度正负和间距曲线增减解释，能够看出为何速度相等对应最大或最小间距，而非只展示答案。第（2）问还把A停车这一分段节点单独呈现，第（3）问提供x₀、D的交点数、临界24 m及D_min之间的联动，并给出从位置式到条件的完整推导，足以支持学生复述解法。截图所示1280桌面布局清楚，车辆、坐标轴、曲线、读数和控制区无明显重叠或裁切；实际记录验证时间滑块在t=7 s和t=14 s时车辆位置、速度、间距、曲线指示同步且数值正确，运行无报错。虽然部分按钮和第（3）问缺少实际操作截图验证，但现有源码与已验证联动未显示实质缺陷，整体达到优秀教学材料标准。"
+        },
+        "reference_concern": "参考答案第（2）问同样默认 A 在 t=8 s 速度降为零后停住，但原题未明确给出“停车后保持静止”。若严格按恒加速度运动并允许 A 反向，则相遇方程为 56+12t−1.5t²=0，正根约为 11.30 s，而不是12 s；因此参考答案依赖通常的汽车减速至停下后不倒退这一隐含约定。第（3）问参考写 x₀<24 m，作为“初始间距”还应隐含 x₀>0，候选页写成 0<x₀<24 m 更完整。\n参考答案的最终结果正确，但第（2）问解析中先记B在8 s内位移x₂=64 m，随后又使用含t₂的表达式，符号复用和等式书写较含混；第（3）问只写x₀<24 m，未显式写出作为正初始间距应有的x₀>0。候选页面给出的0<x₀<24 m更完整。\n题设与参考结论基本一致：（1）4 s、80 m；（2）12 s；（3）若x₀表示正的初始间距，则条件为0<x₀<24 m。参考答案只写x₀<24 m，正值下界依赖“间距”默认非负；参考解析第（2）问还出现“B的位移x₂=64 m”后又写x₂+x₀等式的符号表述不够严谨，但最终12 s与题设相符。\n参考结果（1）4 s、80 m和（2）12 s与题设计算一致。（3）参考写x₀<24 m，若“初始间距”按通常定义已默认x₀>0则可接受；严格写条件应为0<x₀<24 m，候选页面对此表述更完整。参考解析第（2）问中位移与位置记号较含混，但最终答案正确。\n参考答案的三个结论可独立核实。参考解析第（2）问存在符号表述混乱：先称B在8 s内位移为64 m，随后又以x₂+x₀等式求总相遇时刻，容易混淆分段位移与从初始时刻计时；但最终t=12 s正确，候选页面采用A停在120 m后令B位置等于120 m的写法更清楚。第（3）问参考只写x₀<24 m，严格说还应结合“初始间距”给出x₀>0；候选页面明确写为0<x₀<24 m，数学上更完整。",
+        "summary": "页面完整、正确地覆盖三问，图形联动承担了相对速度、间距极值、停车分段和两次相遇条件的核心解释，桌面呈现清晰，整体可直接用于本题教学。"
+      },
+      "judge_status": "completed"
+    },
+    {
+      "job": "hard-v1_chemistry_013_W0",
+      "task_id": "20261021_152657_454_24af324b",
+      "status": "failed",
+      "sample": {
+        "run_status": "failed",
+        "completed_rounds": 1,
+        "id": "B6AA79355",
+        "question_id": "chemistry_013",
+        "set": "calibration",
+        "workflow_id": "W0",
+        "batch": "hard-v1",
+        "task_id": "20261021_152657_454_24af324b",
+        "round_number": 1,
+        "html": "runs/artifacts/20261021_152657_454_24af324b/20261021_154500_079_round_01.html",
+        "html_sha256": "dec1388ee00fdbecf1c7dfa11f769ae29755c918ae2f5121181760df208a9f15",
+        "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+        "inspection": "runs/artifacts/20261021_152657_454_24af324b/evidence/dec1388ee00fdbec/public.json",
+        "screenshots": [
+          "runs/artifacts/20261021_152657_454_24af324b/evidence/dec1388ee00fdbec/00_initial.png",
+          "runs/artifacts/20261021_152657_454_24af324b/evidence/dec1388ee00fdbec/01_next_step.png",
+          "runs/artifacts/20261021_152657_454_24af324b/evidence/dec1388ee00fdbec/02_slider_mid.png",
+          "runs/artifacts/20261021_152657_454_24af324b/evidence/dec1388ee00fdbec/03_slider_high.png"
+        ]
+      },
+      "rounds": [
+        {
+          "number": 1,
+          "html_name": "20261021_154500_079_round_01.html",
+          "passed": 0,
+          "summary": "页面结构清晰、主要交互能同步更新，题目的多数核心答案正确；但第（6）问的NMR组数与部分结构命名存在化学错误，且页面多处直接泄露答案，未展示9种同分异构体的系统枚举依据，不能通过。"
+        }
+      ],
+      "api_seconds": 519.0464470430015,
+      "successful_api_seconds": 502.5059248280013,
+      "failed_api_seconds": 16.540522215000237,
+      "stage_metrics": {
+        "reviewer": {
+          "calls": 1,
+          "seconds": 161.92827885400038,
+          "known_tokens": 36793,
+          "cost": {
+            "known_cost_cny": 0.1248852,
+            "missing_token_fields": 0,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        },
+        "generator": {
+          "calls": 3,
+          "seconds": 357.11816818900115,
+          "known_tokens": 61714,
+          "cost": {
+            "known_cost_cny": 0.2873028,
+            "missing_token_fields": 4,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        }
+      },
+      "known_tokens": 98507,
+      "calls_missing_usage": 2,
+      "cost": {
+        "known_cost_cny": 0.412188,
+        "missing_token_fields": 4,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 4,
+          "solution_correctness": 3,
+          "page_quality": 4,
+          "interaction_quality": 4,
+          "teaching_effectiveness": 2
+        },
+        "overall_score": 3,
+        "issues": [
+          "第（6）问页面保留了分子式、与Na反应、含两个–OCH₃及“9种”等内容，但没有明确保留原题“不考虑立体异构”的计数范围；页面实际仅列构造异构体，含义基本一致，但约束表述不完整。",
+          "第（7）问将原题“其他无机试剂任选”的开放路线设计改成了三步单选流程，只呈现O₂/Cu、CH₃NO₂/碱、H₂/Ni等预设选项；所得对象和路线与原题相符，但原题允许的合法作答范围被收窄。",
+          "I→J部分把原题中的完整稠环结构简化为“环状骨架—CH₂—NHBoc”，虽能明确对应Boc脱除这一小问，但没有完整保留I、J的具体结构对象。",
+          "同分异构体模块的部分¹H NMR积分数据不可能成立：结构3的groups为[1,3,2,2,3]、结构5为[2,1,3,2,3]，积分均仅合计11H，而分子式C₅H₁₂O₃应合计12H，均漏计了1个羟基氢；因此这些结构的“峰数与峰面积比”展示不可靠。",
+          "同分异构体命名有明确错误：HOCH₂CH(OCH₃)CH₂OCH₃应按羟基最低位次命名为2,3-二甲氧基丙-1-醇，页面却写成1,3-二甲氧基丙-2-醇；HOCH₂CH₂CH(OCH₃)₂应为3,3-二甲氧基丙-1-醇，页面写成1,1-二甲氧基丙-3-醇。",
+          "F→G虽正确判断为消去反应，但页面称“–OH与相邻H以H₂O形式脱去”“醇的脱水”不准确；CH₃SO₂Cl先将羟基转化为甲磺酸酯离去基，随后碱促消去，离去过程不能表述为直接脱水。",
+          "路线总览卡片中三行流程集中在左侧约三分之二宽度，试剂文字和箭头偏小、节点间距较紧，而右侧留有较大空白，长路线的横向空间利用不够均衡。",
+          "页面主体约在视口上部三分之二处结束，下方存在较大空白；已知反应卡片也较宽但内容较少，整体信息密度分布略显失衡。",
+          "操作后提供的截图与初始截图相同，未展示各分页面及化学结构的实际视觉状态，因此无法核实复杂结构、同分异构体网格和后续步骤中是否存在标注拥挤或裁切。",
+          "实际操作记录中的“下一步：Fe / HCl 还原 →”来自当时未激活的 p1 面板；操作脚本没有检查按钮可见性，因此虽然源码状态会从 A 更新为 B，四张截图仍都停留在路线总览，不能据此确认用户可见的操作后反馈。",
+          "A→C 的错误位点点击只在下方提示文字中显示错误原因，所点击位点本身没有持续的错误标记；正确点击则立即切换到答案结构，位点选择与结果的视觉对应还可更明确。",
+          "合成设计中的错误选项虽会变红并抖动，但提示仅为“这一步需要的是哪种反应”，反馈较泛；正确选项又会立即进入下一阶段，缺少对刚完成转化的短暂确认。",
+          "D→G、I→J等步骤的控制与反馈均在左右相邻区域，但多为点击后整体替换结构简式，关键键变化主要靠颜色和说明文字表达，没有对断键、成键或离去基团进行更细的动态对应。",
+          "起始“路线总览”只显示 A～K 字母节点和试剂，没有呈现原题中各物质的结构；后续 I→J 又用“环状骨架”占位。刚读完题但不会做的学生需要反复依赖题图记忆，难以把页面对象与原题结构稳定对应。",
+          "第（6）问直接宣布“碳骨架只能是丙烷链”和“9种”，随后列出全部结构，却没有展示如何按羟基、两个甲氧基的连接位置进行分类、去重并计数。¹H NMR 的峰组和积分也由页面直接给定，仅对命中结构解释等价甲氧基等结论；学生无法据此独立复述“为什么恰有9种”以及各结构峰数如何逐一判断，这是关键步骤缺失。",
+          "F→G 虽通过前后式子提示少了 –OH 和相邻 H、生成 C=C，但把过程表述成“以 H₂O 的形式脱去”“醇的脱水”。实际试剂 CH₃SO₂Cl/碱先将羟基转化为更好的离去基团，再发生消去，水并非按页面所述直接生成；该解释会造成反应依据上的实质误导。",
+          "第（7）问的第二步标题写成让“甲醛基邻位”长出 –CH₂NO₂，容易把醛基的羰基加成误解为芳环邻位取代；页面虽给出 Ar–CHO→Ar–CH(OH)CH₂NO₂ 的式子，但没有明确说明硝基甲烷的 α-碳进攻羰基碳这一关键成键关系。",
+          "实际操作记录只点击了源码中匹配到的“下一步：Fe / HCl 还原”按钮，但操作前后截图均停留在路线总览；记录也未先切换到对应标签，因此各分页面的可见反馈、错误选项反馈及完整推进流程没有被截图验证。",
+          "D→G 面板把 CH₃SO₂Cl/碱处理直接解释为“–OH 与相邻 H 以 H₂O 形式脱去”和“醇的脱水”。该条件通常先将羟基转化为甲磺酸酯，再发生碱促消去；“消去反应”的结论正确，但页面给出的具体过程会造成机理误解。",
+          "合成设计第 2 步写成“让甲醛基邻位‘长’出 –CH₂NO₂”，容易被理解为芳环邻位取代；实际是硝基甲烷对醛羰基的 Henry 加成，羰基碳转化为带羟基的碳。后面的结构式正确，但关键转化的文字解释不准确。",
+          "同分异构体面板直接给出 9 个结构，没有展示如何系统分配羟基和两个甲氧基以避免遗漏或重复，学生较难据此独立复述“为什么恰有 9 种”。其中第 5 个 HOCH₂CH(OCH₃)CH₂OCH₃ 和第 6 个 HOCH₂CH₂CH(OCH₃)₂ 的名称未按羟基优先取得最低位次；部分非目标结构的积分分组还漏计了羟基氢，例如第 3、5 个所列积分总和只有 11H。",
+          "多个环节把完整结构简化成“环状骨架”或 Ar，适合提示答案，但对刚读题的学生而言，原路线中的具体结构与简式之间缺少持续对应，尤其 I→J 面板主要展示保护基去留而没有呈现原分子的实际结构变化。",
+          "操作前后截图都停留在路线总览；操作记录实际点击的是隐藏面板中的“下一步”按钮，未显示验证各标签页、选位反馈、同分异构体扫描和合成选择流程。因此可从源码确认这些交互被定义且记录无运行错误，但不能断言其可见交互效果已被实际操作验证。"
+        ],
+        "evidence": {
+          "problem_fidelity": "原题七个小问在页面中均有对应入口：（1）A的命名、（2）C的结构、（3）D的官能团、（4）F→G反应类型、（5）HCl目的、（6）同分异构体数及核磁条件、（7）合成路线。A为对氯硝基苯，C画出了邻氨基、对氯及邻氟二苯甲酮的连接关系；D→G保留Boc保护、醇氧化、Henry加成和消去过程；第（6）问给出9种并能识别两类满足4组峰且6:3:2:1的结构；第（7）问的2,4-二氯苯甲醇→醛→硝基醇→氨基醇与原题目标一致。操作记录无运行错误，但实际只记录了点击“下一步：Fe / HCl 还原”，截图也仅展示路线总览，因此其余交互状态主要依据源码核对，未断言均经截图实际验证。整体核心对象、条件和全部小问均得到对应，差距主要是两项范围说明省略或收窄及局部结构简化，故为4分而非5分。",
+          "solution_correctness": "独立核对后，第（1）问对氯硝基苯、第（2）问C的连接关系及分子式C₁₃H₉ClFNO、第（3）问氨基和羟基、第（4）问消去反应、第（5）问脱除Boc、第（6）问共9种及满足4组峰且积分6:3:2:1的两种结构、第（7）问醇氧化为醛后Henry加成再还原硝基的主结论，均与题设结构及参考材料相符。尤其候选列出的第1和第4种结构确实都可给出6H、3H、2H、1H四组积分。由于核心七问的主要答案可用，但扩展NMR扫描存在两组积分总数错误、另有两处系统命名错误，且消去机理表述错误，问题已超过4分所要求的“仅少量局部问题”；尚未达到关键方法失效或主要结论错误的2分程度。操作记录只实际触发了A→C的“下一步”按钮，截图仍仅显示路线总览；其他交互后的视觉状态未被操作记录验证，相关判断主要依据所附源码中的静态数据与状态逻辑。",
+          "page_quality": "在1280×900桌面预览中，标题、导航、两张主要内容卡片及反应式均可辨认，文字没有明显重叠或被裁切；标题、栏目标题、路线节点和说明文字之间层级明确，卡片边界和留白也能帮助分区。扣至4分而非5分的主要原因是路线图的试剂标签较小且局部紧凑，同时大面积空白削弱了版面平衡；此外，现有截图只验证了路线总览，不能据此认定其他复杂状态同样完整清晰。",
+          "interaction_quality": "题设、参考答案与候选页在主要交互目标上基本一致：A→C 的取代位置判断、D→G 的官能团变化与消去、I→J 的脱 Boc、同分异构体筛选及三步合成均可由页面控件逐步检验。源码显示各导航标签指向明确的小问；A→C 提供邻/间/对位置切换和环上位点点击；D→G、I→J采用按反应顺序推进并同步更新左侧结构与右侧结论；同分异构体卡片点击后就近更新峰组数、面积比和是否符合 6:3:2:1，其中源码会将两种符合结构判为命中；合成设计对每一步提供限定选项、错误反馈和正确后的结构推进。控制含义、顺序和反馈位置总体清楚，具有检验定位效应、保护基、官能团转化及谱图筛选的教学意义，不是装饰性交互，因此达到良好档。距 5 分的差距在于若干反馈较粗略，且操作记录没有覆盖导航、位点选择、错误选项、异构体切换、重置和完整步骤链。记录仅确认无运行时错误，并执行了一次未验证可见性的隐藏面板按钮点击；未找到滑块不构成缺陷，因为本题不需要连续变量控制。",
+          "teaching_effectiveness": "页面存在可跟随的局部主线。例如 A→C 部分按“题设 A 为对氯硝基苯（条件）→Fe/HCl 将 –NO₂ 表示为 –NH₂（变化）→氨基邻对位定位且对位被 Cl 占据（关系）→酰基进入邻位得到 C（结论）”组织，并提供位置点击和错误反馈；D→G、I→J及合成设计也以按钮逐步显示官能团变化。从源码可见这些局部步骤具备一定教学意图。但学生真实可见的起点缺少原路线结构映射，第（6）问的系统枚举与核磁判断这一关键解题链基本由页面直接报出，第（4）问还给出不准确的“脱水生成水”解释，第（7）问的关键成键依据也不充分。因此需要学生预先会做或借助外部讲解才能跨过重要步骤，只达到2分；距3分所要求的“整条主线基本可跟随”仍有明显差距。未有真实学生学习实验，不能据此声称学生已经掌握；且操作记录未验证除总览外的实际可见交互状态。",
+          "overall_score": "页面覆盖了七个小问，A 的命名、C 的结构、D 的官能团、F→G 的反应类型、HCl 脱除 Boc、同分异构体总数及两种符合 4 组峰且积分比 6:3:2:1 的结构、以及第（7）问的氧化—Henry 加成—硝基还原路线，核心答案与原题和参考材料总体一致。总览清楚呈现两支路线及汇合关系，源码中的分步按钮、选位反馈、异构体列表和试剂选择也能形成基本学习主线，桌面初始截图无明显重叠或裁切。因此页面达到“基本可用”的 3 分。距离 4 分的主要差距不是外观，而是若干关键化学过程的解释不严谨、异构体枚举缺少推导且附带命名/积分错误，学生仍需自行修正或补全部分依据；同时除总览外的实际可见操作证据不足。"
+        },
+        "reference_concern": "参考答案对七小问的主要结论与题图总体一致，未发现影响核对的核心错误；但参考解析同样将Boc脱除笼统称作“水解”，严格说更宜表述为酸性条件下脱保护或酸解。",
+        "summary": "七问覆盖完整且主要结论正确，路线组织和分步呈现具备教学价值；但消去机理、Henry 加成表述及异构体说明存在实质性教学瑕疵，整体为基本可用，尚未达到良好档。"
+      },
+      "judge_status": "completed"
+    },
+    {
+      "job": "hard-v1_chemistry_013_W2",
+      "task_id": "20261021_152705_933_fb3e83db",
+      "status": "failed",
+      "sample": {
+        "run_status": "failed",
+        "completed_rounds": 3,
+        "id": "B63B46592",
+        "question_id": "chemistry_013",
+        "set": "calibration",
+        "workflow_id": "W2",
+        "batch": "hard-v1",
+        "task_id": "20261021_152705_933_fb3e83db",
+        "round_number": 3,
+        "html": "runs/artifacts/20261021_152705_933_fb3e83db/20261021_162257_068_round_03.html",
+        "html_sha256": "406cb101580a2d0cc8f57c562cd07c1a69646969b50dbff08c46aa704169fce3",
+        "selection_rule": "highest internal overall_score; tie later; not selected by independent evaluator",
+        "inspection": "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/public.json",
+        "screenshots": [
+          "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/00_initial.png",
+          "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/01_next_step.png",
+          "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/02_slider_mid.png",
+          "runs/artifacts/20261021_152705_933_fb3e83db/evidence/406cb101580a2d0c/03_slider_high.png"
+        ]
+      },
+      "rounds": [
+        {
+          "number": 1,
+          "html_name": "20261021_154923_570_round_01.html",
+          "passed": 0,
+          "summary": "页面基础检查未通过"
+        },
+        {
+          "number": 2,
+          "html_name": "20261021_154937_916_round_02.html",
+          "passed": 0,
+          "summary": "页面基础检查未通过"
+        },
+        {
+          "number": 3,
+          "html_name": "20261021_162257_068_round_03.html",
+          "passed": 0,
+          "summary": "页面整体布局清晰，但 F→G 消去双键画在错误位置、C 结构中的苯环取代基未接在顶点，A 题正确选项还预先高亮；关键 C+G→H 加成也缺少结构级演示。存在核心化学示意错误，不能通过。"
+        }
+      ],
+      "api_seconds": 478.3047392200242,
+      "successful_api_seconds": 426.835348943001,
+      "failed_api_seconds": 51.469390277023194,
+      "stage_metrics": {
+        "reviewer": {
+          "calls": 3,
+          "seconds": 186.93660849600565,
+          "known_tokens": 40239,
+          "cost": {
+            "known_cost_cny": 0.12198959999999999,
+            "missing_token_fields": 4,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        },
+        "generator": {
+          "calls": 5,
+          "seconds": 291.36813072401856,
+          "known_tokens": 92978,
+          "cost": {
+            "known_cost_cny": 0.29907240000000007,
+            "missing_token_fields": 4,
+            "unpriced_calls": 0,
+            "currency": "CNY",
+            "basis": "input/output; no separate cache or reasoning charge"
+          }
+        }
+      },
+      "known_tokens": 133217,
+      "calls_missing_usage": 4,
+      "cost": {
+        "known_cost_cny": 0.42106200000000005,
+        "missing_token_fields": 8,
+        "unpriced_calls": 0,
+        "currency": "CNY",
+        "basis": "input/output; no separate cache or reasoning charge"
+      },
+      "judgment": {
+        "scores": {
+          "problem_fidelity": 3,
+          "solution_correctness": 2,
+          "page_quality": 3,
+          "interaction_quality": 3,
+          "teaching_effectiveness": 2
+        },
+        "overall_score": 2,
+        "issues": [
+          "第（2）问及路线总览把 C 改成了“2-氟-N-(4-氯苯基)苯甲酰胺”，并画成 —C(=O)—NH—。原题中 B 与邻氟苯甲酰氯在 ZnCl₂ 条件下生成的是含游离 —NH₂ 的二芳基酮，即羰基碳直接连接两个苯环；候选页虽然分子式相同，但给出的是不同的构造异构体，核心成键关系错误。",
+          "上述 C 的错误继续影响 H 的形成说明：页面称“C 的酰胺 N—H 发生氮杂-迈克尔加成”，而原题实际参与已知加成的是 C 上的游离芳香氨基 —NH₂。因而页面对主合成路线 C→H 的反应对象和结构对应关系发生了实质替换。",
+          "路线总览中 C、H、I、J、K 等节点多用仅带少量标签的苯环或折线代替原题完整结构；尤其错误的 C 说明使这些辅助图不能明确、可靠地映射回原题完整路线。",
+          "第（1）、（3）至（7）问在源码中均有对应栏目，A 的对位关系、D 的羟基和氨基、F→G 消去、HCl 脱 Boc、9 种异构体及 NMR 候选、二氯苄醇经氧化/与 CH₃NO₂反应/还原得到目标物等主要对象与原题基本对应。",
+          "第（2）问把 C 判定为“2-氟-N-(4-氯苯基)苯甲酰胺”，并解释为苯胺对酰氯的亲核取代；这与题图中 C 后续作为伯芳胺参加已知加成反应不相容。由分子式及 H 的结构反推，C 应为保留 —NH₂ 的氨基氯代二苯甲酮，即（2-氨基-5-氯苯基）（2-氟苯基）甲酮。",
+          "上述 C 的错误继续影响路线总览：页面称“C 的酰胺 N—H 与 G 发生氮杂-迈克尔加成”，实际应是 C 的芳香伯氨基参与加成；因此对 C→H 这一主干成键过程的解释错误。",
+          "F→G 的最终 SVG 把新增双键画在 BocNH—CH₂ 与原含羟基碳之间；根据题图 F、G，消去应在原含羟基碳与末端 —CH₂NO₂ 碳之间形成 C=C。页面文字结论“消去反应”正确，但图示的区域选择错误。",
+          "总览中的 C、H、I、J、K 等缩略图只是带少量标签的苯环，不能据此核验完整结构；尤其 C 缩略图没有呈现页面所主张的酰胺结构。",
+          "路线总览中的分子节点仅约76px宽，官能团标签和节点内字母明显偏小；C、H、I、J、K等复杂结构被简化成相似的苯环或折线图标，难以仅凭图形辨认和对应原题路线。",
+          "两行路线的连接关系表达不够直观：第一行直接显示C→H，第二行另以“G与C汇合生成H”补充，读者需要在两行之间反复寻找对应关系。",
+          "页面主要内容集中在视口上半部，下半部留有大面积空白；右侧“当前节点”卡片也存在较多未利用空间，整体信息密度和版面平衡仍可改善。",
+          "实际截图只展示了“路线总览”初始状态，且操作记录未切换到其他标签，因此A与C、官能团与消去、Boc保护基、同分异构体和合成设计等页面的实际文字、公式是否重叠或裁切未得到截图验证。",
+          "“A 与 C”页的“形成酰胺键”交互会同步绘制酰胺并给出酰胺结论，但原题中的 C 应为保留 —NH₂ 的氨基二苯甲酮结构；该核心交互以清晰反馈强化了错误反应关系，具有实质误导性。",
+          "路线总览的 C 节点及其后续说明同样将 C 解释为酰胺，使节点点击和路线播放重复呈现上述错误，而不是帮助理解原题中 C 与 G 的加成关系。",
+          "合成设计的内部进度 synthStage 与标签页重绘不同步：离开后再进入该页会执行 drawSynth(0)，把图形恢复到初态，但已完成步骤和按钮状态不会重置；此后继续操作可能出现步骤列表、按钮状态和主图不一致。",
+          "实际操作记录只验证了初始页面无运行错误；自动操作未找到“下一步”按钮或滑块，且截图均停留在初始总览，因此标签切换、节点点击、路线播放、各小问按钮、异构体搭建和合成排序的实际运行效果均未被操作记录直接验证。",
+          "“路线总览”和“A 与 C”把 B 与邻氟苯甲酰氯生成 C 解释为氨基进攻酰氯、脱 HCl 形成酰胺，并给出“2-氟-N-(4-氯苯基)苯甲酰胺”。但题图中的 ZnCl₂ 条件及后续 H 的结构对应芳环酰基化，C 应为含 —NH₂ 的二苯甲酮结构。该错误发生在主路线前段，会使学生对 C、后续加成位置及整条路线建立错误连接，属于核心误导。",
+          "首次可见的路线地图用相同的简略苯环或折线图代替 C、H、I、J、K 及 D—G 的真实关键结构，且将 A→B→C→H 与 D→E→F→G 分成两行后只写“G 与 C 汇合生成 H”。学生看不到 C 和 G 的哪些部位成键，也看不到已知反应怎样映射到真实底物，无法从总览独立复述关键汇合步骤。",
+          "第(6)问直接提供三碳骨架、三个取代基筹码和“显示全部9种”，但没有从分子式 C5H12O3 推出为何剩余骨架必须是三碳链、如何按对称性去重，以及四类分布为何穷尽全部结构。操作可帮助观察取代位置，却不足以教会完整计数依据。",
+          "第(7)问的提示直接规定“氧化→缩合→还原”顺序，正确点击后只报告官能团变化；没有解释为何需先将苄醇变为醛、CH3NO2如何形成新的 C—C 键。学生可以完成按钮序列，但对本题特有的路线设计理由仍需自行补足。",
+          "F→G模块较为循序：F中的 —OH→—OMs、碱夺β-H、离去并形成 C=C，最后得出消去反应，形成了可见的“条件→表示→关系→结论”链条；但这一局部优点不能弥补 C 结构这一主路线核心错误。",
+          "第(2)问及路线总览把C错误地解释为“2-氟-N-(4-氯苯基)苯甲酰胺”，并声称B的氨基进攻酰氯形成酰胺键。根据原题反应物、ZnCl2条件、C的分子式及后续H结构，实际应发生芳环酰基化，C是含游离—NH2的氨基二苯甲酮结构；参考答案图片也明确画出了该结构。这是核心结构与反应类型错误。",
+          "上述错误继续影响路线总览和C与G生成H的解释：页面称“C的酰胺N—H参与氮杂-迈克尔加成”，而实际参与加成的是C上的游离氨基。学生会据此形成错误的成键位置和路线逻辑。",
+          "路线总览中C、H、I、J、K等节点多用高度简化或占位式小图，D至G也只是折线，不能据此核对真实官能团和前后结构变化；“播放路线”还按A、B、C、D、E、F、G的顺序播放，未充分体现C支路与D→G支路并行后汇合。",
+          "第(6)问给出了9种分类、可搭建结构及两种符合6:3:2:1的结果，和参考材料相符；第(1)、(3)、(4)、(5)、(7)的主要结论也基本可用。但这些正确内容不足以抵消第(2)问及其下游路线解释的实质错误。",
+          "操作记录只证明初始页正常呈现且无运行错误；自动操作未点击到标签页，也未实际验证各标签内按钮、搭建器、筛选和合成步骤。源码显示这些交互已实现，但不能将其全部视为经过截图或实际操作验证。"
+        ],
+        "evidence": {
+          "problem_fidelity": "原题路线明确显示 C 的分子式为 C13H9ClFNO，且参考结构为带 —NH₂ 的氯代芳基与邻氟苯基共同连接羰基的二芳基酮；候选源码的 overviewData.C、drawC()、第（2）问提示和结论则一致写成酰胺，并把后续加成归于“酰胺 N—H”，可确定这不是单纯画法简化。页面覆盖了全部七个编号小问，因此并非基本换题，但中央 A→C→H 合成关系存在连续性错误，达不到仅有局部瑕疵的 4 分。所附桌面截图只显示初始“路线总览”；操作记录没有实际切换标签或触发题内按钮，因此其他面板的可见交互效果仅由源码确认，未由操作后截图验证。",
+          "solution_correctness": "独立核对题图可知：A 为对氯硝基苯，D 含氨基和羟基，F→G 的反应类型为消去，HCl 用于脱 Boc，C5H12O3 条件异构体共 9 种且页面给出的两个 6:3:2:1 候选均成立；第（7）问所用“苄醇氧化为醛→与 CH3NO2 加成→还原硝基”的路线也可行，MnO2 属可选无机氧化剂。可是第（2）问的 C 是后续主路线的关键底物，页面将氨基二苯甲酮误作酰胺，并据此错误解释 C 与 G 的加成；另有 F→G 双键位置的图形错误，故不能达到基本正确的 3 分档。操作记录只停留在初始总览，未实际打开各标签或点击题目控件；对未显示状态的判断来自所附源码，未将其视为截图中已验证的交互结果。",
+          "page_quality": "在1280×900桌面截图中，标题、导航、说明文字、按钮和右侧详情均清楚可读，卡片边界明确，未见可见区域内的文字重叠或裁切，基本视觉层级成立。但核心路线图把多个复杂中间体压缩成很小且高度抽象的图标，尤其D至G均呈近似折线、H至K的环系差异也没有被清楚表现，削弱了总览图的辨识作用；同时版面下半屏明显空置。故达到基本可用的3分，但距离4分所要求的清楚、布局合理仍有明显差距。操作记录没有成功触发下一步控件或滑块，截图也均为相同初始状态，其他标签的动态呈现未验证。",
+          "interaction_quality": "初始截图显示路线节点与右侧“当前节点”反馈距离近，控制含义清楚；源码也为节点点击、路线播放/停止、官能团高亮、F→G分步、Boc脱保护、异构体搭建与筛选、合成步骤排序配置了对应的图形和文字更新，整体具有教学用途。多数反馈与控件位于同一卡片内，错误顺序还有抖动和文字提示，达到基本可用水平。但 C 的关键交互与原题结构冲突，且合成页存在重访后的状态同步缺陷，因此不能评为4分。操作记录仅能确认初始渲染及无 runtime error，源码所示的其他交互逻辑没有得到截图或实际点击记录验证。",
+          "teaching_effectiveness": "学生实际首先看到标题、标签页和路线总览；截图只展示了这一初始状态。初始页能说明 A 的 —NO2 经 Fe/HCl 还原为 B，并给出已知加成通式，但关键中间体多为占位式简图，无法由图追踪原子与成键变化。源码表明其他标签页包含第(1)至第(7)问的按钮反馈，其中官能团高亮、F→G分步消去和 Boc→铵盐→游离胺具有一定教学作用；然而操作记录没有点击这些标签或按钮，因此其实际视觉反馈未由截图验证，只能确认源码设计。更严重的是，源码明确把 C 教成酰胺，而原题路线、参考结构及后续 H 均支持 C 为氨基二苯甲酮，学生会在关键转化处被错误教学。整体仍能学到若干独立小问和部分官能团变化，故不是完全无教学内容；但要正确理解并复述整条合成主线，必须依赖外部讲解纠正 C 并补足汇合、异构体穷举和合成设计依据，最接近2分而非3分。",
+          "overall_score": "页面覆盖七个小问，桌面初始界面清楚，并为官能团高亮、消去步骤、Boc脱保护、异构体枚举和合成顺序提供了较丰富的可视化与反馈。学生在第(3)至第(7)问的大部分主线上能够获得帮助，尤其异构体分类和合成设计具有一定教学作用。然而，第(2)问把原题关键的芳环酰基化完全误写成酰胺化，并用这一错误结构解释C与G的关键加成，直接破坏了整条主合成路线的结构推理。刚读题的学生不仅无法从页面学到正确的C，还会被误导后续H的成键来源，因此整体只能算部分可用，必须明显修正后才能作为完整教学材料。相较3分“基本可用”，这里的错误位于核心中间体和支路汇合处，影响不是局部瑕疵；但其余多个小问仍有可用内容，尚未达到0或1分的基本无法使用程度。"
+        },
+        "reference_concern": "参考答案给出的 C 结构及由 H 反推的结果一致，但解析文字将 B 与酰氯生成 C 笼统称为“取代反应”，容易被误解为氨基酰化；从产物结构看应理解为 ZnCl2 促进的芳环酰化，氨基被保留。参考解析把 I→J 表述为“水解”也不够准确，核心实质是酸性脱 Boc 后经 NaHCO3 游离胺。\n原题及参考答案中的C为含邻氨基、对氯取代苯环的二芳基酮结构；候选页面却将C描述并绘制为“2-氟-N-(4-氯苯基)苯甲酰胺”。这是候选内容与题设、参考材料之间的实质不一致，而非参考答案自身的可见歧义。",
+        "summary": "覆盖面和局部交互较好，但C的结构、生成机理及其与G的后续加成均属核心错误，整体需明显修正。"
+      },
+      "judge_status": "completed"
+    }
+  ],
+  "totals": {
+    "deepseek": {
+      "known_cost_cny": 3.5236104,
+      "missing_token_fields": 32,
+      "unpriced_calls": 0,
+      "currency": "CNY",
+      "basis": "input/output; no separate cache or reasoning charge"
+    },
+    "gpt": {
+      "known_cost_cny": 21.02012999999999,
+      "missing_token_fields": 22,
+      "unpriced_calls": 0,
+      "currency": "CNY",
+      "basis": "input/output; no separate cache or reasoning charge"
+    },
+    "deepseek_known_tokens": 955886,
+    "gpt_known_tokens": 3513541,
+    "gpt_calls": 119,
+    "gpt_api_seconds": 5200.036249858036
+  }
+}

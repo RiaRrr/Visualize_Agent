@@ -1,0 +1,236 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261021_144330_143_71c28aab:3",
+  "task_id": "20261021_144330_143_71c28aab",
+  "batch_id": "benchmark-hard-v1",
+  "round": 3,
+  "created_at": "2026-10-21T15:36:21.188403+08:00",
+  "files": {
+    "image": "20261021_144330_143_input.png",
+    "html": "20261021_153621_138_round_03.html",
+    "screenshot": "20261021_153621_138_round_03.png",
+    "model_review": "20261021_153621_138_round_03.review.json",
+    "config": "20261021_144330_143_config.json",
+    "model_review_raw": "round_03.model_review_raw.txt"
+  },
+  "html_sha256": "24fa4bee03e9747bb39006fa9b1212591595fcbfc3542334d7fc994175a2d8bb",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "math-deepseek",
+    "name": "数学 · 分步 SVG 与教学示例（1019）",
+    "version": "d4e8236d6318",
+    "subject": "math"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "题意、三问结论及核心推导均正确，首屏转化与参数动态反馈清楚；但第5步的关键代数证明仍主要依赖右侧长文，图形承担的解释稍弱。",
+    "issues": [
+      "第5步“证明”中，左侧 φ(r) 图只展示 r∈[1.02,8] 时 φ>1 的示例，不能直接说明为何对所有 r>1 都有 φ>1；建议让 r 滑块同步高亮 H(r) 曲线、H(1)=0、H′(3)>0 或 H 的符号条带，使右侧 mini-proof 与图形建立一一对应。",
+      "第(2)(i)中，a≤0 时只有文字说明“单调，至多一个零点”；建议在“两根条件”步骤增加 a=-1、a=0 的静态对照图或可切换示例，让学生看到单零点与 a>0 时两零点的差异。",
+      "首屏未解锁答案使用模糊文本，容易被误认为缺字或不可读；建议改为明确的“完成本步后显示”占位文字，而不是模糊原文。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 4,
+      "interaction_quality": 4,
+      "teaching_effectiveness": 4
+    },
+    "overall_score": 4
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 123,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 3,
+        "stage": "generating",
+        "started_at": "2026-10-21T14:58:27.978075+08:00",
+        "ended_at": "2026-10-21T15:26:33.210514+08:00",
+        "duration_seconds": 1685.232439,
+        "status": "interrupted"
+      },
+      {
+        "id": 126,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 3,
+        "stage": "generating",
+        "started_at": "2026-10-21T15:26:39.848246+08:00",
+        "ended_at": "2026-10-21T15:26:43.372879+08:00",
+        "duration_seconds": 3.524633,
+        "status": "error"
+      },
+      {
+        "id": 130,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 3,
+        "stage": "generating",
+        "started_at": "2026-10-21T15:26:48.028300+08:00",
+        "ended_at": "2026-10-21T15:26:49.585366+08:00",
+        "duration_seconds": 1.557066,
+        "status": "error"
+      },
+      {
+        "id": 149,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 3,
+        "stage": "generating",
+        "started_at": "2026-10-21T15:32:21.254917+08:00",
+        "ended_at": "2026-10-21T15:34:01.622336+08:00",
+        "duration_seconds": 100.367419,
+        "status": "completed"
+      },
+      {
+        "id": 153,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 3,
+        "stage": "validating",
+        "started_at": "2026-10-21T15:34:01.622336+08:00",
+        "ended_at": "2026-10-21T15:34:01.705744+08:00",
+        "duration_seconds": 0.083408,
+        "status": "completed"
+      },
+      {
+        "id": 154,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 3,
+        "stage": "rendering",
+        "started_at": "2026-10-21T15:34:01.705744+08:00",
+        "ended_at": "2026-10-21T15:34:03.321984+08:00",
+        "duration_seconds": 1.61624,
+        "status": "completed"
+      },
+      {
+        "id": 155,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 3,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T15:34:03.321984+08:00",
+        "ended_at": "2026-10-21T15:36:21.424890+08:00",
+        "duration_seconds": 138.102906,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 66,
+        "task_id": "20261021_144330_143_71c28aab",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 3,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:25:40.169969+08:00",
+        "duration_seconds": 744.2112183019926,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 67,
+        "task_id": "20261021_144330_143_71c28aab",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 3,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:26:43.339326+08:00",
+        "duration_seconds": 3.288996490999125,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 70,
+        "task_id": "20261021_144330_143_71c28aab",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 3,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:26:49.553530+08:00",
+        "duration_seconds": 1.3970598460000474,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 81,
+        "task_id": "20261021_144330_143_71c28aab",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 3,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:34:01.567216+08:00",
+        "duration_seconds": 100.13394605599751,
+        "status": "completed",
+        "input_tokens": 15115,
+        "output_tokens": 19020,
+        "cached_input_tokens": 15104,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 16951,
+        "total_tokens": 34135
+      },
+      {
+        "id": 83,
+        "task_id": "20261021_144330_143_71c28aab",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 3,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:36:21.072901+08:00",
+        "duration_seconds": 137.57819469900278,
+        "status": "completed",
+        "input_tokens": 15334,
+        "output_tokens": 18174,
+        "cached_input_tokens": 8192,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 17882,
+        "total_tokens": 33508
+      }
+    ]
+  }
+}

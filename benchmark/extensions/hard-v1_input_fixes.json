@@ -1,0 +1,16 @@
+[
+  {
+    "question_id": "physics_012",
+    "old_sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0",
+    "new_sha256": "3fd5a81d71d2a81c37baac7d1b50d2db86f5791a356ca9b54d04b8da0b546a11",
+    "reason": "blank screenshot; original stem retained",
+    "used_in_generation": false
+  },
+  {
+    "question_id": "chemistry_008",
+    "old_sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0",
+    "new_sha256": "4636e86257488a51b3a5c184ea749c43bec5c34bb450ce603140ba0a0facfbff",
+    "reason": "blank screenshot; original stem retained",
+    "used_in_generation": false
+  }
+]

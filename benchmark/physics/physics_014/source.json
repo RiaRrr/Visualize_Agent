@@ -1,0 +1,89 @@
+{
+  "id": "3915158089498624",
+  "course_id": 29,
+  "type_id": "2904",
+  "kpoint_ids": [
+    15848,
+    16034
+  ],
+  "catalog_ids": [
+    187749,
+    194413,
+    194633,
+    195963,
+    225739
+  ],
+  "years": [
+    2025
+  ],
+  "difficulty": 0.65,
+  "difficulty_level": 19,
+  "stem": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhve8mb06Fg24ovJj4zhvoHLg\"><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">在倾角</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">θ</span><span style=\"font-family: 'Times New Roman';\">=37°</span><span style=\"font-family: 宋体;\">的粗糙斜面上有一质量</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">m</span><span style=\"font-family: 'Times New Roman';\">=2kg</span><span style=\"font-family: 宋体;\">的物块，受如图甲所示的水平方向恒力</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">F</span><span style=\"font-family: 宋体;\">的作用。</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">t</span><span style=\"font-family: 'Times New Roman';\">=0</span><span style=\"font-family: 宋体;\">时刻物块以某一速度从斜面上</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">点沿斜面下滑，在</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">t</span><span style=\"font-family: 'Times New Roman';\">=4s</span><span style=\"font-family: 宋体;\">时滑到水平面上，在这以后的一段时间内物块运动的速度随时间变化关系</span><img  src=\"https://img.xkw.com/dksih/formula/d1552707683293dcf684d101dd09b5c9.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">图像如图乙所示。已知</span><span style=\"font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">到水平面的高度</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">h</span><span style=\"font-family: 'Times New Roman';\">=39.6m</span><span style=\"font-family: 宋体;\">，物块运动的总路程为</span><span style=\"font-family: 'Times New Roman';\">81m</span><span style=\"font-family: 宋体;\">，物块与各接触面之间的动摩擦因数相同，假设转角处速度大小不变，</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">g</span><span style=\"font-family: 'Times New Roman';\">=10m/s</span><sup word-font=\"Times New Roman\"><span>2</span></sup><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">sin37°=0.6</span><span style=\"font-family: 宋体;\">，</span><span style=\"font-family: 'Times New Roman';\">cos37°=0.8</span><span style=\"font-family: 宋体;\">。求：</span></p><p style=\"text-align: left;\"><img  height=\"118\" src=\"https://img.xkw.com/dksih/QBM/editorImg/2026/8/6/0dcc9d11-1003-43ed-a573-e47a93c12c6d.png\" width=\"300\" /></p><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhve8mb06Fg24ovJj4zhvoHLg\"><p style=\"\"><span class=\"ques-no\">（1）</span><span style=\"font-family: 宋体;\">物块在</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">点的速度大小；</span></p></div></div><div class=\"qml-sq\" id-container=\"question\"><div class=\"qml-stem\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhve8mb06Fg24ovJj4zhvoHLg\"><p style=\"\"><span class=\"ques-no\">（2）</span><span style=\"font-family: 宋体;\">水平恒力</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">F</span><span style=\"font-family: 宋体;\">的大小。</span></p></div></div></div>",
+  "answer": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-answer\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhve8mb06Fg24ovJj4zhvoHLg\">（1）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><span style=\"font-family: 'Times New Roman';\">18m/s</span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）<span class=\"qml-an-sq\" id-container=\"question\"><span class=\"qml-an  \"><img  src=\"https://img.xkw.com/dksih/formula/a3d99653b4ec08e870a09d0d133895e5.svg\" class=\"xkw-math-img\" /></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>",
+  "explanation": "<!--版权声明：试题（含题干、答案、解析）由学科网授权提供，受版权保护--><div class=\"qml-explanation\" data-copyright=\"xkw.com-1791861833-114651791852237200-aysItDl0_2JwOHYAEeoveFBfQwDzMJ-WfVvb16lnhve8mb06Fg24ovJj4zhvoHLg\"><div class=\"qml-exps-sq\" id-container=\"question\">(1)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">由题意可知，物块在斜面上下滑的路程为</span><img  src=\"https://img.xkw.com/dksih/formula/41091051489e03f120193353017e6888.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">由图乙可知，物块运动到斜面最低点时的速度大小为</span><img  src=\"https://img.xkw.com/dksih/formula/bdf82ebe5da56e920dbe35a1486a05d8.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则根据匀变速直线运动的规律有</span><img  src=\"https://img.xkw.com/dksih/formula/8d9b4c65a19834f12465a3aae4d44119.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">代入数据解得物块在</span><span style=\"font-style: italic;font-family: 'Times New Roman';\">A</span><span style=\"font-family: 宋体;\">点的速度大小为</span><img  src=\"https://img.xkw.com/dksih/formula/9a11e73f6f218770f3a063ab75a0f385.svg\" class=\"xkw-math-img\" /></p></div><div class=\"qml-exps-sq\" id-container=\"question\">(2)小问详解： <p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">物块运动的总路程为</span><span style=\"font-family: 'Times New Roman';\">81m</span><span style=\"font-family: 宋体;\">，所以物块在水平面上运动的路程为</span><img  src=\"https://img.xkw.com/dksih/formula/f223ff127ed6ce759e749dfe3c278957.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">将物块在水平面上的匀减速直线运动看成反向的从静止开始的匀加速直线运动，则根据匀变速直线运动的运动学公式有</span><img  src=\"https://img.xkw.com/dksih/formula/6974f0aafe13140668a180e2e6a3317e.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">解得物块在水平面上运动的加速度大小为</span><img  src=\"https://img.xkw.com/dksih/formula/8c00e2b51547c95b81b2a58d137b4e7b.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">物块在斜面上做匀减速直线运动，设其加速度大小为</span><img  src=\"https://img.xkw.com/dksih/formula/e72adb45c60c2f63b46e65ff787302bf.svg\" class=\"xkw-math-img\" /><span style=\"font-family: 宋体;\">，则有</span><img  src=\"https://img.xkw.com/dksih/formula/771728217b73fd6cbe41b6f4dc935dcd.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">解得</span><img  src=\"https://img.xkw.com/dksih/formula/775a6c171c0e2b127b038ca7ba103dbe.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">对物块在斜面上的运动进行受力分析可知，其沿斜面方向的牛顿第二定律方程为</span><img  src=\"https://img.xkw.com/dksih/formula/7f38a3e80de75a5f2a838274f301c5d1.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">在垂直于斜面方向由平衡关系有</span><img  src=\"https://img.xkw.com/dksih/formula/88c7aa6ec2dc3262742ece6b625ae5f0.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">又因为</span><img  src=\"https://img.xkw.com/dksih/formula/1a8f2b3d68b919db193ec539ec73a3d1.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">同理对物块在水平面上的运动进行受力分析，对其列牛顿第二定律方程有</span><img  src=\"https://img.xkw.com/dksih/formula/35cdd858a813ab0b07bd70bea9b59d33.svg\" class=\"xkw-math-img\" /></p><p style=\"text-align: left;\"><span style=\"font-family: 宋体;\">代入数据联立解得水平恒力的大小为</span><img  src=\"https://img.xkw.com/dksih/formula/5e79a12d7e73441a2a056afc79ea6fa1.svg\" class=\"xkw-math-img\" /></p></div></div>",
+  "create_date": "2025-12-26 22:32:26",
+  "paper_type_ids": [
+    3
+  ],
+  "course": {
+    "id": 29,
+    "name": "高中物理"
+  },
+  "catalogs": [
+    {
+      "id": 187749,
+      "name": "5. 牛顿运动定律的应用"
+    },
+    {
+      "id": 194413,
+      "name": "第3节 牛顿第二运动定律"
+    },
+    {
+      "id": 194633,
+      "name": "第五节 牛顿运动定律的应用"
+    },
+    {
+      "id": 195963,
+      "name": "6. 牛顿运动定律的应用"
+    },
+    {
+      "id": 225739,
+      "name": "第五节 牛顿运动定律的应用"
+    }
+  ],
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "kpoints": [
+    {
+      "id": 15848,
+      "name": "匀变速直线运动位移与时间的关系"
+    },
+    {
+      "id": 16034,
+      "name": "已知运动求受力"
+    }
+  ],
+  "media": 0,
+  "exp_video_posters": null,
+  "answer_scoreable": 0,
+  "tag_ids": [],
+  "tags": [],
+  "en_word_ids": null,
+  "en_words": null,
+  "source_papers": [
+    {
+      "title": "江西省南昌市第二中学2025-2026学年高一上学期12月月考物理试题（二）",
+      "area": {
+        "id": "360000",
+        "name": "江西省"
+      },
+      "type_id": 3,
+      "grade_id": 10,
+      "term": "LAST",
+      "year": 2025
+    }
+  ],
+  "_paper_ids": []
+}

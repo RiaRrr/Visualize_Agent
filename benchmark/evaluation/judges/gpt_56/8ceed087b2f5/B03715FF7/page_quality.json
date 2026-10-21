@@ -1,0 +1,32 @@
+{
+  "dimension": "page_quality",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "request_timeout_seconds": 300.0,
+  "evidence_sha256": "86961d4d8504b103b6d81295af9dd12f1e3a3079b750a39fb03688ba1371e072",
+  "prompt_sha256": "82af3601055f76f529efdaa44ec0acac12f0f11d05cffdf5c8cc6317e1c961fa",
+  "created_at": "2026-10-21T07:38:26.581290+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "page_quality",
+    "score": 4,
+    "issues": [
+      "在参数 a=1.8 的图中，交点附近的“g(x)”“交点”和橙色水平线距离较近，局部标注略显拥挤，但仍可辨认。",
+      "右侧说明区正文和图表刻度字号偏小，在桌面预览中尚可阅读，但长时间查看的舒适度略受影响。",
+      "实际截图只覆盖第1步及其滑块的三个状态；第2至第5步虽可由源码判断其布局结构，但未在截图或操作记录中实际展开，无法确认复杂证明状态下是否仍无裁切或标注冲突。"
+    ],
+    "evidence": "原题与候选页题设一致，参考给出的 a≤1、a>0 及待证不等式也与页面内容一致。提供的桌面截图中，标题、题干、步骤导航、主图、控制区和右侧推导形成清楚的视觉层级；坐标轴、曲线、极限线和参数线均清晰，无明显裁切。a=0.8、1、1.8 三个状态下布局稳定，参数变化没有引起面板跳动；a=1 时两条虚线重合但左右标签分离，仍能理解其临界含义；a=1.8 时红色失效区与曲线分段表达明确。整体已达到良好档，但局部标注密度和偏小文字，以及后续复杂步骤缺少实际截图验证，使其不足以据此认定为“复杂状态仍完整清晰”的5分。",
+    "reference_concern": "",
+    "summary": "桌面页面整体清楚、层级合理且状态变化稳定，仅有少量局部拥挤和小字号问题；后续步骤未被实际预览验证。"
+  },
+  "duration_seconds": 20.690633519989206,
+  "usage": {
+    "input_tokens": 28480,
+    "output_tokens": 828,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 413,
+    "total_tokens": 29308
+  }
+}

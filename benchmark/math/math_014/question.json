@@ -1,0 +1,39 @@
+{
+  "id": "math_014",
+  "source_id": "3730389030707200",
+  "subject": "math",
+  "topic": "椭圆、投影与定圆",
+  "split": "test",
+  "family_id": "math_014",
+  "difficulty_level": 21,
+  "difficulty": 0.15,
+  "type": {
+    "id": "270305",
+    "name": "问答题"
+  },
+  "knowledge_points": [
+    {
+      "id": 11976,
+      "name": "椭圆中焦点三角形的周长问题"
+    },
+    {
+      "id": 12097,
+      "name": "椭圆中三角形（四边形）的面积"
+    },
+    {
+      "id": 12106,
+      "name": "椭圆中的直线过定点问题"
+    }
+  ],
+  "selection_reason": "三小问、斜率约束转化、投影与定圆证明",
+  "source_paper_ids": [
+    "3750706545295360"
+  ],
+  "path": "math/math_014",
+  "pilot": false,
+  "cohort": "hard-v1",
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "input_sha256": "0204bb29836f1edf9408e8daf4d6ab15f6dbb87842d56debedfbe6ed39658deb",
+  "source_sha256": "bb79dfea7ff7f4df7d830317fd1e0a8a6dc6e1a94dd52c02aa6aafeb8eb40382"
+}

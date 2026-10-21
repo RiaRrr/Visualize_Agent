@@ -35,7 +35,7 @@ class ChromeSession:
                 return message.get("result", {})
 
 
-def _render_sync(html: str) -> bytes:
+def _render_sync(html: str, *, load_timeout: float = 15, max_height: int = 5000, use_document: bool = False) -> bytes:
     chrome = next((path for name in ("google-chrome", "chromium", "chromium-browser") if (path := shutil.which(name))), None)
     if not chrome:
         raise RuntimeError("找不到 Chrome/Chromium")
@@ -70,8 +70,16 @@ def _render_sync(html: str) -> bytes:
                 session.call("Network.setBlockedURLs", {"urls": ["http://*", "https://*", "file://*"]})
                 session.call("Emulation.setDeviceMetricsOverride", {"width": 1280, "height": 800, "deviceScaleFactor": 1, "mobile": False})
                 encoded = base64.b64encode(html.encode("utf-8")).decode("ascii")
-                session.call("Page.navigate", {"url": f"data:text/html;base64,{encoded}"})
-                deadline = time.monotonic() + 15
+                # Large self-contained question sheets can exceed Chrome's data-URL
+                # navigation limit. A failed navigation used to capture about:blank.
+                if use_document or len(encoded) > 1_900_000:
+                    frame = session.call("Page.getFrameTree")["frameTree"]["frame"]["id"]
+                    session.call("Page.setDocumentContent", {"frameId": frame, "html": html})
+                else:
+                    navigation = session.call("Page.navigate", {"url": f"data:text/html;base64,{encoded}"})
+                    if navigation.get("errorText"):
+                        raise RuntimeError("页面导航失败：" + navigation["errorText"])
+                deadline = time.monotonic() + load_timeout
                 while True:
                     state = session.call("Runtime.evaluate", {"expression": "document.readyState", "returnByValue": True})
                     if state.get("result", {}).get("value") == "complete":
@@ -80,10 +88,11 @@ def _render_sync(html: str) -> bytes:
                         raise TimeoutError("页面加载超时")
                     time.sleep(.1)
                 time.sleep(.6)
+                session.call("Runtime.evaluate", {"expression": "Promise.all([...document.images].map(i => i.decode().catch(() => null)))", "awaitPromise": True})
                 metrics = session.call("Page.getLayoutMetrics")
                 size = metrics.get("cssContentSize") or metrics.get("contentSize") or {}
-                if size.get("width", 0) > 2000 or size.get("height", 0) > 5000:
-                    raise ValueError("页面尺寸过大，无法完整审核")
+                if size.get("width", 0) > 2000 or size.get("height", 0) > max_height:
+                    raise ValueError(f"页面尺寸过大，无法完整审核（{size.get('width')}×{size.get('height')}）")
                 width = max(1280, int(size.get("width", 1280)))
                 height = max(800, int(size.get("height", 800)))
                 shot = session.call("Page.captureScreenshot", {"format": "png", "captureBeyondViewport": True,
@@ -127,5 +136,5 @@ def _render_sync(html: str) -> bytes:
                 process.wait(timeout=3)
 
 
-async def render_html(html: str) -> bytes:
-    return await asyncio.to_thread(_render_sync, html)
+async def render_html(html: str, *, load_timeout: float = 15, max_height: int = 5000, use_document: bool = False) -> bytes:
+    return await asyncio.to_thread(_render_sync, html, load_timeout=load_timeout, max_height=max_height, use_document=use_document)

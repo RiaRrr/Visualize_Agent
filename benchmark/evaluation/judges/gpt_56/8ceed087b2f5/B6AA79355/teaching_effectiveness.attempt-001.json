@@ -1,0 +1,14 @@
+{
+  "dimension": "teaching_effectiveness",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "request_timeout_seconds": 300.0,
+  "evidence_sha256": "1c28d40b5eb7980f58d26f8b2d904878392742ef61643afa64910a8b8d7e045c",
+  "prompt_sha256": "e5c6c93b5b352cf06577ac0634a4367fa593db15d35d7ffb45bdfaba8c1da232",
+  "created_at": "2026-10-21T07:48:55.283641+00:00",
+  "status": "error",
+  "attempt": 1,
+  "error": "模型请求超时（gpt-5.6-sol）；可在任务页继续处理",
+  "duration_seconds": 300.6267717269948,
+  "usage": null
+}

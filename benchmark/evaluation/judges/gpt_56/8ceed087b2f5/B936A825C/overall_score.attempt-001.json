@@ -1,0 +1,14 @@
+{
+  "dimension": "overall_score",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "request_timeout_seconds": 300.0,
+  "evidence_sha256": "49e3a307a237b6da156f01043b1f39eff1a53343aedd39f476bbf4e0a15e8351",
+  "prompt_sha256": "18119769b3fccb867afc3a50cc93593d5b5c6ec34bf24fb2cdd21bb946cc583b",
+  "created_at": "2026-10-21T07:54:46.046360+00:00",
+  "status": "error",
+  "attempt": 1,
+  "error": "模型连接失败：ConnectError",
+  "duration_seconds": 3.259646738995798,
+  "usage": null
+}

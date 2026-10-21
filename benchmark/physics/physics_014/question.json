@@ -1,0 +1,33 @@
+{
+  "id": "physics_014",
+  "source_id": "3915158089498624",
+  "subject": "physics",
+  "topic": "斜面—水平面动力学",
+  "split": "test",
+  "family_id": "physics_014",
+  "difficulty_level": 19,
+  "difficulty": 0.65,
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "knowledge_points": [
+    {
+      "id": 15848,
+      "name": "匀变速直线运动位移与时间的关系"
+    },
+    {
+      "id": 16034,
+      "name": "已知运动求受力"
+    }
+  ],
+  "selection_reason": "从速度图像反推分阶段运动、摩擦和受力",
+  "source_paper_ids": [],
+  "path": "physics/physics_014",
+  "pilot": false,
+  "cohort": "hard-v1",
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "input_sha256": "cb82bb4a16206ca9f2d0d08109db736d45800918d6adb452f280f51fff32984c",
+  "source_sha256": "e491783f2cc09336c8a41bf04da84ba876ef379200a6ae6b2f96e4d0d7caf576"
+}

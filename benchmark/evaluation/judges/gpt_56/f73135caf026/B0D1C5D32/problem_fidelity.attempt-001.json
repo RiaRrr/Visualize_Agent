@@ -1,0 +1,27 @@
+{
+  "dimension": "problem_fidelity",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "evidence_sha256": "ad3da896fde54db10e6e5428d54329a389669228f68a4013de31fc08b02d283e",
+  "prompt_sha256": "d96489070caf49dc81c3ef97ede2feadf7d5db9cdba401fdf4757c97768b6227",
+  "created_at": "2026-10-21T06:36:31.582084+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "problem_fidelity",
+    "score": 5,
+    "issues": [],
+    "evidence": "原题中的对象、条件和两问均完整保留：飞机着陆后以加速度大小6 m/s²匀减速至静止，初速度36 m/s，求总滑行距离及最后4 s位移大小。页面明确加速度方向与运动方向相反；v-t图横轴为t/s、纵轴为v/(m·s⁻¹)，直线由(0,36)降至(6,0)，与原运动量一致；跑道横轴为位移刻度/m。源码按v=36-6t、x=36t-3t²计算，并将时间限制在0至6 s，避免停车后继续反向运动；步骤内容完整给出总位移108 m，并将最后4 s明确对应为t=2 s至6 s、位移48 m。操作记录实际验证了滑块在t=3 s时显示v=18 m/s、x=81 m，在t=6 s时显示v=0、x=108 m，且无运行错误；第（1）、第（2）问的步骤按钮未在操作记录中实际点击，其分区高亮与答案展示仅由源码证实，未由截图交互验证。",
+    "reference_concern": "",
+    "summary": "题设对象、物理条件、全部小问、变量单位及合法时间范围均与原题一致，辅助跑道图和v-t图对应关系正确，未发现实质性一致性缺陷。"
+  },
+  "duration_seconds": 19.44508275699627,
+  "usage": {
+    "input_tokens": 23411,
+    "output_tokens": 526,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 180,
+    "total_tokens": 23937
+  }
+}

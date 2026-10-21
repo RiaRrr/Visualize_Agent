@@ -1,0 +1,31 @@
+{
+  "id": "physics_013",
+  "source_id": "3888992658481152",
+  "subject": "physics",
+  "topic": "多阶段追及与两次相遇",
+  "split": "dev",
+  "family_id": "physics_013",
+  "difficulty_level": 20,
+  "difficulty": 0.4,
+  "type": {
+    "id": "2904",
+    "name": "解答题"
+  },
+  "knowledge_points": [
+    {
+      "id": 15900,
+      "name": "变速物体追变速物体"
+    }
+  ],
+  "selection_reason": "停车边界、相对位移与两次相遇的参数范围",
+  "source_paper_ids": [
+    "4103763715465216"
+  ],
+  "path": "physics/physics_013",
+  "pilot": false,
+  "cohort": "hard-v1",
+  "reference_status": "source_answer_not_independently_verified",
+  "input_status": "ready",
+  "input_sha256": "c7b199098c60bee460b59dfe3aa387755ae1531b798654f10d53b333f07cb349",
+  "source_sha256": "f207839d1b8f3740ca0ec08383b3f217def1592d8502beb9b3348bb0a8b9ff12"
+}

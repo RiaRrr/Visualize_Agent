@@ -92,7 +92,9 @@ async def main():
     parser.add_argument('--set',choices=['calibration','historical_human']);parser.add_argument('--gateway-ip')
     parser.add_argument('--score-only',action='store_true',help='独立模型评分，不要求或推断人工分数')
     parser.add_argument('--samples',nargs='+',help='仅评价指定样本 ID；未指定则评价所选集合')
-    parser.add_argument('--concurrency',type=int,default=2);args=parser.parse_args()
+    parser.add_argument('--include-calibration',action='store_true',help='显式重评分尺度校准题；不能作为独立验证')
+    parser.add_argument('--timeout-seconds',type=float,default=900,help='单次请求总时限；不改变评分prompt')
+    parser.add_argument('--prompt-bundle',help='读取冻结的六维 prompt JSON，便于控制变量比较');parser.add_argument('--concurrency',type=int,default=2);args=parser.parse_args()
     safe_id(args.rater)
     if args.summary_only:print(json.dumps(summarize(args.rater),ensure_ascii=False,indent=2));return
     if args.gateway_ip:
@@ -101,12 +103,20 @@ async def main():
         address=str(ipaddress.ip_address(args.gateway_ip));host=urlparse(get_settings().codex_base_url).hostname;original=socket.getaddrinfo
         def resolve(name,*a,**kw):return original(address if name in (host,host.encode()) else name,*a,**kw)
         socket.getaddrinfo=resolve
-    prompts=build_prompts(BENCH)
-    version=prompt_version(prompts);client=ModelClient(get_settings())
+    from pathlib import Path
+    prompts=read(Path(args.prompt_bundle)) if args.prompt_bundle else build_prompts(BENCH)
+    if set(prompts)!=set((*SCORE_KEYS,'overall_score')):raise ValueError('冻结 prompt 维度不完整')
+    from dataclasses import replace
+    if not 30<=args.timeout_seconds<=1800:raise ValueError('请求总时限范围30–1800秒')
+    version=prompt_version(prompts);client=ModelClient(replace(get_settings(),model_timeout_seconds=args.timeout_seconds))
     judges=[j for j in read(BENCH/'evaluation/judge_registry.json',[]) if not args.judges or j['id'] in args.judges]
     if not judges or (args.judges and set(args.judges)-{j['id'] for j in judges}):
         raise ValueError('指定 judge 未启用；当前配置以 judge_registry.json 为准')
     samples=[s for s in all_samples() if (not args.set or s['set']==args.set) and (args.score_only or read(BENCH/'evaluation/human'/args.rater/(s['id']+'.json'),{}).get('status')=='submitted')]
+    calibration=read(BENCH/'evaluation/calibration-v3/protocol.json',{})
+    calibrated=version==calibration.get('calibrated_version')
+    if calibrated and not args.include_calibration:
+        samples=[s for s in samples if s['question_id'] not in calibration.get('calibration_question_ids',[])]
     if args.samples:
         missing=set(args.samples)-{s['id'] for s in samples}
         if missing:raise ValueError('指定样本不存在或不满足筛选条件：'+', '.join(sorted(missing)))
@@ -123,7 +133,9 @@ async def main():
                 return
             write(output.parent/'config.json',{'version':version,'provider':judge['provider'],'model':judge['model'],
                 'prompts':prompts,'evaluation_mode':'isolated_dimensions','calls_per_sample':6,
-                'human_scores_provided':False,'other_dimension_scores_provided':False,'feedback_to_generator':False})
+                'human_scores_provided':False,'human_derived_scale':calibrated,
+                'calibration_question_ids':calibration.get('calibration_question_ids',[]) if calibrated else [],
+                'other_dimension_scores_provided':False,'feedback_to_generator':False})
             options={'thinking':'enabled','reasoning_effort':'high'} if judge['id']=='deepseek_1017' else {}
             start=time.monotonic();record={'sample_id':s['id'],'question_id':s['question_id'],'set':s['set'],'html_sha256':s['html_sha256'],
                 'judge_id':judge['id'],'model':judge['model'],'judge_version':version,'evidence_sha256':evidence_hash,
@@ -144,8 +156,10 @@ async def main():
             except Exception as exc:record.update(status='error',error=str(exc)[:500])
             record.setdefault('duration_seconds',time.monotonic()-start)
             record.update(run_wall_seconds=time.monotonic()-start);write(output,record)
-            if not args.score_only:summarize(args.rater)
-            write_gpt_scores()
+            # Reporting scans many artifacts. Keep it off the streaming API
+            # event loop, especially when the repository is on a Windows mount.
+            if not args.score_only:await asyncio.to_thread(summarize,args.rater)
+            await asyncio.to_thread(write_gpt_scores)
             print('DONE',s['id'],judge['id'],record['status'],flush=True)
     for s in samples:
         h=read(BENCH/'evaluation/human'/args.rater/(s['id']+'.json'),{})
@@ -158,8 +172,17 @@ async def main():
             image=folder/'reference'/(kind+'.png')
             source=folder/'reference'/(kind+'.html');stamp=image.with_suffix('.sha256')
             if not image.exists() or not stamp.exists() or stamp.read_text()!=sha(source):
-                image.write_bytes(await render_html(source.read_text()));stamp.write_text(sha(source))
-            images.append((image,'image/png'))
+                image.write_bytes(await render_html(source.read_text(),load_timeout=60,max_height=30000,use_document=True));stamp.write_text(sha(source))
+            # Dense long references need readable image slices; keep the original
+            # full screenshot too for local inspection. Pilot evidence is frozen.
+            from PIL import Image
+            with Image.open(image) as im:
+                if q.get('cohort')=='hard-v1' and im.height>3500:
+                    for n,top in enumerate(range(0,im.height,2200)):
+                        part=image.with_name(image.stem+f'.part{n:02d}.png')
+                        im.crop((0,top,im.width,min(top+2400,im.height))).save(part)
+                        images.append((part,'image/png'))
+                else:images.append((image,'image/png'))
         images.extend((inside(p),'image/png') for p in s.get('screenshots',[]))
         evidence=read(inside(s['inspection']),{}) if s.get('inspection') else {}
         checks=read(folder/'reference/checks.json',{})

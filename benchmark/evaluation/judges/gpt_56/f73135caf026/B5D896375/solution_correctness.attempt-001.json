@@ -1,0 +1,27 @@
+{
+  "dimension": "solution_correctness",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "evidence_sha256": "256fccfe10e509dc1b49e32591fef61942fd02f3f68306cd00bf3abaf65b8b75",
+  "prompt_sha256": "ed60505ccd81f6dd5ca380cc5accd55c4683d6feda52245af193ead15195f46b",
+  "created_at": "2026-10-21T06:36:50.619865+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "solution_correctness",
+    "score": 5,
+    "issues": [],
+    "evidence": "独立核算：取运动方向为正，a=-6 m/s²，停止时间t=(0-36)/(-6)=6 s；总位移为36×6+(-6)×6²/2=108 m。最后4 s对应原过程t=2至6 s，v(2)=24 m/s，位移为(24+0)×4/2=48 m。候选页面的步骤文字、公式、v-t三角形面积及源码常量均与此一致。实际截图在t=0、3、6 s分别显示(v,s)=(36,0)、(18,81)、(0,108)，与v=36-6t、s=36t-3t²一致；滑块被限制在0至6 s，避免停止后继续套用公式产生倒车。源码还将最后4 s起点设为t=2 s、s=60 m，并将2至6 s区域标为48 m。操作记录未实际点击分步按钮，因此最后4 s高亮和倒放小图的可见呈现未由截图验证，但其计算与绘制逻辑可由源码核实，且无运行错误。",
+    "reference_concern": "",
+    "summary": "题设、参考答案与候选页面一致；推导、数值、单位、时间区间、v-t面积关系及停止边界处理均正确，未发现实质性正确性缺陷。"
+  },
+  "duration_seconds": 30.830792392996955,
+  "usage": {
+    "input_tokens": 24729,
+    "output_tokens": 694,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 357,
+    "total_tokens": 25423
+  }
+}

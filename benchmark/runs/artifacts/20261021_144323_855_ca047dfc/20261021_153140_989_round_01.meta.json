@@ -1,0 +1,325 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261021_144323_855_ca047dfc:1",
+  "task_id": "20261021_144323_855_ca047dfc",
+  "batch_id": "benchmark-hard-v1",
+  "round": 1,
+  "created_at": "2026-10-21T15:31:41.031489+08:00",
+  "files": {
+    "image": "20261021_144323_855_input.png",
+    "html": "20261021_153140_989_round_01.html",
+    "screenshot": "20261021_153140_989_round_01.png",
+    "model_review": "20261021_153140_989_round_01.review.json",
+    "config": "20261021_144323_855_config.json",
+    "model_review_raw": "round_01.model_review_raw.txt"
+  },
+  "html_sha256": "258d1519c622963a005990218b5f24e4df0635080db1afd4848b7e5bff8c7eb1",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "math-deepseek",
+    "name": "数学 · 分步 SVG 与教学示例（1019）",
+    "version": "d4e8236d6318",
+    "subject": "math"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "single",
+  "max_rounds": 1,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "题目条件与三个最终答案基本正确，页面也清晰可操作；但第③步可行域图与控件只展示正 a、未覆盖结论 a≤1 的负值部分，第⑤步对 a>1 的证明缺少 u≤ln a 分支，且 a≤1 分支无法在控件和图中操作验证，关键不等式的来源主要靠长段文字，因此不能判为合格。",
+    "issues": [
+      "第③步“解出 a”的可行域图与控件范围不一致：drawStep2 的纵轴为 0 到 4，绿色可行域只覆盖 0≤a≤1，滑块最小值又是 0.6；而原题 a∈R、最终结论是 a≤1，负 a 全部允许却完全没有显示。学生容易把可行域误读成 0≤a≤1。应将纵轴或绿色带延伸到负 a，或明确标注“负半轴全部可行”，并把滑块扩展到包含负值。",
+      "第⑤步“证明不等式”的控件范围为 a∈[1,4]，但第(2)(ii)应对所有 a>0 证明，且页面文字本身专门处理了 a≤1 分支。当前滑块无法展示 0<a<1，drawStep4 又只在 a>1 时绘制 Q=(3−3/a,3a)，导致 a≤1 分支的关键位置关系 u≤0<x2 既不能操作也不能在图中看到。建议把滑块下界改为约 0.1（不能取 0），并在 a≤1 与 a=1 时都绘制 Q 及 x2>u 的对应比较。",
+      "第⑤步证明存在逻辑缺口：对 a>1，页面由 f(u)<0 且 f 在 (ln a,+∞) 上递增推出 u<x2，但没有先说明 u>ln a。反例：a=20 时 u=3−3/a=2.85，而 ln 20≈3.00，u<ln a，此时不能使用该递增区间直接比较；结论仍成立是因为这时 x2>ln a>u，但页面未补写。应补充“若 u≤ln a，则 u<ln a<x2；若 u>ln a，再由 f 的单调性”这一分情况证明。",
+      "第⑤步的关键不等式 e^u(3−u)≤e²<9 仅放在右侧 muted 长段文字中，图中只画出了最终关系 x2>3−3/a 的箭头，未展示导致该关系的证据。学生难以看出这个辅助不等式为何成立，也不容易把 u、f(u) 与 x2 的位置关系对应起来。建议增加 h(u)=e^u(3−u) 的局部小图或求导说明 h′(u)=e^u(2−u)，并在主图中高亮 u、ln a、x2 的相对位置。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 3,
+      "page_quality": 4,
+      "interaction_quality": 3,
+      "teaching_effectiveness": 2
+    },
+    "overall_score": 2
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 109,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-21T14:43:28.502572+08:00",
+        "ended_at": "2026-10-21T14:50:07.322756+08:00",
+        "duration_seconds": 398.820184,
+        "status": "error"
+      },
+      {
+        "id": 115,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-21T14:51:32.916932+08:00",
+        "ended_at": "2026-10-21T14:57:06.112952+08:00",
+        "duration_seconds": 333.19602,
+        "status": "completed"
+      },
+      {
+        "id": 120,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-21T14:57:06.112952+08:00",
+        "ended_at": "2026-10-21T14:57:07.869125+08:00",
+        "duration_seconds": 1.756173,
+        "status": "completed"
+      },
+      {
+        "id": 121,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-21T14:57:07.869125+08:00",
+        "ended_at": "2026-10-21T14:57:23.145132+08:00",
+        "duration_seconds": 15.276007,
+        "status": "completed"
+      },
+      {
+        "id": 122,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T14:57:23.145132+08:00",
+        "ended_at": "2026-10-21T15:26:33.014337+08:00",
+        "duration_seconds": 1749.869205,
+        "status": "interrupted"
+      },
+      {
+        "id": 124,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-21T15:26:37.507913+08:00",
+        "ended_at": "2026-10-21T15:26:37.577777+08:00",
+        "duration_seconds": 0.069864,
+        "status": "completed"
+      },
+      {
+        "id": 125,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-21T15:26:37.577777+08:00",
+        "ended_at": "2026-10-21T15:26:42.598798+08:00",
+        "duration_seconds": 5.021021,
+        "status": "completed"
+      },
+      {
+        "id": 129,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T15:26:42.598798+08:00",
+        "ended_at": "2026-10-21T15:26:46.272712+08:00",
+        "duration_seconds": 3.673914,
+        "status": "error"
+      },
+      {
+        "id": 132,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-21T15:26:51.939771+08:00",
+        "ended_at": "2026-10-21T15:26:52.006815+08:00",
+        "duration_seconds": 0.067044,
+        "status": "completed"
+      },
+      {
+        "id": 133,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-21T15:26:52.006815+08:00",
+        "ended_at": "2026-10-21T15:26:54.269108+08:00",
+        "duration_seconds": 2.262293,
+        "status": "completed"
+      },
+      {
+        "id": 134,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T15:26:54.269108+08:00",
+        "ended_at": "2026-10-21T15:27:01.299387+08:00",
+        "duration_seconds": 7.030279,
+        "status": "error"
+      },
+      {
+        "id": 144,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-21T15:28:55.069157+08:00",
+        "ended_at": "2026-10-21T15:28:55.142740+08:00",
+        "duration_seconds": 0.073583,
+        "status": "completed"
+      },
+      {
+        "id": 145,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-21T15:28:55.142740+08:00",
+        "ended_at": "2026-10-21T15:28:57.091506+08:00",
+        "duration_seconds": 1.948766,
+        "status": "completed"
+      },
+      {
+        "id": 146,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "round_number": 1,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T15:28:57.091506+08:00",
+        "ended_at": "2026-10-21T15:31:41.340282+08:00",
+        "duration_seconds": 164.248776,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 60,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T14:50:06.652737+08:00",
+        "duration_seconds": 394.27053785600583,
+        "status": "error",
+        "input_tokens": 3307,
+        "output_tokens": 64000,
+        "cached_input_tokens": 2048,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 50076,
+        "total_tokens": 67307
+      },
+      {
+        "id": 63,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T14:57:05.195219+08:00",
+        "duration_seconds": 322.9214420460048,
+        "status": "completed",
+        "input_tokens": 3307,
+        "output_tokens": 55056,
+        "cached_input_tokens": 3200,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 42911,
+        "total_tokens": 58363
+      },
+      {
+        "id": 65,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 1,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:25:40.034413+08:00",
+        "duration_seconds": 808.6164084659977,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 69,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 1,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:26:46.238430+08:00",
+        "duration_seconds": 3.4866200479882536,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 73,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 1,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:27:01.263747+08:00",
+        "duration_seconds": 6.893437416001689,
+        "status": "error",
+        "input_tokens": null,
+        "output_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null,
+        "total_tokens": null
+      },
+      {
+        "id": 79,
+        "task_id": "20261021_144323_855_ca047dfc",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 1,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T15:31:40.929573+08:00",
+        "duration_seconds": 163.6943912410061,
+        "status": "completed",
+        "input_tokens": 15685,
+        "output_tokens": 21859,
+        "cached_input_tokens": 15616,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 21140,
+        "total_tokens": 37544
+      }
+    ]
+  }
+}

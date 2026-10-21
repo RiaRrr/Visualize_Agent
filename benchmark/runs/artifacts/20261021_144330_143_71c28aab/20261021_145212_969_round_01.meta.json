@@ -1,0 +1,152 @@
+{
+  "schema_version": 2,
+  "rubric_version": "2.0",
+  "record_id": "20261021_144330_143_71c28aab:1",
+  "task_id": "20261021_144330_143_71c28aab",
+  "batch_id": "benchmark-hard-v1",
+  "round": 1,
+  "created_at": "2026-10-21T14:52:20.733019+08:00",
+  "files": {
+    "image": "20261021_144330_143_input.png",
+    "html": "20261021_145212_969_round_01.html",
+    "screenshot": "20261021_145212_969_round_01.png",
+    "model_review": "20261021_145212_969_round_01.review.json",
+    "config": "20261021_144330_143_config.json",
+    "model_review_raw": "round_01.model_review_raw.txt"
+  },
+  "html_sha256": "a510382f7286e05bc071e092377a393e91b449dcb06ec44b55b0860f97cc0088",
+  "generator": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "reviewer": {
+    "provider": "codex",
+    "model": "deepseek-v4-1-flash-261017"
+  },
+  "profile": {
+    "id": "math-deepseek",
+    "name": "数学 · 分步 SVG 与教学示例（1019）",
+    "version": "d4e8236d6318",
+    "subject": "math"
+  },
+  "routing": {
+    "subject": null,
+    "provider": null,
+    "model": null
+  },
+  "run_mode": "fixed_five",
+  "max_rounds": 3,
+  "generation_strategy": "direct",
+  "model_review": {
+    "source": "model",
+    "passed": false,
+    "summary": "题目条件、两个小问的结论及(2)(ii)的证明均正确，首屏能建立恒成立问题的转化关系，分步图和文字基本对应；存在第(1)问滑块局部越出绘图区、x=0处极限点画成实心点等可改进瑕疵。",
+    "issues": [
+      "第(1)问：滑块下限为 a=0.2，但图纵轴下限为 0.35。拖到 a<0.35 时，橙色“当前 a”水平线及标签会落到绘图区外或压住横轴刻度；应将 yMin 调到不高于 0.2，或把滑块下限提高到 0.35，并在控件旁说明其不是完整参数范围。",
+      "第(1)问图在 x=0、y=1 处画了绿色实心点，但 g(x)=(e^x-1)/x-x/2 在 x=0 无定义，这里只是 x→0+ 的极限；应改为空心点、虚线提示，或删除实心点并保留“极限值 1”的说明。",
+      "第(2)(ii)的 r 是证明中的辅助参数，当前滑块只展示 r>1 的局部示例；建议在控件旁补充“实际 r=e^{x2-x1}，证明对任意 r>1 成立”，避免学生误以为任意拖动 r 都对应原题中的两个零点。"
+    ],
+    "scores": {
+      "problem_fidelity": 5,
+      "solution_correctness": 5,
+      "page_quality": 4,
+      "interaction_quality": 4,
+      "teaching_effectiveness": 4
+    },
+    "overall_score": 4
+  },
+  "human_review": {
+    "scores": {
+      "problem_fidelity": null,
+      "solution_correctness": null,
+      "page_quality": null,
+      "interaction_quality": null,
+      "teaching_effectiveness": null
+    },
+    "overall_score": null,
+    "comment": "",
+    "updated_at": null
+  },
+  "metrics": {
+    "stages": [
+      {
+        "id": 111,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 1,
+        "stage": "generating",
+        "started_at": "2026-10-21T14:43:33.851253+08:00",
+        "ended_at": "2026-10-21T14:48:55.216910+08:00",
+        "duration_seconds": 321.365657,
+        "status": "completed"
+      },
+      {
+        "id": 112,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 1,
+        "stage": "validating",
+        "started_at": "2026-10-21T14:48:55.216910+08:00",
+        "ended_at": "2026-10-21T14:49:00.690935+08:00",
+        "duration_seconds": 5.474025,
+        "status": "completed"
+      },
+      {
+        "id": 113,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 1,
+        "stage": "rendering",
+        "started_at": "2026-10-21T14:49:00.690935+08:00",
+        "ended_at": "2026-10-21T14:49:10.991957+08:00",
+        "duration_seconds": 10.301022,
+        "status": "completed"
+      },
+      {
+        "id": 114,
+        "task_id": "20261021_144330_143_71c28aab",
+        "round_number": 1,
+        "stage": "reviewing",
+        "started_at": "2026-10-21T14:49:10.991957+08:00",
+        "ended_at": "2026-10-21T14:52:37.631518+08:00",
+        "duration_seconds": 206.639561,
+        "status": "completed"
+      }
+    ],
+    "api_calls": [
+      {
+        "id": 59,
+        "task_id": "20261021_144330_143_71c28aab",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 1,
+        "role": "generator",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T14:48:50.412196+08:00",
+        "duration_seconds": 314.16543682500196,
+        "status": "completed",
+        "input_tokens": 3307,
+        "output_tokens": 53290,
+        "cached_input_tokens": 2048,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 42176,
+        "total_tokens": 56597
+      },
+      {
+        "id": 61,
+        "task_id": "20261021_144330_143_71c28aab",
+        "batch_id": "benchmark-hard-v1",
+        "round_number": 1,
+        "role": "reviewer",
+        "provider": "codex",
+        "model": "deepseek-v4-1-flash-261017",
+        "created_at": "2026-10-21T14:52:02.781250+08:00",
+        "duration_seconds": 163.05619718899834,
+        "status": "completed",
+        "input_tokens": 14690,
+        "output_tokens": 21475,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": 21115,
+        "total_tokens": 36165
+      }
+    ]
+  }
+}

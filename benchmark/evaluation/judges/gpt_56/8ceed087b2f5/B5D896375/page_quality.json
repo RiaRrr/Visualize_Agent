@@ -1,0 +1,27 @@
+{
+  "dimension": "page_quality",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "evidence_sha256": "e57d5d1d4d8f46e2f3e8ad06dd5411d073a3b87173f8be047214522c7178f6cf",
+  "prompt_sha256": "809470d211fcf03bd541a53c0224af18bae8c5b6208544e6e4a5fc241ac3470a",
+  "created_at": "2026-10-21T06:42:55.359366+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "page_quality",
+    "score": 5,
+    "issues": [],
+    "evidence": "在1280×900桌面截图的初始、t=3 s和t=6 s状态中，题目区、双主图、读数区、控制条和分步区均完整显示，未见文字、公式、坐标标注或图形相互重叠及被裁切。滑行示意与v–t图采用并列布局，标题、辅助说明、动态图形和数值读数层级明确；中间状态的速度/加速度箭头、飞机、面积填充和虚线投影仍能清楚区分，终止状态的三角形也保持清晰。信息量较多但分区和留白合理，无需频繁寻找对应关系，达到复杂状态下仍完整清晰的优秀档。操作记录验证了滑块初始、中点和最高值状态且无运行错误；第④、⑤步及倒放视图未被实际截图验证，因此不对这些隐藏状态作可见性断言。",
+    "reference_concern": "",
+    "summary": "桌面页面层级清楚、图文对应直观，多个已验证动态状态均无明显拥挤、遮挡或裁切，页面效果完整清晰。"
+  },
+  "duration_seconds": 19.37909996599774,
+  "usage": {
+    "input_tokens": 25177,
+    "output_tokens": 615,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 330,
+    "total_tokens": 25792
+  }
+}

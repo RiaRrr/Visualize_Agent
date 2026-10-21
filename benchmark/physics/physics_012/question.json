@@ -34,5 +34,6 @@
   "reference_status": "source_answer_not_independently_verified",
   "input_status": "ready",
   "source_sha256": "5dac31df39a7122dc82909bb9f320bb840c5adab9a2dc2a4e3b941a49df5873a",
-  "input_sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+  "input_sha256": "3fd5a81d71d2a81c37baac7d1b50d2db86f5791a356ca9b54d04b8da0b546a11",
+  "input_render_repair": "hard-v1 audit: blank screenshot repaired, stem unchanged, test not run"
 }

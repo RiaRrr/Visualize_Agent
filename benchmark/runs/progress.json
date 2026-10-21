@@ -1,7 +1,9 @@
 {
-  "planned": 9,
-  "ready_samples": 9,
+  "batch": "hard-v1",
+  "planned": 6,
+  "ready_samples": 15,
+  "batch_ready_samples": 6,
   "running": 0,
   "errors": 0,
-  "note": "先生成9个匿名校准页面；其他开发题与留出测试集暂不运行"
+  "note": "hard-v1六组生成已结束；三道新开发题×W0/W2，留出集未运行。failed表示内部审核未通过，仍是完整样本。"
 }

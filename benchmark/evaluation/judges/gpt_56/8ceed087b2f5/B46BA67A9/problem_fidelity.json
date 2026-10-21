@@ -1,0 +1,28 @@
+{
+  "dimension": "problem_fidelity",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "request_timeout_seconds": 180.0,
+  "evidence_sha256": "03bcbcbfb7e1adcca812de0aac93dd2bab834c7ec2ef34c426f6a8edcd855125",
+  "prompt_sha256": "8ee1a9cfe9a7249609cf7a2c274febf923bb7a906d0c3bc680ea25f4b8db4edb",
+  "created_at": "2026-10-21T07:26:37.009441+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "problem_fidelity",
+    "score": 5,
+    "issues": [],
+    "evidence": "原题对象与条件均被保留：一定体积Ba(OH)₂溶液中滴加稀H₂SO₄，考察混合溶液导电能力先降后升，并完整呈现A、B、C、D四个原选项。原图横轴是时间，页面主图横轴改为归一化滴加量，但页首明确限定“匀速滴加，横轴时间与滴加量成正比”，并将恰好完全反应的用量定义为1份，因此变量替换有清楚的一一对应，没有改换原题所考查的量；纵轴仍为导电能力，仅采用相对值表达。A、B、C三段及最低点B的含义与原图一致，页面也明确曲线和粒子数属于定性、比例放大的示意，没有冒充精确实验数据。四种试剂替换分别对应原题四个选项，最终判断D正确，与反应关系一致。实际操作记录验证了原实验滑块在0、1、2份状态可切换且无运行错误；各选项按钮的点击反馈未在操作记录中实际执行，但其对应关系和判断逻辑可由源码确认。整体完整保留原题对象、条件、小问和量的含义，无实质性一致性缺陷。",
+    "reference_concern": "",
+    "summary": "页面完整对应原题；将时间轴转换为归一化滴加量时给出了明确的匀速比例关系，四个选项及核心化学关系均保留。"
+  },
+  "duration_seconds": 37.42051845799142,
+  "usage": {
+    "input_tokens": 33679,
+    "output_tokens": 1378,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 1003,
+    "total_tokens": 35057
+  }
+}

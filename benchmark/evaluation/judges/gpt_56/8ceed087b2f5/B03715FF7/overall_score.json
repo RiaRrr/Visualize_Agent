@@ -1,0 +1,28 @@
+{
+  "dimension": "overall_score",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "request_timeout_seconds": 300.0,
+  "evidence_sha256": "86961d4d8504b103b6d81295af9dd12f1e3a3079b750a39fb03688ba1371e072",
+  "prompt_sha256": "9115faa82ef1b772965cdc64a34ad4382523535cfcd0fa095e3f3636dcf222a9",
+  "created_at": "2026-10-21T07:39:46.438018+00:00",
+  "status": "completed",
+  "attempt": 1,
+  "judgment": {
+    "dimension": "overall_score",
+    "score": 5,
+    "issues": [],
+    "evidence": "题设中的函数、定义域、两问及第(2)问的两个小问均完整保留。独立核算表明各结论和关键推导正确：(1)在x>0时化为a≤g(x)=(e^x−1)/x−x/2，并通过g′分子N满足N(0)=0、N′(x)=2x(e^x−1)>0证明g递增，结合x→0+时g(x)→1得到a≤1；(2)(i)正确区分a≤0与a>0，并由唯一极小点t=ln a及极小值a(1−ln a)−3≤−2推出恰有两个零点当且仅当a>0；(2)(ii)以x1=t−u、x2=t+v完成移位，得到e^v−e^(−u)=u+v，再引入r=e^(u+v)>1，将目标化为H(r)=(r+3)ln r−3(r−1)>0，并用H′的最小值H′(3)=ln3−1>0严格证明。教学链从条件转化、单调性、两根条件、移位到辅助函数证明逐步展开，关键非显然转换均给出可见依据，图中曲线、极限、参数线、零点和移位长度与公式对应；演示滑块范围与完整数学范围也有明确区分。桌面截图中首步布局清楚，无明显重叠或裁切，且实际记录验证了滑块在中间值和上界时图形、数值、判定及失败区同步变化。源码显示其余步骤标签、复位和分步渲染均已实现，但操作记录未实际点击步骤标签，因此后续步骤的动态呈现和视觉状态只能依据源码确认，不能视为截图实测；这一证据限制未显示出页面本身的实质缺陷。整体达到从题设到结论可理解并可复述的优秀教学材料标准。",
+    "reference_concern": "",
+    "summary": "内容完整、数学正确，分步可视化承担了关键关系的解释，整体教学链完整清晰；现有实测主要覆盖首步滑块，未发现实质缺陷。"
+  },
+  "duration_seconds": 46.007238287988,
+  "usage": {
+    "input_tokens": 29959,
+    "output_tokens": 2089,
+    "cached_input_tokens": 4224,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": 1552,
+    "total_tokens": 32048
+  }
+}

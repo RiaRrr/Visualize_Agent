@@ -1,0 +1,738 @@
+{
+  "html": "/mnt/e/work/Visualize_Agent/benchmark/runs/artifacts/20261021_152655_882_31ed1067/20261021_154713_375_round_03.html",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "states": [
+    {
+      "name": "initial",
+      "action": "true",
+      "result": {
+        "result": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      "screenshot": "00_initial.png",
+      "text": "追及与相遇：让“间距”自己说话\n\n同向直公路：A 在前、B 在后，相距 56 m；A 减速，B 加速。\n\nA：16 m/s，2 m/s² 减速\nB：4 m/s，1 m/s² 加速\n足够长的平直公路\n道路与车辆位置\n原题：A 在前\n第（3）问：A 在后\n0\n20\n40\n60\n80\n100\n120\n140\n160\n间距 56.0 m\nA 在前\nA\nB\nvA=16.0\nvB=4.0\n位置标尺 / m\n初态\nA 在前、B 在后，相距 56.0 m；A 相对 B 更快，间距先增大。\n速度—时间图\n两线相交：速度相同\n0\n2\n4\n6\n8\n10\n12\n14\n0\n4\n8\n12\n16\n20\nt / s\nv / (m·s⁻¹)\nA停\nA\nB\n相对位置差—时间图\nS = xA − xB（间距 = |S|）\n0\n2\n4\n6\n8\n10\n12\n14\n-100\n-50\n0\n50\n100\nt / s\n0 轴：相遇\nS = xA − xB\n纵轴 S / m；间距 = |S|\n时间控制\n暂停\n0.00s\n播放\n−0.5 s\n+0.5 s\n回到初态\n原题关键观察\nA 在前、B 在后\n初态\n找最大间距\nA 停下的时刻\n求相遇时间\n拖动时间，观察两车与两张图的同步变化。\n实时读数\n单位：m、s\n时间 t\n0.00 s\n相对速度 vA−vB\n12.0 m/s\nS = xA−xB，间距 = |S|\nA 速度\n16.0 m/s\nB 速度\n4.0 m/s\nA 位置\n56.0 m\nB 位置\n0.0 m\n两车间距\n56.0 m\nA 在前\n结论与关系\n随操作揭示\n（1）两车何时相距最大？最大多少？\n点击“找最大间距”后揭示\n（2）经过多长时间两车相遇？\n点击“求相遇时间”后揭示",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "modeCase1",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "原题：A 在前",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "modeCase3",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "第（3）问：A 在后",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "14",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "−0.5 s",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "+0.5 s",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "回到初态",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "初态",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "找最大间距",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "A 停下的时刻",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "求相遇时间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "x0Slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "18",
+          "min": "1",
+          "max": "40",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "18 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "临界 24 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "30 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "condBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "归纳两次相遇的条件",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "next_step",
+      "action": "(()=>{const e=[...document.querySelectorAll('button')].find(e=>/下一|继续|next|开始/i.test(e.innerText)&&!e.disabled);if(e){e.click();return {action:'click',label:e.innerText}}return {skipped:'no matching visible step control'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "skipped": "no matching visible step control"
+          }
+        }
+      },
+      "screenshot": "01_next_step.png",
+      "text": "追及与相遇：让“间距”自己说话\n\n同向直公路：A 在前、B 在后，相距 56 m；A 减速，B 加速。\n\nA：16 m/s，2 m/s² 减速\nB：4 m/s，1 m/s² 加速\n足够长的平直公路\n道路与车辆位置\n原题：A 在前\n第（3）问：A 在后\n0\n20\n40\n60\n80\n100\n120\n140\n160\n间距 56.0 m\nA 在前\nA\nB\nvA=16.0\nvB=4.0\n位置标尺 / m\n初态\nA 在前、B 在后，相距 56.0 m；A 相对 B 更快，间距先增大。\n速度—时间图\n两线相交：速度相同\n0\n2\n4\n6\n8\n10\n12\n14\n0\n4\n8\n12\n16\n20\nt / s\nv / (m·s⁻¹)\nA停\nA\nB\n相对位置差—时间图\nS = xA − xB（间距 = |S|）\n0\n2\n4\n6\n8\n10\n12\n14\n-100\n-50\n0\n50\n100\nt / s\n0 轴：相遇\nS = xA − xB\n纵轴 S / m；间距 = |S|\n时间控制\n暂停\n0.00s\n播放\n−0.5 s\n+0.5 s\n回到初态\n原题关键观察\nA 在前、B 在后\n初态\n找最大间距\nA 停下的时刻\n求相遇时间\n拖动时间，观察两车与两张图的同步变化。\n实时读数\n单位：m、s\n时间 t\n0.00 s\n相对速度 vA−vB\n12.0 m/s\nS = xA−xB，间距 = |S|\nA 速度\n16.0 m/s\nB 速度\n4.0 m/s\nA 位置\n56.0 m\nB 位置\n0.0 m\n两车间距\n56.0 m\nA 在前\n结论与关系\n随操作揭示\n（1）两车何时相距最大？最大多少？\n点击“找最大间距”后揭示\n（2）经过多长时间两车相遇？\n点击“求相遇时间”后揭示",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "modeCase1",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "原题：A 在前",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "modeCase3",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "第（3）问：A 在后",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "0",
+          "min": "0",
+          "max": "14",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "−0.5 s",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "+0.5 s",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "回到初态",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "初态",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "找最大间距",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "A 停下的时刻",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "求相遇时间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "x0Slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "18",
+          "min": "1",
+          "max": "40",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "18 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "临界 24 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "30 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "condBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "归纳两次相遇的条件",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_mid",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=(Number(e.min||0)+Number(e.max||100))/2;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "7"
+          }
+        }
+      },
+      "screenshot": "02_slider_mid.png",
+      "text": "追及与相遇：让“间距”自己说话\n\n同向直公路：A 在前、B 在后，相距 56 m；A 减速，B 加速。\n\nA：16 m/s，2 m/s² 减速\nB：4 m/s，1 m/s² 加速\n足够长的平直公路\n道路与车辆位置\n原题：A 在前\n第（3）问：A 在后\n0\n20\n40\n60\n80\n100\n120\n140\n160\n间距 66.5 m\nA 在前\nA\nB\nvA=2.0\nvB=11.0\n位置标尺 / m\n运动中\nvA < vB，间距开始缩小；当前间距 66.5 m。\n速度—时间图\n两线相交：速度相同\n0\n2\n4\n6\n8\n10\n12\n14\n0\n4\n8\n12\n16\n20\nt / s\nv / (m·s⁻¹)\nA停\nA\nB\n相对位置差—时间图\nS = xA − xB（间距 = |S|）\n0\n2\n4\n6\n8\n10\n12\n14\n-100\n-50\n0\n50\n100\nt / s\n0 轴：相遇\nS = xA − xB\n纵轴 S / m；间距 = |S|\n时间控制\n暂停\n7.00s\n播放\n−0.5 s\n+0.5 s\n回到初态\n原题关键观察\nA 在前、B 在后\n初态\n找最大间距\nA 停下的时刻\n求相遇时间\n拖动时间，观察两车与两张图的同步变化。\n实时读数\n单位：m、s\n时间 t\n7.00 s\n相对速度 vA−vB\n-9.0 m/s\nS = xA−xB，间距 = |S|\nA 速度\n2.0 m/s\nB 速度\n11.0 m/s\nA 位置\n119.0 m\nB 位置\n52.5 m\n两车间距\n66.5 m\nA 在前\n结论与关系\n随操作揭示\n（1）两车何时相距最大？最大多少？\n点击“找最大间距”后揭示\n（2）经过多长时间两车相遇？\n点击“求相遇时间”后揭示",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "modeCase1",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "原题：A 在前",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "modeCase3",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "第（3）问：A 在后",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "7",
+          "min": "0",
+          "max": "14",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "−0.5 s",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "+0.5 s",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "回到初态",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "初态",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "找最大间距",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "A 停下的时刻",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "求相遇时间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "x0Slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "18",
+          "min": "1",
+          "max": "40",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "18 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "临界 24 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "30 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "condBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "归纳两次相遇的条件",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    },
+    {
+      "name": "slider_high",
+      "action": "(()=>{const e=[...document.querySelectorAll('input[type=range]')].find(e=>e.getClientRects().length);if(e){e.value=e.max||100;e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));return {action:'range',value:e.value}}return {skipped:'no visible slider'}})()",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "action": "range",
+            "value": "14"
+          }
+        }
+      },
+      "screenshot": "03_slider_high.png",
+      "text": "追及与相遇：让“间距”自己说话\n\n同向直公路：A 在前、B 在后，相距 56 m；A 减速，B 加速。\n\nA：16 m/s，2 m/s² 减速\nB：4 m/s，1 m/s² 加速\n足够长的平直公路\n道路与车辆位置\n原题：A 在前\n第（3）问：A 在后\n0\n20\n40\n60\n80\n100\n120\n140\n160\n间距 34.0 m\nB 在前\nA\nB\nvA=0\nvB=18.0\nA 已停下\n位置标尺 / m\n已相遇\nB 已在 A 前，间距重新增大；实时间距 34.0 m。\n速度—时间图\n两线相交：速度相同\n0\n2\n4\n6\n8\n10\n12\n14\n0\n4\n8\n12\n16\n20\nt / s\nv / (m·s⁻¹)\nA停\nA\nB\n相对位置差—时间图\nS = xA − xB（间距 = |S|）\n0\n2\n4\n6\n8\n10\n12\n14\n-100\n-50\n0\n50\n100\nt / s\n0 轴：相遇\nS = xA − xB\n纵轴 S / m；间距 = |S|\n时间控制\n暂停\n14.00s\n播放\n−0.5 s\n+0.5 s\n回到初态\n原题关键观察\nA 在前、B 在后\n初态\n找最大间距\nA 停下的时刻\n求相遇时间\n拖动时间，观察两车与两张图的同步变化。\n实时读数\n单位：m、s\n时间 t\n14.00 s\n相对速度 vA−vB\n-18.0 m/s\nS = xA−xB，间距 = |S|\nA 速度\n0.0 m/s\nB 速度\n18.0 m/s\nA 位置\n120.0 m\nB 位置\n154.0 m\n两车间距\n34.0 m\nB 在前\n结论与关系\n随操作揭示\n（1）两车何时相距最大？最大多少？\n点击“找最大间距”后揭示\n（2）经过多长时间两车相遇？\n点击“求相遇时间”后揭示",
+      "lessonState": null,
+      "controls": [
+        {
+          "index": 0,
+          "id": "modeCase1",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "原题：A 在前",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 1,
+          "id": "modeCase3",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "第（3）问：A 在后",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 2,
+          "id": "playBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "播放",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 3,
+          "id": "timeSlider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "14",
+          "min": "0",
+          "max": "14",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 4,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "−0.5 s",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 5,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "+0.5 s",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 6,
+          "id": "resetBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "回到初态",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 7,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "初态",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 8,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "找最大间距",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 9,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "A 停下的时刻",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 10,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "求相遇时间",
+          "value": "",
+          "visible": true,
+          "disabled": false
+        },
+        {
+          "index": 11,
+          "id": "x0Slider",
+          "tag": "INPUT",
+          "type": "range",
+          "text": "",
+          "value": "18",
+          "min": "1",
+          "max": "40",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 12,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "18 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 13,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "临界 24 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 14,
+          "id": "",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "30 m",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        },
+        {
+          "index": 15,
+          "id": "condBtn",
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "归纳两次相遇的条件",
+          "value": "",
+          "visible": false,
+          "disabled": false
+        }
+      ],
+      "invalidText": false
+    }
+  ],
+  "runtime_errors": []
+}

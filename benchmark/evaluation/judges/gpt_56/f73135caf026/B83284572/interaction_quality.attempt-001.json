@@ -1,0 +1,13 @@
+{
+  "dimension": "interaction_quality",
+  "model": "gpt-5.6-sol",
+  "provider": "openai",
+  "evidence_sha256": "6c1fd9444a541ea830861ad1727ea503d4346ef4411c26d1be915f11505d7802",
+  "prompt_sha256": "8de080674cd3665d284129e74aff67d1d55cd3597072dbd5c5712a319bb18f66",
+  "created_at": "2026-10-21T06:40:53.533869+00:00",
+  "status": "error",
+  "attempt": 1,
+  "error": "模型请求超时（gpt-5.6-sol）；可在任务页继续处理",
+  "duration_seconds": 31.273437774012564,
+  "usage": null
+}
